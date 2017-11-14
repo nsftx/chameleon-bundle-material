@@ -1,28 +1,23 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
-  </div>
+  <v-app>
+    <v-navigation-drawer fixed></v-navigation-drawer>
+    <v-toolbar fixed></v-toolbar>
+    <v-content>
+      <v-container fluid>
+        <chameleon-form></chameleon-form>
+      </v-container>
+    </v-content>
+    <v-footer></v-footer>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+  import ChameleonForm from './components/ChameleonForm';
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld,
-  },
-};
+  export default {
+    name: 'app',
+    components: {
+      ChameleonForm,
+    },
+  };
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
