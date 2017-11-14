@@ -65,6 +65,9 @@
               "value": null
             },
             "custom": null
+          },
+          "actions": {
+            "blur": "showCreditCardThumb"
           }
         }
       ]
@@ -87,5 +90,9 @@
     "money",
     "business"
   ],
-  "flow": null
+  "flow": {
+    "actions": {
+      "showCreditCardThumb": null
+    }
+  }
 }
