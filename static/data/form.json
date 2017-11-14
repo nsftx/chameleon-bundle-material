@@ -1,0 +1,91 @@
+{
+  "name": "testForm",
+  "label": "Test Form",
+  "layout": "singleColumn",
+  "containers": {
+    "default": {
+      "name": "defaultContainer",
+      "label": "Default Container",
+      "fields": [
+        {
+          "name": "firstName",
+          "type": "text",
+          "label": "First Name",
+          "prependIcon": "person",
+          "appendIcon": null,
+          "prefix": null,
+          "sufix": null,
+          "placeholder": "Please enter your first name",
+          "hint": null,
+          "tooltip": null,
+          "multiline": false,
+          "clearable": true,
+          "searchable": true,
+          "private": false,
+          "validateOn": "blur",
+          "mask": {
+            "predefined": false,
+            "value": null
+          },
+          "validation": {
+            "required": true,
+            "minlength": 2,
+            "maxlength": 20,
+            "pattern": {
+              "predefined": false,
+              "value": null
+            },
+            "custom": null
+          }
+        },
+        {
+          "name": "creditCard",
+          "type": "text",
+          "label": "Credit Card Number",
+          "prependIcon": "money",
+          "appendIcon": null,
+          "prefix": null,
+          "sufix": null,
+          "placeholder": "Please enter your credit card number",
+          "hint": "Credit card must have valid expiration date",
+          "tooltip": null,
+          "multiline": false,
+          "clearable": true,
+          "searchable": false,
+          "private": true,
+          "validateOn": "blur",
+          "mask": {
+            "predefined": "creditCard",
+            "value": null
+          },
+          "validation": {
+            "required": true,
+            "pattern": {
+              "predefined": "creditCard",
+              "value": null
+            },
+            "custom": null
+          }
+        }
+      ]
+    }
+  },
+  "validators": {
+    "creditCard": {
+      "name": "creditCard",
+      "pattern": null
+    }
+  },
+  "masks": {
+    "creditCard": {
+      "name": "creditCard",
+      "pattern": "####-####-####-####"
+    }
+  },
+  "icons": [
+    "person",
+    "money",
+    "business"
+  ],
+  "flow": null
+}
