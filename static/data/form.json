@@ -1,10 +1,12 @@
 {
   "name": "testForm",
   "label": "Test Form",
-  "layout": "singleColumn",
+  "layout": {
+    "name": "singleColumn"
+  },
   "containers": {
     "default": {
-      "name": "defaultContainer",
+      "name": "default",
       "label": "Default Container",
       "fields": [
         {

@@ -1,23 +1,34 @@
 <template>
   <v-app>
-    <v-navigation-drawer fixed></v-navigation-drawer>
-    <v-toolbar fixed></v-toolbar>
+    <v-navigation-drawer app
+                         fixed>
+    </v-navigation-drawer>
+    <v-toolbar app
+               fixed>
+    </v-toolbar>
     <v-content>
       <v-container fluid>
-        <chameleon-form></chameleon-form>
+        <c-control :definition="form.containers.default.fields[0]" />
       </v-container>
     </v-content>
-    <v-footer></v-footer>
+    <v-footer app></v-footer>
   </v-app>
 </template>
 
 <script>
-  import ChameleonForm from './components/ChameleonForm';
+  import CControl from './components/CControl/CControl';
+
+  const form = require('../static/data/form.json');
 
   export default {
     name: 'app',
     components: {
-      ChameleonForm,
+      CControl,
+    },
+    data() {
+      return {
+        form,
+      };
     },
   };
 </script>
