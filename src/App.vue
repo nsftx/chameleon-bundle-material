@@ -33,7 +33,7 @@
       return {
         form,
         model: {
-          firstName: 'Ime Prezine',
+          firstName: 'Ime Prezime',
           creditCard: '000-222-666-555',
         },
       };
