@@ -8,7 +8,11 @@
     </v-toolbar>
     <v-content>
       <v-container fluid>
-        <c-control :definition="form.containers.default.fields[0]" />
+        <c-control :definition="field"
+                   :key="field.name"
+                   v-model="model[field.name]"
+                   v-for="field in form.containers.default.fields">
+        </c-control>
       </v-container>
     </v-content>
     <v-footer app></v-footer>
@@ -28,6 +32,10 @@
     data() {
       return {
         form,
+        model: {
+          firstName: 'Ime Prezine',
+          creditCard: '000-222-666-555',
+        },
       };
     },
   };

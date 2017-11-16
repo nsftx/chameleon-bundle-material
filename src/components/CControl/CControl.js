@@ -10,10 +10,8 @@ export default {
     },
   },
   render(createElement, context) {
-    const self = context;
-    const definition = self.props.definition;
-    const parsedControl = controlParser.parse(definition);
+    const definition = context.props.definition;
 
-    return createElement(parsedControl.base, parsedControl.options);
+    return controlParser.parse(definition, createElement, context);
   },
 };
