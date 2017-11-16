@@ -1,31 +1,4 @@
-import VTextField from 'vuetify/es5/components/VTextField';
-
-const getBaseComponent = (definition) => {
-  switch (definition.type) {
-    case 'text':
-      return VTextField;
-    default:
-      return VTextField;
-  }
-};
-
-const getBaseComponentProps = (definition) => {
-  const props = {
-    label: definition.label,
-    placeholder: definition.placeholder,
-    prependIcon: definition.prependIcon,
-  };
-
-  return props;
-};
-
-const getBaseComponentAttrs = (definition) => {
-  const attrs = {
-    name: definition.name,
-  };
-
-  return attrs;
-};
+import controlParser from '../../utility/controlParser';
 
 export default {
   name: 'c-control',
@@ -33,17 +6,14 @@ export default {
   props: {
     definition: {
       type: Object,
-      required: false,
+      required: true,
     },
   },
   render(createElement, context) {
     const self = context;
     const definition = self.props.definition;
-    const baseComponent = getBaseComponent(definition);
+    const parsedControl = controlParser.parse(definition);
 
-    return createElement(baseComponent, {
-      props: getBaseComponentProps(definition),
-      attrs: getBaseComponentAttrs(definition),
-    });
+    return createElement(parsedControl.base, parsedControl.options);
   },
 };
