@@ -1,4 +1,4 @@
-import controlParser from '../../utility/controlParser';
+import controlRenderer from '../../renderers/controlRenderer';
 
 export default {
   name: 'c-control',
@@ -12,6 +12,10 @@ export default {
   render(createElement, context) {
     const definition = context.props.definition;
 
-    return controlParser.parse(definition, createElement, context);
+    return controlRenderer.render(
+      definition,
+      createElement,
+      context,
+    );
   },
 };

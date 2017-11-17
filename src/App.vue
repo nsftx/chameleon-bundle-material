@@ -1,18 +1,19 @@
 <template>
   <v-app>
-    <v-navigation-drawer app
-                         fixed>
-    </v-navigation-drawer>
     <v-toolbar app
-               fixed>
+               dark
+               fixed
+               color="primary">
     </v-toolbar>
     <v-content>
       <v-container fluid>
-        <c-control :definition="field"
-                   :key="field.name"
-                   v-model="model[field.name]"
-                   v-for="field in form.containers.default.fields">
-        </c-control>
+        <v-form>
+          <c-control :definition="field"
+                     :key="field.name"
+                     v-model="model[field.name]"
+                     v-for="field in form.fields">
+          </c-control>
+        </v-form>
       </v-container>
     </v-content>
     <v-footer app></v-footer>
@@ -22,7 +23,8 @@
 <script>
   import CControl from './components/CControl/CControl';
 
-  const form = require('../static/data/form.json');
+  // This will come from Chameleon API
+  const source = require('../static/data/form.json');
 
   export default {
     name: 'app',
@@ -31,12 +33,19 @@
     },
     data() {
       return {
-        form,
+        source,
         model: {
           firstName: 'Ime Prezime',
-          creditCard: '000-222-666-555',
+          creditCard: '0000-2222-6666-5555',
         },
       };
+    },
+    computed: {
+      form() {
+        const container = this.source.containers.default;
+        const form = container.forms.default;
+        return form;
+      },
     },
   };
 </script>
