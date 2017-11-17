@@ -1,8 +1,8 @@
 import validator from 'validator';
 // TODO: Set this globaly for lib
-import locale from '../locale/en';
+import locale from '../locale/current';
 
 export default (value, field) => {
   const isCreditCard = validator.isCreditCard(value);
-  return isCreditCard ? true : locale.messages[field.name](field.label);
+  return isCreditCard ? true : locale.getMessage(field.name)(field.label);
 };

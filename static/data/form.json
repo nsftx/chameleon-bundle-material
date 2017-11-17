@@ -1,16 +1,13 @@
 {
-  "name": "testForm",
-  "label": "Test Form",
-  "layout": {
-    "name": "singleColumn"
+  "name": "testPage",
+  "label": "Test Page",
+  "layouts": {
+    "default": "blank"
   },
   "containers": {
     "default": {
-      "name": "default",
-      "label": "Default Container",
       "forms": {
         "default": {
-          "name": "default",
           "fields": [
             {
               "name": "firstName",
@@ -41,7 +38,8 @@
                   "value": null
                 },
                 "custom": null
-              }
+              },
+              "value": "Existing Value"
             },
             {
               "name": "creditCard",
@@ -89,7 +87,7 @@
   "masks": {
     "creditCard": {
       "name": "creditCard",
-      "pattern": "####-####-####-####"
+      "pattern": null
     }
   },
   "icons": [

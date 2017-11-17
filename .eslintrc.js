@@ -14,6 +14,9 @@ module.exports = {
   plugins: [
     'html'
   ],
+  globals: {
+    JSONEditor: true,
+  },
   // check if imports actually resolve
   'settings': {
     'import/resolver': {
