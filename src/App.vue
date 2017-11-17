@@ -30,12 +30,19 @@
                     md6>
               <v-card>
                 <v-card-text>
-                  <v-form v-if="form">
+                  <v-form ref="form"
+                          v-if="form"
+                          v-model="valid">
                     <c-control :definition="field"
                                :key="field.name"
                                v-model="field.value"
                                v-for="field in form.fields">
                     </c-control>
+                    <v-btn color="primary"
+                           :disabled="!valid"
+                           @click="save">
+                      Save
+                    </v-btn>
                   </v-form>
                 </v-card-text>
               </v-card>
@@ -63,6 +70,7 @@
       return {
         source: null,
         editor: null,
+        valid: false,
       };
     },
     computed: {
@@ -70,7 +78,6 @@
         if (this.source) {
           const container = this.source.containers.default;
           const form = container.forms.default;
-
           return form;
         }
 
@@ -90,6 +97,13 @@
       },
       setSource() {
         this.source = this.editor.get();
+      },
+      save() {
+        if (this.$refs.form.validate()) {
+          this.$refs.form.getInputs().forEach((input) => {
+            console.log(input.value);
+          });
+        }
       },
     },
     mounted() {
