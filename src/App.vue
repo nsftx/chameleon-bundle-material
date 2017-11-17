@@ -33,11 +33,12 @@
                   <v-form ref="form"
                           v-if="form"
                           v-model="valid">
-                    <c-control :definition="field"
-                               :key="field.name"
-                               v-model="field.value"
-                               v-for="field in form.fields">
-                    </c-control>
+                    <div :key="field.name"
+                         v-for="field in form.fields">
+                      <c-control :definition="field"
+                                 v-model="field.value">
+                      </c-control>
+                    </div>
                     <v-btn color="primary"
                            :disabled="!valid"
                            @click="save">
