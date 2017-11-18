@@ -29,26 +29,29 @@
             <v-flex xs12
                     md6>
               <v-card>
-                <v-form ref="form"
-                        v-if="form"
-                        v-model="valid">
-                  <v-card-text>
-                    <div :key="field.name"
-                         v-for="field in form.fields">
-                      <c-field :definition="field"
-                               :validators="source.validators"
-                               v-model="field.value">
-                      </c-field>
-                    </div>
-                  </v-card-text>
-                  <v-card-actions>
-                    <c-button :definition="button"
-                              :key="button.name"
-                              @save="save"
-                              v-for="button in form.buttons">
-                    </c-button>
-                  </v-card-actions>
-                </v-form>
+                <v-card color="transparent"
+                        :flat="true">
+                  <v-form ref="form"
+                          v-if="form"
+                          v-model="valid">
+                    <v-card-text>
+                      <div :key="field.name"
+                           v-for="field in form.fields">
+                        <c-field :definition="field"
+                                 :validators="source.validators"
+                                 v-model="field.value">
+                        </c-field>
+                      </div>
+                    </v-card-text>
+                    <v-card-actions>
+                      <c-button :definition="button"
+                                :key="button.name"
+                                @save="save"
+                                v-for="button in form.buttons">
+                      </c-button>
+                    </v-card-actions>
+                  </v-form>
+                </v-card>
               </v-card>
             </v-flex>
           </v-layout>

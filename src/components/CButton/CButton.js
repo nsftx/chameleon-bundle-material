@@ -11,9 +11,13 @@ const getAttrs = (context) => {
 };
 
 const getProps = (context) => {
+  const definition = context.definition;
+  const defaultColor = 'primary';
+
   const props = {
-    color: 'primary',
-    icon: _isUndefined(context.definition.icon) ? false : context.definition.icon,
+    color: definition.color || defaultColor,
+    dark: true,
+    icon: _isUndefined(definition.icon) ? false : definition.icon,
     loading: false,
   };
 
