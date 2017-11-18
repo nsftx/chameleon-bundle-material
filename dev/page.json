@@ -6,8 +6,9 @@
   },
   "containers": {
     "default": {
-      "forms": {
-        "person": {
+      "forms": [
+        {
+          "name": "person",
           "fields": [
             {
               "name": "firstName",
@@ -84,7 +85,7 @@
             }
           ]
         }
-      }
+      ]
     }
   },
   "validators": {
