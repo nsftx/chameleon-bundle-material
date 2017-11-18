@@ -2,7 +2,7 @@ import textRenderer from './textRenderer';
 import validator from '../validators/basicValidator';
 
 export default {
-  render(definition, createElement, context) {
+  render(definition, validators, createElement, context) {
     switch (definition.type) {
       case 'text':
         return textRenderer.render(
@@ -10,6 +10,7 @@ export default {
           createElement,
           context,
           validator,
+          validators,
         );
       default:
         return textRenderer.render(
@@ -17,6 +18,7 @@ export default {
           createElement,
           context,
           validator,
+          validators,
         );
     }
   },

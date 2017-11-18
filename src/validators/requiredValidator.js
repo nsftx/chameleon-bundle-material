@@ -1,8 +1,6 @@
 import validator from 'validator';
-// TODO: Set this globaly for lib
-import locale from '../locale/current';
 
-export default (value, field) => {
+export default (definition, value) => {
   const isEmpty = validator.isEmpty(value);
-  return isEmpty ? locale.getMessage(field.name)(field.label) : true;
+  return isEmpty ? definition.message : true;
 };

@@ -8,12 +8,17 @@ export default {
       type: Object,
       required: true,
     },
+    validators: {
+      type: Object,
+    },
   },
   render(createElement, context) {
     const definition = context.props.definition;
+    const validators = context.props.validators;
 
     return controlRenderer.render(
       definition,
+      validators,
       createElement,
       context,
     );

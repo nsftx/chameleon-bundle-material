@@ -19,6 +19,7 @@
               "suffix": null,
               "placeholder": "Please enter your first name",
               "hint": null,
+              "persistentHint": false,
               "tooltip": null,
               "multiLine": false,
               "clearable": true,
@@ -51,6 +52,7 @@
               "suffix": null,
               "placeholder": "Please enter your credit card number",
               "hint": "Credit card must have valid expiration date",
+              "persistentHint": true,
               "tooltip": "Some tooltip",
               "multiLine": false,
               "clearable": true,
@@ -69,10 +71,7 @@
                 },
                 "custom": null
               },
-              "value": "375556917985515",
-              "actions": {
-                "blur": "showCreditCardThumb"
-              }
+              "value": "375556917985515"
             }
           ]
         }
@@ -80,25 +79,11 @@
     }
   },
   "validators": {
+    "required": {
+      "message": "The ${field} value is not valid."
+    },
     "creditCard": {
-      "name": "creditCard",
-      "pattern": null
-    }
-  },
-  "masks": {
-    "creditCard": {
-      "name": "creditCard",
-      "pattern": null
-    }
-  },
-  "icons": [
-    "person",
-    "money",
-    "business"
-  ],
-  "flow": {
-    "actions": {
-      "showCreditCardThumb": null
+      "message": "The ${field} field is invalid credit card."
     }
   }
 }

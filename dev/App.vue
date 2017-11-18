@@ -36,6 +36,7 @@
                     <div :key="field.name"
                          v-for="field in form.fields">
                       <c-control :definition="field"
+                                 :validators="source.validators"
                                  v-model="field.value">
                       </c-control>
                     </div>
@@ -58,7 +59,7 @@
 
 <script>
   // This will come from Chameleon API
-  const source = require('./form.json');
+  const page = require('./page.json');
 
   export default {
     name: 'app',
@@ -88,7 +89,7 @@
           mode: 'tree',
         });
 
-        this.editor.set(source);
+        this.editor.set(page);
         this.setSource();
       },
       setSource() {

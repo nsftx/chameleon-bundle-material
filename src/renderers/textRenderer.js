@@ -42,7 +42,7 @@ const getAttrs = (definition) => {
   return attrs;
 };
 
-const getProps = (definition, context, validator) => {
+const getProps = (definition, context, validator, validators) => {
   const mask = getMask(definition);
 
   // Hard-coded values are candidates for definition
@@ -53,12 +53,12 @@ const getProps = (definition, context, validator) => {
     label: definition.label,
     loading: false,
     multiLine: definition.multiLine,
-    persistentHint: false,
+    persistentHint: definition.persistentHint,
     placeholder: definition.placeholder,
     prefix: definition.prefix,
     prependIcon: definition.prependIcon,
     required: getRequired(definition),
-    rules: validator.getRules(definition),
+    rules: validator.getRules(definition, validators),
     suffix: definition.suffix,
     type: 'text',
     value: context.data.model.value,
@@ -70,12 +70,12 @@ const getProps = (definition, context, validator) => {
 };
 
 export default {
-  render(definition, createElement, context, validator) {
+  render(definition, createElement, context, validator, validators) {
     return createElement(
       'v-text-field',
       {
         attrs: getAttrs(definition),
-        props: getProps(definition, context, validator),
+        props: getProps(definition, context, validator, validators),
         // Proxy events up to functional component
         on: context.data.on,
       },
