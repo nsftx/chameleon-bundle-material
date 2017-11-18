@@ -2,16 +2,14 @@ import Vuetify from 'vuetify';
 import { version } from '../package.json';
 import * as components from './components';
 
-function ChameleonVuetify(Vue, args) {
-  const Chameleon = components.Chameleon;
-
+function Chameleon(Vue, args) {
   Vue.use(Vuetify);
-  Vue.use(Chameleon, {
+  Vue.use(components.Chameleon, {
     components,
     ...args,
   });
 }
 
-ChameleonVuetify.version = version;
+Chameleon.version = version;
 
-export default ChameleonVuetify;
+export default Chameleon;
