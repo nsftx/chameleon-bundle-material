@@ -57,6 +57,7 @@ const getProps = (definition, context, validator, validators) => {
 
   // Hard-coded values are candidates for definition
   const props = {
+    appendIcon: definition.appendIcon,
     clearable: definition.clearable,
     counter: false,
     hint: definition.hint,
