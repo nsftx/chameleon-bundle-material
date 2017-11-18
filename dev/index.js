@@ -1,9 +1,8 @@
 import Vue from 'vue';
-import Vuetify from 'vuetify';
+import Chameleon from 'chameleon';
 import App from './App';
 
-Vue.config.productionTip = false;
-Vue.use(Vuetify);
+Vue.use(Chameleon);
 
 /* eslint-disable no-new */
 new Vue({

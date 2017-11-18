@@ -1,5 +1,3 @@
-import VTextField from 'vuetify/es5/components/VTextField';
-
 const getMask = (definition) => {
   const mask = definition.mask;
   if (mask) {
@@ -74,7 +72,7 @@ const getProps = (definition, context, validator) => {
 export default {
   render(definition, createElement, context, validator) {
     return createElement(
-      VTextField,
+      'v-text-field',
       {
         attrs: getAttrs(definition),
         props: getProps(definition, context, validator),

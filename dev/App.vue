@@ -57,16 +57,11 @@
 </template>
 
 <script>
-  import CControl from './components/CControl/CControl';
-
   // This will come from Chameleon API
-  const source = require('../static/data/form.json');
+  const source = require('./form.json');
 
   export default {
     name: 'app',
-    components: {
-      CControl,
-    },
     data() {
       return {
         source: null,
