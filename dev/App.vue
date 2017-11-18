@@ -35,18 +35,18 @@
                   <v-card-text>
                     <div :key="field.name"
                          v-for="field in form.fields">
-                      <c-control :definition="field"
-                                 :validators="source.validators"
-                                 v-model="field.value">
-                      </c-control>
+                      <c-field :definition="field"
+                               :validators="source.validators"
+                               v-model="field.value">
+                      </c-field>
                     </div>
                   </v-card-text>
                   <v-card-actions>
-                    <c-control :definition="action"
-                               :key="action.name"
-                               @click="save"
-                               v-for="action in form.actions">
-                    </c-control>
+                    <c-button :definition="button"
+                              :key="button.name"
+                              @save="save"
+                              v-for="button in form.buttons">
+                    </c-button>
                   </v-card-actions>
                 </v-form>
               </v-card>

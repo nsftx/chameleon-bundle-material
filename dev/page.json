@@ -8,7 +8,6 @@
     "default": {
       "forms": {
         "person": {
-          "entity": "Person",
           "fields": [
             {
               "name": "firstName",
@@ -75,12 +74,13 @@
               "value": "375556917985515"
             }
           ],
-          "actions": [
+          "buttons": [
             {
               "name": "save",
-              "type": "button",
               "label": "Save",
-              "method": "save"
+              "actions": {
+                "click": "save"
+              }
             }
           ]
         }

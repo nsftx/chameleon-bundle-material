@@ -1,3 +1,15 @@
+import _each from 'lodash/each';
+
+const getAttrs = (definition) => {
+  const attrs = {
+    name: definition.name,
+    // If required tooltip should be added as child component VTooltip
+    title: definition.tooltip,
+  };
+
+  return attrs;
+};
+
 const getMask = (definition) => {
   const mask = definition.mask;
   if (mask) {
@@ -22,7 +34,7 @@ const getMask = (definition) => {
   return null;
 };
 
-const getRequired = (definition) => {
+const getPropRequired = (definition) => {
   // Required validation is property in Vuetify
   // This property sets * next to label
   if (definition.validation) {
@@ -32,14 +44,12 @@ const getRequired = (definition) => {
   return false;
 };
 
-const getAttrs = (definition) => {
-  const attrs = {
-    name: definition.name,
-    // If required tooltip should be added as child component VTooltip
-    title: definition.tooltip,
-  };
+const getPropValidateOnBlur = (definition) => {
+  if (definition.validation && definition.validateOn) {
+    return definition.validateOn === 'blur';
+  }
 
-  return attrs;
+  return false;
 };
 
 const getProps = (definition, context, validator, validators) => {
@@ -57,16 +67,38 @@ const getProps = (definition, context, validator, validators) => {
     placeholder: definition.placeholder,
     prefix: definition.prefix,
     prependIcon: definition.prependIcon,
-    required: getRequired(definition),
+    required: getPropRequired(definition),
     rules: validator.getRules(definition, validators),
     suffix: definition.suffix,
     type: 'text',
-    value: context.data.model.value,
+    value: definition.value,
+    validateOn: getPropValidateOnBlur(definition),
   };
 
   if (mask) props.mask = mask;
 
   return props;
+};
+
+const getListeners = (context) => {
+  const self = context;
+
+  const listeners = {
+    input(value) {
+      self.value = value;
+      self.$emit('input', value);
+    },
+  };
+
+  if (context.definition.actions) {
+    _each(context.definition.actions, (action, actionKey) => {
+      listeners[actionKey] = () => {
+        context.$emit(context.definition.name);
+      };
+    });
+  }
+
+  return listeners;
 };
 
 export default {
@@ -76,8 +108,7 @@ export default {
       {
         attrs: getAttrs(definition),
         props: getProps(definition, context, validator, validators),
-        // Proxy events up to functional component
-        on: context.data.on,
+        on: getListeners(context),
       },
     );
   },
