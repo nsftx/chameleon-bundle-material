@@ -1,21 +1,39 @@
+import _concat from 'lodash/concat';
 import _each from 'lodash/each';
 import _map from 'lodash/map';
 
+const getEntity = (form) => {
+  const entity = {};
+  _each(form.getInputs(), (input) => {
+    entity[input.$attrs.name] = input.value;
+  });
+
+  return entity;
+};
+
+const getValidationErrors = (form) => {
+  let errors = [];
+  _each(form.getInputs(), (input) => {
+    if (input.errorBucket.length) {
+      errors = _concat(errors, _map(input.errorBucket, error => error));
+    }
+  });
+
+  return errors;
+};
+
 const getListeners = (context) => {
   const listeners = {};
-  const form = context.definition.name;
+  const formName = context.definition.name;
 
   // TODO: Listeners should be generated from definition
   // Listener handler should be generated from flow step
-  // Flow step should define if validation is required, etc.
   listeners.save = () => {
-    if (context.$refs[form].validate()) {
-      const entity = {};
-      _each(context.$refs[form].getInputs(), (input) => {
-        entity[input.$attrs.name] = input.value;
-      });
-
-      console.log('Entity =>', entity);
+    const form = context.$refs[formName];
+    if (form.validate()) {
+      console.log('Entity success =>', getEntity(form));
+    } else {
+      console.log('Entity error =>', getValidationErrors(form));
     }
   };
 
