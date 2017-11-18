@@ -7,7 +7,8 @@
   "containers": {
     "default": {
       "forms": {
-        "default": {
+        "person": {
+          "entity": "Person",
           "fields": [
             {
               "name": "firstName",
@@ -72,6 +73,14 @@
                 "custom": null
               },
               "value": "375556917985515"
+            }
+          ],
+          "actions": [
+            {
+              "name": "save",
+              "type": "button",
+              "label": "Save",
+              "method": "save"
             }
           ]
         }

@@ -29,10 +29,10 @@
             <v-flex xs12
                     md6>
               <v-card>
-                <v-card-text>
-                  <v-form ref="form"
-                          v-if="form"
-                          v-model="valid">
+                <v-form ref="form"
+                        v-if="form"
+                        v-model="valid">
+                  <v-card-text>
                     <div :key="field.name"
                          v-for="field in form.fields">
                       <c-control :definition="field"
@@ -40,13 +40,15 @@
                                  v-model="field.value">
                       </c-control>
                     </div>
-                    <v-btn color="primary"
-                           :disabled="!valid"
-                           @click="save">
-                      Save
-                    </v-btn>
-                  </v-form>
-                </v-card-text>
+                  </v-card-text>
+                  <v-card-actions>
+                    <c-control :definition="action"
+                               :key="action.name"
+                               @click="save"
+                               v-for="action in form.actions">
+                    </c-control>
+                  </v-card-actions>
+                </v-form>
               </v-card>
             </v-flex>
           </v-layout>
@@ -74,7 +76,7 @@
       form() {
         if (this.source) {
           const container = this.source.containers.default;
-          const form = container.forms.default;
+          const form = container.forms.person;
           return form;
         }
 
@@ -97,9 +99,12 @@
       },
       save() {
         if (this.$refs.form.validate()) {
+          const model = {};
           this.$refs.form.getInputs().forEach((input) => {
-            console.log(input.value);
+            model[input.$attrs.name] = input.value;
           });
+
+          console.log(model);
         }
       },
     },
