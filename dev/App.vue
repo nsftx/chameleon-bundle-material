@@ -8,27 +8,23 @@
       </v-toolbar>
       <v-content>
         <v-container fluid
-                     grid-list-lg>
+                     grid-list-lg
+                     v-if="source">
           <v-layout row
                     wrap>
             <v-flex xs12
                     md6>
               <v-card>
                 <v-card-text>
-                  <div id="jsoneditor"></div>
+                  <v-jsoneditor v-model="source"
+                                @input="sourceChanged">
+                  </v-jsoneditor>
                 </v-card-text>
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn color="primary"
-                         @click="setSource">
-                    Render
-                  </v-btn>
-                </v-card-actions>
               </v-card>
             </v-flex>
             <v-flex xs12
                     md6>
-              <v-card v-if="form">
+              <v-card>
                 <c-form :definition="form"
                         :validators="source.validators">
                 </c-form>
@@ -44,15 +40,13 @@
 
 <script>
   // This will come from Chameleon API
-  const page = require('./page.json');
+  const json = require('./page.json');
 
   export default {
     name: 'app',
     data() {
       return {
         source: null,
-        editor: null,
-        valid: false,
       };
     },
     computed: {
@@ -67,22 +61,12 @@
       },
     },
     methods: {
-      createEditor() {
-        const container = document.getElementById('jsoneditor');
-
-        this.editor = new JSONEditor(container, {
-          mode: 'tree',
-        });
-
-        this.editor.set(page);
-        this.setSource();
-      },
-      setSource() {
-        this.source = this.editor.get();
+      sourceChanged(value) {
+        console.log('JSON changed =>', value);
       },
     },
     mounted() {
-      this.createEditor();
+      this.source = json;
     },
   };
 </script>
