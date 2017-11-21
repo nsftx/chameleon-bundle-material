@@ -5,7 +5,7 @@
   "author": "Jadranko Dragoje <dragoje.jadranko@nsoft.com>",
   "private": true,
   "scripts": {
-    "start": "npm run dev",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js --open --hot",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
