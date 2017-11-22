@@ -8,8 +8,9 @@ export default {
       case 'text':
       case 'number':
         // Some properties do not make sense for number
-        if (options.type === ' number') {
+        if (options.type === 'number') {
           options.multiline = false;
+          options.inputType = options.step ? options.type : 'text';
         }
 
         return textRenderer.render(

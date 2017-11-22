@@ -89,6 +89,7 @@
               "clearable": true,
               "searchable": false,
               "private": true,
+              "step": 10,
               "validateOn": "blur",
               "mask": {
                 "predefined": false,

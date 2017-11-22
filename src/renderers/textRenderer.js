@@ -1,4 +1,6 @@
 import _each from 'lodash/each';
+import _isBoolean from 'lodash/isBoolean';
+import _isUndefined from 'lodash/isUndefined';
 
 const getAttrs = (definition) => {
   const attrs = {
@@ -6,6 +8,10 @@ const getAttrs = (definition) => {
     // If required tooltip should be added as child component VTooltip
     title: definition.tooltip,
   };
+
+  if (!_isUndefined(definition.step)) {
+    attrs.step = _isBoolean(definition.step) ? 1 : definition.step;
+  }
 
   return attrs;
 };
@@ -71,7 +77,7 @@ const getProps = (definition, context, validator, validators) => {
     required: getPropRequired(definition),
     rules: validator.getRules(definition, validators),
     suffix: definition.suffix,
-    type: 'text',
+    type: definition.inputType || 'text',
     value: definition.value,
     validateOn: getPropValidateOnBlur(definition),
   };
