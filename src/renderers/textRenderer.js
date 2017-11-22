@@ -10,7 +10,13 @@ const getAttrs = (definition) => {
   };
 
   if (!_isUndefined(definition.step)) {
-    attrs.step = _isBoolean(definition.step) ? 1 : definition.step;
+    if (_isBoolean(definition.step)) {
+      if (definition.step) {
+        attrs.step = 1;
+      }
+    } else {
+      attrs.step = definition.step;
+    }
   }
 
   return attrs;
