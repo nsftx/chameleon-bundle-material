@@ -5,6 +5,7 @@ export default {
   render(definition, validators, createElement, context) {
     switch (definition.type) {
       case 'text':
+      case 'number':
         return textRenderer.render(
           definition,
           createElement,
