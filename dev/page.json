@@ -134,6 +134,34 @@
                 "custom": null
               },
               "value": "100,20"
+            },
+            {
+              "name": "about",
+              "type": "richText",
+              "label": "About",
+              "searchable": false,
+              "private": true,
+              "validation": {
+                "required": true
+              },
+              "toolbar": [
+                "bold",
+                "italic",
+                "link"
+              ],
+              "value": "Test rich content."
+            },
+            {
+              "name": "description",
+              "type": "richText",
+              "label": "Description",
+              "placeholder": null,
+              "searchable": false,
+              "private": true,
+              "validation": {
+                "required": true
+              },
+              "toolbar": "advanced"
             }
           ],
           "buttons": [

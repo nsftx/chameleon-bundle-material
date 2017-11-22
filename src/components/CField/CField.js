@@ -22,4 +22,10 @@ export default {
       context,
     );
   },
+  mounted() {
+    fieldRenderer.mounted(this);
+  },
+  beforeDestroy() {
+    fieldRenderer.beforeDestroy(this);
+  },
 };
