@@ -3,11 +3,17 @@ import validator from '../validators/basicValidator';
 
 export default {
   render(definition, validators, createElement, context) {
-    switch (definition.type) {
+    const options = definition;
+    switch (options.type) {
       case 'text':
       case 'number':
+        // Some properties do not make sense for number
+        if (options.type === ' number') {
+          options.multiline = false;
+        }
+
         return textRenderer.render(
-          definition,
+          options,
           createElement,
           context,
           validator,
