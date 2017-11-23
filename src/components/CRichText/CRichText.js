@@ -1,6 +1,8 @@
 import _each from 'lodash/each';
 import Quill from 'quill';
 
+require('../../stylus/components/_rich-text.styl');
+
 export default {
   name: 'c-rich-text',
   props: {
@@ -23,8 +25,9 @@ export default {
   data() {
     return {
       editor: null,
+      // Property names in sync with vuetify
       value: null,
-      isValid: false,
+      valid: false,
       errorBucket: {
         type: Array,
         default() {
@@ -35,7 +38,7 @@ export default {
   },
   computed: {
     hasError() {
-      return !this.isValid;
+      return !this.valid;
     },
   },
   methods: {
@@ -51,9 +54,9 @@ export default {
         });
       }
 
-      this.isValid = this.errorBucket.length === 0;
+      this.valid = this.errorBucket.length === 0;
 
-      return this.isValid;
+      return this.valid;
     },
   },
   render(createElement) {

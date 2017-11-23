@@ -1,4 +1,5 @@
-build/*.js
+build/*
 dist/*
 dev/*
 test/unit/coverage/*
+src/stylus/*

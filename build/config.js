@@ -2,6 +2,7 @@ const base = require('./webpack.prod.config');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const OptimizeJsPlugin = require('optimize-js-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const version = process.env.VERSION || require('../package.json').version;
 
 const builds = {
@@ -11,6 +12,9 @@ const builds = {
         filename: 'chameleon.js',
         libraryTarget: 'umd'
       },
+      plugins: [
+        new ExtractTextPlugin('chameleon.css')
+      ]
     }
   },
   production: {
@@ -19,6 +23,9 @@ const builds = {
         filename: 'chameleon.min.js',
         libraryTarget: 'umd'
       },
+      plugins: [
+        new ExtractTextPlugin('chameleon.css')
+      ]
     },
     env: 'production'
   },

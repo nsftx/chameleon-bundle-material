@@ -1,8 +1,21 @@
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.config');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-// Helpers
-const resolve = file => require('path').resolve(__dirname, file)
+const resolve = file => require('path').resolve(__dirname, file);
+
+var extractPlugin = ExtractTextPlugin.extract({
+  use: [
+    'css-loader',
+    {
+      loader: 'postcss-loader',
+      options: {
+        sourceMap: true,
+      },
+    },
+    'stylus-loader',
+  ],
+});
 
 module.exports = merge(baseWebpackConfig, {
   devtool: '#source-map',
@@ -12,27 +25,37 @@ module.exports = merge(baseWebpackConfig, {
   output: {
     path: resolve('../dist'),
     publicPath: '/dist/',
-    library: 'Vuetify'
+    library: 'Chameleon'
   },
   module: {
-    noParse: /es6-promise\.js$/, // avoid webpack shimming process
+    noParse: /es6-promise\.js$/,
     rules: [
       {
         test: /\.vue$/,
         use: [
           {
             loader: 'vue-loader',
+            options: {
+              loaders: {
+                stylus: extractPlugin,
+              },
+            },
           },
           'eslint-loader'
         ],
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.js$/,
         loaders: ['babel-loader', 'eslint-loader'],
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
-    ]
+      {
+        test: /\.styl$/,
+        use: extractPlugin,
+        exclude: /node_modules/,
+      },
+    ],
   },
   performance: {
     hints: false

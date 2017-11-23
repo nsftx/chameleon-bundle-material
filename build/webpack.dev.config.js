@@ -3,11 +3,22 @@ const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.config');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const webpack = require('webpack');
 
-// Helpers
-const resolve = file => require('path').resolve(__dirname, file)
+const resolve = file => require('path').resolve(__dirname, file);
+
+const extractPlugin = ExtractTextPlugin.extract({
+  use: [
+    'css-loader',
+    {
+      loader: 'postcss-loader',
+      options: {
+        sourceMap: true,
+      },
+    },
+    'stylus-loader',
+  ],
+});
 
 module.exports = {
   devtool: '#cheap-module-eval-source-map',
@@ -32,15 +43,25 @@ module.exports = {
         test: /\.vue$/,
         loaders: [{
           loader: 'vue-loader',
+          options: {
+            loaders: {
+              stylus: extractPlugin,
+            },
+          },
         }, 'eslint-loader'],
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.js$/,
         loaders: ['babel-loader', 'eslint-loader'],
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
-    ]
+      {
+        test: /\.styl$/,
+        loaders: extractPlugin,
+        exclude: /node_modules/,
+      },
+    ],
   },
   performance: {
     hints: false
@@ -53,9 +74,12 @@ module.exports = {
     disableHostCheck: true
   },
   plugins: [
+    new ExtractTextPlugin({
+      filename: '[name].css',
+      allChunks: true,
+    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': "'development'"
     }),
-    new BundleAnalyzerPlugin({ openAnalyzer: false }),
-  ]
-}
+  ],
+};
