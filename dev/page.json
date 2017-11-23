@@ -159,7 +159,7 @@
               "searchable": false,
               "private": true,
               "validation": {
-                "required": true
+                "required": false
               },
               "toolbar": "advanced"
             }

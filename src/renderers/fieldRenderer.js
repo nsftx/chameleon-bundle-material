@@ -33,16 +33,4 @@ export default {
       validators,
     );
   },
-  mounted(context) {
-    const renderer = renderers[context.definition.type];
-    if (renderer.mounted) {
-      renderer.mounted(context);
-    }
-  },
-  beforeDestroy(context) {
-    const renderer = renderers[context.definition.type];
-    if (renderer.beforeDestroy) {
-      renderer.beforeDestroy(context);
-    }
-  },
 };

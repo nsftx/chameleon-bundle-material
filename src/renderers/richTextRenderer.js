@@ -1,5 +1,4 @@
 import _isArray from 'lodash/isArray';
-import Quill from 'quill';
 
 const getToolbar = (definition) => {
   if (_isArray(definition.toolbar)) {
@@ -63,85 +62,25 @@ const getAttrs = (definition) => {
   return attrs;
 };
 
-const getProps = (definition) => {
+const getProps = (definition, context, validator, validators) => {
   const props = {
-    value: definition.value,
+    placeholder: definition.placeholder,
+    rules: validator.getRules(definition, validators),
+    content: definition.value,
+    toolbar: getToolbar(definition),
   };
 
   return props;
 };
 
-const getListeners = () => {
-  const listeners = {
-  };
-
-  return listeners;
-};
-
 export default {
   render(definition, createElement, context, validator, validators) {
     return createElement(
-      'div',
+      'c-rich-text',
       {
-        class: {
-          /*
-            TODO: Don't like this.
-            Figure out the way to separate custom controls in form (maybe on form level)
-            Vuetify controls already have spacing between
-          */
-          'pb-3': true,
-        },
+        attrs: getAttrs(definition),
+        props: getProps(definition, context, validator, validators),
       },
-      [
-        createElement(
-          'div',
-          {
-            ref: 'editor',
-            attrs: getAttrs(definition),
-            props: getProps(definition, context, validator, validators),
-            on: getListeners(context),
-          },
-        ),
-      ],
     );
-  },
-  mounted(context) {
-    const self = context;
-    const definition = context.definition;
-
-    self.editor = new Quill(self.$refs.editor, {
-      theme: 'snow',
-      placeholder: definition.placeholder,
-      modules: {
-        toolbar: getToolbar(definition),
-      },
-    });
-
-    if (definition.value) {
-      self.editor.pasteHTML(definition.value);
-    }
-
-    self.editor.on('selection-change', (range) => {
-      if (range) {
-        self.$emit('focus', self.editor);
-      } else {
-        self.$emit('blur', self.editor);
-      }
-    });
-
-    self.editor.on('text-change', () => {
-      let html = self.$refs.editor.children[0].innerHTML;
-
-      // Handle empty editor
-      if (html === '<p><br></p>') html = '';
-
-      self.$emit('input', {
-        html: self.html,
-      });
-    });
-  },
-  beforeDestroy(context) {
-    const self = context;
-    self.editor = null;
   },
 };

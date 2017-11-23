@@ -5,7 +5,8 @@ import _map from 'lodash/map';
 const getEntity = (form) => {
   const entity = {};
   _each(form.getInputs(), (input) => {
-    entity[input.$attrs.name] = input.value;
+    const name = input.$attrs.name;
+    entity[name] = input.value;
   });
 
   return entity;
