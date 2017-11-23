@@ -1,9 +1,6 @@
 {
   "name": "testPage",
   "label": "Test Page",
-  "layouts": {
-    "default": "blank"
-  },
   "containers": {
     "default": {
       "forms": [
@@ -149,13 +146,13 @@
                 "italic",
                 "link"
               ],
-              "value": "Test rich content."
+              "value": "Test rich <b>content</b>."
             },
             {
               "name": "description",
               "type": "richText",
               "label": "Description",
-              "placeholder": null,
+              "placeholder": "Enter description",
               "searchable": false,
               "private": true,
               "validation": {

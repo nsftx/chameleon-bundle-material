@@ -62,7 +62,7 @@
     },
     methods: {
       sourceChanged(value) {
-        console.log('JSON changed =>', value);
+        // console.log('JSON changed =>', JSON.stringify(value));
       },
     },
     mounted() {

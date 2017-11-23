@@ -78,7 +78,8 @@ export default {
                 const self = this;
                 return createElement('div',
                   {
-                    key: field.name,
+                    // Dynamic key to disable component re-use
+                    key: `${field.name}_${Date.now()}`,
                   },
                   [
                     createElement(

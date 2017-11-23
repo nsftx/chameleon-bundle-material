@@ -95,7 +95,7 @@ export default {
 
     if (this.content) {
       this.value = this.content;
-      this.editor.pasteHTML(this.value);
+      this.editor.clipboard.dangerouslyPasteHTML(this.value);
     }
 
     this.editor.on('selection-change', (range) => {
