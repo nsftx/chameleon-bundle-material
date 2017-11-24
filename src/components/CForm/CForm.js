@@ -1,11 +1,14 @@
 import _concat from 'lodash/concat';
 import _each from 'lodash/each';
 import _map from 'lodash/map';
+import _kebabCase from 'lodash/kebabCase';
 
 const getEntity = (form) => {
   const entity = {};
   _each(form.$children, (field) => {
-    entity[field.name] = field.value;
+    if (field.name) {
+      entity[field.name] = field.value;
+    }
   });
 
   return entity;
@@ -40,14 +43,11 @@ const getListeners = (context) => {
   return listeners;
 };
 
-const getComponent = (type) => {
-  if (type === 'date') {
-    return 'c-date';
-  } else if (type === 'richText') {
-    return 'c-rich-text';
-  }
+const getComponentTag = (name) => {
+  const type = ['number', 'money'].indexOf(name) > -1 ? 'text' : name;
+  const tag = _kebabCase(type);
 
-  return 'c-field';
+  return `c-${tag}`;
 };
 
 export default {
@@ -92,7 +92,7 @@ export default {
                   },
                   [
                     createElement(
-                      getComponent(field.type),
+                      getComponentTag(field.type),
                       {
                         props: {
                           definition: field,

@@ -1,8 +1,11 @@
-import _each from 'lodash/each';
 import _isBoolean from 'lodash/isBoolean';
 import _isUndefined from 'lodash/isUndefined';
+import fieldable from '../../mixins/fieldable';
+import validator from '../../validators/basicValidator';
 
-const getAttrs = (context, definition) => {
+const getAttrs = (context) => {
+  const definition = context.definition;
+
   const attrs = {
     name: definition.name,
     // If required tooltip should be added as child component VTooltip
@@ -56,6 +59,38 @@ const getPropRequired = (definition) => {
   return false;
 };
 
+const getPropMultiline = (definition) => {
+  if (['number', 'money'].indexOf(definition.type) > -1) {
+    return false;
+  }
+
+  return definition.multiLine;
+};
+
+const getPropSuffix = (definition) => {
+  if (['money'].indexOf(definition.type) > -1 && definition.currency) {
+    return definition.currency[definition.suffix];
+  }
+
+  return definition.suffix;
+};
+
+const getPropPrefix = (definition) => {
+  if (['money'].indexOf(definition.type) > -1 && definition.currency) {
+    return definition.currency[definition.prefix];
+  }
+
+  return definition.prefix;
+};
+
+const getPropType = (definition) => {
+  if (['number'].indexOf(definition.type) > -1 && definition.step) {
+    return definition.type;
+  }
+
+  return 'text';
+};
+
 const getPropValidateOnBlur = (definition) => {
   if (definition.validation && definition.validateOn) {
     return definition.validateOn === 'blur';
@@ -64,7 +99,8 @@ const getPropValidateOnBlur = (definition) => {
   return false;
 };
 
-const getProps = (context, definition, validator) => {
+const getProps = (context) => {
+  const definition = context.definition;
   const mask = getMask(definition);
 
   // Hard-coded values are candidates for definition
@@ -75,15 +111,15 @@ const getProps = (context, definition, validator) => {
     hint: definition.hint,
     label: definition.label,
     loading: false,
-    multiLine: definition.multiLine,
+    multiLine: getPropMultiline(definition),
     persistentHint: definition.persistentHint,
     placeholder: definition.placeholder,
-    prefix: definition.prefix,
+    prefix: getPropPrefix(definition),
     prependIcon: definition.prependIcon,
     required: getPropRequired(definition),
     rules: validator.getRules(definition, context.validators),
-    suffix: definition.suffix,
-    type: definition.inputType || 'text',
+    suffix: getPropSuffix(definition),
+    type: getPropType(definition),
     value: definition.value,
     validateOn: getPropValidateOnBlur(definition),
   };
@@ -103,24 +139,22 @@ const getListeners = (context) => {
     },
   };
 
-  if (context.definition.actions) {
-    _each(context.definition.actions, (action, actionKey) => {
-      listeners[actionKey] = () => {
-        context.$emit(context.definition.name);
-      };
-    });
-  }
-
   return listeners;
 };
 
 export default {
-  render(createElement, context, definition, validator) {
+  name: 'c-text',
+  mixins: [
+    fieldable,
+  ],
+  render(createElement) {
+    const context = this;
+
     return createElement(
       'v-text-field',
       {
-        attrs: getAttrs(context, definition),
-        props: getProps(context, definition, validator),
+        attrs: getAttrs(context),
+        props: getProps(context),
         on: getListeners(context),
       },
     );
