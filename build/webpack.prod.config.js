@@ -58,6 +58,6 @@ module.exports = merge(baseWebpackConfig, {
     ],
   },
   performance: {
-    hints: false
-  }
-})
+    hints: false,
+  },
+});

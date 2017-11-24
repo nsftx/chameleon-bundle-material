@@ -1,4 +1,5 @@
 import _isNil from 'lodash/isNil';
+import fieldable from '../../mixins/fieldable';
 import validator from '../../validators/basicValidator';
 
 const getPropRequired = (definition) => {
@@ -11,7 +12,8 @@ const getPropRequired = (definition) => {
   return false;
 };
 
-const getMenuProps = (context, definition) => {
+const getMenuProps = (context) => {
+  const definition = context.definition;
   const width = '290px';
 
   const props = {
@@ -26,15 +28,17 @@ const getMenuProps = (context, definition) => {
   return props;
 };
 
-const getTextAttrs = (context, definition) => {
+const getTextAttrs = (context) => {
   const attrs = {
-    name: definition.name,
+    name: context.definition.name,
   };
 
   return attrs;
 };
 
-const getTextProps = (context, definition) => {
+const getTextProps = (context) => {
+  const definition = context.definition;
+
   const props = {
     readonly: true,
     clearable: _isNil(definition.clearable) ? true : definition.clearable,
@@ -104,12 +108,12 @@ const getDatePickerListeners = (context) => {
   return listeners;
 };
 
-const getTimePickerProps = (context, definition) => {
+const getTimePickerProps = (context) => {
   const props = {
     noTitle: false,
     scrollable: true,
     autosave: true,
-    value: definition.value,
+    value: context.definition.value,
   };
 
   return props;
@@ -129,50 +133,39 @@ const getTimePickerListeners = (context) => {
 
 export default {
   name: 'c-date',
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-    validators: {
-      type: Object,
-    },
-  },
-  data() {
-    return {
-      value: null,
-    };
-  },
+  mixins: [
+    fieldable,
+  ],
   render(createElement) {
     const context = this;
-    const definition = this.definition;
+    const hasTimeComponent = context.definition.time && context.definition.time.enabled;
 
     const children = [
       createElement(
         'v-text-field',
         {
           slot: 'activator',
-          attrs: getTextAttrs(context, definition),
-          props: getTextProps(context, definition, validator),
+          attrs: getTextAttrs(context),
+          props: getTextProps(context),
           on: getTextListeners(context),
         },
       ),
       createElement(
         'v-date-picker',
         {
-          scopedSlots: definition.time ? getDatePickerActionSlot(createElement, context) : null,
-          props: getDatePickerProps(context, definition),
+          scopedSlots: hasTimeComponent ? getDatePickerActionSlot(createElement, context) : null,
+          props: getDatePickerProps(context),
           on: getDatePickerListeners(context),
         },
       ),
     ];
 
-    if (definition.time && definition.time.enabled) {
+    if (hasTimeComponent) {
       children.push([
         createElement(
           'v-time-picker',
           {
-            props: getTimePickerProps(context, definition),
+            props: getTimePickerProps(context),
             on: getTimePickerListeners(context),
           },
         ),
@@ -182,12 +175,9 @@ export default {
     return createElement(
       'v-menu',
       {
-        props: getMenuProps(context, definition),
+        props: getMenuProps(context),
       },
       children,
     );
-  },
-  mounted() {
-    this.value = this.definition.value;
   },
 };

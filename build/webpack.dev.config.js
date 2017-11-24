@@ -20,7 +20,7 @@ const extractPlugin = ExtractTextPlugin.extract({
   ],
 });
 
-module.exports = {
+module.exports = merge(baseWebpackConfig, {
   devtool: '#cheap-module-eval-source-map',
   entry: ['babel-polyfill', './dev/index.js'],
   output: {
@@ -82,4 +82,4 @@ module.exports = {
       'process.env.NODE_ENV': "'development'"
     }),
   ],
-};
+});
