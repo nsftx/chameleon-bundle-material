@@ -1,10 +1,8 @@
-import dateRenderer from './dateRenderer';
 import richTextRenderer from './richTextRenderer';
 import textRenderer from './textRenderer';
 import validator from '../validators/basicValidator';
 
 const renderers = {
-  date: dateRenderer,
   money: textRenderer,
   number: textRenderer,
   richText: richTextRenderer,

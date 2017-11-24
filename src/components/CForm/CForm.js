@@ -43,6 +43,14 @@ const getListeners = (context) => {
   return listeners;
 };
 
+const getComponent = (type) => {
+  if (type === 'date') {
+    return 'c-date';
+  }
+
+  return 'c-field';
+};
+
 export default {
   name: 'c-form',
   functional: false,
@@ -85,7 +93,7 @@ export default {
                   },
                   [
                     createElement(
-                      'c-field',
+                      getComponent(field.type),
                       {
                         props: {
                           definition: field,

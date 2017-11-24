@@ -1,4 +1,5 @@
 import _isNil from 'lodash/isNil';
+import validator from '../../validators/basicValidator';
 
 const getPropRequired = (definition) => {
   // Required validation is property in Vuetify
@@ -33,7 +34,7 @@ const getTextAttrs = (context, definition) => {
   return attrs;
 };
 
-const getTextProps = (context, definition, validator) => {
+const getTextProps = (context, definition) => {
   const props = {
     readonly: true,
     clearable: _isNil(definition.clearable) ? true : definition.clearable,
@@ -136,9 +137,6 @@ export default {
     validators: {
       type: Object,
     },
-    validator: {
-      type: Object,
-    },
   },
   data() {
     return {
@@ -148,7 +146,6 @@ export default {
   render(createElement) {
     const context = this;
     const definition = this.definition;
-    const validator = this.validator;
 
     const children = [
       createElement(
