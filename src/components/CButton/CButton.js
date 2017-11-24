@@ -40,7 +40,6 @@ const getListeners = (context) => {
 
 export default {
   name: 'c-button',
-  functional: false,
   props: {
     definition: {
       type: Object,

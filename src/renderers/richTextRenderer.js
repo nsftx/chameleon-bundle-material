@@ -54,7 +54,7 @@ const getToolbar = (definition) => {
   return toolbar;
 };
 
-const getAttrs = (definition) => {
+const getAttrs = (context, definition) => {
   const attrs = {
     name: definition.name,
   };
@@ -62,10 +62,10 @@ const getAttrs = (definition) => {
   return attrs;
 };
 
-const getProps = (definition, context, validator, validators) => {
+const getProps = (context, definition, validator) => {
   const props = {
     placeholder: definition.placeholder,
-    rules: validator.getRules(definition, validators),
+    rules: validator.getRules(definition, context.validators),
     content: definition.value,
     toolbar: getToolbar(definition),
   };
@@ -73,13 +73,26 @@ const getProps = (definition, context, validator, validators) => {
   return props;
 };
 
+const getListeners = (context) => {
+  const self = context;
+
+  const listeners = {
+    input(value) {
+      self.value = value;
+    },
+  };
+
+  return listeners;
+};
+
 export default {
-  render(definition, createElement, context, validator, validators) {
+  render(createElement, context, definition, validator) {
     return createElement(
       'c-rich-text',
       {
-        attrs: getAttrs(definition),
-        props: getProps(definition, context, validator, validators),
+        attrs: getAttrs(context, definition),
+        props: getProps(context, definition, validator),
+        on: getListeners(context),
       },
     );
   },

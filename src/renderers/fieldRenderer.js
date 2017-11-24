@@ -1,8 +1,10 @@
+import dateRenderer from './dateRenderer';
 import richTextRenderer from './richTextRenderer';
 import textRenderer from './textRenderer';
 import validator from '../validators/basicValidator';
 
 const renderers = {
+  date: dateRenderer,
   money: textRenderer,
   number: textRenderer,
   richText: richTextRenderer,
@@ -10,8 +12,8 @@ const renderers = {
 };
 
 export default {
-  render(definition, validators, createElement, context) {
-    const options = Object.assign({}, definition);
+  render(createElement, context) {
+    const options = Object.assign({}, context.definition);
 
     if (options.type === 'number') {
       options.multiline = false;
@@ -29,11 +31,10 @@ export default {
     }
 
     return renderer.render(
-      options,
       createElement,
       context,
+      options,
       validator,
-      validators,
     );
   },
 };

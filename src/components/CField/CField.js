@@ -12,14 +12,20 @@ export default {
       type: Object,
     },
   },
+  data() {
+    return {
+      value: null,
+    };
+  },
   render(createElement) {
     const context = this;
 
     return fieldRenderer.render(
-      context.definition,
-      context.validators,
       createElement,
       context,
     );
+  },
+  mounted() {
+    this.value = this.definition.value;
   },
 };

@@ -6,7 +6,9 @@ const getEntity = (form) => {
   const entity = {};
   _each(form.getInputs(), (input) => {
     const name = input.$attrs.name;
-    entity[name] = input.value;
+    if (name) {
+      entity[name] = input.value;
+    }
   });
 
   return entity;

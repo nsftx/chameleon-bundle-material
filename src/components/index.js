@@ -1,5 +1,6 @@
 export { default as Chameleon } from './Chameleon';
 export { default as CButton } from './CButton';
+export { default as CDate } from './CDate';
 export { default as CRichText } from './CRichText';
 export { default as CField } from './CField';
 export { default as CForm } from './CForm';

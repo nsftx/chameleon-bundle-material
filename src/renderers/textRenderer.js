@@ -2,7 +2,7 @@ import _each from 'lodash/each';
 import _isBoolean from 'lodash/isBoolean';
 import _isUndefined from 'lodash/isUndefined';
 
-const getAttrs = (definition) => {
+const getAttrs = (context, definition) => {
   const attrs = {
     name: definition.name,
     // If required tooltip should be added as child component VTooltip
@@ -64,7 +64,7 @@ const getPropValidateOnBlur = (definition) => {
   return false;
 };
 
-const getProps = (definition, context, validator, validators) => {
+const getProps = (context, definition, validator) => {
   const mask = getMask(definition);
 
   // Hard-coded values are candidates for definition
@@ -81,7 +81,7 @@ const getProps = (definition, context, validator, validators) => {
     prefix: definition.prefix,
     prependIcon: definition.prependIcon,
     required: getPropRequired(definition),
-    rules: validator.getRules(definition, validators),
+    rules: validator.getRules(definition, context.validators),
     suffix: definition.suffix,
     type: definition.inputType || 'text',
     value: definition.value,
@@ -115,12 +115,12 @@ const getListeners = (context) => {
 };
 
 export default {
-  render(definition, createElement, context, validator, validators) {
+  render(createElement, context, definition, validator) {
     return createElement(
       'v-text-field',
       {
-        attrs: getAttrs(definition),
-        props: getProps(definition, context, validator, validators),
+        attrs: getAttrs(context, definition),
+        props: getProps(context, definition, validator),
         on: getListeners(context),
       },
     );

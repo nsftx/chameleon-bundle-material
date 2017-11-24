@@ -27,7 +27,7 @@ export default {
       editor: null,
       // Property names in sync with vuetify
       value: null,
-      valid: false,
+      valid: true,
       errorBucket: {
         type: Array,
         default() {
@@ -118,8 +118,6 @@ export default {
       this.validate();
       this.$emit('input', this.value);
     });
-
-    this.validate();
   },
   beforeDestroy() {
     this.editor = null;

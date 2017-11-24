@@ -214,6 +214,24 @@
                 }
               },
               "value": "120,35"
+            },
+            {
+              "name": "dateOfBirth",
+              "type": "date",
+              "label": "Date of Birth",
+              "prependIcon": null,
+              "appendIcon": null,
+              "placeholder": "Select your date of birth",
+              "hint": null,
+              "persistentHint": false,
+              "tooltip": null,
+              "clearable": true,
+              "searchable": false,
+              "private": true,
+              "validation": {
+                "required": true
+              },
+              "value": "2017-11-09"
             }
           ],
           "actions": [

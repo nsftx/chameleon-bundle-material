@@ -1,4 +1,5 @@
 import _isUndefined from 'lodash/isUndefined';
+import _isNil from 'lodash/isNil';
 import _template from 'lodash/template';
 import creditCardValidator from './creditCardValidator';
 import integerValidator from './integerValidator';
@@ -23,7 +24,7 @@ const validator = {
 // Library accepts only string so we need to coerce it
 // https://github.com/chriso/validator.js/
 // eslint-disable-next-line
-const getValue = value => value + '';
+const getValue = value => _isNil(value) ? '' : value + '';
 
 const getMessage = (result, data) => {
   const message = result !== true ? _template(result)(data) : true;
@@ -36,8 +37,10 @@ export default {
     const validation = definition.validation;
     const rules = [];
 
+    if (!validation) return rules;
+
     // TODO: Shorten/generalize rules functions
-    if (!_isUndefined(validation.required)) {
+    if (validation.required) {
       rules.push(value => getMessage(validator.required(
         validators.required,
         getValue(value),
