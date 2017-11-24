@@ -231,6 +231,9 @@
               "validation": {
                 "required": true
               },
+              "time": {
+                "enabled": false
+              },
               "value": "2017-11-09"
             }
           ],
