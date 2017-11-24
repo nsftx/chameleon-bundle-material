@@ -186,6 +186,34 @@
                 "required": false
               },
               "toolbar": "advanced"
+            },
+            {
+              "name": "payin",
+              "type": "money",
+              "label": "Payin",
+              "prependIcon": "money",
+              "appendIcon": null,
+              "suffix": "symbol",
+              "prefix": null,
+              "placeholder": "Enter payin amount",
+              "hint": null,
+              "persistentHint": false,
+              "tooltip": null,
+              "clearable": true,
+              "searchable": false,
+              "private": true,
+              "currency": {
+                "name": "EUR",
+                "symbol": "€"
+              },
+              "validateOn": "blur",
+              "validation": {
+                "required": true,
+                "pattern": {
+                  "value": "^-?\\d*(\\,\\d+)?$"
+                }
+              },
+              "value": "120,35"
             }
           ],
           "actions": [

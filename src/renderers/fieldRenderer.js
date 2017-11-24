@@ -3,6 +3,7 @@ import textRenderer from './textRenderer';
 import validator from '../validators/basicValidator';
 
 const renderers = {
+  money: textRenderer,
   number: textRenderer,
   richText: richTextRenderer,
   text: textRenderer,
@@ -10,22 +11,24 @@ const renderers = {
 
 export default {
   render(definition, validators, createElement, context) {
-    const options = definition;
-    switch (options.type) {
-      case 'number':
-        // Some properties do not make sense for number
-        if (options.type === 'number') {
-          options.multiline = false;
-          options.inputType = options.step ? options.type : 'text';
-        }
+    const options = Object.assign({}, definition);
 
-        break;
-      default:
-        // TODO: Render warning
-        break;
+    if (options.type === 'number') {
+      options.multiline = false;
+      options.inputType = options.step ? options.type : 'text';
+    } else if (options.type === 'money') {
+      options.multiline = false;
+      // Bind suffix and prefix to currency properties
+      if (options.suffix) options.suffix = options.currency[options.suffix];
+      if (options.prefix) options.prefix = options.currency[options.prefix];
     }
 
-    return renderers[options.type].render(
+    const renderer = renderers[options.type];
+    if (!renderer) {
+      return null;
+    }
+
+    return renderer.render(
       options,
       createElement,
       context,
