@@ -1,11 +1,9 @@
-import richTextRenderer from './richTextRenderer';
 import textRenderer from './textRenderer';
 import validator from '../validators/basicValidator';
 
 const renderers = {
   money: textRenderer,
   number: textRenderer,
-  richText: richTextRenderer,
   text: textRenderer,
 };
 

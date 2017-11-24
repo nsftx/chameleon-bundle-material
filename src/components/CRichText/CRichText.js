@@ -1,33 +1,76 @@
+import _isArray from 'lodash/isArray';
 import _each from 'lodash/each';
 import Quill from 'quill';
+import fieldable from '../../mixins/fieldable';
+import validator from '../../validators/basicValidator';
 
 require('../../stylus/components/_rich-text.styl');
 
+const getToolbar = (definition) => {
+  if (_isArray(definition.toolbar)) {
+    return definition.toolbar;
+  }
+
+  let toolbar;
+  switch (definition.toolbar) {
+    case 'mini':
+      toolbar = [
+        ['bold', 'italic', 'underline'],
+      ];
+      break;
+    case 'basic':
+      toolbar = [
+        ['bold', 'italic', 'underline'],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        ['link'],
+      ];
+      break;
+    case 'advanced':
+      toolbar = [
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        ['bold', 'italic', 'underline', 'strike'],
+        [{ align: [] }],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        [{ indent: '-1' }, { indent: '+1' }],
+        ['link', 'image', 'video'],
+        ['clean'],
+      ];
+      break;
+    case 'full':
+      toolbar = [
+        [{ font: [] }],
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        ['bold', 'italic', 'underline', 'strike'],
+        [{ align: [] }],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        [{ color: [] }, { background: [] }],
+        [{ indent: '-1' }, { indent: '+1' }],
+        ['link', 'image'],
+        [{ script: 'sub' }, { script: 'super' }],
+        ['blockquote', 'code-block'],
+        ['clean'],
+      ];
+      break;
+    case 'default':
+    default:
+      // Default toolbar setup by Quill
+      toolbar = true;
+  }
+
+  return toolbar;
+};
+
 export default {
   name: 'c-rich-text',
-  props: {
-    content: {
-      type: String,
-      default: null,
-    },
-    toolbar: {
-      type: [Array, String],
-      required: true,
-    },
-    placeholder: {
-      type: String,
-      default: null,
-    },
-    rules: {
-      type: Array,
-    },
-  },
+  mixins: [
+    fieldable,
+  ],
   data() {
     return {
       editor: null,
       // Property names in sync with vuetify
-      value: null,
       valid: true,
+      rules: null,
       errorBucket: {
         type: Array,
         default() {
@@ -85,16 +128,18 @@ export default {
     );
   },
   mounted() {
+    this.value = this.definition.value;
+    this.rules = validator.getRules(this.definition, this.validators);
+
     this.editor = new Quill(this.$refs.editor, {
       theme: 'snow',
-      placeholder: this.placeholder,
+      placeholder: this.definition.placeholder,
       modules: {
-        toolbar: this.toolbar,
+        toolbar: getToolbar(this.definition),
       },
     });
 
-    if (this.content) {
-      this.value = this.content;
+    if (this.value) {
       this.editor.clipboard.dangerouslyPasteHTML(this.value);
     }
 

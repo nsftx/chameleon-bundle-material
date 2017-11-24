@@ -4,11 +4,8 @@ import _map from 'lodash/map';
 
 const getEntity = (form) => {
   const entity = {};
-  _each(form.getInputs(), (input) => {
-    const name = input.$attrs.name;
-    if (name) {
-      entity[name] = input.value;
-    }
+  _each(form.$children, (field) => {
+    entity[field.name] = field.value;
   });
 
   return entity;
@@ -46,6 +43,8 @@ const getListeners = (context) => {
 const getComponent = (type) => {
   if (type === 'date') {
     return 'c-date';
+  } else if (type === 'richText') {
+    return 'c-rich-text';
   }
 
   return 'c-field';
