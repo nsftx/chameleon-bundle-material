@@ -1,10 +1,37 @@
 {
-  "name": "testPage",
-  "label": "Test Page",
-  "containers": {
-    "default": {
-      "forms": [
+  "name": "test",
+  "template": "default",
+  "layout": "blank",
+  "meta": {
+    "title": "Test",
+    "description": "Test Chameleon Page",
+    "keywords": "chameleon, test, page"
+  },
+  "validators": {
+    "creditCard": {
+      "message": "The ${field} field is invalid credit card."
+    },
+    "minLength": {
+      "message": "The ${field} field must be at least ${limit} characters."
+    },
+    "maxLength": {
+      "message": "The ${field} field may not be greater than ${limit} characters."
+    },
+    "integer": {
+      "message": "The ${field} field must be an integer."
+    },
+    "pattern": {
+      "message": "The ${field} field does not conform to pattern."
+    },
+    "required": {
+      "message": "The ${field} field is required."
+    }
+  },
+  "containers": [
+    {
+      "widgets": [
         {
+          "type": "form",
           "name": "person",
           "fields": [
             {
@@ -161,9 +188,10 @@
               "toolbar": "advanced"
             }
           ],
-          "buttons": [
+          "actions": [
             {
               "name": "save",
+              "type": "button",
               "label": "Save",
               "actions": {
                 "click": "save"
@@ -173,25 +201,5 @@
         }
       ]
     }
-  },
-  "validators": {
-    "creditCard": {
-      "message": "The ${field} field is invalid credit card."
-    },
-    "minLength": {
-      "message": "The ${field} field must be at least ${limit} characters."
-    },
-    "maxLength": {
-      "message": "The ${field} field may not be greater than ${limit} characters."
-    },
-    "integer": {
-      "message": "The ${field} field must be an integer."
-    },
-    "pattern": {
-      "message": "The ${field} field does not conform to pattern."
-    },
-    "required": {
-      "message": "The ${field} field is required."
-    }
-  }
+  ]
 }

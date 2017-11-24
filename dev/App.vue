@@ -52,8 +52,7 @@
     computed: {
       form() {
         if (this.source) {
-          const container = this.source.containers.default;
-          const form = container.forms[0];
+          const form = this.source.containers[0].widgets[0];
           return form;
         }
 

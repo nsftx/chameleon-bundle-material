@@ -105,7 +105,7 @@ export default {
             ),
             createElement(
               'v-card-actions',
-              _map(this.definition.buttons, button => createElement('c-button',
+              _map(this.definition.actions, button => createElement('c-button',
                 {
                   props: {
                     definition: button,
