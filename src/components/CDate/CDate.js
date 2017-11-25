@@ -1,4 +1,5 @@
 import _isNil from 'lodash/isNil';
+import moment from 'moment';
 import fieldable from '../../mixins/fieldable';
 import validator from '../../validators/basicValidator';
 
@@ -29,8 +30,11 @@ const getMenuProps = (context) => {
 };
 
 const getTextAttrs = (context) => {
+  const definition = context.definition;
+
   const attrs = {
-    name: context.definition.name,
+    name: definition.name,
+    title: definition.tooltip,
   };
 
   return attrs;
@@ -42,11 +46,15 @@ const getTextProps = (context) => {
   const props = {
     readonly: true,
     clearable: _isNil(definition.clearable) ? true : definition.clearable,
+    appendIcon: definition.appendIcon,
     prependIcon: _isNil(definition.prependIcon) ? 'event' : definition.prependIcon,
     label: definition.label,
+    hint: definition.hint,
+    persistentHint: true,
+    placeholder: definition.placeholder,
     required: getPropRequired(definition),
     rules: validator.getRules(definition, context.validators),
-    value: context.value,
+    value: context.formattedValue,
   };
 
   return props;
@@ -56,8 +64,8 @@ const getTextListeners = (context) => {
   const self = context;
 
   const listeners = {
-    input(value) {
-      self.value = value;
+    click() {
+      self.isTimeVisible = false;
     },
   };
 
@@ -75,7 +83,9 @@ const getDatePickerProps = (context) => {
   return props;
 };
 
-const getDatePickerActionSlot = (createElement) => {
+const getDatePickerActionSlot = (createElement, context) => {
+  const self = context;
+
   const slot = {
     default: () => createElement('v-card-actions', [
       createElement('v-spacer'),
@@ -85,9 +95,14 @@ const getDatePickerActionSlot = (createElement) => {
             flat: true,
             icon: true,
           },
+          on: {
+            click() {
+              self.isTimeVisible = true;
+            },
+          },
         },
         [
-          createElement('v-icon', 'timer'),
+          createElement('v-icon', 'access_time'),
         ]),
     ]),
   };
@@ -100,8 +115,7 @@ const getDatePickerListeners = (context) => {
 
   const listeners = {
     input(value) {
-      self.value = value;
-      self.$emit('input', value);
+      self.value = moment.utc(value).toISOString();
     },
   };
 
@@ -113,10 +127,37 @@ const getTimePickerProps = (context) => {
     noTitle: false,
     scrollable: true,
     autosave: true,
-    value: context.definition.value,
+    value: context.parsedTimeValue,
   };
 
   return props;
+};
+
+const getTimePickerActionSlot = (createElement, context) => {
+  const self = context;
+
+  const slot = {
+    default: () => createElement('v-card-actions', [
+      createElement('v-spacer'),
+      createElement('v-btn',
+        {
+          props: {
+            flat: true,
+            icon: true,
+          },
+          on: {
+            click() {
+              self.isTimeVisible = false;
+            },
+          },
+        },
+        [
+          createElement('v-icon', 'date_range'),
+        ]),
+    ]),
+  };
+
+  return slot;
 };
 
 const getTimePickerListeners = (context) => {
@@ -124,7 +165,14 @@ const getTimePickerListeners = (context) => {
 
   const listeners = {
     input(value) {
-      self.value = value;
+      const isPm = value.indexOf('pm') > -1;
+      const hours = parseInt(value.substring(0, 1), 10) + (isPm ? 12 : 0);
+      const minutes = parseInt(value.substring(2, 4), 10);
+      const formattedValue = moment.utc(self.value).hours(hours).minutes(minutes).toISOString();
+
+      if (self.value !== formattedValue) {
+        self.value = formattedValue;
+      }
     },
   };
 
@@ -136,37 +184,64 @@ export default {
   mixins: [
     fieldable,
   ],
-  render(createElement) {
-    const context = this;
-    const hasTimeComponent = context.definition.time && context.definition.time.enabled;
+  data() {
+    return {
+      isTimeVisible: false,
+    };
+  },
+  computed: {
+    hasTimeComponent() {
+      return this.definition.time && this.definition.time.enabled;
+    },
+    formattedValue() {
+      if (this.value) {
+        const format = this.definition.format || (this.hasTimeComponent ? 'LLL' : 'LL');
+        const formattedValue = moment.utc(this.value).format(format);
 
+        return formattedValue;
+      }
+
+      return null;
+    },
+    parsedTimeValue() {
+      const value = this.value ? moment.utc(this.value) : moment.utc();
+      const parsedValue = value.format('LT').replace(/\s/g, '').toLowerCase();
+
+      return parsedValue;
+    },
+  },
+  render(createElement) {
     const children = [
       createElement(
         'v-text-field',
         {
           slot: 'activator',
-          attrs: getTextAttrs(context),
-          props: getTextProps(context),
-          on: getTextListeners(context),
-        },
-      ),
-      createElement(
-        'v-date-picker',
-        {
-          scopedSlots: hasTimeComponent ? getDatePickerActionSlot(createElement, context) : null,
-          props: getDatePickerProps(context),
-          on: getDatePickerListeners(context),
+          attrs: getTextAttrs(this),
+          props: getTextProps(this),
+          on: getTextListeners(this),
         },
       ),
     ];
 
-    if (hasTimeComponent) {
+    if (this.hasTimeComponent && this.isTimeVisible) {
       children.push([
         createElement(
           'v-time-picker',
           {
-            props: getTimePickerProps(context),
-            on: getTimePickerListeners(context),
+            scopedSlots: getTimePickerActionSlot(createElement, this),
+            props: getTimePickerProps(this),
+            on: getTimePickerListeners(this),
+          },
+        ),
+      ]);
+    } else {
+      children.push([
+        createElement(
+          'v-date-picker',
+          {
+            scopedSlots: this.hasTimeComponent && getDatePickerActionSlot(createElement, this),
+            props: getDatePickerProps(this),
+            on: getDatePickerListeners(this),
           },
         ),
       ]);
@@ -175,7 +250,7 @@ export default {
     return createElement(
       'v-menu',
       {
-        props: getMenuProps(context),
+        props: getMenuProps(this),
       },
       children,
     );

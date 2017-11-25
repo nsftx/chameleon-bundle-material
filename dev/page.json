@@ -223,7 +223,6 @@
               "appendIcon": null,
               "placeholder": "Select your date of birth",
               "hint": null,
-              "persistentHint": false,
               "tooltip": null,
               "clearable": true,
               "searchable": false,
@@ -232,9 +231,10 @@
                 "required": true
               },
               "time": {
-                "enabled": false
+                "enabled": true
               },
-              "value": "2017-11-09"
+              "format": "LLL",
+              "value": "2017-11-09T20:35:00.000Z"
             }
           ],
           "actions": [
