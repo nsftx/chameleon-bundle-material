@@ -30,7 +30,7 @@ const getListeners = (context) => {
   if (context.definition.actions) {
     _each(context.definition.actions, (action, actionKey) => {
       listeners[actionKey] = () => {
-        context.$emit(context.definition.name);
+        context.$emit(action);
       };
     });
   }

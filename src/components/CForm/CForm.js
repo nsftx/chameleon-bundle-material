@@ -116,6 +116,8 @@ export default {
               'v-card-actions',
               _map(this.definition.actions, button => createElement('c-button',
                 {
+                  // Dynamic key to disable component re-use
+                  key: `${button.name}_${Date.now()}`,
                   props: {
                     definition: button,
                   },
