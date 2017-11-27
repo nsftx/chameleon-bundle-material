@@ -1,5 +1,6 @@
-build/*
-dist/*
-dev/*
-test/unit/coverage/*
-src/stylus/*
+node_modules
+build
+dist
+dev
+test/unit/coverage
+src/stylus
