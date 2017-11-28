@@ -39,11 +39,16 @@
 </template>
 
 <script>
+  import VJsoneditor from 'vue-jsoneditor';
+
   // This will come from Chameleon API
   const json = require('./page.json');
 
   export default {
     name: 'app',
+    components: {
+      VJsoneditor,
+    },
     data() {
       return {
         source: null,
