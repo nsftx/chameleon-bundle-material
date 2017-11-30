@@ -40,7 +40,7 @@
 
 <script>
   import VJsoneditor from 'vue-jsoneditor';
-  import ChameleonNotation from 'chameleon-notation';
+  import chameleonNotation from 'chameleon-notation';
 
   // This will come from Chameleon API
   const json = require('./page.json');
@@ -59,7 +59,7 @@
       form() {
         if (this.source) {
           const form = this.source.containers[0].widgets[0];
-          const validation = ChameleonNotation.validate(form);
+          const validation = chameleonNotation.validate(form);
 
           if (validation.isValid) {
             return form;
