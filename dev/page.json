@@ -1,5 +1,6 @@
 {
   "name": "test",
+  "type": "page",
   "template": "default",
   "layout": "blank",
   "meta": {

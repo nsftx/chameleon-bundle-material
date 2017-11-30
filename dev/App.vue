@@ -59,7 +59,7 @@
       form() {
         if (this.source) {
           const form = this.source.containers[0].widgets[0];
-          const validation = ChameleonNotation.validateForm(form);
+          const validation = ChameleonNotation.validate(form);
 
           if (validation.valid) {
             return form;
