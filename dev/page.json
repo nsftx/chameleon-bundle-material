@@ -236,6 +236,30 @@
               },
               "format": "LLL",
               "value": "2017-11-09T20:35:00.000Z"
+            },
+            {
+              "name": "reportRange",
+              "type": "dateRange",
+              "label": "Report Range",
+              "prependIcon": null,
+              "appendIcon": null,
+              "placeholder": "Select date range for report",
+              "hint": null,
+              "tooltip": null,
+              "clearable": true,
+              "searchable": false,
+              "private": true,
+              "validation": {
+                "required": true
+              },
+              "time": {
+                "enabled": true
+              },
+              "format": "LLL",
+              "value": [
+                "2017-11-09T20:35:00.000Z",
+                "2017-11-11T20:35:00.000Z"
+              ]
             }
           ],
           "actions": [

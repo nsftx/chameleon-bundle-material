@@ -99,7 +99,7 @@ export default {
                           validators: this.validators,
                         },
                         // TODO: Expand field listeners if needed
-                        // Should fileds be able to trigger flow?
+                        // Should fields be able to trigger flow?
                         on: {
                           input(value) {
                             const currentField = field;

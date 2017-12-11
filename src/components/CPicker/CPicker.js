@@ -113,6 +113,16 @@ export default {
   mixins: [
     fieldable,
   ],
+  props: {
+    startRange: {
+      type: Boolean,
+      default: false,
+    },
+    endRange: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       isTimeVisible: false,
@@ -145,6 +155,10 @@ export default {
     },
   },
   render(createElement) {
+    if (Array.isArray(this.value)) {
+      this.value = this.startRange ? this.value[0] : this.value[1];
+    }
+
     const children = [];
 
     if (this.hasTimeComponent && this.isTimeVisible) {
