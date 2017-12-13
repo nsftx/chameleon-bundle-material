@@ -12,6 +12,12 @@
     "creditCard": {
       "message": "The ${field} field is invalid credit card."
     },
+    "min": {
+      "message": "The ${field} field must be greater than ${limit}."
+    },
+    "max": {
+      "message": "The ${field} field may be less than ${limit}."
+    },
     "minLength": {
       "message": "The ${field} field must be at least ${limit} characters."
     },

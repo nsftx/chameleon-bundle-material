@@ -1,8 +1,7 @@
-import _isNull from 'lodash/isNull';
-import _isUndefined from 'lodash/isUndefined';
+import _isNil from 'lodash/isNil';
 
 export default (definition, value, pattern) => {
-  const skip = _isNull(value) || _isUndefined(value) || _isNull(pattern) || _isUndefined(pattern);
+  const skip = _isNil(value) || _isNil(pattern);
   const isValid = skip || new RegExp(pattern).test(value);
 
   return isValid ? true : definition.message;
