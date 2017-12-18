@@ -85,7 +85,7 @@
               "persistentHint": false,
               "tooltip": null,
               "multiLine": false,
-              "multiple": false,
+              "multiple": true,
               "clearable": true,
               "searchable": true,
               "private": false,
@@ -101,9 +101,35 @@
                 "required": true
               },
               "dataSource": [
-                "English", "French", "German", "Finnish"
+                {
+                  "id": 43,
+                  "name": "English",
+                  "isoCode2": "en",
+                  "isoCode3": "eng"
+                },
+                {
+                  "id": 49,
+                  "name": "Finnish",
+                  "isoCode2": "fi",
+                  "isoCode3": "\tfi"
+                }, {
+                  "id": 50,
+                  "name": "French",
+                  "isoCode2": "fr",
+                  "isoCode3": "fra"
+                }
               ],
-              "value": ["English"]
+              "dataSourceOptions": {
+                "itemText": "",
+                "itemValue": "",
+                "itemTitle": "",
+                "itemSubtitle": "",
+                "itemAvatar": "",
+                "returnItemObject": false
+              },
+              "value": [
+                43
+              ]
             },
             {
               "name": "creditCard",

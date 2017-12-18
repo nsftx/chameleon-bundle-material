@@ -1,4 +1,7 @@
 import _isArray from 'lodash/isArray';
+import _isObject from 'lodash/isObject';
+import _isUndefined from 'lodash/isUndefined';
+import _merge from 'lodash/merge';
 import fieldable from '../../mixins/fieldable';
 import validator from '../../validators/basicValidator';
 
@@ -9,6 +12,27 @@ const getAttrs = (context) => {
   };
 
   return attrs;
+};
+
+const getDeletableChipSlot = (createElement) => {
+  const slot = {
+    selection: data => createElement('v-chip', {
+      attrs: { tabindex: '-1' },
+      key: JSON.stringify(data.item),
+      staticClass: 'chip--select-multi',
+      on: {
+        input: () => data.parent.selectItem(data.item),
+      },
+      props: {
+        close: true,
+        selected: data.selected,
+      },
+    },
+      data.item.name,
+    ),
+  };
+
+  return slot;
 };
 
 const getPropAppendIcon = definition => definition.appendIcon || 'arrow_drop_down';
@@ -41,14 +65,26 @@ const getPropValue = (definition) => {
   return definition.value;
 };
 
+const getItemsProps = (context) => {
+  const options = context.definition.dataSourceOptions || {};
+
+  return {
+    itemText: options.itemText || 'name',
+    itemValue: options.itemValue || 'id',
+    returnObject: _isUndefined(options.returnItemObject) ? !context.isValueItemPrimitive :
+      options.returnItemObject,
+    tags: false,
+  };
+};
+
 const getProps = (context) => {
   const definition = context.definition;
 
   const props = {
     appendIcon: getPropAppendIcon(definition),
-    autocomplete: definition.searchable,
+    autocomplete: !!definition.searchable,
     chips: definition.chips,
-    clearable: definition.clearable,
+    clearable: definition.clearable && !definition.readonly,
     deletableChips: definition.chips && !definition.readonly,
     hint: definition.hint,
     items: definition.dataSource,
@@ -67,6 +103,11 @@ const getProps = (context) => {
     value: getPropValue(definition),
     validateOn: getPropValidateOnBlur(definition),
   };
+
+  if (_isObject(definition.dataSource[0]) && !_isArray(definition.dataSource[0])) {
+    const itemProps = getItemsProps(context);
+    _merge(props, itemProps);
+  }
 
   return props;
 };
@@ -89,14 +130,30 @@ export default {
   mixins: [
     fieldable,
   ],
+  computed: {
+    isValueItemPrimitive() {
+      const definition = this.definition;
+      const val = _isArray(definition.value) ? definition.value[0] :
+        this.definition.value;
+
+      if (definition.dataSourceOptions && definition.dataSourceOptions.returnItemObject) {
+        return definition.dataSourceOptions.returnItemObject;
+      }
+
+      return !_isObject(val);
+    },
+  },
   render(createElement) {
     const context = this;
+    const selectProps = getProps(context);
+    const hasCustomChips = selectProps.autocomplete && selectProps.deletableChips;
 
     return createElement(
       'v-select',
       {
         attrs: getAttrs(context),
-        props: getProps(context),
+        props: selectProps,
+        scopedSlots: hasCustomChips && getDeletableChipSlot(createElement),
         on: getListeners(context),
       },
     );
