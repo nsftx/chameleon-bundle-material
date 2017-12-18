@@ -5,4 +5,5 @@ export { default as CDate } from './CDate';
 export { default as CDateRange } from './CDateRange';
 export { default as CRichText } from './CRichText';
 export { default as CText } from './CText';
+export { default as CSelect } from './CSelect';
 export { default as CForm } from './CForm';

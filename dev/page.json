@@ -75,6 +75,37 @@
               "value": "Existing Value"
             },
             {
+              "name": "language",
+              "type": "select",
+              "label": "Language",
+              "prependIcon": "language",
+              "appendIcon": null,
+              "placeholder": "Please select a language",
+              "hint": null,
+              "persistentHint": false,
+              "tooltip": null,
+              "multiLine": false,
+              "multiple": false,
+              "clearable": true,
+              "searchable": true,
+              "private": false,
+              "readonly": false,
+              "chips": true,
+              "tags": false,
+              "validateOn": "blur",
+              "mask": {
+                "predefined": false,
+                "value": null
+              },
+              "validation": {
+                "required": true
+              },
+              "dataSource": [
+                "English", "French", "German", "Finnish"
+              ],
+              "value": ["English"]
+            },
+            {
               "name": "creditCard",
               "type": "text",
               "label": "Credit Card Number",
