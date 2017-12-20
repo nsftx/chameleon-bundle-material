@@ -1,6 +1,6 @@
-import _isNumber from 'lodash/isNumber';
+import _ from 'lodash';
 
 export default (definition, value, limit) => {
-  const isInRange = _isNumber(value) && Number(value) <= limit;
+  const isInRange = _.isNumber(value) && Number(value) <= limit;
   return isInRange ? true : definition.message;
 };

@@ -1,5 +1,4 @@
-import _isBoolean from 'lodash/isBoolean';
-import _isUndefined from 'lodash/isUndefined';
+import _ from 'lodash';
 import fieldable from '../../mixins/fieldable';
 import validator from '../../validators/basicValidator';
 
@@ -12,8 +11,8 @@ const getAttrs = (context) => {
     title: definition.tooltip,
   };
 
-  if (!_isUndefined(definition.step)) {
-    if (_isBoolean(definition.step)) {
+  if (!_.isUndefined(definition.step)) {
+    if (_.isBoolean(definition.step)) {
       if (definition.step) {
         attrs.step = 1;
       }

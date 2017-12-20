@@ -1,5 +1,4 @@
-// import _assign from 'lodash/assign';
-import _isNil from 'lodash/isNil';
+import _ from 'lodash';
 import fieldable from '../../mixins/fieldable';
 import validator from '../../validators/basicValidator';
 
@@ -19,7 +18,7 @@ const getMenuProps = (context) => {
 
   const props = {
     lazy: false,
-    transition: _isNil(definition.transition) ? 'scale-transition' : definition.transition,
+    transition: _.isNil(definition.transition) ? 'scale-transition' : definition.transition,
     fullWidth: true,
     maxWidth: width,
     minWidth: width,
@@ -45,9 +44,9 @@ const getTextProps = (context) => {
 
   const props = {
     readonly: true,
-    clearable: _isNil(definition.clearable) ? true : definition.clearable,
+    clearable: _.isNil(definition.clearable) ? true : definition.clearable,
     appendIcon: definition.appendIcon,
-    prependIcon: _isNil(definition.prependIcon) ? 'event' : definition.prependIcon,
+    prependIcon: _.isNil(definition.prependIcon) ? 'event' : definition.prependIcon,
     label: definition.label,
     hint: definition.hint,
     persistentHint: true,
@@ -73,11 +72,11 @@ export default {
   },
   watch: {
     valueFrom() {
-      if (_isNil(this.valueTo)) this.valueTo = this.valueFrom;
+      if (_.isNil(this.valueTo)) this.valueTo = this.valueFrom;
       this.setValue();
     },
     valueTo() {
-      if (_isNil(this.valueFrom)) this.valueFrom = this.valueTo;
+      if (_.isNil(this.valueFrom)) this.valueFrom = this.valueTo;
       this.setValue();
     },
   },

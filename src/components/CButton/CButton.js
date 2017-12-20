@@ -1,5 +1,4 @@
-import _isUndefined from 'lodash/isUndefined';
-import _each from 'lodash/each';
+import _ from 'lodash';
 
 const getAttrs = (context) => {
   const attrs = {
@@ -17,7 +16,7 @@ const getProps = (context) => {
   const props = {
     color: definition.color || defaultColor,
     dark: true,
-    icon: _isUndefined(definition.icon) ? false : definition.icon,
+    icon: _.isUndefined(definition.icon) ? false : definition.icon,
     loading: false,
   };
 
@@ -28,7 +27,7 @@ const getListeners = (context) => {
   const listeners = {};
 
   if (context.definition.actions) {
-    _each(context.definition.actions, (action, actionKey) => {
+    _.each(context.definition.actions, (action, actionKey) => {
       listeners[actionKey] = () => {
         context.$emit(action);
       };

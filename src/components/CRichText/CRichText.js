@@ -1,5 +1,4 @@
-import _isArray from 'lodash/isArray';
-import _each from 'lodash/each';
+import _ from 'lodash';
 import Quill from 'quill';
 import fieldable from '../../mixins/fieldable';
 import validator from '../../validators/basicValidator';
@@ -7,7 +6,7 @@ import validator from '../../validators/basicValidator';
 require('../../stylus/components/_rich-text.styl');
 
 const getToolbar = (definition) => {
-  if (_isArray(definition.toolbar)) {
+  if (_.isArray(definition.toolbar)) {
     return definition.toolbar;
   }
 
@@ -89,7 +88,7 @@ export default {
       this.errorBucket = [];
 
       if (this.rules) {
-        _each(this.rules, (rule) => {
+        _.each(this.rules, (rule) => {
           const isValid = rule(this.value);
           if (isValid !== true) {
             this.errorBucket.push(isValid);

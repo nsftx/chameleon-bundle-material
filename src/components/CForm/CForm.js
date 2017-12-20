@@ -1,11 +1,8 @@
-import _concat from 'lodash/concat';
-import _each from 'lodash/each';
-import _map from 'lodash/map';
-import _kebabCase from 'lodash/kebabCase';
+import _ from 'lodash';
 
 const getEntity = (form) => {
   const entity = {};
-  _each(form.$children, (field) => {
+  _.each(form.$children, (field) => {
     if (field.name) {
       entity[field.name] = field.value;
     }
@@ -16,9 +13,9 @@ const getEntity = (form) => {
 
 const getValidationErrors = (form) => {
   let errors = [];
-  _each(form.getInputs(), (input) => {
+  _.each(form.getInputs(), (input) => {
     if (input.errorBucket.length) {
-      errors = _concat(errors, _map(input.errorBucket, error => error));
+      errors = _.concat(errors, _.map(input.errorBucket, error => error));
     }
   });
 
@@ -45,7 +42,7 @@ const getListeners = (context) => {
 
 const getComponentTag = (name) => {
   const type = ['number', 'money'].indexOf(name) > -1 ? 'text' : name;
-  const tag = _kebabCase(type);
+  const tag = _.kebabCase(type);
 
   return `c-${tag}`;
 };
@@ -83,7 +80,7 @@ export default {
           [
             createElement(
               'v-card-text',
-              _map(this.definition.fields, (field) => {
+              _.map(this.definition.fields, (field) => {
                 const self = this;
                 return createElement('div',
                   {
@@ -114,7 +111,7 @@ export default {
             ),
             createElement(
               'v-card-actions',
-              _map(this.definition.actions, button => createElement('c-button',
+              _.map(this.definition.actions, button => createElement('c-button',
                 {
                   // Dynamic key to disable component re-use
                   key: `${button.name}_${Date.now()}`,

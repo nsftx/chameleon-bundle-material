@@ -1,4 +1,4 @@
-import _isArray from 'lodash/isArray';
+import _ from 'lodash';
 import fieldable from '../../mixins/fieldable';
 import validator from '../../validators/basicValidator';
 
@@ -37,7 +37,7 @@ const getListeners = (context) => {
 
   const listeners = {
     input(value) {
-      const parsedValue = _isArray(value) ? value : [value];
+      const parsedValue = _.isArray(value) ? value : [value];
 
       self.value = parsedValue;
       self.$emit('input', parsedValue);
@@ -66,11 +66,11 @@ const getPropValidateOnBlur = (definition) => {
 };
 
 const getPropValue = (definition) => {
-  if (definition.multiple && !_isArray(definition.value)) {
+  if (definition.multiple && !_.isArray(definition.value)) {
     return [definition.value];
   }
 
-  if (!definition.multiple && _isArray(definition.value)) {
+  if (!definition.multiple && _.isArray(definition.value)) {
     return definition.value[0];
   }
 

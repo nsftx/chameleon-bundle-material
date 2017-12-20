@@ -1,6 +1,4 @@
-import _isUndefined from 'lodash/isUndefined';
-import _isNil from 'lodash/isNil';
-import _template from 'lodash/template';
+import _ from 'lodash';
 import creditCardValidator from './creditCardValidator';
 import integerValidator from './integerValidator';
 import minValidator from './minValidator';
@@ -24,10 +22,10 @@ const validator = {
 // Library accepts only string so we need to coerce it
 // https://github.com/chriso/validator.js/
 // eslint-disable-next-line
-const getValue = value => _isNil(value) ? '' : value + '';
+const getValue = value => _.isNil(value) ? '' : value + '';
 
 const getMessage = (result, data) => {
-  const message = result !== true ? _template(result)(data) : true;
+  const message = result !== true ? _.template(result)(data) : true;
 
   return message;
 };
@@ -47,7 +45,7 @@ export default {
       ), { field: definition.label }));
     }
 
-    if (!_isUndefined(validation.min)) {
+    if (!_.isUndefined(validation.min)) {
       rules.push(value => getMessage(validator.min(
         validators.min,
         getValue(value),
@@ -55,7 +53,7 @@ export default {
       ), { field: definition.label, limit: validation.min }));
     }
 
-    if (!_isUndefined(validation.max)) {
+    if (!_.isUndefined(validation.max)) {
       rules.push(value => getMessage(validator.max(
         validators.max,
         getValue(value),
@@ -63,7 +61,7 @@ export default {
       ), { field: definition.label, limit: validation.max }));
     }
 
-    if (!_isUndefined(validation.minLength)) {
+    if (!_.isUndefined(validation.minLength)) {
       rules.push(value => getMessage(validator.minLength(
         validators.minLength,
         getValue(value),
@@ -71,7 +69,7 @@ export default {
       ), { field: definition.label, limit: validation.minLength }));
     }
 
-    if (!_isUndefined(validation.maxLength)) {
+    if (!_.isUndefined(validation.maxLength)) {
       rules.push(value => getMessage(validator.maxLength(
         validators.maxLength,
         getValue(value),
