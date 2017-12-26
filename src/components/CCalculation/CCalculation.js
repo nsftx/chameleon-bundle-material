@@ -1,6 +1,21 @@
 import _ from 'lodash';
 import CText from '../CText/CText';
 
+const templateLiteralRegex = /\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g;
+
+const getMath = () => {
+  const native = Object.getOwnPropertyNames(Math);
+  const lodash = {
+    sum: (...args) => _.sum(args),
+  };
+
+  return _.reduce(native, (result, method) => {
+    //eslint-disable-next-line
+    result[method] = Math[method];
+    return result;
+  }, lodash);
+};
+
 export default {
   name: 'c-calculation',
   extends: CText,
@@ -21,6 +36,12 @@ export default {
         return results;
       }, {});
     },
+    isTemplateLiteral() {
+      return this.value && _.isArray(this.value.match(templateLiteralRegex));
+    },
+    templateValue() {
+      return this.isTemplateLiteral ? this.value : `<%= ${this.value} %>`;
+    },
   },
   watch: {
     fields: {
@@ -33,7 +54,8 @@ export default {
   methods: {
     resolveValue() {
       try {
-        this.resolvedValue = _.template(this.value)(this.fields);
+        const templateData = _.assign(getMath(), this.fields);
+        this.resolvedValue = _.template(this.templateValue)(templateData);
         this.definition.hint = this.resolvedValue;
       } catch (error) {
         // TODO: Show as field error

@@ -248,7 +248,7 @@
                 },
                 "custom": null
               },
-              "value": "100"
+              "value": 100
             },
             {
               "name": "amount",
@@ -274,11 +274,11 @@
                 "required": true,
                 "pattern": {
                   "predefined": false,
-                  "value": "^-?\\d*(\\,\\d+)?$"
+                  "value": "^-?\\d*(\\.\\d+)?$"
                 },
                 "custom": null
               },
-              "value": "100,20"
+              "value": 100.20
             },
             {
               "name": "about",
