@@ -61,10 +61,10 @@
         if (this.page) {
           const form = this.page.containers[0].widgets[0];
 
-          /*const validation = chameleonNotation.validate(form);
+          const validation = chameleonNotation.validate(form);
           if (!validation.isValid) {
             console.warn(validation.message);
-          }*/
+          }
 
           return form;
         }

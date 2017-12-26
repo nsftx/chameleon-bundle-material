@@ -59,7 +59,7 @@ const getPropRequired = (definition) => {
 };
 
 const getPropMultiline = (definition) => {
-  if (['number', 'money'].indexOf(definition.type) > -1) {
+  if (['calculation', 'number', 'money'].indexOf(definition.type) > -1) {
     return false;
   }
 
