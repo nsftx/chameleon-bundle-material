@@ -127,7 +127,7 @@
               "validation": {
                 "required": true
               },
-              "value": "${firstName}"
+              "value": "${lastName} ${firstName}"
             },
             {
               "name": "language",
