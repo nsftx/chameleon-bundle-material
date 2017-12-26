@@ -24,9 +24,9 @@
             </v-flex>
             <v-flex xs12
                     md6>
-              <v-card>
+              <v-card v-if="page">
                 <c-form :definition="form"
-                        :validators="source.validators">
+                        :validators="page.validators">
                 </c-form>
               </v-card>
             </v-flex>
@@ -52,18 +52,19 @@
     },
     data() {
       return {
-        source: null,
+        source: json,
+        page: null,
       };
     },
     computed: {
       form() {
-        if (this.source) {
-          const form = this.source.containers[0].widgets[0];
-          const validation = chameleonNotation.validate(form);
+        if (this.page) {
+          const form = this.page.containers[0].widgets[0];
 
+          /*const validation = chameleonNotation.validate(form);
           if (!validation.isValid) {
             console.warn(validation.message);
-          }
+          }*/
 
           return form;
         }
@@ -73,11 +74,8 @@
     },
     methods: {
       sourceChanged(value) {
-        // console.log('JSON changed =>', JSON.stringify(value));
+        this.page = value;
       },
-    },
-    mounted() {
-      this.source = json;
     },
   };
 </script>

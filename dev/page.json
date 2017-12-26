@@ -75,6 +75,28 @@
               "value": "Existing Value"
             },
             {
+              "name": "fullName",
+              "type": "calculation",
+              "label": "Full Name",
+              "prependIcon": "person",
+              "appendIcon": null,
+              "prefix": null,
+              "suffix": null,
+              "placeholder": "Please enter formula",
+              "hint": null,
+              "persistentHint": false,
+              "tooltip": null,
+              "multiLine": false,
+              "clearable": true,
+              "searchable": true,
+              "private": false,
+              "validateOn": "blur",
+              "validation": {
+                "required": true
+              },
+              "value": "$firstName"
+            },
+            {
               "name": "language",
               "type": "select",
               "label": "Language",
@@ -112,7 +134,8 @@
                     "name": "Finnish",
                     "isoCode2": "fi",
                     "isoCode3": "\tfi"
-                  }, {
+                  },
+                  {
                     "id": 50,
                     "name": "French",
                     "isoCode2": "fr",
