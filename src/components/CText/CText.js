@@ -136,6 +136,9 @@ const getListeners = (context) => {
       self.value = value;
       self.$emit('input', value);
     },
+    blur() {
+      self.$emit('blur', self.value);
+    },
   };
 
   return listeners;
@@ -147,14 +150,12 @@ export default {
     fieldable,
   ],
   render(createElement) {
-    const context = this;
-
     return createElement(
       'v-text-field',
       {
-        attrs: getAttrs(context),
-        props: getProps(context),
-        on: getListeners(context),
+        attrs: getAttrs(this),
+        props: getProps(this),
+        on: getListeners(this),
       },
     );
   },

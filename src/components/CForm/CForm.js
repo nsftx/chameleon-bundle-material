@@ -1,27 +1,5 @@
 import _ from 'lodash';
 
-const getEntity = (form) => {
-  const entity = {};
-  _.each(form.$children, (field) => {
-    if (field.name) {
-      entity[field.name] = field.value;
-    }
-  });
-
-  return entity;
-};
-
-const getValidationErrors = (form) => {
-  let errors = [];
-  _.each(form.getInputs(), (input) => {
-    if (input.errorBucket.length) {
-      errors = _.concat(errors, _.map(input.errorBucket, error => error));
-    }
-  });
-
-  return errors;
-};
-
 const getListeners = (context) => {
   const listeners = {};
   const formName = context.definition.name;
@@ -31,9 +9,9 @@ const getListeners = (context) => {
   listeners.save = () => {
     const form = context.$refs[formName];
     if (form.validate()) {
-      console.log('Entity success =>', getEntity(form));
+      console.log('Entity success =>', context.getEntity());
     } else {
-      console.log('Entity error =>', getValidationErrors(form));
+      console.log('Entity error =>', context.getErrors());
     }
   };
 
@@ -49,7 +27,13 @@ const getComponentTag = (name) => {
 
 export default {
   name: 'c-form',
-  functional: false,
+  provide() {
+    return {
+      form: {
+        fields: this.definition.fields,
+      },
+    };
+  },
   props: {
     definition: {
       type: Object,
@@ -59,10 +43,44 @@ export default {
       type: Object,
     },
   },
+  computed: {
+    entity() {
+      return this.getEntity();
+    },
+  },
+  methods: {
+    getForm() {
+      return this.$refs[this.definition.name];
+    },
+    getEntity() {
+      const entity = {};
+      _.each(this.definition.fields, (field) => {
+        if (field.name) {
+          // Remove reactivity from output
+          // TODO: Investigate if this has any benefit
+          entity[field.name] = _.isObject(field.value)
+            ? _.merge(_.isArray(field.value) ? [] : {}, field.value)
+            : field.value;
+        }
+      });
+
+      return entity;
+    },
+    getErrors() {
+      let errors = [];
+      _.each(this.getForm().getInputs(), (input) => {
+        if (input.errorBucket.length) {
+          errors = _.concat(errors, _.map(input.errorBucket, error => error));
+        }
+      });
+
+      return errors;
+    },
+  },
   render(createElement) {
     const context = this;
     // TODO: Extract children render function
-    // Arrow funtion madness ahead
+    // Arrow function madness ahead
     return createElement(
       'v-card',
       {

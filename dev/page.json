@@ -72,7 +72,40 @@
                 },
                 "custom": null
               },
-              "value": "Existing Value"
+              "value": "Jadranko"
+            },
+            {
+              "name": "lastName",
+              "type": "text",
+              "label": "Last Name",
+              "prependIcon": "person",
+              "appendIcon": null,
+              "prefix": null,
+              "suffix": null,
+              "placeholder": "Please enter your last name",
+              "hint": null,
+              "persistentHint": false,
+              "tooltip": null,
+              "multiLine": false,
+              "clearable": true,
+              "searchable": true,
+              "private": false,
+              "validateOn": "blur",
+              "mask": {
+                "predefined": false,
+                "value": null
+              },
+              "validation": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 20,
+                "pattern": {
+                  "predefined": false,
+                  "value": null
+                },
+                "custom": null
+              },
+              "value": "Dragoje"
             },
             {
               "name": "fullName",
@@ -94,7 +127,7 @@
               "validation": {
                 "required": true
               },
-              "value": "$firstName"
+              "value": "${firstName}"
             },
             {
               "name": "language",
