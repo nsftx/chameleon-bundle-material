@@ -117,7 +117,6 @@
               "suffix": null,
               "placeholder": "Please enter formula",
               "hint": null,
-              "persistentHint": false,
               "tooltip": null,
               "multiLine": false,
               "clearable": true,
