@@ -1,0 +1,11 @@
+.input-richtext {
+  position: relative;
+}
+.input-richtext .ql-toolbar,
+.input-richtext .ql-container {
+  border-color: rgba(0,0,0,0.42);
+}
+.input-richtext--error .ql-toolbar,
+.input-richtext--error .ql-container {
+  border-color: #ff5252;
+}
