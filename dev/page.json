@@ -144,7 +144,6 @@
               "searchable": true,
               "private": false,
               "readonly": false,
-              "chips": true,
               "validateOn": "blur",
               "mask": {
                 "predefined": false,

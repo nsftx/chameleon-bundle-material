@@ -11,27 +11,6 @@ const getAttrs = (context) => {
   return attrs;
 };
 
-const getDeletableChipSlot = (createElement, displayProp) => {
-  const slot = {
-    selection: data => createElement('v-chip', {
-      attrs: { tabindex: '-1' },
-      key: JSON.stringify(data.item),
-      staticClass: 'chip--select-multi',
-      on: {
-        input: () => data.parent.selectItem(data.item),
-      },
-      props: {
-        close: true,
-        selected: data.selected,
-      },
-    },
-      data.item[displayProp],
-    ),
-  };
-
-  return slot;
-};
-
 const getListeners = (context) => {
   const self = context;
 
@@ -83,9 +62,8 @@ const getProps = (context) => {
   const props = {
     appendIcon: getPropAppendIcon(definition),
     autocomplete: true,
-    chips: definition.chips,
+    chips: false,
     clearable: definition.clearable && !definition.readonly,
-    deletableChips: definition.chips && definition.multiple && !definition.readonly,
     hint: definition.hint,
     items: definition.dataSource.items,
     itemText: definition.dataSource.options.displayProp,
@@ -116,15 +94,12 @@ export default {
   ],
   render(createElement) {
     const context = this;
-    const selectProps = getProps(context);
 
     return createElement(
       'v-select',
       {
         attrs: getAttrs(context),
-        props: selectProps,
-        scopedSlots: selectProps.deletableChips &&
-          getDeletableChipSlot(createElement, selectProps.itemText),
+        props: getProps(context),
         on: getListeners(context),
       },
     );
