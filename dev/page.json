@@ -129,8 +129,57 @@
               "value": "${lastName} ${firstName}"
             },
             {
-              "name": "language",
+              "name": "gender",
               "type": "select",
+              "label": "Gender",
+              "prependIcon": "people",
+              "appendIcon": null,
+              "placeholder": "Please select a gender",
+              "hint": null,
+              "persistentHint": false,
+              "tooltip": null,
+              "multiLine": false,
+              "multiple": false,
+              "clearable": false,
+              "private": false,
+              "readonly": false,
+              "validateOn": "blur",
+              "mask": {
+                "predefined": false,
+                "value": null
+              },
+              "validation": {
+                "required": true
+              },
+              "dataSource": {
+                "items": [
+                  {
+                    "id": 1,
+                    "name": "Male"
+                  },
+                  {
+                    "id": 2,
+                    "name": "Female"
+                  },
+                  {
+                    "id": 3,
+                    "name": "Other"
+                  }
+                ],
+                "options": {
+                  "displayProp": "name"
+                }
+              },
+              "value": [
+                {
+                  "id": 1,
+                  "name": "Male"
+                }
+              ]
+            },
+            {
+              "name": "language",
+              "type": "tags",
               "label": "Language",
               "prependIcon": "language",
               "appendIcon": null,
@@ -139,9 +188,8 @@
               "persistentHint": false,
               "tooltip": null,
               "multiLine": false,
-              "multiple": false,
+              "multiple": true,
               "clearable": true,
-              "searchable": true,
               "private": false,
               "readonly": false,
               "validateOn": "blur",

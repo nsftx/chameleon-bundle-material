@@ -62,8 +62,9 @@ const getProps = (context) => {
   const props = {
     appendIcon: getPropAppendIcon(definition),
     autocomplete: true,
-    chips: false,
+    chips: context.chips,
     clearable: definition.clearable && !definition.readonly,
+    deletableChips: context.chips && definition.multiple && !definition.readonly,
     hint: definition.hint,
     items: definition.dataSource.items,
     itemText: definition.dataSource.options.displayProp,
@@ -92,15 +93,27 @@ export default {
   mixins: [
     fieldable,
   ],
-  render(createElement) {
+  data() {
+    return {
+      attrs: null,
+      chips: false,
+      listeners: null,
+      selectProps: null,
+    };
+  },
+  created() {
     const context = this;
-
+    this.attrs = getAttrs(context);
+    this.selectProps = getProps(context);
+    this.listeners = getListeners(context);
+  },
+  render(createElement) {
     return createElement(
       'v-select',
       {
-        attrs: getAttrs(context),
-        props: getProps(context),
-        on: getListeners(context),
+        attrs: this.attrs,
+        props: this.selectProps,
+        on: this.listeners,
       },
     );
   },
