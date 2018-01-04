@@ -1,4 +1,28 @@
+import fieldable from '../../mixins/fieldable';
 import validator from '../../validators/basicValidator';
+
+const getAttrs = (context) => {
+  const attrs = {
+    name: context.definition.name,
+    inputValue: context.definition.inputValue,
+    value: context.definition.value,
+  };
+
+  return attrs;
+};
+
+const getListeners = (context) => {
+  const self = context;
+
+  const listeners = {
+    change() {
+      self.definition.inputValue = self.definition.inputValue ? null : true;
+      self.definition.value = self.definition.inputValue;
+    },
+  };
+
+  return listeners;
+};
 
 const getPropRequired = (definition) => {
   if (definition.validation) {
@@ -6,15 +30,6 @@ const getPropRequired = (definition) => {
   }
 
   return false;
-};
-
-const getAttrs = (context) => {
-  const attrs = {
-    name: context.definition.name,
-    inputValue: context.definition.inputValue,
-  };
-
-  return attrs;
 };
 
 const getProps = (context) => {
@@ -36,19 +51,6 @@ const getProps = (context) => {
   return props;
 };
 
-const getListeners = (context) => {
-  const self = context;
-
-  const listeners = {
-    change() {
-      self.definition.inputValue = !self.definition.inputValue;
-    },
-  };
-
-  return listeners;
-};
-
-
 export default {
   name: 'c-check',
   props: {
@@ -57,6 +59,9 @@ export default {
       required: true,
     },
   },
+  mixins: [
+    fieldable,
+  ],
   render(createElement) {
     return createElement(
       'v-checkbox',

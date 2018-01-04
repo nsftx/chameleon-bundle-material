@@ -437,9 +437,10 @@
               "hint": null,
               "disabled": false,
               "persistentHint": false,
-              "inputValue": true,
+              "inputValue": null,
+              "value": null,
               "validation": {
-                "required": false
+                "required": true
               }
             }
           ],
