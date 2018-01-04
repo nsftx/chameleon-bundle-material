@@ -129,12 +129,12 @@
               "value": "${lastName} ${firstName}"
             },
             {
-              "name": "gender",
+              "name": "country",
               "type": "select",
-              "label": "Gender",
-              "prependIcon": "people",
+              "label": "Country",
+              "prependIcon": "language",
               "appendIcon": null,
-              "placeholder": "Please select a gender",
+              "placeholder": "Please select a country",
               "hint": null,
               "persistentHint": false,
               "tooltip": null,
@@ -155,15 +155,15 @@
                 "items": [
                   {
                     "id": 1,
-                    "name": "Male"
+                    "name": "Italy"
                   },
                   {
                     "id": 2,
-                    "name": "Female"
+                    "name": "France"
                   },
                   {
                     "id": 3,
-                    "name": "Other"
+                    "name": "England"
                   }
                 ],
                 "options": {
@@ -426,6 +426,21 @@
                 "2017-11-09T20:35:00.000Z",
                 "2017-11-11T20:35:00.000Z"
               ]
+            },
+            {
+              "name": "remember",
+              "type": "checkbox",
+              "label": "Remember me",
+              "color": "primary",
+              "prependIcon": null,
+              "appendIcon": null,
+              "hint": null,
+              "disabled": false,
+              "persistentHint": false,
+              "inputValue": true,
+              "validation": {
+                "required": false
+              }
             }
           ],
           "actions": [
