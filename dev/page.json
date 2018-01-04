@@ -426,6 +426,19 @@
                 "2017-11-09T20:35:00.000Z",
                 "2017-11-11T20:35:00.000Z"
               ]
+            },
+            {
+              "name": "remember",
+              "type": "radio",
+              "label": "Remember me",
+              "color": "primary",
+              "prependIcon": null,
+              "appendIcon": null,
+              "hint": null,
+              "disabled": false,
+              "persistentHint": false,
+              "value": "",
+              "isMandatory": false
             }
           ],
           "actions": [

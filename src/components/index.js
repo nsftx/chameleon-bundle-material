@@ -8,5 +8,6 @@ export { default as CPicker } from './CPicker';
 export { default as CRichText } from './CRichText';
 export { default as CSelect } from './CSelect';
 export { default as CText } from './CText';
+export { default as CRadio } from './CRadio';
 export { default as CMap } from './CMap';
 export { default as CTags } from './CTags';
