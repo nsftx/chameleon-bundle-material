@@ -429,7 +429,7 @@
             },
             {
               "name": "remember",
-              "type": "checkbox",
+              "type": "check",
               "label": "Remember me",
               "color": "primary",
               "prependIcon": null,

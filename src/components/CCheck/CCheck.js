@@ -50,7 +50,7 @@ const getListeners = (context) => {
 
 
 export default {
-  name: 'c-checkbox',
+  name: 'c-check',
   props: {
     definition: {
       type: Object,
