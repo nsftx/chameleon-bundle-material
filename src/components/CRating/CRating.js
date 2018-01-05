@@ -94,7 +94,7 @@ export default {
   },
   render(createElement) {
     const self = this;
-    const ratingCount = new Array(this.definition.maxRating);
+    const ratingCount = new Array(this.definition.maxRating || 5);
     const icons = _.map(ratingCount, (item, idx) => getIconElement(createElement, idx + 1, self));
     const title = getTitle(createElement, self);
     const message = getMessage(createElement, self);
