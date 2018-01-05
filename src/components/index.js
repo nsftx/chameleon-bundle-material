@@ -10,3 +10,4 @@ export { default as CSelect } from './CSelect';
 export { default as CText } from './CText';
 export { default as CMap } from './CMap';
 export { default as CTags } from './CTags';
+export { default as CRating } from './CRating';

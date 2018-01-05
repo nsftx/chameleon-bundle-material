@@ -2,18 +2,20 @@ import CSelect from '../CSelect/CSelect';
 
 const getDeletableChipSlot = (createElement, displayProp) => {
   const slot = {
-    selection: data => createElement('v-chip', {
-      attrs: { tabindex: '-1' },
-      key: JSON.stringify(data.item),
-      staticClass: 'chip--select-multi',
-      on: {
-        input: () => data.parent.selectItem(data.item),
+    selection: data => createElement(
+      'v-chip',
+      {
+        attrs: { tabindex: '-1' },
+        key: JSON.stringify(data.item),
+        staticClass: 'chip--select-multi',
+        on: {
+          input: () => data.parent.selectItem(data.item),
+        },
+        props: {
+          close: true,
+          selected: data.selected,
+        },
       },
-      props: {
-        close: true,
-        selected: data.selected,
-      },
-    },
       data.item[displayProp],
     ),
   };

@@ -426,6 +426,18 @@
                 "2017-11-09T20:35:00.000Z",
                 "2017-11-11T20:35:00.000Z"
               ]
+            },
+            {
+              "name": "rating",
+              "type": "rating",
+              "label": "Rate your experience",
+              "maxRating": 5,
+              "ratingInfo": true,
+              "icon": "star",
+              "value": 0,
+              "validation": {
+                "required": true
+              }
             }
           ],
           "actions": [

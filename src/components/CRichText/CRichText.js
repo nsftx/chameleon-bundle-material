@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import Quill from 'quill';
 import fieldable from '../../mixins/fieldable';
-import validator from '../../validators/basicValidator';
+import validatable from '../../mixins/validatable';
 
 require('../../stylus/components/_rich-text.styl');
 
@@ -63,43 +63,12 @@ export default {
   name: 'c-rich-text',
   mixins: [
     fieldable,
+    validatable,
   ],
   data() {
     return {
       editor: null,
-      // Property names in sync with vuetify
-      valid: true,
-      rules: null,
-      errorBucket: {
-        type: Array,
-        default() {
-          return [];
-        },
-      },
     };
-  },
-  computed: {
-    hasError() {
-      return !this.valid;
-    },
-  },
-  methods: {
-    validate() {
-      this.errorBucket = [];
-
-      if (this.rules) {
-        _.each(this.rules, (rule) => {
-          const isValid = rule(this.value);
-          if (isValid !== true) {
-            this.errorBucket.push(isValid);
-          }
-        });
-      }
-
-      this.valid = this.errorBucket.length === 0;
-
-      return this.valid;
-    },
   },
   render(createElement) {
     return createElement(
@@ -128,7 +97,6 @@ export default {
   },
   mounted() {
     this.value = this.definition.value;
-    this.rules = validator.getRules(this.definition, this.validators);
 
     this.editor = new Quill(this.$refs.editor, {
       theme: 'snow',
