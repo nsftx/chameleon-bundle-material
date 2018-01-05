@@ -24,10 +24,15 @@
             </v-flex>
             <v-flex xs12
                     md6>
-              <v-card v-if="page">
+              <v-card v-if="page" class="mb-1">
                 <c-form :definition="form"
                         :validators="page.validators">
                 </c-form>
+              </v-card>
+              <v-card v-if="page">
+                <c-video :definition="video"
+                         :validators="page.validators">
+                </c-video>
               </v-card>
             </v-flex>
           </v-layout>
@@ -67,6 +72,13 @@
           }
 
           return form;
+        }
+
+        return null;
+      },
+      video() {
+        if(this.page) {
+          return this.page.containers[0].widgets[1];
         }
 
         return null;
