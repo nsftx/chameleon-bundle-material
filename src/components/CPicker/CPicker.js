@@ -7,6 +7,7 @@ const getDatePickerProps = (context) => {
     scrollable: true,
     autosave: true,
     value: context.value,
+    allowedDates: context.allowedDates,
   };
 
   return props;
@@ -129,6 +130,9 @@ export default {
     };
   },
   computed: {
+    allowedDates() {
+      return this.definition.allowedDates;
+    },
     hasTimeComponent() {
       return this.definition.time && this.definition.time.enabled;
     },

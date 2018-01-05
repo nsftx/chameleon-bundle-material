@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import moment from 'moment';
 import fieldable from '../../mixins/fieldable';
 import validator from '../../validators/basicValidator';
 
@@ -59,6 +60,37 @@ const getTextProps = (context) => {
   return props;
 };
 
+const getAllowedDates = (context) => {
+  const max = context.validation.maxDate;
+  const min = context.validation.minDate;
+
+  const validateDates = () => {
+    if (max < min) {
+      return {
+        min: max,
+        max: min,
+      };
+    }
+    return {
+      min: moment(min).isValid() ? min : null,
+      max: moment(max).isValid() ? max : null,
+    };
+  };
+
+  return validateDates();
+};
+
+const getPickerProps = (context) => {
+  const definition = context.definition;
+  definition.allowedDates = getAllowedDates(definition);
+
+  const props = {
+    definition,
+  };
+
+  return props;
+};
+
 export default {
   name: 'c-date',
   mixins: [
@@ -83,9 +115,7 @@ export default {
       createElement(
         'c-picker',
         {
-          props: {
-            definition: this.definition,
-          },
+          props: getPickerProps(this),
           on: {
             input(value) {
               self.value = value;
