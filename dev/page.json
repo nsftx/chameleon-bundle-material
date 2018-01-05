@@ -456,6 +456,19 @@
               "validation": {
                 "required": true
               }
+            },
+            {
+              "name": "remember",
+              "type": "radio",
+              "label": "Remember me",
+              "color": "primary",
+              "prependIcon": null,
+              "appendIcon": null,
+              "hint": null,
+              "disabled": false,
+              "persistentHint": false,
+              "value": "",
+              "mandatory": false
             }
           ],
           "actions": [

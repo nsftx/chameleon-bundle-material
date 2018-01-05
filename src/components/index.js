@@ -9,6 +9,7 @@ export { default as CRichText } from './CRichText';
 export { default as CSelect } from './CSelect';
 export { default as CCheck } from './CCheck';
 export { default as CText } from './CText';
+export { default as CRadio } from './CRadio';
 export { default as CMap } from './CMap';
 export { default as CTags } from './CTags';
 export { default as CRating } from './CRating';
