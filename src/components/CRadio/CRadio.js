@@ -41,7 +41,7 @@ export default {
   provide() {
     return {
       name: () => this.definition.name,
-      isMandatory: () => this.definition.isMandatory,
+      isMandatory: () => this.definition.mandatory,
     };
   },
   props: {

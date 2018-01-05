@@ -438,7 +438,7 @@
               "disabled": false,
               "persistentHint": false,
               "value": "",
-              "isMandatory": false
+              "mandatory": false
             }
           ],
           "actions": [
