@@ -428,9 +428,24 @@
               ]
             },
             {
+              "name": "video",
+              "type": "video",
+              "label": "Adventures of a big fat bunny",
+              "autoplay": true,
+              "controls": true,
+              "repeat": true,
+              "muted": true,
+              "width": "900px",
+              "value": [
+                "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4",
+                "https://archive.org/download/WebmVp8Vorbis/webmvp8_512kb.mp4",
+                "https://archive.org/download/WebmVp8Vorbis/webmvp8.ogv"
+              ]
+            },
+            {
               "name": "rating",
               "type": "rating",
-              "label": "Rate your experience",
+              "label": "How did you like our fat bunny",
               "maxRating": 5,
               "ratingInfo": true,
               "icon": "star",
