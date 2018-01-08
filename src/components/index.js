@@ -11,6 +11,7 @@ export { default as CRadio } from './CRadio';
 export { default as CRating } from './CRating';
 export { default as CRichText } from './CRichText';
 export { default as CSelect } from './CSelect';
+export { default as CSlider } from './CSlider';
 export { default as CSwitch } from './CSwitch';
 export { default as CTags } from './CTags';
 export { default as CText } from './CText';

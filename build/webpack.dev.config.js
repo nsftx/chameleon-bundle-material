@@ -71,7 +71,11 @@ module.exports = merge(baseWebpackConfig, {
     publicPath: '/assets/',
     host: process.env.HOST || 'localhost',
     port: process.env.PORT || '8080',
-    disableHostCheck: true
+    disableHostCheck: true,
+    watchOptions: {
+      aggregateTimeout: 300,
+      poll: 1000
+    }
   },
   plugins: [
     new ExtractTextPlugin({

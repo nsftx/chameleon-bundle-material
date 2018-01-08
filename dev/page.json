@@ -430,6 +430,29 @@
               ]
             },
             {
+              "name": "age",
+              "type": "slider",
+              "label": "Age",
+              "color": "primary",
+              "trackColor": "",
+              "thumbColor": "",
+              "thumbLabel": true,
+              "prependIcon": null,
+              "appendIcon": null,
+              "hint": null,
+              "persistentHint": false,
+              "searchable": false,
+              "private": false,
+              "validateOn": "value",
+              "validation": {
+                "required": true,
+                "min": 1,
+                "max": 100
+              },
+              "value": null,
+              "step": 1
+            },
+            {
               "name": "rating",
               "type": "rating",
               "label": "How did you like our fat bunny",
