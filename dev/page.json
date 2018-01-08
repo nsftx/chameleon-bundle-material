@@ -397,7 +397,7 @@
               "validation": {
                 "required": true,
                 "minDate": "2017-11-05T20:35:00.000Z",
-                "maxDate": "2017-11-09T20:35:00.000Z"
+                "maxDate": "2017-11-21T20:35:00.000Z"
               },
               "time": {
                 "enabled": true
@@ -418,7 +418,9 @@
               "searchable": false,
               "private": true,
               "validation": {
-                "required": true
+                "required": true,
+                "minDate": "2017-11-05T20:35:00.000Z",
+                "maxDate": "2017-11-21T20:35:00.000Z"
               },
               "time": {
                 "enabled": true
@@ -499,7 +501,7 @@
           "type": "video",
           "name": "video widget",
           "label": "Adventures of a big fat bunny",
-          "autoplay": true,
+          "autoplay": false,
           "controls": true,
           "repeat": true,
           "muted": true,

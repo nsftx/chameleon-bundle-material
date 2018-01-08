@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import moment from 'moment';
 import fieldable from '../../mixins/fieldable';
 import validator from '../../validators/basicValidator';
 
@@ -53,10 +54,47 @@ const getTextProps = (context) => {
     placeholder: definition.placeholder,
     required: getPropRequired(definition),
     rules: validator.getRules(definition, context.validators),
-    value: context.value,
+    value: context.formattedValue,
   };
 
   return props;
+};
+
+const getAllowedDates = (context, endRange) => {
+  const max = context.definition.validation.maxDate;
+  let min = context.definition.validation.minDate;
+
+  const validateDates = () => {
+    if (max < min) {
+      return {
+        min: max,
+        max: min,
+      };
+    }
+
+    if (endRange && context.value) {
+      min = moment(context.value[0]).subtract(1, 'days').format();
+    }
+
+    return {
+      min: moment(min).isValid() ? min : null,
+      max: moment(max).isValid() ? max : null,
+    };
+  };
+
+  return validateDates();
+};
+
+const getPickerDefinition = (context, endRange) => {
+  const definition = _.clone(context.definition);
+  definition.allowedDates = getAllowedDates(context, endRange);
+  if (context.value) {
+    definition.value = endRange ? context.value[1] : context.value[0];
+  } else {
+    definition.value = endRange ? definition.value[1] : definition.value[0];
+  }
+
+  return definition;
 };
 
 export default {
@@ -68,6 +106,8 @@ export default {
     return {
       valueFrom: null,
       valueTo: null,
+      formattedValueFrom: null,
+      formattedValueTo: null,
     };
   },
   watch: {
@@ -80,10 +120,16 @@ export default {
       this.setValue();
     },
   },
+  computed: {
+    formattedValue() {
+      return `${this.formattedValueFrom} - ${this.formattedValueTo}`;
+    },
+  },
   methods: {
     setValue() {
       if (this.valueFrom && this.valueTo) {
-        this.value = `${this.valueFrom} - ${this.valueTo}`;
+        this.value = [this.valueFrom, this.valueTo];
+        this.$emit('input', this.value);
       }
     },
   },
@@ -104,12 +150,18 @@ export default {
         {
           staticClass: 'left',
           props: {
-            definition: this.definition,
+            definition: getPickerDefinition(this),
             startRange: true,
           },
           on: {
             input(value) {
               self.valueFrom = value;
+              if (moment(self.valueFrom).isAfter(self.valueTo)) {
+                self.valueTo = self.valueFrom;
+              }
+            },
+            formattedInput(value) {
+              self.formattedValueFrom = value;
             },
           },
         },
@@ -119,12 +171,15 @@ export default {
         {
           staticClass: 'right',
           props: {
-            definition: this.definition,
+            definition: getPickerDefinition(this, true),
             endRange: true,
           },
           on: {
             input(value) {
               self.valueTo = value;
+            },
+            formattedInput(value) {
+              self.formattedValueTo = value;
             },
           },
         },
