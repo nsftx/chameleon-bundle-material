@@ -24,10 +24,15 @@
             </v-flex>
             <v-flex xs12
                     md6>
-              <v-card v-if="page">
+              <v-card v-if="page" class="mb-1">
                 <c-form :definition="form"
                         :validators="page.validators">
                 </c-form>
+              </v-card>
+              <v-card v-if="page">
+                <c-video :definition="video"
+                         :validators="page.validators">
+                </c-video>
               </v-card>
             </v-flex>
           </v-layout>
@@ -53,20 +58,21 @@
     data() {
       return {
         source: json,
+        validSource: null,
         page: null,
       };
     },
     computed: {
       form() {
-        if (this.page) {
-          const form = this.page.containers[0].widgets[0];
+        if (this.validSource) {
+          return this.page.containers[0].widgets[0];
+        }
 
-          const validation = chameleonNotation.validate(form);
-          if (!validation.isValid) {
-            console.warn(validation.message);
-          }
-
-          return form;
+        return null;
+      },
+      video() {
+        if(this.validSource) {
+          return this.page.containers[0].widgets[1];
         }
 
         return null;
@@ -75,6 +81,14 @@
     methods: {
       sourceChanged(value) {
         this.page = value;
+        const validation = chameleonNotation.validate(this.page);
+
+        if (!validation.isValid) {
+          this.validSource = null;
+          console.warn(validation.message);
+        } else {
+          this.validSource = this.page;
+        }
       },
     },
   };
