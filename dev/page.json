@@ -443,7 +443,7 @@
               "persistentHint": false,
               "searchable": false,
               "private": false,
-              "validateOn": "value",
+              "validateOn": "blur",
               "validation": {
                 "required": true,
                 "min": 1,
