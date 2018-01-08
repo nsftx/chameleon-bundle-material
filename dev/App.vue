@@ -58,26 +58,20 @@
     data() {
       return {
         source: json,
+        validSource: null,
         page: null,
       };
     },
     computed: {
       form() {
-        if (this.page) {
-          const form = this.page.containers[0].widgets[0];
-
-          const validation = chameleonNotation.validate(form);
-          if (!validation.isValid) {
-            console.warn(validation.message);
-          }
-
-          return form;
+        if (this.validSource) {
+          return this.page.containers[0].widgets[0];
         }
 
         return null;
       },
       video() {
-        if(this.page) {
+        if(this.validSource) {
           return this.page.containers[0].widgets[1];
         }
 
@@ -87,6 +81,14 @@
     methods: {
       sourceChanged(value) {
         this.page = value;
+        const validation = chameleonNotation.validate(this.page);
+
+        if (!validation.isValid) {
+          this.validSource = null;
+          console.warn(validation.message);
+        } else {
+          this.validSource = this.page;
+        }
       },
     },
   };
