@@ -30,7 +30,8 @@ const getSourceType = (source) => {
 };
 
 const getSources = (createElement, definition) => {
-  const sources = _.map(definition.value, (source) => {
+  const srcValues = _.isString(definition.value) ? [definition.value] : definition.value;
+  const sources = _.map(srcValues, (source) => {
     const el = createElement(
       'source',
       {
