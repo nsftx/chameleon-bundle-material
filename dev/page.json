@@ -37,6 +37,7 @@
   "elements": [
     {
       "type": "panel",
+      "name": "panel-1",
       "flat": false,
       "color": "#f5f5f5",
       "elements": [
@@ -522,7 +523,14 @@
               }
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "type": "vList",
+      "name": "list-1",
+      "flat": false,
+      "elements": [
         {
           "type": "video",
           "name": "video widget",

@@ -24,11 +24,14 @@
             </v-flex>
             <v-flex xs12
                     md6>
-              <c-panel v-if="page"
-                       class="mb-1"
-                       :definition="panel"
-                       :validators="page.validators">
-              </c-panel>
+              <template v-for="(container, index) in containers">
+                <component :is="container"
+                           :key="`container-${index}`"
+                           class="mb-1"
+                           :definition="getContainerDefinition(index)"
+                           :validators="page.validators">
+                </component>
+              </template>
             </v-flex>
           </v-layout>
         </v-container>
@@ -39,8 +42,14 @@
 </template>
 
 <script>
+  import _ from 'lodash';
   import VJsoneditor from 'vue-jsoneditor';
   import chameleonNotation from 'chameleon-notation';
+
+  const getComponentTag = (name) => {
+    const tag = _.kebabCase(name);
+    return `c-${tag}`;
+  };
 
   // This will come from Chameleon API
   const json = require('./page.json');
@@ -58,13 +67,18 @@
       };
     },
     computed: {
-      panel() {
-        if (this.validSource) {
-          return this.page.elements[0];
-        }
-      },
+      containers() {
+        if (!this.page) return [];
+
+        return _.map(this.page.elements, (element) => {
+          return getComponentTag(element.type);
+        });
+      }
     },
     methods: {
+      getContainerDefinition(index) {
+        return this.page.elements[index];
+      },
       sourceChanged(value) {
         this.page = value;
         const validation = chameleonNotation.validate(this.page);

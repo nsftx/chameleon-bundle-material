@@ -1,5 +1,7 @@
 import _ from 'lodash';
 
+require('../../stylus/components/_v-list.styl');
+
 const getComponentTag = (name) => {
   const type = ['number', 'money'].indexOf(name) > -1 ? 'text' : name;
   const tag = _.kebabCase(type);
@@ -8,7 +10,7 @@ const getComponentTag = (name) => {
 };
 
 export default {
-  name: 'c-panel',
+  name: 'c-v-list',
   props: {
     definition: {
       type: Object,
@@ -30,15 +32,13 @@ export default {
         },
         style: {
           backgroundColor: this.definition.color,
-          width: this.definition.width,
         },
-        staticClass: 'c-panel',
+        staticClass: 'c-v-list',
       },
       _.map(this.definition.elements, (element) => {
         const el = createElement(
           getComponentTag(element.type),
           {
-            key: `${element.name}_${Date.now()}`,
             props: {
               definition: element,
               validators: self.validators,

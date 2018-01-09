@@ -17,3 +17,4 @@ export { default as CSwitch } from './CSwitch';
 export { default as CTags } from './CTags';
 export { default as CText } from './CText';
 export { default as CVideo } from './CVideo';
+export { default as CVList } from './CVList';
