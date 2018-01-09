@@ -54,7 +54,7 @@ const getTextProps = (context) => {
     placeholder: definition.placeholder,
     required: getPropRequired(definition),
     rules: validator.getRules(definition, context.validators),
-    value: context.value,
+    value: context.formattedValue,
   };
 
   return props;
@@ -83,6 +83,7 @@ const getAllowedDates = (context) => {
 const getPickerProps = (context) => {
   const definition = context.definition;
   definition.allowedDates = getAllowedDates(definition);
+  if (context.value) definition.value = context.value;
 
   const props = {
     definition,
@@ -98,6 +99,7 @@ export default {
   ],
   data() {
     return {
+      formattedValue: null,
     };
   },
   render(createElement) {
@@ -119,6 +121,9 @@ export default {
           on: {
             input(value) {
               self.value = value;
+            },
+            formattedInput(value) {
+              self.formattedValue = value;
             },
           },
         },

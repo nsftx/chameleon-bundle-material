@@ -7,7 +7,7 @@ const getDatePickerProps = (context) => {
     scrollable: true,
     autosave: true,
     value: context.value,
-    allowedDates: context.allowedDates,
+    allowedDates: context.definition.allowedDates,
   };
 
   return props;
@@ -130,9 +130,6 @@ export default {
     };
   },
   computed: {
-    allowedDates() {
-      return this.definition.allowedDates;
-    },
     hasTimeComponent() {
       return this.definition.time && this.definition.time.enabled;
     },
@@ -155,15 +152,13 @@ export default {
   },
   watch: {
     value() {
-      this.$emit('input', this.formattedValue);
+      this.$emit('input', this.value);
+      this.$emit('formattedInput', this.formattedValue);
     },
   },
   render(createElement) {
-    if (Array.isArray(this.value)) {
-      this.value = this.startRange ? this.value[0] : this.value[1];
-    }
-
     const children = [];
+    this.value = this.definition.value;
 
     if (this.hasTimeComponent && this.isTimeVisible) {
       children.push([
