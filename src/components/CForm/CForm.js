@@ -94,6 +94,7 @@ export default {
           'v-form',
           {
             ref: this.definition.name,
+            staticClass: 'c-form',
           },
           [
             createElement(

@@ -6,6 +6,7 @@ export { default as CDate } from './CDate';
 export { default as CDateRange } from './CDateRange';
 export { default as CForm } from './CForm';
 export { default as CMap } from './CMap';
+export { default as CPanel } from './CPanel';
 export { default as CPicker } from './CPicker';
 export { default as CRadio } from './CRadio';
 export { default as CRating } from './CRating';

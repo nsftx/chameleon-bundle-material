@@ -34,9 +34,12 @@
       "message": "The ${field} field is required."
     }
   },
-  "containers": [
+  "elements": [
     {
-      "widgets": [
+      "type": "panel",
+      "flat": false,
+      "color": "#f5f5f5",
+      "elements": [
         {
           "type": "form",
           "name": "person",

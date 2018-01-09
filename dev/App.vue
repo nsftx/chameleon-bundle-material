@@ -24,16 +24,11 @@
             </v-flex>
             <v-flex xs12
                     md6>
-              <v-card v-if="page" class="mb-1">
-                <c-form :definition="form"
-                        :validators="page.validators">
-                </c-form>
-              </v-card>
-              <v-card v-if="page">
-                <c-video :definition="video"
-                         :validators="page.validators">
-                </c-video>
-              </v-card>
+              <c-panel v-if="page"
+                       class="mb-1"
+                       :definition="panel"
+                       :validators="page.validators">
+              </c-panel>
             </v-flex>
           </v-layout>
         </v-container>
@@ -63,19 +58,10 @@
       };
     },
     computed: {
-      form() {
+      panel() {
         if (this.validSource) {
-          return this.page.containers[0].widgets[0];
+          return this.page.elements[0];
         }
-
-        return null;
-      },
-      video() {
-        if(this.validSource) {
-          return this.page.containers[0].widgets[1];
-        }
-
-        return null;
       },
     },
     methods: {
