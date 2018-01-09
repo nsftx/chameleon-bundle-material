@@ -84,11 +84,10 @@
         const validation = chameleonNotation.validate(this.page);
 
         if (!validation.isValid) {
-          this.validSource = null;
           console.warn(validation.message);
-        } else {
-          this.validSource = this.page;
         }
+
+        this.validSource = this.page;
       },
     },
   };
