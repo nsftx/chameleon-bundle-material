@@ -1,7 +1,7 @@
-import CVList from './CVList';
+import CVlist from './CVlist';
 
 export default {
   install(Vue) {
-    Vue.component(CVList.name, CVList);
+    Vue.component(CVlist.name, CVlist);
   },
 };

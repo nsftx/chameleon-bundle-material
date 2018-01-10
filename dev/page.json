@@ -527,7 +527,7 @@
       ]
     },
     {
-      "type": "vList",
+      "type": "vlist",
       "name": "list-1",
       "flat": false,
       "elements": [

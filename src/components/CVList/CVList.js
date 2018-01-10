@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-require('../../stylus/components/_v-list.styl');
+require('../../stylus/components/_vlist.styl');
 
 const getComponentTag = (name) => {
   const type = ['number', 'money'].indexOf(name) > -1 ? 'text' : name;
@@ -10,7 +10,7 @@ const getComponentTag = (name) => {
 };
 
 export default {
-  name: 'c-v-list',
+  name: 'c-vlist',
   props: {
     definition: {
       type: Object,
@@ -33,7 +33,7 @@ export default {
         style: {
           backgroundColor: this.definition.color,
         },
-        staticClass: 'c-v-list',
+        staticClass: 'c-vlist',
       },
       _.map(this.definition.elements, (element) => {
         const el = createElement(
