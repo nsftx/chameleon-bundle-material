@@ -1,3 +1,31 @@
+.rating {
+  position: relative;
+}
+.rating .rating__message {
+  position: relative;
+  font-size: 12px;
+  opacity: 0;
+  top: -10px;
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.rating .icon {
+  position: relative;
+  color: #bdbdbd;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.rating .icon:hover {
+  cursor: pointer;
+}
+.rating--error .rating__message {
+  color: #ff5252;
+  opacity: 1;
+  top: 0;
+}
 .input-richtext {
   position: relative;
 }
@@ -8,4 +36,7 @@
 .input-richtext--error .ql-toolbar,
 .input-richtext--error .ql-container {
   border-color: #ff5252;
+}
+.c-v-list > * {
+  width: 100%;
 }

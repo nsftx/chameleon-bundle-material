@@ -24,16 +24,14 @@
             </v-flex>
             <v-flex xs12
                     md6>
-              <v-card v-if="page" class="mb-1">
-                <c-form :definition="form"
-                        :validators="page.validators">
-                </c-form>
-              </v-card>
-              <v-card v-if="page">
-                <c-video :definition="video"
-                         :validators="page.validators">
-                </c-video>
-              </v-card>
+              <template v-for="(container, index) in containers">
+                <component :is="container"
+                           :key="`container-${index}`"
+                           class="mb-1"
+                           :definition="getContainerDefinition(index)"
+                           :validators="page.validators">
+                </component>
+              </template>
             </v-flex>
           </v-layout>
         </v-container>
@@ -44,8 +42,14 @@
 </template>
 
 <script>
+  import _ from 'lodash';
   import VJsoneditor from 'vue-jsoneditor';
   import chameleonNotation from 'chameleon-notation';
+
+  const getComponentTag = (name) => {
+    const tag = _.kebabCase(name);
+    return `c-${tag}`;
+  };
 
   // This will come from Chameleon API
   const json = require('./page.json');
@@ -63,32 +67,27 @@
       };
     },
     computed: {
-      form() {
-        if (this.validSource) {
-          return this.page.containers[0].widgets[0];
-        }
+      containers() {
+        if (!this.page) return [];
 
-        return null;
-      },
-      video() {
-        if(this.validSource) {
-          return this.page.containers[0].widgets[1];
-        }
-
-        return null;
-      },
+        return _.map(this.page.elements, (element) => {
+          return getComponentTag(element.type);
+        });
+      }
     },
     methods: {
+      getContainerDefinition(index) {
+        return this.page.elements[index];
+      },
       sourceChanged(value) {
         this.page = value;
         const validation = chameleonNotation.validate(this.page);
 
         if (!validation.isValid) {
-          this.validSource = null;
           console.warn(validation.message);
-        } else {
-          this.validSource = this.page;
         }
+
+        this.validSource = this.page;
       },
     },
   };

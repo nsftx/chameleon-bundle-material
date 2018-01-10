@@ -34,9 +34,13 @@
       "message": "The ${field} field is required."
     }
   },
-  "containers": [
+  "elements": [
     {
-      "widgets": [
+      "type": "panel",
+      "name": "panel-1",
+      "flat": false,
+      "color": "#f5f5f5",
+      "elements": [
         {
           "type": "form",
           "name": "person",
@@ -397,7 +401,7 @@
               "validation": {
                 "required": true,
                 "minDate": "2017-11-05T20:35:00.000Z",
-                "maxDate": "2017-11-09T20:35:00.000Z"
+                "maxDate": "2017-11-21T20:35:00.000Z"
               },
               "time": {
                 "enabled": true
@@ -418,7 +422,9 @@
               "searchable": false,
               "private": true,
               "validation": {
-                "required": true
+                "required": true,
+                "minDate": "2017-11-05T20:35:00.000Z",
+                "maxDate": "2017-11-21T20:35:00.000Z"
               },
               "time": {
                 "enabled": true
@@ -536,12 +542,19 @@
               }
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "type": "vList",
+      "name": "list-1",
+      "flat": false,
+      "elements": [
         {
           "type": "video",
           "name": "video widget",
           "label": "Adventures of a big fat bunny",
-          "autoplay": true,
+          "autoplay": false,
           "controls": true,
           "repeat": true,
           "muted": true,
