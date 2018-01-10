@@ -1,7 +1,9 @@
+import _ from 'lodash';
+
 const getAttrs = (context) => {
   const attrs = {
     name: context.definition.name,
-    value: context.definition.value,
+    inputValue: context.definition.inputValue,
   };
 
   return attrs;
@@ -11,8 +13,10 @@ const getListeners = (context) => {
   const self = context;
 
   const listeners = {
-    change() {
-      self.definition.value = self.definition.value || self.definition.label;
+    change(payload) {
+      self.definition.inputValue = payload;
+      self.definition.value = payload;
+      self.$emit('change', payload);
     },
   };
 
@@ -25,25 +29,17 @@ const getProps = (context) => {
   const props = {
     appendIcon: definition.appendIcon,
     hint: definition.hint,
-    label: definition.label,
     persistentHint: definition.persistentHint,
     placeholder: definition.placeholder,
     prependIcon: definition.prependIcon,
     disabled: definition.disabled,
-    color: definition.color,
   };
 
   return props;
 };
 
 export default {
-  name: 'c-radio',
-  provide() {
-    return {
-      name: () => this.definition.name,
-      isMandatory: () => this.definition.mandatory,
-    };
-  },
+  name: 'c-radio-list',
   props: {
     definition: {
       type: Object,
@@ -52,12 +48,23 @@ export default {
   },
   render(createElement) {
     return createElement(
-      'v-radio',
+      'v-radio-group',
       {
         attrs: getAttrs(this),
         props: getProps(this),
         on: getListeners(this),
       },
+      _.map(this.definition.dataSource.items,
+        item => createElement('v-radio',
+          {
+            props: {
+              label: item.label,
+              value: item.value,
+              color: item.color,
+              disabled: item.disabled,
+            },
+          },
+        )),
     );
   },
 };

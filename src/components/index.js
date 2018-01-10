@@ -7,7 +7,7 @@ export { default as CDateRange } from './CDateRange';
 export { default as CForm } from './CForm';
 export { default as CMap } from './CMap';
 export { default as CPicker } from './CPicker';
-export { default as CRadio } from './CRadio';
+export { default as CRadio } from './CRadioList';
 export { default as CRating } from './CRating';
 export { default as CRichText } from './CRichText';
 export { default as CSelect } from './CSelect';

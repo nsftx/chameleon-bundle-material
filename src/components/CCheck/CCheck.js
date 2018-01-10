@@ -5,7 +5,7 @@ const getAttrs = (context) => {
   const attrs = {
     name: context.definition.name,
     inputValue: context.definition.inputValue,
-    value: context.definition.value,
+    trueValue: context.definition.value,
   };
 
   return attrs;
@@ -17,7 +17,7 @@ const getListeners = (context) => {
   const listeners = {
     change() {
       self.definition.inputValue = self.definition.inputValue ? null : true;
-      self.definition.value = self.definition.inputValue;
+      self.definition.trueValue = self.definition.value || self.definition.label;
     },
   };
 
