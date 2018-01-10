@@ -1,3 +1,3 @@
 export default {
-  type: 'c-date-range',
+  type: 'date-range',
 };

@@ -1,3 +1,3 @@
 export default {
-  type: 'c-rich-text',
+  type: 'rich-text',
 };

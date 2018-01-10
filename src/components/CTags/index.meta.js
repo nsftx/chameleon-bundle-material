@@ -1,3 +1,3 @@
 export default {
-  type: 'c-tags',
+  type: 'tags',
 };
