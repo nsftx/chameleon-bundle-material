@@ -9,7 +9,7 @@
 .c-hlist > * {
   float: left;
 }
-.c-hlist.c-hlist--spaced > * {
+.c-hlist--spaced > * {
   margin: 16px;
 }
 .rating {
@@ -54,6 +54,9 @@
 .c-video {
   max-width: 100%;
 }
-.c-v-list > * {
+.c-vlist > * {
   width: 100%;
+}
+.c-vlist--spaced > * {
+  margin-bottom: 16px;
 }
