@@ -1,4 +1,3 @@
-export { default as Chameleon } from './Chameleon';
 export { default as CButton } from './CButton';
 export { default as CCalculation } from './CCalculation';
 export { default as CCheck } from './CCheck';
