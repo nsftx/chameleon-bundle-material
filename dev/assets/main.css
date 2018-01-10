@@ -1,3 +1,17 @@
+.c-hlist:before,
+.c-hlist:after {
+  content: " ";
+  display: table;
+}
+.c-hlist:after {
+  clear: both;
+}
+.c-hlist > * {
+  float: left;
+}
+.c-hlist.c-hlist--spaced > * {
+  margin: 16px;
+}
 .rating {
   position: relative;
 }
@@ -36,6 +50,9 @@
 .input-richtext--error .ql-toolbar,
 .input-richtext--error .ql-container {
   border-color: #ff5252;
+}
+.c-video {
+  max-width: 100%;
 }
 .c-v-list > * {
   width: 100%;
