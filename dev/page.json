@@ -481,23 +481,45 @@
               "disabled": false,
               "persistentHint": false,
               "inputValue": null,
+              "trueValue": "",
               "value": null,
               "validation": {
                 "required": true
               }
             },
             {
-              "name": "rememberRadio",
-              "type": "radio",
-              "label": "Remember me",
-              "color": "primary",
+              "name": "gender",
+              "type": "radioList",
               "prependIcon": null,
               "appendIcon": null,
               "hint": null,
-              "disabled": false,
               "persistentHint": false,
-              "value": "",
-              "mandatory": false
+              "inputValue": "",
+              "validation": {
+                "required": true
+              },
+              "dataSource": {
+                "items": [
+                  {
+                    "value": "Male",
+                    "label": "Male",
+                    "color": "primary",
+                    "disabled": false
+                  },
+                  {
+                    "value": "Female",
+                    "label": "Female",
+                    "color": "primary",
+                    "disabled": false
+                  },
+                  {
+                    "value": "Other",
+                    "label": "Other",
+                    "color": "primary",
+                    "disabled": false
+                  }
+                ]
+              }
             },
             {
               "name": "rememberSwitch",

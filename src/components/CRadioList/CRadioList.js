@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import fieldable from '../../mixins/fieldable';
 import validator from '../../validators/basicValidator';
 
@@ -5,7 +6,6 @@ const getAttrs = (context) => {
   const attrs = {
     name: context.definition.name,
     inputValue: context.definition.inputValue,
-    trueValue: context.definition.value,
   };
 
   return attrs;
@@ -15,9 +15,10 @@ const getListeners = (context) => {
   const self = context;
 
   const listeners = {
-    change() {
-      self.definition.inputValue = self.definition.inputValue ? null : true;
-      self.definition.trueValue = self.definition.value || self.definition.label;
+    change(payload) {
+      self.definition.inputValue = payload;
+      self.definition.value = payload;
+      self.$emit('change', payload);
     },
   };
 
@@ -38,12 +39,9 @@ const getProps = (context) => {
   const props = {
     appendIcon: definition.appendIcon,
     hint: definition.hint,
-    label: definition.label,
     persistentHint: definition.persistentHint,
     placeholder: definition.placeholder,
     prependIcon: definition.prependIcon,
-    disabled: definition.disabled,
-    color: definition.color,
     required: getPropRequired(definition),
     rules: validator.getRules(definition, context.validators),
   };
@@ -52,7 +50,7 @@ const getProps = (context) => {
 };
 
 export default {
-  name: 'c-check',
+  name: 'c-radio-list',
   props: {
     definition: {
       type: Object,
@@ -64,12 +62,23 @@ export default {
   ],
   render(createElement) {
     return createElement(
-      'v-checkbox',
+      'v-radio-group',
       {
         attrs: getAttrs(this),
         props: getProps(this),
         on: getListeners(this),
       },
+      _.map(this.definition.dataSource.items,
+        item => createElement('v-radio',
+          {
+            props: {
+              label: item.label,
+              value: item.value,
+              color: item.color,
+              disabled: item.disabled,
+            },
+          },
+        )),
     );
   },
 };
