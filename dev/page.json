@@ -552,6 +552,7 @@
       "type": "vlist",
       "name": "list-1",
       "flat": false,
+      "gutter": false,
       "elements": [
         {
           "type": "video",

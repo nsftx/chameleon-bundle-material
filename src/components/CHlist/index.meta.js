@@ -15,5 +15,15 @@ export default {
         maxLength: 25,
       },
     },
+    flat: {
+      type: 'check',
+      name: 'No shadow',
+      value: false,
+    },
+    gutter: {
+      type: 'check',
+      name: 'Spacing',
+      value: false,
+    },
   },
 };

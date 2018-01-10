@@ -26,6 +26,9 @@ export default {
     return createElement(
       'v-card',
       {
+        class: {
+          'c-vlist--spaced': this.definition.gutter,
+        },
         props: {
           color: this.definition.color,
           flat: this.definition.flat,

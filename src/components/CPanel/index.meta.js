@@ -7,4 +7,26 @@ export default {
     'containers',
     'widgets',
   ],
+  options: {
+    color: {
+      type: 'input',
+      name: 'Color',
+      value: 'white',
+      validation: {
+        required: true,
+        minLength: 3,
+        maxLength: 25,
+      },
+    },
+    flat: {
+      type: 'check',
+      name: 'No shadow',
+      value: false,
+    },
+    width: {
+      type: 'input',
+      name: 'Width',
+      value: '',
+    },
+  },
 };
