@@ -1,6 +1,8 @@
 import _ from 'lodash';
 import fieldable from '../../mixins/fieldable';
 
+require('../../stylus/components/_video.styl');
+
 const sourceTypes = {
   webm: 'video/webm',
   mp4: 'video/mp4',
@@ -61,10 +63,6 @@ export default {
       {
         attrs: getAttrs(this.definition),
         ref: 'video',
-        style: {
-          width: this.definition.width || '100%',
-          maxWidth: '100%',
-        },
         on: {
           click() {
             if (self.$refs.video.paused) {
@@ -74,6 +72,7 @@ export default {
             }
           },
         },
+        staticClass: 'c-video',
       },
       getSources(createElement, this.definition),
     );

@@ -4,6 +4,7 @@ export { default as CCheck } from './CCheck';
 export { default as CDate } from './CDate';
 export { default as CDateRange } from './CDateRange';
 export { default as CForm } from './CForm';
+export { default as CHlist } from './CHlist';
 export { default as CMap } from './CMap';
 export { default as CPanel } from './CPanel';
 export { default as CPicker } from './CPicker';

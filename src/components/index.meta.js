@@ -4,6 +4,7 @@ export { default as check } from './CCheck/index.meta.js';
 export { default as date } from './CDate/index.meta.js';
 export { default as dateRange } from './CDateRange/index.meta.js';
 export { default as form } from './CForm/index.meta.js';
+export { default as hlist } from './CHlist/index.meta.js';
 export { default as map } from './CMap/index.meta.js';
 export { default as panel } from './CPanel/index.meta.js';
 export { default as picker } from './CPicker/index.meta.js';

@@ -1,0 +1,11 @@
+@import '../mixins/_clearfix'
+
+.c-hlist
+  clearfix()
+
+  > *
+    float: left;
+
+  &.c-hlist--spaced
+    > *
+      margin: 16px
