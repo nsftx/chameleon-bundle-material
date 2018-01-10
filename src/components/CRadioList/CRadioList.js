@@ -1,4 +1,6 @@
 import _ from 'lodash';
+import fieldable from '../../mixins/fieldable';
+import validator from '../../validators/basicValidator';
 
 const getAttrs = (context) => {
   const attrs = {
@@ -23,6 +25,14 @@ const getListeners = (context) => {
   return listeners;
 };
 
+const getPropRequired = (definition) => {
+  if (definition.validation) {
+    return !!definition.validation.required;
+  }
+
+  return false;
+};
+
 const getProps = (context) => {
   const definition = context.definition;
 
@@ -32,7 +42,8 @@ const getProps = (context) => {
     persistentHint: definition.persistentHint,
     placeholder: definition.placeholder,
     prependIcon: definition.prependIcon,
-    disabled: definition.disabled,
+    required: getPropRequired(definition),
+    rules: validator.getRules(definition, context.validators),
   };
 
   return props;
@@ -46,6 +57,9 @@ export default {
       required: true,
     },
   },
+  mixins: [
+    fieldable,
+  ],
   render(createElement) {
     return createElement(
       'v-radio-group',
