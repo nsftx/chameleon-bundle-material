@@ -7,7 +7,7 @@ export { default as form } from './CForm/index.meta.js';
 export { default as map } from './CMap/index.meta.js';
 export { default as panel } from './CPanel/index.meta.js';
 export { default as picker } from './CPicker/index.meta.js';
-export { default as radio } from './CRadio/index.meta.js';
+export { default as radioList } from './CRadioList/index.meta.js';
 export { default as rating } from './CRating/index.meta.js';
 export { default as richText } from './CRichText/index.meta.js';
 export { default as select } from './CSelect/index.meta.js';
