@@ -1,12 +1,5 @@
 import _ from 'lodash';
 
-const getComponentTag = (name) => {
-  const type = ['number', 'money'].indexOf(name) > -1 ? 'text' : name;
-  const tag = _.kebabCase(type);
-
-  return `c-${tag}`;
-};
-
 export default {
   name: 'c-panel',
   props: {
@@ -36,7 +29,7 @@ export default {
       },
       _.map(this.definition.elements, (element) => {
         const el = createElement(
-          getComponentTag(element.type),
+          `c-${_.kebabCase(element.type)}`,
           {
             key: `${element.name}_${Date.now()}`,
             props: {

@@ -3,7 +3,10 @@ export default {
   type: 'vlist',
   name: 'Vertical List',
   icon: 'view_week',
-  children: true,
+  children: [
+    'containers',
+    'widgets',
+  ],
   options: {
     color: {
       type: 'input',

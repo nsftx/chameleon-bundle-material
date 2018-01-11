@@ -3,7 +3,10 @@ export default {
   type: 'hlist',
   name: 'Horizontal List',
   icon: 'view_stream',
-  children: true,
+  children: [
+    'containers',
+    'widgets',
+  ],
   options: {
     color: {
       type: 'input',

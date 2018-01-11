@@ -2,13 +2,6 @@ import _ from 'lodash';
 
 require('../../stylus/components/_vlist.styl');
 
-const getComponentTag = (name) => {
-  const type = ['number', 'money'].indexOf(name) > -1 ? 'text' : name;
-  const tag = _.kebabCase(type);
-
-  return `c-${tag}`;
-};
-
 export default {
   name: 'c-vlist',
   props: {
@@ -40,7 +33,7 @@ export default {
       },
       _.map(this.definition.elements, (element) => {
         const el = createElement(
-          getComponentTag(element.type),
+          `c-${_.kebabCase(element.type)}`,
           {
             props: {
               definition: element,
