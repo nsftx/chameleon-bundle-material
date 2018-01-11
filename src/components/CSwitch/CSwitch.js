@@ -1,12 +1,3 @@
-const getAttrs = (context) => {
-  const attrs = {
-    name: context.definition.name,
-    inputValue: context.definition.inputValue,
-  };
-
-  return attrs;
-};
-
 const getListeners = (context) => {
   const self = context;
 
@@ -33,6 +24,7 @@ const getProps = (context) => {
     disabled: definition.disabled,
     color: definition.color,
     value: context.definition.value,
+    inputValue: context.definition.value,
   };
 
   return props;
@@ -50,7 +42,9 @@ export default {
     return createElement(
       'v-switch',
       {
-        attrs: getAttrs(this),
+        attrs: {
+          name: this.definition.name,
+        },
         props: getProps(this),
         on: getListeners(this),
       },

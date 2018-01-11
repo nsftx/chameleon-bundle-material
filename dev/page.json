@@ -491,7 +491,6 @@
                 "required": false,
                 "minCount": 1,
                 "maxCount": 2
-
               },
               "dataSource": {
                 "items": [
@@ -575,8 +574,7 @@
               "hint": null,
               "disabled": false,
               "persistentHint": false,
-              "inputValue": false,
-              "value": ""
+              "value": false
             }
           ],
           "actions": [
