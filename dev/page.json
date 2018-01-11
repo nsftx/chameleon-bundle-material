@@ -24,6 +24,12 @@
     "maxLength": {
       "message": "The ${field} field may not be greater than ${limit} characters."
     },
+    "minCount": {
+      "message": "The ${field} field must be greater than ${limit}."
+    },
+    "maxCount": {
+      "message": "The ${field} field may be less than ${limit}."
+    },
     "integer": {
       "message": "The ${field} field must be an integer."
     },
@@ -471,20 +477,43 @@
               }
             },
             {
-              "name": "rememberCheck",
-              "type": "check",
-              "label": "Remember me",
-              "color": "primary",
+              "name": "cities",
+              "type": "checkList",
+              "label": "Select cities",
               "prependIcon": null,
               "appendIcon": null,
               "hint": null,
-              "disabled": false,
               "persistentHint": false,
-              "inputValue": null,
-              "trueValue": "",
-              "value": null,
+              "hideDetails": false,
+              "value": [],
+              "validateOn": "blur",
               "validation": {
-                "required": true
+                "required": false,
+                "minCount": 1,
+                "maxCount": 2
+
+              },
+              "dataSource": {
+                "items": [
+                  {
+                    "value": "London",
+                    "label": "London",
+                    "color": "primary",
+                    "disabled": false
+                  },
+                  {
+                    "value": "Manchester",
+                    "label": "Manchester",
+                    "color": "primary",
+                    "disabled": false
+                  },
+                  {
+                    "value": "Liverpool",
+                    "label": "Liverpool",
+                    "color": "primary",
+                    "disabled": false
+                  }
+                ]
               }
             },
             {
@@ -494,7 +523,7 @@
               "appendIcon": null,
               "hint": null,
               "persistentHint": false,
-              "inputValue": "",
+              "value": "",
               "validation": {
                 "required": true
               },
@@ -519,6 +548,21 @@
                     "disabled": false
                   }
                 ]
+              }
+            },
+            {
+              "name": "rememberCheck",
+              "type": "check",
+              "label": "Remember me",
+              "color": "primary",
+              "prependIcon": null,
+              "appendIcon": null,
+              "hint": null,
+              "disabled": false,
+              "persistentHint": false,
+              "value": false,
+              "validation": {
+                "required": false
               }
             },
             {

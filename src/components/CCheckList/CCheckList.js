@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import fieldable from '../../mixins/fieldable';
 import validator from '../../validators/basicValidator';
 
@@ -23,19 +24,31 @@ const getPropRequired = (definition) => {
   return false;
 };
 
-const getProps = (context) => {
+const getPropValidateOnBlur = (definition) => {
+  if (definition.validation && definition.validateOn) {
+    return definition.validateOn === 'blur';
+  }
+
+  return false;
+};
+
+const getProps = (context, item) => {
   const definition = context.definition;
 
   const props = {
-    appendIcon: definition.appendIcon,
-    hint: definition.hint,
-    label: definition.label,
-    persistentHint: definition.persistentHint,
-    placeholder: definition.placeholder,
+    label: item.label,
+    hideDetails: definition.hideDetails,
     prependIcon: definition.prependIcon,
-    disabled: definition.disabled,
-    color: definition.color,
+    appendIcon: definition.appendIcon,
+    persistentHint: definition.persistentHint,
     inputValue: definition.value,
+    hint: definition.hint,
+    minCount: definition.validation.minCount,
+    maxCount: definition.validation.maxCount,
+    disabled: item.disabled,
+    color: item.color,
+    value: item.value,
+    validateOn: getPropValidateOnBlur(definition),
     required: getPropRequired(definition),
     rules: validator.getRules(definition, context.validators),
   };
@@ -44,7 +57,7 @@ const getProps = (context) => {
 };
 
 export default {
-  name: 'c-check',
+  name: 'c-check-list',
   props: {
     definition: {
       type: Object,
@@ -56,14 +69,23 @@ export default {
   ],
   render(createElement) {
     return createElement(
-      'v-checkbox',
+      'v-card',
       {
-        attrs: {
-          name: this.definition.name,
+        props: {
+          color: 'transparent',
+          flat: true,
         },
-        props: getProps(this),
-        on: getListeners(this),
       },
+      _.map(this.definition.dataSource.items,
+        item => createElement('v-checkbox',
+          {
+            attrs: {
+              name: this.definition.name,
+            },
+            props: getProps(this, item),
+            on: getListeners(this, item),
+          },
+        )),
     );
   },
 };

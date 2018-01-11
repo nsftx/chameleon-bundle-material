@@ -1,6 +1,7 @@
 export { default as CButton } from './CButton';
 export { default as CCalculation } from './CCalculation';
 export { default as CCheck } from './CCheck';
+export { default as CCheckList } from './CCheckList';
 export { default as CDate } from './CDate';
 export { default as CDateRange } from './CDateRange';
 export { default as CForm } from './CForm';
