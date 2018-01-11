@@ -1,6 +1,7 @@
 export { default as button } from './CButton/index.meta.js';
 export { default as calculation } from './CCalculation/index.meta.js';
 export { default as check } from './CCheck/index.meta.js';
+export { default as checkList } from './CCheckList/index.meta.js';
 export { default as date } from './CDate/index.meta.js';
 export { default as dateRange } from './CDateRange/index.meta.js';
 export { default as form } from './CForm/index.meta.js';

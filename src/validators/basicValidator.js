@@ -5,6 +5,8 @@ import minValidator from './minValidator';
 import maxValidator from './maxValidator';
 import minLengthValidator from './minLengthValidator';
 import maxLengthValidator from './maxLengthValidator';
+import minCountValidator from './minCountValidator';
+import maxCountValidator from './maxCountValidator';
 import patternValidator from './patternValidator';
 import requiredValidator from './requiredValidator';
 
@@ -15,6 +17,8 @@ const validator = {
   max: maxValidator,
   minLength: minLengthValidator,
   maxLength: maxLengthValidator,
+  minCount: minCountValidator,
+  maxCount: maxCountValidator,
   pattern: patternValidator,
   required: requiredValidator,
 };
@@ -75,6 +79,22 @@ export default {
         getValue(value),
         validation.maxLength,
       ), { field: definition.label, limit: validation.maxLength }));
+    }
+
+    if (!_.isUndefined(validation.minCount)) {
+      rules.push(value => getMessage(validator.minCount(
+        validators.minCount,
+        getValue(value),
+        validation.minCount,
+      ), { field: definition.label, limit: validation.minCount }));
+    }
+
+    if (!_.isUndefined(validation.maxCount)) {
+      rules.push(value => getMessage(validator.maxCount(
+        validators.maxCount,
+        getValue(value),
+        validation.maxCount,
+      ), { field: definition.label, limit: validation.maxCount }));
     }
 
     if (validation.pattern) {
