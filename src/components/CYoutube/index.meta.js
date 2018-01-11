@@ -10,7 +10,7 @@ export default {
         {
           id: 1,
           name: '-',
-          value: false,
+          value: '',
         },
         {
           id: 2,
@@ -28,6 +28,7 @@ export default {
           value: 'search',
         },
       ],
+      returnObject: false,
       displayProp: 'name',
       valueProp: 'value',
       value: false,
@@ -39,6 +40,7 @@ export default {
     },
     value: {
       type: 'list',
+      name: 'Video/playlist source',
       value: [],
     },
   },
