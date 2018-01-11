@@ -597,6 +597,17 @@
       "gutter": false,
       "elements": [
         {
+          "type": "youtube",
+          "name": "you tube",
+          "playlist": false,
+          "loop": false,
+          "value": [
+            "https://www.youtube.com/watch?v=2bnZliAjPUk",
+            "https://www.youtube.com/watch?v=4Rc-NGWEHdU",
+            "https://www.youtube.com/watch?v=l-vSl7BuxGs"
+          ]
+        },
+        {
           "type": "video",
           "name": "video widget",
           "label": "Adventures of a big fat bunny",
