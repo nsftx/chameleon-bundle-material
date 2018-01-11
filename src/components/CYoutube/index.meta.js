@@ -6,10 +6,11 @@ export default {
   options: {
     playlist: {
       type: 'select',
+      name: 'Playlist type',
       items: [
         {
           id: 1,
-          name: '-',
+          name: ' ',
           value: '',
         },
         {
@@ -31,17 +32,20 @@ export default {
       returnObject: false,
       displayProp: 'name',
       valueProp: 'value',
-      value: false,
+      value: '',
+      priority: 1,
     },
     repeat: {
       type: 'check',
       name: 'Repeat video/list',
       value: false,
+      priority: 3,
     },
     value: {
-      type: 'list',
+      type: 'inputList',
       name: 'Video/playlist source',
       value: [],
+      priority: 2,
     },
   },
 };
