@@ -38,6 +38,13 @@ const getVideoParameters = (context) => {
   return result;
 };
 
+const getPlayerMethod = (playlist, autoplay) => {
+  const method = autoplay ? 'load' : 'cue';
+  const item = playlist ? 'Playlist' : 'VideoById';
+
+  return `${method}${item}`;
+};
+
 const getPlayerParameters = (context) => {
   const params = {
     loop: context.definition.repeat,
@@ -64,7 +71,7 @@ export default {
   data() {
     return {
       player: null,
-      playlist: false,
+      playlist: '',
       predefinedPlaylist: false,
     };
   },
@@ -76,10 +83,15 @@ export default {
   methods: {
     createPlayer() {
       this.player = new window.YT.Player(this.$refs.youtube, {
+        playerVars: {
+          controls: this.definition.controls,
+        },
         events: {
           onReady: this.onPlayerReady,
         },
       });
+
+      if (this.definition.muted) this.player.mute();
     },
     loadApi() {
       const script = document.createElement('script');
@@ -90,15 +102,15 @@ export default {
       window.onYouTubeIframeAPIReady = this.createPlayer.bind(this);
     },
     onPlayerReady() {
-      const method = this.playlist ? 'loadPlaylist' : 'loadVideoById';
+      const method = getPlayerMethod(this.playlist, this.definition.autoplay);
       const params = getPlayerParameters(this);
 
       this.player[method](params);
     },
   },
   mounted() {
-    this.playlist = _.isString(this.definition.playlist) || this.definition.value.length > 1;
-    this.predefinedPlaylist = this.definition.playlist;
+    this.playlist = this.definition.playlist.length || this.definition.value.length > 1;
+    this.predefinedPlaylist = this.definition.playlist.length ? this.definition.playlist : false;
     this.loadApi();
   },
   render(createElement) {

@@ -557,8 +557,9 @@
         {
           "type": "youtube",
           "name": "you tube",
-          "playlist": false,
-          "loop": false,
+          "autoplay": true,
+          "playlist": "",
+          "repeat": false,
           "value": [
             "https://www.youtube.com/watch?v=2bnZliAjPUk",
             "https://www.youtube.com/watch?v=4Rc-NGWEHdU",

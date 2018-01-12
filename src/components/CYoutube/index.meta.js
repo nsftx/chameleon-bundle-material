@@ -4,6 +4,24 @@ export default {
   name: 'You tube',
   icon: 'ondemand_video',
   options: {
+    autoplay: {
+      type: 'check',
+      name: 'Auto play',
+      value: false,
+      priority: 3,
+    },
+    controls: {
+      type: 'check',
+      name: 'Show controls',
+      value: true,
+      priority: 6,
+    },
+    muted: {
+      type: 'check',
+      name: 'Mute volume',
+      value: false,
+      priority: 5,
+    },
     playlist: {
       type: 'select',
       name: 'Playlist type',
@@ -39,7 +57,7 @@ export default {
       type: 'check',
       name: 'Repeat video/list',
       value: false,
-      priority: 3,
+      priority: 4,
     },
     value: {
       type: 'inputList',
