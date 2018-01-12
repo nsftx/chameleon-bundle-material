@@ -10,7 +10,8 @@
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs",
-    "build": "rimraf dist && cross-env NODE_ENV=production webpack --config build/config.js --progress --hide-modules"
+    "build": "rimraf dist && cross-env NODE_ENV=production webpack --config build/config.js --progress --hide-modules",
+    "deploy": "npm run build && netlifyctl deploy"
   },
   "dependencies": {
     "chameleon-notation": "git+https://github.com/chmjs/chameleon-notation.git",
