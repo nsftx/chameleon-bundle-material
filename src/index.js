@@ -26,4 +26,8 @@ function Chameleon(Vue, args) {
 
 Chameleon.version = version;
 
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(Chameleon);
+}
+
 export default Chameleon;
