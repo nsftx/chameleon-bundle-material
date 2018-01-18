@@ -12,22 +12,22 @@ const builds = {
   development: {
     config: {
       output: {
-        filename: 'chameleon.js',
+        filename: 'chameleon-vuetify.js',
         libraryTarget: 'umd'
       },
       plugins: [
-        new ExtractTextPlugin('chameleon.css')
+        new ExtractTextPlugin('chameleon-vuetify.css')
       ]
     }
   },
   production: {
     config: {
       output: {
-        filename: 'chameleon.min.js',
+        filename: 'chameleon-vuetify.min.js',
         libraryTarget: 'umd'
       },
       plugins: [
-        new ExtractTextPlugin('chameleon.css')
+        new ExtractTextPlugin('chameleon-vuetify.css')
       ]
     },
     env: 'production'

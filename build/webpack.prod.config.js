@@ -1,6 +1,7 @@
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
 
 const resolve = file => require('path').resolve(__dirname, file);
 
@@ -30,6 +31,20 @@ module.exports = merge(baseWebpackConfig, {
   module: {
     noParse: /es6-promise\.js$/,
     rules: [
+      {
+        test: require.resolve('quill'),
+        use: [{
+            loader: 'expose-loader',
+            options: 'Quill',
+        }],
+      },
+      {
+        test: require.resolve('moment'),
+        use: [{
+            loader: 'expose-loader',
+            options: 'moment',
+        }],
+      },
       {
         test: /\.vue$/,
         use: [

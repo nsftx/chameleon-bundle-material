@@ -40,6 +40,20 @@ module.exports = merge(baseWebpackConfig, {
     noParse: /es6-promise\.js$/,
     rules: [
       {
+        test: require.resolve('quill'),
+        use: [{
+            loader: 'expose-loader',
+            options: 'Quill',
+        }],
+      },
+      {
+        test: require.resolve('moment'),
+        use: [{
+            loader: 'expose-loader',
+            options: 'moment',
+        }],
+      },
+      {
         test: /\.vue$/,
         loaders: [{
           loader: 'vue-loader',

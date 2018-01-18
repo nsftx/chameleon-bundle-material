@@ -13,6 +13,8 @@ module.exports = {
   ],
   globals: {
     JSONEditor: true,
+    moment: true,
+    Quill: true,
   },
   'settings': {
     'import/resolver': {

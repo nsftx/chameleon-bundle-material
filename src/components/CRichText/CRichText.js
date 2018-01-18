@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import Quill from 'quill';
 import fieldable from '../../mixins/fieldable';
 import validatable from '../../mixins/validatable';
 

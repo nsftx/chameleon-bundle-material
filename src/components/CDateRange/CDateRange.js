@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import moment from 'moment';
 import fieldable from '../../mixins/fieldable';
 import validator from '../../validators/basicValidator';
 
