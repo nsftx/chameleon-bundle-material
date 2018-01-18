@@ -1,4 +1,3 @@
-import moment from 'moment';
 import fieldable from '../../mixins/fieldable';
 
 const getDatePickerProps = (context) => {
