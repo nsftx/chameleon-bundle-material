@@ -39,6 +39,7 @@ const getCardSlot = (createElement) => {
         createElement('v-avatar', [
           getChipAvatar(createElement, data),
         ]),
+        data.item.name,
       ],
     ),
     item: data => [
