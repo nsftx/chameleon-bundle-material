@@ -11,7 +11,7 @@ export default {
     },
     controls: {
       type: 'check',
-      name: 'Controls',
+      name: 'Show Controls',
       value: false,
     },
     repeat: {
@@ -21,12 +21,12 @@ export default {
     },
     muted: {
       type: 'check',
-      name: 'Muted',
+      name: 'Mute Volume',
       value: false,
     },
     value: {
       type: 'inputList',
-      name: 'Sources',
+      name: 'Video Sources',
       value: [],
     },
   },

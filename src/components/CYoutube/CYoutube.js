@@ -2,7 +2,6 @@ import _ from 'lodash';
 
 const getVideoId = (url) => {
   const re = /https?:\/\/(?:[0-9A-Z-]+\.)?(?:youtu\.be\/|youtube(?:-nocookie)?\.com\S*?[^\w\s-])([\w-]{11})(?=[^\w-]|$)(?![?=&+%\w.-]*(?:['"][^<>]*>|<\/a>))[?=&+%\w.-]*/ig;
-
   const result = re.exec(url);
 
   return result ? result[1] : null;
@@ -10,7 +9,6 @@ const getVideoId = (url) => {
 
 const getPlaylistId = (url) => {
   const re = /https?:\/\/(?:[0-9A-Z-]+\.)?(?:youtu\.be\/|youtube(?:-nocookie)?\.com\S*?[^\w\s-])?.*?(?:list)=(.*?)(?:&|$)/ig;
-
   const result = re.exec(url);
 
   return result ? result[1] : null;

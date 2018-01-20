@@ -9,6 +9,10 @@
 .c-hlist > * {
   float: left;
 }
+.c-hlist > * iframe {
+  width: 100%;
+  display: block;
+}
 .c-hlist--spaced {
   padding: 8px;
 }
@@ -62,6 +66,10 @@
 }
 .c-vlist > * {
   width: 100%;
+}
+.c-vlist > * iframe {
+  width: 100%;
+  display: block;
 }
 .c-vlist--spaced {
   padding-top: 8px;

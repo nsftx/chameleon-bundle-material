@@ -1,34 +1,34 @@
 export default {
   group: 'widgets',
   type: 'youtube',
-  name: 'You tube',
+  name: 'YouTube',
   icon: 'ondemand_video',
   options: {
     autoplay: {
       type: 'check',
-      name: 'Auto play',
+      name: 'Autoplay',
       value: false,
       priority: 3,
     },
     controls: {
       type: 'check',
-      name: 'Show controls',
+      name: 'Show Controls',
       value: true,
       priority: 6,
     },
     muted: {
       type: 'check',
-      name: 'Mute volume',
+      name: 'Mute Volume',
       value: false,
       priority: 5,
     },
     playlist: {
       type: 'select',
-      name: 'Playlist type',
+      name: 'Playlist Type',
       items: [
         {
           id: 1,
-          name: ' ',
+          name: 'Video',
           value: '',
         },
         {
@@ -38,12 +38,12 @@ export default {
         },
         {
           id: 3,
-          name: 'User uploads',
+          name: 'User Uploads',
           value: 'user_uploads',
         },
         {
           id: 4,
-          name: 'Search results',
+          name: 'Search Results',
           value: 'search',
         },
       ],
@@ -55,13 +55,13 @@ export default {
     },
     repeat: {
       type: 'check',
-      name: 'Repeat video/list',
+      name: 'Repeat Video/List',
       value: false,
       priority: 4,
     },
     value: {
       type: 'inputList',
-      name: 'Video/playlist source',
+      name: 'Video/Playlist Source',
       value: [],
       priority: 2,
     },
