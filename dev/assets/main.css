@@ -9,8 +9,13 @@
 .c-hlist > * {
   float: left;
 }
+.c-hlist--spaced {
+  padding: 8px;
+}
 .c-hlist--spaced > * {
-  margin: 16px;
+  padding: 8px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .rating {
   position: relative;
@@ -53,10 +58,16 @@
 }
 .c-video {
   max-width: 100%;
+  display: block;
 }
 .c-vlist > * {
   width: 100%;
 }
+.c-vlist--spaced {
+  padding-top: 8px;
+}
 .c-vlist--spaced > * {
-  margin-bottom: 16px;
+  padding-bottom: 8px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
