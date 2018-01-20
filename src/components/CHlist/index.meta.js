@@ -11,7 +11,7 @@ export default {
     color: {
       type: 'input',
       name: 'Color',
-      value: 'white',
+      value: 'transparent',
       validation: {
         required: true,
         minLength: 3,
