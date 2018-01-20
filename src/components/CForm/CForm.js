@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import uuid from 'uuid/v4';
 
 const getListeners = (context) => {
   const listeners = {};
@@ -104,7 +105,7 @@ export default {
                 return createElement('div',
                   {
                     // Dynamic key to disable component re-use
-                    key: `${field.name}_${Date.now()}`,
+                    key: `${field.name}_${uuid()}`,
                   },
                   [
                     createElement(
@@ -133,7 +134,7 @@ export default {
               _.map(this.definition.actions, button => createElement('c-button',
                 {
                   // Dynamic key to disable component re-use
-                  key: `${button.name}_${Date.now()}`,
+                  key: `${button.name}_${uuid()}`,
                   props: {
                     definition: button,
                   },

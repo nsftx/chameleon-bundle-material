@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import uuid from 'uuid/v4';
 
 export default {
   name: 'c-panel',
@@ -31,7 +32,7 @@ export default {
         const el = createElement(
           `c-${_.kebabCase(element.type)}`,
           {
-            key: `${element.name}_${Date.now()}`,
+            key: `${element.name}_${uuid()}`,
             props: {
               definition: element,
               validators: self.validators,
