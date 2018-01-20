@@ -24,11 +24,6 @@ export default {
       name: 'Muted',
       value: false,
     },
-    width: {
-      type: 'input',
-      name: 'Width',
-      value: null,
-    },
     value: {
       type: 'inputList',
       name: 'Sources',
