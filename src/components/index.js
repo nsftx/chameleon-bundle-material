@@ -8,6 +8,7 @@ export { default as CForm } from './CForm';
 export { default as CHlist } from './CHlist';
 export { default as CMap } from './CMap';
 export { default as CPanel } from './CPanel';
+export { default as CPage } from './CPage';
 export { default as CPicker } from './CPicker';
 export { default as CRadioList } from './CRadioList';
 export { default as CRating } from './CRating';

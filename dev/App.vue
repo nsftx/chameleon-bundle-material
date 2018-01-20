@@ -24,14 +24,11 @@
             </v-flex>
             <v-flex xs12
                     md6>
-              <template v-for="(container, index) in containers">
-                <component :is="container"
-                           :key="`container-${index}`"
-                           class="mb-1"
-                           :definition="getContainerDefinition(index)"
-                           :validators="page.validators">
-                </component>
-              </template>
+              <div v-if="app">
+                <c-page :definition="app.pages[0]"
+                        :validators="app.validators">
+                </c-page>
+              </div>
             </v-flex>
           </v-layout>
         </v-container>
@@ -52,7 +49,7 @@
   };
 
   // This will come from Chameleon API
-  const json = require('./page.json');
+  const json = require('./data/app.json');
 
   export default {
     name: 'app',
@@ -62,32 +59,20 @@
     data() {
       return {
         source: json,
-        validSource: null,
-        page: null,
+        app: null,
       };
-    },
-    computed: {
-      containers() {
-        if (!this.page) return [];
-
-        return _.map(this.page.elements, (element) => {
-          return getComponentTag(element.type);
-        });
-      }
     },
     methods: {
       getContainerDefinition(index) {
-        return this.page.elements[index];
+        return this.app.pages[0].elements[index];
       },
       sourceChanged(value) {
-        this.page = value;
-        const validation = chameleonNotation.validate(this.page);
+        this.app = value;
+        const validation = chameleonNotation.validate(this.app);
 
         if (!validation.isValid) {
           console.warn(validation.message);
         }
-
-        this.validSource = this.page;
       },
     },
   };

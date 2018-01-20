@@ -83,13 +83,9 @@ module.exports = merge(baseWebpackConfig, {
   devServer: {
     contentBase: resolve('../dev'),
     publicPath: '/assets/',
-    host: process.env.HOST || 'localhost',
-    port: process.env.PORT || '8080',
+    host: 'localhost',
+    port: '8080',
     disableHostCheck: true,
-    watchOptions: {
-      aggregateTimeout: 300,
-      poll: 1000
-    }
   },
   plugins: [
     new ExtractTextPlugin({
