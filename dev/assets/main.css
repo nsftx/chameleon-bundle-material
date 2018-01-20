@@ -7,9 +7,12 @@
   clear: both;
 }
 .c-hlist > * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   float: left;
 }
-.c-hlist > * iframe {
+.c-hlist > * iframe,
+.c-hlist > * video {
   width: 100%;
   display: block;
 }
@@ -18,8 +21,6 @@
 }
 .c-hlist--spaced > * {
   padding: 8px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
 .rating {
   position: relative;
@@ -65,9 +66,12 @@
   display: block;
 }
 .c-vlist > * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   width: 100%;
 }
-.c-vlist > * iframe {
+.c-vlist > * iframe,
+.c-vlist > * video {
   width: 100%;
   display: block;
 }
@@ -76,6 +80,4 @@
 }
 .c-vlist--spaced > * {
   padding-bottom: 8px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
