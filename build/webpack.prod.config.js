@@ -1,6 +1,7 @@
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const webpack = require('webpack');
 
 const resolve = file => require('path').resolve(__dirname, file);
@@ -72,6 +73,9 @@ module.exports = merge(baseWebpackConfig, {
       },
     ],
   },
+  plugins: [
+    // new BundleAnalyzerPlugin(),
+  ],
   performance: {
     hints: false,
   },

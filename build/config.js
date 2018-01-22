@@ -40,18 +40,6 @@ const builds = {
       },
     },
     env: 'production'
-  },
-  meta: {
-    config: {
-      entry: {
-        app: './src/index.meta.js'
-      },
-      output: {
-        filename: 'chameleon.meta.js',
-        library: 'ChameleonMeta',
-      },
-    },
-    env: 'production'
   }
 }
 
