@@ -17,6 +17,10 @@ const getProps = (context) => {
     color: definition.color || defaultColor,
     dark: true,
     icon: _.isUndefined(definition.icon) ? false : definition.icon,
+    round: _.isUndefined(definition.round) ? false : definition.round,
+    flat: _.isUndefined(definition.flat) ? false : definition.flat,
+    block: _.isUndefined(definition.block) ? false : definition.block,
+    depressed: _.isUndefined(definition.depressed) ? false : definition.depressed,
     loading: false,
   };
 

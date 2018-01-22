@@ -609,6 +609,12 @@
                   "name": "save",
                   "type": "button",
                   "label": "Save",
+                  "color": "red",
+                  "icon": false,
+                  "round": false,
+                  "flat": false,
+                  "block": false,
+                  "depressed": false,
                   "actions": {
                     "click": "save"
                   }

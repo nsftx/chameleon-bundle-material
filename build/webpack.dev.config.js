@@ -84,7 +84,7 @@ module.exports = merge(baseWebpackConfig, {
     contentBase: resolve('../dev'),
     publicPath: '/assets/',
     host: 'localhost',
-    port: '8080',
+    port: '8800',
     disableHostCheck: true,
   },
   plugins: [
