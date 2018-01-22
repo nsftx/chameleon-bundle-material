@@ -34,10 +34,9 @@
                   "placeholder": "Please enter your first name",
                   "hint": null,
                   "persistentHint": false,
-                  "tooltip": null,
+                  "tooltip": "",
                   "multiLine": false,
                   "clearable": true,
-                  "searchable": true,
                   "private": false,
                   "validateOn": "blur",
                   "mask": {
@@ -67,10 +66,9 @@
                   "placeholder": "Please enter your last name",
                   "hint": null,
                   "persistentHint": false,
-                  "tooltip": null,
+                  "tooltip": "",
                   "multiLine": false,
                   "clearable": true,
-                  "searchable": true,
                   "private": false,
                   "validateOn": "blur",
                   "mask": {
@@ -99,10 +97,7 @@
                   "suffix": null,
                   "placeholder": "Please enter formula",
                   "hint": null,
-                  "tooltip": null,
-                  "multiLine": false,
                   "clearable": true,
-                  "searchable": true,
                   "private": false,
                   "validateOn": "blur",
                   "validation": {
@@ -551,7 +546,7 @@
                   "persistentHint": false,
                   "value": "",
                   "validation": {
-                    "required": true
+                    "required": false
                   },
                   "dataSource": {
                     "items": [
@@ -609,7 +604,7 @@
                   "name": "save",
                   "type": "button",
                   "label": "Save",
-                  "color": "red",
+                  "color": "",
                   "icon": false,
                   "round": false,
                   "flat": false,
