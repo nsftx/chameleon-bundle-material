@@ -8,14 +8,9 @@ const resolve = file => require('path').resolve(__dirname, file);
 
 var extractPlugin = ExtractTextPlugin.extract({
   use: [
-    'css-loader',
-    {
-      loader: 'postcss-loader',
-      options: {
-        sourceMap: true,
-      },
-    },
-    'stylus-loader',
+    { loader: 'css-loader', options: { sourceMap: true } },
+    { loader: 'postcss-loader', options: { sourceMap: true } },
+    { loader: 'stylus-loader', options: { sourceMap: true } }
   ],
 });
 
@@ -35,15 +30,15 @@ module.exports = merge(baseWebpackConfig, {
       {
         test: require.resolve('quill'),
         use: [{
-            loader: 'expose-loader',
-            options: 'Quill',
+          loader: 'expose-loader',
+          options: 'Quill',
         }],
       },
       {
         test: require.resolve('moment'),
         use: [{
-            loader: 'expose-loader',
-            options: 'moment',
+          loader: 'expose-loader',
+          options: 'moment',
         }],
       },
       {
@@ -74,6 +69,7 @@ module.exports = merge(baseWebpackConfig, {
     ],
   },
   plugins: [
+    // Uncomment this to analyze library
     // new BundleAnalyzerPlugin(),
   ],
   performance: {
