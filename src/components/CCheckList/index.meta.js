@@ -7,37 +7,38 @@ export default {
     label: {
       type: 'input',
       name: 'Label text',
-      value: 'Select check',
+      value: 'Select options',
+      priority: 1,
     },
     prependIcon: {
       type: 'input',
       name: 'Prepend icon',
-      value: 'person',
+      value: '',
+      priority: 2,
     },
     appendIcon: {
       type: 'input',
       name: 'Append icon',
       value: '',
+      priority: 3,
     },
     hint: {
       type: 'input',
       name: 'Hint text',
       value: '',
+      priority: 4,
     },
     hideDetails: {
       type: 'check',
       name: 'Hide details',
       value: false,
+      priority: 6,
     },
     disabled: {
       type: 'check',
       name: 'Disabled',
       value: false,
-    },
-    validation: {
-      required: false,
-      minCount: 1,
-      maxCount: 2,
+      priority: 5,
     },
   },
 };

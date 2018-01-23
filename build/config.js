@@ -2,6 +2,7 @@ const baseProd = require('./webpack.prod.config');
 const baseDev = require('./webpack.dev.config');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const OptimizeJsPlugin = require('optimize-js-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const version = process.env.VERSION || require('../package.json').version;
@@ -27,7 +28,7 @@ const builds = {
         libraryTarget: 'umd'
       },
       plugins: [
-        new ExtractTextPlugin('chameleon-vuetify.css')
+        new ExtractTextPlugin('chameleon-vuetify.min.css')
       ]
     },
     env: 'production'
@@ -59,6 +60,15 @@ const genConfig = (name, opts) => {
       }),
       new OptimizeJsPlugin({
         sourceMap: false
+      }),
+      new OptimizeCssAssetsPlugin({
+        assetNameRegExp: /\.css$/g,
+        cssProcessor: require('cssnano'),
+        cssProcessorOptions: {
+          discardComments: { removeAll: true },
+          postcssZindex: false
+        },
+        canPrint: false
       }),
       new webpack.optimize.ModuleConcatenationPlugin()
     ]);

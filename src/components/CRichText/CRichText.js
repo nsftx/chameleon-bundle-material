@@ -73,15 +73,14 @@ export default {
     return createElement(
       'div',
       {
+        /*
+          TODO: Change this margin.
+          Figure out the way to separate custom controls in form (maybe on form level)
+          Vuetify controls already have spacing between
+        */
+        staticClass: 'c-rich-text mb-3',
         class: {
-          /*
-            TODO: Don't like this.
-            Figure out the way to separate custom controls in form (maybe on form level)
-            Vuetify controls already have spacing between
-          */
-          'mb-3': true,
-          'input-richtext': true,
-          'input-richtext--error': this.hasError,
+          'rich-text--error': this.hasError,
         },
       },
       [

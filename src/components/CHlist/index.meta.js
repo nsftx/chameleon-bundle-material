@@ -17,16 +17,19 @@ export default {
         minLength: 3,
         maxLength: 25,
       },
+      priority: 1,
     },
     flat: {
       type: 'check',
       name: 'No shadow',
       value: false,
+      priority: 2,
     },
     gutter: {
       type: 'check',
       name: 'Spacing',
       value: false,
+      priority: 3,
     },
   },
 };
