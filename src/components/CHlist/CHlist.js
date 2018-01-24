@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-require('../../stylus/components/_hlist.styl');
+require('../../style/components/_hlist.styl');
 
 export default {
   name: 'c-hlist',

@@ -2,7 +2,7 @@ import _ from 'lodash';
 import fieldable from '../../mixins/fieldable';
 import validatable from '../../mixins/validatable';
 
-require('../../stylus/components/_rich-text.styl');
+require('../../style/components/_rich-text.styl');
 
 const getToolbar = (definition) => {
   if (_.isArray(definition.toolbar)) {

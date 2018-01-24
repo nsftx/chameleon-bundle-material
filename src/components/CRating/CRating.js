@@ -2,7 +2,7 @@ import _ from 'lodash';
 import fieldable from '../../mixins/fieldable';
 import validatable from '../../mixins/validatable';
 
-require('../../stylus/components/_rating.styl');
+require('../../style/components/_rating.styl');
 
 const getMessage = (createElement, context) => {
   const el = createElement(
