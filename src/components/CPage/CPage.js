@@ -31,7 +31,7 @@ export default {
     }
 
     return createElement(
-      'v-container',
+      'div',
       {
         staticClass: `c-page c-page-${_.kebabCase(context.definition.name)}`,
       },
