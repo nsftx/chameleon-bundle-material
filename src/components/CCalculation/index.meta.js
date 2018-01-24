@@ -6,19 +6,19 @@ export default {
   options: {
     prependIcon: {
       type: 'input',
-      name: 'Prepend icon',
+      name: 'Prepend Icon',
       value: 'person',
       priority: 1,
     },
     appendIcon: {
       type: 'input',
-      name: 'Append icon',
+      name: 'Append Icon',
       value: '',
       priority: 2,
     },
     prefix: {
       type: 'input',
-      name: 'Perfix',
+      name: 'Prefix',
       value: '',
       priority: 3,
     },
@@ -30,7 +30,7 @@ export default {
     },
     hint: {
       type: 'input',
-      name: 'Hint text',
+      name: 'Hint Text',
       value: '',
       priority: 5,
     },

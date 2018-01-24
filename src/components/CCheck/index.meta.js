@@ -6,7 +6,7 @@ export default {
   options: {
     label: {
       type: 'input',
-      name: 'Label text',
+      name: 'Check Label',
       value: '',
       priority: 1,
     },
@@ -18,19 +18,19 @@ export default {
     },
     prependIcon: {
       type: 'input',
-      name: 'Prepend icon',
+      name: 'Prepend Icon',
       value: 'person',
       priority: 3,
     },
     appendIcon: {
       type: 'input',
-      name: 'Append icon',
+      name: 'Append Icon',
       value: '',
       priority: 4,
     },
     hint: {
       type: 'input',
-      name: 'Hint text',
+      name: 'Hint Text',
       value: '',
       priority: 5,
     },

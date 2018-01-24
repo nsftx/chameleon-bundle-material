@@ -6,19 +6,19 @@ export default {
   options: {
     label: {
       type: 'input',
-      name: 'Label text',
+      name: 'TextBox Label',
       value: '',
       priority: 1,
     },
     prependIcon: {
       type: 'input',
-      name: 'Prepend icon',
+      name: 'Prepend Icon',
       value: '',
       priority: 2,
     },
     appendIcon: {
       type: 'input',
-      name: 'Append icon',
+      name: 'Append Icon',
       value: '',
       priority: 3,
     },
@@ -36,25 +36,25 @@ export default {
     },
     placeholder: {
       type: 'input',
-      name: 'Placeholder text',
+      name: 'Placeholder Text',
       value: '',
       priority: 6,
     },
     hint: {
       type: 'input',
-      name: 'Hint text',
+      name: 'Hint Text',
       value: '',
       priority: 7,
     },
     tooltip: {
       type: 'input',
-      name: 'Tooltip text',
+      name: 'Tooltip Text',
       value: '',
       priority: 8,
     },
     multiLine: {
       type: 'check',
-      name: 'Enable multipline',
+      name: 'Enable Multiline',
       value: false,
       priority: 9,
     },
