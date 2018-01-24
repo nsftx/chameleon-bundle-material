@@ -3,4 +3,4 @@ build
 dist
 dev
 test/unit/coverage
-src/stylus
+src/style

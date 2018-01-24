@@ -2,7 +2,7 @@ import Vuetify from 'vuetify';
 import { version } from '../package.json';
 import * as components from './components';
 
-require('./stylus/main.styl');
+require('./style/main.styl');
 
 const Library = {
   install(Vue, options = {}) {

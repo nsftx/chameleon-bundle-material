@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-require('../../stylus/components/_vlist.styl');
+require('../../style/components/_vlist.styl');
 
 export default {
   name: 'c-vlist',
