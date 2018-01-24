@@ -7,25 +7,25 @@ export default {
     prependIcon: {
       type: 'input',
       name: 'Prepend Icon',
-      value: 'person',
+      value: null,
       priority: 1,
     },
     appendIcon: {
       type: 'input',
       name: 'Append Icon',
-      value: '',
+      value: null,
       priority: 2,
     },
     hint: {
       type: 'input',
       name: 'Hint Text',
-      value: '',
+      value: null,
       priority: 3,
     },
     tooltip: {
       type: 'input',
       name: 'Tooltip Text',
-      value: '',
+      value: null,
       priority: 4,
     },
     // TODO set options for object properties
@@ -43,7 +43,7 @@ export default {
     value: {
       type: 'input',
       name: 'Date Value',
-      value: '2017-11-09T20:35:00.000Z',
+      value: null,
       priority: 6,
     },
   },

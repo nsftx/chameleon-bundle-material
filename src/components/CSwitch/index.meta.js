@@ -7,7 +7,7 @@ export default {
     label: {
       type: 'input',
       name: 'Switch Label',
-      value: '',
+      value: null,
       priority: 1,
     },
     color: {
@@ -19,19 +19,19 @@ export default {
     prependIcon: {
       type: 'input',
       name: 'Prepend Icon',
-      value: '',
+      value: null,
       priority: 3,
     },
     appendIcon: {
       type: 'input',
       name: 'Append Icon',
-      value: '',
+      value: null,
       priority: 4,
     },
     hint: {
       type: 'input',
       name: 'Hint Text',
-      value: '',
+      value: null,
       priority: 5,
     },
     disabled: {

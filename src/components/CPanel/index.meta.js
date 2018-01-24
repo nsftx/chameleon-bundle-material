@@ -28,7 +28,7 @@ export default {
     width: {
       type: 'input',
       name: 'Width',
-      value: '',
+      value: null,
       priority: 3,
     },
   },

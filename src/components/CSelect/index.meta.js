@@ -7,31 +7,31 @@ export default {
     label: {
       type: 'input',
       name: 'Select Label',
-      value: '',
+      value: null,
       priority: 1,
     },
     prependIcon: {
       type: 'input',
       name: 'Prepend Icon',
-      value: '',
+      value: null,
       priority: 2,
     },
     appendIcon: {
       type: 'input',
       name: 'Append Icon',
-      value: '',
+      value: null,
       priority: 3,
     },
     hint: {
       type: 'input',
       name: 'Hint Text',
-      value: '',
+      value: null,
       priority: 4,
     },
     tooltip: {
       type: 'input',
       name: 'Tooltip Text',
-      value: '',
+      value: null,
       priority: 5,
     },
     readonly: {

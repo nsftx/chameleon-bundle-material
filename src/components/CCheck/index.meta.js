@@ -7,31 +7,31 @@ export default {
     label: {
       type: 'input',
       name: 'Check Label',
-      value: '',
+      value: null,
       priority: 1,
     },
     color: {
       type: 'input',
       name: 'Color',
-      value: '',
+      value: null,
       priority: 2,
     },
     prependIcon: {
       type: 'input',
       name: 'Prepend Icon',
-      value: 'person',
+      value: null,
       priority: 3,
     },
     appendIcon: {
       type: 'input',
       name: 'Append Icon',
-      value: '',
+      value: null,
       priority: 4,
     },
     hint: {
       type: 'input',
       name: 'Hint Text',
-      value: '',
+      value: null,
       priority: 5,
     },
     disabled: {

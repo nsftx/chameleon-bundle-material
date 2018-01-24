@@ -28,6 +28,11 @@ export default {
       value: '',
       priority: 4,
     },
+    thumbLabel: {
+      type: 'check',
+      name: 'Thumb Label',
+      value: true,
+    },
     prependIcon: {
       type: 'input',
       name: 'Prepend Icon',

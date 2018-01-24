@@ -7,19 +7,19 @@ export default {
     prependIcon: {
       type: 'input',
       name: 'Prepend Icon',
-      value: '',
+      value: null,
       priority: 1,
     },
     appendIcon: {
       type: 'input',
       name: 'Append Icon',
-      value: '',
+      value: null,
       priority: 2,
     },
     hint: {
       type: 'input',
       name: 'Hint Text',
-      value: '',
+      value: null,
       priority: 3,
     },
   },

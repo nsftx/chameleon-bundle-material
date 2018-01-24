@@ -7,7 +7,7 @@ export default {
     color: {
       type: 'input',
       name: 'Color',
-      value: '',
+      value: null,
       priority: 1,
     },
     icon: {
