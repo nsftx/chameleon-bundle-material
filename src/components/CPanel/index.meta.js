@@ -21,14 +21,14 @@ export default {
     },
     flat: {
       type: 'check',
-      name: 'No shadow',
+      name: 'No Shadow',
       value: false,
       priority: 2,
     },
     width: {
       type: 'input',
       name: 'Width',
-      value: '',
+      value: null,
       priority: 3,
     },
   },

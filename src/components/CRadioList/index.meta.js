@@ -6,20 +6,20 @@ export default {
   options: {
     prependIcon: {
       type: 'input',
-      name: 'Prepend icon',
-      value: '',
+      name: 'Prepend Icon',
+      value: null,
       priority: 1,
     },
     appendIcon: {
       type: 'input',
-      name: 'Append icon',
-      value: '',
+      name: 'Append Icon',
+      value: null,
       priority: 2,
     },
     hint: {
       type: 'input',
-      name: 'Hint text',
-      value: '',
+      name: 'Hint Text',
+      value: null,
       priority: 3,
     },
   },

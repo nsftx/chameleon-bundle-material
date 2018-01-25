@@ -10,7 +10,7 @@ module.exports = {
       '@components': resolve('../src/components'),
       '@mixins': resolve('../src/mixins'),
       '@validators': resolve('../src/validators'),
-      'stylus': resolve('../src/stylus'),
+      'style': resolve('../src/style'),
     }
   },
   node: {

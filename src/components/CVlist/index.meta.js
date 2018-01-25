@@ -96,7 +96,7 @@ export default {
      */
     flat: {
       type: 'check',
-      name: 'No shadow',
+      name: 'No Shadow',
       value: false,
       priority: 2,
     },

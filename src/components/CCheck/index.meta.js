@@ -6,32 +6,32 @@ export default {
   options: {
     label: {
       type: 'input',
-      name: 'Label text',
-      value: '',
+      name: 'Check Label',
+      value: null,
       priority: 1,
     },
     color: {
       type: 'input',
       name: 'Color',
-      value: '',
+      value: null,
       priority: 2,
     },
     prependIcon: {
       type: 'input',
-      name: 'Prepend icon',
-      value: 'person',
+      name: 'Prepend Icon',
+      value: null,
       priority: 3,
     },
     appendIcon: {
       type: 'input',
-      name: 'Append icon',
-      value: '',
+      name: 'Append Icon',
+      value: null,
       priority: 4,
     },
     hint: {
       type: 'input',
-      name: 'Hint text',
-      value: '',
+      name: 'Hint Text',
+      value: null,
       priority: 5,
     },
     disabled: {

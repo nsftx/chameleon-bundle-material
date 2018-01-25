@@ -2,7 +2,7 @@ import _ from 'lodash';
 import fieldable from '../../mixins/fieldable';
 import validatable from '../../mixins/validatable';
 
-require('../../stylus/components/_rating.styl');
+require('../../style/components/_rating.styl');
 
 const getMessage = (createElement, context) => {
   const el = createElement(
@@ -41,7 +41,7 @@ const getIconElement = (createElement, index, context) => {
         },
       },
     },
-    context.definition.icon,
+    context.definition.icon || 'star',
   );
 
   return el;
@@ -56,11 +56,11 @@ const getPropRequired = (definition) => {
 };
 
 const getTitle = (createElement, context) => {
-  const hasLabel = context.definition.label || context.definition.label.length;
+  const hasLabel = context.definition.label || _.isNil(context.definition.label);
   if (!hasLabel && !context.value) return false;
 
   const required = getPropRequired(context.definition);
-  let title = context.definition.label;
+  let title = _.isNil(context.definition.label) ? '' : context.definition.label;
   if (context.value) {
     title = `${title} (${context.value})`;
   }

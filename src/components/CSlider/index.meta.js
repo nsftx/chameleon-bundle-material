@@ -6,7 +6,7 @@ export default {
   options: {
     label: {
       type: 'input',
-      name: 'Label text',
+      name: 'Slider Label',
       value: '',
       priority: 1,
     },
@@ -18,37 +18,42 @@ export default {
     },
     trackColor: {
       type: 'input',
-      name: 'Track color',
+      name: 'Track Color',
       value: '',
       priority: 3,
     },
     thumbColor: {
       type: 'input',
-      name: 'Thumb color',
+      name: 'Thumb Color',
       value: '',
       priority: 4,
     },
+    thumbLabel: {
+      type: 'check',
+      name: 'Thumb Label',
+      value: true,
+    },
     prependIcon: {
       type: 'input',
-      name: 'Prepend icon',
+      name: 'Prepend Icon',
       value: '',
       priority: 5,
     },
     appendIcon: {
       type: 'input',
-      name: 'Append icon',
+      name: 'Append Icon',
       value: '',
       priority: 6,
     },
     hint: {
       type: 'input',
-      name: 'Hint text',
+      name: 'Hint Text',
       value: '',
       priority: 7,
     },
     step: {
       type: 'input',
-      name: 'Step value',
+      name: 'Step Value',
       value: 1,
       priority: 8,
     },

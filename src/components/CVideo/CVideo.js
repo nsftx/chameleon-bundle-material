@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import fieldable from '../../mixins/fieldable';
 
-require('../../stylus/components/_video.styl');
+require('../../style/components/_video.styl');
 
 const sourceTypes = {
   webm: 'video/webm',
