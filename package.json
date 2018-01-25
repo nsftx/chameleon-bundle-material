@@ -11,8 +11,8 @@
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs",
     "build": "rimraf dist && cross-env NODE_ENV=production webpack --config build/config.js --progress --hide-modules",
-    "deploy": "npm run build && netlifyctl deploy",
-    "docs": "node docs/index.js"
+    "build:docs": "node build/docs.js",
+    "deploy": "npm run build && netlifyctl deploy"
   },
   "main": "dist/chameleon-vuetify.min.js",
   "dependencies": {
