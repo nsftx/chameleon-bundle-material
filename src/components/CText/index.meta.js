@@ -3,6 +3,12 @@ export default {
   type: 'text',
   name: 'Text Box',
   icon: 'title',
+  optionGroups: {
+    validation: {
+      key: 'validation',
+      name: 'Validation',
+    },
+  },
   options: {
     label: {
       type: 'input',
@@ -57,6 +63,33 @@ export default {
       name: 'Enable Multiline',
       value: false,
       priority: 9,
+    },
+    validation: {
+      type: 'group',
+      group: 'validation',
+      required: {
+        type: 'check',
+        name: 'Enable required',
+        value: false,
+      },
+      pattern: {
+        type: 'group',
+        predefined: {
+          type: 'input',
+          name: 'Predefined',
+          value: null,
+        },
+      },
+      minLength: {
+        type: 'input',
+        name: 'Min Length',
+        value: null,
+      },
+      maxLength: {
+        type: 'input',
+        name: 'Max Length',
+        value: null,
+      },
     },
   },
 };
