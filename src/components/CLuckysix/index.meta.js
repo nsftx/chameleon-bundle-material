@@ -1,5 +1,5 @@
 export default {
-  group: 'other',
+  group: 'widgets',
   type: 'luckysix',
   name: 'LuckySix',
   icon: 'group_work',
