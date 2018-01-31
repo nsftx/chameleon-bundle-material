@@ -6,7 +6,6 @@ const getListeners = (context) => {
 
   const listeners = {
     change(value) {
-      self.definition.inputValue = value;
       self.definition.value = value;
       self.$emit('change', value);
     },

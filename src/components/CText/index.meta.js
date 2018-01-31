@@ -73,8 +73,8 @@ export default {
         value: false,
       },
       pattern: {
-        type: 'group',
-        group: 'pattern',
+        type: 'subGroup',
+        name: 'Pattern',
         predefined: {
           type: 'input',
           name: 'Predefined',
