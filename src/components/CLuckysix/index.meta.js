@@ -1,5 +1,5 @@
 export default {
-  group: 'betting',
+  group: 'other',
   type: 'luckysix',
   name: 'LuckySix',
   icon: 'group_work',
