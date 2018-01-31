@@ -74,6 +74,7 @@ export default {
       },
       pattern: {
         type: 'group',
+        group: 'pattern',
         predefined: {
           type: 'input',
           name: 'Predefined',
