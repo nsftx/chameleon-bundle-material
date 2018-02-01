@@ -20,14 +20,6 @@
           "color": "#f5f5f5",
           "elements": [
             {
-              "type": "luckysix",
-              "name": "LuckkySix",
-              "quality": "high",
-              "color": "145",
-              "drum": "solids",
-              "language": "sr-Latn"
-            },
-            {
               "type": "form",
               "name": "person",
               "fields": [
