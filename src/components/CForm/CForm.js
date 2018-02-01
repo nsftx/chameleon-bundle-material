@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import namespace from '@namespace';
 import uuid from 'uuid/v4';
 
 const getListeners = (context) => {
@@ -23,11 +24,11 @@ const getComponentTag = (name) => {
   const type = ['number', 'money'].indexOf(name) > -1 ? 'text' : name;
   const tag = _.kebabCase(type);
 
-  return `c-${tag}`;
+  return `${namespace}${tag}`;
 };
 
 export default {
-  name: 'c-form',
+  name: `${namespace}form`,
   provide() {
     return {
       form: {
@@ -101,7 +102,7 @@ export default {
           'v-form',
           {
             ref: this.definition.name,
-            staticClass: 'c-form',
+            staticClass: this.name,
           },
           [
             createElement(
@@ -137,7 +138,7 @@ export default {
             ),
             createElement(
               'v-card-actions',
-              _.map(this.getActions(), button => createElement('c-button',
+              _.map(this.getActions(), button => createElement(`${namespace}button`,
                 {
                   // Dynamic key to disable component re-use
                   key: `${button.name}_${uuid()}`,

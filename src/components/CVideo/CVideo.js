@@ -1,5 +1,6 @@
 import _ from 'lodash';
-import fieldable from '../../mixins/fieldable';
+import namespace from '@namespace';
+import { fieldable } from '@mixins';
 
 require('../../style/components/_video.styl');
 
@@ -51,7 +52,7 @@ const getSources = (createElement, definition) => {
 };
 
 export default {
-  name: 'c-video',
+  name: `${namespace}video`,
   mixins: [
     fieldable,
   ],
@@ -72,7 +73,7 @@ export default {
             }
           },
         },
-        staticClass: 'c-video',
+        staticClass: this.name,
       },
       getSources(createElement, this.definition),
     );

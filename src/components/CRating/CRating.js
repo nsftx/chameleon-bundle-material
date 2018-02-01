@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import fieldable from '../../mixins/fieldable';
-import validatable from '../../mixins/validatable';
+import namespace from '@namespace';
+import { fieldable, validatable } from '@mixins';
 
 require('../../style/components/_rating.styl');
 
@@ -76,7 +76,7 @@ const getTitle = (createElement, context) => {
 };
 
 export default {
-  name: 'c-rating',
+  name: `${namespace}rating`,
   mixins: [
     fieldable,
     validatable,
@@ -102,7 +102,7 @@ export default {
     return createElement(
       'div',
       {
-        staticClass: 'c-rating text-xs-center',
+        staticClass: `${this.name} text-xs-center`,
         class: {
           'rating--error': this.hasError,
         },

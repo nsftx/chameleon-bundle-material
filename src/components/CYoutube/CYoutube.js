@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import namespace from '@namespace';
 
 const getVideoId = (url) => {
   const re = /https?:\/\/(?:[0-9A-Z-]+\.)?(?:youtu\.be\/|youtube(?:-nocookie)?\.com\S*?[^\w\s-])([\w-]{11})(?=[^\w-]|$)(?![?=&+%\w.-]*(?:['"][^<>]*>|<\/a>))[?=&+%\w.-]*/ig;
@@ -56,7 +57,7 @@ const getPlayerParameters = (context) => {
 };
 
 export default {
-  name: 'c-youtube',
+  name: `${namespace}youtube`,
   props: {
     definition: {
       type: Object,
@@ -116,7 +117,7 @@ export default {
       'div',
       {
         ref: 'youtube',
-        staticClass: 'c-youtube',
+        staticClass: this.name,
       },
     );
   },

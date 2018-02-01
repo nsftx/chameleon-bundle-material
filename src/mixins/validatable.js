@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import validator from '../validators/basicValidator';
+import { validator } from '@validators';
 
 export default {
   data() {

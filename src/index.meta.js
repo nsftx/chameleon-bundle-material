@@ -1,4 +1,5 @@
-import * as elements from './components/index.meta.js';
+import namespace from './index.namespace';
+import * as elements from './components/index.meta';
 
 const elementGroups = {
   containers: {
@@ -27,9 +28,10 @@ const optionGroups = {
 };
 
 export default {
+  namespace,
   name: 'material',
   title: 'Material Bundle',
   elementGroups,
   elements,
   optionGroups,
-}
+};

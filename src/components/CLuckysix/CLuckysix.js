@@ -1,3 +1,5 @@
+import namespace from '@namespace';
+
 /*
 This element is just for testing.
 It will be moved to separate bundle.
@@ -32,7 +34,7 @@ const optionPlatform = {
 };
 
 export default {
-  name: 'c-luckysix',
+  name: `${namespace}luckysix`,
   props: {
     definition: {
       type: Object,

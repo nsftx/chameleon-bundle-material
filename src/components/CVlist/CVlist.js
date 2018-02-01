@@ -1,9 +1,10 @@
 import _ from 'lodash';
+import namespace from '@namespace';
 
 require('../../style/components/_vlist.styl');
 
 export default {
-  name: 'c-vlist',
+  name: `${namespace}vlist`,
   props: {
     definition: {
       type: Object,
@@ -20,7 +21,7 @@ export default {
       'v-card',
       {
         class: {
-          'c-vlist--spaced': this.definition.gutter,
+          [`${this.name}--spaced`]: this.definition.gutter,
         },
         props: {
           color: this.definition.color,
@@ -29,11 +30,11 @@ export default {
         style: {
           backgroundColor: this.definition.color,
         },
-        staticClass: 'c-vlist',
+        staticClass: this.name,
       },
       _.map(this.definition.elements, (element) => {
         const el = createElement(
-          `c-${_.kebabCase(element.type)}`,
+          `${namespace}${_.kebabCase(element.type)}`,
           {
             props: {
               definition: element,

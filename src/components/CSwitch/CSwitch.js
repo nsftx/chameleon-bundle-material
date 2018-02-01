@@ -1,3 +1,5 @@
+import namespace from '@namespace';
+
 const getListeners = (context) => {
   const self = context;
 
@@ -31,7 +33,7 @@ const getProps = (context) => {
 };
 
 export default {
-  name: 'c-switch',
+  name: `${namespace}switch`,
   props: {
     definition: {
       type: Object,

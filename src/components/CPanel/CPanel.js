@@ -1,8 +1,9 @@
 import _ from 'lodash';
 import uuid from 'uuid/v4';
+import namespace from '@namespace';
 
 export default {
-  name: 'c-panel',
+  name: `${namespace}panel`,
   props: {
     definition: {
       type: Object,
@@ -26,11 +27,11 @@ export default {
           backgroundColor: this.definition.color,
           width: this.definition.width,
         },
-        staticClass: 'c-panel',
+        staticClass: this.name,
       },
       _.map(this.definition.elements, (element) => {
         const el = createElement(
-          `c-${_.kebabCase(element.type)}`,
+          `${namespace}${_.kebabCase(element.type)}`,
           {
             key: `${element.name}_${uuid()}`,
             props: {

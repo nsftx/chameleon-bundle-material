@@ -1,7 +1,8 @@
 import _ from 'lodash';
+import namespace from '@namespace';
 
 export default {
-  name: 'c-page',
+  name: `${namespace}page`,
   props: {
     definition: {
       type: Object,
@@ -18,7 +19,7 @@ export default {
     if (context.definition.elements) {
       _.each(context.definition.elements, (n) => {
         children.push(createElement(
-          `c-${n.type}`,
+          `${namespace}${n.type}`,
           {
             props: {
               definition: n,
@@ -33,7 +34,7 @@ export default {
     return createElement(
       'div',
       {
-        staticClass: `c-page c-page-${_.kebabCase(context.definition.name)}`,
+        staticClass: `${context.name} ${context.name}-${_.kebabCase(context.definition.name)}`,
       },
       children,
     );

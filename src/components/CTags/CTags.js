@@ -1,3 +1,4 @@
+import namespace from '@namespace';
 import CSelect from '../CSelect/CSelect';
 
 const getDeletableChipSlot = (createElement, displayProp) => {
@@ -24,7 +25,7 @@ const getDeletableChipSlot = (createElement, displayProp) => {
 };
 
 export default {
-  name: 'c-tags',
+  name: `${namespace}tags`,
   extends: CSelect,
   data() {
     return {

@@ -1,6 +1,7 @@
 import _ from 'lodash';
-import fieldable from '../../mixins/fieldable';
-import validator from '../../validators/basicValidator';
+import namespace from '@namespace';
+import { fieldable } from '@mixins';
+import { validator } from '@validators';
 
 const getListeners = (context) => {
   const self = context;
@@ -57,7 +58,7 @@ const getProps = (context, item) => {
 };
 
 export default {
-  name: 'c-check-list',
+  name: `${namespace}check-list`,
   props: {
     definition: {
       type: Object,

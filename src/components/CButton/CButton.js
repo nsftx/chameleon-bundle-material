@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import namespace from '@namespace';
 
 const getAttrs = (context) => {
   const attrs = {
@@ -42,7 +43,7 @@ const getListeners = (context) => {
 };
 
 export default {
-  name: 'c-button',
+  name: `${namespace}button`,
   props: {
     definition: {
       type: Object,

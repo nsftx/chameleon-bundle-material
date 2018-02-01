@@ -1,7 +1,8 @@
 import _ from 'lodash';
+import namespace from '@namespace';
 
 export default {
-  name: 'c-map',
+  name: `${namespace}map`,
   props: {
     apiKey: {
       type: String,

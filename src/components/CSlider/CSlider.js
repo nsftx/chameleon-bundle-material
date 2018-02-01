@@ -1,5 +1,6 @@
-import fieldable from '../../mixins/fieldable';
-import validator from '../../validators/basicValidator';
+import namespace from '@namespace';
+import { fieldable } from '@mixins';
+import { validator } from '@validators';
 
 const getAttrs = (context) => {
   const attrs = {
@@ -73,7 +74,7 @@ const getProps = (context) => {
 };
 
 export default {
-  name: 'c-slider',
+  name: `${namespace}slider`,
   props: {
     definition: {
       type: Object,

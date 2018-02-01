@@ -1,6 +1,7 @@
 import _ from 'lodash';
-import fieldable from '../../mixins/fieldable';
-import validator from '../../validators/basicValidator';
+import namespace from '@namespace';
+import { fieldable } from '@mixins';
+import { validator } from '@validators';
 
 const getPropRequired = (definition) => {
   // Required validation is property in Vuetify
@@ -92,7 +93,7 @@ const getPickerProps = (context) => {
 };
 
 export default {
-  name: 'c-date',
+  name: `${namespace}date`,
   mixins: [
     fieldable,
   ],
@@ -114,7 +115,7 @@ export default {
         },
       ),
       createElement(
-        'c-picker',
+        `${namespace}picker`,
         {
           props: getPickerProps(this),
           on: {

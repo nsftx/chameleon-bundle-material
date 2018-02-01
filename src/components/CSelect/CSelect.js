@@ -1,6 +1,7 @@
 import _ from 'lodash';
-import fieldable from '../../mixins/fieldable';
-import validator from '../../validators/basicValidator';
+import namespace from '@namespace';
+import { fieldable } from '@mixins';
+import { validator } from '@validators';
 
 const getAttrs = (context) => {
   const attrs = {
@@ -89,7 +90,7 @@ const getProps = (context) => {
 };
 
 export default {
-  name: 'c-select',
+  name: `${namespace}select`,
   mixins: [
     fieldable,
   ],

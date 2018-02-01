@@ -7,6 +7,8 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.json', '.vue'],
     alias: {
+      '@meta': resolve('../src/index.meta'),
+      '@namespace': resolve('../src/index.namespace'),
       '@components': resolve('../src/components'),
       '@mixins': resolve('../src/mixins'),
       '@validators': resolve('../src/validators'),
