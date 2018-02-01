@@ -108,7 +108,6 @@ export default {
               'v-card-text',
               _.map(this.getFields(), (field) => {
                 const self = this;
-                console.log(field.type);
                 return createElement('div',
                   {
                     // Dynamic key to disable component re-use
