@@ -57,8 +57,8 @@ export default {
   name: 'Vertical List',
   icon: 'view_week',
   children: [
-    'containers',
-    'widgets',
+    '*',
+    '!inputs',
   ],
 
   /**

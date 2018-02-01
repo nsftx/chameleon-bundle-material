@@ -4,8 +4,8 @@ export default {
   name: 'Panel',
   icon: 'border_outer',
   children: [
-    'containers',
-    'widgets',
+    '*',
+    '!inputs',
   ],
   options: {
     color: {

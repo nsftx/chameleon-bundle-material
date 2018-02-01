@@ -57,8 +57,8 @@ export default {
   name: 'Horizontal List',
   icon: 'view_stream',
   children: [
-    'containers',
-    'widgets',
+    '*',
+    '!inputs',
   ],
 
   /**
