@@ -39,7 +39,7 @@ export default {
     const validation = definition.validation;
     const rules = [];
 
-    if (!validation) return rules;
+    if (_.isNil(validators) || _.isNil(validation)) return rules;
 
     // TODO: Shorten/generalize rules functions
     if (validation.required) {
