@@ -22,7 +22,7 @@
             {
               "type": "form",
               "name": "person",
-              "fields": [
+              "elements": [
                 {
                   "name": "firstName",
                   "type": "text",
@@ -574,9 +574,7 @@
                   "disabled": false,
                   "persistentHint": false,
                   "value": false
-                }
-              ],
-              "actions": [
+                },
                 {
                   "name": "save",
                   "type": "button",

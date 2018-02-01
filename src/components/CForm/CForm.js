@@ -31,7 +31,7 @@ export default {
   provide() {
     return {
       form: {
-        fields: this.definition.fields,
+        fields: this.getFields(),
       },
     };
   },
@@ -50,12 +50,18 @@ export default {
     },
   },
   methods: {
+    getActions() {
+      return _.filter(this.definition.elements, n => !_.isNil(n.actions));
+    },
     getForm() {
       return this.$refs[this.definition.name];
     },
+    getFields() {
+      return _.filter(this.definition.elements, n => _.isNil(n.actions));
+    },
     getEntity() {
       const entity = {};
-      _.each(this.definition.fields, (field) => {
+      _.each(this.getFields(), (field) => {
         if (field.name) {
           // Remove reactivity from output
           // TODO: Investigate if this has any benefit
@@ -100,8 +106,9 @@ export default {
           [
             createElement(
               'v-card-text',
-              _.map(this.definition.fields, (field) => {
+              _.map(this.getFields(), (field) => {
                 const self = this;
+                console.log(field.type);
                 return createElement('div',
                   {
                     // Dynamic key to disable component re-use
@@ -131,7 +138,7 @@ export default {
             ),
             createElement(
               'v-card-actions',
-              _.map(this.definition.actions, button => createElement('c-button',
+              _.map(this.getActions(), button => createElement('c-button',
                 {
                   // Dynamic key to disable component re-use
                   key: `${button.name}_${uuid()}`,
