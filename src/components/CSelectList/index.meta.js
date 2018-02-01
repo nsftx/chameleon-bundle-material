@@ -1,6 +1,6 @@
 export default {
   group: 'inputs',
-  type: 'selectList',
+  type: 'select-list',
   name: 'selectList',
   icon: 'featured_play_list',
   optionGroups: {
