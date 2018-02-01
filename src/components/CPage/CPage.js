@@ -34,7 +34,7 @@ export default {
     return createElement(
       'div',
       {
-        staticClass: `${context.name} ${context.name}-${_.kebabCase(context.definition.name)}`,
+        staticClass: `${context.$options.name} ${context.$options.name}-${_.kebabCase(context.definition.name)}`,
       },
       children,
     );

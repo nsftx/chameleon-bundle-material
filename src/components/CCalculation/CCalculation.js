@@ -30,7 +30,7 @@ export default {
     fields() {
       return _.reduce(this.form.fields, (result, field) => {
         const results = result;
-        if (field.name !== this.name) {
+        if (field.name !== this.$options.name) {
           results[field.name] = field.value;
         }
 

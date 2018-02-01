@@ -62,7 +62,7 @@ export default {
     return createElement(
       'div',
       {
-        staticClass: this.name,
+        staticClass: this.$options.name,
         staticStyle: {
           width: '100%',
           height: 0,

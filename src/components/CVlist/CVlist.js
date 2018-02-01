@@ -21,7 +21,7 @@ export default {
       'v-card',
       {
         class: {
-          [`${this.name}--spaced`]: this.definition.gutter,
+          [`${this.$options.name}--spaced`]: this.definition.gutter,
         },
         props: {
           color: this.definition.color,
@@ -30,7 +30,7 @@ export default {
         style: {
           backgroundColor: this.definition.color,
         },
-        staticClass: this.name,
+        staticClass: this.$options.name,
       },
       _.map(this.definition.elements, (element) => {
         const el = createElement(

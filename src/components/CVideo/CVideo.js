@@ -73,7 +73,7 @@ export default {
             }
           },
         },
-        staticClass: this.name,
+        staticClass: this.$options.name,
       },
       getSources(createElement, this.definition),
     );

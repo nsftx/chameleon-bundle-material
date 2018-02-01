@@ -102,7 +102,7 @@ export default {
           'v-form',
           {
             ref: this.definition.name,
-            staticClass: this.name,
+            staticClass: this.$options.name,
           },
           [
             createElement(

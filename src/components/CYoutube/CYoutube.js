@@ -117,7 +117,7 @@ export default {
       'div',
       {
         ref: 'youtube',
-        staticClass: this.name,
+        staticClass: this.$options.name,
       },
     );
   },

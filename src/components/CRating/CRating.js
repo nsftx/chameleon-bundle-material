@@ -102,7 +102,7 @@ export default {
     return createElement(
       'div',
       {
-        staticClass: `${this.name} text-xs-center`,
+        staticClass: `${this.$options.name} text-xs-center`,
         class: {
           'rating--error': this.hasError,
         },

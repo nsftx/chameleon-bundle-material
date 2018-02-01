@@ -78,7 +78,7 @@ export default {
           Figure out the way to separate custom controls in form (maybe on form level)
           Vuetify controls already have spacing between
         */
-        staticClass: `${this.name} mb-3`,
+        staticClass: `${this.$options.name} mb-3`,
         class: {
           'rich-text--error': this.hasError,
         },

@@ -27,7 +27,7 @@ export default {
           backgroundColor: this.definition.color,
           width: this.definition.width,
         },
-        staticClass: this.name,
+        staticClass: this.$options.name,
       },
       _.map(this.definition.elements, (element) => {
         const el = createElement(
