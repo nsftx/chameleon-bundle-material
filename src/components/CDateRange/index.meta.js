@@ -3,6 +3,12 @@ export default {
   type: 'date-range',
   name: 'Date Range',
   icon: 'date_range',
+  optionGroups: {
+    validation: {
+      key: 'validation',
+      name: 'Validation',
+    },
+  },
   options: {
     prependIcon: {
       type: 'input',
@@ -39,6 +45,25 @@ export default {
       name: 'Date Value',
       value: [],
       priority: 6,
+    },
+    validation: {
+      type: 'group',
+      group: 'validation',
+      required: {
+        type: 'check',
+        name: 'Enable required',
+        value: false,
+      },
+      minDate: {
+        type: 'input',
+        name: 'Min Date',
+        value: null,
+      },
+      maxDate: {
+        type: 'input',
+        name: 'Max Date',
+        value: null,
+      },
     },
   },
 };

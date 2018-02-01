@@ -3,6 +3,12 @@ export default {
   type: 'select',
   name: 'Select',
   icon: 'list',
+  optionGroups: {
+    validation: {
+      key: 'validation',
+      name: 'Validation',
+    },
+  },
   options: {
     label: {
       type: 'input',
@@ -39,6 +45,15 @@ export default {
       name: 'Enable Readonly',
       value: false,
       priority: 6,
+    },
+    validation: {
+      type: 'group',
+      group: 'validation',
+      required: {
+        type: 'check',
+        name: 'Enable required',
+        value: false,
+      },
     },
   },
 };

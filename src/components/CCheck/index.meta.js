@@ -3,6 +3,12 @@ export default {
   type: 'check',
   name: 'Checkbox',
   icon: 'check',
+  optionGroups: {
+    validation: {
+      key: 'validation',
+      name: 'Validation',
+    },
+  },
   options: {
     label: {
       type: 'input',
@@ -39,6 +45,25 @@ export default {
       name: 'Disabled',
       value: false,
       priority: 6,
+    },
+    validation: {
+      type: 'group',
+      group: 'validation',
+      required: {
+        type: 'check',
+        name: 'Enable required',
+        value: false,
+      },
+      minCount: {
+        type: 'input',
+        name: 'Min Count',
+        value: null,
+      },
+      maxCount: {
+        type: 'input',
+        name: 'Max Count',
+        value: null,
+      },
     },
   },
 };

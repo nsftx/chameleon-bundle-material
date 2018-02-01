@@ -3,6 +3,12 @@ export default {
   type: 'selectList',
   name: 'selectList',
   icon: 'featured_play_list',
+  optionGroups: {
+    validation: {
+      key: 'validation',
+      name: 'Validation',
+    },
+  },
   options: {
     label: {
       type: 'input',
@@ -45,6 +51,15 @@ export default {
       name: 'Multiple Selections',
       value: true,
       priority: 6,
+    },
+    validation: {
+      type: 'group',
+      group: 'validation',
+      required: {
+        type: 'check',
+        name: 'Enable required',
+        value: false,
+      },
     },
   },
 };

@@ -3,6 +3,12 @@ export default {
   type: 'tags',
   name: 'Tags Select',
   icon: 'playlist_add_check',
+  optionGroups: {
+    validation: {
+      key: 'validation',
+      name: 'Validation',
+    },
+  },
   options: {
     label: {
       type: 'input',
@@ -33,6 +39,15 @@ export default {
       name: 'Tooltip Text',
       value: null,
       priority: 5,
+    },
+    validation: {
+      type: 'group',
+      group: 'validation',
+      required: {
+        type: 'check',
+        name: 'Enable required',
+        value: false,
+      },
     },
   },
 };

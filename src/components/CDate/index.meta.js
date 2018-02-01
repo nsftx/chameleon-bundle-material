@@ -3,6 +3,12 @@ export default {
   type: 'date',
   name: 'Date',
   icon: 'access_time',
+  optionGroups: {
+    validation: {
+      key: 'validation',
+      name: 'Validation',
+    },
+  },
   options: {
     prependIcon: {
       type: 'input',
@@ -28,12 +34,6 @@ export default {
       value: null,
       priority: 4,
     },
-    // TODO set options for object properties
-    // time: {
-    //   type: 'check',
-    //   name: 'Enable Time',
-    //   value: false,
-    // },
     format: {
       type: 'input',
       name: 'Date Format',
@@ -45,6 +45,25 @@ export default {
       name: 'Date Value',
       value: null,
       priority: 6,
+    },
+    validation: {
+      type: 'group',
+      group: 'validation',
+      required: {
+        type: 'check',
+        name: 'Enable required',
+        value: false,
+      },
+      minDate: {
+        type: 'input',
+        name: 'Min Date',
+        value: null,
+      },
+      maxDate: {
+        type: 'input',
+        name: 'Max Date',
+        value: null,
+      },
     },
   },
 };

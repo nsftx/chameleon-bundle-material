@@ -3,6 +3,12 @@ export default {
   type: 'rating',
   name: 'Rating',
   icon: 'star',
+  optionGroups: {
+    validation: {
+      key: 'validation',
+      name: 'Validation',
+    },
+  },
   options: {
     label: {
       type: 'input',
@@ -27,6 +33,15 @@ export default {
       name: 'Rating Icon',
       value: 'star',
       priority: 2,
+    },
+    validation: {
+      type: 'group',
+      group: 'validation',
+      required: {
+        type: 'check',
+        name: 'Enable required',
+        value: false,
+      },
     },
   },
 };

@@ -3,6 +3,12 @@ export default {
   type: 'slider',
   name: 'Slider',
   icon: 'settings_ethernet',
+  optionGroups: {
+    validation: {
+      key: 'validation',
+      name: 'Validation',
+    },
+  },
   options: {
     label: {
       type: 'input',
@@ -56,6 +62,25 @@ export default {
       name: 'Step Value',
       value: 1,
       priority: 8,
+    },
+    validation: {
+      type: 'group',
+      group: 'validation',
+      required: {
+        type: 'check',
+        name: 'Enable required',
+        value: false,
+      },
+      min: {
+        type: 'input',
+        name: 'Min Value',
+        value: null,
+      },
+      max: {
+        type: 'input',
+        name: 'Max Value',
+        value: null,
+      },
     },
   },
 };

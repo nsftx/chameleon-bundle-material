@@ -3,6 +3,12 @@ export default {
   type: 'radio-list',
   name: 'Radio List',
   icon: 'radio_button_checked',
+  optionGroups: {
+    validation: {
+      key: 'validation',
+      name: 'Validation',
+    },
+  },
   options: {
     prependIcon: {
       type: 'input',
@@ -21,6 +27,15 @@ export default {
       name: 'Hint Text',
       value: null,
       priority: 3,
+    },
+    validation: {
+      type: 'group',
+      group: 'validation',
+      required: {
+        type: 'check',
+        name: 'Enable required',
+        value: false,
+      },
     },
   },
 };

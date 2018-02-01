@@ -3,6 +3,12 @@ export default {
   type: 'calculation',
   name: 'Calculation Box',
   icon: 'functions',
+  optionGroups: {
+    validation: {
+      key: 'validation',
+      name: 'Validation',
+    },
+  },
   options: {
     prependIcon: {
       type: 'input',
@@ -33,6 +39,15 @@ export default {
       name: 'Hint Text',
       value: null,
       priority: 5,
+    },
+    validation: {
+      type: 'group',
+      group: 'validation',
+      required: {
+        type: 'check',
+        name: 'Enable required',
+        value: false,
+      },
     },
   },
 };

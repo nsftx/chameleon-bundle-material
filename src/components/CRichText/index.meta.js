@@ -3,6 +3,12 @@ export default {
   type: 'rich-text',
   name: 'Rich Text',
   icon: 'text_format',
+  optionGroups: {
+    validation: {
+      key: 'validation',
+      name: 'Validation',
+    },
+  },
   options: {
     toolbar: {
       type: 'select',
@@ -41,6 +47,15 @@ export default {
           label: 'Full',
         },
       ],
+    },
+    validation: {
+      type: 'group',
+      group: 'validation',
+      required: {
+        type: 'check',
+        name: 'Enable required',
+        value: false,
+      },
     },
   },
 };
