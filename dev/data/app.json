@@ -103,6 +103,57 @@
                   "value": "${lastName} ${firstName}"
                 },
                 {
+                  "name": "shoppingList",
+                  "type": "list",
+                  "label": "Shopping list",
+                  "noDataText": "List is empty",
+                  "contentTag": "",
+                  "loading": true,
+                  "rowsPerPageItems": [],
+                  "rowsPerPageText": "Items Per Page",
+                  "pagination": {
+                    "rowsPerPage": 3
+                  },
+                  "dataSource": {
+                    "items": [
+                      {
+                        "value": false,
+                        "name": "Frozen Yogurt",
+                        "calories": 159
+                      },
+                      {
+                        "value": false,
+                        "name": "Ice cream sandwich",
+                        "calories": 237
+                      },
+                      {
+                        "value": false,
+                        "name": "Eclair",
+                        "calories": 200
+                      },
+                      {
+                        "value": false,
+                        "name": "Cupcake",
+                        "calories": 300
+                      },
+                      {
+                        "value": false,
+                        "name": "Gingerbread",
+                        "calories": 365
+                      }
+                    ],
+                    "options": {
+                      "displayProp": "name"
+                    }
+                  },
+                  "value": [
+                    {
+                      "id": 1,
+                      "name": "Male"
+                    }
+                  ]
+                },
+                {
                   "name": "country",
                   "type": "select",
                   "label": "Country",
