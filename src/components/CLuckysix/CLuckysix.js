@@ -1,41 +1,18 @@
 import namespace from '@namespace';
 
 /*
-This element is just for testing.
+This widget is just for testing.
 It will be moved to separate bundle.
+We are not using lodash methods here since we want example clean.
+All plugins should be able to use same libs we use in our elements.
 */
-
-/*
-Default options if in some case plugin does not receive them.
-*/
-const optionDefaults = {
-  // No need to expose this as it is fixed.
-  baseUrl: 'https://seven-plugin-luckysix.7platform.com',
-  language: 'en',
-  quality: 'low',
-  color: 145,
-  drum: 'solids',
-};
-
-/*
-Option platform is not exposed as it is too complex for end-user.
-This would have to be handled by letting end-user choose profile
-depending on permissions on betting platform.
-*/
-const optionPlatform = {
-  url: 'https://cm-rs.7platform.com:8008',
-  id: '00301e05-af1a-4cd3-8690-3ff5c362aa72',
-  token: 'token',
-  channel: 'edc5da0d-86f0-47bd-8e6f-1bfb17b78b9d',
-  company: '4f54c6aa-82a9-475d-bf0e-dc02ded89225',
-  clientType: 'user',
-  clientSubType: 'Player',
-  encoding: 'plaintext',
-};
-
 export default {
   name: `${namespace}luckysix`,
   props: {
+    /*
+    Definition is mandatory property which is source of truth for
+    widget. It is created from options defined in meta.
+    */
     definition: {
       type: Object,
       required: true,
@@ -43,22 +20,75 @@ export default {
   },
   data() {
     return {
+      /*
+      No need to expose baseUrl as it is fixed.
+      If this is changeable then move it to options.
+      */
+      baseUrl: 'https://seven-plugin-luckysix.7platform.com',
+      /*
+      Default options if in some case widget does not receive them.
+      */
+      optionDefaults: {
+        language: 'en',
+        quality: 'low',
+        color: 145,
+        drum: 'solids',
+      },
+      /*
+      Option platform is not exposed as it is too complex for end-user.
+      This would have to be handled by letting end-user choose profile
+      depending on permissions on betting platform.
+      */
+      optionPlatform: {
+        url: 'https://cm-rs.7platform.com:8008',
+        id: '00301e05-af1a-4cd3-8690-3ff5c362aa72',
+        token: 'token',
+        channel: 'edc5da0d-86f0-47bd-8e6f-1bfb17b78b9d',
+        company: '4f54c6aa-82a9-475d-bf0e-dc02ded89225',
+        clientType: 'user',
+        clientSubType: 'Player',
+        encoding: 'plaintext',
+      },
     };
   },
   computed: {
     url() {
-      const optionPlatformQuery = encodeURIComponent(JSON.stringify(optionPlatform));
-      const optionLanguage = this.definition.language || optionDefaults.language;
-      const optionQuality = this.definition.quality || optionDefaults.quality;
-      const optionColor = this.definition.color || optionDefaults.color;
-      const optionDrum = this.definition.drum || optionDefaults.drum;
+      /*
+      Merge options from defaults and set in builder.
+      */
+      const options = Object.assign({}, this.optionDefaults, {
+        dnb: this.definition.drum,
+        colors: this.definition.color,
+        q: this.definition.quality,
+        lang: this.definition.language,
+        company: this.optionPlatform.company,
+        scm: JSON.stringify(this.optionPlatform),
+      });
 
-      return `${optionDefaults.baseUrl}/?mode=plugin&dnb=${optionDrum}&colors=${optionColor}&q=${optionQuality}&lang=${optionLanguage}&company=${optionPlatform.company}&scm=${optionPlatformQuery}`;
+      return `${this.baseUrl}/?mode=plugin&${this.serializeOptions(options)}`;
     },
   },
   methods: {
+    /*
+    Helper method to serialize options into querystring
+    needed by widget iframe.
+    */
+    serializeOptions(options) {
+      const serialized = [];
+      Object.keys(options).forEach((option) => {
+        const name = encodeURIComponent(option);
+        const value = encodeURIComponent(options[option]);
+        serialized.push(`${name}=${value}`);
+      });
+
+      return serialized.join('&');
+    },
   },
   render(createElement) {
+    /*
+    Widget iframe is wrapped in normal div element to create
+    container for iframe that would respect 16:9 aspect ratio.
+    */
     return createElement(
       'div',
       {
@@ -76,12 +106,19 @@ export default {
           'iframe',
           {
             attrs: {
+              /*
+              Basically only src is dynamic internal attribute that is
+              constructed from options. Other attributes are not changeable.
+              */
               src: this.url,
-              frameborder: 0,
+              frameborder: '0',
               scrolling: 'no',
               width: '100%',
               height: '100%',
-              // Experimental attribute for research.
+              /*
+              Experimental attribute for research.
+              This is not mandatory, but good to have since it sanboxes component.
+              */
               sandbox: 'allow-same-origin allow-scripts',
             },
             staticStyle: {
