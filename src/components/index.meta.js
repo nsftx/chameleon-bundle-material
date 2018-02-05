@@ -6,6 +6,7 @@ export { default as date } from './CDate/index.meta.js';
 export { default as dateRange } from './CDateRange/index.meta.js';
 export { default as form } from './CForm/index.meta.js';
 export { default as hlist } from './CHlist/index.meta.js';
+export { default as clist } from './CList/index.meta.js';
 export { default as luckysix } from './CLuckysix/index.meta.js';
 export { default as panel } from './CPanel/index.meta.js';
 export { default as radioList } from './CRadioList/index.meta.js';

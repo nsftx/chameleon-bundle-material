@@ -105,15 +105,13 @@
                 {
                   "name": "shoppingList",
                   "type": "list",
-                  "label": "Shopping list",
                   "noDataText": "List is empty",
-                  "contentTag": "",
-                  "loading": true,
-                  "rowsPerPageItems": [],
+                  "rowsPerPageItems": [ 4, 8 ],
                   "rowsPerPageText": "Items Per Page",
                   "pagination": {
-                    "rowsPerPage": 3
+                    "rowsPerPage": 2
                   },
+                  "wrap": false,
                   "dataSource": {
                     "items": [
                       {
@@ -148,8 +146,9 @@
                   },
                   "value": [
                     {
-                      "id": 1,
-                      "name": "Male"
+                      "value": false,
+                      "name": "Gingerbread",
+                      "calories": 365
                     }
                   ]
                 },
@@ -458,6 +457,7 @@
                   "hint": null,
                   "tooltip": null,
                   "clearable": true,
+                  "fullWidth": true,
                   "validation": {
                     "required": true,
                     "minDate": "2017-11-05T20:35:00.000Z",
@@ -479,6 +479,8 @@
                   "hint": null,
                   "tooltip": null,
                   "clearable": true,
+                  "fullWidth": false,
+                  "width": "200",
                   "validation": {
                     "required": true,
                     "minDate": "2017-11-05T20:35:00.000Z",

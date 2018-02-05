@@ -6,8 +6,9 @@ const getDatePickerProps = (context) => {
     noTitle: false,
     scrollable: true,
     autosave: true,
+    fullWidth: context.definition.fullWidth,
+    width: context.definition.width,
     value: context.value,
-    allowedDates: context.definition.allowedDates,
   };
 
   return props;
