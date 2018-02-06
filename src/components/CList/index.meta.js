@@ -1,5 +1,5 @@
 export default {
-  group: 'widgets',
+  group: 'inputs',
   type: 'list',
   name: 'List',
   icon: 'list',
@@ -36,7 +36,7 @@ export default {
     },
     pagination: {
       type: 'subGroup',
-      name: 'Pagiantion',
+      name: 'Pagination',
       rowsPerPage: {
         type: 'input',
         name: 'Rows Per Page',
