@@ -4,6 +4,10 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const resolve = file => require('path').resolve(__dirname, file);
 
 module.exports = {
+  output: {
+    library: '__CHAMELEON_MATERIAL__',
+    libraryTarget: 'umd',
+  },
   resolve: {
     extensions: ['*', '.js', '.json', '.vue'],
     alias: {

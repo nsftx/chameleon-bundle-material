@@ -46,6 +46,15 @@ export default {
       value: null,
       priority: 6,
     },
+    time: {
+      type: 'subGroup',
+      name: 'Time',
+      enabled: {
+        type: 'check',
+        name: 'Enable time',
+        value: false,
+      },
+    },
     validation: {
       type: 'group',
       group: 'validation',

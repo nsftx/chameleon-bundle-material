@@ -22,7 +22,6 @@ module.exports = merge(baseWebpackConfig, {
   output: {
     path: resolve('../dist'),
     publicPath: '/dist/',
-    library: 'Chameleon'
   },
   module: {
     noParse: /es6-promise\.js$/,

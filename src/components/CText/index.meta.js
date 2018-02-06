@@ -64,6 +64,15 @@ export default {
       value: false,
       priority: 9,
     },
+    mask: {
+      type: 'subGroup',
+      name: 'Mask',
+      predefined: {
+        type: 'input',
+        name: 'Predefined',
+        value: null,
+      },
+    },
     validation: {
       type: 'group',
       group: 'validation',
