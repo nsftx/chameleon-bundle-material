@@ -623,6 +623,12 @@
                   "value": false
                 },
                 {
+                  "name": "htmlMarkup",
+                  "type": "html",
+                  "label": "Html Markup",
+                  "value": "<h1>This is heading 1</h1>"
+                },
+                {
                   "name": "save",
                   "type": "button",
                   "label": "Save",

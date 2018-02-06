@@ -66,16 +66,13 @@ export default {
       type: Object,
       required: true,
     },
-    validators: {
-      type: Object,
-    },
   },
   render(createElement) {
     return createElement(
       'v-data-iterator',
       {
         attrs: {
-          name: this.definition.title,
+          name: this.definition.name,
           wrap: this.definition.wrap,
         },
         props: getProps(this),
