@@ -117,49 +117,34 @@
                   "dataSource": {
                     "items": [
                       {
-                        "value": false,
-                        "name": "Frozen Yogurt",
+                        "title": "Frozen Yogurt",
                         "description": "calories: 159, fat: 6.0, carbs: 24, calories",
                         "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
                         "icon": "language"
                       },
                       {
-                        "value": false,
-                        "name": "Ice cream sandwich",
+                        "title": "Ice cream sandwich",
                         "description": "calories: 159, fat: 6.0, carbs: 24, calories",
                         "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
                         "icon": "language"
                       },
                       {
-                        "value": false,
-                        "name": "Eclair",
+                        "title": "Eclair",
                         "description": "calories: 159, fat: 6.0, carbs: 24, calories",
                         "icon": "language"
                       },
                       {
-                        "value": false,
-                        "name": "Cupcake",
+                        "title": "Cupcake",
                         "description": "calories: 159, fat: 6.0, carbs: 24, calories",
                         "icon": "cake"
                       },
                       {
-                        "value": false,
-                        "name": "Gingerbread",
+                        "title": "Gingerbread",
                         "description": "calories: 159, fat: 6.0, carbs: 24, calories",
                         "icon": "cake"
                       }
-                    ],
-                    "options": {
-                      "displayProp": "name"
-                    }
-                  },
-                  "value": [
-                    {
-                      "value": false,
-                      "name": "Gingerbread",
-                      "calories": 365
-                    }
-                  ]
+                    ]
+                  }
                 },
                 {
                   "name": "country",

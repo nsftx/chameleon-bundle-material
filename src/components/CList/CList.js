@@ -45,7 +45,7 @@ const getCardSlot = (createElement) => {
                 ]),
               createElement('v-list-tile-content', [
                 createElement('v-list-tile-title',
-                  props.item.name),
+                  props.item.title),
                 createElement('v-list-tile-sub-title',
                   props.item.description),
               ]),
@@ -75,7 +75,7 @@ export default {
       'v-data-iterator',
       {
         attrs: {
-          name: this.definition.name,
+          name: this.definition.title,
           wrap: this.definition.wrap,
         },
         props: getProps(this),
