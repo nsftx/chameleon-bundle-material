@@ -31,6 +31,20 @@ const builds = {
     },
     env: 'production',
   },
+  lite: {
+    config: {
+      entry: {
+        app: './src/index.lite.js'
+      },
+      output: {
+        filename: 'index.lite.js',
+      },
+      plugins: [
+        new ExtractTextPlugin('index.lite.css'),
+      ],
+    },
+    env: 'production',
+  },
   meta: {
     config: {
       entry: {
