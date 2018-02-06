@@ -9,6 +9,8 @@ const getDatePickerProps = (context) => {
     fullWidth: context.definition.fullWidth,
     width: context.definition.width,
     value: context.value,
+    min: context.definition.allowedDates.min,
+    max: context.definition.allowedDates.max,
   };
 
   return props;

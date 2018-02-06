@@ -474,7 +474,7 @@
                   "tooltip": null,
                   "clearable": true,
                   "fullWidth": false,
-                  "width": "200",
+                  "width": "260",
                   "validation": {
                     "required": true,
                     "minDate": "2017-11-05T20:35:00.000Z",
