@@ -6,11 +6,26 @@ const getProps = (context) => {
   const props = {
     paginationSync: definition.pagination,
     rowsPerPageItems: definition.rowsPerPageItems,
+    rowsPerPageText: definition.rowsPerPageText,
+    noResultsText: definition.noResultsText,
+    noDataText: definition.noDataText,
+    hideActions: definition.hideActions,
     items: definition.dataSource.items,
     contentTag: 'v-layout',
   };
 
   return props;
+};
+
+const getListAvatar = (createElement, data) => {
+  if (data.item.thumb) {
+    return createElement('img', {
+      attrs: {
+        src: data.item.thumb,
+      },
+    });
+  }
+  return createElement('v-icon', data.item.icon);
 };
 
 const getCardSlot = (createElement) => {
@@ -22,7 +37,20 @@ const getCardSlot = (createElement) => {
     },
       [
         createElement('v-card', [
-          createElement('v-card-title', props.item.name),
+          createElement('v-list', [
+            createElement('v-list-tile', [
+              createElement('v-list-tile-avatar',
+                [
+                  getListAvatar(createElement, props),
+                ]),
+              createElement('v-list-tile-content', [
+                createElement('v-list-tile-title',
+                  props.item.name),
+                createElement('v-list-tile-sub-title',
+                  props.item.description),
+              ]),
+            ]),
+          ]),
         ]),
       ],
     ),

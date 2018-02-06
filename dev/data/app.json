@@ -105,39 +105,48 @@
                 {
                   "name": "shoppingList",
                   "type": "list",
+                  "hideActions": false,
                   "noDataText": "List is empty",
-                  "rowsPerPageItems": [ 4, 8 ],
                   "rowsPerPageText": "Items Per Page",
+                  "noResultsText": "No matching records found",
+                  "rowsPerPageItems": [ 3, 6 ],
                   "pagination": {
                     "rowsPerPage": 2
                   },
-                  "wrap": false,
+                  "wrap": true,
                   "dataSource": {
                     "items": [
                       {
                         "value": false,
                         "name": "Frozen Yogurt",
-                        "calories": 159
+                        "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                        "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
+                        "icon": "language"
                       },
                       {
                         "value": false,
                         "name": "Ice cream sandwich",
-                        "calories": 237
+                        "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                        "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
+                        "icon": "language"
                       },
                       {
                         "value": false,
                         "name": "Eclair",
-                        "calories": 200
+                        "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                        "icon": "language"
                       },
                       {
                         "value": false,
                         "name": "Cupcake",
-                        "calories": 300
+                        "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                        "icon": "cake"
                       },
                       {
                         "value": false,
                         "name": "Gingerbread",
-                        "calories": 365
+                        "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                        "icon": "cake"
                       }
                     ],
                     "options": {
