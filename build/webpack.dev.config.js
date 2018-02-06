@@ -27,7 +27,6 @@ module.exports = merge(baseWebpackConfig, {
     filename: '[name].js',
     path: resolve('../dev'),
     publicPath: '/dev/',
-    library: 'Chameleon'
   },
   resolve: {
     extensions: ['*', '.js', '.json', '.vue'],

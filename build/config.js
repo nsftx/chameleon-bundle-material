@@ -13,36 +13,46 @@ const builds = {
   development: {
     config: {
       output: {
-        filename: 'chameleon-vuetify.js',
-        libraryTarget: 'umd'
+        filename: 'index.js',
       },
       plugins: [
-        new ExtractTextPlugin('chameleon-vuetify.css')
-      ]
-    }
+        new ExtractTextPlugin('index.css'),
+      ],
+    },
   },
   production: {
     config: {
       output: {
-        filename: 'chameleon-vuetify.min.js',
-        libraryTarget: 'umd'
+        filename: 'index.min.js',
       },
       plugins: [
-        new ExtractTextPlugin('chameleon-vuetify.min.css')
-      ]
+        new ExtractTextPlugin('index.min.css'),
+      ],
     },
-    env: 'production'
+    env: 'production',
+  },
+  meta: {
+    config: {
+      entry: {
+        app: './src/index.meta.js'
+      },
+      output: {
+        filename: 'index.meta.js',
+        library: '__CHAMELEON_MATERIAL_META__',
+      },
+    },
+    env: 'production',
   },
   playground: {
     config: {
       output: {
         filename: '[name].js',
-        path: resolve('../dev/assets')
+        path: resolve('../dev/assets'),
       },
     },
-    env: 'production'
-  }
-}
+    env: 'production',
+  },
+};
 
 const genConfig = (name, opts) => {
   const config = webpackMerge({}, name === 'playground' ? baseDev : baseProd, opts.config);
@@ -50,32 +60,32 @@ const genConfig = (name, opts) => {
   config.plugins = config.plugins.concat([
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': opts.env || 'development'
-    })
+    }),
   ]);
 
   if (opts.env) {
     config.plugins = config.plugins.concat([
       new webpack.optimize.UglifyJsPlugin({
-        sourceMap: false
+        sourceMap: false,
       }),
       new OptimizeJsPlugin({
-        sourceMap: false
+        sourceMap: false,
       }),
       new OptimizeCssAssetsPlugin({
         assetNameRegExp: /\.css$/g,
         cssProcessor: require('cssnano'),
         cssProcessorOptions: {
           discardComments: { removeAll: true },
-          postcssZindex: false
+          postcssZindex: false,
         },
-        canPrint: false
+        canPrint: false,
       }),
-      new webpack.optimize.ModuleConcatenationPlugin()
+      new webpack.optimize.ModuleConcatenationPlugin(),
     ]);
   }
 
   return config;
-}
+};
 
 const target = process.env.TARGET;
 if (target) {
