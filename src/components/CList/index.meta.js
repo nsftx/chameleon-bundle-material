@@ -5,7 +5,7 @@ export default {
   icon: 'list',
   options: {
     noDataText: {
-      name: 'input',
+      type: 'input',
       name: 'No Data Text',
       value: null,
       priority: 1,
