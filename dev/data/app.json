@@ -395,7 +395,7 @@
                 },
                 {
                   "name": "about",
-                  "type": "richText",
+                  "type": "rich-text",
                   "label": "About",
                   "validation": {
                     "required": true
@@ -409,7 +409,7 @@
                 },
                 {
                   "name": "description",
-                  "type": "richText",
+                  "type": "rich-text",
                   "label": "Description",
                   "placeholder": "Enter description",
                   "validation": {
@@ -467,7 +467,7 @@
                 },
                 {
                   "name": "reportRange",
-                  "type": "dateRange",
+                  "type": "date-range",
                   "label": "Report Range",
                   "prependIcon": null,
                   "appendIcon": null,
@@ -526,7 +526,7 @@
                 },
                 {
                   "name": "cities",
-                  "type": "checkList",
+                  "type": "check-list",
                   "label": "Select cities",
                   "prependIcon": null,
                   "appendIcon": null,
@@ -565,7 +565,7 @@
                 },
                 {
                   "name": "gender",
-                  "type": "radioList",
+                  "type": "radio-list",
                   "prependIcon": null,
                   "appendIcon": null,
                   "hint": null,

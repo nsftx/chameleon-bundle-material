@@ -4,7 +4,7 @@ export default {
   name: 'Accordion',
   icon: 'view_day',
   children: [
-    'accordionItem',
+    'accordion-item',
   ],
   options: {
     alternativeDesign: {
@@ -30,11 +30,11 @@ export default {
       returnObject: false,
       displayProp: 'name',
       valueProp: 'value',
-      value: [],
+      value: '',
       priority: 4,
     },
     itemsCount: {
-      type: 'input',
+      type: 'childrenCountInput',
       name: 'Item count',
       value: 1,
       validation: {

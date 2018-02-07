@@ -1,4 +1,5 @@
 export { default as CAccordion } from './CAccordion';
+export { default as CAccordionItem } from './CAccordionItem';
 export { default as CButton } from './CButton';
 export { default as CCalculation } from './CCalculation';
 export { default as CCheck } from './CCheck';

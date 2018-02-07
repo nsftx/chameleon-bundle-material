@@ -2,86 +2,6 @@ import _ from 'lodash';
 import uuid from 'uuid/v4';
 import namespace from '@namespace';
 
-const getItemHeader = (element, createElement) => {
-  const el = createElement(
-    'div',
-    {
-      slot: 'header',
-    },
-    element.title,
-  );
-
-  return el;
-};
-
-const getItemText = (text, createElement) => {
-  const el = createElement(
-    'p',
-    text,
-  );
-
-  return el;
-};
-
-const getItemContent = (element, createElement, color) => {
-  const children = _.map(element.elements, (childElement) => {
-    const childEl = createElement(
-      `${namespace}${_.kebabCase(childElement.type)}`,
-      {
-        key: `${childElement.name}_${uuid()}`,
-        props: {
-          definition: childElement,
-          validators: self.validators,
-        },
-      },
-    );
-
-    return childEl;
-  });
-
-  // This will also be child element after we add static text component
-  if (element.text && element.text.length) {
-    const itemText = getItemText(element.text, createElement);
-    children.unshift(itemText);
-  }
-
-  const el = createElement(
-    'v-card',
-    {
-      staticStyle: {
-        backgroundColor: color,
-      },
-    },
-    [
-      createElement(
-        'v-card-text',
-        {},
-        children,
-      ),
-    ],
-  );
-
-  return el;
-};
-
-const getItem = (element, createElement, props) => {
-  const el = createElement(
-    'v-expansion-panel-content',
-    {
-      staticStyle: {
-        backgroundColor: props.headerColor,
-      },
-      props,
-    },
-    [
-      getItemHeader(element, createElement),
-      getItemContent(element, createElement, props.contentColor),
-    ],
-  );
-
-  return el;
-};
-
 const getItemProps = (context) => {
   const props = {
     headerColor: context.color,
@@ -117,12 +37,18 @@ export default {
     },
   },
   render(createElement) {
+    const self = this;
     const itemProps = getItemProps(this.definition);
 
-    const items = _.map(this.definition.elements, element => getItem(
-      element,
-      createElement,
-      itemProps,
+    const items = _.map(this.definition.elements, element => createElement(
+      `${namespace}accordion-item`,
+      {
+        key: `${element.name}_${uuid()}`,
+        props: {
+          definition: _.merge({}, element, itemProps),
+          validators: self.validators,
+        },
+      },
     ));
 
     return createElement(
