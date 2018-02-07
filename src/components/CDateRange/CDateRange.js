@@ -15,14 +15,11 @@ const getPropRequired = (definition) => {
 
 const getMenuProps = (context) => {
   const definition = context.definition;
-  const width = '580px';
 
   const props = {
     lazy: false,
     transition: _.isNil(definition.transition) ? 'scale-transition' : definition.transition,
     fullWidth: true,
-    maxWidth: width,
-    minWidth: width,
     closeOnContentClick: false,
   };
 
