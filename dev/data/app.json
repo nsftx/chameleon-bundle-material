@@ -47,7 +47,7 @@
                     "minLength": 2,
                     "maxLength": 20,
                     "pattern": {
-                      "predefined": false,
+                      "predefined": null,
                       "value": null
                     },
                     "custom": null
@@ -78,7 +78,7 @@
                     "minLength": 2,
                     "maxLength": 20,
                     "pattern": {
-                      "predefined": false,
+                      "predefined": null,
                       "value": null
                     },
                     "custom": null
@@ -95,60 +95,14 @@
                   "suffix": null,
                   "placeholder": "Please enter formula",
                   "hint": null,
+                  "tooltip": null,
+                  "multiLine": false,
                   "clearable": true,
                   "validateOn": "blur",
                   "validation": {
                     "required": true
                   },
                   "value": "${lastName} ${firstName}"
-                },
-                {
-                  "name": "country",
-                  "type": "select",
-                  "label": "Country",
-                  "prependIcon": "language",
-                  "appendIcon": null,
-                  "placeholder": "Please select a country",
-                  "hint": null,
-                  "persistentHint": false,
-                  "tooltip": null,
-                  "multiLine": false,
-                  "multiple": false,
-                  "clearable": false,
-                  "readonly": false,
-                  "validateOn": "blur",
-                  "mask": {
-                    "predefined": false,
-                    "value": null
-                  },
-                  "validation": {
-                    "required": true
-                  },
-                  "dataSource": {
-                    "items": [
-                      {
-                        "id": 1,
-                        "name": "Italy"
-                      },
-                      {
-                        "id": 2,
-                        "name": "France"
-                      },
-                      {
-                        "id": 3,
-                        "name": "England"
-                      }
-                    ],
-                    "options": {
-                      "displayProp": "name"
-                    }
-                  },
-                  "value": [
-                    {
-                      "id": 1,
-                      "name": "Male"
-                    }
-                  ]
                 },
                 {
                   "name": "company",
@@ -206,6 +160,54 @@
                   ]
                 },
                 {
+                  "name": "country",
+                  "type": "select",
+                  "label": "Country",
+                  "prependIcon": "language",
+                  "appendIcon": null,
+                  "placeholder": "Please select a country",
+                  "hint": null,
+                  "persistentHint": false,
+                  "tooltip": null,
+                  "multiLine": false,
+                  "multiple": false,
+                  "clearable": false,
+                  "readonly": false,
+                  "validateOn": "blur",
+                  "mask": {
+                    "predefined": false,
+                    "value": null
+                  },
+                  "validation": {
+                    "required": true
+                  },
+                  "dataSource": {
+                    "items": [
+                      {
+                        "id": 1,
+                        "name": "Italy"
+                      },
+                      {
+                        "id": 2,
+                        "name": "France"
+                      },
+                      {
+                        "id": 3,
+                        "name": "England"
+                      }
+                    ],
+                    "options": {
+                      "displayProp": "name"
+                    }
+                  },
+                  "value": [
+                    {
+                      "id": 1,
+                      "name": "Male"
+                    }
+                  ]
+                },
+                {
                   "name": "language",
                   "type": "tags",
                   "label": "Language",
@@ -217,7 +219,7 @@
                   "tooltip": null,
                   "multiLine": false,
                   "multiple": true,
-                  "clearable": false,
+                  "clearable": true,
                   "readonly": false,
                   "validateOn": "blur",
                   "mask": {
@@ -340,7 +342,7 @@
                   "validation": {
                     "required": true,
                     "pattern": {
-                      "predefined": false,
+                      "predefined": null,
                       "value": "^-?\\d*(\\.\\d+)?$"
                     },
                     "custom": null
@@ -523,7 +525,7 @@
                   "persistentHint": false,
                   "value": "",
                   "validation": {
-                    "required": false
+                    "required": true
                   },
                   "dataSource": {
                     "items": [
@@ -574,17 +576,13 @@
                   "disabled": false,
                   "persistentHint": false,
                   "value": false
-                },
+                }
+              ],
+              "actions": [
                 {
                   "name": "save",
                   "type": "button",
                   "label": "Save",
-                  "color": "",
-                  "icon": false,
-                  "round": false,
-                  "flat": false,
-                  "block": false,
-                  "depressed": false,
                   "actions": {
                     "click": "save"
                   }
@@ -599,6 +597,94 @@
           "flat": false,
           "gutter": false,
           "elements": [
+            {
+              "type": "accordion",
+              "name": "accordion",
+              "multipleExpand": false,
+              "alternativeDesign": "",
+              "color": "#FF5252",
+              "contentRipple": true,
+              "hideItemActions": true,
+              "elements": [
+                {
+                  "type": "accordion-item",
+                  "name": "accordion-item-1",
+                  "title": "Item 1",
+                  "text": "Long live the Chameleon!",
+                  "elements": [
+                    {
+                      "name": "firstName1",
+                      "type": "text",
+                      "label": "First Name",
+                      "prependIcon": "person",
+                      "appendIcon": null,
+                      "prefix": null,
+                      "suffix": null,
+                      "placeholder": "Please enter your first name",
+                      "hint": null,
+                      "persistentHint": false,
+                      "tooltip": null,
+                      "multiLine": false,
+                      "clearable": true,
+                      "validateOn": "blur",
+                      "mask": {
+                        "predefined": false,
+                        "value": null
+                      },
+                      "validation": {
+                        "required": true,
+                        "minLength": 2,
+                        "maxLength": 20,
+                        "pattern": {
+                          "predefined": null,
+                          "value": null
+                        },
+                        "custom": null
+                      },
+                      "value": "Jadranko"
+                    }
+                  ]
+                },
+                {
+                  "type": "accordion-item",
+                  "name": "accordion-item-2",
+                  "title": "Item 2",
+                  "elements": [
+                    {
+                      "name": "firstName2",
+                      "type": "text",
+                      "label": "First Name",
+                      "prependIcon": "person",
+                      "appendIcon": null,
+                      "prefix": null,
+                      "suffix": null,
+                      "placeholder": "Please enter your first name",
+                      "hint": null,
+                      "persistentHint": false,
+                      "tooltip": null,
+                      "multiLine": false,
+                      "clearable": true,
+                      "validateOn": "blur",
+                      "mask": {
+                        "predefined": false,
+                        "value": null
+                      },
+                      "validation": {
+                        "required": true,
+                        "minLength": 2,
+                        "maxLength": 20,
+                        "pattern": {
+                          "predefined": null,
+                          "value": null
+                        },
+                        "custom": null
+                      },
+                      "value": "Jadranko"
+                    }
+                  ]
+                }
+              ]
+            },
             {
               "type": "youtube",
               "name": "you tube",
@@ -662,5 +748,6 @@
     "required": {
       "message": "The ${field} field is required."
     }
-  }
+  },
+  "slug": "test-lana"
 }
