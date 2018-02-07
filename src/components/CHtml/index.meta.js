@@ -1,5 +1,5 @@
 export default {
-  group: 'inputs',
+  group: 'widgets',
   type: 'html',
   name: 'Html Markup',
   icon: 'html',

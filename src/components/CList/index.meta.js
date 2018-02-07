@@ -1,5 +1,5 @@
 export default {
-  group: 'inputs',
+  group: 'widgets',
   type: 'list',
   name: 'List',
   icon: 'list',
