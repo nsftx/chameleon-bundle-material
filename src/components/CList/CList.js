@@ -1,11 +1,25 @@
 import namespace from '@namespace';
-import _ from 'lodash';
+import { isNil, isString, map, merge } from 'lodash';
+
+const getPropRowsPerPageItems = (value) => {
+  if (isNil(value)) {
+    return [5, 10, 15, 20];
+  } else if (isString(value)) {
+    if (value.indexOf(',') > -1) {
+      return map(value.split(','), Number);
+    }
+
+    return [Number(value)];
+  }
+
+  return value;
+};
 
 const getProps = (context) => {
   const definition = context.definition;
 
   const props = {
-    rowsPerPageItems: definition.rowsPerPageItems,
+    rowsPerPageItems: getPropRowsPerPageItems(definition.rowsPerPageItems),
     rowsPerPageText: definition.rowsPerPageText,
     noResultsText: definition.noResultsText,
     noDataText: definition.noDataText,
@@ -64,7 +78,7 @@ const getListeners = (context) => {
 
   const listeners = {
     'update:pagination': (value) => {
-      const pagination = _.merge(value, self.definition.pagination);
+      const pagination = merge(value, self.definition.pagination);
       self.$emit('update:pagination', pagination);
     },
   };
