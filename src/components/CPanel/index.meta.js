@@ -6,6 +6,7 @@ export default {
   children: [
     '*',
     '!inputs',
+    '!container-items',
   ],
   options: {
     color: {
