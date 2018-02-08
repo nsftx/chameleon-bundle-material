@@ -55,7 +55,7 @@ export default {
   group: 'containers',
   type: 'hlist',
   name: 'Horizontal List',
-  icon: 'view_stream',
+  icon: 'view_week',
   children: [
     '*',
     '!inputs',
