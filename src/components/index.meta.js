@@ -1,3 +1,5 @@
+export { default as accordion } from './CAccordion/index.meta.js';
+export { default as accordionItem } from './CAccordionItem/index.meta.js';
 export { default as button } from './CButton/index.meta.js';
 export { default as calculation } from './CCalculation/index.meta.js';
 export { default as check } from './CCheck/index.meta.js';

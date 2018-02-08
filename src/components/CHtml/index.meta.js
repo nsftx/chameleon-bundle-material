@@ -1,12 +1,12 @@
 export default {
   group: 'widgets',
   type: 'html',
-  name: 'Html Markup',
-  icon: 'html',
+  name: 'Html',
+  icon: 'code',
   options: {
     value: {
       type: 'input',
-      name: 'Html Markup',
+      name: 'Html Code',
       value: null,
       multiLine: true,
       priority: 1,

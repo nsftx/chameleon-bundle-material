@@ -1,7 +1,7 @@
 export default {
   group: 'inputs',
   type: 'select-list',
-  name: 'selectList',
+  name: 'Select List',
   icon: 'featured_play_list',
   optionGroups: {
     validation: {
