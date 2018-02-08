@@ -34,13 +34,34 @@ export default {
       value: false,
       priority: 5,
     },
+    wrap: {
+      type: 'check',
+      name: 'Horizontal list',
+      value: false,
+      priority: 6,
+    },
     pagination: {
       type: 'subGroup',
       name: 'Pagination',
       rowsPerPage: {
         type: 'input',
         name: 'Rows Per Page',
+        value: 5,
+      },
+      sortBy: {
+        type: 'input',
+        name: 'Sort items by:',
         value: null,
+      },
+      descending: {
+        type: 'check',
+        name: 'Descending',
+        value: false,
+      },
+      page: {
+        type: 'input',
+        name: 'Start with page:',
+        value: 1,
       },
     },
   },

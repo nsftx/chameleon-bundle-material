@@ -111,7 +111,9 @@
                   "noResultsText": "No matching records found",
                   "rowsPerPageItems": [ 3, 6 ],
                   "pagination": {
-                    "rowsPerPage": 2
+                    "rowsPerPage": 4,
+                    "sortBy": "title",
+                    "page": 1
                   },
                   "wrap": true,
                   "dataSource": {

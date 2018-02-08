@@ -1,10 +1,10 @@
 import namespace from '@namespace';
+import _ from 'lodash';
 
 const getProps = (context) => {
   const definition = context.definition;
 
   const props = {
-    paginationSync: definition.pagination,
     rowsPerPageItems: definition.rowsPerPageItems,
     rowsPerPageText: definition.rowsPerPageText,
     noResultsText: definition.noResultsText,
@@ -59,6 +59,20 @@ const getCardSlot = (createElement) => {
   return slot;
 };
 
+const getListeners = (context) => {
+  const self = context;
+
+  const listeners = {
+    'update:pagination': (value) => {
+      const pagination = _.merge(value, self.definition.pagination);
+      console.log(' pagination ', pagination);
+      self.$emit('update:pagination', pagination);
+    },
+  };
+
+  return listeners;
+};
+
 export default {
   name: `${namespace}list`,
   props: {
@@ -77,6 +91,7 @@ export default {
         },
         props: getProps(this),
         scopedSlots: getCardSlot(createElement),
+        on: getListeners(this),
       },
     );
   },
