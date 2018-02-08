@@ -114,7 +114,7 @@
                   "rowsPerPageItems": [ 3, 6 ],
                   "pagination": {
                     "rowsPerPage": 4,
-                    "sortBy": "title",
+                    "sortBy": null,
                     "page": 1
                   },
                   "wrap": true,

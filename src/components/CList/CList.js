@@ -65,7 +65,6 @@ const getListeners = (context) => {
   const listeners = {
     'update:pagination': (value) => {
       const pagination = _.merge(value, self.definition.pagination);
-      console.log(' pagination ', pagination);
       self.$emit('update:pagination', pagination);
     },
   };
