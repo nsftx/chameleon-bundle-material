@@ -52,7 +52,6 @@ export default {
     const url = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=${libraries}`;
 
     this.loadDependencies(url, 'CMap').then(() => {
-      console.log('then map');
       this.load();
     });
   },

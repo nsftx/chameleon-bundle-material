@@ -1,38 +1,22 @@
 import _ from 'lodash';
 
+const setFlag = (globals, prop, value) => {
+  _.merge(window, {
+    // eslint-disable-next-line
+    '__CHAMELEON_MATERIAL_DEPS__': { [globals]: { [prop]: value } },
+  });
+};
+const depPromises = [];
+const urlPromises = [];
+
 export default {
-  data() {
-    return {
-      dependables: [],
-    };
-  },
   methods: {
-    get(url, globals, callback, errorCallback) {
+    set(url, globals, resolve, reject) {
       let type = null;
       let attr = null;
-      const invokeCallback = () => {
-        this.dependables[globals] = true;
-
-        if (_.isFunction(callback)) {
-          callback();
-        }
-      };
-
       type = url.type === 'script' || _.isUndefined(url.type) ? 'script' : 'link';
       attr = url.type === 'script' || _.isUndefined(url.type) ? 'src' : 'href';
       const script = document.createElement(type);
-
-      script.onload = () => {
-        invokeCallback();
-      };
-
-      script.onerror = (e) => {
-        this.dependables[globals] = false;
-        console.warn('Load script error ', e);
-        if (_.isFunction(errorCallback)) {
-          errorCallback();
-        }
-      };
 
       script.setAttribute(attr, url.src || url);
 
@@ -43,21 +27,48 @@ export default {
         script.type = 'text/css';
         document.head.appendChild(script);
       }
+
+      script.onerror = () => {
+        reject();
+        setFlag(globals, 'loaded', false);
+        setFlag(globals, 'started', false);
+      };
+
+      script.onload = () => {
+        resolve();
+      };
+    },
+    getEach(url, globals) {
+      if (_.isArray(url)) {
+        url.forEach((src) => {
+          this.getEach(src, globals);
+        });
+      } else {
+        urlPromises.push(new Promise((resolve, reject) => {
+          this.set(url, globals, resolve, reject);
+        }));
+      }
     },
     loadDependencies(url, globals) {
-      if (_.isArray(url)) {
-        let p = Promise.resolve(true);
-        const self = this;
-
-        url.forEach((src) => {
-          p = p.then(() => self.loadDependencies(src));
-        });
-
-        return p;
-      }
-      return new Promise((resolve, reject) => {
-        this.get(url, globals, () => resolve(true), () => reject());
-      });
+      depPromises.push(new Promise((resolve) => {
+        // eslint-disable-next-line
+        if (!_.isUndefined(window.__CHAMELEON_MATERIAL_DEPS__) && !_.isUndefined(window.__CHAMELEON_MATERIAL_DEPS__[globals]) && window.__CHAMELEON_MATERIAL_DEPS__[globals].started) {
+          const interval = setInterval(() => {
+            // eslint-disable-next-line
+            if (window.__CHAMELEON_MATERIAL_DEPS__[globals].loaded) {
+              clearInterval(interval);
+              resolve();
+            }
+          }, 10);
+        } else {
+          setFlag(globals, 'started', true);
+          this.getEach(url, globals);
+          resolve();
+        }
+      }));
+      return Promise.all(urlPromises).then(() => {
+        setFlag(globals, 'loaded', true);
+      }).then(() => Promise.all(depPromises));
     },
   },
 };

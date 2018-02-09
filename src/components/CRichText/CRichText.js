@@ -133,9 +133,6 @@ export default {
     );
   },
   mounted() {
-    if (this.dependables.Quill) {
-      return;
-    }
     const urls = [
       {
         src: 'https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.4/quill.min.js',
@@ -146,9 +143,7 @@ export default {
         type: 'link',
       },
     ];
-
-    this.loadDependencies(urls, 'Quill').then(() => {
-      console.log('then');
+    this.loadDependencies(urls, 'Quill').then((test) => {
       this.setEditor();
     });
   },

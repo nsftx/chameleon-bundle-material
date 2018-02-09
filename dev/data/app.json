@@ -458,14 +458,14 @@
                   "fullWidth": true,
                   "validation": {
                     "required": true,
-                    "minDate": "2017-11-05T20:35:00.000Z",
-                    "maxDate": "2017-11-21T20:35:00.000Z"
+                    "minDate": "2017-11-05",
+                    "maxDate": "2017-11-21"
                   },
                   "time": {
                     "enabled": true
                   },
                   "format": "LLL",
-                  "value": "2017-11-09T20:35:00.000Z"
+                  "value": "2017-11-09"
                 },
                 {
                   "name": "reportRange",
@@ -481,16 +481,16 @@
                   "width": "260",
                   "validation": {
                     "required": true,
-                    "minDate": "2017-11-05T20:35:00.000Z",
-                    "maxDate": "2017-11-21T20:35:00.000Z"
+                    "minDate": "2017-11-05",
+                    "maxDate": "2017-11-21"
                   },
                   "time": {
                     "enabled": true
                   },
                   "format": "LLL",
                   "value": [
-                    "2017-11-09T20:35:00.000Z",
-                    "2017-11-11T20:35:00.000Z"
+                    "2017-11-09",
+                    "2017-11-11"
                   ]
                 },
                 {
