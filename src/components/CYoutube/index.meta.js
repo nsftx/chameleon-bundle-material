@@ -61,7 +61,7 @@ export default {
       returnObject: false,
       displayProp: 'name',
       valueProp: 'value',
-      value: [],
+      value: '',
       priority: 1,
     },
     repeat: {
