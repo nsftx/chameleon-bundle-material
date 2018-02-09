@@ -25,6 +25,14 @@ const optionGroups = {
     key: 'general',
     name: 'General',
   },
+  localization: {
+    key: 'localization',
+    name: 'Localization',
+  },
+  data: {
+    key: 'data',
+    name: 'Data',
+  },
 };
 
 export default {

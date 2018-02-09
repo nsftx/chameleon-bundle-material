@@ -21,6 +21,7 @@ const getMenuProps = (context) => {
     transition: _.isNil(definition.transition) ? 'scale-transition' : definition.transition,
     fullWidth: true,
     closeOnContentClick: false,
+    maxWidth: '520px',
   };
 
   return props;
@@ -85,6 +86,7 @@ const getAllowedDates = (context, endRange) => {
 const getPickerDefinition = (context, endRange) => {
   const definition = _.clone(context.definition);
   definition.allowedDates = getAllowedDates(context, endRange);
+
   if (context.value) {
     definition.value = endRange ? context.value[1] : context.value[0];
   } else {
@@ -166,7 +168,7 @@ export default {
       createElement(
         `${namespace}picker`,
         {
-          staticClass: 'right',
+          staticClass: 'left',
           props: {
             definition: getPickerDefinition(this, true),
             endRange: true,
