@@ -766,6 +766,12 @@
                 "https://archive.org/download/WebmVp8Vorbis/webmvp8_512kb.mp4",
                 "https://archive.org/download/WebmVp8Vorbis/webmvp8.ogv"
               ]
+            },
+            {
+              "type": "map",
+              "name": "Map widget",
+              "apiKey": "AIzaSyBEkdhFK-EsCkDyIjr3B3ZSyvlXcmIF4HI",
+              "libraries": "places"
             }
           ]
         }
