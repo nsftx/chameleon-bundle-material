@@ -59,6 +59,11 @@
                     "title": "Gingerbread",
                     "description": "calories: 159, fat: 6.0, carbs: 24, calories",
                     "icon": "cake"
+                  },
+                  {
+                    "title": "Gingerbread2",
+                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                    "icon": "cake"
                   }
                 ]
               }
