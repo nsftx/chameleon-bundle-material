@@ -50,7 +50,7 @@ export default {
       }
     },
     loadDependencies(url, globals) {
-      depPromises.push(new Promise((resolve) => {
+      depPromises.push(new Promise((resolve, reject) => {
         // eslint-disable-next-line
         if (!_.isUndefined(window.__CHAMELEON_MATERIAL_DEPS__) && !_.isUndefined(window.__CHAMELEON_MATERIAL_DEPS__[globals]) && window.__CHAMELEON_MATERIAL_DEPS__[globals].started) {
           const interval = setInterval(() => {
@@ -58,6 +58,10 @@ export default {
             if (window.__CHAMELEON_MATERIAL_DEPS__[globals].loaded) {
               clearInterval(interval);
               resolve();
+              // eslint-disable-next-line
+            } else if (window.__CHAMELEON_MATERIAL_DEPS__[globals].loaded === false) {
+              clearInterval(interval);
+              reject();
             }
           }, 10);
         } else {
@@ -68,7 +72,11 @@ export default {
       }));
       return Promise.all(urlPromises).then(() => {
         setFlag(globals, 'loaded', true);
-      }).then(() => Promise.all(depPromises));
+      })
+        .then(() => Promise.all(depPromises))
+        .catch((error) => {
+          console.warn('Script rejected ', error);
+        });
     },
   },
 };
