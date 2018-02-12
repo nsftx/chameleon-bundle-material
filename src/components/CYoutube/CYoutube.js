@@ -1,5 +1,7 @@
 import _ from 'lodash';
 import namespace from '@namespace';
+import { dependable } from '@mixins';
+
 
 const getVideoId = (url) => {
   const re = /https?:\/\/(?:[0-9A-Z-]+\.)?(?:youtu\.be\/|youtube(?:-nocookie)?\.com\S*?[^\w\s-])([\w-]{11})(?=[^\w-]|$)(?![?=&+%\w.-]*(?:['"][^<>]*>|<\/a>))[?=&+%\w.-]*/ig;
@@ -58,6 +60,9 @@ const getPlayerParameters = (context) => {
 
 export default {
   name: `${namespace}youtube`,
+  mixins: [
+    dependable,
+  ],
   props: {
     definition: {
       type: Object,
@@ -92,14 +97,6 @@ export default {
 
       if (this.definition.muted) this.player.mute();
     },
-    loadApi() {
-      const script = document.createElement('script');
-      script.src = 'https://www.youtube.com/iframe_api';
-      script.setAttribute('async', null);
-      document.body.appendChild(script);
-
-      window.onYouTubeIframeAPIReady = this.createPlayer.bind(this);
-    },
     onPlayerReady() {
       const method = getPlayerMethod(this.playlist, this.definition.autoplay);
       const params = getPlayerParameters(this);
@@ -110,7 +107,10 @@ export default {
   mounted() {
     this.playlist = this.definition.playlist.length || this.definition.value.length > 1;
     this.predefinedPlaylist = this.definition.playlist.length ? this.definition.playlist : false;
-    this.loadApi();
+    const url = 'https://www.youtube.com/iframe_api';
+    this.loadDependencies(url, 'CYouTube').then(() => {
+      window.onYouTubeIframeAPIReady = this.createPlayer();
+    });
   },
   render(createElement) {
     return createElement(
