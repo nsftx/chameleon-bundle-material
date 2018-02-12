@@ -656,6 +656,20 @@
           "gutter": false,
           "elements": [
             {
+              "type": "flexgrid",
+              "name": "flexgrid",
+              "fluid": true,
+              "direction": "row",
+              "spacing": "medium",
+              "elements": [
+                {
+                  "type": "flexgrid-item",
+                  "name": "flexgrid-item-1",
+                  "width": "12"
+                }
+              ]
+            },
+            {
               "type": "accordion",
               "name": "accordion",
               "multipleExpand": false,

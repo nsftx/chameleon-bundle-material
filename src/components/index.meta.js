@@ -6,6 +6,8 @@ export { default as check } from './CCheck/index.meta.js';
 export { default as checkList } from './CCheckList/index.meta.js';
 export { default as date } from './CDate/index.meta.js';
 export { default as dateRange } from './CDateRange/index.meta.js';
+export { default as flexgrid } from './CFlexgrid/index.meta.js';
+export { default as flexgridItem } from './CFlexgridItem/index.meta.js';
 export { default as form } from './CForm/index.meta.js';
 export { default as hlist } from './CHlist/index.meta.js';
 export { default as html } from './CHtml/index.meta.js';
