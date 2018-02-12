@@ -20,6 +20,55 @@
           "color": "#f5f5f5",
           "elements": [
             {
+              "name": "shoppingList",
+              "type": "list",
+              "hideActions": false,
+              "noDataText": null,
+              "rowsPerPageText": null,
+              "noResultsText": null,
+              "rowsPerPageItems": null,
+              "rowsPerPage": 5,
+              "sortBy": null,
+              "startPage": 1,
+              "wrap": true,
+              "dataSource": {
+                "items": [
+                  {
+                    "title": "Frozen Yogurt",
+                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                    "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
+                    "icon": "language"
+                  },
+                  {
+                    "title": "Ice cream sandwich",
+                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                    "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
+                    "icon": "language"
+                  },
+                  {
+                    "title": "Eclair",
+                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                    "icon": "language"
+                  },
+                  {
+                    "title": "Cupcake",
+                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                    "icon": "cake"
+                  },
+                  {
+                    "title": "Gingerbread",
+                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                    "icon": "cake"
+                  },
+                  {
+                    "title": "Gingerbread2",
+                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                    "icon": "cake"
+                  }
+                ]
+              }
+            },
+            {
               "type": "form",
               "name": "person",
               "elements": [
@@ -103,52 +152,6 @@
                     "required": true
                   },
                   "value": "${lastName} ${firstName}"
-                },
-                {
-                  "name": "shoppingList",
-                  "type": "list",
-                  "hideActions": false,
-                  "noDataText": "List is empty",
-                  "rowsPerPageText": "Items Per Page",
-                  "noResultsText": "No matching records found",
-                  "rowsPerPageItems": [ 3, 6 ],
-                  "pagination": {
-                    "rowsPerPage": 4,
-                    "sortBy": null,
-                    "page": 1
-                  },
-                  "wrap": true,
-                  "dataSource": {
-                    "items": [
-                      {
-                        "title": "Frozen Yogurt",
-                        "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                        "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
-                        "icon": "language"
-                      },
-                      {
-                        "title": "Ice cream sandwich",
-                        "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                        "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
-                        "icon": "language"
-                      },
-                      {
-                        "title": "Eclair",
-                        "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                        "icon": "language"
-                      },
-                      {
-                        "title": "Cupcake",
-                        "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                        "icon": "cake"
-                      },
-                      {
-                        "title": "Gingerbread",
-                        "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                        "icon": "cake"
-                      }
-                    ]
-                  }
                 },
                 {
                   "name": "country",

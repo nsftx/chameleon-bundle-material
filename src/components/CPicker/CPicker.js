@@ -8,7 +8,7 @@ const getDatePickerProps = (context) => {
     autosave: true,
     fullWidth: context.definition.fullWidth,
     width: context.definition.width,
-    value: context.value,
+    value: context.value ? context.value.substring(0, 10) : null,
     min: context.definition.allowedDates.min,
     max: context.definition.allowedDates.max,
   };

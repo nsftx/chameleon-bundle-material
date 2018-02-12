@@ -143,7 +143,7 @@ export default {
         type: 'link',
       },
     ];
-    this.loadDependencies(urls, 'Quill').then((test) => {
+    this.loadDependencies(urls, 'Quill').then(() => {
       this.setEditor();
     });
   },

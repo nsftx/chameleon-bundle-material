@@ -59,6 +59,7 @@ export default {
   children: [
     '*',
     '!inputs',
+    '!container-items',
   ],
 
   /**
