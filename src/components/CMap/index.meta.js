@@ -12,5 +12,13 @@ export default {
       type: 'input',
       name: 'Map Libraries',
     },
+    width: {
+      type: 'input',
+      name: 'Map width'
+    },
+    height: {
+      type: 'input',
+      name: 'Map height'
+    },
   },
 };

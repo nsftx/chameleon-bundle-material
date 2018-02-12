@@ -40,8 +40,8 @@ export default {
     return createElement('div', {
       ref: 'map',
       style: {
-        width: this.width,
-        height: this.height,
+        width: this.definition.width || this.width,
+        height: this.definition.height || this.height,
       },
     });
   },
