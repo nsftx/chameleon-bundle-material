@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import namespace from '@namespace';
-import { fieldable, validatable } from '@mixins';
+import { fieldable, validatable, dependable } from '@mixins';
 
 require('../../style/components/_rich-text.styl');
 
@@ -63,11 +63,50 @@ export default {
   mixins: [
     fieldable,
     validatable,
+    dependable,
   ],
   data() {
     return {
       editor: null,
     };
+  },
+  methods: {
+    setEditor() {
+      this.value = this.definition.value;
+
+      this.editor = new Quill(this.$refs.editor, {
+        theme: 'snow',
+        placeholder: this.definition.placeholder,
+        modules: {
+          toolbar: getToolbar(this.definition),
+        },
+      });
+
+      if (this.value) {
+        this.editor.clipboard.dangerouslyPasteHTML(this.value);
+      }
+
+      this.editor.on('selection-change', (range) => {
+        if (range) {
+          this.$emit('focus', this.editor);
+        } else {
+          this.$emit('blur', this.editor);
+        }
+      });
+
+      this.editor.on('text-change', () => {
+        let html = this.$refs.editor.children[0].innerHTML;
+
+        // Handle empty editor
+        if (html === '<p><br></p>') {
+          html = '';
+        }
+
+        this.value = html;
+        this.validate();
+        this.$emit('input', this.value);
+      });
+    },
   },
   render(createElement) {
     return createElement(
@@ -94,39 +133,18 @@ export default {
     );
   },
   mounted() {
-    this.value = this.definition.value;
-
-    this.editor = new Quill(this.$refs.editor, {
-      theme: 'snow',
-      placeholder: this.definition.placeholder,
-      modules: {
-        toolbar: getToolbar(this.definition),
+    const urls = [
+      {
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.4/quill.min.js',
+        type: 'script',
       },
-    });
-
-    if (this.value) {
-      this.editor.clipboard.dangerouslyPasteHTML(this.value);
-    }
-
-    this.editor.on('selection-change', (range) => {
-      if (range) {
-        this.$emit('focus', this.editor);
-      } else {
-        this.$emit('blur', this.editor);
-      }
-    });
-
-    this.editor.on('text-change', () => {
-      let html = this.$refs.editor.children[0].innerHTML;
-
-      // Handle empty editor
-      if (html === '<p><br></p>') {
-        html = '';
-      }
-
-      this.value = html;
-      this.validate();
-      this.$emit('input', this.value);
+      {
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.4/quill.snow.min.css',
+        type: 'link',
+      },
+    ];
+    this.loadDependencies(urls, 'Quill').then(() => {
+      this.setEditor();
     });
   },
   beforeDestroy() {
