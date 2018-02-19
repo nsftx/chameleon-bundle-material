@@ -37,12 +37,12 @@
                   "thumb": {
                     "name": "thumb",
                     "title": "Thumb",
-                    "type": "string"
+                    "type": "image"
                   },
                   "icon": {
                     "name": "icon",
                     "title": "Icon",
-                    "type": "string"
+                    "type": "icon"
                   }
                 },
                 "items": [
@@ -63,24 +63,6 @@
                     "description": "calories: 159, fat: 6.0, carbs: 24, calories",
                     "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
                     "icon": "language"
-                  },
-                  {
-                    "title": "Cupcake",
-                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                    "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
-                    "icon": "cake"
-                  },
-                  {
-                    "title": "Gingerbread",
-                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                    "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
-                    "icon": "cake"
-                  },
-                  {
-                    "title": "Gingerbread2",
-                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                    "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
-                    "icon": "cake"
                   }
                 ]
               }
