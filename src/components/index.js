@@ -23,6 +23,7 @@ export { default as CSelect } from './CSelect';
 export { default as CSelectList } from './CSelectList';
 export { default as CSlider } from './CSlider';
 export { default as CSwitch } from './CSwitch';
+export { default as CTable } from './CTable';
 export { default as CTags } from './CTags';
 export { default as CText } from './CText';
 export { default as CVideo } from './CVideo';

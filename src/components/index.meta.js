@@ -20,6 +20,7 @@ export { default as select } from './CSelect/index.meta.js';
 export { default as selectList } from './CSelectList/index.meta.js';
 export { default as slider } from './CSlider/index.meta.js';
 export { default as switch } from './CSwitch/index.meta.js';
+export { default as table } from './CTable/index.meta.js';
 export { default as tags } from './CTags/index.meta.js';
 export { default as text } from './CText/index.meta.js';
 export { default as video } from './CVideo/index.meta.js';
