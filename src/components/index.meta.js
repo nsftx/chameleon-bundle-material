@@ -12,6 +12,7 @@ export { default as html } from './CHtml/index.meta.js';
 export { default as list } from './CList/index.meta.js';
 export { default as luckysix } from './CLuckysix/index.meta.js';
 export { default as panel } from './CPanel/index.meta.js';
+export { default as placeholder } from './CPlaceholder/index.meta.js';
 export { default as radioList } from './CRadioList/index.meta.js';
 export { default as rating } from './CRating/index.meta.js';
 export { default as richText } from './CRichText/index.meta.js';

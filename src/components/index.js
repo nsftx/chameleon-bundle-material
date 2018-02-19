@@ -14,6 +14,7 @@ export { default as CLuckysix } from './CLuckysix';
 export { default as CMap } from './CMap';
 export { default as CPanel } from './CPanel';
 export { default as CPage } from './CPage';
+export { default as CPlaceholder } from './CPlaceholder';
 export { default as CPicker } from './CPicker';
 export { default as CRadioList } from './CRadioList';
 export { default as CRating } from './CRating';
