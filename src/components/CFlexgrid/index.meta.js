@@ -9,7 +9,7 @@ export default {
   options: {
     itemsCount: {
       type: 'childrenCountInput',
-      name: 'Item count',
+      name: 'Item Count',
       value: '1',
       validation: {
         required: true,
@@ -19,22 +19,17 @@ export default {
     },
     direction: {
       type: 'select',
-      name: 'Grid direction',
+      name: 'Grid Direction',
       items: [
         {
-          id: 1,
           name: 'Row',
           value: 'row',
         },
         {
-          id: 2,
           name: 'Column',
           value: 'column',
         },
       ],
-      returnObject: false,
-      displayProp: 'name',
-      valueProp: 'value',
       value: 'row',
       priority: 2,
     },
@@ -43,41 +38,34 @@ export default {
       name: 'Spacing',
       items: [
         {
-          id: 1,
           name: 'Extra-Small',
-          value: 'extra-small',
+          value: 'xs',
         },
         {
-          id: 2,
           name: 'Small',
-          value: 'small',
+          value: 'sm',
         },
         {
-          id: 3,
           name: 'Medium',
-          value: 'mediun',
+          value: 'md',
         },
         {
-          id: 4,
           name: 'Large',
-          value: 'large',
+          value: 'lg',
         },
         {
-          id: 5,
           name: 'Extra-Large',
-          value: 'extra-large',
+          value: 'xl',
         },
       ],
-      returnObject: false,
-      displayProp: 'name',
-      valueProp: 'value',
-      value: 'medium',
+      value: 'md',
       priority: 3,
     },
     fluid: {
       type: 'check',
       name: 'Full Width',
       value: false,
+      priority: 4,
     },
   },
 };
