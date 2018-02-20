@@ -100,12 +100,10 @@ const getListeners = (context) => {
     'update:pagination': (value) => {
       const options = self.definition;
       const pagination = merge(value, {
-        pagination: {
-          rowsPerPage: options.rowsPerPage,
-          sortBy: options.sortBy,
-          descending: options.sortDescending,
-          page: options.startPage,
-        },
+        rowsPerPage: options.rowsPerPage,
+        sortBy: options.sortBy,
+        descending: options.sortDescending,
+        page: options.startPage,
       });
 
       self.$emit('update:pagination', pagination);
