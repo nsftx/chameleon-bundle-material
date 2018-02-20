@@ -110,6 +110,7 @@ const getScopedSlots = (createElement, dataSource) => {
 
 const getHeadersProp = (dataSource) => {
   const columns = dataSource.columns;
+
   return map(columns, column => (merge({
     value: column.name,
     text: column.title,
@@ -118,12 +119,15 @@ const getHeadersProp = (dataSource) => {
 
 const getProps = (context) => {
   const definition = context.definition;
-  const hasDataSource = !isNil(definition.dataSource);
+  const dataSource = definition.dataSource;
+  const hasDataSource = !isNil(dataSource);
+  const hasColumns = hasDataSource && dataSource.columns;
 
   const props = {
     items: hasDataSource ? definition.dataSource.items : [],
-    headers: hasDataSource ? getHeadersProp(definition.dataSource) : [],
-    itemKey: hasDataSource ? keys(definition.dataSource.columns[0])[0] : 'id',
+    hideHeaders: !hasColumns,
+    headers: hasColumns ? getHeadersProp(dataSource) : [],
+    itemKey: hasColumns ? keys(dataSource.columns[0])[0] : 'id',
     rowsPerPageItems: getPropRowsPerPageItems(definition.rowsPerPageItems),
   };
 
