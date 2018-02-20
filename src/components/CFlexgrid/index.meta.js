@@ -2,7 +2,7 @@ export default {
   group: 'containers',
   type: 'flexgrid',
   name: 'Flex Grid',
-  icon: 'grid',
+  icon: 'view_compact',
   children: [
     'flexgrid-item',
   ],

@@ -1,12 +1,21 @@
-import _ from 'lodash';
+import { map } from 'lodash';
 import uuid from 'uuid/v4';
 import namespace from '@namespace';
 
-const getAttrs = (context) => {
+const getContainerAttrs = (context) => {
   const attrs = {
     fluid: context.fluid,
+    [`grid-list-${context.spacing}`]: true,
+    wrap: true,
+  };
+
+  return attrs;
+};
+
+const getLayoutAttrs = (context) => {
+  const attrs = {
     [context.direction]: true,
-    [context.spacing]: true,
+    wrap: true,
   };
 
   return attrs;
@@ -26,7 +35,7 @@ export default {
   render(createElement) {
     const self = this;
 
-    const items = _.map(this.definition.elements, element => createElement(
+    const items = map(this.definition.elements, element => createElement(
       `${namespace}flexgrid-item`,
       {
         key: `${element.name}_${uuid()}`,
@@ -40,10 +49,14 @@ export default {
     return createElement(
       'v-container',
       {
-        attrs: getAttrs(this.definition),
+        attrs: getContainerAttrs(this.definition),
       },
       [
-        createElement('v-layout', items),
+        createElement('v-layout',
+          {
+            attrs: getLayoutAttrs(this.definition),
+          },
+          items),
       ],
     );
   },

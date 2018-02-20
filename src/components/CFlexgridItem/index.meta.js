@@ -3,7 +3,7 @@ export default {
   type: 'flexgrid-item',
   name: 'Flexgrid Item',
   hidden: true,
-  icon: 'grid',
+  icon: 'view_compact',
   children: [
     '*',
     '!flexgrid-item',
