@@ -2,6 +2,8 @@ import namespace from '@namespace';
 import { each, isNil, isString, keys, map, merge } from 'lodash';
 import { localizable } from '@mixins';
 
+require('../../style/components/_table.styl');
+
 const getPropRowsPerPageItems = (value) => {
   if (isNil(value)) {
     return [5, 10, 15, 20];
