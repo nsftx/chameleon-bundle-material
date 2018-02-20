@@ -113,7 +113,7 @@ const getHeadersProp = (dataSource) => {
 
   return map(columns, column => (merge({
     value: column.name,
-    text: column.title,
+    text: column.title || column.name,
   }, getCellInferredProps(column))));
 };
 
