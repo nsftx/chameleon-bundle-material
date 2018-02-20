@@ -708,7 +708,7 @@
               "name": "flexgrid",
               "fluid": true,
               "direction": "row",
-              "spacing": "medium",
+              "spacing": "md",
               "elements": [
                 {
                   "type": "flexgrid-item",
