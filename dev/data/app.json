@@ -705,6 +705,98 @@
           "gutter": false,
           "elements": [
             {
+              "type": "flexgrid",
+              "name": "flexgrid",
+              "fluid": true,
+              "direction": "row",
+              "spacing": "md",
+              "elements": [
+                {
+                  "type": "flexgrid-item",
+                  "name": "flexgrid-item-1",
+                  "width": "6",
+                  "elements": [
+                    {
+                      "type": "list",
+                      "flat": false,
+                      "hideActions": true,
+                      "wrap": true,
+                      "noDataText": null,
+                      "noResultsText": null,
+                      "rowsPerPageText": null,
+                      "dataSource": {
+                        "name": "movies",
+                        "model": "Movie",
+                        "items": [
+                          {
+                            "id": "tt2911666",
+                            "thumb": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_SX300.jpg",
+                            "title": "John Wick",
+                            "description": "2014"
+                          },
+                          {
+                            "id": "tt0120601",
+                            "thumb": "https://images-na.ssl-images-amazon.com/images/M/MV5BYmUxY2MyOTQtYjRlMi00ZWEwLTkzODctZDMxNDcyNTFhYjNjXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg",
+                            "title": "Being John Malkovich",
+                            "description": "1999"
+                          },
+                          {
+                            "id": "tt0401729",
+                            "thumb": "https://images-na.ssl-images-amazon.com/images/M/MV5BMDEwZmIzNjYtNjUwNS00MzgzLWJiOGYtZWMxZGQ5NDcxZjUwXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_SX300.jpg",
+                            "title": "John Carter",
+                            "description": "2012"
+                          }
+                        ]
+                      },
+                      "rowsPerPageItems": null,
+                      "rowsPerPage": 5,
+                      "startPage": 1,
+                      "sortBy": null,
+                      "sortDescending": false
+                    }
+                  ]
+                },
+                {
+                  "type": "flexgrid-item",
+                  "name": "flexgrid-item-1",
+                  "width": "6",
+                  "elements": [
+                    {
+                      "name": "firstName1",
+                      "type": "text",
+                      "label": "First Name",
+                      "prependIcon": "person",
+                      "appendIcon": null,
+                      "prefix": null,
+                      "suffix": null,
+                      "placeholder": "Please enter your first name",
+                      "hint": null,
+                      "persistentHint": false,
+                      "tooltip": null,
+                      "multiLine": false,
+                      "clearable": true,
+                      "validateOn": "blur",
+                      "mask": {
+                        "predefined": false,
+                        "value": null
+                      },
+                      "validation": {
+                        "required": true,
+                        "minLength": 2,
+                        "maxLength": 20,
+                        "pattern": {
+                          "predefined": null,
+                          "value": null
+                        },
+                        "custom": null
+                      },
+                      "value": "Jadranko"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               "type": "accordion",
               "name": "accordion",
               "multipleExpand": false,
