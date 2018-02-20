@@ -20,6 +20,54 @@
           "color": "#f5f5f5",
           "elements": [
             {
+              "name": "shoppingTable",
+              "type": "table",
+              "dataSource": {
+                "columns": {
+                  "title": {
+                    "name": "title",
+                    "title": "Title",
+                    "type": "string"
+                  },
+                  "description": {
+                    "name": "description",
+                    "title": "Description",
+                    "type": "string"
+                  },
+                  "thumb": {
+                    "name": "thumb",
+                    "title": "Thumb",
+                    "type": "image"
+                  },
+                  "icon": {
+                    "name": "icon",
+                    "title": "Icon",
+                    "type": "icon"
+                  }
+                },
+                "items": [
+                  {
+                    "title": "Frozen Yogurt",
+                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                    "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
+                    "icon": "language"
+                  },
+                  {
+                    "title": "Ice cream sandwich",
+                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                    "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
+                    "icon": "language"
+                  },
+                  {
+                    "title": "Eclair",
+                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                    "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
+                    "icon": "language"
+                  }
+                ]
+              }
+            },
+            {
               "name": "shoppingList",
               "type": "list",
               "hideActions": false,

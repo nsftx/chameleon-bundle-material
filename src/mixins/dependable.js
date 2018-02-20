@@ -1,81 +1,88 @@
-import _ from 'lodash';
+import { isArray, isUndefined, merge } from 'lodash';
 
 const setFlag = (globals, prop, value) => {
-  _.merge(window, {
+  merge(window, {
     // eslint-disable-next-line
-    '__CHAMELEON_MATERIAL_DEPS__': { [globals]: { [prop]: value } },
+    __CHAMELEON_MATERIAL_DEPS__: { [globals]: { [prop]: value } },
   });
 };
+
 const depPromises = [];
 const urlPromises = [];
 
+const setDependency = (url, globals, resolve, reject) => {
+  const type = url.type === 'script' || isUndefined(url.type) ? 'script' : 'link';
+  const attr = url.type === 'script' || isUndefined(url.type) ? 'src' : 'href';
+  const script = document.createElement(type);
+
+  script.setAttribute(attr, url.src || url);
+
+  if (url.type === 'script' || isUndefined(url.type)) {
+    document.body.appendChild(script);
+  } else if (url.type === 'link') {
+    script.rel = 'stylesheet';
+    script.type = 'text/css';
+    document.head.appendChild(script);
+  }
+
+  script.onerror = () => {
+    reject();
+    setFlag(globals, 'loaded', false);
+    setFlag(globals, 'started', false);
+  };
+
+  script.onload = () => {
+    resolve();
+  };
+};
+
+const getDependencies = (url, globals) => {
+  if (isArray(url)) {
+    url.forEach((src) => {
+      getDependencies(src, globals);
+    });
+  } else {
+    urlPromises.push(new Promise((resolve, reject) => {
+      setDependency(url, globals, resolve, reject);
+    }));
+  }
+};
+
 export default {
   methods: {
-    set(url, globals, resolve, reject) {
-      let type = null;
-      let attr = null;
-      type = url.type === 'script' || _.isUndefined(url.type) ? 'script' : 'link';
-      attr = url.type === 'script' || _.isUndefined(url.type) ? 'src' : 'href';
-      const script = document.createElement(type);
-
-      script.setAttribute(attr, url.src || url);
-
-      if (url.type === 'script' || _.isUndefined(url.type)) {
-        document.body.appendChild(script);
-      } else if (url.type === 'link') {
-        script.rel = 'stylesheet';
-        script.type = 'text/css';
-        document.head.appendChild(script);
-      }
-
-      script.onerror = () => {
-        reject();
-        setFlag(globals, 'loaded', false);
-        setFlag(globals, 'started', false);
-      };
-
-      script.onload = () => {
-        resolve();
-      };
-    },
-    getEach(url, globals) {
-      if (_.isArray(url)) {
-        url.forEach((src) => {
-          this.getEach(src, globals);
-        });
-      } else {
-        urlPromises.push(new Promise((resolve, reject) => {
-          this.set(url, globals, resolve, reject);
-        }));
-      }
-    },
     loadDependencies(url, globals) {
       depPromises.push(new Promise((resolve, reject) => {
         // eslint-disable-next-line
-        if (!_.isUndefined(window.__CHAMELEON_MATERIAL_DEPS__) && !_.isUndefined(window.__CHAMELEON_MATERIAL_DEPS__[globals]) && window.__CHAMELEON_MATERIAL_DEPS__[globals].started) {
+        let depsGlobal = window.__CHAMELEON_MATERIAL_DEPS__;
+        if (
+          !isUndefined(depsGlobal) &&
+          !isUndefined(depsGlobal[globals]) &&
+          depsGlobal[globals].started
+        ) {
           const interval = setInterval(() => {
             // eslint-disable-next-line
-            if (window.__CHAMELEON_MATERIAL_DEPS__[globals].loaded) {
+            if (depsGlobal[globals].loaded) {
               clearInterval(interval);
               resolve();
               // eslint-disable-next-line
-            } else if (window.__CHAMELEON_MATERIAL_DEPS__[globals].loaded === false) {
+            } else if (depsGlobal[globals].loaded === false) {
               clearInterval(interval);
               reject();
             }
           }, 10);
         } else {
           setFlag(globals, 'started', true);
-          this.getEach(url, globals);
+          getDependencies(url, globals);
           resolve();
         }
       }));
+
       return Promise.all(urlPromises).then(() => {
         setFlag(globals, 'loaded', true);
       })
         .then(() => Promise.all(depPromises))
         .catch((error) => {
-          console.warn('Script rejected ', error);
+          console.warn('[CV] Script rejected =>', error);
         });
     },
   },

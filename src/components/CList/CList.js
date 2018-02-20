@@ -1,7 +1,6 @@
 import namespace from '@namespace';
-import { isEmpty, isNil, isString, map, merge } from 'lodash';
-
-const getLocalization = value => (isEmpty(value) ? null : value);
+import { isNil, isString, map, merge } from 'lodash';
+import { localizable } from '@mixins';
 
 const getPropRowsPerPageItems = (value) => {
   if (isNil(value)) {
@@ -28,9 +27,9 @@ const getProps = (context) => {
     contentTag: 'v-layout',
   };
 
-  const rowsPerPageText = getLocalization(definition.rowsPerPageText);
-  const noResultsText = getLocalization(definition.noResultsText);
-  const noDataText = getLocalization(definition.noDataText);
+  const rowsPerPageText = context.localize(definition.rowsPerPageText);
+  const noResultsText = context.localize(definition.noResultsText);
+  const noDataText = context.localize(definition.noDataText);
 
   if (rowsPerPageText) props.rowsPerPageText = rowsPerPageText;
   if (noResultsText) props.noResultsText = noResultsText;
@@ -101,12 +100,10 @@ const getListeners = (context) => {
     'update:pagination': (value) => {
       const options = self.definition;
       const pagination = merge(value, {
-        pagination: {
-          rowsPerPage: options.rowsPerPage,
-          sortBy: options.sortBy,
-          descending: options.sortDescending,
-          page: options.startPage,
-        },
+        rowsPerPage: options.rowsPerPage,
+        sortBy: options.sortBy,
+        descending: options.sortDescending,
+        page: options.startPage,
       });
 
       self.$emit('update:pagination', pagination);
@@ -118,6 +115,9 @@ const getListeners = (context) => {
 
 export default {
   name: `${namespace}list`,
+  mixins: [
+    localizable,
+  ],
   props: {
     definition: {
       type: Object,

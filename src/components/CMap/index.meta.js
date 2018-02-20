@@ -14,11 +14,11 @@ export default {
     },
     width: {
       type: 'input',
-      name: 'Map width'
+      name: 'Map width',
     },
     height: {
       type: 'input',
-      name: 'Map height'
+      name: 'Map height',
     },
   },
 };
