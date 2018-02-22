@@ -75,5 +75,8 @@
         }
       },
     },
+    mounted() {
+      this.$chameleon.validators = json.validators;
+    },
   };
 </script>

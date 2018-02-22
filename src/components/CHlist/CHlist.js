@@ -1,53 +1,21 @@
-import _ from 'lodash';
 import namespace from '@namespace';
+import { elementable } from '@mixins';
 
 require('../../style/components/_hlist.styl');
 
 export default {
   name: `${namespace}hlist`,
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-    validators: {
-      type: Object,
-    },
-  },
-  computed: {
-    schema() {
-      return this.definition._schema || {};
-    },
-  },
+  mixins: [
+    elementable,
+  ],
   render(createElement) {
     const self = this;
-
-    const renderChildren = () => {
-      const children = self.definition.elements;
-      return _.map(children, (child) => {
-        const el = createElement(
-          `${namespace}${_.kebabCase(child.type)}`,
-          {
-            staticClass: `${self.$options.name}-item`,
-            props: {
-              definition: child,
-              validators: self.validators,
-            },
-          },
-        );
-
-        return el;
-      });
-    };
 
     return createElement(
       'v-card',
       {
-        attrs: {
-          'data-type': self.definition.type,
-          'data-uid': self.schema.uid,
-          'data-parent': self.schema.parent,
-        },
+        key: self.schema.uid,
+        attrs: self.getSchemaAttributes(),
         class: {
           [`${self.$options.name}--spaced`]: self.definition.gutter,
         },
@@ -58,12 +26,12 @@ export default {
         style: {
           backgroundColor: self.definition.color,
         },
-        staticClass: `${namespace}element ${self.$options.name}`,
+        staticClass: `${self.baseClass} ${self.$options.name}`,
       },
       [
         createElement('div', {
-          staticClass: `${namespace}element-children ${self.$options.name}-items`,
-        }, renderChildren()),
+          staticClass: `${self.baseChildrenClass} ${self.$options.name}-items`,
+        }, self.renderChildren(createElement)),
       ],
     );
   },

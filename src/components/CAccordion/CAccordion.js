@@ -37,7 +37,6 @@ export default {
     },
   },
   render(createElement) {
-    const self = this;
     const itemProps = getItemProps(this.definition);
 
     const items = _.map(this.definition.elements, element => createElement(
@@ -46,7 +45,6 @@ export default {
         key: `${element.name}_${uuid()}`,
         props: {
           definition: _.merge({}, element, itemProps),
-          validators: self.validators,
         },
       },
     ));

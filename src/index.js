@@ -9,6 +9,13 @@ const Library = {
     if (this.installed) return;
     this.installed = true;
 
+    // eslint-disable-next-line
+    Vue.prototype.$chameleon = new Vue({
+      data: {
+        validators: options.validators,
+      },
+    });
+
     if (options.components) {
       Object.keys(options.components).forEach((key) => {
         const component = options.components[key];

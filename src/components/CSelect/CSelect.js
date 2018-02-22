@@ -81,7 +81,7 @@ const getProps = (context) => {
     readonly: definition.readonly,
     required: getPropRequired(definition),
     returnObject: true,
-    rules: validator.getRules(definition, context.validators),
+    rules: validator.getRules(definition, context.$chameleon.validators),
     value: getPropValue(definition),
     validateOn: getPropValidateOnBlur(definition),
   };

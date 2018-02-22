@@ -23,7 +23,6 @@ export default {
           {
             props: {
               definition: n,
-              validators: context.validators,
             },
           },
           children,

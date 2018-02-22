@@ -23,7 +23,8 @@ const getItemText = (text, createElement) => {
   return el;
 };
 
-const getItemContent = (element, createElement) => {
+const getItemContent = (context, createElement) => {
+  const element = context.definition;
   const children = _.map(element.elements, (childElement) => {
     const childEl = createElement(
       `${namespace}${_.kebabCase(childElement.type)}`,
@@ -31,7 +32,6 @@ const getItemContent = (element, createElement) => {
         key: `${childElement.name}_${uuid()}`,
         props: {
           definition: childElement,
-          validators: self.validators,
         },
       },
     );
@@ -86,7 +86,7 @@ export default {
       },
       [
         getItemHeader(this.definition, createElement),
-        getItemContent(this.definition, createElement),
+        getItemContent(this, createElement),
       ],
     );
   },
