@@ -14,38 +14,57 @@ export default {
       type: Object,
     },
   },
+  computed: {
+    schema() {
+      return this.definition._schema || {};
+    },
+  },
   render(createElement) {
     const self = this;
 
-    return createElement(
-      'v-card',
-      {
-        class: {
-          [`${this.$options.name}--spaced`]: this.definition.gutter,
-        },
-        props: {
-          color: this.definition.color,
-          flat: this.definition.flat,
-        },
-        style: {
-          backgroundColor: this.definition.color,
-        },
-        staticClass: this.$options.name,
-      },
-      _.map(this.definition.elements, (element) => {
+    const renderChildren = () => {
+      const children = self.definition.elements;
+      return _.map(children, (child) => {
         const el = createElement(
-          `${namespace}${_.kebabCase(element.type)}`,
+          `${namespace}${_.kebabCase(child.type)}`,
           {
-            staticClass: `${this.$options.name}-item`,
+            staticClass: `${self.$options.name}-item`,
             props: {
-              definition: element,
+              definition: child,
               validators: self.validators,
             },
           },
         );
 
         return el;
-      }),
+      });
+    };
+
+    return createElement(
+      'v-card',
+      {
+        attrs: {
+          'data-type': self.definition.type,
+          'data-uid': self.schema.uid,
+          'data-parent': self.schema.parent,
+        },
+        class: {
+          [`${self.$options.name}--spaced`]: self.definition.gutter,
+        },
+        props: {
+          color: self.definition.color,
+          flat: self.definition.flat,
+        },
+        style: {
+          backgroundColor: self.definition.color,
+        },
+        staticClass: `${namespace}element ${self.$options.name}`,
+      },
+      [
+        createElement('div', {
+          staticClass: `${namespace}element-children ${self.$options.name}-items`,
+        }, renderChildren()),
+      ],
     );
   },
 };

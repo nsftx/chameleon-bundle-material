@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import uuid from 'uuid/v4';
 import namespace from '@namespace';
 
 export default {
@@ -13,36 +12,56 @@ export default {
       type: Object,
     },
   },
+  computed: {
+    schema() {
+      return this.definition._schema || {};
+    },
+  },
   render(createElement) {
     const self = this;
 
-    return createElement(
-      'v-card',
-      {
-        props: {
-          color: this.definition.color,
-          flat: this.definition.flat,
-        },
-        style: {
-          backgroundColor: this.definition.color,
-          width: this.definition.width,
-        },
-        staticClass: this.$options.name,
-      },
-      _.map(this.definition.elements, (element) => {
+    const renderChildren = () => {
+      const children = self.definition.elements;
+      return _.map(children, (child) => {
         const el = createElement(
-          `${namespace}${_.kebabCase(element.type)}`,
+          `${namespace}${_.kebabCase(child.type)}`,
           {
-            key: `${element.name}_${uuid()}`,
+            staticClass: `${self.$options.name}-item`,
             props: {
-              definition: element,
+              definition: child,
               validators: self.validators,
             },
           },
         );
 
         return el;
-      }),
+      });
+    };
+
+    return createElement(
+      'v-card',
+      {
+        key: self.schema.uid,
+        attrs: {
+          'data-type': self.definition.type,
+          'data-uid': self.schema.uid,
+          'data-parent': self.schema.parent,
+        },
+        props: {
+          color: self.definition.color,
+          flat: self.definition.flat,
+        },
+        style: {
+          backgroundColor: self.definition.color,
+          width: self.definition.width,
+        },
+        staticClass: `${namespace}element ${self.$options.name}`,
+      },
+      [
+        createElement('div', {
+          staticClass: `${namespace}element-children ${self.$options.name}-items`,
+        }, renderChildren()),
+      ],
     );
   },
 };
