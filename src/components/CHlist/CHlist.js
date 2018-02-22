@@ -36,6 +36,7 @@ export default {
         const el = createElement(
           `${namespace}${_.kebabCase(element.type)}`,
           {
+            staticClass: `${this.$options.name}-item`,
             props: {
               definition: element,
               validators: self.validators,
