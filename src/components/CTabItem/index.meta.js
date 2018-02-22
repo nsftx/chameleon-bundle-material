@@ -1,17 +1,17 @@
 export default {
   group: 'container-items',
-  type: 'accordion-item',
-  name: 'Accordion Item',
+  type: 'tab-item',
+  name: 'Tab Item',
   hidden: true,
-  icon: 'view_day',
+  icon: 'tab',
   children: [
     '*',
-    '!accordion-item',
+    '!container-items',
   ],
   options: {
     title: {
       type: 'input',
-      name: 'Item title',
+      name: 'Item count',
       value: 'Item title',
       validation: {
         required: true,

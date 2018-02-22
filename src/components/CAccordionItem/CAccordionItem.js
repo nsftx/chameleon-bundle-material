@@ -24,14 +24,15 @@ const getItemText = (text, createElement) => {
 };
 
 const getItemContent = (element, createElement) => {
-  const children = _.map(element.elements, (childElement) => {
+  const definition = element.definition;
+  const children = _.map(definition.elements, (childElement) => {
     const childEl = createElement(
       `${namespace}${_.kebabCase(childElement.type)}`,
       {
         key: `${childElement.name}_${uuid()}`,
         props: {
           definition: childElement,
-          validators: self.validators,
+          validators: element.validators,
         },
       },
     );
@@ -40,8 +41,8 @@ const getItemContent = (element, createElement) => {
   });
 
   // This will also be child element after we add static text component
-  if (element.text && element.text.length) {
-    const itemText = getItemText(element.text, createElement);
+  if (definition.text && definition.text.length) {
+    const itemText = getItemText(definition.text, createElement);
     children.unshift(itemText);
   }
 
@@ -49,7 +50,7 @@ const getItemContent = (element, createElement) => {
     'v-card',
     {
       staticStyle: {
-        backgroundColor: element.contentColor,
+        backgroundColor: definition.contentColor,
       },
     },
     [
@@ -86,7 +87,7 @@ export default {
       },
       [
         getItemHeader(this.definition, createElement),
-        getItemContent(this.definition, createElement),
+        getItemContent(this, createElement),
       ],
     );
   },
