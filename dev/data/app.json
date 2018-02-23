@@ -423,14 +423,14 @@
                           "fullWidth": true,
                           "validation": {
                             "required": true,
-                            "minDate": "2017-11-05",
-                            "maxDate": "2017-11-21"
+                            "minDate": "2017-11-05T00:00:00.000Z",
+                            "maxDate": "2017-11-21T00:00:00.000Z"
                           },
                           "time": {
                             "enabled": true
                           },
                           "format": "LLL",
-                          "value": "2017-11-09"
+                          "value": "2017-11-09T00:00:00.000Z"
                         },
                         {
                           "name": "reportRange",
