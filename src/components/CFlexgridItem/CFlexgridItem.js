@@ -1,26 +1,6 @@
-import { map, merge, kebabCase } from 'lodash';
-import uuid from 'uuid/v4';
+import { merge } from 'lodash';
 import namespace from '@namespace';
 import { elementable } from '@mixins';
-
-const getItemContent = (context, createElement) => {
-  const element = context.definition;
-  const children = map(element.elements, (childElement) => {
-    const childEl = createElement(
-      `${namespace}${kebabCase(childElement.type)}`,
-      {
-        key: `${childElement.name}_${uuid()}`,
-        props: {
-          definition: childElement,
-        },
-      },
-    );
-
-    return childEl;
-  });
-
-  return children;
-};
 
 export default {
   name: `${namespace}flexgrid-item`,
@@ -35,7 +15,9 @@ export default {
       staticClass: `${this.baseClass} ${this.$options.name}`,
     },
       [
-        getItemContent(this, createElement),
+        createElement('div', {
+          staticClass: `${this.baseChildrenClass} ${this.$options.name}-items`,
+        }, this.renderChildren(createElement)),
       ]);
   },
 };

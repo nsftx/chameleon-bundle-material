@@ -19,14 +19,5 @@ export default {
       },
       priority: 1,
     },
-    text: {
-      type: 'input',
-      name: 'Item text',
-      value: 'Long live the Chameleon!',
-      validation: {
-        minLength: 5,
-      },
-      priority: 2,
-    },
   },
 };
