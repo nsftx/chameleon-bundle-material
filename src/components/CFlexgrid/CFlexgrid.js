@@ -1,6 +1,7 @@
-import { map } from 'lodash';
+import { map, merge } from 'lodash';
 import uuid from 'uuid/v4';
 import namespace from '@namespace';
+import { elementable } from '@mixins';
 
 const getContainerAttrs = (context) => {
   const attrs = {
@@ -23,15 +24,9 @@ const getLayoutAttrs = (context) => {
 
 export default {
   name: `${namespace}flexgrid`,
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-    validators: {
-      type: Object,
-    },
-  },
+  mixins: [
+    elementable,
+  ],
   render(createElement) {
     const items = map(this.definition.elements, element => createElement(
       `${namespace}flexgrid-item`,
@@ -43,18 +38,17 @@ export default {
       },
     ));
 
-    return createElement(
-      'v-container',
-      {
-        attrs: getContainerAttrs(this.definition),
-      },
+    return createElement('v-container', {
+      attrs: merge(
+        getContainerAttrs(this.definition),
+        this.getSchemaAttributes(),
+      ),
+      staticClass: `${this.baseClass} ${this.$options.name}`,
+    },
       [
-        createElement('v-layout',
-          {
-            attrs: getLayoutAttrs(this.definition),
-          },
-          items),
-      ],
-    );
+        createElement('v-layout', {
+          attrs: getLayoutAttrs(this.definition),
+        }, items),
+      ]);
   },
 };

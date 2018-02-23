@@ -1,6 +1,6 @@
 import namespace from '@namespace';
 import { isNil, isString, map, merge } from 'lodash';
-import { localizable } from '@mixins';
+import { elementable, localizable } from '@mixins';
 
 const getPropRowsPerPageItems = (value) => {
   if (isNil(value)) {
@@ -116,28 +116,24 @@ const getListeners = (context) => {
 export default {
   name: `${namespace}list`,
   mixins: [
+    elementable,
     localizable,
   ],
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-  },
   render(createElement) {
     return createElement(
       'v-data-iterator',
       {
-        attrs: {
+        attrs: merge({
           name: this.definition.name,
           wrap: this.definition.wrap,
-        },
+        }, this.getSchemaAttributes()),
         class: [
           this.definition.color || 'white',
           this.definition.flat ? null : 'elevation-1',
         ],
         props: getProps(this),
         scopedSlots: getCardSlot(createElement),
+        staticClass: `${this.baseClass} ${this.$options.name}`,
         on: getListeners(this),
       },
     );

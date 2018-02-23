@@ -1,4 +1,6 @@
+import { merge } from 'lodash';
 import namespace from '@namespace';
+import { elementable, fieldable } from '@mixins';
 
 const getListeners = (context) => {
   const self = context;
@@ -34,21 +36,20 @@ const getProps = (context) => {
 
 export default {
   name: `${namespace}switch`,
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-  },
+  mixins: [
+    elementable,
+    fieldable,
+  ],
   render(createElement) {
     return createElement(
       'v-switch',
       {
-        attrs: {
+        attrs: merge({
           name: this.definition.name,
-        },
+        }, this.getSchemaAttributes()),
         props: getProps(this),
         on: getListeners(this),
+        staticClass: `${this.baseClass} ${this.$options.name}`,
       },
     );
   },

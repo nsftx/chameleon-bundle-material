@@ -1,5 +1,6 @@
+import { merge } from 'lodash';
 import namespace from '@namespace';
-import { fieldable } from '@mixins';
+import { elementable, fieldable } from '@mixins';
 import { validator } from '@validators';
 
 const getListeners = (context) => {
@@ -45,24 +46,20 @@ const getProps = (context) => {
 
 export default {
   name: `${namespace}check`,
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-  },
   mixins: [
+    elementable,
     fieldable,
   ],
   render(createElement) {
     return createElement(
       'v-checkbox',
       {
-        attrs: {
+        attrs: merge({
           name: this.definition.name,
-        },
+        }, this.getSchemaAttributes()),
         props: getProps(this),
         on: getListeners(this),
+        staticClass: `${this.baseClass} ${this.$options.name}`,
       },
     );
   },

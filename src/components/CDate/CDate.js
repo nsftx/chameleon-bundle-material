@@ -1,6 +1,6 @@
-import _ from 'lodash';
+import { isNil } from 'lodash';
 import namespace from '@namespace';
-import { fieldable } from '@mixins';
+import { elementable, fieldable } from '@mixins';
 import { validator } from '@validators';
 
 const getPropRequired = (definition) => {
@@ -19,7 +19,7 @@ const getMenuProps = (context) => {
 
   const props = {
     lazy: false,
-    transition: _.isNil(definition.transition) ? 'scale-transition' : definition.transition,
+    transition: isNil(definition.transition) ? 'scale-transition' : definition.transition,
     fullWidth: true,
     maxWidth: width,
     minWidth: width,
@@ -45,9 +45,9 @@ const getTextProps = (context) => {
 
   const props = {
     readonly: true,
-    clearable: _.isNil(definition.clearable) ? true : definition.clearable,
+    clearable: isNil(definition.clearable) ? true : definition.clearable,
     appendIcon: definition.appendIcon,
-    prependIcon: _.isNil(definition.prependIcon) ? 'event' : definition.prependIcon,
+    prependIcon: isNil(definition.prependIcon) ? 'event' : definition.prependIcon,
     label: definition.label,
     hint: definition.hint,
     persistentHint: true,
@@ -95,6 +95,7 @@ const getPickerProps = (context) => {
 export default {
   name: `${namespace}date`,
   mixins: [
+    elementable,
     fieldable,
   ],
   data() {
@@ -133,7 +134,9 @@ export default {
     return createElement(
       'v-menu',
       {
+        attrs: this.getSchemaAttributes(),
         props: getMenuProps(this),
+        staticClass: `${this.baseClass} ${this.$options.name}`,
       },
       children,
     );

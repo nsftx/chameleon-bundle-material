@@ -33,13 +33,16 @@ export default {
     };
   },
   render(createElement) {
+    const deletableChips = this.selectProps.deletableChips;
+    const displayProp = this.selectProps.itemText;
+
     return createElement(
       'v-select',
       {
         attrs: this.attrs,
         props: this.selectProps,
-        scopedSlots: this.selectProps.deletableChips &&
-          getDeletableChipSlot(createElement, this.selectProps.itemText),
+        scopedSlots: deletableChips && getDeletableChipSlot(createElement, displayProp),
+        staticClass: `${this.baseClass} ${this.$options.name}`,
         on: this.listeners,
       },
     );

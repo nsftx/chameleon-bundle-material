@@ -1,5 +1,6 @@
-import _ from 'lodash';
+import { each, isUndefined, merge } from 'lodash';
 import namespace from '@namespace';
+import { elementable } from '@mixins';
 
 const getAttrs = (context) => {
   const attrs = {
@@ -17,11 +18,11 @@ const getProps = (context) => {
   const props = {
     color: definition.color || defaultColor,
     dark: true,
-    icon: _.isUndefined(definition.icon) ? false : definition.icon,
-    round: _.isUndefined(definition.round) ? false : definition.round,
-    flat: _.isUndefined(definition.flat) ? false : definition.flat,
-    block: _.isUndefined(definition.block) ? false : definition.block,
-    depressed: _.isUndefined(definition.depressed) ? false : definition.depressed,
+    icon: isUndefined(definition.icon) ? false : definition.icon,
+    round: isUndefined(definition.round) ? false : definition.round,
+    flat: isUndefined(definition.flat) ? false : definition.flat,
+    block: isUndefined(definition.block) ? false : definition.block,
+    depressed: isUndefined(definition.depressed) ? false : definition.depressed,
     loading: false,
   };
 
@@ -32,7 +33,7 @@ const getListeners = (context) => {
   const listeners = {};
 
   if (context.definition.actions) {
-    _.each(context.definition.actions, (action, actionKey) => {
+    each(context.definition.actions, (action, actionKey) => {
       listeners[actionKey] = () => {
         context.$emit(action);
       };
@@ -44,24 +45,20 @@ const getListeners = (context) => {
 
 export default {
   name: `${namespace}button`,
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-  },
+  mixins: [
+    elementable,
+  ],
   render(createElement) {
-    const context = this;
-
     return createElement(
       'v-btn',
       {
-        attrs: getAttrs(context),
-        props: getProps(context),
-        on: getListeners(context),
+        attrs: merge(getAttrs(this), this.getSchemaAttributes()),
+        props: getProps(this),
+        on: getListeners(this),
+        staticClass: `${this.baseClass} ${this.$options.name}`,
       },
       [
-        context.definition.label,
+        this.definition.label,
       ],
     );
   },

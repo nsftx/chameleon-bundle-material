@@ -1,5 +1,5 @@
 import namespace from '@namespace';
-import { fieldable } from '@mixins';
+import { elementable, fieldable } from '@mixins';
 
 const getDatePickerProps = (context) => {
   const props = {
@@ -115,6 +115,7 @@ const getTimePickerListeners = (context) => {
 export default {
   name: `${namespace}picker`,
   mixins: [
+    elementable,
     fieldable,
   ],
   props: {
@@ -189,6 +190,10 @@ export default {
 
     return createElement(
       'div',
+      {
+        attrs: this.getSchemaAttributes(),
+        staticClass: `${this.baseClass} ${this.$options.name}`,
+      },
       children,
     );
   },

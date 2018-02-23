@@ -71,7 +71,7 @@
         const validation = chameleonNotation.validate(this.app);
 
         if (!validation.isValid) {
-          console.warn(validation.message);
+          // console.warn(validation.message);
         }
       },
     },

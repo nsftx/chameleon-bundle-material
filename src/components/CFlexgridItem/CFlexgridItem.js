@@ -1,6 +1,7 @@
-import { map, kebabCase } from 'lodash';
+import { map, merge, kebabCase } from 'lodash';
 import uuid from 'uuid/v4';
 import namespace from '@namespace';
+import { elementable } from '@mixins';
 
 const getItemContent = (context, createElement) => {
   const element = context.definition;
@@ -23,22 +24,16 @@ const getItemContent = (context, createElement) => {
 
 export default {
   name: `${namespace}flexgrid-item`,
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-    validators: {
-      type: Object,
-    },
-  },
+  mixins: [
+    elementable,
+  ],
   render(createElement) {
-    return createElement('v-flex',
-      {
-        attrs: {
-          [`xs${this.definition.width}`]: true,
-        },
-      },
+    return createElement('v-flex', {
+      attrs: merge({
+        [`xs${this.definition.width}`]: true,
+      }, this.getSchemaAttributes()),
+      staticClass: `${this.baseClass} ${this.$options.name}`,
+    },
       [
         getItemContent(this, createElement),
       ]);

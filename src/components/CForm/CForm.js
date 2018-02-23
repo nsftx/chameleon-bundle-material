@@ -1,6 +1,7 @@
-import _ from 'lodash';
-import namespace from '@namespace';
+import { concat, each, filter, kebabCase, isArray, isNil, isObject, map, merge } from 'lodash';
 import uuid from 'uuid/v4';
+import namespace from '@namespace';
+import { elementable } from '@mixins';
 
 const getListeners = (context) => {
   const listeners = {};
@@ -22,28 +23,22 @@ const getListeners = (context) => {
 
 const getComponentTag = (name) => {
   const type = ['number', 'money'].indexOf(name) > -1 ? 'text' : name;
-  const tag = _.kebabCase(type);
+  const tag = kebabCase(type);
 
   return `${namespace}${tag}`;
 };
 
 export default {
   name: `${namespace}form`,
+  mixins: [
+    elementable,
+  ],
   provide() {
     return {
       form: {
         fields: this.getFields(),
       },
     };
-  },
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-    validators: {
-      type: Object,
-    },
   },
   computed: {
     entity() {
@@ -52,22 +47,22 @@ export default {
   },
   methods: {
     getActions() {
-      return _.filter(this.definition.elements, n => !_.isNil(n.actions));
+      return filter(this.definition.elements, n => !isNil(n.actions));
     },
     getForm() {
       return this.$refs[this.definition.name];
     },
     getFields() {
-      return _.filter(this.definition.elements, n => _.isNil(n.actions));
+      return filter(this.definition.elements, n => isNil(n.actions));
     },
     getEntity() {
       const entity = {};
-      _.each(this.getFields(), (field) => {
+      each(this.getFields(), (field) => {
         if (field.name) {
           // Remove reactivity from output
           // TODO: Investigate if this has any benefit
-          entity[field.name] = _.isObject(field.value)
-            ? _.merge(_.isArray(field.value) ? [] : {}, field.value)
+          entity[field.name] = isObject(field.value)
+            ? merge(isArray(field.value) ? [] : {}, field.value)
             : field.value;
         }
       });
@@ -76,9 +71,9 @@ export default {
     },
     getErrors() {
       let errors = [];
-      _.each(this.getForm().getInputs(), (input) => {
+      each(this.getForm().getInputs(), (input) => {
         if (input.errorBucket.length) {
-          errors = _.concat(errors, _.map(input.errorBucket, error => error));
+          errors = concat(errors, map(input.errorBucket, error => error));
         }
       });
 
@@ -92,10 +87,12 @@ export default {
     return createElement(
       'v-card',
       {
+        attrs: this.getSchemaAttributes(),
         props: {
           color: 'transparent',
           flat: true,
         },
+        staticClass: `${this.baseClass} ${this.$options.name}`,
       },
       [
         createElement(
@@ -107,7 +104,7 @@ export default {
           [
             createElement(
               'v-card-text',
-              _.map(this.getFields(), (field) => {
+              map(this.getFields(), (field) => {
                 const self = this;
                 return createElement('div',
                   {
@@ -138,7 +135,7 @@ export default {
             ),
             createElement(
               'v-card-actions',
-              _.map(this.getActions(), button => createElement(`${namespace}button`,
+              map(this.getActions(), button => createElement(`${namespace}button`,
                 {
                   // Dynamic key to disable component re-use
                   key: `${button.name}_${uuid()}`,

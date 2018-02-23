@@ -1,6 +1,6 @@
-import _ from 'lodash';
+import { map } from 'lodash';
 import namespace from '@namespace';
-import { fieldable } from '@mixins';
+import { elementable, fieldable } from '@mixins';
 import { validator } from '@validators';
 
 const getListeners = (context) => {
@@ -59,25 +59,22 @@ const getProps = (context, item) => {
 
 export default {
   name: `${namespace}check-list`,
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-  },
   mixins: [
+    elementable,
     fieldable,
   ],
   render(createElement) {
     return createElement(
       'v-card',
       {
+        attrs: this.getSchemaAttributes(),
         props: {
           color: 'transparent',
           flat: true,
         },
+        staticClass: `${this.baseClass} ${this.$options.name}`,
       },
-      _.map(this.definition.dataSource.items,
+      map(this.definition.dataSource.items,
         item => createElement('v-checkbox',
           {
             attrs: {

@@ -1,18 +1,17 @@
 import namespace from '@namespace';
+import { elementable } from '@mixins';
 
 export default {
   name: `${namespace}placeholder`,
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-  },
+  mixins: [
+    elementable,
+  ],
   render(createElement) {
     return createElement(
       'router-view',
       {
         staticClass: this.$options.name,
+        attrs: self.getSchemaAttributes(),
       },
     );
   },

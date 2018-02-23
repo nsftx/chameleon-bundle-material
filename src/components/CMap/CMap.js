@@ -1,17 +1,14 @@
-import _ from 'lodash';
+import { isString, merge } from 'lodash';
 import namespace from '@namespace';
-import { dependable } from '@mixins';
+import { dependable, elementable } from '@mixins';
 
 export default {
   name: `${namespace}map`,
   mixins: [
     dependable,
+    elementable,
   ],
   props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
     height: {
       type: String,
       default: '400px',
@@ -26,7 +23,7 @@ export default {
   },
   methods: {
     load() {
-      const options = _.merge({
+      const options = merge({
         center: { lat: 43.352848, lng: 17.793627 },
         zoom: 10,
       }, this.options);
@@ -39,16 +36,18 @@ export default {
   render(createElement) {
     return createElement('div', {
       ref: 'map',
+      attrs: this.getSchemaAttributes(),
       style: {
         width: this.definition.width || this.width,
         height: this.definition.height || this.height,
       },
+      staticClass: `${this.baseClass} ${this.$options.name}`,
     });
   },
   mounted() {
     const apiKey = this.definition.apiKey;
     const lib = this.definition.libraries;
-    const libraries = _.isString(lib) ? lib : lib.join(',');
+    const libraries = isString(lib) ? lib : lib.join(',');
     const url = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=${libraries}`;
 
     this.loadDependencies(url, 'CMap').then(() => {

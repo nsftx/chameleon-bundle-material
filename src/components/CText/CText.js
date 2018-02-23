@@ -1,6 +1,6 @@
-import _ from 'lodash';
+import { isBoolean, isUndefined, merge } from 'lodash';
 import namespace from '@namespace';
-import { fieldable } from '@mixins';
+import { elementable, fieldable } from '@mixins';
 import { validator } from '@validators';
 
 const getAttrs = (context) => {
@@ -12,8 +12,8 @@ const getAttrs = (context) => {
     title: definition.tooltip,
   };
 
-  if (!_.isUndefined(definition.step)) {
-    if (_.isBoolean(definition.step)) {
+  if (!isUndefined(definition.step)) {
+    if (isBoolean(definition.step)) {
       if (definition.step) {
         attrs.step = 1;
       }
@@ -148,15 +148,17 @@ const getListeners = (context) => {
 export default {
   name: `${namespace}text`,
   mixins: [
+    elementable,
     fieldable,
   ],
   render(createElement) {
     return createElement(
       'v-text-field',
       {
-        attrs: getAttrs(this),
+        attrs: merge(getAttrs(this), this.getSchemaAttributes),
         props: getProps(this),
         on: getListeners(this),
+        staticClass: `${this.baseClass} ${this.$options.name}`,
       },
     );
   },

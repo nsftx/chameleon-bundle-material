@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { assign, isArray, reduce, sum, template } from 'lodash';
 import namespace from '@namespace';
 import CText from '../CText/CText';
 
@@ -7,10 +7,10 @@ const templateLiteralRegex = /\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g;
 const getMath = () => {
   const native = Object.getOwnPropertyNames(Math);
   const lodash = {
-    sum: (...args) => _.sum(args),
+    sum: (...args) => sum(args),
   };
 
-  return _.reduce(native, (result, method) => {
+  return reduce(native, (result, method) => {
     //eslint-disable-next-line
     result[method] = Math[method];
     return result;
@@ -28,7 +28,7 @@ export default {
   },
   computed: {
     fields() {
-      return _.reduce(this.form.fields, (result, field) => {
+      return reduce(this.form.fields, (result, field) => {
         const results = result;
         if (field.name !== this.$options.name) {
           results[field.name] = field.value;
@@ -38,7 +38,7 @@ export default {
       }, {});
     },
     isTemplateLiteral() {
-      return this.value && _.isArray(this.value.match(templateLiteralRegex));
+      return this.value && isArray(this.value.match(templateLiteralRegex));
     },
     templateValue() {
       return this.isTemplateLiteral ? this.value : `<%= ${this.value} %>`;
@@ -55,8 +55,8 @@ export default {
   methods: {
     resolveValue() {
       try {
-        const templateData = _.assign(getMath(), this.fields);
-        this.resolvedValue = _.template(this.templateValue)(templateData);
+        const templateData = assign(getMath(), this.fields);
+        this.resolvedValue = template(this.templateValue)(templateData);
         this.definition.hint = this.resolvedValue;
       } catch (error) {
         // TODO: Show as field error
@@ -65,7 +65,7 @@ export default {
     },
   },
   created() {
-    _.assign(this.definition, {
+    assign(this.definition, {
       persistentHint: true,
     });
 

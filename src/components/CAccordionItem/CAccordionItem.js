@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import uuid from 'uuid/v4';
 import namespace from '@namespace';
+import { elementable } from '@mixins';
 
 const getItemHeader = (element, createElement) => {
   const el = createElement(
@@ -66,23 +67,19 @@ const getItemContent = (context, createElement) => {
 
 export default {
   name: `${namespace}accordion-item`,
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-    validators: {
-      type: Object,
-    },
-  },
+  mixins: [
+    elementable,
+  ],
   render(createElement) {
     return createElement(
       'v-expansion-panel-content',
       {
+        attrs: this.getSchemaAttributes(),
+        props: this.definition,
+        staticClass: `${this.baseClass} ${this.$options.name}`,
         staticStyle: {
           backgroundColor: this.definition.headerColor,
         },
-        props: this.definition,
       },
       [
         getItemHeader(this.definition, createElement),

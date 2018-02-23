@@ -1,4 +1,5 @@
 import namespace from '@namespace';
+import { elementable } from '@mixins';
 
 /*
 This widget is just for testing.
@@ -8,16 +9,9 @@ All plugins should be able to use same libs we use in our elements.
 */
 export default {
   name: `${namespace}luckysix`,
-  props: {
-    /*
-    Definition is mandatory property which is source of truth for
-    widget. It is created from options defined in meta.
-    */
-    definition: {
-      type: Object,
-      required: true,
-    },
-  },
+  mixins: [
+    elementable,
+  ],
   data() {
     return {
       /*
@@ -92,7 +86,8 @@ export default {
     return createElement(
       'div',
       {
-        staticClass: this.$options.name,
+        attrs: this.getSchemaAttributes(),
+        staticClass: `${this.baseClass} ${this.$options.name}`,
         staticStyle: {
           width: '100%',
           height: 0,
