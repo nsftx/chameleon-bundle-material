@@ -17,7 +17,6 @@
           "type": "panel",
           "name": "panel-1",
           "flat": false,
-          "color": "#f5f5f5",
           "elements": [
             {
               "name": "shoppingTable",

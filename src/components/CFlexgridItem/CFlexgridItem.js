@@ -2,7 +2,8 @@ import { map, kebabCase } from 'lodash';
 import uuid from 'uuid/v4';
 import namespace from '@namespace';
 
-const getItemContent = (element, createElement) => {
+const getItemContent = (context, createElement) => {
+  const element = context.definition;
   const children = map(element.elements, (childElement) => {
     const childEl = createElement(
       `${namespace}${kebabCase(childElement.type)}`,
@@ -10,7 +11,6 @@ const getItemContent = (element, createElement) => {
         key: `${childElement.name}_${uuid()}`,
         props: {
           definition: childElement,
-          validators: self.validators,
         },
       },
     );
@@ -40,7 +40,7 @@ export default {
         },
       },
       [
-        getItemContent(this.definition, createElement),
+        getItemContent(this, createElement),
       ]);
   },
 };

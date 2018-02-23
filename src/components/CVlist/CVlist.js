@@ -1,25 +1,21 @@
-import _ from 'lodash';
 import namespace from '@namespace';
+import { elementable } from '@mixins';
 
 require('../../style/components/_vlist.styl');
 
 export default {
   name: `${namespace}vlist`,
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-    validators: {
-      type: Object,
-    },
-  },
+  mixins: [
+    elementable,
+  ],
   render(createElement) {
     const self = this;
 
     return createElement(
       'v-card',
       {
+        key: self.schema.uid,
+        attrs: self.getSchemaAttributes(),
         class: {
           [`${this.$options.name}--spaced`]: this.definition.gutter,
         },
@@ -30,21 +26,13 @@ export default {
         style: {
           backgroundColor: this.definition.color,
         },
-        staticClass: this.$options.name,
+        staticClass: `${self.baseClass} ${self.$options.name}`,
       },
-      _.map(this.definition.elements, (element) => {
-        const el = createElement(
-          `${namespace}${_.kebabCase(element.type)}`,
-          {
-            props: {
-              definition: element,
-              validators: self.validators,
-            },
-          },
-        );
-
-        return el;
-      }),
+      [
+        createElement('div', {
+          staticClass: `${self.baseChildrenClass} ${self.$options.name}-items`,
+        }, self.renderChildren(createElement)),
+      ],
     );
   },
 };

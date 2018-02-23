@@ -120,7 +120,7 @@ export default {
                       {
                         props: {
                           definition: field,
-                          validators: this.validators,
+                          validators: this.$chameleon.validators,
                         },
                         // TODO: Expand field listeners if needed
                         // Should fields be able to trigger flow?

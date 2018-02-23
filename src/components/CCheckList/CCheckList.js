@@ -51,7 +51,7 @@ const getProps = (context, item) => {
     value: item.value,
     validateOn: getPropValidateOnBlur(definition),
     required: getPropRequired(definition),
-    rules: validator.getRules(definition, context.validators),
+    rules: validator.getRules(definition, context.$chameleon.validators),
   };
 
   return props;

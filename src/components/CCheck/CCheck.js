@@ -37,7 +37,7 @@ const getProps = (context) => {
     color: definition.color,
     inputValue: definition.value,
     required: getPropRequired(definition),
-    rules: validator.getRules(definition, context.validators),
+    rules: validator.getRules(definition, context.$chameleon.validators),
   };
 
   return props;

@@ -33,15 +33,12 @@ export default {
     },
   },
   render(createElement) {
-    const self = this;
-
     const items = map(this.definition.elements, element => createElement(
       `${namespace}flexgrid-item`,
       {
         key: `${element.name}_${uuid()}`,
         props: {
           definition: element,
-          validators: self.validators,
         },
       },
     ));

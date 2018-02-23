@@ -35,7 +35,7 @@ const getProps = (context) => {
     prependIcon: definition.prependIcon,
     inputValue: context.definition.value,
     required: getPropRequired(definition),
-    rules: validator.getRules(definition, context.validators),
+    rules: validator.getRules(definition, context.$chameleon.validators),
   };
 
   return props;
