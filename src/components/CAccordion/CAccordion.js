@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import uuid from 'uuid/v4';
 import namespace from '@namespace';
+import { elementable } from '@mixins';
 
 const getItemProps = (context) => {
   const props = {
@@ -22,20 +23,14 @@ const getProps = (context) => {
     props[context.alternativeDesign] = true;
   }
 
-  return { props };
+  return props;
 };
 
 export default {
   name: `${namespace}accordion`,
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-    validators: {
-      type: Object,
-    },
-  },
+  mixins: [
+    elementable,
+  ],
   render(createElement) {
     const itemProps = getItemProps(this.definition);
 
@@ -51,7 +46,11 @@ export default {
 
     return createElement(
       'v-expansion-panel',
-      getProps(this.definition),
+      {
+        attrs: this.getSchemaAttributes(),
+        props: getProps(this.definition),
+        staticClass: `${this.baseClass} ${this.$options.name}`,
+      },
       items,
     );
   },

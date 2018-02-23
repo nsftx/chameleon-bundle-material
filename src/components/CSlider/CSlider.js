@@ -1,5 +1,6 @@
+import { merge } from 'lodash';
 import namespace from '@namespace';
-import { fieldable } from '@mixins';
+import { fieldable, elementable } from '@mixins';
 import { validator } from '@validators';
 
 const getAttrs = (context) => {
@@ -75,22 +76,18 @@ const getProps = (context) => {
 
 export default {
   name: `${namespace}slider`,
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-  },
   mixins: [
     fieldable,
+    elementable,
   ],
   render(createElement) {
     return createElement(
       'v-slider',
       {
-        attrs: getAttrs(this),
+        attrs: merge(getAttrs(this), this.getSchemaAttributes()),
         props: getProps(this),
         on: getListeners(this),
+        staticClass: `${this.baseClass} ${this.$options.name}`,
       },
     );
   },

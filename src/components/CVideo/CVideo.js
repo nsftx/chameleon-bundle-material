@@ -1,6 +1,6 @@
-import _ from 'lodash';
+import { isString, map, merge } from 'lodash';
 import namespace from '@namespace';
-import { fieldable } from '@mixins';
+import { elementable, fieldable } from '@mixins';
 
 require('../../style/components/_video.styl');
 
@@ -33,8 +33,8 @@ const getSourceType = (source) => {
 };
 
 const getSources = (createElement, definition) => {
-  const srcValues = _.isString(definition.value) ? [definition.value] : definition.value;
-  const sources = _.map(srcValues, (source) => {
+  const srcValues = isString(definition.value) ? [definition.value] : definition.value;
+  const sources = map(srcValues, (source) => {
     const el = createElement(
       'source',
       {
@@ -54,6 +54,7 @@ const getSources = (createElement, definition) => {
 export default {
   name: `${namespace}video`,
   mixins: [
+    elementable,
     fieldable,
   ],
   render(createElement) {
@@ -62,8 +63,7 @@ export default {
     return createElement(
       'video',
       {
-        attrs: getAttrs(this.definition),
-        ref: 'video',
+        attrs: merge(getAttrs(this.definition), this.getSchemaAttributes()),
         on: {
           click() {
             if (self.$refs.video.paused) {
@@ -73,7 +73,8 @@ export default {
             }
           },
         },
-        staticClass: this.$options.name,
+        ref: 'video',
+        staticClass: `${this.baseClass} ${this.$options.name}`,
       },
       getSources(createElement, this.definition),
     );

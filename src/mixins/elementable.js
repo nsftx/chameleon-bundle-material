@@ -49,6 +49,7 @@ export default {
         const el = createElement(
           `${namespace}${kebabCase(child.type)}`,
           {
+            key: `${child.type}_${uuid()}`,
             staticClass: `${this.$options.name}-item`,
             props: {
               definition: child,

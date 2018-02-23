@@ -808,7 +808,6 @@
                   "type": "accordion-item",
                   "name": "accordion-item-1",
                   "title": "Item 1",
-                  "text": "Long live the Chameleon!",
                   "elements": [
                     {
                       "name": "firstName1",

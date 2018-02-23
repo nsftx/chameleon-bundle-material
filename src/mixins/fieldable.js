@@ -1,13 +1,4 @@
 export default {
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-    validators: {
-      type: Object,
-    },
-  },
   data() {
     return {
       name: null,

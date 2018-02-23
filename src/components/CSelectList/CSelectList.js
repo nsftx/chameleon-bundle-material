@@ -70,14 +70,16 @@ export default {
     };
   },
   render(createElement) {
+    const deletableChips = this.selectProps.deletableChips;
+
     return createElement(
       'v-select',
       {
         attrs: this.attrs,
         props: this.selectProps,
-        scopedSlots: this.selectProps.deletableChips &&
-          getCardSlot(createElement, this.selectProps.itemText),
         on: this.listeners,
+        scopedSlots: deletableChips && getCardSlot(createElement, this.selectProps.itemText),
+        staticClass: `${this.baseClass} ${this.$options.name}`,
       },
     );
   },

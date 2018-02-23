@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import namespace from '@namespace';
-import { fieldable, validatable } from '@mixins';
+import { elementable, fieldable, validatable } from '@mixins';
 
 require('../../style/components/_rating.styl');
 
@@ -78,6 +78,7 @@ const getTitle = (createElement, context) => {
 export default {
   name: `${namespace}rating`,
   mixins: [
+    elementable,
     fieldable,
     validatable,
   ],
@@ -102,10 +103,11 @@ export default {
     return createElement(
       'div',
       {
-        staticClass: `${this.$options.name} text-xs-center`,
+        attrs: this.getSchemaAttributes(),
         class: {
           'rating--error': this.hasError,
         },
+        staticClass: `${this.baseClass} ${this.$options.name} text-xs-center`,
       },
       [
         title,

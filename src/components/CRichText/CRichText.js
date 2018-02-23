@@ -1,11 +1,11 @@
-import _ from 'lodash';
+import { isArray } from 'lodash';
 import namespace from '@namespace';
-import { fieldable, validatable, dependable } from '@mixins';
+import { elementable, fieldable, validatable, dependable } from '@mixins';
 
 require('../../style/components/_rich-text.styl');
 
 const getToolbar = (definition) => {
-  if (_.isArray(definition.toolbar)) {
+  if (isArray(definition.toolbar)) {
     return definition.toolbar;
   }
 
@@ -61,6 +61,7 @@ const getToolbar = (definition) => {
 export default {
   name: `${namespace}rich-text`,
   mixins: [
+    elementable,
     fieldable,
     validatable,
     dependable,
@@ -117,7 +118,8 @@ export default {
           Figure out the way to separate custom controls in form (maybe on form level)
           Vuetify controls already have spacing between
         */
-        staticClass: `${this.$options.name} mb-3`,
+        staticClass: `${this.baseClass} ${this.$options.name} mb-3`,
+        attrs: this.getSchemaAttributes(),
         class: {
           'rich-text--error': this.hasError,
         },

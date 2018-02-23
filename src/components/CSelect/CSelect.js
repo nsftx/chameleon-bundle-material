@@ -1,6 +1,6 @@
-import _ from 'lodash';
+import { isArray, merge } from 'lodash';
 import namespace from '@namespace';
-import { fieldable } from '@mixins';
+import { elementable, fieldable } from '@mixins';
 import { validator } from '@validators';
 
 const getAttrs = (context) => {
@@ -17,7 +17,7 @@ const getListeners = (context) => {
 
   const listeners = {
     input(value) {
-      const parsedValue = _.isArray(value) ? value : [value];
+      const parsedValue = isArray(value) ? value : [value];
 
       self.value = parsedValue;
       self.$emit('input', parsedValue);
@@ -46,11 +46,11 @@ const getPropValidateOnBlur = (definition) => {
 };
 
 const getPropValue = (definition) => {
-  if (definition.multiple && !_.isArray(definition.value)) {
+  if (definition.multiple && !isArray(definition.value)) {
     return [definition.value];
   }
 
-  if (!definition.multiple && _.isArray(definition.value)) {
+  if (!definition.multiple && isArray(definition.value)) {
     return definition.value[0];
   }
 
@@ -92,6 +92,7 @@ const getProps = (context) => {
 export default {
   name: `${namespace}select`,
   mixins: [
+    elementable,
     fieldable,
   ],
   data() {
@@ -104,7 +105,7 @@ export default {
   },
   created() {
     const context = this;
-    this.attrs = getAttrs(context);
+    this.attrs = merge(getAttrs(context), this.getSchemaAttributes());
     this.selectProps = getProps(context);
     this.listeners = getListeners(context);
   },
@@ -115,6 +116,7 @@ export default {
         attrs: this.attrs,
         props: this.selectProps,
         on: this.listeners,
+        staticClass: `${this.baseClass} ${this.$options.name}`,
       },
     );
   },

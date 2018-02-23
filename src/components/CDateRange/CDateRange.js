@@ -1,6 +1,6 @@
-import _ from 'lodash';
+import { clone, isNil } from 'lodash';
 import namespace from '@namespace';
-import { fieldable } from '@mixins';
+import { elementable, fieldable } from '@mixins';
 import { validator } from '@validators';
 
 const getPropRequired = (definition) => {
@@ -18,7 +18,7 @@ const getMenuProps = (context) => {
 
   const props = {
     lazy: false,
-    transition: _.isNil(definition.transition) ? 'scale-transition' : definition.transition,
+    transition: isNil(definition.transition) ? 'scale-transition' : definition.transition,
     fullWidth: true,
     closeOnContentClick: false,
     maxWidth: '520px',
@@ -43,9 +43,9 @@ const getTextProps = (context) => {
 
   const props = {
     readonly: true,
-    clearable: _.isNil(definition.clearable) ? true : definition.clearable,
+    clearable: isNil(definition.clearable) ? true : definition.clearable,
     appendIcon: definition.appendIcon,
-    prependIcon: _.isNil(definition.prependIcon) ? 'event' : definition.prependIcon,
+    prependIcon: isNil(definition.prependIcon) ? 'event' : definition.prependIcon,
     label: definition.label,
     hint: definition.hint,
     persistentHint: true,
@@ -84,7 +84,7 @@ const getAllowedDates = (context, endRange) => {
 };
 
 const getPickerDefinition = (context, endRange) => {
-  const definition = _.clone(context.definition);
+  const definition = clone(context.definition);
   definition.allowedDates = getAllowedDates(context, endRange);
 
   if (context.value) {
@@ -99,6 +99,7 @@ const getPickerDefinition = (context, endRange) => {
 export default {
   name: `${namespace}date-range`,
   mixins: [
+    elementable,
     fieldable,
   ],
   data() {
@@ -111,11 +112,11 @@ export default {
   },
   watch: {
     valueFrom() {
-      if (_.isNil(this.valueTo)) this.valueTo = this.valueFrom;
+      if (isNil(this.valueTo)) this.valueTo = this.valueFrom;
       this.setValue();
     },
     valueTo() {
-      if (_.isNil(this.valueFrom)) this.valueFrom = this.valueTo;
+      if (isNil(this.valueFrom)) this.valueFrom = this.valueTo;
       this.setValue();
     },
   },
@@ -188,7 +189,9 @@ export default {
     return createElement(
       'v-menu',
       {
+        attrs: this.getSchemaAttributes(),
         props: getMenuProps(this),
+        staticClass: `${this.baseClass} ${this.$options.name}`,
       },
       children,
     );

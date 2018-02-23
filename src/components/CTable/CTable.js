@@ -1,6 +1,6 @@
 import namespace from '@namespace';
 import { each, isNil, isString, keys, map, merge } from 'lodash';
-import { localizable } from '@mixins';
+import { elementable, localizable } from '@mixins';
 
 require('../../style/components/_table.styl');
 
@@ -165,25 +165,20 @@ const getListeners = (context) => {
 export default {
   name: `${namespace}table`,
   mixins: [
+    elementable,
     localizable,
   ],
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-  },
   render(createElement) {
     const dataSource = this.definition.dataSource;
 
     return createElement(
       'v-data-table',
       {
-        attrs: getAttrs(this),
+        attrs: merge(getAttrs(this), this.getSchemaAttributes()),
         props: getProps(this),
         on: getListeners(this),
         scopedSlots: getScopedSlots(createElement, dataSource),
-        staticClass: this.$options.name,
+        staticClass: `${this.baseClass} ${this.$options.name}`,
         class: [
           this.definition.color || 'white',
           this.definition.flat ? null : 'elevation-1',

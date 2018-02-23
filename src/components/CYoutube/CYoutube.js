@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import namespace from '@namespace';
-import { dependable } from '@mixins';
-
+import { dependable, elementable } from '@mixins';
 
 const getVideoId = (url) => {
   const re = /https?:\/\/(?:[0-9A-Z-]+\.)?(?:youtu\.be\/|youtube(?:-nocookie)?\.com\S*?[^\w\s-])([\w-]{11})(?=[^\w-]|$)(?![?=&+%\w.-]*(?:['"][^<>]*>|<\/a>))[?=&+%\w.-]*/ig;
@@ -62,16 +61,8 @@ export default {
   name: `${namespace}youtube`,
   mixins: [
     dependable,
+    elementable,
   ],
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-    validators: {
-      type: Object,
-    },
-  },
   data() {
     return {
       player: null,
@@ -117,7 +108,8 @@ export default {
       'div',
       {
         ref: 'youtube',
-        staticClass: this.$options.name,
+        attrs: this.getSchemaAttributes(),
+        staticClass: `${this.baseClass} ${this.$options.name}`,
       },
     );
   },
