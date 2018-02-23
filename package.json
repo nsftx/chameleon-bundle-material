@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Chameleon Vuetify Interpreter",
   "author": "Jadranko Dragoje <dragoje.jadranko@nsoft.com>",
+  "contributors": [
+    "Snježana Drežnjak <dreznjak.snjezana@nsoft.com>",
+    "Lana Džidić <dzidic.lana@nsoft.com>"
+  ],
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js",
