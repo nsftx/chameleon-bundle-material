@@ -4,8 +4,11 @@ import namespace from '@namespace';
 
 const getProps = (context) => {
   const props = {
+    centered: context.alignment === 'center',
     color: context.headerColor,
+    grow: context.fillSpace,
     iconsAndText: _.some(context.elements, element => !!element.icon),
+    right: context.alignment === 'right',
     sliderColor: context.sliderColor,
   };
 
@@ -44,12 +47,8 @@ export default {
       type: Object,
       required: true,
     },
-    validators: {
-      type: Object,
-    },
   },
   render(createElement) {
-    const self = this;
     const tabs = getTabs(this.definition, createElement);
 
     const items = _.map(this.definition.elements, element => createElement(
@@ -58,7 +57,6 @@ export default {
         key: `${element.title}_${uuid}`,
         props: {
           definition: element,
-          validators: self.validators,
         },
       },
     ));

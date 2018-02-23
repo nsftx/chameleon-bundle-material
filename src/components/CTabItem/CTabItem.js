@@ -11,7 +11,6 @@ const getTabItemContent = (context, createElement) => {
         key: `${childElement.name}_${uuid()}`,
         props: {
           definition: childElement,
-          validators: context.validators,
         },
       },
     );
@@ -26,9 +25,6 @@ export default {
     definition: {
       type: Object,
       required: true,
-    },
-    validators: {
-      type: Object,
     },
   },
   render(createElement) {
