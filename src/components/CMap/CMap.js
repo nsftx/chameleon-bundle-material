@@ -51,7 +51,7 @@ export default {
     const libraries = _.isString(lib) ? lib : lib.join(',');
     const url = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=${libraries}`;
 
-    this.loadDependencies(url, 'CMap').then(() => {
+    this.loadDependencies(url, 'google.maps').then(() => {
       this.load();
     });
   },

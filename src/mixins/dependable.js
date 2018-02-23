@@ -1,16 +1,40 @@
-import { isArray, isUndefined, merge } from 'lodash';
+import { isArray, isUndefined, merge, map } from 'lodash';
 
-const setFlag = (globals, prop, value) => {
+// Check is global variable registered
+const isGlobalAvailable = (dep) => {
+  if (dep.indexOf('.') < 0) {
+    return !!window[dep];
+  }
+
+  // Handle dot notation, e.g. google.maps
+  const parts = dep.split('.');
+  return !!window[parts[0]] && !!window[parts[0]][parts[1]];
+};
+
+const setFlag = (globalDep, prop, value) => {
   merge(window, {
     // eslint-disable-next-line
-    __CHAMELEON_MATERIAL_DEPS__: { [globals]: { [prop]: value } },
+    __CHAMELEON_MATERIAL_DEPS__: { [globalDep]: { [prop]: value } },
   });
 };
 
-const depPromises = [];
-const urlPromises = [];
+// Register & handle interval for global variable check
+const startAvailabilityInterval = (dep, resolve, reject) => {
+  // eslint-disable-next-line
+  const globalDeps = window.__CHAMELEON_MATERIAL_DEPS__;
 
-const setDependency = (url, globals, resolve, reject) => {
+  const availabilityInterval = setInterval(() => {
+    if (isGlobalAvailable(dep)) {
+      resolve();
+      clearInterval(availabilityInterval);
+    } else if (globalDeps[dep].rejected) {
+      reject();
+      clearInterval(availabilityInterval);
+    }
+  }, 100);
+};
+
+const addDependency = (url, globals) => {
   const type = url.type === 'script' || isUndefined(url.type) ? 'script' : 'link';
   const attr = url.type === 'script' || isUndefined(url.type) ? 'src' : 'href';
   const script = document.createElement(type);
@@ -25,65 +49,58 @@ const setDependency = (url, globals, resolve, reject) => {
     document.head.appendChild(script);
   }
 
-  script.onerror = () => {
-    reject();
-    setFlag(globals, 'loaded', false);
-    setFlag(globals, 'started', false);
-  };
+  return new Promise((resolve, reject) => {
+    script.onerror = () => {
+      reject();
+      setFlag(globals, 'rejected', true);
+    };
 
-  script.onload = () => {
-    resolve();
-  };
+    script.onload = () => {
+      if (type === 'link' || (type !== 'link' && isGlobalAvailable(globals))) {
+        // Resolve stylesheets and registered global variables
+        resolve();
+      } else {
+        // Schedule checks for unregistered global variables
+        startAvailabilityInterval(globals, resolve, reject);
+      }
+    };
+  });
 };
 
-const getDependencies = (url, globals) => {
-  if (isArray(url)) {
-    url.forEach((src) => {
-      getDependencies(src, globals);
-    });
-  } else {
-    urlPromises.push(new Promise((resolve, reject) => {
-      setDependency(url, globals, resolve, reject);
-    }));
-  }
+const initDependencies = (url, globals) => {
+  const items = isArray(url) ? url : [url];
+  const promises = map(items, item => addDependency(item, globals));
+
+  return Promise.all(promises);
 };
 
 export default {
   methods: {
-    loadDependencies(url, globals) {
-      depPromises.push(new Promise((resolve, reject) => {
-        // eslint-disable-next-line
-        let depsGlobal = window.__CHAMELEON_MATERIAL_DEPS__;
-        if (
-          !isUndefined(depsGlobal) &&
-          !isUndefined(depsGlobal[globals]) &&
-          depsGlobal[globals].started
-        ) {
-          const interval = setInterval(() => {
-            // eslint-disable-next-line
-            if (depsGlobal[globals].loaded) {
-              clearInterval(interval);
-              resolve();
-              // eslint-disable-next-line
-            } else if (depsGlobal[globals].loaded === false) {
-              clearInterval(interval);
-              reject();
-            }
-          }, 10);
-        } else {
-          setFlag(globals, 'started', true);
-          getDependencies(url, globals);
-          resolve();
-        }
-      }));
+    loadDependencies(srcs, dep) {
+      // eslint-disable-next-line
+      const globalDeps = window.__CHAMELEON_MATERIAL_DEPS__;
 
-      return Promise.all(urlPromises).then(() => {
-        setFlag(globals, 'loaded', true);
-      })
-        .then(() => Promise.all(depPromises))
-        .catch((error) => {
-          console.warn('[CV] Script rejected =>', error);
-        });
+      return new Promise((resolve, reject) => {
+        if (!globalDeps[dep]) {
+          // Start dependency intialization
+          setFlag(dep, 'started', true);
+          initDependencies(srcs, dep).then(() => {
+            resolve();
+          }).catch((error) => {
+            console.warn('[CV] Script rejected =>', error);
+          });
+        } else if (isGlobalAvailable(dep)) {
+          // Resolve if global vairable is registered
+          resolve();
+        } else {
+          // Schedule checks if global variable is unregistered
+          startAvailabilityInterval(dep, resolve, reject);
+        }
+      });
     },
+  },
+  beforeMount() {
+    // eslint-disable-next-line
+    if (!window.__CHAMELEON_MATERIAL_DEPS__) window.__CHAMELEON_MATERIAL_DEPS__ = {};
   },
 };

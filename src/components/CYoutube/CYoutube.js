@@ -108,8 +108,8 @@ export default {
     this.playlist = this.definition.playlist.length || this.definition.value.length > 1;
     this.predefinedPlaylist = this.definition.playlist.length ? this.definition.playlist : false;
     const url = 'https://www.youtube.com/iframe_api';
-    this.loadDependencies(url, 'CYouTube').then(() => {
-      window.onYouTubeIframeAPIReady = this.createPlayer;
+    this.loadDependencies(url, 'YT.Player').then(() => {
+      this.createPlayer();
     });
   },
   render(createElement) {
