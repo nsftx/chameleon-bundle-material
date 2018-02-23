@@ -1,32 +1,31 @@
-import _ from 'lodash';
-import uuid from 'uuid/v4';
 import namespace from '@namespace';
+import { elementable } from '@mixins';
 
 const getTabItemContent = (context, createElement) => {
-  const definition = context.definition;
-  return _.map(definition.elements, (childElement) => {
-    const childEl = createElement(
-      `${namespace}${_.kebabCase(childElement.type)}`,
-      {
-        key: `${childElement.name}_${uuid()}`,
-        props: {
-          definition: childElement,
-        },
-      },
-    );
+  const element = context.definition;
 
-    return childEl;
-  });
+  const el = createElement(
+    'v-card',
+    {
+      staticStyle: {
+        backgroundColor: element.contentColor,
+      },
+    },
+    [
+      createElement('v-card-text', {
+        staticClass: `${context.baseChildrenClass} ${context.$options.name}-items`,
+      }, context.renderChildren(createElement)),
+    ],
+  );
+
+  return el;
 };
 
 export default {
   name: `${namespace}tab-item`,
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-  },
+  mixins: [
+    elementable,
+  ],
   render(createElement) {
     return createElement(
       'v-tab-item',

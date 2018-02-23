@@ -19,6 +19,28 @@
           "flat": false,
           "elements": [
             {
+              "type": "tabs",
+              "alignment": "center",
+              "fillSpace": true,
+              "elements": [
+                {
+                  "type": "tab-item",
+                  "icon": "star",
+                  "title": "Tab 1"
+                },
+                {
+                  "type": "tab-item",
+                  "icon": "mail",
+                  "title": "Tab 2"
+                },
+                {
+                  "type": "tab-item",
+                  "icon": "phone",
+                  "title": "Tab 3"
+                }
+              ]
+            },
+            {
               "name": "shoppingTable",
               "type": "table",
               "color": "yellow",
@@ -892,6 +914,16 @@
                 "https://www.youtube.com/watch?v=2bnZliAjPUk",
                 "https://www.youtube.com/watch?v=4Rc-NGWEHdU",
                 "https://www.youtube.com/watch?v=l-vSl7BuxGs"
+              ]
+            },
+            {
+              "type": "youtube",
+              "name": "you tube",
+              "autoplay": false,
+              "playlist": "",
+              "repeat": false,
+              "value": [
+                "https://www.youtube.com/watch?v=2bnZliAjPUk"
               ]
             },
             {

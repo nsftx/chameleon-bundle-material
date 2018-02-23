@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import uuid from 'uuid/v4';
 import namespace from '@namespace';
+import { elementable } from '@mixins';
 
 const getProps = (context) => {
   const props = {
@@ -42,12 +43,9 @@ const getTabs = (context, createElement) => {
 
 export default {
   name: `${namespace}tabs`,
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-  },
+  mixins: [
+    elementable,
+  ],
   render(createElement) {
     const tabs = getTabs(this.definition, createElement);
 
