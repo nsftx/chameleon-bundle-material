@@ -54,7 +54,9 @@ export default {
       {
         key: `${element.title}_${uuid}`,
         props: {
-          definition: element,
+          definition: _.merge({},
+            element,
+            { contentColor: this.definition.contentColor }),
         },
       },
     ));

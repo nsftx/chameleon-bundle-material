@@ -4,7 +4,7 @@ import { elementable } from '@mixins';
 const getTabItemContent = (context, createElement) => {
   const element = context.definition;
 
-  const el = createElement(
+  return createElement(
     'v-card',
     {
       staticStyle: {
@@ -17,8 +17,6 @@ const getTabItemContent = (context, createElement) => {
       }, context.renderChildren(createElement)),
     ],
   );
-
-  return el;
 };
 
 export default {
@@ -29,7 +27,7 @@ export default {
   render(createElement) {
     return createElement(
       'v-tab-item',
-      getTabItemContent(this, createElement),
+      [getTabItemContent(this, createElement)],
     );
   },
 };
