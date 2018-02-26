@@ -7,6 +7,7 @@ const getTabItemContent = (context, createElement) => {
   return createElement(
     'v-card',
     {
+      attrs: context.getSchemaAttributes(),
       staticStyle: {
         backgroundColor: element.contentColor,
       },
@@ -29,7 +30,6 @@ export default {
       'v-tab-item',
       {
         key: this.schema.uid,
-        attrs: this.getSchemaAttributes(),
         staticClass: `${this.baseClass} ${this.$options.name}`,
       },
       [getTabItemContent(this, createElement)],

@@ -19,6 +19,7 @@ const getItemContent = (context, createElement) => {
   const el = createElement(
     'v-card',
     {
+      attrs: this.getSchemaAttributes(),
       staticStyle: {
         backgroundColor: element.contentColor,
       },
@@ -43,7 +44,6 @@ export default {
       'v-expansion-panel-content',
       {
         key: this.schema.uid,
-        attrs: this.getSchemaAttributes(),
         props: this.definition,
         staticClass: `${this.baseClass} ${this.$options.name}`,
         staticStyle: {
