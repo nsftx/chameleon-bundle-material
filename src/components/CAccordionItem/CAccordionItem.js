@@ -19,7 +19,7 @@ const getItemContent = (context, createElement) => {
   const el = createElement(
     'v-card',
     {
-      attrs: this.getSchemaAttributes(),
+      attrs: context.getSchemaAttributes(),
       staticStyle: {
         backgroundColor: element.contentColor,
       },
