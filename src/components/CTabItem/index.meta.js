@@ -11,22 +11,13 @@ export default {
   options: {
     title: {
       type: 'input',
-      name: 'Item count',
+      name: 'Item Title',
       value: 'Item title',
       validation: {
         required: true,
         minLength: 2,
       },
       priority: 1,
-    },
-    text: {
-      type: 'input',
-      name: 'Item text',
-      value: 'Long live the Chameleon!',
-      validation: {
-        minLength: 5,
-      },
-      priority: 2,
     },
   },
 };

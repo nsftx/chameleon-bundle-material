@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import uuid from 'uuid/v4';
 import namespace from '@namespace';
 import { elementable } from '@mixins';
 
@@ -37,7 +36,7 @@ export default {
     const items = _.map(this.definition.elements, element => createElement(
       `${namespace}accordion-item`,
       {
-        key: `${element.name}_${uuid()}`,
+        key: this.schema.uid,
         props: {
           definition: _.merge({}, element, itemProps),
         },

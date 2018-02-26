@@ -42,6 +42,7 @@ export default {
     return createElement(
       'v-expansion-panel-content',
       {
+        key: this.schema.uid,
         attrs: this.getSchemaAttributes(),
         props: this.definition,
         staticClass: `${this.baseClass} ${this.$options.name}`,

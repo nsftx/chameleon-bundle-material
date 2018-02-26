@@ -27,6 +27,11 @@ export default {
   render(createElement) {
     return createElement(
       'v-tab-item',
+      {
+        key: this.schema.uid,
+        attrs: this.getSchemaAttributes(),
+        staticClass: `${this.baseClass} ${this.$options.name}`,
+      },
       [getTabItemContent(this, createElement)],
     );
   },

@@ -13,7 +13,7 @@ const getProps = (context) => {
     sliderColor: context.sliderColor,
   };
 
-  return { props };
+  return props;
 };
 
 const getTabs = (context, createElement) => {
@@ -52,7 +52,6 @@ export default {
     const items = _.map(this.definition.elements, element => createElement(
       `${namespace}tab-item`,
       {
-        key: `${element.title}_${uuid}`,
         props: {
           definition: _.merge({},
             element,
@@ -63,7 +62,12 @@ export default {
 
     return createElement(
       'v-tabs',
-      getProps(this.definition),
+      {
+        key: this.schema.uid,
+        attrs: this.getSchemaAttributes(),
+        props: getProps(this.definition),
+        staticClass: `${this.baseClass} ${this.$options.name}`,
+      },
       _.concat(tabs, createElement(
         'v-tabs-items',
         items,
