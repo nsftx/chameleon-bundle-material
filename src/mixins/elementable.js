@@ -38,6 +38,7 @@ export default {
     getSchemaAttributes() {
       return {
         'data-type': this.schema.type,
+        'data-group': this.schema.group,
         'data-uid': this.schema.uid,
         'data-parent': this.schema.parentUid,
       };
