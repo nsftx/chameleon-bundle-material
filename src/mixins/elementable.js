@@ -20,6 +20,9 @@ export default {
         parentUid: null,
       }, this.definition._schema);
     },
+    options() {
+      return this.$chameleon;
+    },
   },
   data() {
     return {

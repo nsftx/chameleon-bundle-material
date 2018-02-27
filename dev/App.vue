@@ -71,12 +71,15 @@
         const validation = chameleonNotation.validate(this.app);
 
         if (!validation.isValid) {
-          console.warn(validation.message);
+          // console.warn(validation.message);
         }
       },
     },
     mounted() {
-      this.$chameleon.validators = json.validators;
+      _.assign(this.$chameleon, {
+        validators: json.validators,
+        isInPreviewMode: true,
+      });
     },
   };
 </script>

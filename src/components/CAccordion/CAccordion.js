@@ -36,7 +36,6 @@ export default {
     const items = _.map(this.definition.elements, element => createElement(
       `${namespace}accordion-item`,
       {
-        key: this.schema.uid,
         props: {
           definition: _.merge({}, element, itemProps),
         },
