@@ -1,4 +1,4 @@
-import { isString, map, merge } from 'lodash';
+import { isString, map } from 'lodash';
 import namespace from '@namespace';
 import { elementable, fieldable } from '@mixins';
 
@@ -84,6 +84,7 @@ export default {
     return createElement(
       'div',
       {
+        attrs: this.getSchemaAttributes(),
         staticClass: `${this.baseClass} ${this.$options.name}`,
         staticStyle: getStaticStyle(this.definition),
       },
@@ -91,7 +92,7 @@ export default {
         createElement(
           'video',
           {
-            attrs: merge(getAttrs(this.definition), this.getSchemaAttributes()),
+            attrs: getAttrs(this.definition),
             on: {
               click() {
                 if (self.$refs.video.paused) {

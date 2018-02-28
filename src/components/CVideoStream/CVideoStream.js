@@ -38,6 +38,7 @@ export default {
     return createElement(
       'div',
       {
+        attrs: this.getSchemaAttributes(),
         staticClass: `${this.baseClass} ${this.$options.name}`,
         staticStyle: getStaticStyle(this.definition),
       },
