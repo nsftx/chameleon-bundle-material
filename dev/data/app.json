@@ -589,7 +589,7 @@
                           "hint": null,
                           "disabled": false,
                           "persistentHint": false,
-                          "value": false
+                          "value": true
                         }
                       ],
                       "actions": [

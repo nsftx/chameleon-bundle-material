@@ -2,12 +2,22 @@ import namespace from '@namespace';
 import { elementable, fieldable } from '@mixins';
 import { validator } from '@validators';
 
+const getAttrs = (context) => {
+  const definition = context.definition;
+
+  const attrs = {
+    name: definition.name,
+  };
+
+  return attrs;
+};
+
 const getListeners = (context) => {
   const self = context;
 
   const listeners = {
     change(value) {
-      self.definition.value = value;
+      self.value = value;
       self.$emit('change', value);
     },
   };
@@ -35,7 +45,7 @@ const getProps = (context) => {
     prependIcon: definition.prependIcon,
     disabled: definition.disabled,
     color: definition.color,
-    inputValue: definition.value,
+    inputValue: context.value,
     required: getPropRequired(definition),
     rules: validator.getRules(definition, context.$chameleon.validators),
   };
@@ -54,9 +64,7 @@ export default {
       createElement(
         'v-checkbox',
         {
-          attrs: {
-            name: this.definition.name,
-          },
+          attrs: getAttrs(this),
           props: getProps(this),
           on: getListeners(this),
         },

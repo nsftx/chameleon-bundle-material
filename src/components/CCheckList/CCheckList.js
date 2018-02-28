@@ -1,15 +1,24 @@
-import { map } from 'lodash';
+import { isNil, map } from 'lodash';
 import namespace from '@namespace';
 import { elementable, fieldable } from '@mixins';
 import { validator } from '@validators';
 
-const getListeners = (context) => {
+const getItemAttrs = (context) => {
+  const definition = context.definition;
+
+  const attrs = {
+    name: definition.name,
+  };
+
+  return attrs;
+};
+
+const getItemListeners = (context) => {
   const self = context;
 
   const listeners = {
     change(value) {
-      self.definition.inputValue = value;
-      self.definition.value = value;
+      self.value = value;
       self.$emit('change', value);
     },
   };
@@ -33,7 +42,7 @@ const getPropValidateOnBlur = (definition) => {
   return false;
 };
 
-const getProps = (context, item) => {
+const getItemProps = (context, item) => {
   const definition = context.definition;
 
   const props = {
@@ -42,7 +51,7 @@ const getProps = (context, item) => {
     prependIcon: definition.prependIcon,
     appendIcon: definition.appendIcon,
     persistentHint: definition.persistentHint,
-    inputValue: definition.value,
+    inputValue: context.value,
     hint: definition.hint,
     minCount: definition.validation.minCount,
     maxCount: definition.validation.maxCount,
@@ -64,6 +73,12 @@ export default {
     fieldable,
   ],
   render(createElement) {
+    if (isNil(this.definition.dataSource)) {
+      this.definition.dataSource = {
+        items: [],
+      };
+    }
+
     return createElement(
       'v-card',
       {
@@ -77,11 +92,9 @@ export default {
       map(this.definition.dataSource.items,
         item => createElement('v-checkbox',
           {
-            attrs: {
-              name: this.definition.name,
-            },
-            props: getProps(this, item),
-            on: getListeners(this, item),
+            attrs: getItemAttrs(this),
+            props: getItemProps(this, item),
+            on: getItemListeners(this, item),
           },
         )),
     );

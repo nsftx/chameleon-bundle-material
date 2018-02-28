@@ -1,13 +1,23 @@
 import namespace from '@namespace';
 import { elementable, fieldable } from '@mixins';
 
+const getAttrs = (context) => {
+  const definition = context.definition;
+
+  const attrs = {
+    name: definition.name,
+  };
+
+  return attrs;
+};
+
 const getListeners = (context) => {
   const self = context;
 
   const listeners = {
-    change() {
-      self.definition.inputValue = !self.definition.inputValue;
-      self.definition.value = self.definition.inputValue;
+    change(value) {
+      self.value = value;
+      self.$emit('change', value);
     },
   };
 
@@ -26,8 +36,7 @@ const getProps = (context) => {
     prependIcon: definition.prependIcon,
     disabled: definition.disabled,
     color: definition.color,
-    value: context.definition.value,
-    inputValue: context.definition.value,
+    inputValue: context.value,
   };
 
   return props;
@@ -44,9 +53,7 @@ export default {
       createElement(
         'v-switch',
         {
-          attrs: {
-            name: this.definition.name,
-          },
+          attrs: getAttrs(this),
           props: getProps(this),
           on: getListeners(this),
         },
