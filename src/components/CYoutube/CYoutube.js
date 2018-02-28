@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { isNil, filter, map, merge } from 'lodash';
 import namespace from '@namespace';
 import { dependable, elementable } from '@mixins';
 
@@ -26,7 +26,7 @@ const getPlaylistParameters = (context) => {
 
   return {
     listType: 'playlist',
-    playlist: _.filter(_.map(context.value, video => getVideoId(video)), item => !_.isNil(item)),
+    playlist: filter(map(context.value, video => getVideoId(video)), item => !isNil(item)),
   };
 };
 
@@ -51,10 +51,10 @@ const getPlayerParameters = (context) => {
   };
 
   if (context.playlist) {
-    return _.merge(getPlaylistParameters(context), params);
+    return merge(getPlaylistParameters(context), params);
   }
 
-  return _.merge(getVideoParameters(context), params);
+  return merge(getVideoParameters(context), params);
 };
 
 export default {
@@ -86,7 +86,9 @@ export default {
         },
       });
 
-      if (this.definition.muted) this.player.mute();
+      if (this.definition.muted) {
+        this.player.mute();
+      }
     },
     onPlayerReady() {
       const method = getPlayerMethod(this.playlist, this.definition.autoplay);
@@ -98,8 +100,8 @@ export default {
   mounted() {
     this.playlist = this.definition.playlist.length || this.definition.value.length > 1;
     this.predefinedPlaylist = this.definition.playlist.length ? this.definition.playlist : false;
-    const url = 'https://www.youtube.com/iframe_api';
-    this.loadDependencies(url, 'YT.Player').then(() => {
+
+    this.loadDependencies('https://www.youtube.com/iframe_api', 'YT.Player').then(() => {
       this.createPlayer();
     });
   },
