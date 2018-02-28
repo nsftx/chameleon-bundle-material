@@ -72,15 +72,21 @@ export default {
   render(createElement) {
     const deletableChips = this.selectProps.deletableChips;
 
-    return createElement(
-      'v-select',
-      {
-        attrs: this.attrs,
-        props: this.selectProps,
-        on: this.listeners,
-        scopedSlots: deletableChips && getCardSlot(createElement, this.selectProps.itemText),
-        staticClass: `${this.baseClass} ${this.$options.name}`,
-      },
-    );
+    const children = [
+      createElement(
+        'v-select',
+        {
+          attrs: this.attrs,
+          props: this.selectProps,
+          on: this.listeners,
+          scopedSlots: deletableChips && getCardSlot(createElement, this.selectProps.itemText),
+        },
+      ),
+    ];
+
+    return createElement('div', {
+      attrs: this.getSchemaAttributes(),
+      staticClass: `${this.baseClass} ${this.$options.name}`,
+    }, children);
   },
 };

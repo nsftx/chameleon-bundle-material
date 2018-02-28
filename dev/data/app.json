@@ -661,6 +661,24 @@
                             "description": "calories: 159, fat: 6.0, carbs: 24, calories",
                             "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
                             "icon": "language"
+                          },
+                          {
+                            "title": "Frozen Yogurt",
+                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                            "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
+                            "icon": "language"
+                          },
+                          {
+                            "title": "Ice cream sandwich",
+                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                            "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
+                            "icon": "language"
+                          },
+                          {
+                            "title": "Eclair",
+                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                            "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
+                            "icon": "language"
                           }
                         ]
                       }
@@ -669,13 +687,6 @@
                       "name": "shoppingList",
                       "type": "list",
                       "hideActions": false,
-                      "noDataText": null,
-                      "rowsPerPageText": null,
-                      "noResultsText": null,
-                      "rowsPerPageItems": null,
-                      "rowsPerPage": 5,
-                      "sortBy": null,
-                      "startPage": 1,
                       "wrap": true,
                       "dataSource": {
                         "items": [

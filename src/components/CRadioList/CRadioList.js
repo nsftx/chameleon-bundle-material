@@ -1,4 +1,4 @@
-import { map, merge } from 'lodash';
+import { map } from 'lodash';
 import namespace from '@namespace';
 import { elementable, fieldable } from '@mixins';
 import { validator } from '@validators';
@@ -48,27 +48,33 @@ export default {
     fieldable,
   ],
   render(createElement) {
-    return createElement(
-      'v-radio-group',
-      {
-        attrs: merge({
-          name: this.definition.name,
-        }, this.getSchemaAttributes()),
-        props: getProps(this),
-        on: getListeners(this),
-        staticClass: `${this.baseClass} ${this.$options.name}`,
-      },
-      map(this.definition.dataSource.items,
-        item => createElement('v-radio',
-          {
-            props: {
-              label: item.label,
-              value: item.value,
-              color: item.color,
-              disabled: item.disabled,
-            },
+    const children = [
+      createElement(
+        'v-radio-group',
+        {
+          attrs: {
+            name: this.definition.name,
           },
-        )),
-    );
+          props: getProps(this),
+          on: getListeners(this),
+        },
+        map(this.definition.dataSource.items,
+          item => createElement('v-radio',
+            {
+              props: {
+                label: item.label,
+                value: item.value,
+                color: item.color,
+                disabled: item.disabled,
+              },
+            },
+          )),
+      ),
+    ];
+
+    return createElement('div', {
+      attrs: this.getSchemaAttributes(),
+      staticClass: `${this.baseClass} ${this.$options.name}`,
+    }, children);
   },
 };

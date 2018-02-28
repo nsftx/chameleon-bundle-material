@@ -171,19 +171,25 @@ export default {
   render(createElement) {
     const dataSource = this.definition.dataSource;
 
-    return createElement(
-      'v-data-table',
-      {
-        attrs: merge(getAttrs(this), this.getSchemaAttributes()),
-        props: getProps(this),
-        on: getListeners(this),
-        scopedSlots: getScopedSlots(createElement, dataSource),
-        staticClass: `${this.baseClass} ${this.$options.name}`,
-        class: [
-          this.definition.color || 'white',
-          this.definition.flat ? null : 'elevation-1',
-        ],
-      },
-    );
+    const children = [
+      createElement(
+        'v-data-table',
+        {
+          attrs: getAttrs(this),
+          props: getProps(this),
+          on: getListeners(this),
+          scopedSlots: getScopedSlots(createElement, dataSource),
+          class: [
+            this.definition.color || 'white',
+            this.definition.flat ? null : 'elevation-1',
+          ],
+        },
+      ),
+    ];
+
+    return createElement('div', {
+      attrs: this.getSchemaAttributes(),
+      staticClass: `${this.baseClass} ${this.$options.name}`,
+    }, children);
   },
 };

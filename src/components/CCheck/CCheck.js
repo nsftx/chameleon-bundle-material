@@ -1,4 +1,3 @@
-import { merge } from 'lodash';
 import namespace from '@namespace';
 import { elementable, fieldable } from '@mixins';
 import { validator } from '@validators';
@@ -51,16 +50,22 @@ export default {
     fieldable,
   ],
   render(createElement) {
-    return createElement(
-      'v-checkbox',
-      {
-        attrs: merge({
-          name: this.definition.name,
-        }, this.getSchemaAttributes()),
-        props: getProps(this),
-        on: getListeners(this),
-        staticClass: `${this.baseClass} ${this.$options.name}`,
-      },
-    );
+    const children = [
+      createElement(
+        'v-checkbox',
+        {
+          attrs: {
+            name: this.definition.name,
+          },
+          props: getProps(this),
+          on: getListeners(this),
+        },
+      ),
+    ];
+
+    return createElement('div', {
+      attrs: this.getSchemaAttributes(),
+      staticClass: `${this.baseClass} ${this.$options.name}`,
+    }, children);
   },
 };

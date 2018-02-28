@@ -1,4 +1,4 @@
-import { isBoolean, isUndefined, merge } from 'lodash';
+import { isBoolean, isUndefined } from 'lodash';
 import namespace from '@namespace';
 import { elementable, fieldable } from '@mixins';
 import { validator } from '@validators';
@@ -152,14 +152,20 @@ export default {
     fieldable,
   ],
   render(createElement) {
-    return createElement(
-      'v-text-field',
-      {
-        attrs: merge(getAttrs(this), this.getSchemaAttributes()),
-        props: getProps(this),
-        on: getListeners(this),
-        staticClass: `${this.baseClass} ${this.$options.name}`,
-      },
-    );
+    const children = [
+      createElement(
+        'v-text-field',
+        {
+          attrs: getAttrs(this),
+          props: getProps(this),
+          on: getListeners(this),
+        },
+      ),
+    ];
+
+    return createElement('div', {
+      attrs: this.getSchemaAttributes(),
+      staticClass: `${this.baseClass} ${this.$options.name}`,
+    }, children);
   },
 };

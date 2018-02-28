@@ -17,7 +17,7 @@ export default {
       type: String,
       default: '100%',
     },
-    options: {
+    mapOptions: {
       type: Object,
     },
   },
@@ -26,7 +26,7 @@ export default {
       const options = merge({
         center: { lat: 43.352848, lng: 17.793627 },
         zoom: 10,
-      }, this.options);
+      }, this.mapOptions);
 
       const map = new window.google.maps.Map(this.$refs.map, options);
 

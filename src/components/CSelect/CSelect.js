@@ -110,14 +110,20 @@ export default {
     this.listeners = getListeners(context);
   },
   render(createElement) {
-    return createElement(
-      'v-select',
-      {
-        attrs: this.attrs,
-        props: this.selectProps,
-        on: this.listeners,
-        staticClass: `${this.baseClass} ${this.$options.name}`,
-      },
-    );
+    const children = [
+      createElement(
+        'v-select',
+        {
+          attrs: this.attrs,
+          props: this.selectProps,
+          on: this.listeners,
+        },
+      ),
+    ];
+
+    return createElement('div', {
+      attrs: this.getSchemaAttributes(),
+      staticClass: `${this.baseClass} ${this.$options.name}`,
+    }, children);
   },
 };

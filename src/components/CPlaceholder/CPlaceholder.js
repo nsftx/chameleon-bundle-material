@@ -7,12 +7,15 @@ export default {
     elementable,
   ],
   render(createElement) {
-    return createElement(
-      'router-view',
-      {
-        staticClass: this.$options.name,
-        attrs: self.getSchemaAttributes(),
-      },
-    );
+    const children = [
+      createElement(
+        'router-view',
+      ),
+    ];
+
+    return createElement('div', {
+      attrs: this.getSchemaAttributes(),
+      staticClass: `${this.baseClass} ${this.$options.name}`,
+    }, children);
   },
 };

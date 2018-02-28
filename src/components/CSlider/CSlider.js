@@ -1,4 +1,3 @@
-import { merge } from 'lodash';
 import namespace from '@namespace';
 import { fieldable, elementable } from '@mixins';
 import { validator } from '@validators';
@@ -81,14 +80,20 @@ export default {
     elementable,
   ],
   render(createElement) {
-    return createElement(
-      'v-slider',
-      {
-        attrs: merge(getAttrs(this), this.getSchemaAttributes()),
-        props: getProps(this),
-        on: getListeners(this),
-        staticClass: `${this.baseClass} ${this.$options.name}`,
-      },
-    );
+    const children = [
+      createElement(
+        'v-slider',
+        {
+          attrs: getAttrs(this),
+          props: getProps(this),
+          on: getListeners(this),
+        },
+      ),
+    ];
+
+    return createElement('div', {
+      attrs: this.getSchemaAttributes(),
+      staticClass: `${this.baseClass} ${this.$options.name}`,
+    }, children);
   },
 };

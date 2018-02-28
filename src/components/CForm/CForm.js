@@ -106,31 +106,24 @@ export default {
               'v-card-text',
               map(this.getFields(), (field) => {
                 const self = this;
-                return createElement('div',
+                return createElement(
+                  getComponentTag(field.type),
                   {
-                    // Dynamic key to disable component re-use
-                    key: `${field.name}_${uuid()}`,
-                  },
-                  [
-                    createElement(
-                      getComponentTag(field.type),
-                      {
-                        props: {
-                          definition: field,
-                          validators: this.$chameleon.validators,
-                        },
-                        // TODO: Expand field listeners if needed
-                        // Should fields be able to trigger flow?
-                        on: {
-                          input(value) {
-                            const currentField = field;
-                            currentField.value = value;
-                            self.$emit('input', value);
-                          },
-                        },
+                    props: {
+                      definition: field,
+                      validators: this.$chameleon.validators,
+                    },
+                    // TODO: Expand field listeners if needed
+                    // Should fields be able to trigger flow?
+                    on: {
+                      input(value) {
+                        const currentField = field;
+                        currentField.value = value;
+                        self.$emit('input', value);
                       },
-                    ),
-                  ]);
+                    },
+                  },
+                );
               }),
             ),
             createElement(

@@ -94,11 +94,9 @@ const getCardSlot = (createElement) => {
 };
 
 const getListeners = (context) => {
-  const self = context;
-
   const listeners = {
     'update:pagination': (value) => {
-      const options = self.definition;
+      const options = context.definition;
       const pagination = merge(value, {
         rowsPerPage: options.rowsPerPage,
         sortBy: options.sortBy,
@@ -106,7 +104,7 @@ const getListeners = (context) => {
         page: options.startPage,
       });
 
-      self.$emit('update:pagination', pagination);
+      context.$emit('update:pagination', pagination);
     },
   };
 
@@ -120,22 +118,28 @@ export default {
     localizable,
   ],
   render(createElement) {
-    return createElement(
-      'v-data-iterator',
-      {
-        attrs: merge({
-          name: this.definition.name,
-          wrap: this.definition.wrap,
-        }, this.getSchemaAttributes()),
-        class: [
-          this.definition.color || 'white',
-          this.definition.flat ? null : 'elevation-1',
-        ],
-        props: getProps(this),
-        scopedSlots: getCardSlot(createElement),
-        staticClass: `${this.baseClass} ${this.$options.name}`,
-        on: getListeners(this),
-      },
-    );
+    const children = [
+      createElement(
+        'v-data-iterator',
+        {
+          attrs: {
+            name: this.definition.name,
+            wrap: this.definition.wrap,
+          },
+          class: [
+            this.definition.color || 'white',
+            this.definition.flat ? null : 'elevation-1',
+          ],
+          props: getProps(this),
+          scopedSlots: getCardSlot(createElement),
+          on: getListeners(this),
+        },
+      ),
+    ];
+
+    return createElement('div', {
+      attrs: this.getSchemaAttributes(),
+      staticClass: `${this.baseClass} ${this.$options.name}`,
+    }, children);
   },
 };
