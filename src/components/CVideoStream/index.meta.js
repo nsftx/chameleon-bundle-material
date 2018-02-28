@@ -17,9 +17,10 @@ export default {
       priority: 1,
     },
     value: {
-      type: 'inputList',
-      name: 'Stream Sources',
-      value: [],
+      type: 'input',
+      name: 'Stream Source',
+      value: '',
+      multiline: true,
       priority: 2,
     },
     aspectRatio: {
@@ -28,7 +29,7 @@ export default {
       items: [
         {
           id: 'auto',
-          name: 'auto',
+          name: 'Auto',
         },
         {
           id: '16:9',
@@ -41,7 +42,7 @@ export default {
       ],
       displayProp: 'name',
       valueProp: 'id',
-      value: '16:9',
+      value: 'auto',
       priority: 3,
     },
   },
