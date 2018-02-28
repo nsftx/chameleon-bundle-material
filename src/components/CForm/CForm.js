@@ -104,6 +104,9 @@ export default {
           [
             createElement(
               'v-card-text',
+              {
+                staticClass: `${context.baseChildrenClass} ${context.$options.name}-items`,
+              },
               map(this.getFields(), (field) => {
                 const self = this;
                 return createElement(

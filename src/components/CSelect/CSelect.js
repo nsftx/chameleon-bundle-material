@@ -60,6 +60,15 @@ const getPropValue = (definition) => {
 const getProps = (context) => {
   const definition = context.definition;
 
+  merge({
+    dataSource: {
+      items: [],
+      options: {
+        displayProp: 'name',
+      },
+    },
+  }, definition);
+
   const props = {
     appendIcon: getPropAppendIcon(definition),
     autocomplete: true,
