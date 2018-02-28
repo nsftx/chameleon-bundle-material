@@ -155,7 +155,7 @@ export default {
     return createElement(
       'v-text-field',
       {
-        attrs: merge(getAttrs(this), this.getSchemaAttributes),
+        attrs: merge(getAttrs(this), this.getSchemaAttributes()),
         props: getProps(this),
         on: getListeners(this),
         staticClass: `${this.baseClass} ${this.$options.name}`,
