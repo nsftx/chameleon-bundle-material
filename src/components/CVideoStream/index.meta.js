@@ -27,19 +27,21 @@ export default {
       name: 'Aspect Ratio',
       items: [
         {
+          id: 'auto',
           name: 'auto',
-          value: 'auto',
         },
         {
+          id: '16:9',
           name: '16:9',
-          value: '56.25%',
         },
         {
+          id: '4:3',
           name: '4:3',
-          value: '75%',
         },
       ],
-      value: '56.25%',
+      displayProp: 'name',
+      valueProp: 'id',
+      value: '16:9',
       priority: 3,
     },
   },

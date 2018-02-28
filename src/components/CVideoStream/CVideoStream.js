@@ -8,8 +8,15 @@ const getStreamType = (definition) => {
 };
 
 const getStaticStyle = (definition) => {
-  const height = definition.aspectRatio === 'auto' ? 'auto' : 0;
-  const paddingTop = definition.aspectRatio === 'auto' ? 0 : definition.aspectRatio;
+  let height = 'auto';
+  let paddingTop = 0;
+
+  if (definition.aspectRatio !== 'auto') {
+    height = 0;
+    const ratioValue = definition.aspectRatio.split(':');
+    paddingTop = `${(ratioValue[1] / ratioValue[0]) * 100}%`;
+  }
+
   const style = {
     position: 'relative',
     overflow: 'hidden',
@@ -44,7 +51,7 @@ export default {
               height: '100%',
             },
             staticStyle: {
-              position: 'absolute',
+              position: this.definition.aspectRatio !== 'auto' ? 'absolute' : 'relative',
               top: 0,
               left: 0,
             },
