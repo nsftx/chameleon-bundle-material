@@ -1,4 +1,4 @@
-import { isArray, merge } from 'lodash';
+import { isArray, isNil, merge } from 'lodash';
 import namespace from '@namespace';
 import { elementable, fieldable } from '@mixins';
 import { validator } from '@validators';
@@ -60,14 +60,14 @@ const getPropValue = (definition) => {
 const getProps = (context) => {
   const definition = context.definition;
 
-  merge({
-    dataSource: {
+  if (isNil(definition.dataSource)) {
+    definition.dataSource = {
       items: [],
       options: {
         displayProp: 'name',
       },
-    },
-  }, definition);
+    };
+  }
 
   const props = {
     appendIcon: getPropAppendIcon(definition),
