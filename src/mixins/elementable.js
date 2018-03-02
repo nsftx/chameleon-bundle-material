@@ -27,6 +27,7 @@ export default {
   data() {
     return {
       baseClass: `${namespace}element`,
+      baseParentClass: `${namespace}element-parent`,
       baseChildrenClass: `${namespace}element-children`,
     };
   },

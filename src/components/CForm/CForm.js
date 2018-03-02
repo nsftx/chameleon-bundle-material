@@ -92,7 +92,7 @@ export default {
           color: 'transparent',
           flat: true,
         },
-        staticClass: `${this.baseClass} ${this.$options.name}`,
+        staticClass: `${this.baseClass} ${this.baseParentClass} ${this.$options.name}`,
       },
       [
         createElement(

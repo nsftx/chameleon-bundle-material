@@ -8,7 +8,9 @@ const sourceTypes = {
   ogv: 'video/ogg',
 };
 
-const getAttrs = (definition) => {
+const getAttrs = (context) => {
+  const definition = context.definition;
+
   const attrs = {
     controls: definition.controls,
     loop: definition.repeat,
@@ -18,7 +20,7 @@ const getAttrs = (definition) => {
     height: '100%',
   };
 
-  if (definition.autoplay) {
+  if (definition.autoplay && !context.options.isPreviewMode) {
     attrs.autoplay = definition.autoplay;
   }
 
@@ -59,7 +61,7 @@ const getSources = (createElement, context) => {
       'source',
       {
         attrs: {
-          src: context.options.isPreviewMode ? null : source,
+          src: source,
           type: getSourceType(source),
         },
       },
@@ -110,7 +112,7 @@ export default {
         createElement(
           'video',
           {
-            attrs: getAttrs(this.definition),
+            attrs: getAttrs(this),
             on: getListeners(this),
             ref: 'video',
             staticStyle: {
