@@ -47,7 +47,7 @@ export default {
           getStreamType(this.definition),
           {
             attrs: {
-              src: this.definition.value,
+              src: this.options.isPreviewMode ? null : this.definition.value,
               width: '100%',
               height: '100%',
             },

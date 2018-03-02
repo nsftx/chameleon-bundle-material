@@ -25,6 +25,24 @@ const getAttrs = (definition) => {
   return attrs;
 };
 
+const getListeners = (context) => {
+  const self = context;
+
+  const listeners = {};
+
+  if (!self.options.isPreviewMode) {
+    listeners.click = () => {
+      if (self.$refs.video.paused) {
+        self.$refs.video.play();
+      } else {
+        self.$refs.video.pause();
+      }
+    };
+  }
+
+  return listeners;
+};
+
 const getSourceType = (source) => {
   const parts = source.split('.');
   const ext = parts.pop();
@@ -32,14 +50,16 @@ const getSourceType = (source) => {
   return sourceTypes[ext];
 };
 
-const getSources = (createElement, definition) => {
+const getSources = (createElement, context) => {
+  const definition = context.definition;
   const srcValues = isString(definition.value) ? [definition.value] : definition.value;
+
   const sources = map(srcValues, (source) => {
     const el = createElement(
       'source',
       {
         attrs: {
-          src: source,
+          src: context.options.isPreviewMode ? null : source,
           type: getSourceType(source),
         },
       },
@@ -79,8 +99,6 @@ export default {
     fieldable,
   ],
   render(createElement) {
-    const self = this;
-
     return createElement(
       'div',
       {
@@ -93,24 +111,15 @@ export default {
           'video',
           {
             attrs: getAttrs(this.definition),
-            on: {
-              click() {
-                if (self.$refs.video.paused) {
-                  self.$refs.video.play();
-                } else {
-                  self.$refs.video.pause();
-                }
-              },
-            },
+            on: getListeners(this),
             ref: 'video',
-            staticClass: `${this.baseClass} ${this.$options.name}`,
             staticStyle: {
               position: this.definition.aspectRatio !== 'auto' ? 'absolute' : 'relative',
               top: 0,
               left: 0,
             },
           },
-          getSources(createElement, this.definition),
+          getSources(createElement, this),
         ),
       ],
     );

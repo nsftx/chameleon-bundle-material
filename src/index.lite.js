@@ -12,6 +12,7 @@ const Library = {
     Vue.prototype.$chameleon = new Vue({
       data: {
         validators: options.validators,
+        isPreviewMode: options.isPreviewMode,
       },
     });
 
