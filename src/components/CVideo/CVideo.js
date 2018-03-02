@@ -106,22 +106,30 @@ export default {
       {
         attrs: this.getSchemaAttributes(),
         staticClass: `${this.baseClass} ${this.$options.name}`,
-        staticStyle: getStaticStyle(this.definition),
       },
       [
-        createElement(
-          'video',
+        createElement('div',
           {
-            attrs: getAttrs(this),
-            on: getListeners(this),
-            ref: 'video',
-            staticStyle: {
-              position: this.definition.aspectRatio !== 'auto' ? 'absolute' : 'relative',
-              top: 0,
-              left: 0,
-            },
+            staticStyle: getStaticStyle(this.definition),
           },
-          getSources(createElement, this),
+          [
+            [
+              createElement(
+                'video',
+                {
+                  attrs: getAttrs(this),
+                  on: getListeners(this),
+                  ref: 'video',
+                  staticStyle: {
+                    position: this.definition.aspectRatio !== 'auto' ? 'absolute' : 'relative',
+                    top: 0,
+                    left: 0,
+                  },
+                },
+                getSources(createElement, this),
+              ),
+            ],
+          ],
         ),
       ],
     );

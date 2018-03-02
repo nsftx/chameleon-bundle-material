@@ -40,23 +40,29 @@ export default {
       {
         attrs: this.getSchemaAttributes(),
         staticClass: `${this.baseClass} ${this.$options.name}`,
-        staticStyle: getStaticStyle(this.definition),
       },
       [
-        createElement(
-          getStreamType(this.definition),
+        createElement('div',
           {
-            attrs: {
-              src: this.options.isPreviewMode ? null : this.definition.value,
-              width: '100%',
-              height: '100%',
-            },
-            staticStyle: {
-              position: this.definition.aspectRatio !== 'auto' ? 'absolute' : 'relative',
-              top: 0,
-              left: 0,
-            },
+            staticStyle: getStaticStyle(this.definition),
           },
+          [
+            createElement(
+              getStreamType(this.definition),
+              {
+                attrs: {
+                  src: this.options.isPreviewMode ? null : this.definition.value,
+                  width: '100%',
+                  height: '100%',
+                },
+                staticStyle: {
+                  position: this.definition.aspectRatio !== 'auto' ? 'absolute' : 'relative',
+                  top: 0,
+                  left: 0,
+                },
+              },
+            ),
+          ],
         ),
       ],
     );
