@@ -961,12 +961,19 @@
                           "controls": true,
                           "repeat": true,
                           "muted": true,
-                          "width": "900px",
+                          "aspectRatio": "auto",
                           "value": [
                             "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4",
                             "https://archive.org/download/WebmVp8Vorbis/webmvp8_512kb.mp4",
                             "https://archive.org/download/WebmVp8Vorbis/webmvp8.ogv"
                           ]
+                        },
+                        {
+                          "type": "video-stream",
+                          "name": "video stream widget",
+                          "streamType": "img",
+                          "value": "http://admin:SyncShop17@172.20.50.245/Streaming/channels/102/httppreview",
+                          "aspectRatio": "auto"
                         }
                       ]
                     }

@@ -78,7 +78,6 @@
     mounted() {
       _.assign(this.$chameleon, {
         validators: json.validators,
-        isPreviewMode: false,
       });
     },
   };

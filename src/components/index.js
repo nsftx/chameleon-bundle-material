@@ -31,5 +31,6 @@ export { default as CTabs } from './CTabs';
 export { default as CTags } from './CTags';
 export { default as CText } from './CText';
 export { default as CVideo } from './CVideo';
+export { default as CVideoStream } from './CVideoStream';
 export { default as CVlist } from './CVlist';
 export { default as CYoutube } from './CYoutube';
