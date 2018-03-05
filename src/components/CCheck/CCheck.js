@@ -12,11 +12,20 @@ const getAttrs = (context) => {
   return attrs;
 };
 
+const getPropValidateOnBlur = (definition) => {
+  if (definition.validation && definition.validateOn) {
+    return definition.validateOn === 'blur';
+  }
+
+  return false;
+};
+
 const getListeners = (context) => {
   const self = context;
 
   const listeners = {
     change(value) {
+      self.inputValue = value;
       self.value = value;
       self.$emit('change', value);
     },
@@ -46,6 +55,8 @@ const getProps = (context) => {
     disabled: definition.disabled,
     color: definition.color,
     inputValue: context.value,
+    value: context.value,
+    validateOn: getPropValidateOnBlur(definition),
     required: getPropRequired(definition),
     rules: validator.getRules(definition, context.$chameleon.validators),
   };

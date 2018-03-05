@@ -503,7 +503,7 @@
                           "value": [],
                           "validateOn": "blur",
                           "validation": {
-                            "required": false,
+                            "required": true,
                             "minCount": 1,
                             "maxCount": 2
                           },
@@ -533,11 +533,12 @@
                         {
                           "name": "gender",
                           "type": "radio-list",
+                          "label": "Gender",
                           "prependIcon": null,
                           "appendIcon": null,
                           "hint": null,
                           "persistentHint": false,
-                          "value": "",
+                          "value": null,
                           "validation": {
                             "required": true
                           },
@@ -576,7 +577,7 @@
                           "persistentHint": false,
                           "value": false,
                           "validation": {
-                            "required": false
+                            "required": true
                           }
                         },
                         {
