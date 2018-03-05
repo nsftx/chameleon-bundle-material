@@ -1,7 +1,17 @@
 import { isNil, map } from 'lodash';
-import namespace from '@namespace';
-import { elementable, fieldable } from '@mixins';
-import { validator } from '@validators';
+import { elementable, fieldable, validatable } from '@mixins';
+
+const createErrorMessage = (createElement, context) => {
+  const el = createElement(
+    'div',
+    {
+      staticClass: 'input-group__details error--text',
+    },
+    context.errorBucket[0],
+  );
+
+  return el;
+};
 
 const getItemAttrs = (context) => {
   const definition = context.definition;
@@ -20,26 +30,11 @@ const getItemListeners = (context) => {
     change(value) {
       self.value = value;
       self.$emit('change', value);
+      self.validate();
     },
   };
 
   return listeners;
-};
-
-const getPropRequired = (definition) => {
-  if (definition.validation) {
-    return !!definition.validation.required;
-  }
-
-  return false;
-};
-
-const getPropValidateOnBlur = (definition) => {
-  if (definition.validation && definition.validateOn) {
-    return definition.validateOn === 'blur';
-  }
-
-  return false;
 };
 
 const getItemProps = (context, item) => {
@@ -47,32 +42,30 @@ const getItemProps = (context, item) => {
 
   const props = {
     label: item.label,
-    hideDetails: definition.hideDetails,
+    hideDetails: true,
     prependIcon: definition.prependIcon,
     appendIcon: definition.appendIcon,
     persistentHint: definition.persistentHint,
     inputValue: context.value,
     hint: definition.hint,
-    minCount: definition.validation.minCount,
-    maxCount: definition.validation.maxCount,
     disabled: item.disabled,
     color: item.color,
     value: item.value,
-    validateOn: getPropValidateOnBlur(definition),
-    required: getPropRequired(definition),
-    rules: validator.getRules(definition, context.$chameleon.validators),
   };
 
   return props;
 };
 
 export default {
-  name: `${namespace}check-list`,
+  name: 'check-list',
   mixins: [
     elementable,
     fieldable,
+    validatable,
   ],
   render(createElement) {
+    const message = createErrorMessage(createElement, this);
+
     if (isNil(this.definition.dataSource)) {
       this.definition.dataSource = {
         items: [],
@@ -82,21 +75,23 @@ export default {
     return createElement(
       'v-card',
       {
-        attrs: this.getSchemaAttributes(),
         props: {
           color: 'transparent',
           flat: true,
         },
         staticClass: `${this.baseClass} ${this.$options.name}`,
       },
-      map(this.definition.dataSource.items,
-        item => createElement('v-checkbox',
-          {
-            attrs: getItemAttrs(this),
-            props: getItemProps(this, item),
-            on: getItemListeners(this, item),
-          },
-        )),
+      [
+        map(this.definition.dataSource.items,
+          item => createElement('v-checkbox',
+            {
+              attrs: getItemAttrs(this),
+              props: getItemProps(this, item),
+              on: getItemListeners(this, item),
+            },
+          )),
+        message,
+      ],
     );
   },
 };

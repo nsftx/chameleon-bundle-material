@@ -39,6 +39,6 @@ export default {
     },
   },
   mounted() {
-    this.rules = validator.getRules(this.definition, this.validators);
+    this.rules = validator.getRules(this.definition, this.$chameleon.validators);
   },
 };

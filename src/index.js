@@ -1,4 +1,5 @@
 import Vuetify from 'vuetify';
+import namespace from './index.namespace';
 import { version } from '../package.json';
 import * as components from './components';
 
@@ -20,7 +21,9 @@ const Library = {
     if (options.components) {
       Object.keys(options.components).forEach((key) => {
         const component = options.components[key];
-        Vue.use(component);
+        Vue.use(component, {
+          namespace,
+        });
       });
     }
   },

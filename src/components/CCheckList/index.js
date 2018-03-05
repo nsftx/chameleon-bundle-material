@@ -1,7 +1,7 @@
-import CCheckList from './CCheckList';
+import CheckList from './CCheckList';
 
 export default {
-  install(Vue) {
-    Vue.component(CCheckList.name, CCheckList);
+  install(Vue, options) {
+    Vue.component(`${options.namespace}${CheckList.name}`, CheckList);
   },
 };
