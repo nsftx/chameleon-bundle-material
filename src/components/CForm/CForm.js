@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     getActions() {
-      return filter(this.definition.elements, n => !isNil(n.actions));
+      return filter(this.definition.actions, n => !isNil(n.actions));
     },
     getForm() {
       return this.$refs[this.definition.name];
