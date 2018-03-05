@@ -29,7 +29,7 @@ const getItemListeners = (context) => {
   const listeners = {
     change(value) {
       self.value = value;
-      self.$emit('change', value);
+      self.$emit('input', value);
       self.validate();
     },
   };

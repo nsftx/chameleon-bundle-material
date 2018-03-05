@@ -20,7 +20,7 @@ const getListeners = (context) => {
   const listeners = {
     change(payload) {
       self.value = payload;
-      self.$emit('change', payload);
+      self.$emit('input', payload);
       self.validate();
     },
   };
@@ -36,8 +36,7 @@ const getProps = (context) => {
     hint: definition.hint,
     persistentHint: definition.persistentHint,
     prependIcon: definition.prependIcon,
-    inputValue: context.definition.value,
-    value: context.definition.value,
+    value: definition.value,
   };
 
   return props;

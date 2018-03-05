@@ -25,9 +25,8 @@ const getListeners = (context) => {
 
   const listeners = {
     change(value) {
-      self.inputValue = value;
       self.value = value;
-      self.$emit('change', value);
+      self.$emit('input', value);
     },
   };
 
@@ -55,7 +54,7 @@ const getProps = (context) => {
     disabled: definition.disabled,
     color: definition.color,
     inputValue: context.value,
-    value: context.value,
+    value: definition.value,
     validateOn: getPropValidateOnBlur(definition),
     required: getPropRequired(definition),
     rules: validator.getRules(definition, context.$chameleon.validators),

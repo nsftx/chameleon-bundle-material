@@ -5,7 +5,6 @@ import { validator } from '@validators';
 const getAttrs = (context) => {
   const attrs = {
     name: context.definition.name,
-    value: context.definition.value,
   };
 
   return attrs;
@@ -16,7 +15,7 @@ const getListeners = (context) => {
 
   const listeners = {
     input(value) {
-      self.definition.value = value;
+      self.value = value;
       self.$emit('input', value);
     },
   };
@@ -65,6 +64,8 @@ const getProps = (context) => {
     max: definition.validation.max,
     step: definition.step,
     ticks: getPropTick(definition),
+    value: definition.value,
+    inputValue: context.value,
     validateOn: getPropValidateOnBlur(definition),
     required: getPropRequired(definition),
     rules: validator.getRules(definition, context.$chameleon.validators),

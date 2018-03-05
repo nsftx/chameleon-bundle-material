@@ -17,7 +17,7 @@ const getListeners = (context) => {
   const listeners = {
     change(value) {
       self.value = value;
-      self.$emit('change', value);
+      self.$emit('input', value);
     },
   };
 
@@ -36,6 +36,7 @@ const getProps = (context) => {
     prependIcon: definition.prependIcon,
     disabled: definition.disabled,
     color: definition.color,
+    value: definition.value,
     inputValue: context.value,
   };
 
