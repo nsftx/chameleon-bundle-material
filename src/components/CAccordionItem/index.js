@@ -1,7 +1,12 @@
-import CAccordionItem from './CAccordionItem';
+import AccordionItem from './CAccordionItem';
 
 export default {
-  install(Vue) {
-    Vue.component(CAccordionItem.name, CAccordionItem);
+  install(Vue, options) {
+    const name = `${options.namespace}accordion-item`;
+    Vue.component(name, {
+      extends: AccordionItem,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

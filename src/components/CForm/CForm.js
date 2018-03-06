@@ -1,6 +1,5 @@
 import { concat, each, filter, kebabCase, isArray, isNil, isObject, map, merge } from 'lodash';
 import uuid from 'uuid/v4';
-import namespace from '@namespace';
 import { elementable } from '@mixins';
 
 const getListeners = (context) => {
@@ -21,15 +20,14 @@ const getListeners = (context) => {
   return listeners;
 };
 
-const getComponentTag = (name) => {
+const getComponentTag = (name, context) => {
   const type = ['number', 'money'].indexOf(name) > -1 ? 'text' : name;
   const tag = kebabCase(type);
 
-  return `${namespace}${tag}`;
+  return `${context.$options.namespace}${tag}`;
 };
 
 export default {
-  name: `${namespace}form`,
   mixins: [
     elementable,
   ],
@@ -110,7 +108,7 @@ export default {
               map(this.getFields(), (field) => {
                 const self = this;
                 return createElement(
-                  getComponentTag(field.type),
+                  getComponentTag(field.type, this),
                   {
                     props: {
                       definition: field,
@@ -131,7 +129,7 @@ export default {
             ),
             createElement(
               'v-card-actions',
-              map(this.getActions(), button => createElement(`${namespace}button`,
+              map(this.getActions(), button => createElement(`${this.$options.namespace}button`,
                 {
                   // Dynamic key to disable component re-use
                   key: `${button.name}_${uuid()}`,

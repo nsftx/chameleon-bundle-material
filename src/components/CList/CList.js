@@ -1,4 +1,3 @@
-import namespace from '@namespace';
 import { isNil, isString, map, merge } from 'lodash';
 import { elementable, localizable } from '@mixins';
 
@@ -112,7 +111,6 @@ const getListeners = (context) => {
 };
 
 export default {
-  name: `${namespace}list`,
   mixins: [
     elementable,
     localizable,

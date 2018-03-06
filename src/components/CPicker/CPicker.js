@@ -1,4 +1,3 @@
-import namespace from '@namespace';
 import { elementable, fieldable } from '@mixins';
 
 const getDatePickerProps = (context) => {
@@ -113,7 +112,6 @@ const getTimePickerListeners = (context) => {
 };
 
 export default {
-  name: `${namespace}picker`,
   mixins: [
     elementable,
     fieldable,

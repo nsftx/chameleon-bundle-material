@@ -1,7 +1,13 @@
-import CPanel from './CPanel';
+import Panel from './CPanel';
 
 export default {
-  install(Vue) {
-    Vue.component(CPanel.name, CPanel);
+  install(Vue, options) {
+    const name = `${options.namespace}panel`;
+
+    Vue.component(name, {
+      extends: Panel,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

@@ -1,7 +1,13 @@
-import CForm from './CForm';
+import Form from './CForm';
 
 export default {
-  install(Vue) {
-    Vue.component(CForm.name, CForm);
+  install(Vue, options) {
+    const name = `${options.namespace}form`;
+
+    Vue.component(name, {
+      extends: Form,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

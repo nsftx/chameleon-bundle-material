@@ -1,6 +1,5 @@
 import { assign, isArray, reduce, sum, template } from 'lodash';
-import namespace from '@namespace';
-import CText from '../CText/CText';
+import Text from '../CText/CText';
 
 const templateLiteralRegex = /\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g;
 
@@ -18,8 +17,7 @@ const getMath = () => {
 };
 
 export default {
-  name: `${namespace}calculation`,
-  extends: CText,
+  extends: Text,
   inject: ['form'],
   data() {
     return {

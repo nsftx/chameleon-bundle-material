@@ -1,7 +1,13 @@
-import CPicker from './CPicker';
+import Picker from './CPicker';
 
 export default {
-  install(Vue) {
-    Vue.component(CPicker.name, CPicker);
+  install(Vue, options) {
+    const name = `${options.namespace}picker`;
+
+    Vue.component(name, {
+      extends: Picker,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

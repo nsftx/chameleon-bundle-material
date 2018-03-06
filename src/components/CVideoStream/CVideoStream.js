@@ -1,5 +1,4 @@
 import { isNil } from 'lodash';
-import namespace from '@namespace';
 import { elementable, fieldable } from '@mixins';
 
 const getStreamType = (definition) => {
@@ -29,7 +28,6 @@ const getStaticStyle = (definition) => {
 };
 
 export default {
-  name: `${namespace}video-stream`,
   mixins: [
     elementable,
     fieldable,

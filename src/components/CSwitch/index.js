@@ -1,7 +1,13 @@
-import CSwitch from './CSwitch';
+import Switch from './CSwitch';
 
 export default {
-  install(Vue) {
-    Vue.component(CSwitch.name, CSwitch);
+  install(Vue, options) {
+    const name = `${options.namespace}switch`;
+
+    Vue.component(name, {
+      extends: Switch,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

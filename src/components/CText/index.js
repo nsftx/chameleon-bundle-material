@@ -1,7 +1,13 @@
-import CText from './CText';
+import Text from './CText';
 
 export default {
-  install(Vue) {
-    Vue.component(CText.name, CText);
+  install(Vue, options) {
+    const name = `${options.namespace}text`;
+
+    Vue.component(name, {
+      extends: Text,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

@@ -1,10 +1,8 @@
-import namespace from '@namespace';
 import { elementable } from '@mixins';
 
 require('../../style/components/_vlist.styl');
 
 export default {
-  name: `${namespace}vlist`,
   mixins: [
     elementable,
   ],

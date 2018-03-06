@@ -1,6 +1,5 @@
 import { map, merge } from 'lodash';
 import uuid from 'uuid/v4';
-import namespace from '@namespace';
 import { elementable } from '@mixins';
 
 const getContainerAttrs = (context) => {
@@ -23,13 +22,12 @@ const getLayoutAttrs = (context) => {
 };
 
 export default {
-  name: `${namespace}flexgrid`,
   mixins: [
     elementable,
   ],
   render(createElement) {
     const items = map(this.definition.elements, element => createElement(
-      `${namespace}flexgrid-item`,
+      `${this.$options.namespace}flexgrid-item`,
       {
         key: `${element.name}_${uuid()}`,
         props: {

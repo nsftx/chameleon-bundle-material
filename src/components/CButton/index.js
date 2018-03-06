@@ -1,7 +1,13 @@
-import CButton from './CButton';
+import Button from './CButton';
 
 export default {
-  install(Vue) {
-    Vue.component(CButton.name, CButton);
+  install(Vue, options) {
+    const name = `${options.namespace}button`;
+
+    Vue.component(name, {
+      extends: Button,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

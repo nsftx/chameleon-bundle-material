@@ -1,9 +1,7 @@
 import { merge } from 'lodash';
-import namespace from '@namespace';
 import { elementable } from '@mixins';
 
 export default {
-  name: `${namespace}flexgrid-item`,
   mixins: [
     elementable,
   ],

@@ -1,7 +1,13 @@
-import CTabs from './CTabs';
+import Tabs from './CTabs';
 
 export default {
-  install(Vue) {
-    Vue.component(CTabs.name, CTabs);
+  install(Vue, options) {
+    const name = `${options.namespace}tabs`;
+
+    Vue.component(name, {
+      extends: Tabs,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

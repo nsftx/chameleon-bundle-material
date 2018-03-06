@@ -1,5 +1,4 @@
 import { isBoolean, isUndefined } from 'lodash';
-import namespace from '@namespace';
 import { elementable, fieldable } from '@mixins';
 import { validator } from '@validators';
 
@@ -146,7 +145,6 @@ const getListeners = (context) => {
 };
 
 export default {
-  name: `${namespace}text`,
   mixins: [
     elementable,
     fieldable,

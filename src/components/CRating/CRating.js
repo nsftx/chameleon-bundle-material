@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import namespace from '@namespace';
 import { elementable, fieldable, validatable } from '@mixins';
 
 require('../../style/components/_rating.styl');
@@ -76,7 +75,6 @@ const getTitle = (createElement, context) => {
 };
 
 export default {
-  name: `${namespace}rating`,
   mixins: [
     elementable,
     fieldable,

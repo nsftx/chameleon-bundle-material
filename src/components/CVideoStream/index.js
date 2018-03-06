@@ -1,7 +1,13 @@
-import CVideoStream from './CVideoStream';
+import VideoStream from './CVideoStream';
 
 export default {
-  install(Vue) {
-    Vue.component(CVideoStream.name, CVideoStream);
+  install(Vue, options) {
+    const name = `${options.namespace}video-stream`;
+
+    Vue.component(name, {
+      extends: VideoStream,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

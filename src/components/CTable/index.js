@@ -1,7 +1,13 @@
-import CTable from './CTable';
+import Table from './CTable';
 
 export default {
-  install(Vue) {
-    Vue.component(CTable.name, CTable);
+  install(Vue, options) {
+    const name = `${options.namespace}table`;
+
+    Vue.component(name, {
+      extends: Table,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

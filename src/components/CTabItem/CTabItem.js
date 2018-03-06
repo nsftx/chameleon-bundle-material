@@ -1,4 +1,3 @@
-import namespace from '@namespace';
 import { elementable } from '@mixins';
 
 const getTabItemContent = (context, createElement) => {
@@ -21,7 +20,6 @@ const getTabItemContent = (context, createElement) => {
 };
 
 export default {
-  name: `${namespace}tab-item`,
   mixins: [
     elementable,
   ],

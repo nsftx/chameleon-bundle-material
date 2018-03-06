@@ -1,7 +1,13 @@
-import CRating from './CRating';
+import Rating from './CRating';
 
 export default {
-  install(Vue) {
-    Vue.component(CRating.name, CRating);
+  install(Vue, options) {
+    const name = `${options.namespace}rating`;
+
+    Vue.component(name, {
+      extends: Rating,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

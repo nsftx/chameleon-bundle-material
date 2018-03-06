@@ -1,4 +1,3 @@
-import namespace from '@namespace';
 import { each, isNil, isString, keys, map, merge } from 'lodash';
 import { elementable, localizable } from '@mixins';
 
@@ -163,7 +162,6 @@ const getListeners = (context) => {
 };
 
 export default {
-  name: `${namespace}table`,
   mixins: [
     elementable,
     localizable,

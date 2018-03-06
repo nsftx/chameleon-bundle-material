@@ -1,5 +1,4 @@
 import { isString, map } from 'lodash';
-import namespace from '@namespace';
 import { elementable, fieldable } from '@mixins';
 
 const sourceTypes = {
@@ -95,7 +94,6 @@ const getStaticStyle = (definition) => {
 };
 
 export default {
-  name: `${namespace}video`,
   mixins: [
     elementable,
     fieldable,

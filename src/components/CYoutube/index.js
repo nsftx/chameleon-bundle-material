@@ -1,7 +1,13 @@
-import CYoutube from './CYoutube';
+import Youtube from './CYoutube';
 
 export default {
-  install(Vue) {
-    Vue.component(CYoutube.name, CYoutube);
+  install(Vue, options) {
+    const name = `${options.namespace}youtube`;
+
+    Vue.component(name, {
+      extends: Youtube,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

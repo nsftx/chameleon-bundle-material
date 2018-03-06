@@ -1,4 +1,3 @@
-import namespace from '@namespace';
 import CSelect from '../CSelect/CSelect';
 
 const getChipAvatar = (createElement, data) => {
@@ -62,7 +61,6 @@ const getCardSlot = (createElement) => {
 };
 
 export default {
-  name: `${namespace}select-list`,
   extends: CSelect,
   data() {
     return {

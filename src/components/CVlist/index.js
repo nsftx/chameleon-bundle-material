@@ -1,7 +1,13 @@
-import CVlist from './CVlist';
+import Vlist from './CVlist';
 
 export default {
-  install(Vue) {
-    Vue.component(CVlist.name, CVlist);
+  install(Vue, options) {
+    const name = `${options.namespace}vlist`;
+
+    Vue.component(name, {
+      extends: Vlist,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

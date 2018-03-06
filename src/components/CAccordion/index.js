@@ -1,7 +1,13 @@
-import CAccordion from './CAccordion';
+import Accordion from './CAccordion';
 
 export default {
-  install(Vue) {
-    Vue.component(CAccordion.name, CAccordion);
+  install(Vue, options) {
+    const name = `${options.namespace}accordion`;
+
+    Vue.component(name, {
+      extends: Accordion,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

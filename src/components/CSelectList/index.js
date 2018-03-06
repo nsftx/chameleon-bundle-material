@@ -1,7 +1,13 @@
-import CSelectList from './CSelectList';
+import SelectList from './CSelectList';
 
 export default {
-  install(Vue) {
-    Vue.component(CSelectList.name, CSelectList);
+  install(Vue, options) {
+    const name = `${options.namespace}select-list`;
+
+    Vue.component(name, {
+      extends: SelectList,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

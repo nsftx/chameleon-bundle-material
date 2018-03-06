@@ -1,5 +1,4 @@
 import { isNil } from 'lodash';
-import namespace from '@namespace';
 import { elementable, fieldable } from '@mixins';
 import { validator } from '@validators';
 
@@ -93,7 +92,6 @@ const getPickerProps = (context) => {
 };
 
 export default {
-  name: `${namespace}date`,
   mixins: [
     elementable,
     fieldable,
@@ -116,7 +114,7 @@ export default {
         },
       ),
       createElement(
-        `${namespace}picker`,
+        `${this.$options.namespace}picker`,
         {
           props: getPickerProps(this),
           on: {

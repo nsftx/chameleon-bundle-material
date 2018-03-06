@@ -57,7 +57,6 @@ const getItemProps = (context, item) => {
 };
 
 export default {
-  name: 'check-list',
   mixins: [
     elementable,
     fieldable,

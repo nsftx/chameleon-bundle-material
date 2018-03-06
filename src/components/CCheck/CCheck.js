@@ -1,4 +1,3 @@
-import namespace from '@namespace';
 import { elementable, fieldable } from '@mixins';
 import { validator } from '@validators';
 
@@ -64,7 +63,6 @@ const getProps = (context) => {
 };
 
 export default {
-  name: `${namespace}check`,
   mixins: [
     elementable,
     fieldable,

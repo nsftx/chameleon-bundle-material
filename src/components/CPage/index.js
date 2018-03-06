@@ -1,7 +1,13 @@
-import CPage from './CPage';
+import Page from './CPage';
 
 export default {
-  install(Vue) {
-    Vue.component(CPage.name, CPage);
+  install(Vue, options) {
+    const name = `${options.namespace}page`;
+
+    Vue.component(name, {
+      extends: Page,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

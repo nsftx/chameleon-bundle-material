@@ -1,4 +1,3 @@
-import namespace from '@namespace';
 import { elementable } from '@mixins';
 
 const getItemHeader = (element, createElement) => {
@@ -35,7 +34,6 @@ const getItemContent = (context, createElement) => {
 };
 
 export default {
-  name: `${namespace}accordion-item`,
   mixins: [
     elementable,
   ],

@@ -1,8 +1,6 @@
 import _ from 'lodash';
-import namespace from '@namespace';
 
 export default {
-  name: `${namespace}page`,
   props: {
     definition: {
       type: Object,
@@ -19,7 +17,7 @@ export default {
     if (context.definition.elements) {
       _.each(context.definition.elements, (n) => {
         children.push(createElement(
-          `${namespace}${n.type}`,
+          `${this.$options.namespace}${n.type}`,
           {
             props: {
               definition: n,

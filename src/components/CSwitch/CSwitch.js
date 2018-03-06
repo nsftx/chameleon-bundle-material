@@ -1,4 +1,3 @@
-import namespace from '@namespace';
 import { elementable, fieldable } from '@mixins';
 
 const getAttrs = (context) => {
@@ -44,7 +43,6 @@ const getProps = (context) => {
 };
 
 export default {
-  name: `${namespace}switch`,
   mixins: [
     elementable,
     fieldable,

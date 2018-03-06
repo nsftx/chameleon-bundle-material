@@ -1,7 +1,13 @@
-import CCheck from './CCheck';
+import Check from './CCheck';
 
 export default {
-  install(Vue) {
-    Vue.component(CCheck.name, CCheck);
+  install(Vue, options) {
+    const name = `${options.namespace}check`;
+
+    Vue.component(name, {
+      extends: Check,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

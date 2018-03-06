@@ -1,7 +1,13 @@
-import CCalculation from './CCalculation';
+import Calculation from './CCalculation';
 
 export default {
-  install(Vue) {
-    Vue.component(CCalculation.name, CCalculation);
+  install(Vue, options) {
+    const name = `${options.namespace}calculation`;
+
+    Vue.component(name, {
+      extends: Calculation,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

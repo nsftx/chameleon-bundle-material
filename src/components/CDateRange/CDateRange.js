@@ -1,5 +1,4 @@
 import { clone, isNil } from 'lodash';
-import namespace from '@namespace';
 import { elementable, fieldable } from '@mixins';
 import { validator } from '@validators';
 
@@ -97,7 +96,6 @@ const getPickerDefinition = (context, endRange) => {
 };
 
 export default {
-  name: `${namespace}date-range`,
   mixins: [
     elementable,
     fieldable,
@@ -146,7 +144,7 @@ export default {
         },
       ),
       createElement(
-        `${namespace}picker`,
+        `${this.$options.namespace}picker`,
         {
           staticClass: 'left',
           props: {
@@ -167,7 +165,7 @@ export default {
         },
       ),
       createElement(
-        `${namespace}picker`,
+        `${this.$options.namespace}picker`,
         {
           staticClass: 'left',
           props: {

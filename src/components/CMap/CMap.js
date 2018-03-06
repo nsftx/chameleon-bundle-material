@@ -1,9 +1,7 @@
 import { isString, merge } from 'lodash';
-import namespace from '@namespace';
 import { dependable, elementable } from '@mixins';
 
 export default {
-  name: `${namespace}map`,
   mixins: [
     dependable,
     elementable,

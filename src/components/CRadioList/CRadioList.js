@@ -1,5 +1,4 @@
 import { map } from 'lodash';
-import namespace from '@namespace';
 import { elementable, fieldable, validatable } from '@mixins';
 
 const createErrorMessage = (createElement, context) => {
@@ -43,7 +42,6 @@ const getProps = (context) => {
 };
 
 export default {
-  name: `${namespace}radio-list`,
   mixins: [
     elementable,
     fieldable,

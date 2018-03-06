@@ -1,5 +1,4 @@
 import { isArray } from 'lodash';
-import namespace from '@namespace';
 import { elementable, fieldable, validatable, dependable } from '@mixins';
 
 require('../../style/components/_rich-text.styl');
@@ -59,7 +58,6 @@ const getToolbar = (definition) => {
 };
 
 export default {
-  name: `${namespace}rich-text`,
   mixins: [
     elementable,
     fieldable,

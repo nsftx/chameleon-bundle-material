@@ -1,7 +1,13 @@
-import CHlist from './CHlist';
+import Hlist from './CHlist';
 
 export default {
-  install(Vue) {
-    Vue.component(CHlist.name, CHlist);
+  install(Vue, options) {
+    const name = `${options.namespace}hlist`;
+
+    Vue.component(name, {
+      extends: Hlist,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

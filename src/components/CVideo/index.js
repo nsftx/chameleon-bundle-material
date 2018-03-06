@@ -1,7 +1,13 @@
-import CVideo from './CVideo';
+import Video from './CVideo';
 
 export default {
-  install(Vue) {
-    Vue.component(CVideo.name, CVideo);
+  install(Vue, options) {
+    const name = `${options.namespace}video`;
+
+    Vue.component(name, {
+      extends: Video,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

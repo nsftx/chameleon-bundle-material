@@ -1,7 +1,13 @@
-import CRichText from './CRichText';
+import RichText from './CRichText';
 
 export default {
-  install(Vue) {
-    Vue.component(CRichText.name, CRichText);
+  install(Vue, options) {
+    const name = `${options.namespace}rich-text`;
+
+    Vue.component(name, {
+      extends: RichText,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

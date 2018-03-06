@@ -1,7 +1,13 @@
-import CHtml from './CHtml';
+import Html from './CHtml';
 
 export default {
-  install(Vue) {
-    Vue.component(CHtml.name, CHtml);
+  install(Vue, options) {
+    const name = `${options.namespace}html`;
+
+    Vue.component(name, {
+      extends: Html,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

@@ -1,8 +1,6 @@
-import namespace from '@namespace';
 import { elementable } from '@mixins';
 
 export default {
-  name: `${namespace}placeholder`,
   mixins: [
     elementable,
   ],

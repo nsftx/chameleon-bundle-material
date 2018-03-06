@@ -1,4 +1,3 @@
-import namespace from '@namespace';
 import { elementable } from '@mixins';
 
 /*
@@ -8,7 +7,6 @@ We are not using lodash methods here since we want example clean.
 All plugins should be able to use same libs we use in our elements.
 */
 export default {
-  name: `${namespace}luckysix`,
   mixins: [
     elementable,
   ],

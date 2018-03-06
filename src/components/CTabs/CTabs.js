@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import uuid from 'uuid/v4';
-import namespace from '@namespace';
 import { elementable } from '@mixins';
 
 const getProps = (context) => {
@@ -42,7 +41,6 @@ const getTabs = (context, createElement) => {
 };
 
 export default {
-  name: `${namespace}tabs`,
   mixins: [
     elementable,
   ],
@@ -50,7 +48,7 @@ export default {
     const tabs = getTabs(this.definition, createElement);
 
     const items = _.map(this.definition.elements, element => createElement(
-      `${namespace}tab-item`,
+      `${this.$options.namespace}tab-item`,
       {
         props: {
           definition: _.merge({},

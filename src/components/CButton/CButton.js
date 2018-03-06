@@ -1,5 +1,4 @@
 import { each, isUndefined, merge } from 'lodash';
-import namespace from '@namespace';
 import { elementable } from '@mixins';
 
 const getAttrs = (context) => {
@@ -44,11 +43,11 @@ const getListeners = (context) => {
 };
 
 export default {
-  name: `${namespace}button`,
   mixins: [
     elementable,
   ],
   render(createElement) {
+    console.log(this.$options);
     return createElement(
       'v-btn',
       {

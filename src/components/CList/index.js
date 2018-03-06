@@ -1,7 +1,13 @@
-import CList from './CList';
+import List from './CList';
 
 export default {
-  install(Vue) {
-    Vue.component(CList.name, CList);
+  install(Vue, options) {
+    const name = `${options.namespace}list`;
+
+    Vue.component(name, {
+      extends: List,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

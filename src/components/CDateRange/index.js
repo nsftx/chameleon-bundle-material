@@ -1,7 +1,13 @@
-import CDateRange from './CDateRange';
+import DateRange from './CDateRange';
 
 export default {
-  install(Vue) {
-    Vue.component(CDateRange.name, CDateRange);
+  install(Vue, options) {
+    const name = `${options.namespace}date-range`;
+
+    Vue.component(name, {
+      extends: DateRange,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

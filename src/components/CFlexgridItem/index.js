@@ -1,7 +1,13 @@
-import CFlexgridItem from './CFlexgridItem';
+import FlexgridItem from './CFlexgridItem';
 
 export default {
-  install(Vue) {
-    Vue.component(CFlexgridItem.name, CFlexgridItem);
+  install(Vue, options) {
+    const name = `${options.namespace}flexgrid-item`;
+
+    Vue.component(name, {
+      extends: FlexgridItem,
+      namespace: options.namespace,
+      name,
+    });
   },
 };

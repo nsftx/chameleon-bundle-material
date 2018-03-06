@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import namespace from '@namespace';
 import { elementable } from '@mixins';
 
 const getItemProps = (context) => {
@@ -26,15 +25,13 @@ const getProps = (context) => {
 };
 
 export default {
-  name: `${namespace}accordion`,
   mixins: [
     elementable,
   ],
   render(createElement) {
     const itemProps = getItemProps(this.definition);
-
     const items = _.map(this.definition.elements, element => createElement(
-      `${namespace}accordion-item`,
+      `${this.$options.namespace}accordion-item`,
       {
         props: {
           definition: _.merge({}, element, itemProps),

@@ -1,5 +1,4 @@
 import { isNil, filter, map, merge } from 'lodash';
-import namespace from '@namespace';
 import { dependable, elementable } from '@mixins';
 
 const getVideoId = (url) => {
@@ -58,7 +57,6 @@ const getPlayerParameters = (context) => {
 };
 
 export default {
-  name: `${namespace}youtube`,
   mixins: [
     dependable,
     elementable,

@@ -1,5 +1,4 @@
 import { isArray, isNil, merge } from 'lodash';
-import namespace from '@namespace';
 import { elementable, fieldable } from '@mixins';
 import { validator } from '@validators';
 
@@ -99,7 +98,6 @@ const getProps = (context) => {
 };
 
 export default {
-  name: `${namespace}select`,
   mixins: [
     elementable,
     fieldable,

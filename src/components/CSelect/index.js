@@ -1,7 +1,13 @@
-import CSelect from './CSelect';
+import Select from './CSelect';
 
 export default {
-  install(Vue) {
-    Vue.component(CSelect.name, CSelect);
+  install(Vue, options) {
+    const name = `${options.namespace}select`;
+
+    Vue.component(name, {
+      extends: Select,
+      namespace: options.namespace,
+      name,
+    });
   },
 };
