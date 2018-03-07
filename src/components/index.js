@@ -14,6 +14,7 @@ export { default as CHtml } from './CHtml';
 export { default as CList } from './CList';
 export { default as CLuckysix } from './CLuckysix';
 export { default as CMap } from './CMap';
+export { default as CNavigationDrawer } from './CNavigationDrawer';
 export { default as CPanel } from './CPanel';
 export { default as CPage } from './CPage';
 export { default as CPlaceholder } from './CPlaceholder';

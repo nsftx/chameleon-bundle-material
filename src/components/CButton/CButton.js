@@ -47,7 +47,6 @@ export default {
     elementable,
   ],
   render(createElement) {
-    console.log(this.$options);
     return createElement(
       'v-btn',
       {

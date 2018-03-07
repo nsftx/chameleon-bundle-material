@@ -13,6 +13,7 @@ export { default as hlist } from './CHlist/index.meta';
 export { default as html } from './CHtml/index.meta';
 export { default as list } from './CList/index.meta';
 export { default as luckysix } from './CLuckysix/index.meta';
+export { default as navigationDrawer } from './CNavigationDrawer/index.meta';
 export { default as panel } from './CPanel/index.meta';
 export { default as placeholder } from './CPlaceholder/index.meta';
 export { default as radioList } from './CRadioList/index.meta';
