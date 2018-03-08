@@ -1,4 +1,5 @@
 import { version } from '../package.json';
+import namespace from './index.namespace';
 import * as components from './components';
 
 require('./style/main-lite.styl');
@@ -19,7 +20,9 @@ const Library = {
     if (options.components) {
       Object.keys(options.components).forEach((key) => {
         const component = options.components[key];
-        Vue.use(component);
+        Vue.use(component, {
+          namespace,
+        });
       });
     }
   },
