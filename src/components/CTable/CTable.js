@@ -1,4 +1,4 @@
-import { each, isNil, isString, keys, map, merge } from 'lodash';
+import { each, isNil, isString, keys, map, merge, toLower } from 'lodash';
 import { elementable, localizable } from '@mixins';
 
 require('../../style/components/_table.styl');
@@ -29,7 +29,7 @@ const getCellInferredProps = (cell) => {
   let align;
   let sortable = true;
 
-  switch (cell.type) {
+  switch (toLower(cell.type)) {
     case 'date':
       align = 'center';
       break;
@@ -67,7 +67,7 @@ const getScopedSlots = (createElement, dataSource) => {
         if (column) {
           merge(inferredProps, getCellInferredProps(column));
 
-          switch (column.type) {
+          switch (toLower(column.type)) {
             case 'icon':
               content = [createElement('v-icon', content)];
               break;
