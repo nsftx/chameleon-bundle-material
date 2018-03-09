@@ -62,8 +62,8 @@ const getScopedSlots = (createElement, dataSource) => {
       let content = item[key];
       const inferredProps = {};
 
-      if (dataSource && dataSource.columns) {
-        const column = dataSource.columns[key];
+      if (dataSource && dataSource.schema) {
+        const column = dataSource.schema[key];
         if (column) {
           merge(inferredProps, getCellInferredProps(column));
 
@@ -110,7 +110,7 @@ const getScopedSlots = (createElement, dataSource) => {
 };
 
 const getHeadersProp = (dataSource) => {
-  const columns = dataSource.columns;
+  const columns = dataSource.schema;
 
   return map(columns, column => (merge({
     value: column.name,
@@ -122,13 +122,14 @@ const getProps = (context) => {
   const definition = context.definition;
   const dataSource = definition.dataSource;
   const hasDataSource = !isNil(dataSource);
-  const hasColumns = hasDataSource && dataSource.columns;
+  const hasItems = hasDataSource && dataSource.items;
+  const hasColumns = hasDataSource && dataSource.schema;
 
   const props = {
-    items: hasDataSource ? definition.dataSource.items : [],
+    items: hasItems ? definition.dataSource.items : [],
     hideHeaders: !hasColumns,
     headers: hasColumns ? getHeadersProp(dataSource) : [],
-    itemKey: hasColumns ? keys(dataSource.columns[0])[0] : 'id',
+    itemKey: hasColumns ? keys(dataSource.schema[0])[0] : 'id',
     rowsPerPageItems: getPropRowsPerPageItems(definition.rowsPerPageItems),
   };
 
