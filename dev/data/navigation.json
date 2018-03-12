@@ -42,6 +42,12 @@
             "name": "list"
           },
           {
+            "title": "Table",
+            "icon": "table",
+            "path": "/table",
+            "name": "table"
+          },
+          {
             "title": "Tabs",
             "icon": "tab",
             "path": "/tabs",

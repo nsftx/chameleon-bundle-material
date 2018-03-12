@@ -44,7 +44,7 @@
                     v-if="definition">
               <c-page :definition="definition"
                       :validators="validators"
-                      :key="getUniqueKey(definition.type)">
+                      :key="getUniqueKey(definition.elements[0].type)">
               </c-page>
             </v-flex>
           </v-layout>
@@ -85,11 +85,6 @@
       getUniqueKey(type) {
         return `${type}_${uuid()}`;
       },
-      sourceChanged(value) {
-        this.app = value;
-        this.definition = value;
-        this.notationValidate(this.app);
-      },
       componentChanged(component) {
         const self = this;
         const http = axios.create({
@@ -99,14 +94,19 @@
         http.get(`/data/${component}.json`).then((response) => {
           self.source = response.data.pages ? response.data.pages[0] : response.data;
           self.definition = self.source;
-          self.notationValidate(self.source);
+          self.validateNotation(self.source);
         });
       },
-      notationValidate() {
+      sourceChanged(value) {
+        this.app = value;
+        this.definition = value;
+        this.validateNotation(this.app);
+      },
+      validateNotation() {
         const validation = chameleonNotation.validate(this.app);
 
         if (!validation.isValid) {
-          console.warn(validation.message);
+          // console.warn(validation.message);
         }
       },
     },

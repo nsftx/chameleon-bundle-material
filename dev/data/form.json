@@ -1,587 +1,595 @@
 {
-  "type": "vlist",
-  "name": "list-1",
-  "flat": false,
-  "color": "transparent",
-  "gutter": true,
-  "elements": [
+  "pages": [
     {
-      "type": "form",
-      "name": "person",
+      "name": "form",
+      "type": "page",
       "elements": [
         {
-          "name": "firstName",
-          "type": "text",
-          "label": "First Name",
-          "prependIcon": "person",
-          "appendIcon": null,
-          "prefix": null,
-          "suffix": null,
-          "placeholder": "Please enter your first name",
-          "hint": null,
-          "persistentHint": false,
-          "tooltip": null,
-          "multiLine": false,
-          "clearable": true,
-          "validateOn": "blur",
-          "mask": {
-            "predefined": false,
-            "value": null
-          },
-          "validation": {
-            "required": true,
-            "minLength": 2,
-            "maxLength": 20,
-            "pattern": {
-              "predefined": null,
-              "value": null
-            },
-            "custom": null
-          },
-          "value": "Jadranko"
-        },
-        {
-          "name": "lastName",
-          "type": "text",
-          "label": "Last Name",
-          "prependIcon": "person",
-          "appendIcon": null,
-          "prefix": null,
-          "suffix": null,
-          "placeholder": "Please enter your last name",
-          "hint": null,
-          "persistentHint": false,
-          "tooltip": null,
-          "multiLine": false,
-          "clearable": true,
-          "validateOn": "blur",
-          "mask": {
-            "predefined": false,
-            "value": null
-          },
-          "validation": {
-            "required": true,
-            "minLength": 2,
-            "maxLength": 20,
-            "pattern": {
-              "predefined": null,
-              "value": null
-            },
-            "custom": null
-          },
-          "value": "Dragoje"
-        },
-        {
-          "name": "fullName",
-          "type": "calculation",
-          "label": "Full Name",
-          "prependIcon": "person",
-          "appendIcon": null,
-          "prefix": null,
-          "suffix": null,
-          "placeholder": "Please enter formula",
-          "hint": null,
-          "tooltip": null,
-          "multiLine": false,
-          "clearable": true,
-          "validateOn": "blur",
-          "validation": {
-            "required": true
-          },
-          "value": "${lastName} ${firstName}"
-        },
-        {
-          "name": "company",
-          "type": "select",
-          "label": "Company",
-          "prependIcon": "language",
-          "appendIcon": null,
-          "placeholder": "Please select a company",
-          "hint": null,
-          "persistentHint": false,
-          "tooltip": null,
-          "multiple": true,
-          "clearable": false,
-          "readonly": false,
-          "validateOn": "blur",
-          "validation": {
-            "required": true
-          },
-          "dataSource": {
-            "items": [
-              {
-                "id": 1,
-                "name": "Lottoland Ltd.",
-                "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
-                "icon": "business",
-                "description": "Lottoland Solutions integrates our lottery betting games to operator platforms, with multi-million Euro jackpots guaranteed by Lottoland's proprietary risk management."
-              },
-              {
-                "id": 2,
-                "name": "Nsoft",
-                "thumb": "https://vuetifyjs.com/static/doc-images/lists/2.jpg",
-                "icon": "business",
-                "description": "Lottoland Solutions integrates our lottery betting games to operator platforms, with multi-million Euro jackpots guaranteed by Lottoland's proprietary risk management."
-              },
-              {
-                "id": 3,
-                "name": "Superbet",
-                "thumb": "",
-                "icon": "business",
-                "description": "Lottoland Solutions integrates our lottery betting games to operator platforms, with multi-million Euro jackpots guaranteed by Lottoland's proprietary risk management."
-              }
-            ],
-            "options": {
-              "displayProp": "name"
-            }
-          },
-          "value": [
+          "type": "panel",
+          "name": "panel-1",
+          "flat": false,
+          "elements": [
             {
-              "id": 3,
-              "name": "Superbet",
-              "thumb": "",
-              "icon": "business",
-              "description": "Lottoland Solutions integrates our lottery betting games to operator platforms, with multi-million Euro jackpots guaranteed by Lottoland's proprietary risk management."
+              "type": "form",
+              "name": "person",
+              "elements": [
+                {
+                  "name": "firstName",
+                  "type": "text",
+                  "label": "First Name",
+                  "prependIcon": "person",
+                  "appendIcon": null,
+                  "prefix": null,
+                  "suffix": null,
+                  "placeholder": "Please enter your first name",
+                  "hint": null,
+                  "persistentHint": false,
+                  "tooltip": null,
+                  "multiLine": false,
+                  "clearable": true,
+                  "validateOn": "blur",
+                  "mask": {
+                    "predefined": false,
+                    "value": null
+                  },
+                  "validation": {
+                    "required": true,
+                    "minLength": 2,
+                    "maxLength": 20,
+                    "pattern": {
+                      "predefined": null,
+                      "value": null
+                    },
+                    "custom": null
+                  },
+                  "value": "Jadranko"
+                },
+                {
+                  "name": "lastName",
+                  "type": "text",
+                  "label": "Last Name",
+                  "prependIcon": "person",
+                  "appendIcon": null,
+                  "prefix": null,
+                  "suffix": null,
+                  "placeholder": "Please enter your last name",
+                  "hint": null,
+                  "persistentHint": false,
+                  "tooltip": null,
+                  "multiLine": false,
+                  "clearable": true,
+                  "validateOn": "blur",
+                  "mask": {
+                    "predefined": false,
+                    "value": null
+                  },
+                  "validation": {
+                    "required": true,
+                    "minLength": 2,
+                    "maxLength": 20,
+                    "pattern": {
+                      "predefined": null,
+                      "value": null
+                    },
+                    "custom": null
+                  },
+                  "value": "Dragoje"
+                },
+                {
+                  "name": "fullName",
+                  "type": "calculation",
+                  "label": "Full Name",
+                  "prependIcon": "person",
+                  "appendIcon": null,
+                  "prefix": null,
+                  "suffix": null,
+                  "placeholder": "Please enter formula",
+                  "hint": null,
+                  "tooltip": null,
+                  "multiLine": false,
+                  "clearable": true,
+                  "validateOn": "blur",
+                  "validation": {
+                    "required": true
+                  },
+                  "value": "${lastName} ${firstName}"
+                },
+                {
+                  "name": "company",
+                  "type": "select",
+                  "label": "Company",
+                  "prependIcon": "language",
+                  "appendIcon": null,
+                  "placeholder": "Please select a company",
+                  "hint": null,
+                  "persistentHint": false,
+                  "tooltip": null,
+                  "multiple": true,
+                  "clearable": false,
+                  "readonly": false,
+                  "validateOn": "blur",
+                  "validation": {
+                    "required": true
+                  },
+                  "dataSource": {
+                    "items": [
+                      {
+                        "id": 1,
+                        "name": "Lottoland Ltd.",
+                        "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
+                        "icon": "business",
+                        "description": "Lottoland Solutions integrates our lottery betting games to operator platforms, with multi-million Euro jackpots guaranteed by Lottoland's proprietary risk management."
+                      },
+                      {
+                        "id": 2,
+                        "name": "Nsoft",
+                        "thumb": "https://vuetifyjs.com/static/doc-images/lists/2.jpg",
+                        "icon": "business",
+                        "description": "Lottoland Solutions integrates our lottery betting games to operator platforms, with multi-million Euro jackpots guaranteed by Lottoland's proprietary risk management."
+                      },
+                      {
+                        "id": 3,
+                        "name": "Superbet",
+                        "thumb": "",
+                        "icon": "business",
+                        "description": "Lottoland Solutions integrates our lottery betting games to operator platforms, with multi-million Euro jackpots guaranteed by Lottoland's proprietary risk management."
+                      }
+                    ],
+                    "options": {
+                      "displayProp": "name"
+                    }
+                  },
+                  "value": [
+                    {
+                      "id": 3,
+                      "name": "Superbet",
+                      "thumb": "",
+                      "icon": "business",
+                      "description": "Lottoland Solutions integrates our lottery betting games to operator platforms, with multi-million Euro jackpots guaranteed by Lottoland's proprietary risk management."
+                    }
+                  ]
+                },
+                {
+                  "name": "country",
+                  "type": "select",
+                  "label": "Country",
+                  "prependIcon": "language",
+                  "appendIcon": null,
+                  "placeholder": "Please select a country",
+                  "hint": null,
+                  "persistentHint": false,
+                  "tooltip": null,
+                  "multiLine": false,
+                  "multiple": false,
+                  "clearable": false,
+                  "readonly": false,
+                  "validateOn": "blur",
+                  "mask": {
+                    "predefined": false,
+                    "value": null
+                  },
+                  "validation": {
+                    "required": true
+                  },
+                  "dataSource": {
+                    "items": [
+                      {
+                        "id": 1,
+                        "name": "Italy"
+                      },
+                      {
+                        "id": 2,
+                        "name": "France"
+                      },
+                      {
+                        "id": 3,
+                        "name": "England"
+                      }
+                    ],
+                    "options": {
+                      "displayProp": "name"
+                    }
+                  },
+                  "value": [
+                    {
+                      "id": 1,
+                      "name": "Italy"
+                    }
+                  ]
+                },
+                {
+                  "name": "language",
+                  "type": "tags",
+                  "label": "Language",
+                  "prependIcon": "language",
+                  "appendIcon": null,
+                  "placeholder": "Please select a language",
+                  "hint": null,
+                  "persistentHint": false,
+                  "tooltip": null,
+                  "multiLine": false,
+                  "multiple": true,
+                  "clearable": true,
+                  "readonly": false,
+                  "validateOn": "blur",
+                  "mask": {
+                    "predefined": false,
+                    "value": null
+                  },
+                  "validation": {
+                    "required": true
+                  },
+                  "dataSource": {
+                    "items": [
+                      {
+                        "id": 43,
+                        "name": "English",
+                        "isoCode2": "en",
+                        "isoCode3": "eng"
+                      },
+                      {
+                        "id": 49,
+                        "name": "Finnish",
+                        "isoCode2": "fi",
+                        "isoCode3": "\tfi"
+                      },
+                      {
+                        "id": 50,
+                        "name": "French",
+                        "isoCode2": "fr",
+                        "isoCode3": "fra"
+                      }
+                    ],
+                    "options": {
+                      "displayProp": "name"
+                    }
+                  },
+                  "value": [
+                    {
+                      "id": 43,
+                      "name": "English",
+                      "isoCode2": "en",
+                      "isoCode3": "eng"
+                    }
+                  ]
+                },
+                {
+                  "name": "creditCard",
+                  "type": "text",
+                  "label": "Credit Card Number",
+                  "prependIcon": "credit_card",
+                  "appendIcon": null,
+                  "prefix": null,
+                  "suffix": null,
+                  "placeholder": "Please enter your credit card number",
+                  "hint": "Credit card must have valid expiration date",
+                  "persistentHint": true,
+                  "tooltip": "Some tooltip",
+                  "multiLine": false,
+                  "clearable": true,
+                  "validateOn": "blur",
+                  "mask": {
+                    "predefined": "creditCard",
+                    "value": null
+                  },
+                  "validation": {
+                    "required": true,
+                    "pattern": {
+                      "predefined": "creditCard",
+                      "value": null
+                    },
+                    "custom": null
+                  },
+                  "value": "375556917985515"
+                },
+                {
+                  "name": "quantity",
+                  "type": "number",
+                  "label": "Quantity",
+                  "prependIcon": "money",
+                  "appendIcon": null,
+                  "prefix": null,
+                  "suffix": "EUR",
+                  "placeholder": null,
+                  "hint": null,
+                  "persistentHint": false,
+                  "tooltip": null,
+                  "clearable": true,
+                  "step": 10,
+                  "validateOn": "blur",
+                  "mask": {
+                    "predefined": false,
+                    "value": null
+                  },
+                  "validation": {
+                    "required": true,
+                    "pattern": {
+                      "predefined": "integer",
+                      "value": null
+                    },
+                    "custom": null
+                  },
+                  "value": 100
+                },
+                {
+                  "name": "amount",
+                  "type": "number",
+                  "label": "Amount",
+                  "prependIcon": "money",
+                  "appendIcon": null,
+                  "prefix": null,
+                  "suffix": "EUR",
+                  "placeholder": null,
+                  "hint": null,
+                  "persistentHint": false,
+                  "tooltip": null,
+                  "clearable": true,
+                  "validateOn": "blur",
+                  "mask": {
+                    "predefined": false,
+                    "value": null
+                  },
+                  "validation": {
+                    "required": true,
+                    "pattern": {
+                      "predefined": null,
+                      "value": "^-?\\d*(\\.\\d+)?$"
+                    },
+                    "custom": null
+                  },
+                  "value": 100.20
+                },
+                {
+                  "name": "about",
+                  "type": "rich-text",
+                  "label": "About",
+                  "validation": {
+                    "required": true
+                  },
+                  "toolbar": [
+                    "bold",
+                    "italic",
+                    "link"
+                  ],
+                  "value": "Test rich <b>content</b>."
+                },
+                {
+                  "name": "description",
+                  "type": "rich-text",
+                  "label": "Description",
+                  "placeholder": "Enter description",
+                  "validation": {
+                    "required": false
+                  },
+                  "toolbar": "advanced"
+                },
+                {
+                  "name": "payin",
+                  "type": "money",
+                  "label": "Payin",
+                  "prependIcon": "money",
+                  "appendIcon": null,
+                  "suffix": "symbol",
+                  "prefix": null,
+                  "placeholder": "Enter payin amount",
+                  "hint": null,
+                  "persistentHint": false,
+                  "tooltip": null,
+                  "clearable": true,
+                  "currency": {
+                    "name": "EUR",
+                    "symbol": "€"
+                  },
+                  "validateOn": "blur",
+                  "validation": {
+                    "required": true,
+                    "pattern": {
+                      "value": "^-?\\d*(\\,\\d+)?$"
+                    }
+                  },
+                  "value": "120,35"
+                },
+                {
+                  "name": "dateOfBirth",
+                  "type": "date",
+                  "label": "Date of Birth",
+                  "prependIcon": null,
+                  "appendIcon": null,
+                  "placeholder": "Select your date of birth",
+                  "hint": null,
+                  "tooltip": null,
+                  "clearable": true,
+                  "fullWidth": true,
+                  "validation": {
+                    "required": true,
+                    "minDate": "2017-11-05T00:00:00.000Z",
+                    "maxDate": "2017-11-21T00:00:00.000Z"
+                  },
+                  "time": {
+                    "enabled": true
+                  },
+                  "format": "LLL",
+                  "value": "2017-11-09T00:00:00.000Z"
+                },
+                {
+                  "name": "reportRange",
+                  "type": "date-range",
+                  "label": "Report Range",
+                  "prependIcon": null,
+                  "appendIcon": null,
+                  "placeholder": "Select date range for report",
+                  "hint": null,
+                  "tooltip": null,
+                  "clearable": true,
+                  "fullWidth": false,
+                  "width": "260",
+                  "validation": {
+                    "required": true,
+                    "minDate": "2017-11-05",
+                    "maxDate": "2017-11-21"
+                  },
+                  "time": {
+                    "enabled": true
+                  },
+                  "format": "LLL",
+                  "value": [
+                    "2017-11-09",
+                    "2017-11-11"
+                  ]
+                },
+                {
+                  "name": "age",
+                  "type": "slider",
+                  "label": "Age",
+                  "color": "primary",
+                  "trackColor": "",
+                  "thumbColor": "",
+                  "thumbLabel": true,
+                  "prependIcon": null,
+                  "appendIcon": null,
+                  "hint": null,
+                  "persistentHint": false,
+                  "validateOn": "blur",
+                  "validation": {
+                    "required": true,
+                    "min": 1,
+                    "max": 100
+                  },
+                  "value": "",
+                  "step": 1
+                },
+                {
+                  "name": "rating",
+                  "type": "rating",
+                  "label": "How did you like our fat bunny",
+                  "maxRating": 5,
+                  "ratingInfo": true,
+                  "icon": "star",
+                  "value": 0,
+                  "validation": {
+                    "required": true
+                  }
+                },
+                {
+                  "name": "cities",
+                  "type": "check-list",
+                  "label": "Select cities",
+                  "prependIcon": null,
+                  "appendIcon": null,
+                  "hint": null,
+                  "persistentHint": false,
+                  "hideDetails": false,
+                  "value": [],
+                  "validateOn": "blur",
+                  "validation": {
+                    "required": true,
+                    "minCount": 1,
+                    "maxCount": 2
+                  },
+                  "dataSource": {
+                    "items": [
+                      {
+                        "value": "London",
+                        "label": "London",
+                        "color": "primary",
+                        "disabled": false
+                      },
+                      {
+                        "value": "Manchester",
+                        "label": "Manchester",
+                        "color": "primary",
+                        "disabled": false
+                      },
+                      {
+                        "value": "Liverpool",
+                        "label": "Liverpool",
+                        "color": "primary",
+                        "disabled": false
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "gender",
+                  "type": "radio-list",
+                  "label": "Gender",
+                  "prependIcon": null,
+                  "appendIcon": null,
+                  "hint": null,
+                  "persistentHint": false,
+                  "value": null,
+                  "validation": {
+                    "required": true
+                  },
+                  "dataSource": {
+                    "items": [
+                      {
+                        "value": "Male",
+                        "label": "Male",
+                        "color": "primary",
+                        "disabled": false
+                      },
+                      {
+                        "value": "Female",
+                        "label": "Female",
+                        "color": "primary",
+                        "disabled": false
+                      },
+                      {
+                        "value": "Other",
+                        "label": "Other",
+                        "color": "primary",
+                        "disabled": false
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "rememberCheck",
+                  "type": "check",
+                  "label": "Remember me",
+                  "color": "primary",
+                  "prependIcon": null,
+                  "appendIcon": null,
+                  "hint": null,
+                  "disabled": false,
+                  "persistentHint": false,
+                  "value": false,
+                  "validation": {
+                    "required": true
+                  }
+                },
+                {
+                  "name": "rememberSwitch",
+                  "type": "switch",
+                  "label": "Remember me",
+                  "color": "primary",
+                  "prependIcon": null,
+                  "appendIcon": null,
+                  "hint": null,
+                  "disabled": false,
+                  "persistentHint": false,
+                  "value": true
+                }
+              ],
+              "actions": [
+                {
+                  "name": "htmlMarkup",
+                  "type": "html",
+                  "label": "Html Markup",
+                  "value": "<h1>This is heading 1</h1>"
+                },
+                {
+                  "name": "save",
+                  "type": "button",
+                  "label": "Save",
+                  "actions": {
+                    "click": "save"
+                  }
+                }
+              ]
             }
           ]
-        },
-        {
-          "name": "country",
-          "type": "select",
-          "label": "Country",
-          "prependIcon": "language",
-          "appendIcon": null,
-          "placeholder": "Please select a country",
-          "hint": null,
-          "persistentHint": false,
-          "tooltip": null,
-          "multiLine": false,
-          "multiple": false,
-          "clearable": false,
-          "readonly": false,
-          "validateOn": "blur",
-          "mask": {
-            "predefined": false,
-            "value": null
-          },
-          "validation": {
-            "required": true
-          },
-          "dataSource": {
-            "items": [
-              {
-                "id": 1,
-                "name": "Italy"
-              },
-              {
-                "id": 2,
-                "name": "France"
-              },
-              {
-                "id": 3,
-                "name": "England"
-              }
-            ],
-            "options": {
-              "displayProp": "name"
-            }
-          },
-          "value": [
-            {
-              "id": 1,
-              "name": "Italy"
-            }
-          ]
-        },
-        {
-          "name": "language",
-          "type": "tags",
-          "label": "Language",
-          "prependIcon": "language",
-          "appendIcon": null,
-          "placeholder": "Please select a language",
-          "hint": null,
-          "persistentHint": false,
-          "tooltip": null,
-          "multiLine": false,
-          "multiple": true,
-          "clearable": true,
-          "readonly": false,
-          "validateOn": "blur",
-          "mask": {
-            "predefined": false,
-            "value": null
-          },
-          "validation": {
-            "required": true
-          },
-          "dataSource": {
-            "items": [
-              {
-                "id": 43,
-                "name": "English",
-                "isoCode2": "en",
-                "isoCode3": "eng"
-              },
-              {
-                "id": 49,
-                "name": "Finnish",
-                "isoCode2": "fi",
-                "isoCode3": "\tfi"
-              },
-              {
-                "id": 50,
-                "name": "French",
-                "isoCode2": "fr",
-                "isoCode3": "fra"
-              }
-            ],
-            "options": {
-              "displayProp": "name"
-            }
-          },
-          "value": [
-            {
-              "id": 43,
-              "name": "English",
-              "isoCode2": "en",
-              "isoCode3": "eng"
-            }
-          ]
-        },
-        {
-          "name": "creditCard",
-          "type": "text",
-          "label": "Credit Card Number",
-          "prependIcon": "credit_card",
-          "appendIcon": null,
-          "prefix": null,
-          "suffix": null,
-          "placeholder": "Please enter your credit card number",
-          "hint": "Credit card must have valid expiration date",
-          "persistentHint": true,
-          "tooltip": "Some tooltip",
-          "multiLine": false,
-          "clearable": true,
-          "validateOn": "blur",
-          "mask": {
-            "predefined": "creditCard",
-            "value": null
-          },
-          "validation": {
-            "required": true,
-            "pattern": {
-              "predefined": "creditCard",
-              "value": null
-            },
-            "custom": null
-          },
-          "value": "375556917985515"
-        },
-        {
-          "name": "quantity",
-          "type": "number",
-          "label": "Quantity",
-          "prependIcon": "money",
-          "appendIcon": null,
-          "prefix": null,
-          "suffix": "EUR",
-          "placeholder": null,
-          "hint": null,
-          "persistentHint": false,
-          "tooltip": null,
-          "clearable": true,
-          "step": 10,
-          "validateOn": "blur",
-          "mask": {
-            "predefined": false,
-            "value": null
-          },
-          "validation": {
-            "required": true,
-            "pattern": {
-              "predefined": "integer",
-              "value": null
-            },
-            "custom": null
-          },
-          "value": 100
-        },
-        {
-          "name": "amount",
-          "type": "number",
-          "label": "Amount",
-          "prependIcon": "money",
-          "appendIcon": null,
-          "prefix": null,
-          "suffix": "EUR",
-          "placeholder": null,
-          "hint": null,
-          "persistentHint": false,
-          "tooltip": null,
-          "clearable": true,
-          "validateOn": "blur",
-          "mask": {
-            "predefined": false,
-            "value": null
-          },
-          "validation": {
-            "required": true,
-            "pattern": {
-              "predefined": null,
-              "value": "^-?\\d*(\\.\\d+)?$"
-            },
-            "custom": null
-          },
-          "value": 100.20
-        },
-        {
-          "name": "about",
-          "type": "rich-text",
-          "label": "About",
-          "validation": {
-            "required": true
-          },
-          "toolbar": [
-            "bold",
-            "italic",
-            "link"
-          ],
-          "value": "Test rich <b>content</b>."
-        },
-        {
-          "name": "description",
-          "type": "rich-text",
-          "label": "Description",
-          "placeholder": "Enter description",
-          "validation": {
-            "required": false
-          },
-          "toolbar": "advanced"
-        },
-        {
-          "name": "payin",
-          "type": "money",
-          "label": "Payin",
-          "prependIcon": "money",
-          "appendIcon": null,
-          "suffix": "symbol",
-          "prefix": null,
-          "placeholder": "Enter payin amount",
-          "hint": null,
-          "persistentHint": false,
-          "tooltip": null,
-          "clearable": true,
-          "currency": {
-            "name": "EUR",
-            "symbol": "€"
-          },
-          "validateOn": "blur",
-          "validation": {
-            "required": true,
-            "pattern": {
-              "value": "^-?\\d*(\\,\\d+)?$"
-            }
-          },
-          "value": "120,35"
-        },
-        {
-          "name": "dateOfBirth",
-          "type": "date",
-          "label": "Date of Birth",
-          "prependIcon": null,
-          "appendIcon": null,
-          "placeholder": "Select your date of birth",
-          "hint": null,
-          "tooltip": null,
-          "clearable": true,
-          "fullWidth": true,
-          "validation": {
-            "required": true,
-            "minDate": "2017-11-05T00:00:00.000Z",
-            "maxDate": "2017-11-21T00:00:00.000Z"
-          },
-          "time": {
-            "enabled": true
-          },
-          "format": "LLL",
-          "value": "2017-11-09T00:00:00.000Z"
-        },
-        {
-          "name": "reportRange",
-          "type": "date-range",
-          "label": "Report Range",
-          "prependIcon": null,
-          "appendIcon": null,
-          "placeholder": "Select date range for report",
-          "hint": null,
-          "tooltip": null,
-          "clearable": true,
-          "fullWidth": false,
-          "width": "260",
-          "validation": {
-            "required": true,
-            "minDate": "2017-11-05",
-            "maxDate": "2017-11-21"
-          },
-          "time": {
-            "enabled": true
-          },
-          "format": "LLL",
-          "value": [
-            "2017-11-09",
-            "2017-11-11"
-          ]
-        },
-        {
-          "name": "age",
-          "type": "slider",
-          "label": "Age",
-          "color": "primary",
-          "trackColor": "",
-          "thumbColor": "",
-          "thumbLabel": true,
-          "prependIcon": null,
-          "appendIcon": null,
-          "hint": null,
-          "persistentHint": false,
-          "validateOn": "blur",
-          "validation": {
-            "required": true,
-            "min": 1,
-            "max": 100
-          },
-          "value": "",
-          "step": 1
-        },
-        {
-          "name": "rating",
-          "type": "rating",
-          "label": "How did you like our fat bunny",
-          "maxRating": 5,
-          "ratingInfo": true,
-          "icon": "star",
-          "value": 0,
-          "validation": {
-            "required": true
-          }
-        },
-        {
-          "name": "cities",
-          "type": "check-list",
-          "label": "Select cities",
-          "prependIcon": null,
-          "appendIcon": null,
-          "hint": null,
-          "persistentHint": false,
-          "hideDetails": false,
-          "value": [],
-          "validateOn": "blur",
-          "validation": {
-            "required": true,
-            "minCount": 1,
-            "maxCount": 2
-          },
-          "dataSource": {
-            "items": [
-              {
-                "value": "London",
-                "label": "London",
-                "color": "primary",
-                "disabled": false
-              },
-              {
-                "value": "Manchester",
-                "label": "Manchester",
-                "color": "primary",
-                "disabled": false
-              },
-              {
-                "value": "Liverpool",
-                "label": "Liverpool",
-                "color": "primary",
-                "disabled": false
-              }
-            ]
-          }
-        },
-        {
-          "name": "gender",
-          "type": "radio-list",
-          "label": "Gender",
-          "prependIcon": null,
-          "appendIcon": null,
-          "hint": null,
-          "persistentHint": false,
-          "value": null,
-          "validation": {
-            "required": true
-          },
-          "dataSource": {
-            "items": [
-              {
-                "value": "Male",
-                "label": "Male",
-                "color": "primary",
-                "disabled": false
-              },
-              {
-                "value": "Female",
-                "label": "Female",
-                "color": "primary",
-                "disabled": false
-              },
-              {
-                "value": "Other",
-                "label": "Other",
-                "color": "primary",
-                "disabled": false
-              }
-            ]
-          }
-        },
-        {
-          "name": "rememberCheck",
-          "type": "check",
-          "label": "Remember me",
-          "color": "primary",
-          "prependIcon": null,
-          "appendIcon": null,
-          "hint": null,
-          "disabled": false,
-          "persistentHint": false,
-          "value": false,
-          "validation": {
-            "required": true
-          }
-        },
-        {
-          "name": "rememberSwitch",
-          "type": "switch",
-          "label": "Remember me",
-          "color": "primary",
-          "prependIcon": null,
-          "appendIcon": null,
-          "hint": null,
-          "disabled": false,
-          "persistentHint": false,
-          "value": true
-        }
-      ],
-      "actions": [
-        {
-          "name": "htmlMarkup",
-          "type": "html",
-          "label": "Html Markup",
-          "value": "<h1>This is heading 1</h1>"
-        },
-        {
-          "name": "save",
-          "type": "button",
-          "label": "Save",
-          "actions": {
-            "click": "save"
-          }
         }
       ]
     }
