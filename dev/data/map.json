@@ -1,0 +1,13 @@
+{
+  "type": "panel",
+  "name": "panel-1",
+  "flat": false,
+  "elements": [
+    {
+      "type": "map",
+      "name": "Map widget",
+      "apiKey": "AIzaSyBEkdhFK-EsCkDyIjr3B3ZSyvlXcmIF4HI",
+      "libraries": "places"
+    }
+  ]
+}

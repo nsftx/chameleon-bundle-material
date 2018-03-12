@@ -1,0 +1,29 @@
+{
+  "type": "panel",
+  "name": "panel-1",
+  "flat": false,
+  "elements": [
+    {
+      "type": "youtube",
+      "name": "you tube",
+      "autoplay": false,
+      "playlist": "",
+      "repeat": false,
+      "value": [
+        "https://www.youtube.com/watch?v=2bnZliAjPUk",
+        "https://www.youtube.com/watch?v=4Rc-NGWEHdU",
+        "https://www.youtube.com/watch?v=l-vSl7BuxGs"
+      ]
+    },
+    {
+      "type": "youtube",
+      "name": "you tube",
+      "autoplay": false,
+      "playlist": "",
+      "repeat": false,
+      "value": [
+        "https://www.youtube.com/watch?v=2bnZliAjPUk"
+      ]
+    }
+  ]
+}

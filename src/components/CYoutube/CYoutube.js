@@ -78,6 +78,7 @@ export default {
       this.player = new window.YT.Player(this.$refs.youtube, {
         playerVars: {
           controls: this.definition.controls,
+          videoId: 'M7lc1UVf-VE',
         },
         events: {
           onReady: this.onPlayerReady,

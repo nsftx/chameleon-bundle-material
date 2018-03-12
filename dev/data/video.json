@@ -1,0 +1,29 @@
+{
+  "type": "panel",
+  "name": "panel-1",
+  "flat": false,
+  "elements": [
+    {
+      "type": "video",
+      "name": "video widget",
+      "label": "Adventures of a big fat bunny",
+      "autoplay": false,
+      "controls": true,
+      "repeat": true,
+      "muted": true,
+      "aspectRatio": "auto",
+      "value": [
+        "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4",
+        "https://archive.org/download/WebmVp8Vorbis/webmvp8_512kb.mp4",
+        "https://archive.org/download/WebmVp8Vorbis/webmvp8.ogv"
+      ]
+    },
+    {
+      "type": "video-stream",
+      "name": "video stream widget",
+      "streamType": "img",
+      "value": "http://admin:SyncShop17@172.20.50.245/Streaming/channels/102/httppreview",
+      "aspectRatio": "auto"
+    }
+  ]
+}

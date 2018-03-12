@@ -70,6 +70,9 @@ module.exports = merge(baseWebpackConfig, {
   plugins: [
     // Uncomment this to analyze library
     // new BundleAnalyzerPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.baseUrl': "'https://chameleon-playground.nsoft.com/'",
+    }),
   ],
   performance: {
     hints: false,

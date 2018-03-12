@@ -92,7 +92,8 @@ module.exports = merge(baseWebpackConfig, {
       allChunks: true,
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': "'development'"
+      'process.env.NODE_ENV': "'development'",
+      'process.env.baseUrl': "'http://localhost:8800/'",
     }),
   ],
 });

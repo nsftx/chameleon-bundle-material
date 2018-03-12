@@ -15,12 +15,15 @@ export default {
     const children = [];
 
     if (context.definition.elements) {
-      _.each(context.definition.elements, (n) => {
+      _.each(context.definition.elements, (n, i) => {
         children.push(createElement(
           `${this.$options.namespace}${n.type}`,
           {
             props: {
               definition: n,
+            },
+            attrs: {
+              id: `${n.type}_${i}`,
             },
           },
           children,

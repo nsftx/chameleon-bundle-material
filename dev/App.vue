@@ -5,30 +5,47 @@
                  dark
                  fixed
                  color="primary">
+        <v-toolbar-side-icon @click.stop="toggleDrawer = !toggleDrawer"></v-toolbar-side-icon>
+        <v-toolbar-title>Chameleon Playground</v-toolbar-title>
+        <v-spacer></v-spacer>
       </v-toolbar>
       <v-content>
         <v-container fluid
-                     grid-list-lg
-                     v-if="source">
+                     v-if="navigation">
+          <v-navigation-drawer app
+                               class="blue"
+                               v-model="toggleDrawer"
+                               dark>
+            <v-list>
+              <v-list-tile v-for="item in navigation.elements[0].dataSource.items"
+                           :key="item.title"
+                           @click="componentChanged(item.name)">
+                <v-list-tile-action>
+                  <v-icon>{{ item.icon }}</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                  <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+                </v-list-tile-content>
+              </v-list-tile>
+            </v-list>
+          </v-navigation-drawer>
+        </v-container>
+        <v-container fluid>
           <v-layout row
                     wrap>
-            <v-flex xs12
-                    md6>
+            <v-flex xs12>
               <v-card>
-                <v-card-text>
-                  <v-jsoneditor v-model="source"
-                                @input="sourceChanged">
-                  </v-jsoneditor>
-                </v-card-text>
+                <v-jsoneditor :value="source"
+                              @input="sourceChanged">
+                </v-jsoneditor>
               </v-card>
             </v-flex>
             <v-flex xs12
-                    md6>
-              <div v-if="app">
-                <c-page :definition="app.pages[0]"
-                        :validators="app.validators">
-                </c-page>
-              </div>
+                    v-if="definition">
+              <c-page :definition="definition"
+                      :validators="validators"
+                      :key="getUniqueKey(definition.type)">
+              </c-page>
             </v-flex>
           </v-layout>
         </v-container>
@@ -39,17 +56,14 @@
 </template>
 
 <script>
-  import _ from 'lodash';
+  import uuid from 'uuid';
+  import axios from 'axios';
+  import { assign } from 'lodash';
   import VJsoneditor from 'vue-jsoneditor';
   import chameleonNotation from 'chameleon-notation';
 
-  const getComponentTag = (name) => {
-    const tag = _.kebabCase(name);
-    return `c-${tag}`;
-  };
-
-  // This will come from Chameleon API
-  const json = require('./data/app.json');
+  const navigation = require('./data/navigation.json');
+  const defaultJson = require('./data/page.json');
 
   export default {
     name: 'app',
@@ -58,26 +72,47 @@
     },
     data() {
       return {
-        source: json,
+        validators: defaultJson.validators,
+        definition: defaultJson.pages[0],
+        source: defaultJson.pages[0],
+        toggleDrawer: true,
         app: null,
+        navigation,
+        uuid,
       };
     },
     methods: {
-      getContainerDefinition(index) {
-        return this.app.pages[0].elements[index];
+      getUniqueKey(type) {
+        return `${type}_${uuid()}`;
       },
       sourceChanged(value) {
         this.app = value;
+        this.definition = value;
+        this.notationValidate(this.app);
+      },
+      componentChanged(component) {
+        const self = this;
+        const http = axios.create({
+          baseURL: process.env.baseUrl,
+        });
+
+        http.get(`/data/${component}.json`).then((response) => {
+          self.source = response.data.pages ? response.data.pages[0] : response.data;
+          self.definition = self.source;
+          self.notationValidate(self.source);
+        });
+      },
+      notationValidate() {
         const validation = chameleonNotation.validate(this.app);
 
         if (!validation.isValid) {
-          // console.warn(validation.message);
+          console.warn(validation.message);
         }
       },
     },
     mounted() {
-      _.assign(this.$chameleon, {
-        validators: json.validators,
+      assign(this.$chameleon, {
+        validators: defaultJson.validators,
       });
     },
   };

@@ -1,0 +1,96 @@
+{
+  "type": "vlist",
+  "name": "list-1",
+  "flat": false,
+  "color": "transparent",
+  "gutter": false,
+  "elements": [
+    {
+      "type": "accordion",
+      "name": "accordion",
+      "multipleExpand": false,
+      "alternativeDesign": "",
+      "color": "#FF5252",
+      "contentRipple": true,
+      "hideItemActions": true,
+      "elements": [
+        {
+          "type": "accordion-item",
+          "name": "accordion-item-1",
+          "title": "Item 1",
+          "elements": [
+            {
+              "name": "firstName1",
+              "type": "text",
+              "label": "First Name",
+              "prependIcon": "person",
+              "appendIcon": null,
+              "prefix": null,
+              "suffix": null,
+              "placeholder": "Please enter your first name",
+              "hint": null,
+              "persistentHint": false,
+              "tooltip": null,
+              "multiLine": false,
+              "clearable": true,
+              "validateOn": "blur",
+              "mask": {
+                "predefined": false,
+                "value": null
+              },
+              "validation": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 20,
+                "pattern": {
+                  "predefined": null,
+                  "value": null
+                },
+                "custom": null
+              },
+              "value": "Jadranko"
+            }
+          ]
+        },
+        {
+          "type": "accordion-item",
+          "name": "accordion-item-2",
+          "title": "Item 2",
+          "elements": [
+            {
+              "name": "firstName2",
+              "type": "text",
+              "label": "First Name",
+              "prependIcon": "person",
+              "appendIcon": null,
+              "prefix": null,
+              "suffix": null,
+              "placeholder": "Please enter your first name",
+              "hint": null,
+              "persistentHint": false,
+              "tooltip": null,
+              "multiLine": false,
+              "clearable": true,
+              "validateOn": "blur",
+              "mask": {
+                "predefined": false,
+                "value": null
+              },
+              "validation": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 20,
+                "pattern": {
+                  "predefined": null,
+                  "value": null
+                },
+                "custom": null
+              },
+              "value": "Jadranko"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

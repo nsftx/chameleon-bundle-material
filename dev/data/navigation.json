@@ -1,0 +1,66 @@
+{
+  "elements": [
+    {
+      "type": "navigation-drawer",
+      "name": "Navigation drawer",
+      "title": "Chameleon Playground",
+      "titleAvatar": {
+        "thumb": false,
+        "icon": "menu"
+      },
+      "showTitle": false,
+      "dataSource": {
+        "items": [
+          {
+            "title": "Page",
+            "icon": "home",
+            "path": "/page",
+            "name": "page"
+          },
+          {
+            "title": "Accordion",
+            "icon": "view_day",
+            "path": "/accordion",
+            "name": "accordion"
+          },
+          {
+            "title": "Form",
+            "icon": "subtitles",
+            "path": "/form",
+            "name": "form"
+          },
+          {
+            "title": "Google Map",
+            "icon": "place",
+            "path": "/map",
+            "name": "map"
+          },
+          {
+            "title": "List",
+            "icon": "list",
+            "path": "/list",
+            "name": "list"
+          },
+          {
+            "title": "Tabs",
+            "icon": "tab",
+            "path": "/tabs",
+            "name": "tabs"
+          },
+          {
+            "title": "Video",
+            "icon": "theaters",
+            "path": "/video",
+            "name": "video"
+          },
+          {
+            "title": "Youtube",
+            "icon": "ondemand_video",
+            "path": "/youtube",
+            "name": "youtube"
+          }
+        ]
+      }
+    }
+  ]
+}
