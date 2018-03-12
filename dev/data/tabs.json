@@ -12,223 +12,130 @@
             {
               "type": "tabs",
               "alignment": "left",
-              "headerColor": "cyan",
-              "sliderColor": "red",
+              "headerColor": "red",
+              "sliderColor": "blue",
               "fillSpace": true,
               "elements": [
                 {
                   "type": "tab-item",
-                  "icon": "view_compact",
-                  "title": "Table and list",
+                  "icon": "grid_on",
+                  "title": "Table",
                   "elements": [
                     {
-                      "type": "flexgrid",
-                      "name": "flexgrid",
-                      "fluid": true,
-                      "direction": "row",
-                      "spacing": "md",
-                      "elements": [
-                        {
-                          "type": "flexgrid-item",
-                          "name": "flexgrid-item-1",
-                          "width": "6",
-                          "elements": [
-                            {
-                              "name": "shoppingTable",
-                              "type": "table",
-                              "color": "yellow",
-                              "dataSource": {
-                                "columns": {
-                                  "title": {
-                                    "name": "title",
-                                    "title": "Title",
-                                    "type": "string"
-                                  },
-                                  "description": {
-                                    "name": "description",
-                                    "title": "Description",
-                                    "type": "string"
-                                  },
-                                  "thumb": {
-                                    "name": "thumb",
-                                    "title": "Thumb",
-                                    "type": "image"
-                                  },
-                                  "icon": {
-                                    "name": "icon",
-                                    "title": "Icon",
-                                    "type": "icon"
-                                  }
-                                },
-                                "items": [
-                                  {
-                                    "title": "Frozen Yogurt",
-                                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                                    "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
-                                    "icon": "language"
-                                  },
-                                  {
-                                    "title": "Ice cream sandwich",
-                                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                                    "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
-                                    "icon": "language"
-                                  },
-                                  {
-                                    "title": "Eclair",
-                                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                                    "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
-                                    "icon": "language"
-                                  },
-                                  {
-                                    "title": "Frozen Yogurt",
-                                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                                    "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
-                                    "icon": "language"
-                                  },
-                                  {
-                                    "title": "Ice cream sandwich",
-                                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                                    "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
-                                    "icon": "language"
-                                  },
-                                  {
-                                    "title": "Eclair",
-                                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                                    "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
-                                    "icon": "language"
-                                  }
-                                ]
-                              }
-                            }
-                          ]
+                      "name": "shoppingTable",
+                      "type": "table",
+                      "color": "yellow",
+                      "dataSource": {
+                        "columns": {
+                          "title": {
+                            "name": "title",
+                            "title": "Title",
+                            "type": "string"
+                          },
+                          "description": {
+                            "name": "description",
+                            "title": "Description",
+                            "type": "string"
+                          },
+                          "thumb": {
+                            "name": "thumb",
+                            "title": "Thumb",
+                            "type": "image"
+                          },
+                          "icon": {
+                            "name": "icon",
+                            "title": "Icon",
+                            "type": "icon"
+                          }
                         },
-                        {
-                          "type": "flexgrid-item",
-                          "name": "flexgrid-item-2",
-                          "width": "6",
-                          "elements": [
-                            {
-                              "name": "shoppingList",
-                              "type": "list",
-                              "hideActions": false,
-                              "wrap": true,
-                              "dataSource": {
-                                "items": [
-                                  {
-                                    "title": "Frozen Yogurt",
-                                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                                    "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
-                                    "icon": "language"
-                                  },
-                                  {
-                                    "title": "Ice cream sandwich",
-                                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                                    "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
-                                    "icon": "language"
-                                  },
-                                  {
-                                    "title": "Eclair",
-                                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                                    "icon": "language"
-                                  },
-                                  {
-                                    "title": "Cupcake",
-                                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                                    "icon": "cake"
-                                  },
-                                  {
-                                    "title": "Gingerbread",
-                                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                                    "icon": "cake"
-                                  },
-                                  {
-                                    "title": "Gingerbread2",
-                                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                                    "icon": "cake"
-                                  }
-                                ]
-                              }
-                            }
-                          ]
-                        }
-                      ]
+                        "items": [
+                          {
+                            "title": "Frozen Yogurt",
+                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                            "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
+                            "icon": "language"
+                          },
+                          {
+                            "title": "Ice cream sandwich",
+                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                            "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
+                            "icon": "language"
+                          },
+                          {
+                            "title": "Eclair",
+                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                            "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
+                            "icon": "language"
+                          },
+                          {
+                            "title": "Frozen Yogurt",
+                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                            "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
+                            "icon": "language"
+                          },
+                          {
+                            "title": "Ice cream sandwich",
+                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                            "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
+                            "icon": "language"
+                          },
+                          {
+                            "title": "Eclair",
+                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                            "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
+                            "icon": "language"
+                          }
+                        ]
+                      }
                     }
                   ]
                 },
                 {
                   "type": "tab-item",
-                  "icon": "view_compact",
-                  "title": "Vertical list",
+                  "icon": "grid_on",
+                  "title": "List",
                   "elements": [
                     {
-                      "type": "vlist",
-                      "name": "list-1",
-                      "flat": false,
-                      "gutter": false,
-                      "elements": [
-                        {
-                          "name": "firstName1",
-                          "type": "text",
-                          "label": "First Name",
-                          "prependIcon": "person",
-                          "appendIcon": null,
-                          "prefix": null,
-                          "suffix": null,
-                          "placeholder": "Please enter your first name",
-                          "hint": null,
-                          "persistentHint": false,
-                          "tooltip": null,
-                          "multiLine": false,
-                          "clearable": true,
-                          "validateOn": "blur",
-                          "mask": {
-                            "predefined": false,
-                            "value": null
+                      "name": "shoppingList",
+                      "type": "list",
+                      "hideActions": false,
+                      "wrap": true,
+                      "dataSource": {
+                        "items": [
+                          {
+                            "title": "Frozen Yogurt",
+                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                            "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
+                            "icon": "language"
                           },
-                          "validation": {
-                            "required": true,
-                            "minLength": 2,
-                            "maxLength": 20,
-                            "pattern": {
-                              "predefined": null,
-                              "value": null
-                            },
-                            "custom": null
+                          {
+                            "title": "Ice cream sandwich",
+                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                            "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
+                            "icon": "language"
                           },
-                          "value": "Jadranko"
-                        },
-                        {
-                          "name": "lastName",
-                          "type": "text",
-                          "label": "Last Name",
-                          "prependIcon": "person",
-                          "appendIcon": null,
-                          "prefix": null,
-                          "suffix": null,
-                          "placeholder": "Please enter your last name",
-                          "hint": null,
-                          "persistentHint": false,
-                          "tooltip": null,
-                          "multiLine": false,
-                          "clearable": true,
-                          "validateOn": "blur",
-                          "mask": {
-                            "predefined": false,
-                            "value": null
+                          {
+                            "title": "Eclair",
+                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                            "icon": "language"
                           },
-                          "validation": {
-                            "required": true,
-                            "minLength": 2,
-                            "maxLength": 20,
-                            "pattern": {
-                              "predefined": null,
-                              "value": null
-                            },
-                            "custom": null
+                          {
+                            "title": "Cupcake",
+                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                            "icon": "cake"
                           },
-                          "value": "Dragoje"
-                        }
-                      ]
+                          {
+                            "title": "Gingerbread",
+                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                            "icon": "cake"
+                          },
+                          {
+                            "title": "Gingerbread2",
+                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                            "icon": "cake"
+                          }
+                        ]
+                      }
                     }
                   ]
                 }

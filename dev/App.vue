@@ -4,7 +4,8 @@
       <v-toolbar app
                  dark
                  fixed
-                 color="primary">
+                 clipped-left
+                 color="blue">
         <v-toolbar-side-icon @click.stop="toggleDrawer = !toggleDrawer"></v-toolbar-side-icon>
         <v-toolbar-title>Chameleon Playground</v-toolbar-title>
         <v-spacer></v-spacer>
@@ -13,6 +14,8 @@
         <v-container fluid
                      v-if="navigation">
           <v-navigation-drawer app
+                               clipped
+                               fixed
                                class="blue"
                                v-model="toggleDrawer"
                                dark>
@@ -48,9 +51,25 @@
               </c-page>
             </v-flex>
           </v-layout>
-        </v-container>
+          <v-footer app
+                    height="150"
+                    class="scroll-y"
+                    id="scroll-target"
+                    inset>
+            <v-container style="max-height: 150px"
+                         class="scroll-y"
+                         id="scroll-target">
+              <v-layout column
+                        align-center
+                        justify-center
+                        v-scroll:#scroll-target>
+                <span v-html="validationMessage">
+                </span>
+              </v-layout>
+            </v-container>
+          </v-footer>
+          </v-container>
       </v-content>
-      <v-footer app></v-footer>
     </v-app>
   </main>
 </template>
@@ -72,14 +91,20 @@
     },
     data() {
       return {
-        validators: defaultJson.validators,
-        definition: defaultJson.pages[0],
-        source: defaultJson.pages[0],
         toggleDrawer: true,
-        app: null,
+        validation: null,
+        validators: null,
+        definition: null,
+        source: null,
         navigation,
         uuid,
       };
+    },
+    computed: {
+      validationMessage() {
+        return this.validation && this.validation.message ?
+          this.validation.message.replace(/(?:\r\n|\r|\n)/g, '<br />') : '';
+      },
     },
     methods: {
       getUniqueKey(type) {
@@ -98,22 +123,21 @@
         });
       },
       sourceChanged(value) {
-        this.app = value;
         this.definition = value;
-        this.validateNotation(this.app);
+        this.validateNotation(this.definition);
       },
       validateNotation() {
-        const validation = chameleonNotation.validate(this.app);
+        this.validation = chameleonNotation.validate(this.definition);
 
-        if (!validation.isValid) {
-          // console.warn(validation.message);
-        }
       },
     },
     mounted() {
       assign(this.$chameleon, {
         validators: defaultJson.validators,
       });
+      this.validators = defaultJson.validators;
+      this.definition = defaultJson.pages[0];
+      this.source = defaultJson.pages[0];
     },
   };
 </script>

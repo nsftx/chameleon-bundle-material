@@ -36,6 +36,12 @@
             "name": "map"
           },
           {
+            "title": "Horizontal List",
+            "icon": "view_week",
+            "path": "/hlist",
+            "name": "hlist"
+          },
+          {
             "title": "List",
             "icon": "list",
             "path": "/list",
@@ -43,7 +49,7 @@
           },
           {
             "title": "Table",
-            "icon": "table",
+            "icon": "grid_on",
             "path": "/table",
             "name": "table"
           },
@@ -58,6 +64,12 @@
             "icon": "theaters",
             "path": "/video",
             "name": "video"
+          },
+          {
+            "title": "Vertical List",
+            "icon": "view_stream",
+            "path": "/vlist",
+            "name": "vlist"
           },
           {
             "title": "Youtube",

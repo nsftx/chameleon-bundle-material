@@ -21,8 +21,8 @@
             {
               "type": "tabs",
               "alignment": "center",
-              "headerColor": "cyan",
-              "sliderColor": "red",
+              "headerColor": "red",
+              "sliderColor": "blue",
               "fillSpace": true,
               "elements": [
                 {

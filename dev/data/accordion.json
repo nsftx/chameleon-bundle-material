@@ -16,7 +16,7 @@
               "name": "accordion",
               "multipleExpand": false,
               "alternativeDesign": "",
-              "color": "#FF5252",
+              "color": "#ddd",
               "contentRipple": true,
               "hideItemActions": true,
               "elements": [

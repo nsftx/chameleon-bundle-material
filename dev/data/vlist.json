@@ -1,0 +1,43 @@
+{
+  "pages": [
+    {
+      "name": "vlist",
+      "type": "page",
+      "elements": [
+        {
+          "type": "vlist",
+          "name": "vlist-1",
+          "color": "transparent",
+          "flat": true,
+          "gutter": false,
+          "elements": [
+            {
+              "name": "about",
+              "type": "rich-text",
+              "label": "About",
+              "validation": {
+                "required": true
+              },
+              "toolbar": [
+                "bold",
+                "italic",
+                "link"
+              ],
+              "value": "Test rich <b>content</b>."
+            },
+            {
+              "name": "description",
+              "type": "rich-text",
+              "label": "Description",
+              "placeholder": "Enter description",
+              "validation": {
+                "required": false
+              },
+              "toolbar": "advanced"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
