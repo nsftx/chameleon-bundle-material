@@ -68,7 +68,7 @@
               </v-layout>
             </v-container>
           </v-footer>
-          </v-container>
+        </v-container>
       </v-content>
     </v-app>
   </main>
@@ -128,13 +128,13 @@
       },
       validateNotation() {
         this.validation = chameleonNotation.validate(this.definition);
-
       },
     },
     mounted() {
       assign(this.$chameleon, {
         validators: defaultJson.validators,
       });
+
       this.validators = defaultJson.validators;
       this.definition = defaultJson.pages[0];
       this.source = defaultJson.pages[0];
