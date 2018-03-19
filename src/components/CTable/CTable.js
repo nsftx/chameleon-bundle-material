@@ -1,5 +1,5 @@
 import { each, isNil, isString, keys, map, merge, toLower } from 'lodash';
-import { elementable, localizable } from '@mixins';
+import { elementable, localizable, sourceable } from '@mixins';
 
 require('../../style/components/_table.styl');
 
@@ -166,6 +166,7 @@ export default {
   mixins: [
     elementable,
     localizable,
+    sourceable,
   ],
   render(createElement) {
     const dataSource = this.definition.dataSource;

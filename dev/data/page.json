@@ -622,7 +622,7 @@
                       "type": "table",
                       "color": "yellow",
                       "dataSource": {
-                        "columns": {
+                        "schema": {
                           "title": {
                             "name": "title",
                             "title": "Title",
@@ -1000,6 +1000,44 @@
       ]
     }
   ],
+  "connectors": {
+    "chameleon": {
+      "name": "chameleon",
+      "type": "internalGraphql",
+      "description": "Chameleon Connector",
+      "disabled": false,
+      "options": {
+        "endpoint": "http://localhost:8090/graphql"
+      },
+      "sources": {
+        "budgetStatuses": {
+          "name": "budgetStatuses",
+          "model": "BudgetStatus",
+          "params": {}
+        },
+        "contactTypes": {
+          "name": "contactTypes",
+          "model": "ContactType",
+          "params": {}
+        },
+        "affixs": {
+          "name": "affixs",
+          "model": "Affix",
+          "params": {}
+        },
+        "materialColors": {
+          "name": "materialColors",
+          "model": "MaterialColor",
+          "params": {}
+        },
+        "noYesChoices": {
+          "name": "noYesChoices",
+          "model": "NoYesChoice",
+          "params": {}
+        }
+      }
+    }
+  },
   "validators": {
     "creditCard": {
       "message": "The ${field} field is invalid credit card."

@@ -44,7 +44,6 @@
             <v-flex xs12
                     v-if="definition">
               <c-page :definition="definition"
-                      :validators="validators"
                       :key="getUniqueKey(definition.elements[0].type)">
               </c-page>
             </v-flex>
@@ -78,6 +77,7 @@
   import { assign, merge } from 'lodash';
   import VJsoneditor from 'vue-jsoneditor';
   import chameleonNotation from 'chameleon-notation';
+  import connectorApi from 'chameleon-sdk/src/api/connector';
 
   const navigation = require('./data/navigation.json');
   const defaultJson = require('./data/page.json');
@@ -130,10 +130,11 @@
     },
     mounted() {
       assign(this.$chameleon, {
+        connector: connectorApi,
+        connectors: defaultJson.connectors,
         validators: defaultJson.validators,
       });
 
-      this.validators = defaultJson.validators;
       this.definition = defaultJson.pages[0];
       this.source = defaultJson.pages[0];
     },
