@@ -20,7 +20,7 @@
   },
   "main": "dist/chameleon-vuetify.min.js",
   "dependencies": {
-    "chameleon-notation": "^1.0.12",
+    "chameleon-notation": "^1.0.13",
     "chameleon-sdk": "^1.0.0",
     "lodash": "^4.17.5",
     "moment": "^2.20.1",

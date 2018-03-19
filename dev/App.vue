@@ -5,34 +5,32 @@
                  dark
                  fixed
                  clipped-left
-                 color="blue">
+                 color="green darken-2">
         <v-toolbar-side-icon @click.stop="toggleDrawer = !toggleDrawer"></v-toolbar-side-icon>
         <v-toolbar-title>Chameleon Playground</v-toolbar-title>
         <v-spacer></v-spacer>
       </v-toolbar>
       <v-content>
-        <v-container fluid
-                     v-if="navigation">
-          <v-navigation-drawer app
-                               clipped
-                               fixed
-                               class="blue"
-                               v-model="toggleDrawer"
-                               dark>
-            <v-list>
-              <v-list-tile v-for="item in navigation.elements[0].dataSource.items"
-                           :key="item.title"
-                           @click="componentChanged(item.name)">
-                <v-list-tile-action>
-                  <v-icon>{{ item.icon }}</v-icon>
-                </v-list-tile-action>
-                <v-list-tile-content>
-                  <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-                </v-list-tile-content>
-              </v-list-tile>
-            </v-list>
-          </v-navigation-drawer>
-        </v-container>
+        <v-navigation-drawer app
+                             clipped
+                             fixed
+                             class="green"
+                             v-if="navigation"
+                             v-model="toggleDrawer"
+                             dark>
+          <v-list>
+            <v-list-tile v-for="item in navigation.elements[0].dataSource.items"
+                         :key="item.title"
+                         @click="componentChanged(item.name)">
+              <v-list-tile-action>
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list>
+        </v-navigation-drawer>
         <v-container fluid>
           <v-layout row
                     wrap>
@@ -77,12 +75,16 @@
 <script>
   import uuid from 'uuid';
   import axios from 'axios';
-  import { assign } from 'lodash';
+  import { assign, merge } from 'lodash';
   import VJsoneditor from 'vue-jsoneditor';
   import chameleonNotation from 'chameleon-notation';
 
   const navigation = require('./data/navigation.json');
   const defaultJson = require('./data/page.json');
+
+  const http = axios.create({
+    baseURL: process.env.baseUrl,
+  });
 
   export default {
     name: 'app',
@@ -112,19 +114,15 @@
       },
       componentChanged(component) {
         const self = this;
-        const http = axios.create({
-          baseURL: process.env.baseUrl,
-        });
-
         http.get(`/data/${component}.json`).then((response) => {
           self.source = response.data.pages ? response.data.pages[0] : response.data;
           self.definition = self.source;
-          self.validateNotation(self.source);
+          self.validateNotation();
         });
       },
       sourceChanged(value) {
         this.definition = value;
-        this.validateNotation(this.definition);
+        this.validateNotation();
       },
       validateNotation() {
         this.validation = chameleonNotation.validate(this.definition);
