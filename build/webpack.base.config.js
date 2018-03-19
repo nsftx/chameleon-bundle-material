@@ -7,6 +7,7 @@ module.exports = {
   output: {
     library: '__CHAMELEON_MATERIAL__',
     libraryTarget: 'umd',
+    libraryExport: 'default',
   },
   resolve: {
     extensions: ['*', '.js', '.json', '.vue'],

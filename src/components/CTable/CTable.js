@@ -1,4 +1,4 @@
-import { each, isNil, isString, keys, map, merge } from 'lodash';
+import { each, isNil, isString, keys, map, merge, toLower } from 'lodash';
 import { elementable, localizable } from '@mixins';
 
 require('../../style/components/_table.styl');
@@ -29,7 +29,7 @@ const getCellInferredProps = (cell) => {
   let align;
   let sortable = true;
 
-  switch (cell.type) {
+  switch (toLower(cell.type)) {
     case 'date':
       align = 'center';
       break;
@@ -62,12 +62,12 @@ const getScopedSlots = (createElement, dataSource) => {
       let content = item[key];
       const inferredProps = {};
 
-      if (dataSource && dataSource.columns) {
-        const column = dataSource.columns[key];
+      if (dataSource && dataSource.schema) {
+        const column = dataSource.schema[key];
         if (column) {
           merge(inferredProps, getCellInferredProps(column));
 
-          switch (column.type) {
+          switch (toLower(column.type)) {
             case 'icon':
               content = [createElement('v-icon', content)];
               break;
@@ -110,7 +110,7 @@ const getScopedSlots = (createElement, dataSource) => {
 };
 
 const getHeadersProp = (dataSource) => {
-  const columns = dataSource.columns;
+  const columns = dataSource.schema;
 
   return map(columns, column => (merge({
     value: column.name,
@@ -122,13 +122,14 @@ const getProps = (context) => {
   const definition = context.definition;
   const dataSource = definition.dataSource;
   const hasDataSource = !isNil(dataSource);
-  const hasColumns = hasDataSource && dataSource.columns;
+  const hasItems = hasDataSource && dataSource.items;
+  const hasColumns = hasDataSource && dataSource.schema;
 
   const props = {
-    items: hasDataSource ? definition.dataSource.items : [],
+    items: hasItems ? definition.dataSource.items : [],
     hideHeaders: !hasColumns,
     headers: hasColumns ? getHeadersProp(dataSource) : [],
-    itemKey: hasColumns ? keys(dataSource.columns[0])[0] : 'id',
+    itemKey: hasColumns ? keys(dataSource.schema[0])[0] : 'id',
     rowsPerPageItems: getPropRowsPerPageItems(definition.rowsPerPageItems),
   };
 
