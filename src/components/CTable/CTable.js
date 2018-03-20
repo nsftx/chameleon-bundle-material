@@ -120,16 +120,17 @@ const getHeadersProp = (dataSource) => {
 
 const getProps = (context) => {
   const definition = context.definition;
-  const dataSource = definition.dataSource;
+  const dataSource = context.dataSource;
   const hasDataSource = !isNil(dataSource);
   const hasItems = hasDataSource && dataSource.items;
   const hasColumns = hasDataSource && dataSource.schema;
 
   const props = {
-    items: hasItems ? definition.dataSource.items : [],
+    items: hasItems ? dataSource.items : [],
     hideHeaders: !hasColumns,
     headers: hasColumns ? getHeadersProp(dataSource) : [],
     itemKey: hasColumns ? keys(dataSource.schema[0])[0] : 'id',
+    loading: context.loadingDataSource,
     rowsPerPageItems: getPropRowsPerPageItems(definition.rowsPerPageItems),
   };
 
@@ -155,7 +156,11 @@ const getListeners = (context) => {
         page: options.startPage,
       });
 
-      context.$emit('update:pagination', pagination);
+      context.loadConnectorData().then(() => {
+        context.$emit('changed', {
+          pagination,
+        });
+      });
     },
   };
 
@@ -169,8 +174,6 @@ export default {
     sourceable,
   ],
   render(createElement) {
-    const dataSource = this.definition.dataSource;
-
     const children = [
       createElement(
         'v-data-table',
@@ -178,7 +181,7 @@ export default {
           attrs: getAttrs(this),
           props: getProps(this),
           on: getListeners(this),
-          scopedSlots: getScopedSlots(createElement, dataSource),
+          scopedSlots: getScopedSlots(createElement, this.dataSource),
           class: [
             this.definition.color || 'white',
             this.definition.flat ? null : 'elevation-1',

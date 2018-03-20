@@ -1,6 +1,11 @@
 import { assign } from 'lodash';
 
 export default {
+  data() {
+    return {
+      loadingDataSource: false,
+    };
+  },
   computed: {
     dataSource() {
       return this.definition.dataSource;
@@ -26,17 +31,19 @@ export default {
           schema: this.dataSource.schema,
         }, connector.sources[this.dataSource.name]);
 
+        this.loadingDataSource = true;
         return this.$chameleon.connector.getSourceData(
           connector,
           source,
+          this.dataOptions,
         ).then((result) => {
           this.$set(this.dataSource, 'items', result.items);
+          this.loadingDataSource = false;
+
+          resolve(this.dataSource);
           return this.dataSource;
         });
       });
     },
-  },
-  mounted() {
-    this.loadConnectorData();
   },
 };
