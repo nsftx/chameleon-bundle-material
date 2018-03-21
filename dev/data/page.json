@@ -1037,7 +1037,7 @@
             },
             "pagination": {
               "name": "pagination",
-              "type": "InputPagination"
+              "type": "PaginationInput"
             }
           }
         }
