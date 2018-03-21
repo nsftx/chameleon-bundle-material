@@ -1,8 +1,9 @@
-import { assign } from 'lodash';
+import { assign, merge } from 'lodash';
 
 export default {
   data() {
     return {
+      dataSourceParams: {},
       loadingDataSource: false,
     };
   },
@@ -13,13 +14,26 @@ export default {
     dataConnector() {
       return this.dataSource.connector;
     },
+    isDataSourceRemoteValid() {
+      return this.dataSource && this.dataConnector;
+    },
+    isDataSourceLocal() {
+      return this.dataSource.local === true;
+    },
   },
   methods: {
+    getMergedDataSourceParams() {
+      return {
+        params: merge(this.dataSourceParams, this.dataSource.params),
+      };
+    },
     loadConnectorData() {
       return new Promise((resolve) => {
-        if (!this.dataConnector) {
-          resolve(this.dataSource);
-          return this.dataSource;
+        if (this.isDataSourceLocal || !this.isDataSourceRemoteValid) {
+          resolve({
+            items: this.dataSource.items,
+            pagination: {},
+          });
         }
 
         const connector = assign({},
@@ -27,7 +41,7 @@ export default {
           this.$chameleon.connectors[this.dataConnector.name],
         );
 
-        const source = assign({
+        const source = merge({}, {
           schema: this.dataSource.schema,
         }, connector.sources[this.dataSource.name]);
 
@@ -35,13 +49,14 @@ export default {
         return this.$chameleon.connector.getSourceData(
           connector,
           source,
-          this.dataOptions,
+          this.getMergedDataSourceParams(),
         ).then((result) => {
-          this.$set(this.dataSource, 'items', result.items);
-          this.loadingDataSource = false;
+          this.dataSourceParams = {
+            pagination: result.pagination,
+          };
 
-          resolve(this.dataSource);
-          return this.dataSource;
+          this.loadingDataSource = false;
+          resolve(result);
         });
       });
     },

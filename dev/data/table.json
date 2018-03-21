@@ -13,25 +13,27 @@
               "name": "shoppingTable",
               "type": "table",
               "color": "yellow",
+              "rowsPerPage": 10,
               "dataSource": {
-                "name": "materialColors",
-                "model": "MaterialColors",
+                "name": "movies",
+                "model": "Movie",
                 "connector": {
                   "name": "chameleon",
                   "type": "internalGraphql"
                 },
-                "schema": {
-                  "value": {
-                    "name": "value",
+                "schema": [
+                  {
+                    "name": "title",
                     "type": "String"
                   },
-                  "name": {
-                    "name": "name",
-                    "type": "String"
-                  },
-                  "description": {
+                  {
                     "name": "description",
                     "type": "String"
+                  }
+                ],
+                "params": {
+                  "filters": {
+                    "searchQuery": "john"
                   }
                 }
               }

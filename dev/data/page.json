@@ -622,28 +622,20 @@
                       "type": "table",
                       "color": "yellow",
                       "dataSource": {
-                        "schema": {
-                          "title": {
-                            "name": "title",
-                            "title": "Title",
-                            "type": "string"
+                        "schema": [
+                          {
+                            "name": "value",
+                            "type": "String"
                           },
-                          "description": {
+                          {
+                            "name": "name",
+                            "type": "String"
+                          },
+                          {
                             "name": "description",
-                            "title": "Description",
-                            "type": "string"
-                          },
-                          "thumb": {
-                            "name": "thumb",
-                            "title": "Thumb",
-                            "type": "image"
-                          },
-                          "icon": {
-                            "name": "icon",
-                            "title": "Icon",
-                            "type": "icon"
+                            "type": "String"
                           }
-                        },
+                        ],
                         "items": [
                           {
                             "title": "Frozen Yogurt",
@@ -1034,6 +1026,20 @@
           "name": "noYesChoices",
           "model": "NoYesChoice",
           "params": {}
+        },
+        "movies": {
+          "name": "movies",
+          "model": "Movie",
+          "params": {
+            "filters": {
+              "name": "filters",
+              "type": "InputFilters"
+            },
+            "pagination": {
+              "name": "pagination",
+              "type": "InputPagination"
+            }
+          }
         }
       }
     }

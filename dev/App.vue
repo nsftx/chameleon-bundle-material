@@ -49,7 +49,7 @@
             </v-flex>
           </v-layout>
           <v-footer app
-                    height="150"
+                    height="80"
                     class="scroll-y"
                     id="scroll-target"
                     inset>
