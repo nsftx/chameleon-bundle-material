@@ -8,8 +8,8 @@ const getDatePickerProps = (context) => {
     fullWidth: context.definition.fullWidth,
     width: context.definition.width,
     value: context.value ? context.value.substring(0, 10) : null,
-    min: context.definition.allowedDates.min,
-    max: context.definition.allowedDates.max,
+    min: context.definition.allowedDates ? context.definition.allowedDates.min : null,
+    max: context.definition.allowedDates ? context.definition.allowedDates.max : null,
   };
 
   return props;

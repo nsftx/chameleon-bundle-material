@@ -1,3 +1,4 @@
-import Vue from 'vue';
+import moment from 'moment';
 
-Vue.config.productionTip = false;
+// Define window libraries used inside components
+global.moment = moment;

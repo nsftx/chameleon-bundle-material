@@ -1,18 +1,40 @@
-import { mount } from 'vue-test-utils';
-import CSample from '@/components/Chtml/CHtml';
+import { each } from 'lodash';
+import { mount, createLocalVue } from 'vue-test-utils';
+import * as components from '@/components';
 
-describe('CSample', () => {
-  it('check default message property', () => {
-    const createCmp = mount(CSample, {
-      propsData: {
-        definition: {
-          "name": "htmlMarkup",
-          "type": "html",
-          "label": "Html Markup",
-          "value": "<h1>This is heading 1</h1>"
+const definitions = require('../../../dev/data/page.json');
+const options = {
+  namespace: 'c-',
+};
+const validators = definitions.validators;
+
+describe('AllComponents', () => {
+  let createCmp;
+  
+  each(components, (component, key) => {
+    const localVue = createLocalVue();
+    localVue.use(component, options);
+
+    each(localVue.options.components, (type, key) => {
+      createCmp = mount(type, {
+        // Required prop definition
+        propsData: {
+          definition: {
+            validation: {},
+          },
         },
-      },
+        // Some components require global validators
+        mocks: {
+          $chameleon: {
+            validators,
+          },
+          form: {},
+        },
+      });
+
+      it('Check if contains base class c-element', () => {
+        expect(createCmp.classes()).toContain('c-element');
+      });
     });
-    expect(createCmp.vm.definition.name).toEqual('htmlMarkup');
   });
 });

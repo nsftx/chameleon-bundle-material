@@ -1,4 +1,4 @@
-import { isString, merge } from 'lodash';
+import { isString, merge, isNil } from 'lodash';
 import { dependable, elementable } from '@mixins';
 
 export default {
@@ -45,7 +45,7 @@ export default {
   mounted() {
     const apiKey = this.definition.apiKey;
     const lib = this.definition.libraries;
-    const libraries = isString(lib) ? lib : lib.join(',');
+    const libraries = isString(lib) || isNil(lib) ? lib : lib.join(',');
     const url = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=${libraries}`;
 
     this.loadDependencies(url, 'google.maps').then(() => {

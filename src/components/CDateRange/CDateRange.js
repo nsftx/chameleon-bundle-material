@@ -88,7 +88,7 @@ const getPickerDefinition = (context, endRange) => {
 
   if (context.value) {
     definition.value = endRange ? context.value[1] : context.value[0];
-  } else {
+  } else if (definition.value) {
     definition.value = endRange ? definition.value[1] : definition.value[0];
   }
 
