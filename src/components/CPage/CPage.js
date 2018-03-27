@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { each, kebabCase } from 'lodash';
 
 export default {
   props: {
@@ -6,16 +6,20 @@ export default {
       type: Object,
       required: true,
     },
-    validators: {
-      type: Object,
+  },
+  computed: {
+    elements() {
+      return this.definition.elements;
+    },
+    name() {
+      return this.definition.name;
     },
   },
   render(createElement) {
-    const context = this;
     const children = [];
 
-    if (context.definition.elements) {
-      _.each(context.definition.elements, (n, i) => {
+    if (this.elements) {
+      each(this.elements, (n, i) => {
         children.push(createElement(
           `${this.$options.namespace}${n.type}`,
           {
@@ -34,7 +38,7 @@ export default {
     return createElement(
       'div',
       {
-        staticClass: `${context.$options.name} ${context.$options.name}-${_.kebabCase(context.definition.name)}`,
+        staticClass: `${this.$options.name} ${this.$options.name}-${kebabCase(this.name)}`,
       },
       children,
     );

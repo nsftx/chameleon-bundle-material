@@ -1,6 +1,6 @@
 import { fieldable, elementable } from '@mixins';
 import { validator } from '@validators';
-import { isNil } from 'lodash'; 
+import { isNil } from 'lodash';
 
 const getAttrs = (context) => {
   const attrs = {

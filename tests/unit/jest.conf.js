@@ -19,6 +19,9 @@ module.exports = {
     '.*\\.(vue)$': '<rootDir>/node_modules/vue-jest',
     ".+\\.(css|styl|less|sass|scss)$": "<rootDir>/node_modules/jest-css-modules-transform",
   },
+  transformIgnorePatterns: [
+    '<rootDir>/node_modules/(?!chameleon-sdk)'
+  ],
   testPathIgnorePatterns: [
     '<rootDir>/tests/e2e',
   ],

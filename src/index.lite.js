@@ -1,3 +1,4 @@
+import { assign, each } from 'lodash';
 import { version } from '../package.json';
 import namespace from './index.namespace';
 import * as components from './components';
@@ -11,15 +12,11 @@ const Library = {
 
     // eslint-disable-next-line
     Vue.prototype.$chameleon = new Vue({
-      data: {
-        validators: options.validators,
-        isPreviewMode: options.isPreviewMode,
-      },
+      data: assign({}, options),
     });
 
     if (options.components) {
-      Object.keys(options.components).forEach((key) => {
-        const component = options.components[key];
+      each(options.components, (component) => {
         Vue.use(component, {
           namespace,
         });

@@ -1,7 +1,6 @@
-import { each, isNil, isString, keys, map, merge, toLower } from 'lodash';
-import { elementable, localizable } from '@mixins';
-
-require('../../style/components/_table.styl');
+import { defaults, each, isNil, isString, keys, map, merge, toLower } from 'lodash';
+import { elementable, localizable, sourceable } from '@mixins';
+import '../../style/components/_table.styl';
 
 const getPropRowsPerPageItems = (value) => {
   if (isNil(value)) {
@@ -118,18 +117,37 @@ const getHeadersProp = (dataSource) => {
   }, getCellInferredProps(column))));
 };
 
+const getPagination = (definition) => {
+  const defaultPagination = {
+    descending: false,
+    sortBy: null,
+    rowsPerPage: 10,
+    page: 1,
+    totalItems: 0,
+  };
+
+  const pagination = defaults({
+    rowsPerPage: definition.rowsPerPage,
+    sortBy: definition.sortBy,
+    descending: definition.sortDescending,
+    page: definition.startPage,
+  }, defaultPagination);
+
+  return pagination;
+};
+
 const getProps = (context) => {
   const definition = context.definition;
-  const dataSource = definition.dataSource;
+  const dataSource = context.dataSource;
   const hasDataSource = !isNil(dataSource);
-  const hasItems = hasDataSource && dataSource.items;
-  const hasColumns = hasDataSource && dataSource.schema;
+  const columns = hasDataSource && dataSource.schema;
 
   const props = {
-    items: hasItems ? definition.dataSource.items : [],
-    hideHeaders: !hasColumns,
-    headers: hasColumns ? getHeadersProp(dataSource) : [],
-    itemKey: hasColumns ? keys(dataSource.schema[0])[0] : 'id',
+    items: context.items,
+    hideHeaders: !columns,
+    headers: columns ? getHeadersProp(dataSource) : [],
+    itemKey: columns ? keys(columns[0])[0] : 'id',
+    loading: context.loadingDataSource,
     rowsPerPageItems: getPropRowsPerPageItems(definition.rowsPerPageItems),
   };
 
@@ -140,22 +158,28 @@ const getProps = (context) => {
   if (rowsPerPageText) props.rowsPerPageText = rowsPerPageText;
   if (noResultsText) props.noResultsText = noResultsText;
   if (noDataText) props.noDataText = noDataText;
+  if (context.isDataSourceRemoteValid) props.totalItems = context.totalItems;
+  if (context.pagination) props.pagination = context.pagination;
 
   return props;
 };
 
 const getListeners = (context) => {
+  const self = context;
+
   const listeners = {
     'update:pagination': (value) => {
-      const options = context.definition;
-      const pagination = merge(value, {
-        rowsPerPage: options.rowsPerPage,
-        sortBy: options.sortBy,
-        descending: options.sortDescending,
-        page: options.startPage,
-      });
+      /*
+      Weird solution but since we are changing paging this
+      gets triggered a lot of times since we do not have
+      sync modifier.
+      */
+      if (self.pagination && self.pagination.totalItems && self.dataSourceParams.pagination) {
+        self.dataSourceParams.pagination.page = value.page;
+        self.loadData();
+      }
 
-      context.$emit('update:pagination', pagination);
+      self.pagination = value;
     },
   };
 
@@ -166,10 +190,28 @@ export default {
   mixins: [
     elementable,
     localizable,
+    sourceable,
   ],
+  data() {
+    return {
+      items: [],
+      pagination: null,
+      totalItems: null,
+    };
+  },
+  methods: {
+    loadData() {
+      this.loadConnectorData().then((result) => {
+        this.items = result.items;
+        this.totalItems = result.pagination.totalResults;
+      });
+    },
+  },
+  mounted() {
+    this.pagination = getPagination(this.definition);
+    this.loadData();
+  },
   render(createElement) {
-    const dataSource = this.definition.dataSource;
-
     const children = [
       createElement(
         'v-data-table',
@@ -177,7 +219,7 @@ export default {
           attrs: getAttrs(this),
           props: getProps(this),
           on: getListeners(this),
-          scopedSlots: getScopedSlots(createElement, dataSource),
+          scopedSlots: getScopedSlots(createElement, this.dataSource),
           class: [
             this.definition.color || 'white',
             this.definition.flat ? null : 'elevation-1',
