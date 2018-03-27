@@ -1,10 +1,12 @@
-import { each } from 'lodash';
+import { each, isNil, assign } from 'lodash';
 import { shallow, createLocalVue } from 'vue-test-utils';
 import * as components from '@/components';
 
 const options = {
   namespace: 'c-',
 };
+
+const definition = require('./__mocks__/definition');
 
 describe('AllComponents', () => {
   each(components, (component, key) => {
@@ -13,10 +15,17 @@ describe('AllComponents', () => {
 
     const cmpName = Object.keys(localVue.options.components)[0];
     const cmp = localVue.options.components[cmpName];
+    const type = definition[cmpName]._schema.type;
+    const group = definition[cmpName]._schema.group;
+    const schema = assign(
+      { type },
+      definition[cmpName],
+    );
+    // Mount component
     const wrapper = shallow(cmp, {
       // Required prop definition
       propsData: {
-        definition: {},
+        definition: schema,
       },
       // Some components require global validators
       mocks: {
@@ -27,8 +36,13 @@ describe('AllComponents', () => {
       },
     });
 
-    it(`Check if ${cmpName} contains base class c-element`, () => {
-      expect(wrapper.classes()).toContain('c-element');
+    it(`Check if ${cmpName} contains data attributes`, () => {
+      const attrs = wrapper.attributes();
+      expect([attrs]).toContainEqual(expect.objectContaining(
+        { 'data-type': type },
+        { 'data-group': group },
+        { 'data-uid': expect.anything() }
+      ));
     });
   });
 });

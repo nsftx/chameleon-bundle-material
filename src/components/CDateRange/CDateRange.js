@@ -58,6 +58,7 @@ const getTextProps = (context) => {
 };
 
 const getAllowedDates = (context, endRange) => {
+  if (isNil(context.definition.validation)) return null;
   const max = context.definition.validation.maxDate;
   let min = context.definition.validation.minDate;
 
