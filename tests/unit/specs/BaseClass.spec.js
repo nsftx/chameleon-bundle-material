@@ -27,7 +27,11 @@ describe('AllComponents', () => {
       },
     });
 
-    it(`Check if ${cmpName} contains base class c-element`, () => {
+    it(`Check if ${cmpName} contains base class c-element`, async () => {
+      const resolvingPromise = new Promise((resolve) => {
+        resolve();
+      });
+      const result = await resolvingPromise;
       expect(wrapper.classes()).toContain('c-element');
     });
   });

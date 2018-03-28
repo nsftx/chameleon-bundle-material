@@ -37,7 +37,11 @@ describe('AllComponents', () => {
       },
     });
 
-    it(`Check if ${cmpName} contains data attributes`, () => {
+    it(`Check if ${cmpName} contains data attributes`, async () => {
+      const resolvingPromise = new Promise((resolve) => {
+        resolve();
+      });
+      const result = await resolvingPromise;
       const attrs = wrapper.attributes();
       expect([attrs]).toContainEqual(expect.objectContaining(
         { 'data-type': type },
