@@ -31,7 +31,7 @@ export default {
   render(createElement) {
     const itemProps = getItemProps(this.definition);
     const items = _.map(this.definition.elements, element => createElement(
-      `${this.$options.namespace}accordion-item`,
+      this.getElementTag('accordion-item'),
       {
         props: {
           definition: _.merge({}, element, itemProps),

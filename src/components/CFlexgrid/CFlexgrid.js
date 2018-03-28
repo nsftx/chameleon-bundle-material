@@ -27,7 +27,7 @@ export default {
   ],
   render(createElement) {
     const items = map(this.definition.elements, element => createElement(
-      `${this.$options.namespace}flexgrid-item`,
+      this.getElementTag('flexgrid-item'),
       {
         key: `${element.name}_${uuid()}`,
         props: {

@@ -114,7 +114,7 @@ export default {
         },
       ),
       createElement(
-        `${this.$options.namespace}picker`,
+        this.getElementTag('picker'),
         {
           props: getPickerProps(this),
           on: {

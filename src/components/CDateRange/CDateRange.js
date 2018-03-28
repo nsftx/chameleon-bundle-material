@@ -144,7 +144,7 @@ export default {
         },
       ),
       createElement(
-        `${this.$options.namespace}picker`,
+        this.getElementTag('picker'),
         {
           staticClass: 'left',
           props: {
@@ -165,7 +165,7 @@ export default {
         },
       ),
       createElement(
-        `${this.$options.namespace}picker`,
+        this.getElementTag('picker'),
         {
           staticClass: 'left',
           props: {

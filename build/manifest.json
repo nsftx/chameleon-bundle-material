@@ -1,0 +1,21 @@
+{
+  "name": "material",
+  "namespace": "c-",
+  "version": 4,
+  "styles": [
+    "index.min.css"
+  ],
+  "scripts": [
+    {
+        "script": "index.lite.js",
+        "type": "components",
+        "global": "__CHAMELEON_MATERIAL__"
+    },
+    {
+        "script": "index.meta.js",
+        "type": "meta",
+        "global": "__CHAMELEON_MATERIAL_META__"
+     }
+  ],
+  "helpPath": "help" 
+}

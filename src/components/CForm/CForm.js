@@ -129,7 +129,7 @@ export default {
             ),
             createElement(
               'v-card-actions',
-              map(this.getActions(), button => createElement(`${this.$options.namespace}button`,
+              map(this.getActions(), button => createElement(this.getElementTag('button'),
                 {
                   // Dynamic key to disable component re-use
                   key: `${button.name}_${uuid()}`,

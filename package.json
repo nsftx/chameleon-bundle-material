@@ -20,7 +20,7 @@
   },
   "main": "dist/chameleon-vuetify.min.js",
   "dependencies": {
-    "@nsoft/chameleon-sdk": "^1.0.7",
+    "@nsoft/chameleon-sdk": "^1.0.11",
     "chameleon-notation": "^1.0.14",
     "lodash": "^4.17.5",
     "moment": "^2.20.1",
@@ -87,7 +87,7 @@
     "rimraf": "^2.6.0",
     "semver": "^5.5.0",
     "shelljs": "^0.7.6",
-    "sinon": "^4.4.9",
+    "sinon": "^4.4.10",
     "sinon-chai": "^2.8.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
