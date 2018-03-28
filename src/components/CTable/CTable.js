@@ -202,9 +202,17 @@ export default {
   methods: {
     loadData() {
       this.loadConnectorData().then((result) => {
-        this.items = result.items;
-        this.totalItems = result.pagination.totalResults;
+        this.items = result.items || [];
+        this.totalItems = result.pagination ? result.pagination.totalResults : 0;
       });
+    },
+  },
+  watch: {
+    dataSource: {
+      handler() {
+        this.loadData();
+      },
+      deep: true,
     },
   },
   mounted() {
