@@ -50,7 +50,7 @@ const getTextProps = (context) => {
     persistentHint: true,
     placeholder: definition.placeholder,
     required: getPropRequired(definition),
-    rules: validator.getRules(definition, context.$chameleon.validators),
+    rules: validator.getRules(definition, context.options.validators),
     value: context.formattedValue,
   };
 
