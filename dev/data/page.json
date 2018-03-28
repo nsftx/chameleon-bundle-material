@@ -999,7 +999,7 @@
       "description": "Chameleon Connector",
       "disabled": false,
       "options": {
-        "endpoint": "http://localhost:8090/graphql"
+        "endpoint": "https://chameleon-ride.nsoft.com:8090/graphql"
       },
       "sources": {
         "budgetStatuses": {
