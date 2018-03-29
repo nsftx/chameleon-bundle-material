@@ -77,13 +77,13 @@
   import { assign, merge } from 'lodash';
   import VJsoneditor from 'vue-jsoneditor';
   import chameleonNotation from 'chameleon-notation';
-  import connectorApi from 'chameleon-sdk/src/api/connector';
+  import connectorApi from '@nsoft/chameleon-sdk/src/api/connector';
 
   const navigation = require('./data/navigation.json');
   const defaultJson = require('./data/page.json');
 
   const http = axios.create({
-    baseURL: process.env.baseUrl,
+    timeout: 5000,
   });
 
   export default {

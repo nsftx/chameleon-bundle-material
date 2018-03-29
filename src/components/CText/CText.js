@@ -116,7 +116,7 @@ const getProps = (context) => {
     prefix: getPropPrefix(definition),
     prependIcon: definition.prependIcon,
     required: getPropRequired(definition),
-    rules: validator.getRules(definition, context.$chameleon.validators),
+    rules: validator.getRules(definition, context.options.validators),
     suffix: getPropSuffix(definition),
     type: getPropType(definition),
     value: definition.value,

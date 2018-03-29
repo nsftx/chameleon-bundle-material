@@ -20,7 +20,7 @@ module.exports = {
     ".+\\.(css|styl|less|sass|scss)$": "<rootDir>/node_modules/jest-css-modules-transform",
   },
   transformIgnorePatterns: [
-    '<rootDir>/node_modules/(?!chameleon-sdk)'
+    '<rootDir>/node_modules/(?!@nsoft)'
   ],
   testPathIgnorePatterns: [
     '<rootDir>/tests/e2e',

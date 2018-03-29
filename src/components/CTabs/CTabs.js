@@ -48,7 +48,7 @@ export default {
     const tabs = getTabs(this.definition, createElement);
 
     const items = _.map(this.definition.elements, element => createElement(
-      `${this.$options.namespace}tab-item`,
+      this.getElementTag('tab-item'),
       {
         props: {
           definition: _.merge({},

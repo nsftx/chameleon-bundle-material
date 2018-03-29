@@ -1,12 +1,10 @@
 import { each, kebabCase } from 'lodash';
+import { elementable } from '@mixins';
 
 export default {
-  props: {
-    definition: {
-      type: Object,
-      required: true,
-    },
-  },
+  mixins: [
+    elementable,
+  ],
   computed: {
     elements() {
       return this.definition.elements;
@@ -21,7 +19,7 @@ export default {
     if (this.elements) {
       each(this.elements, (n, i) => {
         children.push(createElement(
-          `${this.$options.namespace}${n.type}`,
+          this.getElementTag(n.type),
           {
             props: {
               definition: n,
