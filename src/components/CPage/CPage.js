@@ -36,10 +36,7 @@ export default {
     return createElement(
       'div',
       {
-        staticClass: `
-          ${this.$options.name} 
-          ${this.$options.name}-${kebabCase(this.name)}
-        `,
+        staticClass: `${this.$options.name} ${this.$options.name}-${kebabCase(this.name)}`,
       },
       children,
     );

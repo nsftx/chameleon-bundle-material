@@ -1,31 +1,31 @@
-import { elementable } from '@mixins';
+import { bindable, elementable } from '@mixins';
 
 export default {
   mixins: [
+    bindable,
     elementable,
   ],
   render(createElement) {
-    const self = this;
+    const definition = this.definition;
 
     return createElement(
       'v-card',
       {
-        key: self.schema.uid,
-        attrs: self.getSchemaAttributes(),
+        key: this.schema.uid,
+        attrs: this.getSchemaAttributes(),
         props: {
-          color: self.definition.color,
-          flat: self.definition.flat,
+          color: this.getBindingValue(definition.color),
+          flat: definition.flat,
         },
         style: {
-          backgroundColor: self.definition.color,
-          width: self.definition.width,
+          width: definition.width,
         },
-        staticClass: `${self.baseClass} ${self.$options.name}`,
+        staticClass: `${this.baseClass} ${this.$options.name}`,
       },
       [
         createElement('div', {
-          staticClass: `${self.baseChildrenClass} ${self.$options.name}-items`,
-        }, self.renderChildren(createElement)),
+          staticClass: `${this.baseChildrenClass} ${this.$options.name}-items`,
+        }, this.renderChildren(createElement)),
       ],
     );
   },
