@@ -20,7 +20,7 @@
   },
   "main": "dist/chameleon-vuetify.min.js",
   "dependencies": {
-    "@nsoft/chameleon-sdk": "^1.0.21",
+    "@nsoft/chameleon-sdk": "^1.0.22",
     "chameleon-notation": "^1.0.14",
     "lodash": "^4.17.5",
     "moment": "^2.22.0",
@@ -29,7 +29,7 @@
     "validator": "^9.4.1",
     "vue": "^2.5.16",
     "vue-jsoneditor": "^1.0.13",
-    "vuetify": "^1.0.12"
+    "vuetify": "^1.0.13"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.6",
