@@ -1,5 +1,5 @@
 import { defaults, each, isNil, isString, keys, map, merge, toLower } from 'lodash';
-import { elementable, localizable, sourceable } from '@mixins';
+import { elementable, localizable, reactionable, sourceable } from '@mixins';
 import '../../style/components/_table.styl';
 
 const getPropRowsPerPageItems = (value) => {
@@ -191,6 +191,7 @@ export default {
     elementable,
     localizable,
     sourceable,
+    reactionable,
   ],
   data() {
     return {
@@ -204,6 +205,7 @@ export default {
       this.loadConnectorData().then((result) => {
         this.items = result.items || [];
         this.totalItems = result.pagination ? result.pagination.totalResults : 0;
+        this.sendToEventBus('DataSourceChanged', this.dataSource);
       });
     },
   },
