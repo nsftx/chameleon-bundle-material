@@ -67,7 +67,7 @@ const getProps = (context) => {
     inputValue: context.value,
     validateOn: getPropValidateOnBlur(definition),
     required: getPropRequired(definition),
-    rules: validator.getRules(definition, context.options.validators),
+    rules: validator.getRules(definition, context.registry.validators),
   };
 
   return props;

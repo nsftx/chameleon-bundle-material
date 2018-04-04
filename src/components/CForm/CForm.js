@@ -112,7 +112,7 @@ export default {
                   {
                     props: {
                       definition: field,
-                      validators: this.options.validators,
+                      validators: this.registry.validators,
                     },
                     // TODO: Expand field listeners if needed
                     // Should fields be able to trigger flow?

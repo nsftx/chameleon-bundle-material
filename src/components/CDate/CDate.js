@@ -52,7 +52,7 @@ const getTextProps = (context) => {
     persistentHint: true,
     placeholder: definition.placeholder,
     required: getPropRequired(definition),
-    rules: validator.getRules(definition, context.options.validators),
+    rules: validator.getRules(definition, context.registry.validators),
     value: context.formattedValue,
   };
 

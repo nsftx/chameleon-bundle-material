@@ -19,7 +19,7 @@ const getAttrs = (context) => {
     height: '100%',
   };
 
-  if (definition.autoplay && !context.options.isPreviewMode) {
+  if (definition.autoplay && !context.registry.isPreviewMode) {
     attrs.autoplay = definition.autoplay;
   }
 
@@ -31,7 +31,7 @@ const getListeners = (context) => {
 
   const listeners = {};
 
-  if (!self.options.isPreviewMode) {
+  if (!self.registry.isPreviewMode) {
     listeners.click = () => {
       if (self.$refs.video.paused) {
         self.$refs.video.play();
