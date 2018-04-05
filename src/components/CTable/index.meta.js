@@ -3,6 +3,9 @@ export default {
   type: 'table',
   name: 'Table',
   icon: 'grid_on',
+  events: [
+    { name: 'DataSourceChanged' },
+  ],
   options: {
     color: {
       type: 'input',
