@@ -1,12 +1,20 @@
 import { each, isNil, assign } from 'lodash';
-import { shallow, createLocalVue } from 'vue-test-utils';
+import { mount, createLocalVue } from 'vue-test-utils';
 import * as components from '@/components';
 
+const mockDefinition = require('./__mocks__/definition');
 const options = {
   namespace: 'c-',
 };
-
-const mockDefinition = require('./__mocks__/definition');
+const childrenComponents = [
+  'CAccordionItem',
+  'CFlexgridItem',
+  'CForm',
+  'CHlist',
+  'CPanel',
+  'CTabItem',
+  'CVlist'
+];
 
 describe('AllComponents', () => {
   each(components, (component, key) => {
@@ -22,8 +30,8 @@ describe('AllComponents', () => {
       { type },
       cmpDefinition,
     );
-    // Mount component
-    const wrapper = shallow(cmp, {
+
+    const wrapper = mount(cmp, {
       // Required prop definition
       propsData: {
         definition,
@@ -36,6 +44,20 @@ describe('AllComponents', () => {
         form: {},
       },
     });
+
+    it(`Check if ${cmpName} contains base class c-element`, async () => {
+      const resolvingPromise = new Promise((resolve) => {
+        resolve();
+      });
+      const result = await resolvingPromise;
+      expect(wrapper.classes()).toContain('c-element');
+    });
+
+    if(childrenComponents.indexOf(key) >= 0) {
+      it(`Check if ${cmpName} contains base children class c-element-children`, () => {
+        expect(wrapper.find(`.${cmpName}`).contains('.c-element-children')).toBe(true);
+      });
+    }
 
     it(`Check if ${cmpName} contains data attributes`, async () => {
       const resolvingPromise = new Promise((resolve) => {
