@@ -18,7 +18,6 @@ const getItemContent = (context, createElement) => {
   const el = createElement(
     'v-card',
     {
-      attrs: context.getSchemaAttributes(),
       staticStyle: {
         backgroundColor: element.contentColor,
       },
@@ -43,6 +42,7 @@ export default {
       {
         key: this.schema.uid,
         props: this.definition,
+        attrs: this.getSchemaAttributes(),
         staticClass: `${this.baseClass} ${this.$options.name}`,
         staticStyle: {
           backgroundColor: this.definition.headerColor,

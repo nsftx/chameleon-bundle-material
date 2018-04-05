@@ -60,6 +60,7 @@ const getTextProps = (context) => {
 };
 
 const getAllowedDates = (context) => {
+  if (isNil(context.validation)) return null;
   const max = context.validation.maxDate;
   const min = context.validation.minDate;
 

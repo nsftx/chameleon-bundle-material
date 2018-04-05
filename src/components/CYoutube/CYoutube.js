@@ -97,6 +97,12 @@ export default {
     },
   },
   mounted() {
+    if (isNil(this.definition.playlist)) {
+      this.definition.playlist = {};
+    }
+    if (isNil(this.definition.value)) {
+      this.definition.value = {};
+    }
     this.playlist = this.definition.playlist.length || this.definition.value.length > 1;
     this.predefinedPlaylist = this.definition.playlist.length ? this.definition.playlist : false;
 

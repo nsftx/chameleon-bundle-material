@@ -78,6 +78,7 @@ export default {
           color: 'transparent',
           flat: true,
         },
+        attrs: this.getSchemaAttributes(),
         staticClass: `${this.baseClass} ${this.$options.name}`,
       },
       [

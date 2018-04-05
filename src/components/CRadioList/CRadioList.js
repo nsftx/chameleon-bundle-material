@@ -1,4 +1,4 @@
-import { map } from 'lodash';
+import { map, isNil } from 'lodash';
 import { elementable, fieldable, validatable } from '@mixins';
 
 const createErrorMessage = (createElement, context) => {
@@ -49,6 +49,12 @@ export default {
   ],
   render(createElement) {
     const message = createErrorMessage(createElement, this);
+
+    if (isNil(this.definition.dataSource)) {
+      this.definition.dataSource = {
+        items: [],
+      };
+    }
 
     const children = [
       createElement(

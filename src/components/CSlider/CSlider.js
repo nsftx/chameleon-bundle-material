@@ -1,5 +1,6 @@
 import { fieldable, elementable } from '@mixins';
 import { validator } from '@validators';
+import { isNil } from 'lodash';
 
 const getAttrs = (context) => {
   const attrs = {
@@ -23,7 +24,7 @@ const getListeners = (context) => {
 };
 
 const getPropRequired = (definition) => {
-  if (definition.validation) {
+  if (!isNil(definition.validation)) {
     return !!definition.validation.required;
   }
 
@@ -59,8 +60,8 @@ const getProps = (context) => {
     trackColor: definition.trackColor,
     thumbColor: definition.thumbColor,
     thumbLabel: definition.thumbLabel,
-    min: definition.validation.min,
-    max: definition.validation.max,
+    min: !isNil(definition.validation) ? definition.validation.min : null,
+    max: !isNil(definition.validation) ? definition.validation.max : null,
     step: definition.step,
     ticks: getPropTick(definition),
     value: definition.value,
