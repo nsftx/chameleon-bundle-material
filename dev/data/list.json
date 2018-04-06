@@ -20,34 +20,34 @@
                 "items": [
                   {
                     "title": "Frozen Yogurt",
-                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                    "summary": "calories: 159, fat: 6.0, carbs: 24, calories",
                     "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
                     "icon": "language"
                   },
                   {
                     "title": "Ice cream sandwich",
-                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                    "summary": "calories: 159, fat: 6.0, carbs: 24, calories",
                     "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
                     "icon": "language"
                   },
                   {
                     "title": "Eclair",
-                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                    "summary": "calories: 159, fat: 6.0, carbs: 24, calories",
                     "icon": "language"
                   },
                   {
                     "title": "Cupcake",
-                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                    "summary": "calories: 159, fat: 6.0, carbs: 24, calories",
                     "icon": "cake"
                   },
                   {
                     "title": "Gingerbread",
-                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                    "summary": "calories: 159, fat: 6.0, carbs: 24, calories",
                     "icon": "cake"
                   },
                   {
                     "title": "Gingerbread2",
-                    "description": "calories: 159, fat: 6.0, carbs: 24, calories",
+                    "summary": "calories: 159, fat: 6.0, carbs: 24, calories",
                     "icon": "cake"
                   }
                 ]

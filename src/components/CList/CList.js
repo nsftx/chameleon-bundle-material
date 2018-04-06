@@ -1,5 +1,5 @@
-import { isNil, isString, map, merge } from 'lodash';
-import { elementable, localizable } from '@mixins';
+import { defaults, isNil, isString, map } from 'lodash';
+import { elementable, localizable, reactionable, sourceable } from '@mixins';
 
 const getPropRowsPerPageItems = (value) => {
   if (isNil(value)) {
@@ -17,12 +17,13 @@ const getPropRowsPerPageItems = (value) => {
 
 const getProps = (context) => {
   const definition = context.definition;
-  const hasDataSource = !isNil(definition.dataSource);
+  const dataSource = context.dataSource;
+  const hasDataSource = !isNil(dataSource);
 
   const props = {
     rowsPerPageItems: getPropRowsPerPageItems(definition.rowsPerPageItems),
     hideActions: definition.hideActions,
-    items: hasDataSource ? definition.dataSource.items : [],
+    items: hasDataSource ? context.items : [],
     contentTag: 'v-layout',
   };
 
@@ -33,8 +34,29 @@ const getProps = (context) => {
   if (rowsPerPageText) props.rowsPerPageText = rowsPerPageText;
   if (noResultsText) props.noResultsText = noResultsText;
   if (noDataText) props.noDataText = noDataText;
+  if (context.isDataSourceRemoteValid) props.totalItems = context.totalItems;
+  if (context.pagination) props.pagination = context.pagination;
 
   return props;
+};
+
+const getPagination = (definition) => {
+  const defaultPagination = {
+    descending: false,
+    sortBy: null,
+    rowsPerPage: 10,
+    page: 1,
+    totalItems: 0,
+  };
+
+  const pagination = defaults({
+    rowsPerPage: definition.rowsPerPage,
+    sortBy: definition.sortBy,
+    descending: definition.sortDescending,
+    page: definition.startPage,
+  }, defaultPagination);
+
+  return pagination;
 };
 
 const getListAvatar = (createElement, item) => {
@@ -93,17 +115,16 @@ const getCardSlot = (createElement) => {
 };
 
 const getListeners = (context) => {
+  const self = context;
+
   const listeners = {
     'update:pagination': (value) => {
-      const options = context.definition;
-      const pagination = merge(value, {
-        rowsPerPage: options.rowsPerPage,
-        sortBy: options.sortBy,
-        descending: options.sortDescending,
-        page: options.startPage,
-      });
+      if (self.pagination && self.pagination.totalItems && self.dataSourceParams.pagination) {
+        self.dataSourceParams.pagination.page = value.page;
+        self.loadData();
+      }
 
-      context.$emit('update:pagination', pagination);
+      self.pagination = value;
     },
   };
 
@@ -114,7 +135,37 @@ export default {
   mixins: [
     elementable,
     localizable,
+    sourceable,
+    reactionable,
   ],
+  data() {
+    return {
+      items: [],
+      pagination: null,
+      totalItems: null,
+    };
+  },
+  methods: {
+    loadData() {
+      this.loadConnectorData().then((result) => {
+        this.items = result.items || [];
+        this.totalItems = result.pagination ? result.pagination.totalResults : 0;
+        this.sendToEventBus('DataSourceChanged', this.dataSource);
+      });
+    },
+  },
+  watch: {
+    dataSource: {
+      handler() {
+        this.loadData();
+      },
+      deep: true,
+    },
+  },
+  mounted() {
+    this.pagination = getPagination(this.definition);
+    this.loadData();
+  },
   render(createElement) {
     const children = [
       createElement(
