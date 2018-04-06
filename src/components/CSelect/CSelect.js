@@ -29,7 +29,7 @@ const getListeners = (context) => {
 const getPropAppendIcon = definition => definition.appendIcon || 'arrow_drop_down';
 
 const getPropRequired = (definition) => {
-  if (definition.validation) {
+  if (!isNil(definition.validation)) {
     return !!definition.validation.required;
   }
 

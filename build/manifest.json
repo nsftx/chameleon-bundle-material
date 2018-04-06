@@ -12,10 +12,15 @@
         "global": "__CHAMELEON_MATERIAL__"
     },
     {
+      "script": "index.min.js",
+      "type": "deploy",
+      "global": "__CHAMELEON_MATERIAL__"
+    },
+    {
         "script": "index.meta.js",
         "type": "meta",
         "global": "__CHAMELEON_MATERIAL_META__"
      }
   ],
-  "helpPath": "help" 
+  "helpPath": "help"
 }

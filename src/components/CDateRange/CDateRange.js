@@ -58,6 +58,7 @@ const getTextProps = (context) => {
 };
 
 const getAllowedDates = (context, endRange) => {
+  if (isNil(context.definition.validation)) return null;
   const max = context.definition.validation.maxDate;
   let min = context.definition.validation.minDate;
 
@@ -88,7 +89,7 @@ const getPickerDefinition = (context, endRange) => {
 
   if (context.value) {
     definition.value = endRange ? context.value[1] : context.value[0];
-  } else {
+  } else if (definition.value) {
     definition.value = endRange ? definition.value[1] : definition.value[0];
   }
 

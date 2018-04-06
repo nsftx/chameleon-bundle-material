@@ -30,7 +30,7 @@ module.exports = {
       'vue': 'never'
     }],
     'import/no-extraneous-dependencies': ['error', {
-      'optionalDependencies': ['test/unit/index.js']
+      'optionalDependencies': ['tests/unit/index.js']
     }],
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     'no-underscore-dangle': ['error', {

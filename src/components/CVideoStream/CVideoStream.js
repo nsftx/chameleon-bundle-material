@@ -10,7 +10,7 @@ const getStaticStyle = (definition) => {
   let height = 'auto';
   let paddingTop = 0;
 
-  if (definition.aspectRatio !== 'auto') {
+  if (definition.aspectRatio !== 'auto' && !isNil(definition.aspectRatio)) {
     height = 0;
     const ratioValue = definition.aspectRatio.split(':');
     paddingTop = `${(ratioValue[1] / ratioValue[0]) * 100}%`;

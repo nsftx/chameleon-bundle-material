@@ -1,4 +1,4 @@
-import { isString, map } from 'lodash';
+import { isString, map, isNil } from 'lodash';
 import { elementable, fieldable } from '@mixins';
 
 const sourceTypes = {
@@ -45,10 +45,12 @@ const getListeners = (context) => {
 };
 
 const getSourceType = (source) => {
-  const parts = source.split('.');
-  const ext = parts.pop();
-
-  return sourceTypes[ext];
+  if (source) {
+    const parts = source.split('.');
+    const ext = parts.pop();
+    return sourceTypes[ext];
+  }
+  return sourceTypes.mp4;
 };
 
 const getSources = (createElement, context) => {
@@ -76,7 +78,7 @@ const getStaticStyle = (definition) => {
   let height = 'auto';
   let paddingTop = 0;
 
-  if (definition.aspectRatio !== 'auto') {
+  if (definition.aspectRatio !== 'auto' && !isNil(definition.aspectRatio)) {
     height = 0;
     const ratioValue = definition.aspectRatio.split(':');
     paddingTop = `${(ratioValue[1] / ratioValue[0]) * 100}%`;
