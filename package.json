@@ -20,7 +20,7 @@
   },
   "main": "dist/chameleon-vuetify.min.js",
   "dependencies": {
-    "@nsoft/chameleon-sdk": "^1.0.25",
+    "@nsoft/chameleon-sdk": "^1.0.28",
     "chameleon-notation": "^1.0.14",
     "lodash": "^4.17.5",
     "moment": "^2.22.0",
@@ -29,7 +29,7 @@
     "validator": "^9.4.1",
     "vue": "^2.5.16",
     "vue-jsoneditor": "^1.0.13",
-    "vuetify": "^1.0.13"
+    "vuetify": "^1.0.14"
   },
   "devDependencies": {
     "@vue/test-utils": "^1.0.0-beta.13",
@@ -89,7 +89,7 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "url-loader": "^0.5.8",
-    "vue-jest": "^2.2.1",
+    "vue-jest": "^2.4.1",
     "vue-loader": "^13.7.1",
     "vue-style-loader": "^3.1.2",
     "vue-template-compiler": "^2.5.16",
