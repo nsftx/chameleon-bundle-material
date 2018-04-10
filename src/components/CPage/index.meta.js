@@ -10,9 +10,9 @@ export default {
           items: '$app.pages',
           itemValue: 'path',
           itemText: 'name',
-        }
+        },
       },
-    }
+    },
   ],
   events: [
     { name: 'Loading' },

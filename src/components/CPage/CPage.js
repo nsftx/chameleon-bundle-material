@@ -16,11 +16,16 @@ export default {
   },
   methods: {
     navigateToPage(payload, data) {
-      if (payload && payload.page) {
-        this.$router.push({
-          path: payload.page,
-          params: data,
-        });
+      const route = {
+        path: payload.page,
+        params: data,
+      };
+
+      if (!this.registry.isPreviewMode && payload && payload.page) {
+        this.$router.push(route);
+      } else {
+        // eslint-disable-next-line
+        console.info('[CMB] Navigation disabled in preview mode =>', JSON.stringify(route));
       }
     },
   },
