@@ -17,11 +17,11 @@ export default {
   methods: {
     navigateToPage(payload, data) {
       const route = {
-        path: payload.page,
-        params: data,
+        path: data.page,
+        params: payload,
       };
 
-      if (!this.registry.isPreviewMode && payload && payload.page) {
+      if (!this.registry.isPreviewMode && route.path) {
         this.$router.push(route);
       } else {
         // eslint-disable-next-line

@@ -18,7 +18,7 @@ const getPropRowsPerPageItems = (value) => {
 
 const getAttrs = (context) => {
   const attrs = {
-    name: context.definition.name,
+    name: context.config.name,
   };
 
   return attrs;
@@ -117,7 +117,7 @@ const getHeadersProp = (dataSource) => {
   }, getCellInferredProps(column))));
 };
 
-const getPagination = (definition) => {
+const getPagination = (config) => {
   const defaultPagination = {
     descending: false,
     sortBy: null,
@@ -127,17 +127,17 @@ const getPagination = (definition) => {
   };
 
   const pagination = defaults({
-    rowsPerPage: definition.rowsPerPage,
-    sortBy: definition.sortBy,
-    descending: definition.sortDescending,
-    page: definition.startPage,
+    rowsPerPage: config.rowsPerPage,
+    sortBy: config.sortBy,
+    descending: config.sortDescending,
+    page: config.startPage,
   }, defaultPagination);
 
   return pagination;
 };
 
 const getProps = (context) => {
-  const definition = context.definition;
+  const config = context.config;
   const dataSource = context.dataSource;
   const hasDataSource = !isNil(dataSource);
   const columns = hasDataSource && dataSource.schema;
@@ -148,12 +148,12 @@ const getProps = (context) => {
     headers: columns ? getHeadersProp(dataSource) : [],
     itemKey: columns ? keys(columns[0])[0] : 'id',
     loading: context.loadingDataSource,
-    rowsPerPageItems: getPropRowsPerPageItems(definition.rowsPerPageItems),
+    rowsPerPageItems: getPropRowsPerPageItems(config.rowsPerPageItems),
   };
 
-  const rowsPerPageText = context.localize(definition.rowsPerPageText);
-  const noResultsText = context.localize(definition.noResultsText);
-  const noDataText = context.localize(definition.noDataText);
+  const rowsPerPageText = context.localize(config.rowsPerPageText);
+  const noResultsText = context.localize(config.noResultsText);
+  const noDataText = context.localize(config.noDataText);
 
   if (rowsPerPageText) props.rowsPerPageText = rowsPerPageText;
   if (noResultsText) props.noResultsText = noResultsText;
@@ -218,7 +218,7 @@ export default {
     },
   },
   mounted() {
-    this.pagination = getPagination(this.definition);
+    this.pagination = getPagination(this.config);
     this.loadData();
   },
   render(createElement) {
@@ -231,8 +231,8 @@ export default {
           on: getListeners(this),
           scopedSlots: getScopedSlots(createElement, this.dataSource),
           class: [
-            this.definition.color || 'white',
-            this.definition.flat ? null : 'elevation-1',
+            this.config.color || 'white',
+            this.config.flat ? null : 'elevation-1',
           ],
         },
       ),
