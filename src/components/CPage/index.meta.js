@@ -6,7 +6,7 @@ export default {
       data: {
         page: {
           name: 'Page',
-          type: 'string',
+          type: 'select',
           items: '$app.pages',
           itemValue: 'path',
           itemText: 'name',
@@ -17,5 +17,6 @@ export default {
   events: [
     { name: 'Loading' },
   ],
-  options: {},
+  options: null,
+  hidden: true,
 };
