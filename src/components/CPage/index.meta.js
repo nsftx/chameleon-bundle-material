@@ -7,6 +7,7 @@ export default {
         page: {
           name: 'Page',
           type: 'select',
+          valueType: 'string',
           items: '$app.pages',
           itemValue: 'path',
           itemText: 'name',
