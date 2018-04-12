@@ -1,4 +1,4 @@
-import { each, kebabCase } from 'lodash';
+import { each, kebabCase, isNil } from 'lodash';
 import { elementable, reactionable } from '@mixins';
 
 export default {
@@ -16,6 +16,12 @@ export default {
   },
   methods: {
     navigateToPage(payload, data) {
+      if (isNil(data)) {
+        // eslint-disable-next-line
+        console.info('[CMB] Data is required for navigation');
+        return;
+      }
+
       const route = {
         path: data.page,
         params: payload,
