@@ -1,5 +1,6 @@
 import { isNil, map } from 'lodash';
-import { elementable, fieldable, validatable } from '@mixins';
+import { fieldable, validatable } from '@mixins';
+import Element from '../Element';
 
 const createErrorMessage = (createElement, context) => {
   const el = createElement(
@@ -57,8 +58,8 @@ const getItemProps = (context, item) => {
 };
 
 export default {
+  extends: Element,
   mixins: [
-    elementable,
     fieldable,
     validatable,
   ],
@@ -71,27 +72,25 @@ export default {
       };
     }
 
-    return createElement(
-      'v-card',
-      {
-        props: {
-          color: 'transparent',
-          flat: true,
-        },
-        attrs: this.getSchemaAttributes(),
-        staticClass: `${this.baseClass} ${this.$options.name}`,
+    const data = {
+      props: {
+        color: 'transparent',
+        flat: true,
       },
-      [
-        map(this.definition.dataSource.items,
-          item => createElement('v-checkbox',
-            {
-              attrs: getItemAttrs(this),
-              props: getItemProps(this, item),
-              on: getItemListeners(this, item),
-            },
-          )),
-        message,
-      ],
-    );
+    };
+
+    const children = [
+      map(this.definition.dataSource.items,
+        item => createElement('v-checkbox',
+          {
+            attrs: getItemAttrs(this),
+            props: getItemProps(this, item),
+            on: getItemListeners(this, item),
+          },
+        )),
+      message,
+    ];
+
+    return this.renderElement('v-card', data, children);
   },
 };

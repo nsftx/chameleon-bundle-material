@@ -1,5 +1,6 @@
 import _ from 'lodash';
-import { elementable, fieldable, validatable } from '@mixins';
+import { fieldable, validatable } from '@mixins';
+import Element from '../Element';
 
 require('../../style/components/_rating.styl');
 
@@ -75,8 +76,8 @@ const getTitle = (createElement, context) => {
 };
 
 export default {
+  extends: Element,
   mixins: [
-    elementable,
     fieldable,
     validatable,
   ],
@@ -98,24 +99,23 @@ export default {
     const title = getTitle(createElement, self);
     const message = getMessage(createElement, self);
 
-    return createElement(
-      'div',
-      {
-        attrs: this.getSchemaAttributes(),
-        class: {
-          'rating--error': this.hasError,
-        },
-        staticClass: `${this.baseClass} ${this.$options.name} text-xs-center`,
+    const data = {
+      class: {
+        'rating--error': this.hasError,
+        'text-xs-center': true,
       },
-      [
-        title,
-        createElement(
-          'div',
-          icons,
-        ),
-        message,
-      ],
-    );
+    };
+
+    const children = [
+      title,
+      createElement(
+        'div',
+        icons,
+      ),
+      message,
+    ];
+
+    return this.renderElement('div', data, children);
   },
   mounted() {
     this.fillLevel = parseInt(this.value, 10);

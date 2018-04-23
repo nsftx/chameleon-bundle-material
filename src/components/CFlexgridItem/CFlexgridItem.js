@@ -1,21 +1,20 @@
-import { merge } from 'lodash';
-import { elementable } from '@mixins';
+import Element from '../Element';
 
 export default {
-  mixins: [
-    elementable,
-  ],
+  extends: Element,
   render(createElement) {
-    return createElement('v-flex', {
-      attrs: merge({
+    const data = {
+      attrs: {
         [`xs${this.definition.width}`]: true,
-      }, this.getSchemaAttributes()),
-      staticClass: `${this.baseClass} ${this.$options.name}`,
-    },
-      [
-        createElement('div', {
-          staticClass: `${this.baseChildrenClass} ${this.$options.name}-items`,
-        }, this.renderChildren(createElement)),
-      ]);
+      },
+    };
+
+    const children = createElement('div',
+      {
+        staticClass: `${this.baseChildrenClass} ${this.$options.name}-items`,
+      },
+      this.renderChildren(createElement));
+
+    return this.renderElement('v-flex', data, children);
   },
 };

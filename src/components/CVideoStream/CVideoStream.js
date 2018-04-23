@@ -1,5 +1,6 @@
 import { isNil } from 'lodash';
-import { elementable, fieldable } from '@mixins';
+import { fieldable } from '@mixins';
+import Element from '../Element';
 
 const getStreamType = (definition) => {
   const type = isNil(definition.streamType) ? 'img' : definition.streamType;
@@ -28,41 +29,31 @@ const getStaticStyle = (definition) => {
 };
 
 export default {
+  extends: Element,
   mixins: [
-    elementable,
     fieldable,
   ],
   render(createElement) {
-    return createElement(
-      'div',
+    const data = {
+      staticStyle: getStaticStyle(this.definition),
+    };
+
+    const children = createElement(
+      getStreamType(this.definition),
       {
-        attrs: this.getSchemaAttributes(),
-        staticClass: `${this.baseClass} ${this.$options.name}`,
+        attrs: {
+          src: this.registry.isPreviewMode ? null : this.definition.value,
+          width: '100%',
+          height: '100%',
+        },
+        staticStyle: {
+          position: this.definition.aspectRatio !== 'auto' ? 'absolute' : 'relative',
+          top: 0,
+          left: 0,
+        },
       },
-      [
-        createElement('div',
-          {
-            staticStyle: getStaticStyle(this.definition),
-          },
-          [
-            createElement(
-              getStreamType(this.definition),
-              {
-                attrs: {
-                  src: this.registry.isPreviewMode ? null : this.definition.value,
-                  width: '100%',
-                  height: '100%',
-                },
-                staticStyle: {
-                  position: this.definition.aspectRatio !== 'auto' ? 'absolute' : 'relative',
-                  top: 0,
-                  left: 0,
-                },
-              },
-            ),
-          ],
-        ),
-      ],
     );
+
+    return this.renderElement('div', data, children);
   },
 };

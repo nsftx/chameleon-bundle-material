@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { elementable } from '@mixins';
+import Element from '../Element';
 
 const getItemProps = (context) => {
   const props = {
@@ -25,28 +25,20 @@ const getProps = (context) => {
 };
 
 export default {
-  mixins: [
-    elementable,
-  ],
+  extends: Element,
   render(createElement) {
-    const itemProps = getItemProps(this.definition);
-    const items = _.map(this.definition.elements, element => createElement(
+    const data = getProps(this.definition);
+
+    const childrenProps = getItemProps(this.definition);
+    const children = _.map(this.definition.elements, element => createElement(
       this.getElementTag('accordion-item'),
       {
         props: {
-          definition: _.merge({}, element, itemProps),
+          definition: _.merge({}, element, childrenProps),
         },
       },
     ));
 
-    return createElement(
-      'v-expansion-panel',
-      {
-        attrs: this.getSchemaAttributes(),
-        props: getProps(this.definition),
-        staticClass: `${this.baseClass} ${this.$options.name}`,
-      },
-      items,
-    );
+    return this.renderElement('v-expansion-panel', data, children);
   },
 };

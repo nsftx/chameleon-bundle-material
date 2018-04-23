@@ -1,5 +1,5 @@
 import { defaults, isNil, isString, map } from 'lodash';
-import { elementable, localizable, reactionable, sourceable } from '@mixins';
+import Element from '../Element';
 
 const getPropRowsPerPageItems = (value) => {
   if (isNil(value)) {
@@ -132,12 +132,7 @@ const getListeners = (context) => {
 };
 
 export default {
-  mixins: [
-    elementable,
-    localizable,
-    sourceable,
-    reactionable,
-  ],
+  extends: Element,
   data() {
     return {
       items: [],
@@ -167,28 +162,20 @@ export default {
     this.loadData();
   },
   render(createElement) {
-    const children = [
-      createElement(
-        'v-data-iterator',
-        {
-          attrs: {
-            name: this.definition.name,
-            wrap: this.definition.wrap,
-          },
-          class: [
-            this.definition.color || 'white',
-            this.definition.flat ? null : 'elevation-1',
-          ],
-          props: getProps(this),
-          scopedSlots: getCardSlot(createElement),
-          on: getListeners(this),
-        },
-      ),
-    ];
+    const data = {
+      attrs: {
+        name: this.definition.name,
+        wrap: this.definition.wrap,
+      },
+      class: [
+        this.definition.color || 'white',
+        this.definition.flat ? null : 'elevation-1',
+      ],
+      props: getProps(this),
+      scopedSlots: getCardSlot(createElement),
+      on: getListeners(this),
+    };
 
-    return createElement('div', {
-      attrs: this.getSchemaAttributes(),
-      staticClass: `${this.baseClass} ${this.$options.name}`,
-    }, children);
+    return this.renderElement('v-data-iterator', data);
   },
 };

@@ -1,6 +1,6 @@
 import { concat, each, filter, kebabCase, isArray, isNil, isObject, map, merge } from 'lodash';
 import uuid from 'uuid/v4';
-import { elementable } from '@mixins';
+import Element from '../Element';
 
 const getListeners = (context) => {
   const listeners = {};
@@ -28,9 +28,7 @@ const getComponentTag = (name, context) => {
 };
 
 export default {
-  mixins: [
-    elementable,
-  ],
+  extends: Element,
   provide() {
     return {
       form: {
@@ -80,69 +78,66 @@ export default {
   },
   render(createElement) {
     const context = this;
+
+    const data = {
+      props: {
+        color: 'transparent',
+        flat: true,
+      },
+    };
+
     // TODO: Extract children render function
     // Arrow function madness ahead
-    return createElement(
-      'v-card',
+    const children = createElement(
+      'v-form',
       {
-        attrs: this.getSchemaAttributes(),
-        props: {
-          color: 'transparent',
-          flat: true,
-        },
-        staticClass: `${this.baseClass} ${this.baseParentClass} ${this.$options.name}`,
+        ref: this.definition.name,
+        staticClass: this.$options.name,
       },
       [
         createElement(
-          'v-form',
+          'v-card-text',
           {
-            ref: this.definition.name,
-            staticClass: this.$options.name,
+            staticClass: `${context.baseChildrenClass} ${context.$options.name}-items`,
           },
-          [
-            createElement(
-              'v-card-text',
+          map(this.getFields(), (field) => {
+            const self = this;
+            return createElement(
+              getComponentTag(field.type, this),
               {
-                staticClass: `${context.baseChildrenClass} ${context.$options.name}-items`,
-              },
-              map(this.getFields(), (field) => {
-                const self = this;
-                return createElement(
-                  getComponentTag(field.type, this),
-                  {
-                    props: {
-                      definition: field,
-                      validators: this.registry.validators,
-                    },
-                    // TODO: Expand field listeners if needed
-                    // Should fields be able to trigger flow?
-                    on: {
-                      input(value) {
-                        const currentField = field;
-                        currentField.value = value;
-                        self.$emit('input', value);
-                      },
-                    },
-                  },
-                );
-              }),
-            ),
-            createElement(
-              'v-card-actions',
-              map(this.getActions(), button => createElement(this.getElementTag('button'),
-                {
-                  // Dynamic key to disable component re-use
-                  key: `${button.name}_${uuid()}`,
-                  props: {
-                    definition: button,
-                  },
-                  on: getListeners(context),
+                props: {
+                  definition: field,
+                  validators: this.registry.validators,
                 },
-              )),
-            ),
-          ],
+                // TODO: Expand field listeners if needed
+                // Should fields be able to trigger flow?
+                on: {
+                  input(value) {
+                    const currentField = field;
+                    currentField.value = value;
+                    self.$emit('input', value);
+                  },
+                },
+              },
+            );
+          }),
+        ),
+        createElement(
+          'v-card-actions',
+          map(this.getActions(), button => createElement(this.getElementTag('button'),
+            {
+              // Dynamic key to disable component re-use
+              key: `${button.name}_${uuid()}`,
+              props: {
+                definition: button,
+              },
+              on: getListeners(context),
+            },
+          )),
         ),
       ],
     );
+
+    return this.renderElement('v-card', data, children);
   },
 };

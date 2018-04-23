@@ -1,36 +1,30 @@
-import { elementable } from '@mixins';
+import Element from '../Element';
 
 require('../../style/components/_hlist.styl');
 
 export default {
-  mixins: [
-    elementable,
-  ],
+  extends: Element,
   render(createElement) {
     const self = this;
 
-    return createElement(
-      'v-card',
-      {
-        key: self.schema.uid,
-        attrs: self.getSchemaAttributes(),
-        class: {
-          [`${self.$options.name}--spaced`]: self.definition.gutter,
-        },
-        props: {
-          color: self.definition.color,
-          flat: self.definition.flat,
-        },
-        style: {
-          backgroundColor: self.definition.color,
-        },
-        staticClass: `${self.baseClass} ${self.$options.name}`,
+    const data = {
+      key: self.schema.uid,
+      class: {
+        [`${self.$options.name}--spaced`]: self.definition.gutter,
       },
-      [
-        createElement('div', {
-          staticClass: `${self.baseChildrenClass} ${self.$options.name}-items`,
-        }, self.renderChildren(createElement)),
-      ],
-    );
+      props: {
+        color: self.definition.color,
+        flat: self.definition.flat,
+      },
+      style: {
+        backgroundColor: self.definition.color,
+      },
+    };
+
+    const children = createElement('div', {
+      staticClass: `${self.baseChildrenClass} ${self.$options.name}-items`,
+    }, self.renderChildren(createElement));
+
+    return this.renderElement('v-card', data, children);
   },
 };

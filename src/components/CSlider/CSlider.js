@@ -1,6 +1,7 @@
-import { fieldable, elementable } from '@mixins';
+import { fieldable } from '@mixins';
 import { validator } from '@validators';
 import { isNil } from 'lodash';
+import Element from '../Element';
 
 const getAttrs = (context) => {
   const attrs = {
@@ -75,25 +76,17 @@ const getProps = (context) => {
 };
 
 export default {
+  extends: Element,
   mixins: [
     fieldable,
-    elementable,
   ],
-  render(createElement) {
-    const children = [
-      createElement(
-        'v-slider',
-        {
-          attrs: getAttrs(this),
-          props: getProps(this),
-          on: getListeners(this),
-        },
-      ),
-    ];
+  render() {
+    const data = {
+      attrs: getAttrs(this),
+      props: getProps(this),
+      on: getListeners(this),
+    };
 
-    return createElement('div', {
-      attrs: this.getSchemaAttributes(),
-      staticClass: `${this.baseClass} ${this.$options.name}`,
-    }, children);
+    return this.renderElement('v-slider', data);
   },
 };

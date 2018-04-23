@@ -1,5 +1,7 @@
-import { elementable, fieldable } from '@mixins';
+import { fieldable } from '@mixins';
 import { validator } from '@validators';
+import Element from '../Element';
+
 
 const getAttrs = (context) => {
   const definition = context.definition;
@@ -63,25 +65,17 @@ const getProps = (context) => {
 };
 
 export default {
+  extends: Element,
   mixins: [
-    elementable,
     fieldable,
   ],
-  render(createElement) {
-    const children = [
-      createElement(
-        'v-checkbox',
-        {
-          attrs: getAttrs(this),
-          props: getProps(this),
-          on: getListeners(this),
-        },
-      ),
-    ];
+  render() {
+    const data = {
+      attrs: getAttrs(this),
+      props: getProps(this),
+      on: getListeners(this),
+    };
 
-    return createElement('div', {
-      attrs: this.getSchemaAttributes(),
-      staticClass: `${this.baseClass} ${this.$options.name}`,
-    }, children);
+    return this.renderElement('v-checkbox', data);
   },
 };

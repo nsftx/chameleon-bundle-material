@@ -1,5 +1,6 @@
 import { isArray } from 'lodash';
-import { elementable, fieldable, validatable, dependable } from '@mixins';
+import { fieldable, validatable } from '@mixins';
+import Element from '../Element';
 
 require('../../style/components/_rich-text.styl');
 
@@ -58,11 +59,10 @@ const getToolbar = (definition) => {
 };
 
 export default {
+  extends: Element,
   mixins: [
-    elementable,
     fieldable,
     validatable,
-    dependable,
   ],
   data() {
     return {
@@ -108,29 +108,26 @@ export default {
     },
   },
   render(createElement) {
-    return createElement(
+    /*
+      TODO: Change this margin.
+      Figure out the way to separate custom controls in form (maybe on form level)
+      Vuetify controls already have spacing between
+    */
+    const data = {
+      class: {
+        'rich-text--error': this.hasError,
+        'mb-3': true,
+      },
+    };
+
+    const children = createElement(
       'div',
       {
-        /*
-          TODO: Change this margin.
-          Figure out the way to separate custom controls in form (maybe on form level)
-          Vuetify controls already have spacing between
-        */
-        staticClass: `${this.baseClass} ${this.$options.name} mb-3`,
-        attrs: this.getSchemaAttributes(),
-        class: {
-          'rich-text--error': this.hasError,
-        },
+        ref: 'editor',
       },
-      [
-        createElement(
-          'div',
-          {
-            ref: 'editor',
-          },
-        ),
-      ],
     );
+
+    return this.renderElement('div', data, children);
   },
   mounted() {
     const urls = [

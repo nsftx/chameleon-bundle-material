@@ -1,4 +1,4 @@
-import { elementable } from '@mixins';
+import Element from '../Element';
 
 const getTabItemContent = (context, createElement) => {
   const element = context.definition;
@@ -20,18 +20,14 @@ const getTabItemContent = (context, createElement) => {
 };
 
 export default {
-  mixins: [
-    elementable,
-  ],
+  extends: Element,
   render(createElement) {
-    return createElement(
-      'v-tab-item',
-      {
-        attrs: this.getSchemaAttributes(),
-        key: this.schema.uid,
-        staticClass: `${this.baseClass} ${this.$options.name}`,
-      },
-      [getTabItemContent(this, createElement)],
-    );
+    const data = {
+      key: this.schema.uid,
+    };
+
+    const children = getTabItemContent(this, createElement);
+
+    return this.renderElement('v-tab-item', data, children);
   },
 };

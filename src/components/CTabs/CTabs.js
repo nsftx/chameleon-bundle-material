@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import uuid from 'uuid/v4';
-import { elementable } from '@mixins';
+import Element from '../Element';
 
 const getProps = (context) => {
   const props = {
@@ -41,10 +41,13 @@ const getTabs = (context, createElement) => {
 };
 
 export default {
-  mixins: [
-    elementable,
-  ],
+  extends: Element,
   render(createElement) {
+    const data = {
+      key: this.schema.uid,
+      props: getProps(this.definition),
+    };
+
     const tabs = getTabs(this.definition, createElement);
 
     const items = _.map(this.definition.elements, element => createElement(
@@ -58,18 +61,13 @@ export default {
       },
     ));
 
-    return createElement(
-      'v-tabs',
-      {
-        key: this.schema.uid,
-        attrs: this.getSchemaAttributes(),
-        props: getProps(this.definition),
-        staticClass: `${this.baseClass} ${this.$options.name}`,
-      },
-      _.concat(tabs, createElement(
+    const children = _.concat(tabs,
+      createElement(
         'v-tabs-items',
         items,
-      )),
+      ),
     );
+
+    return this.renderElement('v-tabs', data, children);
   },
 };

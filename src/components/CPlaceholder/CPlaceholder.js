@@ -1,9 +1,7 @@
-import { elementable } from '@mixins';
+import Element from '../Element';
 
 export default {
-  mixins: [
-    elementable,
-  ],
+  extends: Element,
   render(createElement) {
     const children = [
       createElement(
@@ -11,9 +9,6 @@ export default {
       ),
     ];
 
-    return createElement('div', {
-      attrs: this.getSchemaAttributes(),
-      staticClass: `${this.baseClass} ${this.$options.name}`,
-    }, children);
+    return this.renderElement('div', {}, children);
   },
 };

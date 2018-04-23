@@ -1,11 +1,8 @@
 import { isString, merge, isNil } from 'lodash';
-import { dependable, elementable } from '@mixins';
+import Element from '../Element';
 
 export default {
-  mixins: [
-    dependable,
-    elementable,
-  ],
+  extends: Element,
   props: {
     height: {
       type: String,
@@ -31,16 +28,16 @@ export default {
       this.$emit('ready', map);
     },
   },
-  render(createElement) {
-    return createElement('div', {
+  render() {
+    const data = {
       ref: 'map',
-      attrs: this.getSchemaAttributes(),
       style: {
         width: this.definition.width || this.width,
         height: this.definition.height || this.height,
       },
-      staticClass: `${this.baseClass} ${this.$options.name}`,
-    });
+    };
+
+    return this.renderElement('div', data);
   },
   mounted() {
     const apiKey = this.definition.apiKey;

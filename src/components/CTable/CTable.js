@@ -1,5 +1,5 @@
 import { defaults, each, isNil, isString, keys, map, merge, toLower } from 'lodash';
-import { elementable, localizable, reactionable, sourceable } from '@mixins';
+import Element from '../Element';
 import '../../style/components/_table.styl';
 
 const getPropRowsPerPageItems = (value) => {
@@ -187,12 +187,7 @@ const getListeners = (context) => {
 };
 
 export default {
-  mixins: [
-    elementable,
-    localizable,
-    sourceable,
-    reactionable,
-  ],
+  extends: Element,
   data() {
     return {
       items: [],
@@ -222,25 +217,17 @@ export default {
     this.loadData();
   },
   render(createElement) {
-    const children = [
-      createElement(
-        'v-data-table',
-        {
-          attrs: getAttrs(this),
-          props: getProps(this),
-          on: getListeners(this),
-          scopedSlots: getScopedSlots(createElement, this.dataSource),
-          class: [
-            this.config.color || 'white',
-            this.config.flat ? null : 'elevation-1',
-          ],
-        },
-      ),
-    ];
+    const data = {
+      attrs: getAttrs(this),
+      props: getProps(this),
+      on: getListeners(this),
+      scopedSlots: getScopedSlots(createElement, this.dataSource),
+      class: [
+        this.config.color || 'white',
+        this.config.flat ? null : 'elevation-1',
+      ],
+    };
 
-    return createElement('div', {
-      attrs: this.getSchemaAttributes(),
-      staticClass: `${this.baseClass} ${this.$options.name}`,
-    }, children);
+    return this.renderElement('v-data-table', data);
   },
 };

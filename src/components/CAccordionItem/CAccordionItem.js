@@ -1,4 +1,4 @@
-import { elementable } from '@mixins';
+import Element from '../Element';
 
 const getItemHeader = (element, createElement) => {
   const el = createElement(
@@ -33,25 +33,21 @@ const getItemContent = (context, createElement) => {
 };
 
 export default {
-  mixins: [
-    elementable,
-  ],
+  extends: Element,
   render(createElement) {
-    return createElement(
-      'v-expansion-panel-content',
-      {
-        key: this.schema.uid,
-        props: this.definition,
-        attrs: this.getSchemaAttributes(),
-        staticClass: `${this.baseClass} ${this.$options.name}`,
-        staticStyle: {
-          backgroundColor: this.definition.headerColor,
-        },
+    const data = {
+      key: this.schema.uid,
+      props: this.definition,
+      staticStyle: {
+        backgroundColor: this.definition.headerColor,
       },
-      [
-        getItemHeader(this.definition, createElement),
-        getItemContent(this, createElement),
-      ],
-    );
+    };
+
+    const children = [
+      getItemHeader(this.definition, createElement),
+      getItemContent(this, createElement),
+    ];
+
+    return this.renderElement('v-expansion-panel-content', data, children);
   },
 };

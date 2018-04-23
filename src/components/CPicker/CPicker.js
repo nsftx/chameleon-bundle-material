@@ -1,4 +1,5 @@
-import { elementable, fieldable } from '@mixins';
+import { fieldable } from '@mixins';
+import Element from '../Element';
 
 const getDatePickerProps = (context) => {
   const props = {
@@ -112,8 +113,8 @@ const getTimePickerListeners = (context) => {
 };
 
 export default {
+  extends: Element,
   mixins: [
-    elementable,
     fieldable,
   ],
   props: {
@@ -186,13 +187,6 @@ export default {
       ]);
     }
 
-    return createElement(
-      'div',
-      {
-        attrs: this.getSchemaAttributes(),
-        staticClass: `${this.baseClass} ${this.$options.name}`,
-      },
-      children,
-    );
+    return this.renderElement('div', {}, children);
   },
 };

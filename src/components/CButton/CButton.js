@@ -1,5 +1,5 @@
-import { each, isUndefined, merge } from 'lodash';
-import { elementable } from '@mixins';
+import { each, isUndefined } from 'lodash';
+import Element from '../Element';
 
 const getAttrs = (context) => {
   const attrs = {
@@ -43,21 +43,14 @@ const getListeners = (context) => {
 };
 
 export default {
-  mixins: [
-    elementable,
-  ],
-  render(createElement) {
-    return createElement(
-      'v-btn',
-      {
-        attrs: merge(getAttrs(this), this.getSchemaAttributes()),
-        props: getProps(this),
-        on: getListeners(this),
-        staticClass: `${this.baseClass} ${this.$options.name}`,
-      },
-      [
-        this.definition.label,
-      ],
-    );
+  extends: Element,
+  render() {
+    const data = {
+      attrs: getAttrs(this),
+      props: getProps(this),
+      on: getListeners(this),
+    };
+
+    return this.renderElement('v-btn', data, this.definition.label);
   },
 };

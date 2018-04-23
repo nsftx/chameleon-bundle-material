@@ -1,5 +1,6 @@
 import { isString, map, isNil } from 'lodash';
-import { elementable, fieldable } from '@mixins';
+import { fieldable } from '@mixins';
+import Element from '../Element';
 
 const sourceTypes = {
   webm: 'video/webm',
@@ -96,42 +97,30 @@ const getStaticStyle = (definition) => {
 };
 
 export default {
+  extends: Element,
   mixins: [
-    elementable,
     fieldable,
   ],
   render(createElement) {
-    return createElement(
-      'div',
+    const data = {
+      staticStyle: getStaticStyle(this.definition),
+    };
+
+    const children = createElement(
+      'video',
       {
-        attrs: this.getSchemaAttributes(),
-        staticClass: `${this.baseClass} ${this.$options.name}`,
+        attrs: getAttrs(this),
+        on: getListeners(this),
+        ref: 'video',
+        staticStyle: {
+          position: this.definition.aspectRatio !== 'auto' ? 'absolute' : 'relative',
+          top: 0,
+          left: 0,
+        },
       },
-      [
-        createElement('div',
-          {
-            staticStyle: getStaticStyle(this.definition),
-          },
-          [
-            [
-              createElement(
-                'video',
-                {
-                  attrs: getAttrs(this),
-                  on: getListeners(this),
-                  ref: 'video',
-                  staticStyle: {
-                    position: this.definition.aspectRatio !== 'auto' ? 'absolute' : 'relative',
-                    top: 0,
-                    left: 0,
-                  },
-                },
-                getSources(createElement, this),
-              ),
-            ],
-          ],
-        ),
-      ],
+      getSources(createElement, this),
     );
+
+    return this.renderElement('div', data, children);
   },
 };

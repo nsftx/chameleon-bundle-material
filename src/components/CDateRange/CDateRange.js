@@ -1,6 +1,7 @@
 import { clone, isNil } from 'lodash';
-import { elementable, fieldable } from '@mixins';
+import { fieldable } from '@mixins';
 import { validator } from '@validators';
+import Element from '../Element';
 
 const getPropRequired = (definition) => {
   // Required validation is property in Vuetify
@@ -97,8 +98,8 @@ const getPickerDefinition = (context, endRange) => {
 };
 
 export default {
+  extends: Element,
   mixins: [
-    elementable,
     fieldable,
   ],
   data() {
@@ -134,6 +135,10 @@ export default {
   },
   render(createElement) {
     const self = this;
+
+    const data = {
+      props: getMenuProps(this),
+    };
 
     const children = [
       createElement(
@@ -185,14 +190,6 @@ export default {
       ),
     ];
 
-    return createElement(
-      'v-menu',
-      {
-        attrs: this.getSchemaAttributes(),
-        props: getMenuProps(this),
-        staticClass: `${this.baseClass} ${this.$options.name}`,
-      },
-      children,
-    );
+    return this.renderElement('v-menu', data, children);
   },
 };

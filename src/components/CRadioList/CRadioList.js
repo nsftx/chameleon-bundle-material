@@ -1,5 +1,6 @@
 import { map, isNil } from 'lodash';
-import { elementable, fieldable, validatable } from '@mixins';
+import { fieldable, validatable } from '@mixins';
+import Element from '../Element';
 
 const createErrorMessage = (createElement, context) => {
   const el = createElement(
@@ -42,8 +43,8 @@ const getProps = (context) => {
 };
 
 export default {
+  extends: Element,
   mixins: [
-    elementable,
     fieldable,
     validatable,
   ],
@@ -56,36 +57,29 @@ export default {
       };
     }
 
+    const data = {
+      attrs: {
+        name: this.definition.name,
+      },
+      props: getProps(this),
+      on: getListeners(this),
+    };
+
     const children = [
-      createElement(
-        'v-radio-group',
-        {
-          attrs: {
-            name: this.definition.name,
+      map(this.definition.dataSource.items,
+        item => createElement('v-radio',
+          {
+            props: {
+              label: item.label,
+              value: item.value,
+              color: item.color,
+              disabled: item.disabled,
+            },
           },
-          props: getProps(this),
-          on: getListeners(this),
-        },
-        [
-          map(this.definition.dataSource.items,
-            item => createElement('v-radio',
-              {
-                props: {
-                  label: item.label,
-                  value: item.value,
-                  color: item.color,
-                  disabled: item.disabled,
-                },
-              },
-            )),
-          message,
-        ],
-      ),
+        )),
+      message,
     ];
 
-    return createElement('div', {
-      attrs: this.getSchemaAttributes(),
-      staticClass: `${this.baseClass} ${this.$options.name}`,
-    }, children);
+    return this.renderElement('v-radio-group', data, children);
   },
 };
