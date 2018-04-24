@@ -34,21 +34,16 @@ export default {
     const deletableChips = this.selectProps.deletableChips;
     const displayProp = this.selectProps.itemText;
 
-    const children = [
-      createElement(
-        'v-select',
-        {
-          attrs: this.attrs,
-          props: this.selectProps,
-          on: this.listeners,
-          scopedSlots: deletableChips && getDeletableChipSlot(createElement, displayProp),
-        },
-      ),
-    ];
+    const children = createElement(
+      'v-select',
+      {
+        attrs: this.attrs,
+        props: this.selectProps,
+        on: this.listeners,
+        scopedSlots: deletableChips && getDeletableChipSlot(createElement, displayProp),
+      },
+    );
 
-    return createElement('div', {
-      attrs: this.getSchemaAttributes(),
-      staticClass: `${this.baseClass} ${this.$options.name}`,
-    }, children);
+    return this.renderElement('div', {}, children);
   },
 };

@@ -1,6 +1,7 @@
-import { isArray, isNil, merge } from 'lodash';
-import { elementable, fieldable } from '@mixins';
+import { isArray, isNil } from 'lodash';
+import { fieldable } from '@mixins';
 import { validator } from '@validators';
+import Element from '../Element';
 
 const getAttrs = (context) => {
   const attrs = {
@@ -98,8 +99,8 @@ const getProps = (context) => {
 };
 
 export default {
+  extends: Element,
   mixins: [
-    elementable,
     fieldable,
   ],
   data() {
@@ -112,25 +113,20 @@ export default {
   },
   created() {
     const context = this;
-    this.attrs = merge(getAttrs(context), this.getSchemaAttributes());
+    this.attrs = getAttrs(context);
     this.selectProps = getProps(context);
     this.listeners = getListeners(context);
   },
   render(createElement) {
-    const children = [
-      createElement(
-        'v-select',
-        {
-          attrs: this.attrs,
-          props: this.selectProps,
-          on: this.listeners,
-        },
-      ),
-    ];
+    const children = createElement(
+      'v-select',
+      {
+        attrs: this.attrs,
+        props: this.selectProps,
+        on: this.listeners,
+      },
+    );
 
-    return createElement('div', {
-      attrs: this.getSchemaAttributes(),
-      staticClass: `${this.baseClass} ${this.$options.name}`,
-    }, children);
+    return this.renderElement('div', {}, children);
   },
 };
