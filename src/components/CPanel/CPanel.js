@@ -2,7 +2,7 @@ import Element from '../Element';
 
 export default {
   extends: Element,
-  render(createElement) {
+  render() {
     const definition = this.definition;
 
     const data = {
@@ -16,9 +16,7 @@ export default {
       },
     };
 
-    const children = createElement('div', {
-      staticClass: `${this.baseChildrenClass} ${this.$options.name}-items`,
-    }, this.renderChildren(createElement));
+    const children = this.renderChildElement('div');
 
     return this.renderElement('v-card', data, children);
   },

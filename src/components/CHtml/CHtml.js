@@ -12,6 +12,6 @@ export default {
       },
     };
 
-    this.renderElement('div', data);
+    return this.renderElement('div', data);
   },
 };

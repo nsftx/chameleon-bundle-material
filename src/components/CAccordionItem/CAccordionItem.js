@@ -23,9 +23,7 @@ const getItemContent = (context, createElement) => {
       },
     },
     [
-      createElement('v-card-text', {
-        staticClass: `${context.baseChildrenClass} ${context.$options.name}-items`,
-      }, context.renderChildren(createElement)),
+      context.renderChildElement('v-card-text'),
     ],
   );
 

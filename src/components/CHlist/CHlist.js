@@ -4,7 +4,7 @@ require('../../style/components/_hlist.styl');
 
 export default {
   extends: Element,
-  render(createElement) {
+  render() {
     const self = this;
 
     const data = {
@@ -21,9 +21,7 @@ export default {
       },
     };
 
-    const children = createElement('div', {
-      staticClass: `${self.baseChildrenClass} ${self.$options.name}-items`,
-    }, self.renderChildren(createElement));
+    const children = this.renderChildElement('div');
 
     return this.renderElement('v-card', data, children);
   },

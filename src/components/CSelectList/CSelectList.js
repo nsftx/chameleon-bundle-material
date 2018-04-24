@@ -78,6 +78,6 @@ export default {
           getCardSlot(createElement, this.selectProps.itemText),
     };
 
-    this.renderElement('v-select', data);
+    return this.renderElement('v-select', data);
   },
 };

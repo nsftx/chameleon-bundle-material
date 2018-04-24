@@ -4,7 +4,7 @@ require('../../style/components/_vlist.styl');
 
 export default {
   extends: Element,
-  render(createElement) {
+  render() {
     const data = {
       key: this.schema.uid,
       class: {
@@ -19,9 +19,7 @@ export default {
       },
     };
 
-    const children = createElement('div', {
-      staticClass: `${this.baseChildrenClass} ${this.$options.name}-items`,
-    }, this.renderChildren(createElement));
+    const children = this.renderChildElement('div');
 
     return this.renderElement('v-card', data, children);
   },
