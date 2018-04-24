@@ -12,7 +12,6 @@ export { default as CForm } from './CForm';
 export { default as CHlist } from './CHlist';
 export { default as CHtml } from './CHtml';
 export { default as CList } from './CList';
-export { default as CLuckysix } from './CLuckysix';
 export { default as CMap } from './CMap';
 export { default as CPanel } from './CPanel';
 export { default as CPage } from './CPage';

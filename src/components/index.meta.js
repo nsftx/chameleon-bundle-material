@@ -12,7 +12,6 @@ export { default as form } from './CForm/index.meta';
 export { default as hlist } from './CHlist/index.meta';
 export { default as html } from './CHtml/index.meta';
 export { default as list } from './CList/index.meta';
-export { default as luckysix } from './CLuckysix/index.meta';
 export { default as page } from './CPage/index.meta';
 export { default as panel } from './CPanel/index.meta';
 export { default as placeholder } from './CPlaceholder/index.meta';
