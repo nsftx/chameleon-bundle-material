@@ -16,20 +16,20 @@ const getPropRowsPerPageItems = (value) => {
 };
 
 const getProps = (context) => {
-  const definition = context.definition;
+  const config = context.config;
   const dataSource = context.dataSource;
   const hasDataSource = !isNil(dataSource);
 
   const props = {
-    rowsPerPageItems: getPropRowsPerPageItems(definition.rowsPerPageItems),
-    hideActions: definition.hideActions,
+    rowsPerPageItems: getPropRowsPerPageItems(config.rowsPerPageItems),
+    hideActions: config.hideActions,
     items: hasDataSource ? context.items : [],
     contentTag: 'v-layout',
   };
 
-  const rowsPerPageText = context.localize(definition.rowsPerPageText);
-  const noResultsText = context.localize(definition.noResultsText);
-  const noDataText = context.localize(definition.noDataText);
+  const rowsPerPageText = context.localize(config.rowsPerPageText);
+  const noResultsText = context.localize(config.noResultsText);
+  const noDataText = context.localize(config.noDataText);
 
   if (rowsPerPageText) props.rowsPerPageText = rowsPerPageText;
   if (noResultsText) props.noResultsText = noResultsText;
@@ -40,7 +40,7 @@ const getProps = (context) => {
   return props;
 };
 
-const getPagination = (definition) => {
+const getPagination = (config) => {
   const defaultPagination = {
     descending: false,
     sortBy: null,
@@ -50,10 +50,10 @@ const getPagination = (definition) => {
   };
 
   const pagination = defaults({
-    rowsPerPage: definition.rowsPerPage,
-    sortBy: definition.sortBy,
-    descending: definition.sortDescending,
-    page: definition.startPage,
+    rowsPerPage: config.rowsPerPage,
+    sortBy: config.sortBy,
+    descending: config.sortDescending,
+    page: config.startPage,
   }, defaultPagination);
 
   return pagination;
@@ -158,18 +158,18 @@ export default {
     },
   },
   mounted() {
-    this.pagination = getPagination(this.definition);
+    this.pagination = getPagination(this.config);
     this.loadData();
   },
   render(createElement) {
     const data = {
       attrs: {
-        name: this.definition.name,
-        wrap: this.definition.wrap,
+        name: this.config.name,
+        wrap: this.config.wrap,
       },
       class: [
-        this.definition.color || 'white',
-        this.definition.flat ? null : 'elevation-1',
+        this.config.color || 'white',
+        this.config.flat ? null : 'elevation-1',
       ],
       props: getProps(this),
       scopedSlots: getCardSlot(createElement),

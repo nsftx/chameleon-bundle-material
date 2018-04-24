@@ -46,7 +46,7 @@ const getPlayerMethod = (playlist, autoplay) => {
 
 const getPlayerParameters = (context) => {
   const params = {
-    loop: context.definition.repeat,
+    loop: context.config.repeat,
   };
 
   if (context.playlist) {
@@ -67,14 +67,14 @@ export default {
   },
   computed: {
     value() {
-      return this.definition.value;
+      return this.config.value;
     },
   },
   methods: {
     createPlayer() {
       this.player = new window.YT.Player(this.$refs.youtube, {
         playerVars: {
-          controls: this.definition.controls,
+          controls: this.config.controls,
           videoId: 'M7lc1UVf-VE',
         },
         events: {
@@ -82,26 +82,26 @@ export default {
         },
       });
 
-      if (this.definition.muted) {
+      if (this.config.muted) {
         this.player.mute();
       }
     },
     onPlayerReady() {
-      const method = getPlayerMethod(this.playlist, this.definition.autoplay);
+      const method = getPlayerMethod(this.playlist, this.config.autoplay);
       const params = getPlayerParameters(this);
 
       this.player[method](params);
     },
   },
   mounted() {
-    if (isNil(this.definition.playlist)) {
-      this.definition.playlist = {};
+    if (isNil(this.config.playlist)) {
+      this.config.playlist = {};
     }
-    if (isNil(this.definition.value)) {
-      this.definition.value = {};
+    if (isNil(this.config.value)) {
+      this.config.value = {};
     }
-    this.playlist = this.definition.playlist.length || this.definition.value.length > 1;
-    this.predefinedPlaylist = this.definition.playlist.length ? this.definition.playlist : false;
+    this.playlist = this.config.playlist.length || this.config.value.length > 1;
+    this.predefinedPlaylist = this.config.playlist.length ? this.config.playlist : false;
 
     this.loadDependencies('https://www.youtube.com/iframe_api', 'YT.Player').then(() => {
       this.createPlayer();

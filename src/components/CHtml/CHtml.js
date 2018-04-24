@@ -5,10 +5,10 @@ export default {
   render() {
     const data = {
       attrs: {
-        class: this.definition.name,
+        class: this.config.name,
       },
       domProps: {
-        innerHTML: this.definition.value,
+        innerHTML: this.config.value,
       },
     };
 

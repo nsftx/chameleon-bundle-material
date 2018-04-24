@@ -24,7 +24,7 @@ const getLayoutAttrs = (context) => {
 export default {
   extends: Element,
   render(createElement) {
-    const items = map(this.definition.elements, element => createElement(
+    const items = map(this.config.elements, element => createElement(
       this.getElementTag('flexgrid-item'),
       {
         key: `${element.name}_${uuid()}`,
@@ -35,12 +35,12 @@ export default {
     ));
 
     const data = {
-      attrs: getContainerAttrs(this.definition),
+      attrs: getContainerAttrs(this.config),
     };
 
     const children = createElement('v-layout',
       {
-        attrs: getLayoutAttrs(this.definition),
+        attrs: getLayoutAttrs(this.config),
       }, items);
 
     return this.renderElement('v-container', data, children);

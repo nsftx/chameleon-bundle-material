@@ -3,23 +3,23 @@ import { fieldable } from '@mixins';
 import { validator } from '@validators';
 import Element from '../Element';
 
-const getPropRequired = (definition) => {
+const getPropRequired = (config) => {
   // Required validation is property in Vuetify
   // This property sets * next to label
-  if (definition.validation) {
-    return !!definition.validation.required;
+  if (config.validation) {
+    return !!config.validation.required;
   }
 
   return false;
 };
 
 const getMenuProps = (context) => {
-  const definition = context.definition;
+  const config = context.config;
   const width = '290px';
 
   const props = {
     lazy: false,
-    transition: isNil(definition.transition) ? 'scale-transition' : definition.transition,
+    transition: isNil(config.transition) ? 'scale-transition' : config.transition,
     fullWidth: true,
     maxWidth: width,
     minWidth: width,
@@ -30,30 +30,30 @@ const getMenuProps = (context) => {
 };
 
 const getTextAttrs = (context) => {
-  const definition = context.definition;
+  const config = context.config;
 
   const attrs = {
-    name: definition.name,
-    title: definition.tooltip,
+    name: config.name,
+    title: config.tooltip,
   };
 
   return attrs;
 };
 
 const getTextProps = (context) => {
-  const definition = context.definition;
+  const config = context.config;
 
   const props = {
     readonly: true,
-    clearable: isNil(definition.clearable) ? true : definition.clearable,
-    appendIcon: definition.appendIcon,
-    prependIcon: isNil(definition.prependIcon) ? 'event' : definition.prependIcon,
-    label: definition.label,
-    hint: definition.hint,
+    clearable: isNil(config.clearable) ? true : config.clearable,
+    appendIcon: config.appendIcon,
+    prependIcon: isNil(config.prependIcon) ? 'event' : config.prependIcon,
+    label: config.label,
+    hint: config.hint,
     persistentHint: true,
-    placeholder: definition.placeholder,
-    required: getPropRequired(definition),
-    rules: validator.getRules(definition, context.registry.validators),
+    placeholder: config.placeholder,
+    required: getPropRequired(config),
+    rules: validator.getRules(config, context.registry.validators),
     value: context.formattedValue,
   };
 
@@ -82,7 +82,7 @@ const getAllowedDates = (context) => {
 };
 
 const getPickerProps = (context) => {
-  const definition = context.definition;
+  const definition = context.config;
   definition.allowedDates = getAllowedDates(definition);
   if (context.value) definition.value = context.value;
 

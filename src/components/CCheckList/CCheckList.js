@@ -15,10 +15,10 @@ const createErrorMessage = (createElement, context) => {
 };
 
 const getItemAttrs = (context) => {
-  const definition = context.definition;
+  const config = context.config;
 
   const attrs = {
-    name: definition.name,
+    name: config.name,
   };
 
   return attrs;
@@ -39,16 +39,16 @@ const getItemListeners = (context) => {
 };
 
 const getItemProps = (context, item) => {
-  const definition = context.definition;
+  const config = context.config;
 
   const props = {
     label: item.label,
     hideDetails: true,
-    prependIcon: definition.prependIcon,
-    appendIcon: definition.appendIcon,
-    persistentHint: definition.persistentHint,
+    prependIcon: config.prependIcon,
+    appendIcon: config.appendIcon,
+    persistentHint: config.persistentHint,
     inputValue: context.value,
-    hint: definition.hint,
+    hint: config.hint,
     disabled: item.disabled,
     color: item.color,
     value: item.value,
@@ -66,8 +66,8 @@ export default {
   render(createElement) {
     const message = createErrorMessage(createElement, this);
 
-    if (isNil(this.definition.dataSource)) {
-      this.definition.dataSource = {
+    if (isNil(this.config.dataSource)) {
+      this.config.dataSource = {
         items: [],
       };
     }
@@ -80,7 +80,7 @@ export default {
     };
 
     const children = [
-      map(this.definition.dataSource.items,
+      map(this.config.dataSource.items,
         item => createElement('v-checkbox',
           {
             attrs: getItemAttrs(this),

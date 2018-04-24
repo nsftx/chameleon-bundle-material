@@ -3,16 +3,16 @@ import Element from '../Element';
 export default {
   extends: Element,
   render() {
-    const definition = this.definition;
+    const config = this.config;
 
     const data = {
       key: this.schema.uid,
       props: {
-        color: this.getBindingValue(definition.color),
-        flat: definition.flat,
+        color: this.getBindingValue(config.color),
+        flat: config.flat,
       },
       style: {
-        width: definition.width,
+        width: config.width,
       },
     };
 

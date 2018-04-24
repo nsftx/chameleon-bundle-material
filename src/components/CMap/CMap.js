@@ -32,16 +32,16 @@ export default {
     const data = {
       ref: 'map',
       style: {
-        width: this.definition.width || this.width,
-        height: this.definition.height || this.height,
+        width: this.config.width || this.width,
+        height: this.config.height || this.height,
       },
     };
 
     return this.renderElement('div', data);
   },
   mounted() {
-    const apiKey = this.definition.apiKey;
-    const lib = this.definition.libraries;
+    const apiKey = this.config.apiKey;
+    const lib = this.config.libraries;
     const libraries = isString(lib) || isNil(lib) ? lib : lib.join(',');
     const url = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=${libraries}`;
 

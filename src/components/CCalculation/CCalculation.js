@@ -55,15 +55,15 @@ export default {
       try {
         const templateData = assign(getMath(), this.fields);
         this.resolvedValue = template(this.templateValue)(templateData);
-        this.definition.hint = this.resolvedValue;
+        this.config.hint = this.resolvedValue;
       } catch (error) {
         // TODO: Show as field error
-        this.definition.hint = error.message;
+        this.config.hint = error.message;
       }
     },
   },
   created() {
-    assign(this.definition, {
+    assign(this.config, {
       persistentHint: true,
     });
 

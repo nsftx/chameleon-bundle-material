@@ -4,9 +4,9 @@ import Element from '../Element';
 
 const getListeners = (context) => {
   const listeners = {};
-  const formName = context.definition.name;
+  const formName = context.config.name;
 
-  // TODO: Listeners should be generated from definition
+  // TODO: Listeners should be generated from config
   // Listener handler should be generated from flow step
   listeners.save = () => {
     const form = context.$refs[formName];
@@ -43,13 +43,13 @@ export default {
   },
   methods: {
     getActions() {
-      return filter(this.definition.actions, n => !isNil(n.actions));
+      return filter(this.config.actions, n => !isNil(n.actions));
     },
     getForm() {
-      return this.$refs[this.definition.name];
+      return this.$refs[this.config.name];
     },
     getFields() {
-      return filter(this.definition.elements, n => isNil(n.actions));
+      return filter(this.config.elements, n => isNil(n.actions));
     },
     getEntity() {
       const entity = {};
@@ -91,7 +91,7 @@ export default {
     const children = createElement(
       'v-form',
       {
-        ref: this.definition.name,
+        ref: this.config.name,
         staticClass: this.$options.name,
       },
       [

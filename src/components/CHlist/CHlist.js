@@ -10,14 +10,14 @@ export default {
     const data = {
       key: self.schema.uid,
       class: {
-        [`${self.$options.name}--spaced`]: self.definition.gutter,
+        [`${self.$options.name}--spaced`]: self.config.gutter,
       },
       props: {
-        color: self.definition.color,
-        flat: self.definition.flat,
+        color: self.config.color,
+        flat: self.config.flat,
       },
       style: {
-        backgroundColor: self.definition.color,
+        backgroundColor: self.config.color,
       },
     };
 

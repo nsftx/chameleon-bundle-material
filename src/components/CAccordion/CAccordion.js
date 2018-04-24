@@ -27,10 +27,10 @@ const getProps = (context) => {
 export default {
   extends: Element,
   render(createElement) {
-    const data = getProps(this.definition);
+    const data = getProps(this.config);
 
-    const childrenProps = getItemProps(this.definition);
-    const children = _.map(this.definition.elements, element => createElement(
+    const childrenProps = getItemProps(this.config);
+    const children = _.map(this.config.elements, element => createElement(
       this.getElementTag('accordion-item'),
       {
         props: {

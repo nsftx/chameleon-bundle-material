@@ -5,8 +5,8 @@ import Element from '../Element';
 
 const getAttrs = (context) => {
   const attrs = {
-    name: context.definition.name,
-    title: context.definition.tooltip,
+    name: context.config.name,
+    title: context.config.tooltip,
   };
 
   return attrs;
@@ -27,41 +27,41 @@ const getListeners = (context) => {
   return listeners;
 };
 
-const getPropAppendIcon = definition => definition.appendIcon || 'arrow_drop_down';
+const getPropAppendIcon = config => config.appendIcon || 'arrow_drop_down';
 
-const getPropRequired = (definition) => {
-  if (!isNil(definition.validation)) {
-    return !!definition.validation.required;
+const getPropRequired = (config) => {
+  if (!isNil(config.validation)) {
+    return !!config.validation.required;
   }
 
   return false;
 };
 
-const getPropValidateOnBlur = (definition) => {
-  if (definition.validation && definition.validateOn) {
-    return definition.validateOn === 'blur';
+const getPropValidateOnBlur = (config) => {
+  if (config.validation && config.validateOn) {
+    return config.validateOn === 'blur';
   }
 
   return false;
 };
 
-const getPropValue = (definition) => {
-  if (definition.multiple && !isArray(definition.value)) {
-    return [definition.value];
+const getPropValue = (config) => {
+  if (config.multiple && !isArray(config.value)) {
+    return [config.value];
   }
 
-  if (!definition.multiple && isArray(definition.value)) {
-    return definition.value[0];
+  if (!config.multiple && isArray(config.value)) {
+    return config.value[0];
   }
 
-  return definition.value;
+  return config.value;
 };
 
 const getProps = (context) => {
-  const definition = context.definition;
+  const config = context.config;
 
-  if (isNil(definition.dataSource)) {
-    definition.dataSource = {
+  if (isNil(config.dataSource)) {
+    config.dataSource = {
       items: [],
       options: {
         displayProp: 'name',
@@ -70,29 +70,29 @@ const getProps = (context) => {
   }
 
   const props = {
-    appendIcon: getPropAppendIcon(definition),
+    appendIcon: getPropAppendIcon(config),
     autocomplete: true,
     chips: context.chips,
-    clearable: definition.clearable && !definition.readonly,
-    deletableChips: context.chips && definition.multiple && !definition.readonly,
-    hint: definition.hint,
-    items: definition.dataSource.items,
-    itemText: definition.dataSource.options.displayProp,
+    clearable: config.clearable && !config.readonly,
+    deletableChips: context.chips && config.multiple && !config.readonly,
+    hint: config.hint,
+    items: config.dataSource.items,
+    itemText: config.dataSource.options.displayProp,
     itemValue: 'id',
-    label: definition.label,
+    label: config.label,
     loading: false,
-    multiLine: definition.multiLine,
-    multiple: definition.multiple,
-    openOnClear: definition.clearable,
-    persistentHint: definition.persistentHint,
-    placeholder: definition.placeholder,
-    prependIcon: definition.prependIcon,
-    readonly: definition.readonly,
-    required: getPropRequired(definition),
+    multiLine: config.multiLine,
+    multiple: config.multiple,
+    openOnClear: config.clearable,
+    persistentHint: config.persistentHint,
+    placeholder: config.placeholder,
+    prependIcon: config.prependIcon,
+    readonly: config.readonly,
+    required: getPropRequired(config),
     returnObject: true,
-    rules: validator.getRules(definition, context.registry.validators),
-    value: getPropValue(definition),
-    validateOn: getPropValidateOnBlur(definition),
+    rules: validator.getRules(config, context.registry.validators),
+    value: getPropValue(config),
+    validateOn: getPropValidateOnBlur(config),
   };
 
   return props;

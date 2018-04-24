@@ -29,14 +29,14 @@ const getListeners = (context) => {
 };
 
 const getProps = (context) => {
-  const definition = context.definition;
+  const config = context.config;
 
   const props = {
-    appendIcon: definition.appendIcon,
-    hint: definition.hint,
-    persistentHint: definition.persistentHint,
-    prependIcon: definition.prependIcon,
-    value: definition.value,
+    appendIcon: config.appendIcon,
+    hint: config.hint,
+    persistentHint: config.persistentHint,
+    prependIcon: config.prependIcon,
+    value: config.value,
   };
 
   return props;
@@ -51,22 +51,22 @@ export default {
   render(createElement) {
     const message = createErrorMessage(createElement, this);
 
-    if (isNil(this.definition.dataSource)) {
-      this.definition.dataSource = {
+    if (isNil(this.config.dataSource)) {
+      this.config.dataSource = {
         items: [],
       };
     }
 
     const data = {
       attrs: {
-        name: this.definition.name,
+        name: this.config.name,
       },
       props: getProps(this),
       on: getListeners(this),
     };
 
     const children = [
-      map(this.definition.dataSource.items,
+      map(this.config.dataSource.items,
         item => createElement('v-radio',
           {
             props: {

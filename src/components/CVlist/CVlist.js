@@ -8,14 +8,14 @@ export default {
     const data = {
       key: this.schema.uid,
       class: {
-        [`${this.$options.name}--spaced`]: this.definition.gutter,
+        [`${this.$options.name}--spaced`]: this.config.gutter,
       },
       props: {
-        color: this.definition.color,
-        flat: this.definition.flat,
+        color: this.config.color,
+        flat: this.config.flat,
       },
       style: {
-        backgroundColor: this.definition.color,
+        backgroundColor: this.config.color,
       },
     };
 

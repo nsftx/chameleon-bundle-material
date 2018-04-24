@@ -1,6 +1,6 @@
 import validator from 'validator';
 
-export default (definition, value) => {
+export default (config, value) => {
   const isInteger = validator.isNumeric(value);
-  return isInteger ? true : definition.message;
+  return isInteger ? true : config.message;
 };

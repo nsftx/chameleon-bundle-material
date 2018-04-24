@@ -6,11 +6,11 @@ const getDatePickerProps = (context) => {
     noTitle: false,
     scrollable: true,
     autosave: true,
-    fullWidth: context.definition.fullWidth,
-    width: context.definition.width,
+    fullWidth: context.config.fullWidth,
+    width: context.config.width,
     value: context.value ? context.value.substring(0, 10) : null,
-    min: context.definition.allowedDates ? context.definition.allowedDates.min : null,
-    max: context.definition.allowedDates ? context.definition.allowedDates.max : null,
+    min: context.config.allowedDates ? context.config.allowedDates.min : null,
+    max: context.config.allowedDates ? context.config.allowedDates.max : null,
   };
 
   return props;
@@ -134,11 +134,11 @@ export default {
   },
   computed: {
     hasTimeComponent() {
-      return this.definition.time && this.definition.time.enabled;
+      return this.config.time && this.config.time.enabled;
     },
     formattedValue() {
       if (this.value) {
-        const format = this.definition.format || (this.hasTimeComponent ? 'LLL' : 'LL');
+        const format = this.config.format || (this.hasTimeComponent ? 'LLL' : 'LL');
         const formattedValue = moment.utc(this.value).format(format);
 
         return formattedValue;
@@ -161,7 +161,7 @@ export default {
   },
   render(createElement) {
     const children = [];
-    this.value = this.definition.value;
+    this.value = this.config.value;
 
     if (this.hasTimeComponent && this.isTimeVisible) {
       children.push([

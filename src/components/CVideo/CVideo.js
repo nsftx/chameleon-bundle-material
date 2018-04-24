@@ -9,19 +9,19 @@ const sourceTypes = {
 };
 
 const getAttrs = (context) => {
-  const definition = context.definition;
+  const config = context.config;
 
   const attrs = {
-    controls: definition.controls,
-    loop: definition.repeat,
-    muted: definition.muted,
-    title: definition.label,
+    controls: config.controls,
+    loop: config.repeat,
+    muted: config.muted,
+    title: config.label,
     width: '100%',
     height: '100%',
   };
 
-  if (definition.autoplay && !context.registry.isPreviewMode) {
-    attrs.autoplay = definition.autoplay;
+  if (config.autoplay && !context.registry.isPreviewMode) {
+    attrs.autoplay = config.autoplay;
   }
 
   return attrs;
@@ -55,8 +55,8 @@ const getSourceType = (source) => {
 };
 
 const getSources = (createElement, context) => {
-  const definition = context.definition;
-  const srcValues = isString(definition.value) ? [definition.value] : definition.value;
+  const config = context.config;
+  const srcValues = isString(config.value) ? [config.value] : config.value;
 
   const sources = map(srcValues, (source) => {
     const el = createElement(
@@ -75,13 +75,13 @@ const getSources = (createElement, context) => {
   return sources;
 };
 
-const getStaticStyle = (definition) => {
+const getStaticStyle = (config) => {
   let height = 'auto';
   let paddingTop = 0;
 
-  if (definition.aspectRatio !== 'auto' && !isNil(definition.aspectRatio)) {
+  if (config.aspectRatio !== 'auto' && !isNil(config.aspectRatio)) {
     height = 0;
-    const ratioValue = definition.aspectRatio.split(':');
+    const ratioValue = config.aspectRatio.split(':');
     paddingTop = `${(ratioValue[1] / ratioValue[0]) * 100}%`;
   }
 
@@ -103,7 +103,7 @@ export default {
   ],
   render(createElement) {
     const data = {
-      staticStyle: getStaticStyle(this.definition),
+      staticStyle: getStaticStyle(this.config),
     };
 
     const children = createElement(
@@ -113,7 +113,7 @@ export default {
         on: getListeners(this),
         ref: 'video',
         staticStyle: {
-          position: this.definition.aspectRatio !== 'auto' ? 'absolute' : 'relative',
+          position: this.config.aspectRatio !== 'auto' ? 'absolute' : 'relative',
           top: 0,
           left: 0,
         },

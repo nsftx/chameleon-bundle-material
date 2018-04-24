@@ -45,18 +45,18 @@ export default {
   render(createElement) {
     const data = {
       key: this.schema.uid,
-      props: getProps(this.definition),
+      props: getProps(this.config),
     };
 
-    const tabs = getTabs(this.definition, createElement);
+    const tabs = getTabs(this.config, createElement);
 
-    const items = _.map(this.definition.elements, element => createElement(
+    const items = _.map(this.config.elements, element => createElement(
       this.getElementTag('tab-item'),
       {
         props: {
           definition: _.merge({},
             element,
-            { contentColor: this.definition.contentColor }),
+            { contentColor: this.config.contentColor }),
         },
       },
     ));

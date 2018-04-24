@@ -1,7 +1,7 @@
 import Element from '../Element';
 
 const getTabItemContent = (context, createElement) => {
-  const element = context.definition;
+  const element = context.config;
 
   return createElement(
     'v-card',

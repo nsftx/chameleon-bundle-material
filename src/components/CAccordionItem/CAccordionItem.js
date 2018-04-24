@@ -13,7 +13,7 @@ const getItemHeader = (element, createElement) => {
 };
 
 const getItemContent = (context, createElement) => {
-  const element = context.definition;
+  const element = context.config;
 
   const el = createElement(
     'v-card',
@@ -35,14 +35,14 @@ export default {
   render(createElement) {
     const data = {
       key: this.schema.uid,
-      props: this.definition,
+      props: this.config,
       staticStyle: {
-        backgroundColor: this.definition.headerColor,
+        backgroundColor: this.config.headerColor,
       },
     };
 
     const children = [
-      getItemHeader(this.definition, createElement),
+      getItemHeader(this.config, createElement),
       getItemContent(this, createElement),
     ];
 

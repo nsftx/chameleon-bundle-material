@@ -4,13 +4,13 @@ import Element from '../Element';
 
 require('../../style/components/_rich-text.styl');
 
-const getToolbar = (definition) => {
-  if (isArray(definition.toolbar)) {
-    return definition.toolbar;
+const getToolbar = (config) => {
+  if (isArray(config.toolbar)) {
+    return config.toolbar;
   }
 
   let toolbar;
-  switch (definition.toolbar) {
+  switch (config.toolbar) {
     case 'mini':
       toolbar = [
         ['bold', 'italic', 'underline'],
@@ -71,13 +71,13 @@ export default {
   },
   methods: {
     setEditor() {
-      this.value = this.definition.value;
+      this.value = this.config.value;
 
       this.editor = new Quill(this.$refs.editor, {
         theme: 'snow',
-        placeholder: this.definition.placeholder,
+        placeholder: this.config.placeholder,
         modules: {
-          toolbar: getToolbar(this.definition),
+          toolbar: getToolbar(this.config),
         },
       });
 

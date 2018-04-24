@@ -5,7 +5,7 @@ import Element from '../Element';
 
 const getAttrs = (context) => {
   const attrs = {
-    name: context.definition.name,
+    name: context.config.name,
   };
 
   return attrs;
@@ -24,52 +24,52 @@ const getListeners = (context) => {
   return listeners;
 };
 
-const getPropRequired = (definition) => {
-  if (!isNil(definition.validation)) {
-    return !!definition.validation.required;
+const getPropRequired = (config) => {
+  if (!isNil(config.validation)) {
+    return !!config.validation.required;
   }
 
   return false;
 };
 
-const getPropTick = (definition) => {
-  if (definition.step) {
-    const range = definition.validation.max - definition.validation.min;
-    return (range / definition.step) >= definition.step;
+const getPropTick = (config) => {
+  if (config.step) {
+    const range = config.validation.max - config.validation.min;
+    return (range / config.step) >= config.step;
   }
   return false;
 };
 
-const getPropValidateOnBlur = (definition) => {
-  if (definition.validation && definition.validateOn) {
-    return definition.validateOn === 'blur';
+const getPropValidateOnBlur = (config) => {
+  if (config.validation && config.validateOn) {
+    return config.validateOn === 'blur';
   }
 
   return false;
 };
 
 const getProps = (context) => {
-  const definition = context.definition;
+  const config = context.config;
 
   const props = {
-    label: definition.label,
-    hint: definition.hint,
-    persistentHint: definition.persistentHint,
-    appendIcon: definition.appendIcon,
-    prependIcon: definition.prependIcon,
-    color: definition.color,
-    trackColor: definition.trackColor,
-    thumbColor: definition.thumbColor,
-    thumbLabel: definition.thumbLabel,
-    min: !isNil(definition.validation) ? definition.validation.min : null,
-    max: !isNil(definition.validation) ? definition.validation.max : null,
-    step: definition.step,
-    ticks: getPropTick(definition),
-    value: definition.value,
+    label: config.label,
+    hint: config.hint,
+    persistentHint: config.persistentHint,
+    appendIcon: config.appendIcon,
+    prependIcon: config.prependIcon,
+    color: config.color,
+    trackColor: config.trackColor,
+    thumbColor: config.thumbColor,
+    thumbLabel: config.thumbLabel,
+    min: !isNil(config.validation) ? config.validation.min : null,
+    max: !isNil(config.validation) ? config.validation.max : null,
+    step: config.step,
+    ticks: getPropTick(config),
+    value: config.value,
     inputValue: context.value,
-    validateOn: getPropValidateOnBlur(definition),
-    required: getPropRequired(definition),
-    rules: validator.getRules(definition, context.registry.validators),
+    validateOn: getPropValidateOnBlur(config),
+    required: getPropRequired(config),
+    rules: validator.getRules(config, context.registry.validators),
   };
 
   return props;

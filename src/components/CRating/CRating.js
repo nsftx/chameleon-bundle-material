@@ -41,26 +41,26 @@ const getIconElement = (createElement, index, context) => {
         },
       },
     },
-    context.definition.icon || 'star',
+    context.config.icon || 'star',
   );
 
   return el;
 };
 
-const getPropRequired = (definition) => {
-  if (definition.validation) {
-    return !!definition.validation.required;
+const getPropRequired = (config) => {
+  if (config.validation) {
+    return !!config.validation.required;
   }
 
   return false;
 };
 
 const getTitle = (createElement, context) => {
-  const hasLabel = context.definition.label || _.isNil(context.definition.label);
+  const hasLabel = context.config.label || _.isNil(context.config.label);
   if (!hasLabel && !context.value) return false;
 
-  const required = getPropRequired(context.definition);
-  let title = _.isNil(context.definition.label) ? '' : context.definition.label;
+  const required = getPropRequired(context.config);
+  let title = _.isNil(context.config.label) ? '' : context.config.label;
   if (context.value) {
     title = `${title} (${context.value})`;
   }
@@ -94,7 +94,7 @@ export default {
   },
   render(createElement) {
     const self = this;
-    const ratingCount = new Array(this.definition.maxRating || 5);
+    const ratingCount = new Array(this.config.maxRating || 5);
     const icons = _.map(ratingCount, (item, idx) => getIconElement(createElement, idx + 1, self));
     const title = getTitle(createElement, self);
     const message = getMessage(createElement, self);
@@ -119,6 +119,6 @@ export default {
   },
   mounted() {
     this.fillLevel = parseInt(this.value, 10);
-    this.value = this.definition.value || null;
+    this.value = this.config.value || null;
   },
 };

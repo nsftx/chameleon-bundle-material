@@ -4,18 +4,18 @@ import Element from '../Element';
 
 
 const getAttrs = (context) => {
-  const definition = context.definition;
+  const config = context.config;
 
   const attrs = {
-    name: definition.name,
+    name: config.name,
   };
 
   return attrs;
 };
 
-const getPropValidateOnBlur = (definition) => {
-  if (definition.validation && definition.validateOn) {
-    return definition.validateOn === 'blur';
+const getPropValidateOnBlur = (config) => {
+  if (config.validation && config.validateOn) {
+    return config.validateOn === 'blur';
   }
 
   return false;
@@ -34,31 +34,31 @@ const getListeners = (context) => {
   return listeners;
 };
 
-const getPropRequired = (definition) => {
-  if (definition.validation) {
-    return !!definition.validation.required;
+const getPropRequired = (config) => {
+  if (config.validation) {
+    return !!config.validation.required;
   }
 
   return false;
 };
 
 const getProps = (context) => {
-  const definition = context.definition;
+  const config = context.config;
 
   const props = {
-    appendIcon: definition.appendIcon,
-    hint: definition.hint,
-    label: definition.label,
-    persistentHint: definition.persistentHint,
-    placeholder: definition.placeholder,
-    prependIcon: definition.prependIcon,
-    disabled: definition.disabled,
-    color: definition.color,
+    appendIcon: config.appendIcon,
+    hint: config.hint,
+    label: config.label,
+    persistentHint: config.persistentHint,
+    placeholder: config.placeholder,
+    prependIcon: config.prependIcon,
+    disabled: config.disabled,
+    color: config.color,
     inputValue: context.value,
-    value: definition.value,
-    validateOn: getPropValidateOnBlur(definition),
-    required: getPropRequired(definition),
-    rules: validator.getRules(definition, context.registry.validators),
+    value: config.value,
+    validateOn: getPropValidateOnBlur(config),
+    required: getPropRequired(config),
+    rules: validator.getRules(config, context.registry.validators),
   };
 
   return props;

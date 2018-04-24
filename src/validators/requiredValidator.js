@@ -1,6 +1,6 @@
 import validator from 'validator';
 
-export default (definition, value) => {
+export default (config, value) => {
   const isEmpty = validator.isEmpty(value);
-  return isEmpty ? definition.message : true;
+  return isEmpty ? config.message : true;
 };

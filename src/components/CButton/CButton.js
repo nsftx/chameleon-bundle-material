@@ -3,25 +3,25 @@ import Element from '../Element';
 
 const getAttrs = (context) => {
   const attrs = {
-    name: context.definition.name,
-    title: context.definition.tooltip,
+    name: context.config.name,
+    title: context.config.tooltip,
   };
 
   return attrs;
 };
 
 const getProps = (context) => {
-  const definition = context.definition;
+  const config = context.config;
   const defaultColor = 'primary';
 
   const props = {
-    color: definition.color || defaultColor,
+    color: config.color || defaultColor,
     dark: true,
-    icon: isUndefined(definition.icon) ? false : definition.icon,
-    round: isUndefined(definition.round) ? false : definition.round,
-    flat: isUndefined(definition.flat) ? false : definition.flat,
-    block: isUndefined(definition.block) ? false : definition.block,
-    depressed: isUndefined(definition.depressed) ? false : definition.depressed,
+    icon: isUndefined(config.icon) ? false : config.icon,
+    round: isUndefined(config.round) ? false : config.round,
+    flat: isUndefined(config.flat) ? false : config.flat,
+    block: isUndefined(config.block) ? false : config.block,
+    depressed: isUndefined(config.depressed) ? false : config.depressed,
     loading: false,
   };
 
@@ -31,8 +31,8 @@ const getProps = (context) => {
 const getListeners = (context) => {
   const listeners = {};
 
-  if (context.definition.actions) {
-    each(context.definition.actions, (action, actionKey) => {
+  if (context.config.actions) {
+    each(context.config.actions, (action, actionKey) => {
       listeners[actionKey] = () => {
         context.$emit(action);
       };
@@ -51,6 +51,6 @@ export default {
       on: getListeners(this),
     };
 
-    return this.renderElement('v-btn', data, this.definition.label);
+    return this.renderElement('v-btn', data, this.config.label);
   },
 };

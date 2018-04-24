@@ -35,8 +35,8 @@ const getMessage = (result, data) => {
 };
 
 export default {
-  getRules(definition, validators) {
-    const validation = definition.validation;
+  getRules(config, validators) {
+    const validation = config.validation;
     const rules = [];
 
     if (_.isNil(validators) || _.isNil(validation)) return rules;
@@ -46,7 +46,7 @@ export default {
       rules.push(value => getMessage(validator.required(
         validators.required,
         getValue(value),
-      ), { field: definition.label }));
+      ), { field: config.label }));
     }
 
     if (!_.isUndefined(validation.min)) {
@@ -54,7 +54,7 @@ export default {
         validators.min,
         getValue(value),
         validation.min,
-      ), { field: definition.label, limit: validation.min }));
+      ), { field: config.label, limit: validation.min }));
     }
 
     if (!_.isUndefined(validation.max)) {
@@ -62,7 +62,7 @@ export default {
         validators.max,
         getValue(value),
         validation.max,
-      ), { field: definition.label, limit: validation.max }));
+      ), { field: config.label, limit: validation.max }));
     }
 
     if (!_.isUndefined(validation.minLength)) {
@@ -70,7 +70,7 @@ export default {
         validators.minLength,
         getValue(value),
         validation.minLength,
-      ), { field: definition.label, limit: validation.minLength }));
+      ), { field: config.label, limit: validation.minLength }));
     }
 
     if (!_.isUndefined(validation.maxLength)) {
@@ -78,7 +78,7 @@ export default {
         validators.maxLength,
         getValue(value),
         validation.maxLength,
-      ), { field: definition.label, limit: validation.maxLength }));
+      ), { field: config.label, limit: validation.maxLength }));
     }
 
     if (!_.isUndefined(validation.minCount)) {
@@ -86,7 +86,7 @@ export default {
         validators.minCount,
         getValue(value),
         validation.minCount,
-      ), { field: definition.label, limit: validation.minCount }));
+      ), { field: config.label, limit: validation.minCount }));
     }
 
     if (!_.isUndefined(validation.maxCount)) {
@@ -94,7 +94,7 @@ export default {
         validators.maxCount,
         getValue(value),
         validation.maxCount,
-      ), { field: definition.label, limit: validation.maxCount }));
+      ), { field: config.label, limit: validation.maxCount }));
     }
 
     if (validation.pattern) {
@@ -103,14 +103,14 @@ export default {
         rules.push(value => getMessage(validator[predefined](
           validators[predefined],
           getValue(value),
-        ), { field: definition.label }));
+        ), { field: config.label }));
       } else {
         // Pattern validator
         rules.push(value => getMessage(validator.pattern(
           validators.pattern,
           getValue(value),
           validation.pattern.value,
-        ), { field: definition.label }));
+        ), { field: config.label }));
       }
     }
 

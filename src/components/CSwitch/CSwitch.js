@@ -2,10 +2,10 @@ import { fieldable } from '@mixins';
 import Element from '../Element';
 
 const getAttrs = (context) => {
-  const definition = context.definition;
+  const config = context.config;
 
   const attrs = {
-    name: definition.name,
+    name: config.name,
   };
 
   return attrs;
@@ -25,18 +25,18 @@ const getListeners = (context) => {
 };
 
 const getProps = (context) => {
-  const definition = context.definition;
+  const config = context.config;
 
   const props = {
-    appendIcon: definition.appendIcon,
-    hint: definition.hint,
-    label: definition.label,
-    persistentHint: definition.persistentHint,
-    placeholder: definition.placeholder,
-    prependIcon: definition.prependIcon,
-    disabled: definition.disabled,
-    color: definition.color,
-    value: definition.value,
+    appendIcon: config.appendIcon,
+    hint: config.hint,
+    label: config.label,
+    persistentHint: config.persistentHint,
+    placeholder: config.placeholder,
+    prependIcon: config.prependIcon,
+    disabled: config.disabled,
+    color: config.color,
+    value: config.value,
     inputValue: context.value,
   };
 

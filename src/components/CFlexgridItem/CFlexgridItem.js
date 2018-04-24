@@ -5,7 +5,7 @@ export default {
   render() {
     const data = {
       attrs: {
-        [`xs${this.definition.width}`]: true,
+        [`xs${this.config.width}`]: true,
       },
     };
 

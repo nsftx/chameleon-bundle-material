@@ -6,7 +6,7 @@ export default {
     };
   },
   mounted() {
-    this.value = this.definition.value;
-    this.name = this.definition.name;
+    this.value = this.config.value;
+    this.name = this.config.name;
   },
 };

@@ -4,29 +4,29 @@ import { validator } from '@validators';
 import Element from '../Element';
 
 const getAttrs = (context) => {
-  const definition = context.definition;
+  const config = context.config;
 
   const attrs = {
-    name: definition.name,
+    name: config.name,
     // If required tooltip should be added as child component VTooltip
-    title: definition.tooltip,
+    title: config.tooltip,
   };
 
-  if (!isUndefined(definition.step)) {
-    if (isBoolean(definition.step)) {
-      if (definition.step) {
+  if (!isUndefined(config.step)) {
+    if (isBoolean(config.step)) {
+      if (config.step) {
         attrs.step = 1;
       }
     } else {
-      attrs.step = definition.step;
+      attrs.step = config.step;
     }
   }
 
   return attrs;
 };
 
-const getMask = (definition) => {
-  const mask = definition.mask;
+const getMask = (config) => {
+  const mask = config.mask;
   if (mask) {
     // Mask value has priority over predefined mask
     if (mask.value) {
@@ -49,79 +49,79 @@ const getMask = (definition) => {
   return null;
 };
 
-const getPropRequired = (definition) => {
+const getPropRequired = (config) => {
   // Required validation is property in Vuetify
   // This property sets * next to label
-  if (definition.validation) {
-    return !!definition.validation.required;
+  if (config.validation) {
+    return !!config.validation.required;
   }
 
   return false;
 };
 
-const getPropMultiline = (definition) => {
-  if (['calculation', 'number', 'money'].indexOf(definition.type) > -1) {
+const getPropMultiline = (config) => {
+  if (['calculation', 'number', 'money'].indexOf(config.type) > -1) {
     return false;
   }
 
-  return definition.multiLine;
+  return config.multiLine;
 };
 
-const getPropSuffix = (definition) => {
-  if (['money'].indexOf(definition.type) > -1 && definition.currency) {
-    return definition.currency[definition.suffix];
+const getPropSuffix = (config) => {
+  if (['money'].indexOf(config.type) > -1 && config.currency) {
+    return config.currency[config.suffix];
   }
 
-  return definition.suffix;
+  return config.suffix;
 };
 
-const getPropPrefix = (definition) => {
-  if (['money'].indexOf(definition.type) > -1 && definition.currency) {
-    return definition.currency[definition.prefix];
+const getPropPrefix = (config) => {
+  if (['money'].indexOf(config.type) > -1 && config.currency) {
+    return config.currency[config.prefix];
   }
 
-  return definition.prefix;
+  return config.prefix;
 };
 
-const getPropType = (definition) => {
-  if (['number'].indexOf(definition.type) > -1 && definition.step) {
-    return definition.type;
+const getPropType = (config) => {
+  if (['number'].indexOf(config.type) > -1 && config.step) {
+    return config.type;
   }
 
   return 'text';
 };
 
-const getPropValidateOnBlur = (definition) => {
-  if (definition.validation && definition.validateOn) {
-    return definition.validateOn === 'blur';
+const getPropValidateOnBlur = (config) => {
+  if (config.validation && config.validateOn) {
+    return config.validateOn === 'blur';
   }
 
   return false;
 };
 
 const getProps = (context) => {
-  const definition = context.definition;
-  const mask = getMask(definition);
+  const config = context.config;
+  const mask = getMask(config);
 
-  // Hard-coded values are candidates for definition
+  // Hard-coded values are candidates for config
   const props = {
-    appendIcon: definition.appendIcon,
-    clearable: definition.clearable,
+    appendIcon: config.appendIcon,
+    clearable: config.clearable,
     counter: false,
-    hint: definition.hint,
-    label: definition.label,
+    hint: config.hint,
+    label: config.label,
     loading: false,
-    multiLine: getPropMultiline(definition),
-    persistentHint: definition.persistentHint,
-    placeholder: definition.placeholder,
-    prefix: getPropPrefix(definition),
-    prependIcon: definition.prependIcon,
-    required: getPropRequired(definition),
-    rules: validator.getRules(definition, context.registry.validators),
-    suffix: getPropSuffix(definition),
-    type: getPropType(definition),
-    value: definition.value,
-    validateOn: getPropValidateOnBlur(definition),
+    multiLine: getPropMultiline(config),
+    persistentHint: config.persistentHint,
+    placeholder: config.placeholder,
+    prefix: getPropPrefix(config),
+    prependIcon: config.prependIcon,
+    required: getPropRequired(config),
+    rules: validator.getRules(config, context.registry.validators),
+    suffix: getPropSuffix(config),
+    type: getPropType(config),
+    value: config.value,
+    validateOn: getPropValidateOnBlur(config),
   };
 
   if (mask) props.mask = mask;
