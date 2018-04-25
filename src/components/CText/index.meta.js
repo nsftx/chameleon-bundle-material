@@ -13,7 +13,7 @@ export default {
     label: {
       type: 'input',
       name: 'TextBox Label',
-      value: null,
+      value: 'Text Field',
       priority: 1,
     },
     prependIcon: {

@@ -13,7 +13,7 @@ export default {
     label: {
       type: 'input',
       name: 'Tags Label',
-      value: null,
+      value: 'Tags',
       priority: 1,
     },
     prependIcon: {

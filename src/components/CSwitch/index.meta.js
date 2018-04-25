@@ -7,7 +7,7 @@ export default {
     label: {
       type: 'input',
       name: 'Switch Label',
-      value: null,
+      value: 'Switch',
       priority: 1,
     },
     color: {

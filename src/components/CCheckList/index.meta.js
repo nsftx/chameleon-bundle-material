@@ -13,7 +13,7 @@ export default {
     label: {
       type: 'input',
       name: 'Check List Label',
-      value: 'Select options',
+      value: 'Select Options',
       priority: 1,
     },
     prependIcon: {

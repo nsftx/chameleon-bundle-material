@@ -4,35 +4,41 @@ export default {
   name: 'Video',
   icon: 'theaters',
   options: {
+    label: {
+      type: 'input',
+      name: 'Video Title',
+      value: 'Video Title',
+      priority: 1,
+    },
     autoplay: {
       type: 'check',
       name: 'Autoplay',
       value: false,
-      priority: 3,
+      priority: 4,
     },
     controls: {
       type: 'check',
       name: 'Show Controls',
       value: false,
-      priority: 6,
+      priority: 7,
     },
     repeat: {
       type: 'check',
       name: 'Repeat',
       value: false,
-      priority: 4,
+      priority: 5,
     },
     muted: {
       type: 'check',
       name: 'Mute Volume',
       value: false,
-      priority: 5,
+      priority: 6,
     },
     value: {
       type: 'inputList',
       name: 'Video Sources',
       value: [],
-      priority: 1,
+      priority: 2,
     },
     aspectRatio: {
       type: 'select',
@@ -52,7 +58,7 @@ export default {
         },
       ],
       value: 'auto',
-      priority: 2,
+      priority: 3,
     },
   },
 };

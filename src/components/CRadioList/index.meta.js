@@ -13,7 +13,7 @@ export default {
     label: {
       type: 'input',
       name: 'Radio Label',
-      value: 'Radio Label',
+      value: 'Radio',
       priority: 1,
     },
     prependIcon: {

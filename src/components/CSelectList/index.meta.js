@@ -13,7 +13,7 @@ export default {
     label: {
       type: 'input',
       name: 'Select List Label',
-      value: null,
+      value: 'Select',
       priority: 1,
     },
     prependIcon: {

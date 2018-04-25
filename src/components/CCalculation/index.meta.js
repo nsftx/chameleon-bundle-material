@@ -13,7 +13,7 @@ export default {
     label: {
       type: 'input',
       name: 'Calculation Label',
-      value: 'Label',
+      value: 'Calculation Field',
       priority: 1,
     },
     placeholder: {

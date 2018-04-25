@@ -13,7 +13,7 @@ export default {
     label: {
       type: 'input',
       name: 'Slider Label',
-      value: '',
+      value: 'Slider',
       priority: 1,
     },
     color: {

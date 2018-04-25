@@ -13,7 +13,7 @@ export default {
     label: {
       type: 'input',
       name: 'Check Label',
-      value: null,
+      value: 'Check',
       priority: 1,
     },
     color: {
