@@ -40,11 +40,17 @@ export default {
       value: null,
       priority: 5,
     },
+    placeholder: {
+      type: 'input',
+      name: 'Placeholder Text',
+      value: null,
+      priority: 6,
+    },
     readonly: {
       type: 'check',
       name: 'Enable Readonly',
       value: false,
-      priority: 6,
+      priority: 7,
     },
     validation: {
       type: 'group',

@@ -36,8 +36,8 @@ const getProps = (context) => {
     prependIcon: config.prependIcon,
     disabled: config.disabled,
     color: config.color,
-    value: config.value,
-    inputValue: context.value,
+    value: config.value || false,
+    inputValue: context.value || false,
   };
 
   return props;

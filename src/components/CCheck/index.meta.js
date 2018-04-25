@@ -54,16 +54,6 @@ export default {
         name: 'Enable required',
         value: false,
       },
-      minCount: {
-        type: 'input',
-        name: 'Min Count',
-        value: null,
-      },
-      maxCount: {
-        type: 'input',
-        name: 'Max Count',
-        value: null,
-      },
     },
   },
 };

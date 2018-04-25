@@ -13,7 +13,7 @@ export default {
       items: [
         {
           id: 1,
-          name: '',
+          name: 'Default',
           value: '',
         },
         {

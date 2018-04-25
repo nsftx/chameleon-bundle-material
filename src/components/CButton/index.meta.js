@@ -4,41 +4,47 @@ export default {
   name: 'Button',
   icon: 'crop_landscape',
   options: {
+    label: {
+      type: 'input',
+      name: 'Button Label',
+      value: 'Button',
+      priority: 1,
+    },
     color: {
       type: 'input',
       name: 'Color',
       value: null,
-      priority: 1,
+      priority: 2,
     },
     icon: {
       type: 'check',
       name: 'Button As Icon',
       value: false,
-      priority: 6,
+      priority: 7,
     },
     round: {
       type: 'check',
       name: 'Round Button',
       value: false,
-      priority: 5,
+      priority: 6,
     },
     flat: {
       type: 'check',
       name: 'No Background',
       value: false,
-      priority: 2,
+      priority: 3,
     },
     block: {
       type: 'check',
       name: '100% Width',
       value: false,
-      priority: 4,
+      priority: 5,
     },
     depressed: {
       type: 'check',
       name: 'No Shadow',
       value: false,
-      priority: 3,
+      priority: 4,
     },
   },
 };

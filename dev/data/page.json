@@ -423,14 +423,13 @@
                           "fullWidth": true,
                           "validation": {
                             "required": true,
-                            "minDate": "2017-11-05T00:00:00.000Z",
-                            "maxDate": "2017-11-21T00:00:00.000Z"
+                            "minDate": "",
+                            "maxDate": ""
                           },
                           "time": {
                             "enabled": true
                           },
-                          "format": "LLL",
-                          "value": "2017-11-09T00:00:00.000Z"
+                          "format": "LLL"
                         },
                         {
                           "name": "reportRange",
@@ -446,17 +445,13 @@
                           "width": "260",
                           "validation": {
                             "required": true,
-                            "minDate": "2017-11-05",
-                            "maxDate": "2017-11-21"
+                            "minDate": "",
+                            "maxDate": ""
                           },
                           "time": {
                             "enabled": true
                           },
-                          "format": "LLL",
-                          "value": [
-                            "2017-11-09",
-                            "2017-11-11"
-                          ]
+                          "format": "LLL"
                         },
                         {
                           "name": "age",
@@ -575,7 +570,6 @@
                           "hint": null,
                           "disabled": false,
                           "persistentHint": false,
-                          "value": false,
                           "validation": {
                             "required": true
                           }
@@ -589,8 +583,7 @@
                           "appendIcon": null,
                           "hint": null,
                           "disabled": false,
-                          "persistentHint": false,
-                          "value": true
+                          "persistentHint": false
                         }
                       ],
                       "actions": [

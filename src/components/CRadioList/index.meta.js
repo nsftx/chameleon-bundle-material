@@ -10,23 +10,29 @@ export default {
     },
   },
   options: {
+    label: {
+      type: 'input',
+      name: 'Radio Label',
+      value: 'Radio Label',
+      priority: 1,
+    },
     prependIcon: {
       type: 'input',
       name: 'Prepend Icon',
       value: null,
-      priority: 1,
+      priority: 2,
     },
     appendIcon: {
       type: 'input',
       name: 'Append Icon',
       value: null,
-      priority: 2,
+      priority: 3,
     },
     hint: {
       type: 'input',
       name: 'Hint Text',
       value: null,
-      priority: 3,
+      priority: 4,
     },
     validation: {
       type: 'group',
