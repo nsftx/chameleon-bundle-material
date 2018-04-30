@@ -58,7 +58,7 @@ module.exports = merge(baseWebpackConfig, {
       {
         test: /\.js$/,
         loaders: ['babel-loader', 'eslint-loader'],
-        exclude: /node_modules\/(?!(@nsoft)\/).*/,
+        exclude: /node_modules\/(?!(@nsoft\/chameleon-sdk)\/).*/,
       },
       {
         test: /\.styl$/,

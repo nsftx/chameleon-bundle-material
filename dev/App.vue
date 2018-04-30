@@ -76,7 +76,7 @@
   import axios from 'axios';
   import { assign, merge } from 'lodash';
   import VJsoneditor from 'vue-jsoneditor';
-  import chameleonNotation from 'chameleon-notation';
+  import chameleonNotation from '@nsoft/chameleon-notation';
   import connectorApi from '@nsoft/chameleon-sdk/src/api/connector';
 
   const navigation = require('./data/navigation.json');
