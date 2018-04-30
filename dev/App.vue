@@ -72,7 +72,7 @@
 </template>
 
 <script>
-  import uuid from 'uuid';
+  import { v4 } from 'uuid';
   import axios from 'axios';
   import { assign, merge } from 'lodash';
   import VJsoneditor from 'vue-jsoneditor';
@@ -85,6 +85,8 @@
   const http = axios.create({
     timeout: 5000,
   });
+
+  const uuid = () => v4();
 
   export default {
     name: 'app',

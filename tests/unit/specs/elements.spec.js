@@ -1,5 +1,7 @@
 import { each, assign } from 'lodash';
 import { mount, createLocalVue } from 'vue-test-utils';
+import { createRenderer } from 'vue-server-renderer';
+import Vuetify from 'vuetify'; 
 import * as components from '@/components';
 
 const mockDefinition = require('./__mocks__/definition');
@@ -20,8 +22,10 @@ const childrenComponents = [
 
 describe('AllComponents', () => {
   each(components, (component, key) => {
+    const renderer = createRenderer();
     const localVue = createLocalVue();
     localVue.use(component, options);
+    localVue.use(Vuetify);
 
     const cmpName = Object.keys(localVue.options.components)[0];
     const cmp = localVue.options.components[cmpName];
@@ -47,12 +51,7 @@ describe('AllComponents', () => {
       },
     });
 
-    it(`Check if ${cmpName} contains base class c-element`, async () => {
-      const resolvingPromise = new Promise((resolve) => {
-        resolve();
-      });
-
-      await resolvingPromise;
+    it(`Check if ${cmpName} contains base class c-element`, () => {
       expect(wrapper.classes()).toContain('c-element');
     });
 
@@ -62,18 +61,22 @@ describe('AllComponents', () => {
       });
     }
 
-    it(`Check if ${cmpName} contains data attributes`, async () => {
-      const resolvingPromise = new Promise((resolve) => {
-        resolve();
-      });
-
-      await resolvingPromise;
+    it(`Check if ${cmpName} contains data attributes`, () => {
       const attrs = wrapper.attributes();
       expect([attrs]).toContainEqual(expect.objectContaining(
         { 'data-type': type },
         { 'data-group': group },
         { 'data-uid': expect.anything() },
       ));
+    });
+
+    it(`${cmpName} renders correctly`, (done) => {
+      wrapper.vm.$nextTick(() => {
+        renderer.renderToString(wrapper.vm).then((output) => {
+          expect(output).toMatchSnapshot();
+          done();
+        });
+      });
     });
   });
 });
