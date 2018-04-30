@@ -1,5 +1,5 @@
 import { map } from 'lodash';
-import uuid from 'uuid/v4';
+import { v4 } from 'uuid';
 import Element from '../Element';
 
 const getContainerAttrs = (context) => {
@@ -7,6 +7,7 @@ const getContainerAttrs = (context) => {
     fluid: context.fluid,
     [`grid-list-${context.spacing}`]: true,
     wrap: true,
+    container: true,
   };
 
   return attrs;
@@ -20,6 +21,8 @@ const getLayoutAttrs = (context) => {
 
   return attrs;
 };
+
+const uuid = () => v4();
 
 export default {
   extends: Element,
@@ -35,7 +38,7 @@ export default {
     ));
 
     const data = {
-      attrs: getContainerAttrs(this.config),
+      class: getContainerAttrs(this.config),
     };
 
     const children = createElement('v-layout',
@@ -43,6 +46,6 @@ export default {
         attrs: getLayoutAttrs(this.config),
       }, items);
 
-    return this.renderElement('v-container', data, children);
+    return this.renderElement('div', data, children);
   },
 };

@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import uuid from 'uuid/v4';
+import { v4 } from 'uuid';
 import Element from '../Element';
 
 const getProps = (context) => {
@@ -14,6 +14,8 @@ const getProps = (context) => {
 
   return props;
 };
+
+const uuid = () => v4();
 
 const getTabs = (context, createElement) => {
   const tabs = _.map(context.elements, (element, i) => {

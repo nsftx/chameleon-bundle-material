@@ -150,13 +150,20 @@ export default {
   mixins: [
     fieldable,
   ],
-  render() {
+  render(createElement) {
     const data = {
       attrs: getAttrs(this),
       props: getProps(this),
       on: getListeners(this),
     };
 
-    return this.renderElement('v-text-field', data);
+    const children = [
+      createElement(
+        'v-text-field',
+        data,
+      ),
+    ];
+
+    return this.renderElement('div', {}, children);
   },
 };

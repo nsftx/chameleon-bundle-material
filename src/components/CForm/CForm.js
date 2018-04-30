@@ -1,5 +1,5 @@
 import { concat, each, filter, kebabCase, isArray, isNil, isObject, map, merge } from 'lodash';
-import uuid from 'uuid/v4';
+import { v4 } from 'uuid';
 import Element from '../Element';
 
 const getListeners = (context) => {
@@ -26,6 +26,8 @@ const getComponentTag = (name, context) => {
 
   return `${context.$options.namespace}${tag}`;
 };
+
+const uuid = () => v4();
 
 export default {
   extends: Element,

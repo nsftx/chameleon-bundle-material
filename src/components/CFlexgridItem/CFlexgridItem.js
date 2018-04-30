@@ -4,13 +4,14 @@ export default {
   extends: Element,
   render() {
     const data = {
-      attrs: {
+      class: {
         [`xs${this.config.width}`]: true,
+        flex: true,
       },
     };
 
     const children = this.renderChildElement('div');
 
-    return this.renderElement('v-flex', data, children);
+    return this.renderElement('div', data, children);
   },
 };
