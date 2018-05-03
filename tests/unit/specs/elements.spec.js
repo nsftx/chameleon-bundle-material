@@ -1,7 +1,7 @@
 import { each, assign } from 'lodash';
 import { mount, createLocalVue } from 'vue-test-utils';
 import { createRenderer } from 'vue-server-renderer';
-import Vuetify from 'vuetify'; 
+import Vuetify from 'vuetify';
 import * as components from '@/components';
 
 const mockDefinition = require('./__mocks__/definition');

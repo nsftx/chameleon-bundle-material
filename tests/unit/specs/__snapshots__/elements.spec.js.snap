@@ -126,71 +126,73 @@ exports[`AllComponents c-hlist renders correctly 1`] = `
 exports[`AllComponents c-html renders correctly 1`] = `<div data-type="html" data-group="widgets" data-uid="13" class="c-element c-html">undefined</div>`;
 
 exports[`AllComponents c-list renders correctly 1`] = `
-<div class="c-element c-list data-iterator white elevation-1">
-  <div class="layout data-type data-group data-uid">
-    <div class="text-xs-center" style="width:100%;">No data available</div>
-  </div>
-  <div>
-    <div class="data-iterator__actions">
-      <div class="data-iterator__actions__select">Items per page:
-        <div tabindex="0" data-uid="221" aria-label="Items per page:" role="combobox" class="input-group input-group--append-icon input-group--hide-details input-group--text-field input-group--select input-group--auto primary--text">
-          <div class="input-group__input">
-            <div class="input-group__selections" style="overflow:hidden;">
-              <input aria-label="Items per page:" disabled="disabled" tabindex="-1" value="" class="input-group--select__autocomplete" style="flex:null;display:none;">
-            </div>
-            <div class="menu" style="display:inline-block;">
-              <div class="menu__content menu__content--select menu__content--auto" style="max-height:200px;min-width:75px;max-width:auto;top:12px;left:12px;transform-origin:top left;z-index:0;display:none;">
-                <div class="card" style="height:auto;">
-                  <div class="list">
-                    <div>
-                      <a class="list__tile list__tile--link">
-                        <div class="list__tile__content">
-                          <div class="list__tile__title">5</div>
-                        </div>
-                      </a>
-                    </div>
-                    <div>
-                      <a class="list__tile list__tile--link">
-                        <div class="list__tile__content">
-                          <div class="list__tile__title">10</div>
-                        </div>
-                      </a>
-                    </div>
-                    <div>
-                      <a class="list__tile list__tile--link">
-                        <div class="list__tile__content">
-                          <div class="list__tile__title">15</div>
-                        </div>
-                      </a>
-                    </div>
-                    <div>
-                      <a class="list__tile list__tile--link">
-                        <div class="list__tile__content">
-                          <div class="list__tile__title">20</div>
-                        </div>
-                      </a>
+<div data-type="list" data-group="widgets" data-uid="14" class="c-element c-list">
+  <div class="data-iterator white elevation-1">
+    <div class="layout">
+      <div class="text-xs-center" style="width:100%;">No data available</div>
+    </div>
+    <div>
+      <div class="data-iterator__actions">
+        <div class="data-iterator__actions__select">Items per page:
+          <div tabindex="0" data-uid="221" aria-label="Items per page:" role="combobox" class="input-group input-group--append-icon input-group--hide-details input-group--text-field input-group--select input-group--auto primary--text">
+            <div class="input-group__input">
+              <div class="input-group__selections" style="overflow:hidden;">
+                <input aria-label="Items per page:" disabled="disabled" tabindex="-1" value="" class="input-group--select__autocomplete" style="flex:null;display:none;">
+              </div>
+              <div class="menu" style="display:inline-block;">
+                <div class="menu__content menu__content--select menu__content--auto" style="max-height:200px;min-width:75px;max-width:auto;top:12px;left:12px;transform-origin:top left;z-index:0;display:none;">
+                  <div class="card" style="height:auto;">
+                    <div class="list">
+                      <div>
+                        <a class="list__tile list__tile--link">
+                          <div class="list__tile__content">
+                            <div class="list__tile__title">5</div>
+                          </div>
+                        </a>
+                      </div>
+                      <div>
+                        <a class="list__tile list__tile--link">
+                          <div class="list__tile__content">
+                            <div class="list__tile__title">10</div>
+                          </div>
+                        </a>
+                      </div>
+                      <div>
+                        <a class="list__tile list__tile--link">
+                          <div class="list__tile__content">
+                            <div class="list__tile__title">15</div>
+                          </div>
+                        </a>
+                      </div>
+                      <div>
+                        <a class="list__tile list__tile--link">
+                          <div class="list__tile__content">
+                            <div class="list__tile__title">20</div>
+                          </div>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <i aria-hidden="true" class="icon material-icons input-group__append-icon input-group__icon-cb">arrow_drop_down</i>
             </div>
-            <i aria-hidden="true" class="icon material-icons input-group__append-icon input-group__icon-cb">arrow_drop_down</i>
+            <div class="input-group__details"></div>
           </div>
-          <div class="input-group__details"></div>
         </div>
-      </div>
-      <div class="data-iterator__actions__range-controls">
-        <div class="data-iterator__actions__pagination">–</div>
-        <button disabled="disabled" type="button" aria-label="Previous page" class="btn btn--disabled btn--flat btn--icon">
-          <div class="btn__content">
-            <i aria-hidden="true" class="icon material-icons">chevron_left</i>
-          </div>
-        </button>
-        <button disabled="disabled" type="button" aria-label="Next page" class="btn btn--disabled btn--flat btn--icon">
-          <div class="btn__content">
-            <i aria-hidden="true" class="icon material-icons">chevron_right</i>
-          </div>
-        </button>
+        <div class="data-iterator__actions__range-controls">
+          <div class="data-iterator__actions__pagination">–</div>
+          <button disabled="disabled" type="button" aria-label="Previous page" class="btn btn--disabled btn--flat btn--icon">
+            <div class="btn__content">
+              <i aria-hidden="true" class="icon material-icons">chevron_left</i>
+            </div>
+          </button>
+          <button disabled="disabled" type="button" aria-label="Next page" class="btn btn--disabled btn--flat btn--icon">
+            <div class="btn__content">
+              <i aria-hidden="true" class="icon material-icons">chevron_right</i>
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -224,7 +226,7 @@ exports[`AllComponents c-picker renders correctly 1`] = `
               <i aria-hidden="true" class="icon material-icons">chevron_left</i>
             </div>
           </button>
-          <div class="date-picker-header__value"><strong class="accent--text">April 2018</strong></div>
+          <div class="date-picker-header__value"><strong class="accent--text">May 2018</strong></div>
           <button type="button" class="btn btn--icon">
             <div class="btn__content">
               <i aria-hidden="true" class="icon material-icons">chevron_right</i>
@@ -246,6 +248,8 @@ exports[`AllComponents c-picker renders correctly 1`] = `
             </thead>
             <tbody>
               <tr>
+                <td></td>
+                <td></td>
                 <td>
                   <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">1</div>
@@ -257,7 +261,7 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
+                  <button type="button" class="btn btn--flat btn--floating btn--outline accent--text">
                     <div class="btn__content">3</div>
                   </button>
                 </td>
@@ -271,6 +275,8 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                     <div class="btn__content">5</div>
                   </button>
                 </td>
+              </tr>
+              <tr>
                 <td>
                   <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">6</div>
@@ -281,8 +287,6 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                     <div class="btn__content">7</div>
                   </button>
                 </td>
-              </tr>
-              <tr>
                 <td>
                   <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">8</div>
@@ -308,6 +312,8 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                     <div class="btn__content">12</div>
                   </button>
                 </td>
+              </tr>
+              <tr>
                 <td>
                   <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">13</div>
@@ -318,8 +324,6 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                     <div class="btn__content">14</div>
                   </button>
                 </td>
-              </tr>
-              <tr>
                 <td>
                   <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">15</div>
@@ -345,6 +349,8 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                     <div class="btn__content">19</div>
                   </button>
                 </td>
+              </tr>
+              <tr>
                 <td>
                   <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">20</div>
@@ -355,8 +361,6 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                     <div class="btn__content">21</div>
                   </button>
                 </td>
-              </tr>
-              <tr>
                 <td>
                   <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">22</div>
@@ -382,6 +386,8 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                     <div class="btn__content">26</div>
                   </button>
                 </td>
+              </tr>
+              <tr>
                 <td>
                   <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">27</div>
@@ -392,16 +398,19 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                     <div class="btn__content">28</div>
                   </button>
                 </td>
-              </tr>
-              <tr>
                 <td>
                   <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">29</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating btn--outline accent--text">
+                  <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">30</div>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn--flat btn--floating">
+                    <div class="btn__content">31</div>
                   </button>
                 </td>
               </tr>
@@ -483,30 +492,32 @@ exports[`AllComponents c-select renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-select-list renders correctly 1`] = `
-<div tabindex="-1" data-uid="253" class="c-element c-select-list input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete input-group--chips primary--text">
-  <div class="input-group__input">
-    <div class="input-group__selections" style="overflow:hidden;">
-      <input data-type="select-list" data-group="inputs" data-uid="23" tabindex="0" role="combobox" value="" autocomplete="off" class="input-group--select__autocomplete" style="flex:null;">
-    </div>
-    <div class="menu" style="display:inline-block;">
-      <div class="menu__content menu__content--select   menu__content--autocomplete" style="max-height:300px;min-width:0px;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
-        <div class="card" style="height:auto;">
-          <div class="list">
-            <div disabled="disabled" class="text--disabled">
-              <a disabled="disabled" class="list__tile list__tile--link list__tile--disabled">
-                <div class="list__tile__content">
-                  <div class="list__tile__title">No data available</div>
-                </div>
-              </a>
+<div data-type="select-list" data-group="inputs" data-uid="23" class="c-element c-select-list">
+  <div tabindex="-1" data-uid="253" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete input-group--chips primary--text">
+    <div class="input-group__input">
+      <div class="input-group__selections" style="overflow:hidden;">
+        <input tabindex="0" role="combobox" value="" autocomplete="off" class="input-group--select__autocomplete" style="flex:null;">
+      </div>
+      <div class="menu" style="display:inline-block;">
+        <div class="menu__content menu__content--select   menu__content--autocomplete" style="max-height:300px;min-width:0px;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
+          <div class="card" style="height:auto;">
+            <div class="list">
+              <div disabled="disabled" class="text--disabled">
+                <a disabled="disabled" class="list__tile list__tile--link list__tile--disabled">
+                  <div class="list__tile__content">
+                    <div class="list__tile__title">No data available</div>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <i aria-hidden="true" class="icon material-icons input-group__append-icon input-group__icon-cb">arrow_drop_down</i>
     </div>
-    <i aria-hidden="true" class="icon material-icons input-group__append-icon input-group__icon-cb">arrow_drop_down</i>
-  </div>
-  <div class="input-group__details">
-    <!---->
+    <div class="input-group__details">
+      <!---->
+    </div>
   </div>
 </div>
 `;

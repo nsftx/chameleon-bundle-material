@@ -70,14 +70,17 @@ export default {
   render(createElement) {
     const deletableChips = this.selectProps.deletableChips;
 
-    const data = {
-      attrs: this.attrs,
-      props: this.selectProps,
-      on: this.listeners,
-      scopedSlots: deletableChips &&
+    const children = createElement(
+      'v-select',
+      {
+        attrs: this.attrs,
+        props: this.selectProps,
+        on: this.listeners,
+        scopedSlots: deletableChips &&
           getCardSlot(createElement, this.selectProps.itemText),
-    };
+      },
+    );
 
-    return this.renderElement('v-select', data);
+    return this.renderElement('div', {}, children);
   },
 };

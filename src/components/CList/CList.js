@@ -162,20 +162,22 @@ export default {
     this.loadData();
   },
   render(createElement) {
-    const data = {
-      attrs: {
-        name: this.config.name,
-        wrap: this.config.wrap,
-      },
-      class: [
-        this.config.color || 'white',
-        this.config.flat ? null : 'elevation-1',
-      ],
-      props: getProps(this),
-      scopedSlots: getCardSlot(createElement),
-      on: getListeners(this),
-    };
+    const children = [
+      createElement('v-data-iterator', {
+        attrs: {
+          name: this.config.name,
+          wrap: this.config.wrap,
+        },
+        class: [
+          this.config.color || 'white',
+          this.config.flat ? null : 'elevation-1',
+        ],
+        props: getProps(this),
+        scopedSlots: getCardSlot(createElement),
+        on: getListeners(this),
+      }),
+    ];
 
-    return this.renderElement('v-data-iterator', data);
+    return this.renderElement('div', {}, children);
   },
 };

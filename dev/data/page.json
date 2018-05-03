@@ -117,7 +117,7 @@
                         },
                         {
                           "name": "company",
-                          "type": "select",
+                          "type": "select-list",
                           "label": "Company",
                           "prependIcon": "language",
                           "appendIcon": null,
