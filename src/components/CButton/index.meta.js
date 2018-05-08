@@ -3,6 +3,12 @@ export default {
   type: 'button',
   name: 'Button',
   icon: 'crop_landscape',
+  events: [
+    {
+      name: 'Clicked',
+      help: 'Fires when button is clicked',
+    },
+  ],
   options: {
     label: {
       type: 'input',

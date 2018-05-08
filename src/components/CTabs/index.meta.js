@@ -6,6 +6,12 @@ export default {
   children: [
     'tab-item',
   ],
+  events: [
+    {
+      name: 'SelectedItemChanged',
+      help: 'Tab selected',
+    },
+  ],
   options: {
     itemsCount: {
       type: 'childrenCountInput',

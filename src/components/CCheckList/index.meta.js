@@ -10,29 +10,35 @@ export default {
     },
   },
   options: {
+    name: {
+      type: 'input',
+      name: 'Input Name',
+      value: null,
+      priority: 1,
+    },
     label: {
       type: 'input',
       name: 'Check List Label',
       value: 'Select Options',
-      priority: 1,
+      priority: 2,
     },
     prependIcon: {
       type: 'input',
       name: 'Prepend Icon',
       value: null,
-      priority: 2,
+      priority: 3,
     },
     appendIcon: {
       type: 'input',
       name: 'Append Icon',
       value: null,
-      priority: 3,
+      priority: 4,
     },
     hint: {
       type: 'input',
       name: 'Hint Text',
       value: null,
-      priority: 4,
+      priority: 5,
     },
     hideDetails: {
       type: 'check',
@@ -44,7 +50,7 @@ export default {
       type: 'check',
       name: 'Disabled',
       value: false,
-      priority: 5,
+      priority: 7,
     },
     validation: {
       type: 'group',

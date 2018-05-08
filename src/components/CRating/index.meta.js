@@ -10,29 +10,35 @@ export default {
     },
   },
   options: {
+    name: {
+      type: 'input',
+      name: 'Input Name',
+      value: null,
+      priority: 1,
+    },
     label: {
       type: 'input',
       name: 'Rating Label',
       value: 'How did you like our fat bunny',
-      priority: 1,
+      priority: 2,
     },
     maxRating: {
       type: 'input',
       name: 'Max Rating',
       value: 5,
-      priority: 3,
+      priority: 4,
     },
     ratingInfo: {
       type: 'check',
       name: 'Rating Info',
       value: true,
-      priority: 4,
+      priority: 5,
     },
     icon: {
       type: 'input',
       name: 'Rating Icon',
       value: 'star',
-      priority: 2,
+      priority: 3,
     },
     validation: {
       type: 'group',

@@ -10,6 +10,12 @@ export default {
     },
   },
   options: {
+    name: {
+      type: 'input',
+      name: 'Input Name',
+      value: null,
+      priority: 1,
+    },
     toolbar: {
       type: 'select',
       name: 'Select RichText Type',
@@ -47,6 +53,7 @@ export default {
           label: 'Full',
         },
       ],
+      priority: 2,
     },
     validation: {
       type: 'group',

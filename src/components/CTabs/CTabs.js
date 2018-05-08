@@ -18,7 +18,8 @@ const getProps = (context) => {
 const uuid = () => v4();
 
 const getTabs = (context, createElement) => {
-  const tabs = _.map(context.elements, (element, i) => {
+  const config = context.config;
+  const tabs = _.map(config.elements, (element, i) => {
     const children = [element.title];
 
     if (element.icon) {
@@ -45,20 +46,29 @@ const getTabs = (context, createElement) => {
 export default {
   extends: Element,
   render(createElement) {
+    const self = this;
     const data = {
-      key: this.schema.uid,
-      props: getProps(this.config),
+      key: self.schema.uid,
+      props: getProps(self.config),
+      on: {
+        input(value) {
+          const label = self.config.elements[value].title;
+          self.sendToEventBus('SelectedItemChanged', {
+            label,
+          });
+        },
+      },
     };
 
-    const tabs = getTabs(this.config, createElement);
+    const tabs = getTabs(self, createElement);
 
-    const items = _.map(this.config.elements, element => createElement(
-      this.getElementTag('tab-item'),
+    const items = _.map(self.config.elements, element => createElement(
+      self.getElementTag('tab-item'),
       {
         props: {
           definition: _.merge({},
             element,
-            { contentColor: this.config.contentColor }),
+            { contentColor: self.config.contentColor }),
         },
       },
     ));

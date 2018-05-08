@@ -39,5 +39,16 @@ export default {
       return this.$createElement(tag,
         props, this.renderChildren(this.$createElement));
     },
+    /*
+    This method is exposed for reactions communication on eventBus.
+    Method is called when component receives reaction with component listener.
+    */
+    setDataSource(source) {
+      this.$set(this.config, 'dataSource', source);
+    },
+    gotToPage(page) {
+      // TODO
+      this.$router.push(page);
+    },
   },
 };

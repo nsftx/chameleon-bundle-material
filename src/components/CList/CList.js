@@ -71,7 +71,7 @@ const getListAvatar = (createElement, item) => {
   return createElement('v-icon', item.icon);
 };
 
-const getCardSlot = (createElement) => {
+const getCardSlot = (createElement, context) => {
   const getChildren = (props) => {
     const item = props.item;
 
@@ -81,15 +81,24 @@ const getCardSlot = (createElement) => {
 
     return [
       createElement('v-list', listOptions, [
-        createElement('v-list-tile', [
-          createElement('v-list-tile-avatar', [
-            getListAvatar(createElement, item),
+        createElement('v-list-tile', {
+          on: {
+            click() {
+              context.sendToEventBus('SelectedItemChanged', {
+                index: props.index,
+              });
+            },
+          },
+        },
+          [
+            createElement('v-list-tile-avatar', [
+              getListAvatar(createElement, item),
+            ]),
+            createElement('v-list-tile-content', [
+              createElement('v-list-tile-title', item.title),
+              createElement('v-list-tile-sub-title', item.description),
+            ]),
           ]),
-          createElement('v-list-tile-content', [
-            createElement('v-list-tile-title', item.title),
-            createElement('v-list-tile-sub-title', item.description),
-          ]),
-        ]),
       ]),
     ];
   };
@@ -123,7 +132,7 @@ const getListeners = (context) => {
         self.dataSourceParams.pagination.page = value.page;
         self.loadData();
       }
-
+      self.sendToEventBus('PaginationChanged', value);
       self.pagination = value;
     },
   };
@@ -147,6 +156,16 @@ export default {
         this.totalItems = result.pagination ? result.pagination.totalResults : 0;
         this.sendToEventBus('DataSourceChanged', this.dataSource);
       });
+    },
+    setPage(context) {
+      if (context.page && this.pagination) {
+        this.pagination.page = context.page;
+      }
+    },
+    setRowsPerPage(context) {
+      if (context.rows && this.pagination) {
+        this.pagination.rowsPerPage = context.rows;
+      }
     },
   },
   watch: {
@@ -173,7 +192,7 @@ export default {
           this.config.flat ? null : 'elevation-1',
         ],
         props: getProps(this),
-        scopedSlots: getCardSlot(createElement),
+        scopedSlots: getCardSlot(createElement, this),
         on: getListeners(this),
       }),
     ];

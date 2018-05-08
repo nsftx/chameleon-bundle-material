@@ -1,4 +1,4 @@
-import { each, isUndefined } from 'lodash';
+import { isUndefined } from 'lodash';
 import Element from '../Element';
 
 const getAttrs = (context) => {
@@ -29,15 +29,15 @@ const getProps = (context) => {
 };
 
 const getListeners = (context) => {
-  const listeners = {};
-
-  if (context.config.actions) {
-    each(context.config.actions, (action, actionKey) => {
-      listeners[actionKey] = () => {
-        context.$emit(action);
-      };
-    });
-  }
+  const listeners = {
+    click(value) {
+      const label = value.target.innerHTML;
+      context.$emit('click', label);
+      context.sendToEventBus('Clicked', {
+        label,
+      });
+    },
+  };
 
   return listeners;
 };

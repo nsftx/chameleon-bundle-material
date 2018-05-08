@@ -10,41 +10,47 @@ export default {
     },
   },
   options: {
+    name: {
+      type: 'input',
+      name: 'Input Name',
+      value: null,
+      priority: 1,
+    },
     prependIcon: {
       type: 'input',
       name: 'Prepend Icon',
       value: null,
-      priority: 1,
+      priority: 2,
     },
     appendIcon: {
       type: 'input',
       name: 'Append Icon',
       value: null,
-      priority: 2,
+      priority: 3,
     },
     hint: {
       type: 'input',
       name: 'Hint Text',
       value: null,
-      priority: 3,
+      priority: 4,
     },
     tooltip: {
       type: 'input',
       name: 'Tooltip Text',
       value: null,
-      priority: 4,
+      priority: 5,
     },
     format: {
       type: 'input',
       name: 'Date Format',
       value: 'LLL',
-      priority: 5,
+      priority: 6,
     },
     value: {
       type: 'input',
       name: 'Date Value',
       value: [],
-      priority: 6,
+      priority: 7,
     },
     time: {
       type: 'subGroup',

@@ -52,7 +52,9 @@ const getCellInferredProps = (cell) => {
   };
 };
 
-const getScopedSlots = (createElement, dataSource) => {
+const getScopedSlots = (createElement, context) => {
+  const self = context;
+  const dataSource = self.dataSource;
   const getColumns = (props) => {
     const item = props.item;
     const columns = [];
@@ -102,7 +104,15 @@ const getScopedSlots = (createElement, dataSource) => {
   };
 
   const slot = {
-    items: props => createElement('tr', {}, getColumns(props)),
+    items: props => createElement('tr', {
+      on: {
+        click() {
+          context.sendToEventBus('SelectedItemChanged', {
+            index: props.index,
+          });
+        },
+      },
+    }, getColumns(props)),
   };
 
   return slot;
@@ -178,7 +188,7 @@ const getListeners = (context) => {
         self.dataSourceParams.pagination.page = value.page;
         self.loadData();
       }
-
+      self.sendToEventBus('PaginationChanged', value);
       self.pagination = value;
     },
   };
@@ -203,6 +213,16 @@ export default {
         this.sendToEventBus('DataSourceChanged', this.dataSource);
       });
     },
+    setPage(context) {
+      if (context.page && this.pagination) {
+        this.pagination.page = context.page;
+      }
+    },
+    setRowsPerPage(context) {
+      if (context.rows && this.pagination) {
+        this.pagination.rowsPerPage = context.rows;
+      }
+    },
   },
   watch: {
     dataSource: {
@@ -221,7 +241,7 @@ export default {
       attrs: getAttrs(this),
       props: getProps(this),
       on: getListeners(this),
-      scopedSlots: getScopedSlots(createElement, this.dataSource),
+      scopedSlots: getScopedSlots(createElement, this),
       class: [
         this.config.color || 'white',
         this.config.flat ? null : 'elevation-1',

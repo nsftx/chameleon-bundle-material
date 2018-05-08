@@ -24,18 +24,31 @@ const getProps = (context) => {
   return props;
 };
 
+const getListeners = (context) => {
+  const listeners = {
+    change(value) {
+      context.sendToEventBus('SelectedItemChanged', value);
+    },
+  };
+  return listeners;
+};
+
 export default {
   extends: Element,
   render(createElement) {
     const data = getProps(this.config);
 
     const childrenProps = getItemProps(this.config);
-    const children = _.map(this.config.elements, element => createElement(
+    const children = _.map(this.config.elements, (element, index) => createElement(
       this.getElementTag('accordion-item'),
       {
         props: {
           definition: _.merge({}, element, childrenProps),
         },
+        attrs: {
+          tabIndex: index,
+        },
+        on: getListeners(this),
       },
     ));
 

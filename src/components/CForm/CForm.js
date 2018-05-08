@@ -2,24 +2,6 @@ import { concat, each, filter, kebabCase, isArray, isNil, isObject, map, merge }
 import { v4 } from 'uuid';
 import Element from '../Element';
 
-const getListeners = (context) => {
-  const listeners = {};
-  const formName = context.config.name;
-
-  // TODO: Listeners should be generated from config
-  // Listener handler should be generated from flow step
-  listeners.save = () => {
-    const form = context.$refs[formName];
-    if (form.validate()) {
-      console.log('Entity success =>', context.getEntity());
-    } else {
-      console.log('Entity error =>', context.getErrors());
-    }
-  };
-
-  return listeners;
-};
-
 const getComponentTag = (name, context) => {
   const type = ['number', 'money'].indexOf(name) > -1 ? 'text' : name;
   const tag = kebabCase(type);
@@ -77,6 +59,15 @@ export default {
 
       return errors;
     },
+    save() {
+      const formName = this.config.name;
+      const form = this.$refs[formName];
+      if (form.validate()) {
+        this.sendToEventBus('Saved', this.getEntity());
+      } else {
+        this.sendToEventBus('Errored', this.getErrors());
+      }
+    },
   },
   render(createElement) {
     const context = this;
@@ -133,7 +124,11 @@ export default {
               props: {
                 definition: button,
               },
-              on: getListeners(context),
+              on: {
+                click() {
+                  context.save();
+                },
+              },
             },
           )),
         ),

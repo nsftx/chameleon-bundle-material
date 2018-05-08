@@ -6,6 +6,12 @@ export default {
   children: [
     'accordion-item',
   ],
+  events: [
+    {
+      name: 'SelectedItemChanged',
+      help: 'Toggle of accordion child items',
+    },
+  ],
   options: {
     alternativeDesign: {
       type: 'select',

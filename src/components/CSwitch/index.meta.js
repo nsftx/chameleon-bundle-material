@@ -4,41 +4,47 @@ export default {
   name: 'Switch',
   icon: 'sync',
   options: {
+    name: {
+      type: 'input',
+      name: 'Input Name',
+      value: null,
+      priority: 1,
+    },
     label: {
       type: 'input',
       name: 'Switch Label',
       value: 'Switch',
-      priority: 1,
+      priority: 2,
     },
     color: {
       type: 'input',
       name: 'Color',
       value: 'primary',
-      priority: 2,
+      priority: 3,
     },
     prependIcon: {
       type: 'input',
       name: 'Prepend Icon',
       value: null,
-      priority: 3,
+      priority: 4,
     },
     appendIcon: {
       type: 'input',
       name: 'Append Icon',
       value: null,
-      priority: 4,
+      priority: 5,
     },
     hint: {
       type: 'input',
       name: 'Hint Text',
       value: null,
-      priority: 5,
+      priority: 6,
     },
     disabled: {
       type: 'check',
       name: 'Disable Switch',
       value: false,
-      priority: 6,
+      priority: 7,
     },
   },
 };

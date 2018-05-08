@@ -30,6 +30,25 @@ const getItemContent = (context, createElement) => {
   return el;
 };
 
+const getListeners = (context) => {
+  const self = context;
+
+  const listeners = {
+    input(value) {
+      self.value = value;
+      // Same event gets emited for every expansion panel being toggled
+      // distinguishing them by value: true || false
+      self.$emit('change', {
+        value: self.value,
+        index: self.$attrs.tabIndex,
+        item: self.config,
+      });
+    },
+  };
+
+  return listeners;
+};
+
 export default {
   extends: Element,
   render(createElement) {
@@ -39,6 +58,7 @@ export default {
       staticStyle: {
         backgroundColor: this.config.headerColor,
       },
+      on: getListeners(this),
     };
 
     const children = [

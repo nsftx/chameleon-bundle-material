@@ -3,6 +3,34 @@ export default {
   type: 'list',
   name: 'List',
   icon: 'list',
+  actions: [
+    {
+      name: 'setDataSource',
+      help: 'Sets table data source from event data',
+    },
+    {
+      name: 'setPage',
+      help: 'Go to page (pagination) from event data',
+    },
+    {
+      name: 'setRowsPerPage',
+      help: 'Set rowsPerPage from event data',
+    },
+  ],
+  events: [
+    {
+      name: 'DataSourceChanged',
+      help: 'Fires when table data source is changed',
+    },
+    {
+      name: 'SelectedItemChanged',
+      help: 'Fires when table item gets selected',
+    },
+    {
+      name: 'PaginationChanged',
+      help: 'Fires when table page gets changed',
+    },
+  ],
   options: {
     color: {
       type: 'input',

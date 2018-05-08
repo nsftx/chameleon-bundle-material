@@ -2,6 +2,24 @@ export default {
   type: 'page',
   name: 'Page',
   icon: 'browser',
+  actions: [
+    {
+      name: 'navigateToPage',
+      data: {
+        page: {
+          name: 'Page',
+          type: 'select',
+          valueType: 'string',
+          items: '$app.pages',
+          itemValue: 'path',
+          itemText: 'name',
+        },
+      },
+    },
+  ],
+  events: [
+    { name: 'Loading' },
+  ],
   optionGroups: {
     meta: {
       key: 'meta',
@@ -50,22 +68,4 @@ export default {
       },
     },
   },
-  actions: [
-    {
-      name: 'navigateToPage',
-      data: {
-        page: {
-          name: 'Page',
-          type: 'select',
-          valueType: 'string',
-          items: '$app.pages',
-          itemValue: 'path',
-          itemText: 'name',
-        },
-      },
-    },
-  ],
-  events: [
-    { name: 'Loading' },
-  ],
 };
