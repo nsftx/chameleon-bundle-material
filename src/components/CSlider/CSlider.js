@@ -1,4 +1,4 @@
-import { fieldable } from '@mixins';
+import { fieldable, validatable } from '@mixins';
 import { validator } from '@validators';
 import { isNil } from 'lodash';
 import Element from '../Element';
@@ -69,7 +69,7 @@ const getProps = (context) => {
     inputValue: context.value,
     validateOn: getPropValidateOnBlur(config),
     required: getPropRequired(config),
-    rules: validator.getRules(config, context.registry.validators),
+    rules: validator.getRules(config, context.validators),
   };
 
   return props;
@@ -79,6 +79,7 @@ export default {
   extends: Element,
   mixins: [
     fieldable,
+    validatable,
   ],
   render() {
     const data = {

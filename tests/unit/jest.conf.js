@@ -9,6 +9,7 @@ module.exports = {
   ],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
+    '@locale': '<rootDir>/src/locale',
     '@mixins': '<rootDir>/src/mixins',
     '@components': '<rootDir>/src/components',
     '@validators': '<rootDir>/src/validators',
