@@ -84,9 +84,7 @@ const getCardSlot = (createElement, context) => {
         createElement('v-list-tile', {
           on: {
             click() {
-              context.sendToEventBus('SelectedItemChanged', {
-                index: props.index,
-              });
+              context.sendToEventBus('SelectedItemChanged', item);
             },
           },
         },

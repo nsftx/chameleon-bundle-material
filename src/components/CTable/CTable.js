@@ -107,9 +107,8 @@ const getScopedSlots = (createElement, context) => {
     items: props => createElement('tr', {
       on: {
         click() {
-          context.sendToEventBus('SelectedItemChanged', {
-            index: props.index,
-          });
+          const item = props.item;
+          context.sendToEventBus('SelectedItemChanged', item);
         },
       },
     }, getColumns(props)),
