@@ -429,6 +429,7 @@
                           "time": {
                             "enabled": true
                           },
+                          "value": null,
                           "format": "LLL"
                         },
                         {
@@ -451,6 +452,7 @@
                           "time": {
                             "enabled": true
                           },
+                          "value": null,
                           "format": "LLL"
                         },
                         {
