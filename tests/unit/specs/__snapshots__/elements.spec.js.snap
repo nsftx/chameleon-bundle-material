@@ -293,7 +293,7 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating btn--outline accent--text">
+                  <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">9</div>
                   </button>
                 </td>
@@ -320,7 +320,7 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
+                  <button type="button" class="btn btn--flat btn--floating btn--outline accent--text">
                     <div class="btn__content">14</div>
                   </button>
                 </td>
