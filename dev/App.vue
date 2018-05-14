@@ -134,7 +134,6 @@
       assign(this.$chameleon, {
         connector: connectorApi,
         connectors: defaultJson.connectors,
-        validators: defaultJson.validators,
       });
 
       this.definition = defaultJson.pages[0];

@@ -2,7 +2,7 @@ import { each, assign } from 'lodash';
 import { mount, createLocalVue } from 'vue-test-utils';
 import { createRenderer } from 'vue-server-renderer';
 import Vuetify from 'vuetify';
-import * as components from '@/components';
+import * as components from '@components';
 
 const mockDefinition = require('./__mocks__/definition');
 
@@ -21,6 +21,11 @@ const childrenComponents = [
 ];
 
 describe('AllComponents', () => {
+  // Set div with data-app attribute for components to use as wrapper
+  const app = document.createElement('div');
+  app.setAttribute('data-app', true);
+  document.body.appendChild(app);
+
   each(components, (component, key) => {
     const renderer = createRenderer();
     const localVue = createLocalVue();
