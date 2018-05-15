@@ -79,6 +79,8 @@ export default {
         },
         events: {
           onReady: this.onPlayerReady,
+          onStateChange: this.onPlayerStateChange,
+          onError: this.onPlayerError,
         },
       });
 
@@ -86,11 +88,42 @@ export default {
         this.player.mute();
       }
     },
-    onPlayerReady() {
+    onPlayerReady(event) {
       const method = getPlayerMethod(this.playlist, this.config.autoplay);
       const params = getPlayerParameters(this);
 
       this.player[method](params);
+      this.sendToEventBus('PlayerReadyChanged', event);
+    },
+    onPlayerStateChange(event) {
+      switch (event.data) {
+        case 0:
+          this.sendToEventBus('Ended', event);
+          break;
+        case 1:
+          this.sendToEventBus('Played', event);
+          break;
+        case 2:
+          this.sendToEventBus('Paused', event);
+          break;
+        case 3:
+          this.sendToEventBus('Buffered', event);
+          break;
+        default:
+          this.sendToEventBus('PlayerStateChanged', event);
+      }
+    },
+    onPlayerError(event) {
+      this.sendToEventBus('PlayerErrored', event);
+    },
+    play() {
+      this.player.playVideo();
+    },
+    pause() {
+      this.player.pauseVideo();
+    },
+    stop() {
+      this.player.stopVideo();
     },
   },
   mounted() {

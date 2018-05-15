@@ -14,6 +14,50 @@ export default {
   type: 'youtube',
   name: 'YouTube',
   icon: 'ondemand_video',
+  actions: [
+    {
+      name: 'play',
+      help: 'Start playing',
+    },
+    {
+      name: 'pause',
+      help: 'Pause video',
+    },
+    {
+      name: 'stop',
+      help: 'Stop playing',
+    },
+  ],
+  events: [
+    {
+      name: 'PlayerReadyChanged',
+      help: 'Video ready state changed',
+    },
+    {
+      name: 'PlayerStateChanged',
+      help: 'Toggle of video states',
+    },
+    {
+      name: 'PlayerErrored',
+      help: 'On player error',
+    },
+    {
+      name: 'Played',
+      help: 'Video started playing',
+    },
+    {
+      name: 'Paused',
+      help: 'Video stoped playing',
+    },
+    {
+      name: 'Ended',
+      help: 'Video ended',
+    },
+    {
+      name: 'Buffered',
+      help: 'Video buffered',
+    },
+  ],
   options: {
     autoplay: {
       type: 'check',

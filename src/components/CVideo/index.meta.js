@@ -3,6 +3,38 @@ export default {
   type: 'video',
   name: 'Video',
   icon: 'theaters',
+  actions: [
+    {
+      name: 'play',
+      help: 'Start playing',
+    },
+    {
+      name: 'pause',
+      help: 'Pause video',
+    },
+  ],
+  events: [
+    {
+      name: 'PlayerReadyChanged',
+      help: 'Video ready state changed',
+    },
+    {
+      name: 'PlayerErrored',
+      help: 'On player error',
+    },
+    {
+      name: 'Played',
+      help: 'Video started playing',
+    },
+    {
+      name: 'Paused',
+      help: 'Video stoped playing',
+    },
+    {
+      name: 'Ended',
+      help: 'Video ended',
+    },
+  ],
   options: {
     label: {
       type: 'input',

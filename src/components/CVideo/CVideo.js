@@ -30,17 +30,23 @@ const getAttrs = (context) => {
 const getListeners = (context) => {
   const self = context;
 
-  const listeners = {};
-
-  if (!self.registry.isPreviewMode) {
-    listeners.click = () => {
-      if (self.$refs.video.paused) {
-        self.$refs.video.play();
-      } else {
-        self.$refs.video.pause();
-      }
-    };
-  }
+  const listeners = {
+    canplay: (event) => {
+      self.sendToEventBus('PlayerReadyChanged', event);
+    },
+    playing: (event) => {
+      self.sendToEventBus('Played', event);
+    },
+    pause: (event) => {
+      self.sendToEventBus('Paused', event);
+    },
+    ended: (event) => {
+      self.sendToEventBus('Ended', event);
+    },
+    error: (event) => {
+      self.sendToEventBus('PlayerErrored', event);
+    },
+  };
 
   return listeners;
 };
@@ -101,6 +107,14 @@ export default {
   mixins: [
     fieldable,
   ],
+  methods: {
+    play() {
+      this.$refs.video.play();
+    },
+    pause() {
+      this.$refs.video.pause();
+    },
+  },
   render(createElement) {
     const data = {
       staticStyle: getStaticStyle(this.config),
