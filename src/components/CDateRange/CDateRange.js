@@ -1,5 +1,5 @@
 import { clone, isNil } from 'lodash';
-import { fieldable } from '@mixins';
+import { fieldable, validatable } from '@mixins';
 import { validator } from '@validators';
 import Element from '../Element';
 
@@ -51,7 +51,7 @@ const getTextProps = (context) => {
     persistentHint: true,
     placeholder: config.placeholder,
     required: getPropRequired(config),
-    rules: validator.getRules(config, context.registry.validators),
+    rules: validator.getRules(config, context.validators),
     value: context.formattedValue,
   };
 
@@ -101,6 +101,7 @@ export default {
   extends: Element,
   mixins: [
     fieldable,
+    validatable,
   ],
   data() {
     return {

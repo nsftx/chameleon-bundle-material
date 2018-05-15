@@ -429,6 +429,7 @@
                           "time": {
                             "enabled": true
                           },
+                          "value": null,
                           "format": "LLL"
                         },
                         {
@@ -451,6 +452,7 @@
                           "time": {
                             "enabled": true
                           },
+                          "value": null,
                           "format": "LLL"
                         },
                         {
@@ -1065,38 +1067,6 @@
           }
         }
       }
-    }
-  },
-  "validators": {
-    "creditCard": {
-      "message": "The ${field} field is invalid credit card."
-    },
-    "min": {
-      "message": "The ${field} field must be greater than ${limit}."
-    },
-    "max": {
-      "message": "The ${field} field may be less than ${limit}."
-    },
-    "minLength": {
-      "message": "The ${field} field must be at least ${limit} characters."
-    },
-    "maxLength": {
-      "message": "The ${field} field may not be greater than ${limit} characters."
-    },
-    "minCount": {
-      "message": "The ${field} field must be greater than ${limit}."
-    },
-    "maxCount": {
-      "message": "The ${field} field may be less than ${limit}."
-    },
-    "integer": {
-      "message": "The ${field} field must be an integer."
-    },
-    "pattern": {
-      "message": "The ${field} field does not conform to pattern."
-    },
-    "required": {
-      "message": "The ${field} field is required."
     }
   },
   "slug": "test-lana"

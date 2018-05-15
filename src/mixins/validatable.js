@@ -19,6 +19,42 @@ export default {
     hasError() {
       return !this.valid;
     },
+    validators() {
+      const translations = this.translations;
+
+      return {
+        creditCard: {
+          message: translations.validatorCreditCardMessage,
+        },
+        min: {
+          message: translations.validatorMinMessage,
+        },
+        max: {
+          message: translations.validatorMaxMessage,
+        },
+        minLength: {
+          message: translations.validatorMinLengthMessage,
+        },
+        maxLength: {
+          message: translations.validatorMaxLengthMessage,
+        },
+        minCount: {
+          message: translations.validatorMinCountMessage,
+        },
+        maxCount: {
+          message: translations.validatorMaxCountMessage,
+        },
+        integer: {
+          message: translations.validatorIntegerMessage,
+        },
+        pattern: {
+          message: translations.validatorPatternMessage,
+        },
+        required: {
+          message: translations.validatorRequiredMessage,
+        },
+      };
+    },
   },
   methods: {
     validate() {
@@ -39,6 +75,6 @@ export default {
     },
   },
   mounted() {
-    this.rules = validator.getRules(this.config, this.registry.validators);
+    this.rules = validator.getRules(this.config, this.validators);
   },
 };

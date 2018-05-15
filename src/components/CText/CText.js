@@ -1,5 +1,5 @@
 import { isBoolean, isNil, isUndefined } from 'lodash';
-import { fieldable } from '@mixins';
+import { fieldable, validatable } from '@mixins';
 import { validator } from '@validators';
 import Element from '../Element';
 
@@ -117,7 +117,7 @@ const getProps = (context) => {
     prefix: getPropPrefix(config),
     prependIcon: config.prependIcon,
     required: getPropRequired(config),
-    rules: validator.getRules(config, context.registry.validators),
+    rules: validator.getRules(config, context.validators),
     suffix: getPropSuffix(config),
     type: getPropType(config),
     value: context.value,
@@ -157,6 +157,7 @@ export default {
   extends: Element,
   mixins: [
     fieldable,
+    validatable,
   ],
   methods: {
     setInputValue(value) {

@@ -12,6 +12,7 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.json', '.vue'],
     alias: {
+      '@locale': resolve('../src/locale'),
       '@meta': resolve('../src/index.meta'),
       '@namespace': resolve('../src/index.namespace'),
       '@components': resolve('../src/components'),
