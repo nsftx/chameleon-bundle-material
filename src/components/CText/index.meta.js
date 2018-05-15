@@ -9,6 +9,30 @@ export default {
       name: 'Validation',
     },
   },
+  actions: [
+    {
+      name: 'setInputValue',
+      help: 'Input field updated',
+    },
+  ],
+  events: [
+    {
+      name: 'Focused',
+      help: 'Input focused',
+    },
+    {
+      name: 'Changed',
+      help: 'Input changed',
+    },
+    {
+      name: 'Cleared',
+      help: 'Input cleared / reset',
+    },
+    {
+      name: 'Blured',
+      help: 'Input focus changed',
+    },
+  ],
   options: {
     name: {
       type: 'input',
@@ -64,11 +88,17 @@ export default {
       value: null,
       priority: 9,
     },
+    clearable: {
+      type: 'check',
+      name: 'Enable input reset',
+      value: false,
+      priority: 10,
+    },
     multiLine: {
       type: 'check',
       name: 'Enable Multiline',
       value: false,
-      priority: 10,
+      priority: 11,
     },
     mask: {
       type: 'subGroup',

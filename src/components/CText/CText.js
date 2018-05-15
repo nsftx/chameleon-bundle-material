@@ -1,4 +1,4 @@
-import { isBoolean, isUndefined } from 'lodash';
+import { isBoolean, isNil, isUndefined } from 'lodash';
 import { fieldable } from '@mixins';
 import { validator } from '@validators';
 import Element from '../Element';
@@ -120,7 +120,7 @@ const getProps = (context) => {
     rules: validator.getRules(config, context.registry.validators),
     suffix: getPropSuffix(config),
     type: getPropType(config),
-    value: config.value,
+    value: context.value,
     validateOn: getPropValidateOnBlur(config),
   };
 
@@ -133,12 +133,20 @@ const getListeners = (context) => {
   const self = context;
 
   const listeners = {
+    focus() {
+      self.sendToEventBus('Focused', self.value);
+    },
     input(value) {
       self.value = value;
+      if (isNil(value)) {
+        self.sendToEventBus('Cleared', value);
+      } else {
+        self.sendToEventBus('Changed', value);
+      }
       self.$emit('input', value);
     },
     blur() {
-      self.$emit('blur', self.value);
+      self.sendToEventBus('Blured', self.value);
     },
   };
 
@@ -150,6 +158,11 @@ export default {
   mixins: [
     fieldable,
   ],
+  methods: {
+    setInputValue(value) {
+      this.value = value;
+    },
+  },
   render(createElement) {
     const data = {
       attrs: getAttrs(this),
