@@ -161,6 +161,7 @@ export default {
   methods: {
     setInputValue(value) {
       this.value = value;
+      this.$emit('input', value);
     },
   },
   render(createElement) {
