@@ -139,6 +139,6 @@ export default {
       ],
     );
 
-    return this.renderElement('v-card', data, children);
+    return this.renderElement('v-card', data, children, true);
   },
 };

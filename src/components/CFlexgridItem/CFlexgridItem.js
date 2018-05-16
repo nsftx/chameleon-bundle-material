@@ -12,6 +12,6 @@ export default {
 
     const children = this.renderChildElement('div');
 
-    return this.renderElement('div', data, children);
+    return this.renderElement('div', data, children, true);
   },
 };

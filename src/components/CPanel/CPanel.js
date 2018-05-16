@@ -18,6 +18,6 @@ export default {
 
     const children = this.renderChildElement('div');
 
-    return this.renderElement('v-card', data, children);
+    return this.renderElement('v-card', data, children, true);
   },
 };
