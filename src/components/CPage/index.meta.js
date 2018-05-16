@@ -58,7 +58,7 @@ export default {
           name: 'Page',
           type: 'select',
           valueType: 'string',
-          items: '$app.pages',
+          items: '=$app.pages',
           itemValue: 'path',
           itemText: 'name',
         },
