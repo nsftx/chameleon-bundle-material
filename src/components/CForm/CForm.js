@@ -94,13 +94,13 @@ export default {
       'v-form',
       {
         ref: this.config.name,
-        staticClass: this.$options.name,
+        staticClass: `${this.$options.name} ${context.baseChildrenClass}`,
       },
       [
         createElement(
           'v-card-text',
           {
-            staticClass: `${context.baseChildrenClass} ${context.$options.name}-items`,
+            staticClass: `${context.$options.name}-items`,
           },
           map(this.getFields(), (field) => {
             const self = this;
