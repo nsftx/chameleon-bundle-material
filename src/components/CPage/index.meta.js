@@ -27,7 +27,7 @@ export default {
       value: null,
       displayProp: 'name',
       valueProp: 'name',
-      items: [],
+      items: '=$app.pages',
       priority: 3,
     },
     width: {
