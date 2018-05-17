@@ -1,6 +1,17 @@
 import { each, kebabCase, isNil } from 'lodash';
 import { elementable, reactionable } from '@mixins';
 
+const renderPreviewStyle = (context) => {
+  if (context.registry.isPreviewMode) {
+    return {
+      width: context.config.width,
+      height: context.config.height,
+      overflow: context.config.overflow,
+    };
+  }
+  return {};
+};
+
 export default {
   mixins: [
     elementable,
@@ -57,11 +68,11 @@ export default {
         ));
       });
     }
-
     return createElement(
       'div',
       {
         staticClass: baseClass,
+        style: renderPreviewStyle(this),
       },
       children,
     );

@@ -30,6 +30,34 @@ export default {
       items: [],
       priority: 3,
     },
+    width: {
+      type: 'input',
+      name: 'Preview Width',
+      value: 'auto',
+      priority: 4,
+    },
+    height: {
+      type: 'input',
+      name: 'Preview Height',
+      value: 'auto',
+      priority: 5,
+    },
+    overflow: {
+      type: 'select',
+      name: 'Preview Overflow',
+      value: 'hidden',
+      items: [
+        {
+          name: 'Hidden',
+          value: 'hidden',
+        },
+        {
+          name: 'Scroll',
+          value: 'scroll',
+        },
+      ],
+      priority: 6,
+    },
     meta: {
       type: 'group',
       group: 'meta',

@@ -7,6 +7,9 @@
     {
       "name": "home",
       "type": "page",
+      "width": "auto",
+      "height": "auto",
+      "overflow": "hidden",
       "meta": {
         "title": "Test",
         "description": "Test Chameleon Page",
