@@ -23,11 +23,15 @@ export default {
     reactionable,
   ],
   methods: {
-    renderElement(tag, properties, items) {
+    renderElement(tag, properties, items, parentable) {
       const props = isNil(properties) ? {} : cloneDeep(properties);
 
       props.attrs = merge(properties.attrs, this.getSchemaAttributes());
       props.staticClass = `${this.baseClass} ${this.$options.name}`;
+
+      if (parentable) {
+        props.staticClass += ` ${this.baseParentClass}`;
+      }
 
       return this.$createElement(tag,
         props, [items]);

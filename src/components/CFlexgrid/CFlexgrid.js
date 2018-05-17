@@ -46,6 +46,6 @@ export default {
         attrs: getLayoutAttrs(this.config),
       }, items);
 
-    return this.renderElement('div', data, children);
+    return this.renderElement('div', data, children, true);
   },
 };
