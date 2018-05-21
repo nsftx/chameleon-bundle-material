@@ -40,12 +40,12 @@ export default {
       previewWidth: {
         type: 'input',
         name: 'Preview Width',
-        value: 'auto',
+        value: '960px',
       },
       previewHeight: {
         type: 'input',
         name: 'Preview Height',
-        value: 'auto',
+        value: '1360px',
       },
       overflow: {
         type: 'select',
