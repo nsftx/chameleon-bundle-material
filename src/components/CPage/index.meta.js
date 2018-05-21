@@ -3,6 +3,10 @@ export default {
   name: 'Page',
   icon: 'browser',
   optionGroups: {
+    layout: {
+      key: 'layout',
+      name: 'Layout',
+    },
     meta: {
       key: 'meta',
       name: 'Meta',
@@ -30,33 +34,35 @@ export default {
       items: '=$app.pages',
       priority: 3,
     },
-    width: {
-      type: 'input',
-      name: 'Preview Width',
-      value: 'auto',
-      priority: 4,
-    },
-    height: {
-      type: 'input',
-      name: 'Preview Height',
-      value: 'auto',
-      priority: 5,
-    },
-    overflow: {
-      type: 'select',
-      name: 'Preview Overflow',
-      value: 'hidden',
-      items: [
-        {
-          name: 'Hidden',
-          value: 'hidden',
-        },
-        {
-          name: 'Scroll',
-          value: 'scroll',
-        },
-      ],
-      priority: 6,
+    layout: {
+      type: 'group',
+      group: 'layout',
+      previewWidth: {
+        type: 'input',
+        name: 'Preview Width',
+        value: 'auto',
+      },
+      previewHeight: {
+        type: 'input',
+        name: 'Preview Height',
+        value: 'auto',
+      },
+      overflow: {
+        type: 'select',
+        name: 'Preview Overflow',
+        value: 'hidden',
+        items: [
+          {
+            name: 'Hidden',
+            value: 'hidden',
+          },
+          {
+            name: 'Scroll',
+            value: 'scroll',
+          },
+        ],
+        priority: 6,
+      },
     },
     meta: {
       type: 'group',

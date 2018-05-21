@@ -3,10 +3,11 @@ import { elementable, reactionable } from '@mixins';
 
 const renderPreviewStyle = (context) => {
   if (context.registry.isPreviewMode) {
+    const layout = context.config.layout;
     return {
-      width: context.config.width,
-      height: context.config.height,
-      overflow: context.config.overflow,
+      width: layout.previewWidth,
+      height: layout.previewHeight,
+      overflow: layout.overflow,
     };
   }
   return {};
