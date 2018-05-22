@@ -1,4 +1,4 @@
-import { defaults, each, isNil, isString, keys, map, merge, toLower } from 'lodash';
+import { defaults, each, isEmpty, isNil, isString, keys, map, merge, toLower } from 'lodash';
 import Element from '../Element';
 import '../../style/components/_table.styl';
 
@@ -140,7 +140,7 @@ const getProps = (context) => {
   const config = context.config;
   const dataSource = context.dataSource;
   const hasDataSource = !isNil(dataSource);
-  const hasColor = !isNil(config.color);
+  const hasColor = !isEmpty(config.color);
   const columns = hasDataSource && dataSource.schema;
 
   const props = {
