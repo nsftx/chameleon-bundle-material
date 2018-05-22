@@ -82,5 +82,6 @@ export default {
       value: false,
       priority: 11,
     },
+    theme: true,
   },
 };

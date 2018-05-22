@@ -12,7 +12,7 @@
             {
               "name": "shoppingTable",
               "type": "table",
-              "color": "yellow",
+              "theme": "dark",
               "rowsPerPage": 10,
               "dataSource": {
                 "name": "movies",

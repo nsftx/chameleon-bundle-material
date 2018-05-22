@@ -5,6 +5,7 @@ import {
   localizable,
   sourceable,
   reactionable,
+  themeable,
 } from '@mixins';
 
 import { cloneDeep, merge, isNil } from 'lodash';
@@ -21,6 +22,7 @@ export default {
     localizable,
     sourceable,
     reactionable,
+    themeable,
   ],
   methods: {
     renderElement(tag, properties, items, parentable) {
@@ -33,15 +35,21 @@ export default {
         props.staticClass += ` ${this.baseParentClass}`;
       }
 
-      return this.$createElement(tag,
-        props, [items]);
+      return this.$createElement(
+        tag,
+        props,
+        [items],
+      );
     },
     renderChildElement(tag, properties) {
       const props = isNil(properties) ? {} : cloneDeep(properties);
       props.staticClass = `${this.baseChildrenClass} ${this.$options.name}-items`;
 
-      return this.$createElement(tag,
-        props, this.renderChildren(this.$createElement));
+      return this.$createElement(
+        tag,
+        props,
+        this.renderChildren(this.$createElement),
+      );
     },
   },
 };

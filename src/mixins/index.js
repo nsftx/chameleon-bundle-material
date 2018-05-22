@@ -1,5 +1,6 @@
 export { default as fieldable } from './fieldable';
 export { default as localizable } from './localizable';
+export { default as themeable } from './themeable';
 export { default as validatable } from './validatable';
 
 /*

@@ -620,7 +620,6 @@
                     {
                       "name": "shoppingTable",
                       "type": "table",
-                      "color": "yellow",
                       "dataSource": {
                         "schema": [
                           {

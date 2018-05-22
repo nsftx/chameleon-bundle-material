@@ -169,7 +169,7 @@ export default {
           wrap: this.config.wrap,
         },
         class: [
-          this.config.color || 'white',
+          this.config.color ? (this.config.color || 'white') : null,
           this.config.flat ? null : 'elevation-1',
         ],
         props: getProps(this),

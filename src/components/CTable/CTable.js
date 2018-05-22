@@ -140,9 +140,12 @@ const getProps = (context) => {
   const config = context.config;
   const dataSource = context.dataSource;
   const hasDataSource = !isNil(dataSource);
+  const hasColor = !isNil(config.color);
   const columns = hasDataSource && dataSource.schema;
 
   const props = {
+    dark: hasColor ? false : context.isThemeDark,
+    light: hasColor ? false : context.isThemeLight,
     items: context.items,
     hideHeaders: !columns,
     headers: columns ? getHeadersProp(dataSource) : [],
@@ -223,7 +226,7 @@ export default {
       on: getListeners(this),
       scopedSlots: getScopedSlots(createElement, this.dataSource),
       class: [
-        this.config.color || 'white',
+        this.config.color ? (this.config.color || 'white') : null,
         this.config.flat ? null : 'elevation-1',
       ],
     };
