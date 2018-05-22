@@ -29,6 +29,16 @@ export default {
     name() {
       return this.config.name;
     },
+    theme() {
+      if (isNil(this.config.theme) && this.registry) {
+        const app = this.registry.app;
+        if (app) {
+          return this.registry.app.theme;
+        }
+      }
+
+      return this.config.theme;
+    },
   },
   methods: {
     navigateToPage(payload, data) {
