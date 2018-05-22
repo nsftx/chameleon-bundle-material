@@ -25,14 +25,14 @@ export default {
     themeable,
   ],
   methods: {
-    renderElement(tag, properties, items, parentable) {
-      const props = isNil(properties) ? {} : cloneDeep(properties);
+    renderElement(tag, options, items, parentable) {
+      const props = isNil(options) ? {} : cloneDeep(options);
 
-      props.attrs = merge(properties.attrs, this.getSchemaAttributes());
+      props.attrs = merge(options.attrs, this.getSchemaAttributes());
       props.staticClass = `${this.baseClass} ${this.$options.name}`;
 
       if (parentable) {
-        props.staticClass += ` ${this.baseParentClass}`;
+        props.staticClass = `${props.staticClass} ${this.baseParentClass}`;
       }
 
       return this.$createElement(
@@ -41,8 +41,8 @@ export default {
         [items],
       );
     },
-    renderChildElement(tag, properties) {
-      const props = isNil(properties) ? {} : cloneDeep(properties);
+    renderChildElement(tag, options) {
+      const props = isNil(options) ? {} : cloneDeep(options);
       props.staticClass = `${this.baseChildrenClass} ${this.$options.name}-items`;
 
       return this.$createElement(

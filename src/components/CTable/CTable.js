@@ -1,4 +1,4 @@
-import { defaults, each, isEmpty, isNil, isString, keys, map, merge, toLower } from 'lodash';
+import { defaults, each, isNil, isString, keys, map, merge, toLower } from 'lodash';
 import Element from '../Element';
 import '../../style/components/_table.styl';
 
@@ -140,12 +140,11 @@ const getProps = (context) => {
   const config = context.config;
   const dataSource = context.dataSource;
   const hasDataSource = !isNil(dataSource);
-  const hasColor = !isEmpty(config.color);
   const columns = hasDataSource && dataSource.schema;
 
   const props = {
-    dark: hasColor ? false : context.isThemeDark,
-    light: hasColor ? false : context.isThemeLight,
+    dark: context.isThemeDark,
+    light: context.isThemeLight,
     items: context.items,
     hideHeaders: !columns,
     headers: columns ? getHeadersProp(dataSource) : [],
@@ -220,17 +219,24 @@ export default {
     this.loadData();
   },
   render(createElement) {
-    const data = {
+    const table = createElement('v-data-table', {
       attrs: getAttrs(this),
       props: getProps(this),
       on: getListeners(this),
       scopedSlots: getScopedSlots(createElement, this.dataSource),
-      class: [
-        this.config.color ? (this.config.color || 'white') : null,
-        this.config.flat ? null : 'elevation-1',
-      ],
-    };
+    });
 
-    return this.renderElement('v-data-table', data);
+    return this.renderElement(
+      'v-card',
+      {
+        props: {
+          dark: this.isThemeDark,
+          light: this.isThemeLight,
+          color: this.config.color,
+          flat: this.config.flat,
+        },
+      },
+      table,
+    );
   },
 };
