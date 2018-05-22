@@ -11,9 +11,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js --open --hot",
-    "unit": "jest --config tests/unit/jest.conf.js --updateSnapshot",
-    "test": "npm run unit",
-    "coverage": "npm run test && codecov",
+    "test": "jest --config tests/unit/jest.conf.js --updateSnapshot",
+    "coverage": "npm run lint && npm run test && codecov",
     "lint": "eslint --ext .js,.vue src tests/unit/specs",
     "build": "rimraf dist && cross-env NODE_ENV=production webpack --config build/config.js --progress --hide-modules",
     "build:docs": "node build/docs.js",
