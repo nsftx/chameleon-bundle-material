@@ -83,6 +83,7 @@ export default {
         value: null,
       },
     },
+    theme: true,
   },
   actions: [
     {

@@ -7,7 +7,7 @@ export default {
     color: {
       type: 'input',
       name: 'Color',
-      value: 'white',
+      value: null,
       priority: 1,
     },
     flat: {
@@ -91,5 +91,6 @@ export default {
       value: false,
       priority: 13,
     },
+    theme: true,
   },
 };

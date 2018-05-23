@@ -143,6 +143,8 @@ const getProps = (context) => {
   const columns = hasDataSource && dataSource.schema;
 
   const props = {
+    dark: context.isThemeDark,
+    light: context.isThemeLight,
     items: context.items,
     hideHeaders: !columns,
     headers: columns ? getHeadersProp(dataSource) : [],
@@ -217,17 +219,24 @@ export default {
     this.loadData();
   },
   render(createElement) {
-    const data = {
+    const table = createElement('v-data-table', {
       attrs: getAttrs(this),
       props: getProps(this),
       on: getListeners(this),
       scopedSlots: getScopedSlots(createElement, this.dataSource),
-      class: [
-        this.config.color || 'white',
-        this.config.flat ? null : 'elevation-1',
-      ],
-    };
+    });
 
-    return this.renderElement('v-data-table', data);
+    return this.renderElement(
+      'v-card',
+      {
+        props: {
+          dark: this.isThemeDark,
+          light: this.isThemeLight,
+          color: this.config.color,
+          flat: this.config.flat,
+        },
+      },
+      table,
+    );
   },
 };

@@ -17,6 +17,7 @@ module.exports = {
       '@namespace': resolve('../src/index.namespace'),
       '@components': resolve('../src/components'),
       '@mixins': resolve('../src/mixins'),
+      '@utility': resolve('../src/utility'),
       '@validators': resolve('../src/validators'),
       'style': resolve('../src/style'),
     }
