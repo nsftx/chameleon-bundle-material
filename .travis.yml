@@ -6,3 +6,4 @@ install:
 script:
   - npm run coverage
   - npm run build
+  
