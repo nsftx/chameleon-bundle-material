@@ -14,6 +14,7 @@ module.exports = {
     '@components': '<rootDir>/src/components',
     '@validators': '<rootDir>/src/validators',
     '@namespace': '<rootDir>/src/index.namespace',
+    '@utility': '<rootDir>/src/utility',
   },
   transform: {
     '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
