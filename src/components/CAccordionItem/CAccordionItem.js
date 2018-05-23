@@ -66,6 +66,6 @@ export default {
       getItemContent(this, createElement),
     ];
 
-    return this.renderElement('v-expansion-panel-content', data, children);
+    return this.renderElement('v-expansion-panel-content', data, children, true);
   },
 };

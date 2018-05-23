@@ -80,6 +80,6 @@ export default {
       ),
     );
 
-    return this.renderElement('v-tabs', data, children);
+    return this.renderElement('v-tabs', data, children, true);
   },
 };

@@ -1,10 +1,26 @@
 import { each, kebabCase, isNil } from 'lodash';
-import { elementable, reactionable } from '@mixins';
+import { elementable, reactionable, themeable } from '@mixins';
+import { logger, loggerNamespace } from '@utility';
+
+const getPreviewStyle = (context) => {
+  const layout = context.config.layout;
+
+  if (context.registry.isPreviewMode && layout) {
+    return {
+      width: layout.previewWidth,
+      height: layout.previewHeight,
+      overflow: layout.overflow,
+    };
+  }
+
+  return {};
+};
 
 export default {
   mixins: [
     elementable,
     reactionable,
+    themeable,
   ],
   computed: {
     elements() {
@@ -13,12 +29,26 @@ export default {
     name() {
       return this.config.name;
     },
+    theme() {
+      if (isNil(this.config.theme) && this.registry) {
+        const app = this.registry.app;
+        if (app) {
+          return this.registry.app.theme;
+        }
+      }
+
+      return this.config.theme;
+    },
   },
   methods: {
     navigateToPage(payload, data) {
       if (isNil(data)) {
-        // eslint-disable-next-line
-        console.info('[CMB] Data is required for navigation');
+        logger.info(
+          'Data is required for navigation',
+          JSON.stringify(payload),
+          loggerNamespace,
+        );
+
         return;
       }
 
@@ -30,8 +60,11 @@ export default {
       if (!this.registry.isPreviewMode && route.path) {
         this.$router.push(route);
       } else {
-        // eslint-disable-next-line
-        console.info('[CMB] Navigation disabled in preview mode =>', JSON.stringify(route));
+        logger.info(
+          'Navigation disabled in preview mode =>',
+          JSON.stringify(route),
+          loggerNamespace,
+        );
       }
     },
   },
@@ -45,12 +78,12 @@ export default {
     const children = [];
 
     if (this.elements) {
-      each(this.elements, (n) => {
+      each(this.elements, (element) => {
         children.push(createElement(
-          this.getElementTag(n.type),
+          this.getElementTag(element.type),
           {
             props: {
-              definition: n,
+              definition: element,
             },
           },
           children,
@@ -59,9 +92,15 @@ export default {
     }
 
     return createElement(
-      'div',
+      'v-card',
       {
+        props: {
+          dark: this.isThemeDark,
+          light: this.isThemeLight,
+          flat: true,
+        },
         staticClass: baseClass,
+        style: getPreviewStyle(this),
       },
       children,
     );

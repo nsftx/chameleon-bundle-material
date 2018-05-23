@@ -5,6 +5,7 @@ import {
   localizable,
   sourceable,
   reactionable,
+  themeable,
 } from '@mixins';
 
 import { cloneDeep, merge, isNil } from 'lodash';
@@ -21,23 +22,34 @@ export default {
     localizable,
     sourceable,
     reactionable,
+    themeable,
   ],
   methods: {
-    renderElement(tag, properties, items) {
-      const props = isNil(properties) ? {} : cloneDeep(properties);
+    renderElement(tag, options, items, parentable) {
+      const props = isNil(options) ? {} : cloneDeep(options);
 
-      props.attrs = merge(properties.attrs, this.getSchemaAttributes());
+      props.attrs = merge(options.attrs, this.getSchemaAttributes());
       props.staticClass = `${this.baseClass} ${this.$options.name}`;
 
-      return this.$createElement(tag,
-        props, [items]);
+      if (parentable) {
+        props.staticClass = `${props.staticClass} ${this.baseParentClass}`;
+      }
+
+      return this.$createElement(
+        tag,
+        props,
+        [items],
+      );
     },
-    renderChildElement(tag, properties) {
-      const props = isNil(properties) ? {} : cloneDeep(properties);
+    renderChildElement(tag, options) {
+      const props = isNil(options) ? {} : cloneDeep(options);
       props.staticClass = `${this.baseChildrenClass} ${this.$options.name}-items`;
 
-      return this.$createElement(tag,
-        props, this.renderChildren(this.$createElement));
+      return this.$createElement(
+        tag,
+        props,
+        this.renderChildren(this.$createElement),
+      );
     },
     /*
     This method is exposed for reactions communication on eventBus.

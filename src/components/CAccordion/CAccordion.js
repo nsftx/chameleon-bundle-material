@@ -52,6 +52,6 @@ export default {
       },
     ));
 
-    return this.renderElement('v-expansion-panel', data, children);
+    return this.renderElement('v-expansion-panel', data, children, true);
   },
 };

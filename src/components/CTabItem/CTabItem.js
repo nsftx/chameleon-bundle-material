@@ -26,6 +26,6 @@ export default {
 
     const children = getTabItemContent(this, createElement);
 
-    return this.renderElement('v-tab-item', data, children);
+    return this.renderElement('v-tab-item', data, children, true);
   },
 };

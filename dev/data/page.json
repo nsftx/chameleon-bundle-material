@@ -7,6 +7,11 @@
     {
       "name": "home",
       "type": "page",
+      "layout": {
+        "previewWidth": "auto",
+        "previewHeight": "auto",
+        "overflow": "hidden"
+      },
       "meta": {
         "title": "Test",
         "description": "Test Chameleon Page",
@@ -615,7 +620,6 @@
                     {
                       "name": "shoppingTable",
                       "type": "table",
-                      "color": "yellow",
                       "dataSource": {
                         "schema": [
                           {

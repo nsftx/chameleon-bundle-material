@@ -10,7 +10,7 @@ export default {
           name: 'Page',
           type: 'select',
           valueType: 'string',
-          items: '$app.pages',
+          items: '=$app.pages',
           itemValue: 'path',
           itemText: 'name',
         },
@@ -21,6 +21,10 @@ export default {
     { name: 'Loading' },
   ],
   optionGroups: {
+    layout: {
+      key: 'layout',
+      name: 'Layout',
+    },
     meta: {
       key: 'meta',
       name: 'Meta',
@@ -45,8 +49,38 @@ export default {
       value: null,
       displayProp: 'name',
       valueProp: 'name',
-      items: [],
+      items: '=$app.pages',
       priority: 3,
+    },
+    layout: {
+      type: 'group',
+      group: 'layout',
+      previewWidth: {
+        type: 'input',
+        name: 'Preview Width',
+        value: '960px',
+      },
+      previewHeight: {
+        type: 'input',
+        name: 'Preview Height',
+        value: '1360px',
+      },
+      overflow: {
+        type: 'select',
+        name: 'Preview Overflow',
+        value: 'hidden',
+        items: [
+          {
+            name: 'Hidden',
+            value: 'hidden',
+          },
+          {
+            name: 'Scroll',
+            value: 'scroll',
+          },
+        ],
+        priority: 6,
+      },
     },
     meta: {
       type: 'group',
@@ -67,5 +101,6 @@ export default {
         value: null,
       },
     },
+    theme: true,
   },
 };
