@@ -9,6 +9,18 @@ export default {
       name: 'Validation',
     },
   },
+  actions: [
+    {
+      name: 'setInputValue',
+      help: 'Checkbox input field updated',
+    },
+  ],
+  events: [
+    {
+      name: 'Changed',
+      help: 'Checkbox clicked, value changed',
+    },
+  ],
   options: {
     name: {
       type: 'input',

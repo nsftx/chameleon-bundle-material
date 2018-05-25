@@ -27,6 +27,8 @@ const getListeners = (context) => {
   const listeners = {
     change(value) {
       self.value = value;
+      const label = self.value ? context.config.label : '';
+      self.sendToEventBus('Changed', label);
       self.$emit('input', value);
     },
   };
@@ -70,6 +72,12 @@ export default {
     fieldable,
     validatable,
   ],
+  methods: {
+    setInputValue(value) {
+      this.value = value;
+      this.$emit('input', value);
+    },
+  },
   render() {
     const data = {
       attrs: getAttrs(this),

@@ -9,6 +9,30 @@ export default {
       name: 'Validation',
     },
   },
+  actions: [
+    {
+      name: 'setInputValue',
+      help: 'Input field updated',
+    },
+  ],
+  events: [
+    {
+      name: 'Focused',
+      help: 'Input focused',
+    },
+    {
+      name: 'Changed',
+      help: 'Input changed',
+    },
+    {
+      name: 'Cleared',
+      help: 'Input cleared / reset',
+    },
+    {
+      name: 'Blured',
+      help: 'Input focus changed',
+    },
+  ],
   options: {
     name: {
       type: 'input',

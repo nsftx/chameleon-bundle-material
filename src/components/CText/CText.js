@@ -140,10 +140,9 @@ const getListeners = (context) => {
       self.value = value;
       if (isNil(value)) {
         self.sendToEventBus('Cleared', value);
-      } else {
-        self.sendToEventBus('Changed', value);
       }
-      self.$emit('input', value);
+      self.sendToEventBus('Changed', value);
+      self.$emit('input', self.value);
     },
     blur() {
       self.sendToEventBus('Blured', self.value);
