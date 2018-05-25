@@ -16,34 +16,34 @@ export default {
       value: null,
       priority: 1,
     },
-    label: {
-      type: 'input',
-      name: 'Check List Label',
-      value: 'Select Options',
-      priority: 2,
-    },
     prependIcon: {
       type: 'input',
       name: 'Prepend Icon',
       value: null,
-      priority: 3,
+      priority: 2,
     },
     appendIcon: {
       type: 'input',
       name: 'Append Icon',
       value: null,
-      priority: 4,
+      priority: 3,
     },
     hint: {
       type: 'input',
       name: 'Hint Text',
       value: null,
-      priority: 5,
+      priority: 4,
     },
     hideDetails: {
       type: 'check',
       name: 'Hide Details',
       value: false,
+      priority: 5,
+    },
+    color: {
+      type: 'input',
+      name: 'Checkbox Color',
+      value: 'primary',
       priority: 6,
     },
     disabled: {
@@ -51,6 +51,12 @@ export default {
       name: 'Disabled',
       value: false,
       priority: 7,
+    },
+    dataSource: {
+      type: 'dataSource',
+      group: 'data',
+      name: 'Data Source',
+      value: null,
     },
     validation: {
       type: 'group',

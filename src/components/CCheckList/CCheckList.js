@@ -46,11 +46,10 @@ const getItemProps = (context, item) => {
     hideDetails: true,
     prependIcon: config.prependIcon,
     appendIcon: config.appendIcon,
-    persistentHint: config.persistentHint,
-    inputValue: context.value,
+    inputValue: context.value || [],
     hint: config.hint,
-    disabled: item.disabled,
-    color: item.color,
+    disabled: config.disabled,
+    color: config.color,
     value: item.value,
   };
 
@@ -63,6 +62,23 @@ export default {
     fieldable,
     validatable,
   ],
+  watch: {
+    dataSource: {
+      handler() {
+        this.loadData();
+      },
+    },
+  },
+  methods: {
+    loadData() {
+      this.loadConnectorData().then((result) => {
+        this.config.dataSource.items = result.items || [];
+      });
+    },
+  },
+  mounted() {
+    this.loadData();
+  },
   render(createElement) {
     const message = createErrorMessage(createElement, this);
 

@@ -473,14 +473,12 @@
                 {
                   "name": "cities",
                   "type": "check-list",
-                  "label": "Select cities",
                   "prependIcon": null,
                   "appendIcon": null,
                   "hint": null,
-                  "persistentHint": false,
-                  "hideDetails": false,
-                  "value": [],
                   "validateOn": "blur",
+                  "color": "primary",
+                  "disabled": false,
                   "validation": {
                     "required": true,
                     "minCount": 1,
@@ -490,21 +488,15 @@
                     "items": [
                       {
                         "value": "London",
-                        "label": "London",
-                        "color": "primary",
-                        "disabled": false
+                        "label": "London"
                       },
                       {
                         "value": "Manchester",
-                        "label": "Manchester",
-                        "color": "primary",
-                        "disabled": false
+                        "label": "Manchester"
                       },
                       {
                         "value": "Liverpool",
-                        "label": "Liverpool",
-                        "color": "primary",
-                        "disabled": false
+                        "label": "Liverpool"
                       }
                     ]
                   }
