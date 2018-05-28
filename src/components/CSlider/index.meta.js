@@ -9,6 +9,22 @@ export default {
       name: 'Validation',
     },
   },
+  actions: [
+    {
+      name: 'setInputValue',
+      help: 'Switch input field updated',
+    },
+    {
+      name: 'setItemDisabledValue',
+      help: 'Input field disabled value',
+    },
+  ],
+  events: [
+    {
+      name: 'Changed',
+      help: 'Switch clicked, value changed',
+    },
+  ],
   options: {
     name: {
       type: 'input',
@@ -81,12 +97,12 @@ export default {
       min: {
         type: 'input',
         name: 'Min Value',
-        value: null,
+        value: 1,
       },
       max: {
         type: 'input',
         name: 'Max Value',
-        value: null,
+        value: 100,
       },
     },
   },

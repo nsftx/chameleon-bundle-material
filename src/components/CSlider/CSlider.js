@@ -17,6 +17,7 @@ const getListeners = (context) => {
   const listeners = {
     input(value) {
       self.value = value;
+      self.sendToEventBus('Changed', { value });
       self.$emit('input', value);
     },
   };
@@ -50,6 +51,7 @@ const getPropValidateOnBlur = (config) => {
 
 const getProps = (context) => {
   const config = context.config;
+  config.value = context.value || 0;
 
   const props = {
     label: config.label,
@@ -65,8 +67,9 @@ const getProps = (context) => {
     max: !isNil(config.validation) ? config.validation.max : null,
     step: config.step,
     ticks: getPropTick(config),
-    value: config.value,
     inputValue: context.value,
+    value: context.value,
+    disabled: config.disabled,
     validateOn: getPropValidateOnBlur(config),
     required: getPropRequired(config),
     rules: validator.getRules(config, context.validators),

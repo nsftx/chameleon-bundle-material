@@ -473,13 +473,13 @@
                           "appendIcon": null,
                           "hint": null,
                           "persistentHint": false,
+                          "disabled": false,
                           "validateOn": "blur",
                           "validation": {
                             "required": true,
                             "min": 1,
                             "max": 100
                           },
-                          "value": "",
                           "step": 1
                         },
                         {
