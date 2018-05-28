@@ -111,6 +111,7 @@ const getProps = (context) => {
     hint: config.hint,
     label: config.label,
     loading: false,
+    disabled: config.disabled || false,
     multiLine: getPropMultiline(config),
     persistentHint: config.persistentHint,
     placeholder: config.placeholder,
@@ -158,12 +159,6 @@ export default {
     fieldable,
     validatable,
   ],
-  methods: {
-    setInputValue(value) {
-      this.value = value;
-      this.$emit('input', value);
-    },
-  },
   render(createElement) {
     const data = {
       attrs: getAttrs(this),

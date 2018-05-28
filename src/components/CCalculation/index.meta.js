@@ -14,6 +14,10 @@ export default {
       name: 'setInputValue',
       help: 'Input field updated',
     },
+    {
+      name: 'setItemDisabledValue',
+      help: 'Input field disabled value',
+    },
   ],
   events: [
     {

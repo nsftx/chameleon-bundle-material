@@ -30,6 +30,8 @@ const getItemListeners = (context) => {
   const listeners = {
     change(value) {
       self.value = value;
+      const items = self.value;
+      self.sendToEventBus('Changed', { items });
       self.$emit('input', value);
       self.validate();
     },

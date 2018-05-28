@@ -27,6 +27,7 @@
                   "tooltip": null,
                   "multiLine": false,
                   "clearable": true,
+                  "disabled": false,
                   "validateOn": "blur",
                   "mask": {
                     "predefined": false,
@@ -34,7 +35,7 @@
                   },
                   "validation": {
                     "required": true,
-                    "minLength": 2,
+                    "minLength": 2, 
                     "maxLength": 20,
                     "pattern": {
                       "predefined": null,
@@ -509,6 +510,8 @@
                   "appendIcon": null,
                   "hint": null,
                   "persistentHint": false,
+                  "color": "primary",
+                  "disabled": false,
                   "value": null,
                   "validation": {
                     "required": true
@@ -517,21 +520,15 @@
                     "items": [
                       {
                         "value": "Male",
-                        "label": "Male",
-                        "color": "primary",
-                        "disabled": false
+                        "label": "Male"
                       },
                       {
                         "value": "Female",
-                        "label": "Female",
-                        "color": "primary",
-                        "disabled": false
+                        "label": "Female"
                       },
                       {
                         "value": "Other",
-                        "label": "Other",
-                        "color": "primary",
-                        "disabled": false
+                        "label": "Other"
                       }
                     ]
                   }

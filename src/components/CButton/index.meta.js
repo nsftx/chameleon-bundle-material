@@ -8,6 +8,10 @@ export default {
       name: 'Clicked',
       help: 'Fires when button is clicked',
     },
+    {
+      name: 'setItemDisabledValue',
+      help: 'Input field disabled value',
+    },
   ],
   options: {
     label: {

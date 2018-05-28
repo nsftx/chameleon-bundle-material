@@ -20,6 +20,8 @@ const getListeners = (context) => {
   const listeners = {
     change(payload) {
       self.value = payload;
+      const items = self.value;
+      self.sendToEventBus('Changed', { items });
       self.$emit('input', payload);
       self.validate();
     },
@@ -42,12 +44,42 @@ const getProps = (context) => {
   return props;
 };
 
+const getItemProps = (context, item) => {
+  const config = context.config;
+
+  const props = {
+    label: item.label,
+    value: item.value,
+    color: config.color,
+    disabled: config.disabled,
+  };
+
+  return props;
+};
+
 export default {
   extends: Element,
   mixins: [
     fieldable,
     validatable,
   ],
+  watch: {
+    dataSource: {
+      handler() {
+        this.loadData();
+      },
+    },
+  },
+  methods: {
+    loadData() {
+      this.loadConnectorData().then((result) => {
+        this.config.dataSource.items = result.items || [];
+      });
+    },
+  },
+  mounted() {
+    this.loadData();
+  },
   render(createElement) {
     const message = createErrorMessage(createElement, this);
 
@@ -69,12 +101,7 @@ export default {
       map(this.config.dataSource.items,
         item => createElement('v-radio',
           {
-            props: {
-              label: item.label,
-              value: item.value,
-              color: item.color,
-              disabled: item.disabled,
-            },
+            props: getItemProps(this, item),
           },
         )),
       message,

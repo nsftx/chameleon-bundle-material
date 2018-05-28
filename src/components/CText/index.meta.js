@@ -14,6 +14,10 @@ export default {
       name: 'setInputValue',
       help: 'Input field updated',
     },
+    {
+      name: 'setItemDisabledValue',
+      help: 'Input field disabled value',
+    },
   ],
   events: [
     {
@@ -90,7 +94,7 @@ export default {
     },
     clearable: {
       type: 'check',
-      name: 'Enable input reset',
+      name: 'Enable Input Reset',
       value: false,
       priority: 10,
     },
@@ -99,6 +103,12 @@ export default {
       name: 'Enable Multiline',
       value: false,
       priority: 11,
+    },
+    disabled: {
+      type: 'check',
+      name: 'Disable Input',
+      value: false,
+      priority: 12,
     },
     mask: {
       type: 'subGroup',

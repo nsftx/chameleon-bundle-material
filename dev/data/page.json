@@ -53,6 +53,7 @@
                           "tooltip": null,
                           "multiLine": false,
                           "clearable": true,
+                          "disabled": false,
                           "validateOn": "blur",
                           "mask": {
                             "predefined": false,
@@ -502,6 +503,8 @@
                           "hint": null,
                           "persistentHint": false,
                           "hideDetails": false,
+                          "color": "primary",
+                          "disabled": false,
                           "value": [],
                           "validateOn": "blur",
                           "validation": {
@@ -513,21 +516,15 @@
                             "items": [
                               {
                                 "value": "London",
-                                "label": "London",
-                                "color": "primary",
-                                "disabled": false
+                                "label": "London"
                               },
                               {
                                 "value": "Manchester",
-                                "label": "Manchester",
-                                "color": "primary",
-                                "disabled": false
+                                "label": "Manchester"
                               },
                               {
                                 "value": "Liverpool",
-                                "label": "Liverpool",
-                                "color": "primary",
-                                "disabled": false
+                                "label": "Liverpool"
                               }
                             ]
                           }
@@ -540,6 +537,8 @@
                           "appendIcon": null,
                           "hint": null,
                           "persistentHint": false,
+                          "color": "primary",
+                          "disabled": false,
                           "value": null,
                           "validation": {
                             "required": true
@@ -548,21 +547,15 @@
                             "items": [
                               {
                                 "value": "Male",
-                                "label": "Male",
-                                "color": "primary",
-                                "disabled": false
+                                "label": "Male"
                               },
                               {
                                 "value": "Female",
-                                "label": "Female",
-                                "color": "primary",
-                                "disabled": false
+                                "label": "Female"
                               },
                               {
                                 "value": "Other",
-                                "label": "Other",
-                                "color": "primary",
-                                "disabled": false
+                                "label": "Other"
                               }
                             ]
                           }

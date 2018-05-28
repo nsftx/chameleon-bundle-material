@@ -9,6 +9,12 @@ export default {
       name: 'Validation',
     },
   },
+  events: [
+    {
+      name: 'Changed',
+      help: 'Checkbox clicked, checkbox list changed',
+    },
+  ],
   options: {
     name: {
       type: 'input',

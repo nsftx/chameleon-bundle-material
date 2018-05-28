@@ -28,7 +28,7 @@ const getListeners = (context) => {
     change(value) {
       self.value = value;
       const label = self.value ? context.config.label : '';
-      self.sendToEventBus('Changed', label);
+      self.sendToEventBus('Changed', { label });
       self.$emit('input', value);
     },
   };
@@ -58,9 +58,9 @@ const getProps = (context) => {
     color: config.color,
     inputValue: context.value || false,
     value: config.value || false,
-    validateOn: getPropValidateOnBlur(config),
     required: getPropRequired(config),
     rules: validator.getRules(config, context.validators),
+    validateOn: getPropValidateOnBlur(config),
   };
 
   return props;
@@ -72,12 +72,6 @@ export default {
     fieldable,
     validatable,
   ],
-  methods: {
-    setInputValue(value) {
-      this.value = value;
-      this.$emit('input', value);
-    },
-  },
   render() {
     const data = {
       attrs: getAttrs(this),

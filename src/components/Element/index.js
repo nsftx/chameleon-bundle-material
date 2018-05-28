@@ -58,9 +58,12 @@ export default {
     setDataSource(source) {
       this.$set(this.config, 'dataSource', source);
     },
-    gotToPage(page) {
-      // TODO
-      this.$router.push(page);
+    setInputValue(value) {
+      this.value = value;
+      this.$emit('input', value);
+    },
+    setItemDisabled(value) {
+      this.$set(this.config, 'disabled', value);
     },
   },
 };

@@ -14,6 +14,10 @@ export default {
       name: 'setInputValue',
       help: 'Checkbox input field updated',
     },
+    {
+      name: 'setItemDisabledValue',
+      help: 'Input field disabled value',
+    },
   ],
   events: [
     {
