@@ -3,6 +3,22 @@ export default {
   type: 'switch',
   name: 'Switch',
   icon: 'sync',
+  actions: [
+    {
+      name: 'setInputValue',
+      help: 'Switch input field updated',
+    },
+    {
+      name: 'setItemDisabledValue',
+      help: 'Input field disabled value',
+    },
+  ],
+  events: [
+    {
+      name: 'Changed',
+      help: 'Switch clicked, value changed',
+    },
+  ],
   options: {
     name: {
       type: 'input',

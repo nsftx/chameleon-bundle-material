@@ -17,6 +17,8 @@ const getListeners = (context) => {
   const listeners = {
     change(value) {
       self.value = value;
+      const label = self.value ? context.config.label : '';
+      self.sendToEventBus('Changed', { label });
       self.$emit('input', value);
     },
   };
