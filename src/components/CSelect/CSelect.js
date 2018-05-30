@@ -17,10 +17,10 @@ const getListeners = (context) => {
 
   const listeners = {
     input(value) {
-      const parsedValue = isArray(value) ? value : [value];
-
-      self.value = parsedValue;
-      self.$emit('input', parsedValue);
+      const selection = isArray(value) ? value : [value];
+      self.value = selection;
+      self.sendToEventBus('Selected', selection);
+      self.$emit('input', selection);
     },
   };
 
@@ -60,14 +60,6 @@ const getPropValue = (config) => {
 const getProps = (context) => {
   const config = context.config;
 
-  if (isNil(config.dataSource)) {
-    config.dataSource = {
-      items: [],
-      options: {
-        displayProp: 'name',
-      },
-    };
-  }
 
   const props = {
     appendIcon: getPropAppendIcon(config),
@@ -76,8 +68,8 @@ const getProps = (context) => {
     clearable: config.clearable && !config.readonly,
     deletableChips: context.chips && config.multiple && !config.readonly,
     hint: config.hint,
-    items: config.dataSource.items,
-    itemText: config.dataSource.options.displayProp,
+    items: config.dataSource.items || [],
+    itemText: 'name',
     itemValue: 'id',
     label: config.label,
     loading: false,
@@ -88,6 +80,7 @@ const getProps = (context) => {
     placeholder: config.placeholder,
     prependIcon: config.prependIcon,
     readonly: config.readonly,
+    disabled: config.disabled,
     required: getPropRequired(config),
     returnObject: true,
     rules: validator.getRules(config, context.validators),
@@ -104,6 +97,21 @@ export default {
     fieldable,
     validatable,
   ],
+  watch: {
+    dataSource: {
+      handler() {
+        this.loadData();
+      },
+    },
+  },
+  methods: {
+    loadData() {
+      this.loadConnectorData().then((result) => {
+        this.config.dataSource.items = result.items || [];
+        this.selectProps.items = result.items || [];
+      });
+    },
+  },
   data() {
     return {
       attrs: null,
@@ -113,10 +121,17 @@ export default {
     };
   },
   created() {
+    if (isNil(this.config.dataSource)) {
+      this.config.dataSource = {
+        items: [],
+      };
+    }
+
     const context = this;
     this.attrs = getAttrs(context);
     this.selectProps = getProps(context);
     this.listeners = getListeners(context);
+    this.loadData();
   },
   render(createElement) {
     const children = createElement(

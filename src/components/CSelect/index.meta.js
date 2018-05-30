@@ -9,6 +9,18 @@ export default {
       name: 'Validation',
     },
   },
+  actions: [
+    {
+      name: 'setItemDisabledValue',
+      help: 'Input field disabled value',
+    },
+  ],
+  events: [
+    {
+      name: 'Selected',
+      help: 'Select clicked and item selected',
+    },
+  ],
   options: {
     name: {
       type: 'input',
@@ -57,6 +69,18 @@ export default {
       name: 'Enable Readonly',
       value: false,
       priority: 8,
+    },
+    disabled: {
+      type: 'check',
+      name: 'Disabled',
+      value: false,
+      priority: 9,
+    },
+    dataSource: {
+      type: 'dataSource',
+      group: 'data',
+      name: 'Data Source',
+      value: null,
     },
     validation: {
       type: 'group',

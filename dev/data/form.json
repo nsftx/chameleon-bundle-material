@@ -164,6 +164,7 @@
                   "multiple": false,
                   "clearable": false,
                   "readonly": false,
+                  "disabled": false,
                   "validateOn": "blur",
                   "mask": {
                     "predefined": false,

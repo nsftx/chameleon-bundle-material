@@ -12,7 +12,7 @@ export default {
   actions: [
     {
       name: 'setInputValue',
-      help: 'Switch input field updated',
+      help: 'Slider input field updated',
     },
     {
       name: 'setItemDisabledValue',
@@ -22,7 +22,7 @@ export default {
   events: [
     {
       name: 'Changed',
-      help: 'Switch clicked, value changed',
+      help: 'Slider scrolled, value changed',
     },
   ],
   options: {
