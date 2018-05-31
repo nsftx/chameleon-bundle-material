@@ -42,9 +42,12 @@ const getItemListeners = (context) => {
 
 const getItemProps = (context, item) => {
   const config = context.config;
+  const itemProps = Object.keys(item);
+  const value = itemProps.indexOf('value') >= 0 ? item.value : item[itemProps[0]];
+  const label = itemProps.indexOf('label') >= 0 ? item.label : item[itemProps[1]];
 
   const props = {
-    label: item.label,
+    label,
     hideDetails: true,
     prependIcon: config.prependIcon,
     appendIcon: config.appendIcon,
@@ -52,7 +55,7 @@ const getItemProps = (context, item) => {
     hint: config.hint,
     disabled: config.disabled,
     color: config.color,
-    value: item.value,
+    value,
   };
 
   return props;

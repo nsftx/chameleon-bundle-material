@@ -3,14 +3,16 @@ export default {
   type: 'button',
   name: 'Button',
   icon: 'crop_landscape',
+  actions: [
+    {
+      name: 'setItemDisabledValue',
+      help: 'Input field disabled value',
+    },
+  ],
   events: [
     {
       name: 'Clicked',
       help: 'Fires when button is clicked',
-    },
-    {
-      name: 'setItemDisabledValue',
-      help: 'Input field disabled value',
     },
   ],
   options: {

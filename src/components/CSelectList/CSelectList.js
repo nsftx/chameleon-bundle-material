@@ -77,7 +77,7 @@ export default {
         props: this.selectProps,
         on: this.listeners,
         scopedSlots: deletableChips &&
-          getCardSlot(createElement, this.selectProps.itemText),
+          getCardSlot(createElement),
       },
     );
 

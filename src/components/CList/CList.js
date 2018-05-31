@@ -74,6 +74,9 @@ const getListAvatar = (createElement, item) => {
 const getCardSlot = (createElement, context) => {
   const getChildren = (props) => {
     const item = props.item;
+    const itemProps = Object.keys(item);
+    const title = itemProps.indexOf('title') >= 0 ? item.title : item[itemProps[0]];
+    const description = itemProps.indexOf('description') >= 0 ? item.description : item[itemProps[1]];
 
     const listOptions = {
       staticClass: 'transparent',
@@ -93,8 +96,8 @@ const getCardSlot = (createElement, context) => {
               getListAvatar(createElement, item),
             ]),
             createElement('v-list-tile-content', [
-              createElement('v-list-tile-title', item.title),
-              createElement('v-list-tile-sub-title', item.description),
+              createElement('v-list-tile-title', title),
+              createElement('v-list-tile-sub-title', description),
             ]),
           ]),
       ]),

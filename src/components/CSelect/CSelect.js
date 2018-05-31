@@ -59,7 +59,11 @@ const getPropValue = (config) => {
 
 const getProps = (context) => {
   const config = context.config;
+  let itemProps = [];
 
+  if (!isNil(config.dataSource.items) && config.dataSource.items.length > 0) {
+    itemProps = Object.keys(config.dataSource.items[0]);
+  }
 
   const props = {
     appendIcon: getPropAppendIcon(config),
@@ -69,8 +73,8 @@ const getProps = (context) => {
     deletableChips: context.chips && config.multiple && !config.readonly,
     hint: config.hint,
     items: config.dataSource.items || [],
-    itemText: 'name',
-    itemValue: 'id',
+    itemValue: itemProps[0] || 'id',
+    itemText: itemProps[1] || 'name',
     label: config.label,
     loading: false,
     multiLine: config.multiLine,

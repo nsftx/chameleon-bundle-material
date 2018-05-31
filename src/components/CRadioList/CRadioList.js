@@ -46,10 +46,13 @@ const getProps = (context) => {
 
 const getItemProps = (context, item) => {
   const config = context.config;
+  const itemProps = Object.keys(item);
+  const value = itemProps.indexOf('value') >= 0 ? item.value : item[itemProps[0]];
+  const label = itemProps.indexOf('label') >= 0 ? item.label : item[itemProps[1]];
 
   const props = {
-    label: item.label,
-    value: item.value,
+    value,
+    label,
     color: config.color,
     disabled: config.disabled,
   };

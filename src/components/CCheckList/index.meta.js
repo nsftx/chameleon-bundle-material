@@ -75,12 +75,12 @@ export default {
       minCount: {
         type: 'input',
         name: 'Min Count',
-        value: null,
+        value: 1,
       },
       maxCount: {
         type: 'input',
         name: 'Max Count',
-        value: null,
+        value: 10,
       },
     },
   },
