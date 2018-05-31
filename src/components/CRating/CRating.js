@@ -36,8 +36,9 @@ const getIconElement = (createElement, index, context) => {
         },
         click() {
           self.value = index;
-          self.setRating(true);
+          self.setRating(false, true);
           self.$emit('input', self.value);
+          self.sendToEventBus('Changed', { value: self.value });
         },
       },
     },
@@ -87,8 +88,8 @@ export default {
     };
   },
   methods: {
-    setRating(validate) {
-      this.fillLevel = this.value;
+    setRating(value, validate) {
+      this.fillLevel = value || this.value;
       if (validate) this.validate();
     },
   },

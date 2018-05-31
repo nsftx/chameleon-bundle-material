@@ -9,6 +9,18 @@ export default {
       name: 'Validation',
     },
   },
+  actions: [
+    {
+      name: 'setRating',
+      help: 'Rating value changed',
+    },
+  ],
+  events: [
+    {
+      name: 'Changed',
+      help: 'Rating clicked, value changed',
+    },
+  ],
   options: {
     name: {
       type: 'input',
