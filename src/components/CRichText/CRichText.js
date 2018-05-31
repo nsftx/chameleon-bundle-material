@@ -91,7 +91,7 @@ export default {
           this.sendToEventBus('Focused', { text: this.value });
         } else {
           this.$emit('blur', this.editor);
-          this.sendToEventBus('Blured', { text: this.value });
+          this.sendToEventBus('Blurred', { text: this.value });
         }
       });
 

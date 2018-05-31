@@ -146,7 +146,7 @@ const getListeners = (context) => {
       self.$emit('input', self.valu);
     },
     blur() {
-      self.sendToEventBus('Blured', { text: self.value });
+      self.sendToEventBus('Blurred', { text: self.value });
     },
   };
 

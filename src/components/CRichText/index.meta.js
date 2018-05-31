@@ -11,8 +11,8 @@ export default {
   },
   events: [
     {
-      name: 'Blured',
-      help: 'Blured',
+      name: 'Blurred',
+      help: 'Blurred',
     },
     {
       name: 'Changed',
