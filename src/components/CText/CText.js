@@ -135,18 +135,18 @@ const getListeners = (context) => {
 
   const listeners = {
     focus() {
-      self.sendToEventBus('Focused', self.value);
+      self.sendToEventBus('Focused', { text: self.value });
     },
     input(value) {
       self.value = value;
       if (isNil(value)) {
-        self.sendToEventBus('Cleared', value);
+        self.sendToEventBus('Cleared', { text: value });
       }
-      self.sendToEventBus('Changed', value);
-      self.$emit('input', self.value);
+      self.sendToEventBus('Changed', { text: value });
+      self.$emit('input', self.valu);
     },
     blur() {
-      self.sendToEventBus('Blured', self.value);
+      self.sendToEventBus('Blured', { text: self.value });
     },
   };
 

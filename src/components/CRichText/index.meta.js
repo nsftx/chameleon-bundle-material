@@ -9,6 +9,20 @@ export default {
       name: 'Validation',
     },
   },
+  events: [
+    {
+      name: 'Blured',
+      help: 'Blured',
+    },
+    {
+      name: 'Changed',
+      help: 'Text input changed',
+    },
+    {
+      name: 'Focused',
+      help: 'Focused',
+    },
+  ],
   options: {
     name: {
       type: 'input',

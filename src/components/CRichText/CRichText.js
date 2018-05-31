@@ -88,8 +88,10 @@ export default {
       this.editor.on('selection-change', (range) => {
         if (range) {
           this.$emit('focus', this.editor);
+          this.sendToEventBus('Focused', { text: this.value });
         } else {
           this.$emit('blur', this.editor);
+          this.sendToEventBus('Blured', { text: this.value });
         }
       });
 
@@ -104,6 +106,7 @@ export default {
         this.value = html;
         this.validate();
         this.$emit('input', this.value);
+        this.sendToEventBus('Changed', { text: this.value });
       });
     },
   },
