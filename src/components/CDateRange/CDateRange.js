@@ -139,6 +139,15 @@ export default {
 
     const data = {
       props: getMenuProps(this),
+      on: {
+        input(value) {
+          if (value) {
+            self.sendToEventBus('Opened', { value });
+          } else {
+            self.sendToEventBus('Closed', { value });
+          }
+        },
+      },
     };
 
     const children = [
@@ -148,6 +157,11 @@ export default {
           slot: 'activator',
           attrs: getTextAttrs(this),
           props: getTextProps(this),
+          on: {
+            input(value) {
+              self.sendToEventBus('Cleared', { value });
+            },
+          },
         },
       ),
       createElement(
@@ -164,6 +178,7 @@ export default {
               if (moment(self.valueFrom).isAfter(self.valueTo)) {
                 self.valueTo = self.valueFrom;
               }
+              self.sendToEventBus('Changed', { value });
             },
             formattedInput(value) {
               self.formattedValueFrom = value;
@@ -182,6 +197,7 @@ export default {
           on: {
             input(value) {
               self.valueTo = value;
+              self.sendToEventBus('Changed', { value });
             },
             formattedInput(value) {
               self.formattedValueTo = value;

@@ -109,6 +109,15 @@ export default {
 
     const data = {
       props: getMenuProps(this),
+      on: {
+        input(value) {
+          if (value) {
+            self.sendToEventBus('Opened', { value });
+          } else {
+            self.sendToEventBus('Closed', { value });
+          }
+        },
+      },
     };
 
     const children = [
@@ -118,6 +127,11 @@ export default {
           slot: 'activator',
           attrs: getTextAttrs(this),
           props: getTextProps(this),
+          on: {
+            input(value) {
+              self.sendToEventBus('Cleared', { value });
+            },
+          },
         },
       ),
       createElement(
@@ -127,6 +141,7 @@ export default {
           on: {
             input(value) {
               self.value = value;
+              self.sendToEventBus('Changed', { value });
             },
             formattedInput(value) {
               self.formattedValue = value;
