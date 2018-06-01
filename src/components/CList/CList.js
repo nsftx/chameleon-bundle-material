@@ -158,10 +158,8 @@ export default {
         this.sendToEventBus('DataSourceChanged', this.dataSource);
       });
     },
-    setPage(context) {
-      if (context.page && this.pagination) {
-        this.pagination.page = context.page;
-      }
+    setPage() {
+      // todo
     },
     setRowsPerPage(context) {
       if (context.rows && this.pagination) {
