@@ -226,7 +226,7 @@ exports[`AllComponents c-picker renders correctly 1`] = `
               <i aria-hidden="true" class="icon material-icons">chevron_left</i>
             </div>
           </button>
-          <div class="date-picker-header__value"><strong class="accent--text">May 2018</strong></div>
+          <div class="date-picker-header__value"><strong class="accent--text">June 2018</strong></div>
           <button type="button" class="btn btn--icon">
             <div class="btn__content">
               <i aria-hidden="true" class="icon material-icons">chevron_right</i>
@@ -250,6 +250,9 @@ exports[`AllComponents c-picker renders correctly 1`] = `
               <tr>
                 <td></td>
                 <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td>
                   <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">1</div>
@@ -260,13 +263,15 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                     <div class="btn__content">2</div>
                   </button>
                 </td>
+              </tr>
+              <tr>
                 <td>
                   <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">3</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
+                  <button type="button" class="btn btn--flat btn--floating btn--outline accent--text">
                     <div class="btn__content">4</div>
                   </button>
                 </td>
@@ -275,8 +280,6 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                     <div class="btn__content">5</div>
                   </button>
                 </td>
-              </tr>
-              <tr>
                 <td>
                   <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">6</div>
@@ -297,6 +300,8 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                     <div class="btn__content">9</div>
                   </button>
                 </td>
+              </tr>
+              <tr>
                 <td>
                   <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">10</div>
@@ -312,8 +317,6 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                     <div class="btn__content">12</div>
                   </button>
                 </td>
-              </tr>
-              <tr>
                 <td>
                   <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">13</div>
@@ -334,6 +337,8 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                     <div class="btn__content">16</div>
                   </button>
                 </td>
+              </tr>
+              <tr>
                 <td>
                   <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">17</div>
@@ -349,8 +354,6 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                     <div class="btn__content">19</div>
                   </button>
                 </td>
-              </tr>
-              <tr>
                 <td>
                   <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">20</div>
@@ -371,6 +374,8 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                     <div class="btn__content">23</div>
                   </button>
                 </td>
+              </tr>
+              <tr>
                 <td>
                   <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">24</div>
@@ -386,8 +391,6 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                     <div class="btn__content">26</div>
                   </button>
                 </td>
-              </tr>
-              <tr>
                 <td>
                   <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">27</div>
@@ -399,18 +402,13 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating btn--outline accent--text">
+                  <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">29</div>
                   </button>
                 </td>
                 <td>
                   <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">30</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">31</div>
                   </button>
                 </td>
               </tr>

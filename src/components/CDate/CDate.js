@@ -111,11 +111,7 @@ export default {
       props: getMenuProps(this),
       on: {
         input(value) {
-          if (value) {
-            self.sendToEventBus('Opened', { value });
-          } else {
-            self.sendToEventBus('Closed', { value });
-          }
+          self.sendToEventBus('VisibilityChanged', { visible: value });
         },
       },
     };
@@ -129,7 +125,7 @@ export default {
           props: getTextProps(this),
           on: {
             input(value) {
-              self.sendToEventBus('Cleared', { value });
+              self.sendToEventBus('Changed', { value });
             },
           },
         },

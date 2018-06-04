@@ -15,16 +15,8 @@ export default {
       help: 'Date clicked, date value changed',
     },
     {
-      name: 'Cleared',
-      help: 'Date removed from input field',
-    },
-    {
-      name: 'Closed',
-      help: 'Date picker menu visibility updated',
-    },
-    {
-      name: 'Opened',
-      help: 'Date picker menu visibility updated',
+      name: 'VisibilityChanged',
+      help: 'Date picker menu visibility changed',
     },
   ],
   options: {

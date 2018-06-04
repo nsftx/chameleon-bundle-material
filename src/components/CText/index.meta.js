@@ -21,10 +21,6 @@ export default {
   ],
   events: [
     {
-      name: 'Blurred',
-      help: 'Input blurred',
-    },
-    {
       name: 'Changed',
       help: 'Input changed',
     },
@@ -33,8 +29,12 @@ export default {
       help: 'Input cleared / reset',
     },
     {
-      name: 'Focused',
+      name: 'FocusedIn',
       help: 'Input focused',
+    },
+    {
+      name: 'FocusedOut',
+      help: 'Input focused out / blurred',
     },
   ],
   options: {

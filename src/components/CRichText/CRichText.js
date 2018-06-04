@@ -88,10 +88,10 @@ export default {
       this.editor.on('selection-change', (range) => {
         if (range) {
           this.$emit('focus', this.editor);
-          this.sendToEventBus('Focused', { text: this.value });
+          this.sendToEventBus('FocusedIn', { text: this.value });
         } else {
           this.$emit('blur', this.editor);
-          this.sendToEventBus('Blurred', { text: this.value });
+          this.sendToEventBus('FocusedOut', { text: this.value });
         }
       });
 

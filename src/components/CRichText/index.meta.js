@@ -11,16 +11,16 @@ export default {
   },
   events: [
     {
-      name: 'Blurred',
-      help: 'Blurred',
-    },
-    {
       name: 'Changed',
       help: 'Text input changed',
     },
     {
-      name: 'Focused',
-      help: 'Focused',
+      name: 'FocusedIn',
+      help: 'Focused in',
+    },
+    {
+      name: 'FocusedOut',
+      help: 'Focused out / Blurred',
     },
   ],
   options: {
