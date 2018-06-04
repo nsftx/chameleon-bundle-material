@@ -12,7 +12,7 @@ import { cloneDeep, merge, isNil } from 'lodash';
 /*
 This is a base element for all componets.
 This element applies elementable mixin from sdk, and
-appends baseClass and baseChildrenClass
+appends baseClass, baseParentClass and baseChildrenClass
 */
 export default {
   mixins: [
@@ -62,7 +62,7 @@ export default {
       this.value = value;
       this.$emit('input', value);
     },
-    setItemDisabled(value) {
+    setItemDisabledValue(value) {
       this.$set(this.config, 'disabled', value);
     },
   },

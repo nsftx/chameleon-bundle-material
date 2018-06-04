@@ -58,5 +58,11 @@ export default {
       value: false,
       priority: 4,
     },
+    disabled: {
+      type: 'check',
+      name: 'Disabled',
+      value: false,
+      priority: 8,
+    },
   },
 };

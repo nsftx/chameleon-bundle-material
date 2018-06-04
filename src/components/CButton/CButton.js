@@ -17,6 +17,7 @@ const getProps = (context) => {
   const props = {
     color: config.color || defaultColor,
     dark: true,
+    disabled: config.disabled,
     icon: isUndefined(config.icon) ? false : config.icon,
     round: isUndefined(config.round) ? false : config.round,
     flat: isUndefined(config.flat) ? false : config.flat,
