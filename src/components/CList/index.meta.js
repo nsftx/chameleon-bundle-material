@@ -1,3 +1,26 @@
+const itemInterface = [
+  {
+    mapName: 'title',
+    mapType: 'String',
+    label: 'Title',
+  },
+  {
+    mapName: 'description',
+    mapType: 'String',
+    label: 'Description',
+  },
+  {
+    mapName: 'image',
+    mapType: 'Image',
+    label: 'Image',
+  },
+  {
+    mapName: 'icon',
+    mapType: 'Icon',
+    label: 'Icon',
+  },
+];
+
 export default {
   group: 'widgets',
   type: 'list',
@@ -21,6 +44,7 @@ export default {
     {
       name: 'DataSourceChanged',
       help: 'Fires when table data source is changed',
+      schema: itemInterface,
     },
     {
       name: 'SelectedItemChanged',
@@ -83,6 +107,7 @@ export default {
       name: 'Data Source',
       value: null,
       priority: 8,
+      schema: itemInterface,
     },
     rowsPerPageItems: {
       type: 'input',

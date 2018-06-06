@@ -1,4 +1,10 @@
-import { defaults, isNil, isString, map } from 'lodash';
+import {
+  defaults,
+  isNil,
+  isString,
+  map,
+  filter,
+} from 'lodash';
 import Element from '../Element';
 
 const getPropRowsPerPageItems = (value) => {
@@ -74,9 +80,10 @@ const getListAvatar = (createElement, item) => {
 const getCardSlot = (createElement, context) => {
   const getChildren = (props) => {
     const item = props.item;
+    const mapProps = filter(context.dataSource.schema, i => !isNil(i.mapName));
     const itemProps = Object.keys(item);
-    const title = itemProps.indexOf('title') >= 0 ? item.title : item[itemProps[0]];
-    const description = itemProps.indexOf('description') >= 0 ? item.description : item[itemProps[1]];
+    const title = !mapProps.length ? item[itemProps[0]] : item.title;
+    const description = !mapProps.length ? item[itemProps[1]] : item.description;
 
     const listOptions = {
       staticClass: 'transparent',
