@@ -1,3 +1,16 @@
+const itemInterface = [
+  {
+    name: 'value',
+    type: 'String',
+    label: 'Value',
+  },
+  {
+    name: 'label',
+    type: 'String',
+    label: 'Label',
+  },
+];
+
 export default {
   group: 'inputs',
   type: 'radio-list',
@@ -63,6 +76,7 @@ export default {
       group: 'data',
       name: 'Data Source',
       value: null,
+      schema: itemInterface,
     },
     validation: {
       type: 'group',
