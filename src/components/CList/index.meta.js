@@ -1,22 +1,22 @@
 const itemInterface = [
   {
-    mapName: 'title',
-    mapType: 'String',
+    name: 'title',
+    type: 'String',
     label: 'Title',
   },
   {
-    mapName: 'description',
-    mapType: 'String',
+    name: 'description',
+    type: 'String',
     label: 'Description',
   },
   {
-    mapName: 'thumb',
-    mapType: 'Image',
+    name: 'thumb',
+    type: 'Image',
     label: 'Image',
   },
   {
-    mapName: 'icon',
-    mapType: 'Icon',
+    name: 'icon',
+    type: 'Icon',
     label: 'Icon',
   },
 ];
