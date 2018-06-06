@@ -10,7 +10,7 @@ const itemInterface = [
     label: 'Description',
   },
   {
-    mapName: 'image',
+    mapName: 'thumb',
     mapType: 'Image',
     label: 'Image',
   },
