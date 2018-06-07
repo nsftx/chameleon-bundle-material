@@ -1,3 +1,4 @@
+import { each } from 'lodash';
 import Element from '../Element';
 
 export default {
@@ -5,6 +6,7 @@ export default {
   data() {
     return {
       isVisible: true,
+      items: [],
     };
   },
   computed: {
@@ -27,7 +29,62 @@ export default {
       return this.config.positionType;
     },
   },
-  render() {
+  methods: {
+    loadData() {
+      this.loadConnectorData().then((result) => {
+        this.items = result.items || [];
+        this.sendToEventBus('DataSourceChanged', this.dataSource);
+      });
+    },
+    selectItem(item) {
+      this.sendToEventBus('SelectedItemChanged', item);
+    },
+  },
+  watch: {
+    dataSource() {
+      if (!this.config.autoGenerate) {
+        this.loadData();
+      }
+    },
+  },
+  mounted() {
+    if (this.config.autoGenerate) {
+      // TODO: Generate from $app.pages
+      console.log(this.getBindingValue('=$app.pages'));
+    } else {
+      this.loadData();
+    }
+  },
+  render(createElement) {
+    const context = this;
+
+    const listItems = [];
+    each(this.items, (item) => {
+      const listItem = createElement(
+        'v-list-tile',
+        {
+          on: {
+            click() {
+              context.selectItem(item);
+            },
+          },
+        },
+        [
+          createElement('v-list-tile-action', [
+            createElement('v-icon', item.icon),
+          ]),
+        ],
+      );
+
+      listItems.push(listItem);
+    });
+
+    const list = createElement('v-list', {
+      props: {
+        dense: true,
+      },
+    }, listItems);
+
     return this.renderElement('v-navigation-drawer', {
       key: this.schema.uid,
       class: this.getBindingValue(this.config.color),
@@ -41,11 +98,10 @@ export default {
         left: this.isLeft,
         light: this.isThemeLight,
         miniVariant: this.isMini,
-        miniVariantWidth: this.config.width,
         right: this.isRight,
         value: this.isVisible,
         width: this.config.width,
       },
-    });
+    }, list);
   },
 };

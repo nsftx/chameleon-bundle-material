@@ -12,12 +12,20 @@
             {
               "type": "menu",
               "name": "menu-main",
-              "color": "yellow",
+              "color": "red",
+              "theme": "dark",
               "main": false,
               "layout": "mini",
               "position": "left",
               "height": null,
-              "width": 100
+              "width": 100,
+              "autoGenerate": true,
+              "dataSource": {
+                "items": [
+                  { "id": 1, "name": "Home", "path": "/home", "icon": "dashboard" },
+                  { "id": 2, "name": "Contact", "path": "/contact", "icon": "person" }
+                ]
+              }
             }
           ]
         }
