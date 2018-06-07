@@ -1,0 +1,25 @@
+{
+  "pages": [
+    {
+      "name": "menu",
+      "type": "page",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "panel-1",
+          "flat": false,
+          "elements": [
+            {
+              "type": "menu",
+              "name": "menu-main",
+              "color": "yellow",
+              "layout": "mini",
+              "position": "left",
+              "positionType": "absolute"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -76,6 +76,12 @@
             "icon": "ondemand_video",
             "path": "/youtube",
             "name": "youtube"
+          },
+          {
+            "title": "Menu",
+            "icon": "menu",
+            "path": "/menu",
+            "name": "menu"
           }
         ]
       }

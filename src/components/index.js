@@ -13,6 +13,7 @@ export { default as CHlist } from './CHlist';
 export { default as CHtml } from './CHtml';
 export { default as CList } from './CList';
 export { default as CMap } from './CMap';
+export { default as CMenu } from './CMenu';
 export { default as CPanel } from './CPanel';
 export { default as CPage } from './CPage';
 export { default as CPlaceholder } from './CPlaceholder';
