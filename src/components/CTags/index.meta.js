@@ -1,3 +1,16 @@
+const itemInterface = [
+  {
+    name: 'value',
+    type: 'String',
+    label: 'Value',
+  },
+  {
+    name: 'text',
+    type: 'String',
+    label: 'Text',
+  },
+];
+
 export default {
   group: 'inputs',
   type: 'tags',
@@ -81,6 +94,7 @@ export default {
       group: 'data',
       name: 'Data Source',
       value: null,
+      schema: itemInterface,
     },
     validation: {
       type: 'group',

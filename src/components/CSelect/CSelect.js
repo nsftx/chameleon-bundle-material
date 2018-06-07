@@ -1,4 +1,4 @@
-import { isArray, isNil } from 'lodash';
+import { isArray, isNil, filter } from 'lodash';
 import { fieldable, validatable } from '@mixins';
 import { validator } from '@validators';
 import Element from '../Element';
@@ -45,25 +45,18 @@ const getPropValidateOnBlur = (config) => {
   return false;
 };
 
-const getPropValue = (config) => {
-  if (config.multiple && !isArray(config.value)) {
-    return [config.value];
+const getItemProps = (context) => {
+  const self = context;
+  if (!isNil(self.config.dataSource.items) && self.config.dataSource.items.length > 0) {
+    const mapProps = filter(self.config.dataSource.schema, i => !isNil(i.mapName));
+    const itemProps = Object.keys(self.config.dataSource.items[0]);
+    self.selectProps.itemValue = !mapProps.length ? itemProps[0] : 'value';
+    self.selectProps.itemText = !mapProps.length ? itemProps[1] : 'text';
   }
-
-  if (!config.multiple && isArray(config.value)) {
-    return config.value[0];
-  }
-
-  return config.value;
 };
 
 const getProps = (context) => {
   const config = context.config;
-  let itemProps = [];
-
-  if (!isNil(config.dataSource.items) && config.dataSource.items.length > 0) {
-    itemProps = Object.keys(config.dataSource.items[0]);
-  }
 
   const props = {
     appendIcon: getPropAppendIcon(config),
@@ -73,10 +66,10 @@ const getProps = (context) => {
     deletableChips: context.chips && config.multiple && !config.readonly,
     hint: config.hint,
     items: config.dataSource.items || [],
-    itemValue: itemProps[0] || 'id',
-    itemText: itemProps[1] || 'name',
     label: config.label,
     loading: false,
+    itemValue: 'value',
+    itemText: 'text',
     multiLine: config.multiLine,
     multiple: config.multiple,
     openOnClear: config.clearable,
@@ -88,7 +81,7 @@ const getProps = (context) => {
     required: getPropRequired(config),
     returnObject: true,
     rules: validator.getRules(config, context.validators),
-    value: getPropValue(config),
+    value: config.value,
     validateOn: getPropValidateOnBlur(config),
   };
 
@@ -111,8 +104,10 @@ export default {
   methods: {
     loadData() {
       this.loadConnectorData().then((result) => {
+        if (isNil(this.config.dataSource)) this.config.dataSource = {};
         this.config.dataSource.items = result.items || [];
         this.selectProps.items = result.items || [];
+        getItemProps(this);
       });
     },
   },

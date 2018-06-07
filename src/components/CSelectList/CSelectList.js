@@ -1,6 +1,6 @@
 import CSelect from '../CSelect/CSelect';
 
-const getChipAvatar = (createElement, data) => {
+const getAvatar = (createElement, data) => {
   if (data.item.thumb) {
     return createElement('img', {
       attrs: {
@@ -11,18 +11,7 @@ const getChipAvatar = (createElement, data) => {
   return createElement('v-icon', data.item.icon);
 };
 
-const getListAvatar = (createElement, data) => {
-  if (data.item.thumb) {
-    return createElement('img', {
-      attrs: {
-        src: data.item.thumb,
-      },
-    });
-  }
-  return createElement('v-icon', data.item.icon);
-};
-
-const getCardSlot = (createElement) => {
+const getCardSlot = (createElement, context) => {
   const slot = {
     selection: data => createElement('v-chip',
       {
@@ -37,20 +26,20 @@ const getCardSlot = (createElement) => {
       },
       [
         createElement('v-avatar', [
-          getChipAvatar(createElement, data),
+          getAvatar(createElement, data),
         ]),
-        data.item.name,
+        data.item[context.selectProps.itemText],
       ],
     ),
     item: data => [
       createElement('v-list-tile-avatar',
         [
-          getListAvatar(createElement, data),
+          getAvatar(createElement, data),
         ],
       ),
       createElement('v-list-tile-content', [
         createElement('v-list-tile-title',
-          data.item.name),
+          data.item[context.selectProps.itemText]),
         createElement('v-list-tile-sub-title',
           data.item.description),
       ]),
@@ -77,7 +66,7 @@ export default {
         props: this.selectProps,
         on: this.listeners,
         scopedSlots: deletableChips &&
-          getCardSlot(createElement),
+          getCardSlot(createElement, this),
       },
     );
 
