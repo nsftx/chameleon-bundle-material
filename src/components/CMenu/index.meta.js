@@ -6,6 +6,12 @@ export default {
   options: {
     color: true,
     theme: true,
+    main: {
+      type: 'check',
+      name: 'Main Menu',
+      value: false,
+      priority: 1,
+    },
     layout: {
       type: 'select',
       name: 'Layout',
@@ -20,7 +26,7 @@ export default {
         },
       ],
       value: 'normal',
-      priority: 1,
+      priority: 2,
     },
     position: {
       type: 'select',
@@ -36,23 +42,19 @@ export default {
         },
       ],
       value: 'left',
-      priority: 2,
-    },
-    positionType: {
-      type: 'select',
-      name: 'Position Type',
-      items: [
-        {
-          name: 'absolute',
-          value: 'Absolute',
-        },
-        {
-          name: 'Fixed',
-          value: 'fixed',
-        },
-      ],
-      value: 'fixed',
       priority: 3,
+    },
+    height: {
+      type: 'input',
+      name: 'Height',
+      value: null,
+      priority: 4,
+    },
+    width: {
+      type: 'input',
+      name: 'Width',
+      value: null,
+      priority: 5,
     },
   },
 };

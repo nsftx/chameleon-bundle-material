@@ -12,7 +12,7 @@ export default {
       return !this.isFixed;
     },
     isFixed() {
-      return this.positionType === 'fixed';
+      return this.config.main;
     },
     isMini() {
       return this.config.layout === 'mini';
@@ -28,29 +28,23 @@ export default {
     },
   },
   render() {
-    /*
-    App property of navigation drawer defines also other
-    elements like content. We need to disable this in
-    preview mode currently so it will not position on our
-    main app in playground (same goes for current render
-    view in Builder).
-    */
-    const isInApp = !this.registry.isPreviewMode;
-
     return this.renderElement('v-navigation-drawer', {
       key: this.schema.uid,
       class: this.getBindingValue(this.config.color),
       props: {
-        app: isInApp,
-        disableRouteWatcher: true,
         absolute: this.isAbsolute,
-        fixed: this.isFixed,
-        left: this.isLeft,
-        right: this.isRight,
+        app: this.config.main,
         dark: this.isThemeDark,
+        disableRouteWatcher: true,
+        fixed: this.isFixed,
+        height: this.config.height,
+        left: this.isLeft,
         light: this.isThemeLight,
-        value: this.isVisible,
         miniVariant: this.isMini,
+        miniVariantWidth: this.config.width,
+        right: this.isRight,
+        value: this.isVisible,
+        width: this.config.width,
       },
     });
   },

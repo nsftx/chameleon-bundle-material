@@ -13,9 +13,11 @@
               "type": "menu",
               "name": "menu-main",
               "color": "yellow",
+              "main": false,
               "layout": "mini",
               "position": "left",
-              "positionType": "absolute"
+              "height": null,
+              "width": 100
             }
           ]
         }
