@@ -19,7 +19,7 @@
               "layout": "mini",
               "position": "left",
               "height": null,
-              "width": 100,
+              "width": null,
               "autoGenerate": true,
               "dataSource": {
                 "items": [

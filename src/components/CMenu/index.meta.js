@@ -20,21 +20,21 @@ export default {
       type: 'check',
       name: 'Main Menu',
       value: false,
-      priority: 1,
+      priority: 4,
     },
     title: {
       type: 'input',
       name: 'Title',
       value: 'Menu',
-      priority: 2,
+      priority: 5,
     },
     layout: {
       type: 'select',
       name: 'Layout',
       items: [
         {
-          name: 'mini',
-          value: 'Mini',
+          name: 'Mini',
+          value: 'mini',
         },
         {
           name: 'Normal',
@@ -42,7 +42,7 @@ export default {
         },
       ],
       value: 'normal',
-      priority: 3,
+      priority: 6,
     },
     position: {
       type: 'select',
@@ -58,32 +58,33 @@ export default {
         },
       ],
       value: 'left',
-      priority: 4,
+      priority: 7,
     },
     height: {
       type: 'input',
       name: 'Height',
       value: null,
-      priority: 5,
+      priority: 8,
     },
     width: {
       type: 'input',
       name: 'Width',
       value: null,
-      priority: 6,
+      priority: 9,
     },
     dataSource: {
       type: 'dataSource',
       group: 'data',
       name: 'Data Source',
       value: null,
-      priority: 7,
+      priority: 10,
     },
     autoGenerate: {
       type: 'check',
+      group: 'data',
       name: 'Generate from Pages',
       value: false,
-      priority: 8,
+      priority: 11,
     },
   },
 };
