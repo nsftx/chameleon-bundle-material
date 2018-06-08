@@ -1,5 +1,6 @@
-import { each } from 'lodash';
+import { each, map, snakeCase } from 'lodash';
 import Element from '../Element';
+import '../../style/components/_menu.styl';
 
 export default {
   extends: Element,
@@ -10,6 +11,9 @@ export default {
     };
   },
   computed: {
+    height() {
+      return this.isFixed ? '100%' : this.config.height;
+    },
     isAbsolute() {
       return !this.isFixed;
     },
@@ -39,6 +43,123 @@ export default {
     selectItem(item) {
       this.sendToEventBus('SelectedItemChanged', item);
     },
+    renderDivider() {
+      return this.$createElement(
+        'v-divider',
+        {
+          props: {
+            dark: this.isThemeDark,
+            light: this.isThemeLight,
+          },
+        },
+      );
+    },
+    renderList() {
+      const context = this;
+      const listItems = [];
+
+      each(this.items, (item) => {
+        let listItemChildren;
+
+        /*
+        Here we have different elements depending on mini flag.
+        This is to accomodate custom mini Ride design.
+        */
+        if (this.isMini) {
+          listItemChildren = [
+            this.$createElement(
+              'div',
+              {
+                class: 'menu-item-link',
+              },
+              [
+                this.$createElement('v-icon', item.icon),
+                this.$createElement('div', { class: 'menu-item-label' }, item.label),
+              ],
+            ),
+          ];
+        } else {
+          listItemChildren = [
+            this.$createElement('v-list-tile-action', [
+              this.$createElement('v-icon', item.icon),
+            ]),
+            this.$createElement('v-list-tile-content', [
+              this.$createElement('v-list-tile-title', item.label),
+            ]),
+          ];
+        }
+
+        const listItem = this.$createElement(
+          'v-list-tile',
+          {
+            class: 'menu-item',
+            props: {
+              href: item.path,
+            },
+            on: {
+              click() {
+                context.selectItem(item);
+              },
+            },
+          },
+          listItemChildren,
+        );
+
+        listItems.push(listItem);
+      });
+
+      const list = this.$createElement('v-list', {
+        props: {
+          dense: false,
+        },
+      }, listItems);
+
+      return list;
+    },
+    renderTitle() {
+      const title = [];
+
+      if (this.config.logo) {
+        // TODO: Support once we have assets
+        title.push();
+      } else {
+        title.push(
+          this.$createElement(
+            'v-icon',
+            {
+              class: 'menu-title-icon mb-1',
+              props: {
+                large: true,
+              },
+            },
+            'explore',
+          ),
+        );
+      }
+
+      if (this.config.title) {
+        title.push(
+          this.$createElement(
+            'div',
+            {
+              class: 'menu-title-label',
+            },
+            this.config.title,
+          ),
+        );
+      }
+
+      return this.$createElement(
+        'v-list',
+        {
+          class: 'menu-title',
+        },
+        [
+          this.$createElement('v-list-tile', title),
+          this.renderDivider(),
+        ],
+      );
+    },
   },
   watch: {
     dataSource() {
@@ -49,59 +170,42 @@ export default {
   },
   mounted() {
     if (this.config.autoGenerate) {
-      // TODO: Generate from $app.pages
-      console.log(this.getBindingValue('=$app.pages'));
+      const pages = this.getBindingValue('=$app.pages');
+      this.items = map(pages, page => ({
+        icon: page.meta.icon || snakeCase(page.name),
+        label: page.meta.title,
+        path: page.path,
+      }));
     } else {
       this.loadData();
     }
   },
   render(createElement) {
-    const context = this;
-
-    const listItems = [];
-    each(this.items, (item) => {
-      const listItem = createElement(
-        'v-list-tile',
-        {
-          on: {
-            click() {
-              context.selectItem(item);
-            },
-          },
+    return this.renderElement(
+      'v-navigation-drawer',
+      {
+        key: this.schema.uid,
+        class: this.getBindingValue(this.config.color),
+        props: {
+          absolute: this.isAbsolute,
+          app: this.config.main,
+          dark: this.isThemeDark,
+          disableRouteWatcher: true,
+          fixed: this.isFixed,
+          height: this.height,
+          left: this.isLeft,
+          light: this.isThemeLight,
+          miniVariant: this.isMini,
+          right: this.isRight,
+          value: this.isVisible,
+          width: this.config.width,
         },
-        [
-          createElement('v-list-tile-action', [
-            createElement('v-icon', item.icon),
-          ]),
-        ],
-      );
-
-      listItems.push(listItem);
-    });
-
-    const list = createElement('v-list', {
-      props: {
-        dense: true,
       },
-    }, listItems);
-
-    return this.renderElement('v-navigation-drawer', {
-      key: this.schema.uid,
-      class: this.getBindingValue(this.config.color),
-      props: {
-        absolute: this.isAbsolute,
-        app: this.config.main,
-        dark: this.isThemeDark,
-        disableRouteWatcher: true,
-        fixed: this.isFixed,
-        height: this.config.height,
-        left: this.isLeft,
-        light: this.isThemeLight,
-        miniVariant: this.isMini,
-        right: this.isRight,
-        value: this.isVisible,
-        width: this.config.width,
-      },
-    }, list);
+      [
+        this.renderTitle(),
+        this.renderList(),
+        createElement('v-spacer'),
+      ],
+    );
   },
 };
