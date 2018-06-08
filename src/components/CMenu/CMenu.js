@@ -11,6 +11,9 @@ export default {
     };
   },
   computed: {
+    autoGenerate() {
+      return this.config.autoGenerate;
+    },
     height() {
       return this.isFixed ? '100%' : this.config.height;
     },
@@ -42,6 +45,18 @@ export default {
     },
     selectItem(item) {
       this.sendToEventBus('SelectedItemChanged', item);
+    },
+    setItemsOrLoad() {
+      if (this.config.autoGenerate) {
+        const pages = this.getBindingValue('=$app.pages');
+        this.items = map(pages, page => ({
+          icon: page.meta.icon || snakeCase(page.name),
+          label: page.meta.title,
+          path: page.path,
+        }));
+      } else {
+        this.loadData();
+      }
     },
     renderDivider() {
       return this.$createElement(
@@ -167,18 +182,12 @@ export default {
         this.loadData();
       }
     },
+    autoGenerate() {
+      this.setItemsOrLoad();
+    },
   },
   mounted() {
-    if (this.config.autoGenerate) {
-      const pages = this.getBindingValue('=$app.pages');
-      this.items = map(pages, page => ({
-        icon: page.meta.icon || snakeCase(page.name),
-        label: page.meta.title,
-        path: page.path,
-      }));
-    } else {
-      this.loadData();
-    }
+    this.setItemsOrLoad();
   },
   render(createElement) {
     return this.renderElement(
