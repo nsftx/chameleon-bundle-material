@@ -1,3 +1,31 @@
+const itemInterface = [
+  {
+    name: 'value',
+    type: 'String',
+    label: 'Value',
+  },
+  {
+    name: 'text',
+    type: 'String',
+    label: 'Text',
+  },
+  {
+    name: 'description',
+    type: 'String',
+    label: 'Description',
+  },
+  {
+    name: 'icon',
+    type: 'Icon',
+    label: 'Icon',
+  },
+  {
+    name: 'thumb',
+    type: 'Image',
+    label: 'Image',
+  },
+];
+
 export default {
   group: 'inputs',
   type: 'select-list',
@@ -81,6 +109,7 @@ export default {
       group: 'data',
       name: 'Data Source',
       value: null,
+      schema: itemInterface,
     },
     validation: {
       type: 'group',

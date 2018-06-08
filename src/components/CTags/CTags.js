@@ -1,6 +1,6 @@
 import CSelect from '../CSelect/CSelect';
 
-const getDeletableChipSlot = (createElement, displayProp) => {
+const getDeletableChipSlot = (createElement, context) => {
   const slot = {
     selection: data => createElement(
       'v-chip',
@@ -16,7 +16,7 @@ const getDeletableChipSlot = (createElement, displayProp) => {
           selected: data.selected,
         },
       },
-      data.item[displayProp],
+      data.item[context.selectProps.itemText],
     ),
   };
 
@@ -32,15 +32,13 @@ export default {
   },
   render(createElement) {
     const deletableChips = this.selectProps.deletableChips;
-    const displayProp = this.selectProps.itemText;
-
     const children = createElement(
       'v-select',
       {
         attrs: this.attrs,
         props: this.selectProps,
         on: this.listeners,
-        scopedSlots: deletableChips && getDeletableChipSlot(createElement, displayProp),
+        scopedSlots: deletableChips && getDeletableChipSlot(createElement, this),
       },
     );
 

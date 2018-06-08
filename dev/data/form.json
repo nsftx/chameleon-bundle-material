@@ -115,35 +115,32 @@
                   "dataSource": {
                     "items": [
                       {
-                        "id": 1,
-                        "name": "Lottoland Ltd.",
+                        "value": 1,
+                        "text": "Lottoland Ltd.",
                         "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
                         "icon": "business",
                         "description": "Lottoland Solutions integrates our lottery betting games to operator platforms, with multi-million Euro jackpots guaranteed by Lottoland's proprietary risk management."
                       },
                       {
-                        "id": 2,
-                        "name": "Nsoft",
+                        "value": 2,
+                        "text": "Nsoft",
                         "thumb": "https://vuetifyjs.com/static/doc-images/lists/2.jpg",
                         "icon": "business",
                         "description": "Lottoland Solutions integrates our lottery betting games to operator platforms, with multi-million Euro jackpots guaranteed by Lottoland's proprietary risk management."
                       },
                       {
-                        "id": 3,
-                        "name": "Superbet",
+                        "value": 3,
+                        "text": "Superbet",
                         "thumb": "",
                         "icon": "business",
                         "description": "Lottoland Solutions integrates our lottery betting games to operator platforms, with multi-million Euro jackpots guaranteed by Lottoland's proprietary risk management."
                       }
-                    ],
-                    "options": {
-                      "displayProp": "name"
-                    }
+                    ]
                   },
                   "value": [
                     {
-                      "id": 3,
-                      "name": "Superbet",
+                      "value": 3,
+                      "text": "Superbet",
                       "thumb": "",
                       "icon": "business",
                       "description": "Lottoland Solutions integrates our lottery betting games to operator platforms, with multi-million Euro jackpots guaranteed by Lottoland's proprietary risk management."
@@ -176,26 +173,23 @@
                   "dataSource": {
                     "items": [
                       {
-                        "id": 1,
-                        "name": "Italy"
+                        "value": 1,
+                        "text": "Italy"
                       },
                       {
-                        "id": 2,
-                        "name": "France"
+                        "value": 2,
+                        "text": "France"
                       },
                       {
-                        "id": 3,
-                        "name": "England"
+                        "value": 3,
+                        "text": "England"
                       }
-                    ],
-                    "options": {
-                      "displayProp": "name"
-                    }
+                    ]
                   },
                   "value": [
                     {
-                      "id": 1,
-                      "name": "Italy"
+                      "value": 1,
+                      "text": "Italy"
                     }
                   ]
                 },
@@ -224,32 +218,29 @@
                   "dataSource": {
                     "items": [
                       {
-                        "id": 43,
-                        "name": "English",
+                        "value": 43,
+                        "text": "English",
                         "isoCode2": "en",
                         "isoCode3": "eng"
                       },
                       {
-                        "id": 49,
-                        "name": "Finnish",
+                        "value": 49,
+                        "text": "Finnish",
                         "isoCode2": "fi",
                         "isoCode3": "\tfi"
                       },
                       {
-                        "id": 50,
-                        "name": "French",
+                        "value": 50,
+                        "text": "French",
                         "isoCode2": "fr",
                         "isoCode3": "fra"
                       }
-                    ],
-                    "options": {
-                      "displayProp": "name"
-                    }
+                    ]
                   },
                   "value": [
                     {
-                      "id": 43,
-                      "name": "English",
+                      "value": 43,
+                      "text": "English",
                       "isoCode2": "en",
                       "isoCode3": "eng"
                     }

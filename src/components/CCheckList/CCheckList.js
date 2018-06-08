@@ -1,4 +1,4 @@
-import { isNil, map } from 'lodash';
+import { isNil, map, filter } from 'lodash';
 import { fieldable, validatable } from '@mixins';
 import Element from '../Element';
 
@@ -42,9 +42,11 @@ const getItemListeners = (context) => {
 
 const getItemProps = (context, item) => {
   const config = context.config;
+
+  const mapProps = filter(context.dataSource.schema, i => !isNil(i.mapName));
   const itemProps = Object.keys(item);
-  const value = itemProps.indexOf('value') >= 0 ? item.value : item[itemProps[0]];
-  const label = itemProps.indexOf('label') >= 0 ? item.label : item[itemProps[1]];
+  const value = !mapProps.length ? item[itemProps[0]] : item.value;
+  const label = !mapProps.length ? item[itemProps[1]] : item.label;
 
   const props = {
     label,
