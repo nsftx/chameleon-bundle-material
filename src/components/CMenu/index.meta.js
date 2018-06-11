@@ -49,8 +49,8 @@ export default {
       name: 'Position',
       items: [
         {
-          name: 'left',
-          value: 'Left',
+          name: 'Left',
+          value: 'left',
         },
         {
           name: 'Right',
