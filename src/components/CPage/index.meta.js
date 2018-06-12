@@ -100,6 +100,11 @@ export default {
         name: 'Keywords',
         value: null,
       },
+      icon: {
+        type: 'input',
+        name: 'Icon',
+        value: null,
+      },
     },
     theme: true,
   },
