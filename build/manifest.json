@@ -1,7 +1,7 @@
 {
   "name": "material",
   "namespace": "c-",
-  "version": 17,
+  "version": 18,
   "styles": [
     "index.min.css"
   ],
