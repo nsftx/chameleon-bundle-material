@@ -122,6 +122,44 @@
                           "value": "${lastName} ${firstName}"
                         },
                         {
+                          "name": "country",
+                          "type": "select",
+                          "label": "Country",
+                          "prependIcon": "language",
+                          "appendIcon": null,
+                          "placeholder": "Please select a country",
+                          "hint": null,
+                          "persistentHint": false,
+                          "tooltip": null,
+                          "clearable": true,
+                          "readonly": false,
+                          "disabled": false,
+                          "validateOn": "blur",
+                          "validation": {
+                            "required": true
+                          },
+                          "dataSource": {
+                            "items": [
+                              {
+                                "value": 1,
+                                "name": "Italy"
+                              },
+                              {
+                                "value": 2,
+                                "name": "France"
+                              },
+                              {
+                                "value": 3,
+                                "name": "England"
+                              }
+                            ]
+                          },
+                          "value": {
+                            "value": 1,
+                            "name": "Italy"
+                          }
+                        },
+                        {
                           "name": "company",
                           "type": "select-list",
                           "label": "Company",
@@ -132,8 +170,9 @@
                           "persistentHint": false,
                           "tooltip": null,
                           "multiple": true,
-                          "clearable": false,
+                          "clearable": true,
                           "readonly": false,
+                          "disabled": false,
                           "validateOn": "blur",
                           "validation": {
                             "required": true
@@ -142,21 +181,21 @@
                             "items": [
                               {
                                 "value": 1,
-                                "text": "Lottoland Ltd.",
+                                "name": "Lottoland Ltd.",
                                 "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
                                 "icon": "business",
                                 "description": "Lottoland Solutions integrates our lottery betting games to operator platforms, with multi-million Euro jackpots guaranteed by Lottoland's proprietary risk management."
                               },
                               {
                                 "value": 2,
-                                "text": "Nsoft",
+                                "name": "Nsoft",
                                 "thumb": "https://vuetifyjs.com/static/doc-images/lists/2.jpg",
                                 "icon": "business",
                                 "description": "Lottoland Solutions integrates our lottery betting games to operator platforms, with multi-million Euro jackpots guaranteed by Lottoland's proprietary risk management."
                               },
                               {
                                 "value": 3,
-                                "text": "Superbet",
+                                "name": "Superbet",
                                 "thumb": "",
                                 "icon": "business",
                                 "description": "Lottoland Solutions integrates our lottery betting games to operator platforms, with multi-million Euro jackpots guaranteed by Lottoland's proprietary risk management."
@@ -165,56 +204,11 @@
                           },
                           "value": [
                             {
-                              "value": 3,
-                              "text": "Superbet",
-                              "thumb": "",
+                              "value": 2,
+                              "name": "Nsoft",
+                              "thumb": "https://vuetifyjs.com/static/doc-images/lists/2.jpg",
                               "icon": "business",
                               "description": "Lottoland Solutions integrates our lottery betting games to operator platforms, with multi-million Euro jackpots guaranteed by Lottoland's proprietary risk management."
-                            }
-                          ]
-                        },
-                        {
-                          "name": "country",
-                          "type": "select",
-                          "label": "Country",
-                          "prependIcon": "language",
-                          "appendIcon": null,
-                          "placeholder": "Please select a country",
-                          "hint": null,
-                          "persistentHint": false,
-                          "tooltip": null,
-                          "multiLine": false,
-                          "multiple": false,
-                          "clearable": false,
-                          "readonly": false,
-                          "validateOn": "blur",
-                          "mask": {
-                            "predefined": false,
-                            "value": null
-                          },
-                          "validation": {
-                            "required": true
-                          },
-                          "dataSource": {
-                            "items": [
-                              {
-                                "value": 1,
-                                "text": "Italy"
-                              },
-                              {
-                                "value": 2,
-                                "text": "France"
-                              },
-                              {
-                                "value": 3,
-                                "text": "England"
-                              }
-                            ]
-                          },
-                          "value": [
-                            {
-                              "value": 1,
-                              "text": "Italy"
                             }
                           ]
                         },
@@ -228,15 +222,11 @@
                           "hint": null,
                           "persistentHint": false,
                           "tooltip": null,
-                          "multiLine": false,
                           "multiple": true,
                           "clearable": true,
                           "readonly": false,
+                          "disabled": false,
                           "validateOn": "blur",
-                          "mask": {
-                            "predefined": false,
-                            "value": null
-                          },
                           "validation": {
                             "required": true
                           },

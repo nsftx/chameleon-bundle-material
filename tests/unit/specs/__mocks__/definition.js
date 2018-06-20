@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   'c-accordion': {
     _schema: {
       type: 'accordion',

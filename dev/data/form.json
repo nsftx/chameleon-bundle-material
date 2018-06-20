@@ -35,7 +35,7 @@
                   },
                   "validation": {
                     "required": true,
-                    "minLength": 2, 
+                    "minLength": 2,
                     "maxLength": 20,
                     "pattern": {
                       "predefined": null,
@@ -96,6 +96,44 @@
                   "value": "${lastName} ${firstName}"
                 },
                 {
+                  "name": "country",
+                  "type": "select",
+                  "label": "Country",
+                  "prependIcon": "language",
+                  "appendIcon": null,
+                  "placeholder": "Please select a country",
+                  "hint": null,
+                  "persistentHint": false,
+                  "tooltip": null,
+                  "clearable": true,
+                  "readonly": false,
+                  "disabled": false,
+                  "validateOn": "blur",
+                  "validation": {
+                    "required": true
+                  },
+                  "dataSource": {
+                    "items": [
+                      {
+                        "value": 1,
+                        "text": "Italy"
+                      },
+                      {
+                        "value": 2,
+                        "text": "France"
+                      },
+                      {
+                        "value": 3,
+                        "text": "England"
+                      }
+                    ]
+                  },
+                  "value": {
+                    "value": 1,
+                    "text": "Italy"
+                  }
+                },
+                {
                   "name": "company",
                   "type": "select-list",
                   "label": "Company",
@@ -108,6 +146,7 @@
                   "multiple": true,
                   "clearable": false,
                   "readonly": false,
+                  "disabled": false,
                   "validateOn": "blur",
                   "validation": {
                     "required": true
@@ -148,52 +187,6 @@
                   ]
                 },
                 {
-                  "name": "country",
-                  "type": "select",
-                  "label": "Country",
-                  "prependIcon": "language",
-                  "appendIcon": null,
-                  "placeholder": "Please select a country",
-                  "hint": null,
-                  "persistentHint": false,
-                  "tooltip": null,
-                  "multiLine": false,
-                  "multiple": false,
-                  "clearable": false,
-                  "readonly": false,
-                  "disabled": false,
-                  "validateOn": "blur",
-                  "mask": {
-                    "predefined": false,
-                    "value": null
-                  },
-                  "validation": {
-                    "required": true
-                  },
-                  "dataSource": {
-                    "items": [
-                      {
-                        "value": 1,
-                        "text": "Italy"
-                      },
-                      {
-                        "value": 2,
-                        "text": "France"
-                      },
-                      {
-                        "value": 3,
-                        "text": "England"
-                      }
-                    ]
-                  },
-                  "value": [
-                    {
-                      "value": 1,
-                      "text": "Italy"
-                    }
-                  ]
-                },
-                {
                   "name": "language",
                   "type": "tags",
                   "label": "Language",
@@ -203,15 +196,11 @@
                   "hint": null,
                   "persistentHint": false,
                   "tooltip": null,
-                  "multiLine": false,
                   "multiple": true,
                   "clearable": true,
                   "readonly": false,
+                  "disabled": false,
                   "validateOn": "blur",
-                  "mask": {
-                    "predefined": false,
-                    "value": null
-                  },
                   "validation": {
                     "required": true
                   },

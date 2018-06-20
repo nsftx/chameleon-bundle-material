@@ -51,7 +51,8 @@ export default {
     },
     getErrors() {
       let errors = [];
-      each(this.getForm().getInputs(), (input) => {
+      // TODO fix for validation in new beta-3 vuetify
+      each(this.getForm().inputs, (input) => {
         if (input.errorBucket.length) {
           errors = concat(errors, map(input.errorBucket, error => error));
         }

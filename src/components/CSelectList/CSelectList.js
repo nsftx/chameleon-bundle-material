@@ -1,3 +1,5 @@
+import { isNil, filter } from 'lodash';
+import { validator } from '@validators';
 import CSelect from '../CSelect/CSelect';
 
 const getAvatar = (createElement, data) => {
@@ -28,7 +30,7 @@ const getCardSlot = (createElement, context) => {
         createElement('v-avatar', [
           getAvatar(createElement, data),
         ]),
-        data.item[context.selectProps.itemText],
+        data.item[context.config.itemText],
       ],
     ),
     item: data => [
@@ -39,7 +41,7 @@ const getCardSlot = (createElement, context) => {
       ),
       createElement('v-list-tile-content', [
         createElement('v-list-tile-title',
-          data.item[context.selectProps.itemText]),
+          data.item[context.config.itemText]),
         createElement('v-list-tile-sub-title',
           data.item.description),
       ]),
@@ -47,6 +49,66 @@ const getCardSlot = (createElement, context) => {
   };
 
   return slot;
+};
+
+const getPropAppendIcon = config => config.appendIcon || 'arrow_drop_down';
+
+const getPropRequired = (config) => {
+  if (!isNil(config.validation)) {
+    return !!config.validation.required;
+  }
+
+  return false;
+};
+
+const getPropValidateOnBlur = (config) => {
+  if (config.validation && config.validateOn) {
+    return config.validateOn === 'blur';
+  }
+
+  return false;
+};
+
+const setItemProps = (context) => {
+  const self = context;
+  const data = self.config.dataSource;
+  if (!isNil(data) && !isNil(data.items) && data.items.length > 0) {
+    const mapProps = filter(data.items, i => !isNil(i.mapName));
+    const itemProps = Object.keys(data.items[0]);
+    self.config.itemValue = !mapProps.length ? itemProps[0] : 'value';
+    self.config.itemText = !mapProps.length ? itemProps[1] : 'text';
+  }
+};
+const getProps = (context) => {
+  const config = context.config;
+  setItemProps(context);
+
+  const props = {
+    appendIcon: getPropAppendIcon(config),
+    chips: context.chips,
+    clearable: config.clearable && !config.readonly,
+    deletableChips: context.chips && !config.readonly,
+    hint: config.hint,
+    items: config.dataSource ? config.dataSource.items : [],
+    label: config.label,
+    loading: false,
+    itemValue: config.itemValue,
+    itemText: config.itemText,
+    multiLine: config.multiLine,
+    multiple: config.multiple,
+    openOnClear: config.clearable,
+    persistentHint: config.persistentHint,
+    placeholder: config.placeholder,
+    prependIcon: config.prependIcon,
+    readonly: config.readonly,
+    disabled: config.disabled,
+    required: getPropRequired(config),
+    returnObject: true,
+    rules: validator.getRules(config, context.validators),
+    value: config.value,
+    validateOn: getPropValidateOnBlur(config),
+  };
+  return props;
 };
 
 export default {
@@ -57,16 +119,13 @@ export default {
     };
   },
   render(createElement) {
-    const deletableChips = this.selectProps.deletableChips;
-
     const children = createElement(
       'v-select',
       {
-        attrs: this.attrs,
-        props: this.selectProps,
-        on: this.listeners,
-        scopedSlots: deletableChips &&
-          getCardSlot(createElement, this),
+        props: getProps(this),
+        attrs: this.selectAttr,
+        on: this.selectListeners,
+        scopedSlots: getCardSlot(createElement, this),
       },
     );
 
