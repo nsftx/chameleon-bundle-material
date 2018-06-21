@@ -187,22 +187,27 @@ export default {
     this.loadData();
   },
   render(createElement) {
-    const children = [
-      createElement('v-data-iterator', {
-        attrs: {
-          name: this.config.name,
-          wrap: this.config.wrap,
-        },
-        class: [
-          this.config.color ? (this.config.color || 'white') : null,
-          this.config.flat ? null : 'elevation-1',
-        ],
-        props: getProps(this),
-        scopedSlots: getCardSlot(createElement, this),
-        on: getListeners(this),
-      }),
-    ];
+    const list = createElement('v-data-iterator', {
+      attrs: {
+        name: this.config.name,
+        wrap: this.config.wrap,
+      },
+      props: getProps(this),
+      on: getListeners(this),
+      scopedSlots: getCardSlot(createElement, this),
+    });
 
-    return this.renderElement('div', {}, children);
+    return this.renderElement(
+      'v-card',
+      {
+        props: {
+          dark: this.isThemeDark,
+          light: this.isThemeLight,
+          color: this.config.color,
+          flat: this.config.flat,
+        },
+      },
+      list,
+    );
   },
 };

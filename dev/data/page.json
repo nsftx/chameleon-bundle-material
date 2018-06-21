@@ -664,6 +664,8 @@
                       "type": "list",
                       "hideActions": false,
                       "wrap": true,
+                      "color": "yellow",
+                      "theme": "light",
                       "dataSource": {
                         "items": [
                           {
@@ -842,9 +844,11 @@
                       "name": "accordion",
                       "multipleExpand": false,
                       "alternativeDesign": "",
-                      "color": "#FF5252",
+                      "color": "",
+                      "contentColor": "yellow",
                       "contentRipple": true,
                       "hideItemActions": true,
+                      "theme": "light",
                       "elements": [
                         {
                           "type": "accordion-item",

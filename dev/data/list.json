@@ -16,6 +16,8 @@
               "type": "list",
               "hideActions": false,
               "wrap": true,
+              "color": "yellow",
+              "theme": "light",
               "dataSource": {
                 "items": [
                   {

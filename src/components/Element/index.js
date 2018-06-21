@@ -27,12 +27,13 @@ export default {
   methods: {
     renderElement(tag, options, items, parentable) {
       const props = isNil(options) ? {} : cloneDeep(options);
+      const staticClass = props.staticClass || '';
 
       props.attrs = merge(options.attrs, this.getSchemaAttributes());
-      props.staticClass = `${this.baseClass} ${this.$options.name}`;
+      props.staticClass = `${this.baseClass} ${this.$options.name} ${staticClass}`;
 
       if (parentable) {
-        props.staticClass = `${props.staticClass} ${this.baseParentClass}`;
+        props.staticClass = `${props.staticClass} ${this.baseParentClass} ${staticClass}`;
       }
 
       return this.$createElement(

@@ -2,24 +2,14 @@ import _ from 'lodash';
 import Element from '../Element';
 
 const getItemProps = (context) => {
+  const config = context.config;
+
   const props = {
-    headerColor: context.color,
-    contentColor: context.contentColor,
-    ripple: context.contentRipple,
-    hideActions: context.hideItemActions,
+    headerColor: config.color,
+    contentColor: config.contentColor,
+    ripple: config.contentRipple,
+    hideActions: config.hideItemActions,
   };
-
-  return props;
-};
-
-const getProps = (context) => {
-  const props = {
-    expand: context.multipleExpand,
-  };
-
-  if (context.alternativeDesign) {
-    props[context.alternativeDesign] = true;
-  }
 
   return props;
 };
@@ -36,10 +26,9 @@ const getListeners = (context) => {
 export default {
   extends: Element,
   render(createElement) {
-    const data = getProps(this.config);
-
-    const childrenProps = getItemProps(this.config);
-    const children = _.map(this.config.elements, (element, index) => createElement(
+    const config = this.config;
+    const childrenProps = getItemProps(this);
+    const accordion = _.map(config.elements, (element, index) => createElement(
       this.getElementTag('accordion-item'),
       {
         props: {
@@ -52,6 +41,18 @@ export default {
       },
     ));
 
-    return this.renderElement('v-expansion-panel', data, children, true);
+    return this.renderElement(
+      'v-expansion-panel',
+      {
+        props: {
+          expand: config.multipleExpand,
+          dark: this.isThemeDark,
+          light: this.isThemeLight,
+          [config.alternativeDesign]: true,
+        },
+      },
+      accordion,
+      true,
+    );
   },
 };

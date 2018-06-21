@@ -56,12 +56,7 @@ export default {
     },
   ],
   options: {
-    color: {
-      type: 'input',
-      name: 'Color',
-      value: null,
-      priority: 1,
-    },
+    color: true,
     flat: {
       type: 'check',
       name: 'No Shadow',
