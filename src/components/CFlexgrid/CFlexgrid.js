@@ -3,9 +3,11 @@ import { v4 } from 'uuid';
 import Element from '../Element';
 
 const getContainerAttrs = (context) => {
+  const config = context.config;
   const attrs = {
-    fluid: context.fluid,
-    [`grid-list-${context.spacing}`]: true,
+    [config.color]: true,
+    fluid: config.fluid,
+    [`grid-list-${config.spacing}`]: true,
     wrap: true,
     container: true,
   };
@@ -38,7 +40,12 @@ export default {
     ));
 
     const data = {
-      class: getContainerAttrs(this.config),
+      class: getContainerAttrs(this),
+      props: {
+        dark: this.isThemeDark,
+        light: this.isThemeLight,
+        flat: true,
+      },
     };
 
     const children = createElement('v-layout',

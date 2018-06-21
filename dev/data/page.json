@@ -749,6 +749,8 @@
                       "type": "flexgrid",
                       "name": "flexgrid",
                       "fluid": true,
+                      "color": "",
+                      "theme": "light",
                       "direction": "row",
                       "spacing": "md",
                       "elements": [
