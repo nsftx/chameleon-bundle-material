@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AllComponents c-accordion renders correctly 1`] = `<ul data-type="accordion" data-group="containers" data-uid="1" class="expansion-panel c-element c-accordion c-element-parent"></ul>`;
+exports[`AllComponents c-accordion renders correctly 1`] = `<ul data-type="accordion" data-group="containers" data-uid="1" class="expansion-panel c-element c-accordion  c-element-parent "></ul>`;
 
 exports[`AllComponents c-accordion-item renders correctly 1`] = `
-<li tabindex="0" data-type="accordion-item" data-group="container-items" data-uid="2" class="expansion-panel__container c-element c-accordion-item c-element-parent" style="background-color:undefined;">
+<li tabindex="0" data-type="accordion-item" data-group="container-items" data-uid="2" class="expansion-panel__container c-element c-accordion-item  c-element-parent ">
   <div class="expansion-panel__header">
     <div></div>
     <div class="header__icon">
@@ -11,7 +11,7 @@ exports[`AllComponents c-accordion-item renders correctly 1`] = `
     </div>
   </div>
   <div class="expansion-panel__body" style="display:none;">
-    <div class="card" style="height:auto;background-color:undefined;">
+    <div class="card" style="height:auto;">
       <div class="card__text c-element-children c-accordion-item-items"></div>
     </div>
   </div>
@@ -19,13 +19,13 @@ exports[`AllComponents c-accordion-item renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-button renders correctly 1`] = `
-<button type="button" data-type="button" data-group="inputs" data-uid="3" class="c-element c-button btn theme--dark primary">
+<button type="button" data-type="button" data-group="inputs" data-uid="3" class="c-element c-button  btn primary">
   <div class="btn__content"></div>
 </button>
 `;
 
 exports[`AllComponents c-calculation renders correctly 1`] = `
-<div data-type="calculation" data-group="inputs" data-uid="4" class="c-element c-calculation">
+<div data-type="calculation" data-group="inputs" data-uid="4" class="c-element c-calculation ">
   <div class="input-group input-group--text-field primary--text">
     <div class="input-group__input">
       <input tabindex="0" type="text">
@@ -38,7 +38,7 @@ exports[`AllComponents c-calculation renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-check renders correctly 1`] = `
-<div tabindex="0" role="checkbox" aria-checked="false" data-type="check" data-group="inputs" data-uid="5" class="c-element c-check input-group checkbox input-group--selection-controls accent--text">
+<div tabindex="0" role="checkbox" aria-checked="false" data-type="check" data-group="inputs" data-uid="5" class="c-element c-check  input-group checkbox input-group--selection-controls accent--text">
   <div class="input-group__input">
     <i aria-hidden="true" class="icon icon--selection-control material-icons">check_box_outline_blank</i>
     <div class="input-group--selection-controls__ripple"></div>
@@ -50,13 +50,13 @@ exports[`AllComponents c-check renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-check-list renders correctly 1`] = `
-<div data-type="check-list" data-group="inputs" data-uid="6" class="c-element c-check-list card card--flat transparent" style="height:auto;">
+<div data-type="check-list" data-group="inputs" data-uid="6" class="c-element c-check-list  card card--flat transparent" style="height:auto;">
   <div class="input-group__details error--text"></div>
 </div>
 `;
 
 exports[`AllComponents c-date renders correctly 1`] = `
-<div data-type="date" data-group="inputs" data-uid="7" class="menu c-element c-date" style="display:block;">
+<div data-type="date" data-group="inputs" data-uid="7" class="menu c-element c-date " style="display:block;">
   <div class="menu__activator">
     <div class="input-group input-group--prepend-icon input-group--text-field primary--text">
       <div class="input-group__input">
@@ -76,7 +76,7 @@ exports[`AllComponents c-date renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-date-range renders correctly 1`] = `
-<div data-type="date-range" data-group="inputs" data-uid="8" class="menu c-element c-date-range" style="display:block;">
+<div data-type="date-range" data-group="inputs" data-uid="8" class="menu c-element c-date-range " style="display:block;">
   <div class="menu__activator">
     <div class="input-group input-group--dirty input-group--prepend-icon input-group--text-field primary--text">
       <div class="input-group__input">
@@ -97,19 +97,19 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-flexgrid renders correctly 1`] = `
-<div data-type="flexgrid" data-group="containers" data-uid="9" class="c-element c-flexgrid c-element-parent grid-list-undefined wrap container">
+<div data-type="flexgrid" data-group="containers" data-uid="9" class="c-element c-flexgrid  c-element-parent  grid-list-undefined wrap container">
   <div class="layout undefined wrap"></div>
 </div>
 `;
 
 exports[`AllComponents c-flexgrid-item renders correctly 1`] = `
-<div data-type="flexgrid-item" data-group="container-items" data-uid="10" class="c-element c-flexgrid-item c-element-parent xsundefined flex">
+<div data-type="flexgrid-item" data-group="container-items" data-uid="10" class="c-element c-flexgrid-item  c-element-parent  xsundefined flex">
   <div class="c-element-children c-flexgrid-item-items"></div>
 </div>
 `;
 
 exports[`AllComponents c-form renders correctly 1`] = `
-<div data-type="form" data-group="widgets" data-uid="11" class="c-element c-form c-element-parent card card--flat transparent" style="height:auto;">
+<div data-type="form" data-group="widgets" data-uid="11" class="c-element c-form  c-element-parent  card card--flat transparent" style="height:auto;">
   <form novalidate="novalidate" class="c-form c-element-children">
     <div class="card__text c-form-items"></div>
     <div class="card__actions"></div>
@@ -118,23 +118,23 @@ exports[`AllComponents c-form renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-hlist renders correctly 1`] = `
-<div data-type="hlist" data-group="containers" data-uid="12" class="c-element c-hlist c-element-parent card" style="height:auto;background-color:undefined;">
+<div data-type="hlist" data-group="containers" data-uid="12" class="c-element c-hlist  c-element-parent  card" style="height:auto;background-color:undefined;">
   <div class="c-element-children c-hlist-items"></div>
 </div>
 `;
 
-exports[`AllComponents c-html renders correctly 1`] = `<div data-type="html" data-group="widgets" data-uid="13" class="c-element c-html">undefined</div>`;
+exports[`AllComponents c-html renders correctly 1`] = `<div data-type="html" data-group="widgets" data-uid="13" class="c-element c-html ">undefined</div>`;
 
 exports[`AllComponents c-list renders correctly 1`] = `
-<div data-type="list" data-group="widgets" data-uid="14" class="c-element c-list">
-  <div class="data-iterator elevation-1">
+<div data-type="list" data-group="widgets" data-uid="14" class="c-element c-list  card" style="height:auto;">
+  <div class="data-iterator">
     <div class="layout">
       <div class="text-xs-center" style="width:100%;">No data available</div>
     </div>
     <div>
       <div class="data-iterator__actions">
         <div class="data-iterator__actions__select">Items per page:
-          <div tabindex="0" data-uid="222" aria-label="Items per page:" role="combobox" class="input-group input-group--append-icon input-group--hide-details input-group--text-field input-group--select input-group--auto primary--text">
+          <div tabindex="0" data-uid="226" aria-label="Items per page:" role="combobox" class="input-group input-group--append-icon input-group--hide-details input-group--text-field input-group--select input-group--auto primary--text">
             <div class="input-group__input">
               <div class="input-group__selections" style="overflow:hidden;">
                 <input aria-label="Items per page:" disabled="disabled" tabindex="-1" value="" class="input-group--select__autocomplete" style="flex:null;display:none;">
@@ -199,16 +199,16 @@ exports[`AllComponents c-list renders correctly 1`] = `
 </div>
 `;
 
-exports[`AllComponents c-map renders correctly 1`] = `<div data-type="map" data-group="widgets" data-uid="15" class="c-element c-map" style="width:100%;height:400px;"></div>`;
+exports[`AllComponents c-map renders correctly 1`] = `<div data-type="map" data-group="widgets" data-uid="15" class="c-element c-map " style="width:100%;height:400px;"></div>`;
 
 exports[`AllComponents c-panel renders correctly 1`] = `
-<div data-type="panel" data-group="containers" data-uid="16" class="c-element c-panel c-element-parent card" style="height:auto;width:undefined;">
+<div data-type="panel" data-group="containers" data-uid="16" class="c-element c-panel  c-element-parent  card" style="height:auto;width:undefined;">
   <div class="c-element-children c-panel-items"></div>
 </div>
 `;
 
 exports[`AllComponents c-picker renders correctly 1`] = `
-<div data-type="picker" data-group="inputs" data-uid="18" class="c-element c-picker">
+<div data-type="picker" data-group="inputs" data-uid="18" class="c-element c-picker ">
   <div class="picker picker--date card" style="height:auto;">
     <div class="picker__title primary">
       <div class="date-picker-title">
@@ -271,7 +271,7 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating btn--outline accent--text">
+                  <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">4</div>
                   </button>
                 </td>
@@ -360,7 +360,7 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
+                  <button type="button" class="btn btn--flat btn--floating btn--outline accent--text">
                     <div class="btn__content">21</div>
                   </button>
                 </td>
@@ -422,13 +422,13 @@ exports[`AllComponents c-picker renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-placeholder renders correctly 1`] = `
-<div data-type="placeholder" data-group="containers" data-uid="17" class="c-element c-placeholder">
+<div data-type="placeholder" data-group="containers" data-uid="17" class="c-element c-placeholder ">
   <router-view></router-view>
 </div>
 `;
 
 exports[`AllComponents c-radio-list renders correctly 1`] = `
-<div role="radiogroup" data-type="radio-list" data-group="inputs" data-uid="19" class="c-element c-radio-list input-group radio-group radio-group--column">
+<div role="radiogroup" data-type="radio-list" data-group="inputs" data-uid="19" class="c-element c-radio-list  input-group radio-group radio-group--column">
   <div class="input-group__input">
     <div class="input-group__details error--text"></div>
   </div>
@@ -439,7 +439,7 @@ exports[`AllComponents c-radio-list renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-rating renders correctly 1`] = `
-<div data-type="rating" data-group="inputs" data-uid="20" class="c-element c-rating text-xs-center">
+<div data-type="rating" data-group="inputs" data-uid="20" class="c-element c-rating  text-xs-center">
   <div></div>
   <div>
     <i aria-hidden="true" class="icon px-1 material-icons">star</i>
@@ -453,14 +453,14 @@ exports[`AllComponents c-rating renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-rich-text renders correctly 1`] = `
-<div data-type="rich-text" data-group="inputs" data-uid="21" class="c-element c-rich-text mb-3">
+<div data-type="rich-text" data-group="inputs" data-uid="21" class="c-element c-rich-text  mb-3">
   <div></div>
 </div>
 `;
 
 exports[`AllComponents c-select renders correctly 1`] = `
-<div data-type="select" data-group="inputs" data-uid="22" class="c-element c-select">
-  <div tabindex="-1" data-uid="248" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete primary--text">
+<div data-type="select" data-group="inputs" data-uid="22" class="c-element c-select ">
+  <div tabindex="-1" data-uid="252" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete primary--text">
     <div class="input-group__input">
       <div class="input-group__selections" style="overflow:hidden;">
         <input tabindex="0" role="combobox" value="" autocomplete="off" class="input-group--select__autocomplete" style="flex:null;">
@@ -490,8 +490,8 @@ exports[`AllComponents c-select renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-select-list renders correctly 1`] = `
-<div data-type="select-list" data-group="inputs" data-uid="23" class="c-element c-select-list">
-  <div tabindex="-1" data-uid="254" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete input-group--chips primary--text">
+<div data-type="select-list" data-group="inputs" data-uid="23" class="c-element c-select-list ">
+  <div tabindex="-1" data-uid="258" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete input-group--chips primary--text">
     <div class="input-group__input">
       <div class="input-group__selections" style="overflow:hidden;">
         <input tabindex="0" role="combobox" value="" autocomplete="off" class="input-group--select__autocomplete" style="flex:null;">
@@ -521,7 +521,7 @@ exports[`AllComponents c-select-list renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-slider renders correctly 1`] = `
-<div role="slider" tabindex="0" data-type="slider" data-group="inputs" data-uid="24" class="c-element c-slider input-group input-group--slider">
+<div role="slider" tabindex="0" data-type="slider" data-group="inputs" data-uid="24" class="c-element c-slider  input-group input-group--slider">
   <div class="input-group__input">
     <div class="slider">
       <div class="slider__track__container">
@@ -540,7 +540,7 @@ exports[`AllComponents c-slider renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-switch renders correctly 1`] = `
-<div tabindex="0" data-type="switch" data-group="inputs" data-uid="25" class="c-element c-switch input-group input-group--selection-controls switch accent--text">
+<div tabindex="0" data-type="switch" data-group="inputs" data-uid="25" class="c-element c-switch  input-group input-group--selection-controls switch accent--text">
   <div class="input-group__input">
     <div class="input-group--selection-controls__container">
       <div class="input-group--selection-controls__toggle"></div>
@@ -554,7 +554,7 @@ exports[`AllComponents c-switch renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-tab-item renders correctly 1`] = `
-<div data-type="tab-item" data-group="container-items" data-uid="26" class="tabs__content c-element c-tab-item c-element-parent" style="display:none;">
+<div data-type="tab-item" data-group="container-items" data-uid="26" class="tabs__content c-element c-tab-item  c-element-parent " style="display:none;">
   <div data-type="tab-item" data-group="container-items" data-uid="26" class="card" style="height:auto;background-color:undefined;">
     <div class="card__text c-element-children c-tab-item-items"></div>
   </div>
@@ -562,7 +562,7 @@ exports[`AllComponents c-tab-item renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-table renders correctly 1`] = `
-<div data-type="table" data-group="widgets" data-uid="27" class="c-element c-table card" style="height:auto;">
+<div data-type="table" data-group="widgets" data-uid="27" class="c-element c-table  card" style="height:auto;">
   <div>
     <div class="table__overflow">
       <table class="datatable table">
@@ -576,7 +576,7 @@ exports[`AllComponents c-table renders correctly 1`] = `
     <div class="datatable table">
       <div class="datatable__actions">
         <div class="datatable__actions__select">Rows per page:
-          <div tabindex="0" data-uid="269" aria-label="Rows per page:" role="combobox" class="input-group input-group--append-icon input-group--hide-details input-group--text-field input-group--select input-group--auto primary--text">
+          <div tabindex="0" data-uid="273" aria-label="Rows per page:" role="combobox" class="input-group input-group--append-icon input-group--hide-details input-group--text-field input-group--select input-group--auto primary--text">
             <div class="input-group__input">
               <div class="input-group__selections" style="overflow:hidden;">
                 <input aria-label="Rows per page:" disabled="disabled" tabindex="-1" value="" class="input-group--select__autocomplete" style="flex:null;display:none;">
@@ -642,7 +642,7 @@ exports[`AllComponents c-table renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-tabs renders correctly 1`] = `
-<div data-type="tabs" data-group="containers" data-uid="28" class="tabs c-element c-tabs c-element-parent">
+<div data-type="tabs" data-group="containers" data-uid="28" class="tabs c-element c-tabs  c-element-parent ">
   <div class="tabs__bar">
     <!---->
     <div class="tabs__wrapper">
@@ -659,8 +659,8 @@ exports[`AllComponents c-tabs renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-tags renders correctly 1`] = `
-<div data-type="tags" data-group="inputs" data-uid="29" class="c-element c-tags">
-  <div tabindex="-1" data-uid="285" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete input-group--chips primary--text">
+<div data-type="tags" data-group="inputs" data-uid="29" class="c-element c-tags ">
+  <div tabindex="-1" data-uid="289" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete input-group--chips primary--text">
     <div class="input-group__input">
       <div class="input-group__selections" style="overflow:hidden;">
         <input tabindex="0" role="combobox" value="" autocomplete="off" class="input-group--select__autocomplete" style="flex:null;">
@@ -690,7 +690,7 @@ exports[`AllComponents c-tags renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-text renders correctly 1`] = `
-<div data-type="text" data-group="inputs" data-uid="30" class="c-element c-text">
+<div data-type="text" data-group="inputs" data-uid="30" class="c-element c-text ">
   <div class="input-group input-group--text-field primary--text">
     <div class="input-group__input">
       <input tabindex="0" type="text">
@@ -703,21 +703,21 @@ exports[`AllComponents c-text renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-video renders correctly 1`] = `
-<div data-type="video" data-group="widgets" data-uid="31" class="c-element c-video" style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
+<div data-type="video" data-group="widgets" data-uid="31" class="c-element c-video " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
   <video width="100%" height="100%" style="position:absolute;top:0;left:0;"></video>
 </div>
 `;
 
 exports[`AllComponents c-video-stream renders correctly 1`] = `
-<div data-type="video-stream" data-group="widgets" data-uid="32" class="c-element c-video-stream" style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
+<div data-type="video-stream" data-group="widgets" data-uid="32" class="c-element c-video-stream " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
   <img width="100%" height="100%" style="position:absolute;top:0;left:0;">
 </div>
 `;
 
 exports[`AllComponents c-vlist renders correctly 1`] = `
-<div data-type="vlist" data-group="containers" data-uid="33" class="c-element c-vlist card" style="height:auto;background-color:undefined;">
+<div data-type="vlist" data-group="containers" data-uid="33" class="c-element c-vlist  card" style="height:auto;background-color:undefined;">
   <div class="c-element-children c-vlist-items"></div>
 </div>
 `;
 
-exports[`AllComponents c-youtube renders correctly 1`] = `<div data-type="youtube" data-group="widgets" data-uid="34" class="c-element c-youtube"></div>`;
+exports[`AllComponents c-youtube renders correctly 1`] = `<div data-type="youtube" data-group="widgets" data-uid="34" class="c-element c-youtube "></div>`;

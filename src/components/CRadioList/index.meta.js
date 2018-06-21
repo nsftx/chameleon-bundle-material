@@ -29,6 +29,7 @@ export default {
     },
   ],
   options: {
+    color: true,
     name: {
       type: 'input',
       name: 'Input Name',
@@ -59,12 +60,6 @@ export default {
       value: null,
       priority: 5,
     },
-    color: {
-      type: 'input',
-      name: 'Checkbox Color',
-      value: 'primary',
-      priority: 6,
-    },
     disabled: {
       type: 'check',
       name: 'Disabled',
@@ -78,6 +73,7 @@ export default {
       value: null,
       schema: itemInterface,
     },
+    theme: true,
     validation: {
       type: 'group',
       group: 'validation',

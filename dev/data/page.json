@@ -494,7 +494,8 @@
                           "hint": null,
                           "persistentHint": false,
                           "hideDetails": false,
-                          "color": "primary",
+                          "color": "red",
+                          "theme": "light",
                           "disabled": false,
                           "value": [],
                           "validateOn": "blur",
@@ -531,6 +532,7 @@
                           "color": "primary",
                           "disabled": false,
                           "value": null,
+                          "theme": "light",
                           "validation": {
                             "required": true
                           },
@@ -555,7 +557,8 @@
                           "name": "rememberCheck",
                           "type": "check",
                           "label": "Remember me",
-                          "color": "primary",
+                          "color": "blue",
+                          "theme": "light",
                           "prependIcon": null,
                           "appendIcon": null,
                           "hint": null,

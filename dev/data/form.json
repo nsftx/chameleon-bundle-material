@@ -502,9 +502,10 @@
                   "appendIcon": null,
                   "hint": null,
                   "persistentHint": false,
-                  "color": "primary",
+                  "color": "red",
                   "disabled": false,
                   "value": null,
+                  "theme": "light",
                   "validation": {
                     "required": true
                   },
@@ -530,6 +531,7 @@
                   "type": "check",
                   "label": "Remember me",
                   "color": "primary",
+                  "theme": "light",
                   "prependIcon": null,
                   "appendIcon": null,
                   "hint": null,

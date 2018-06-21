@@ -26,6 +26,7 @@ export default {
     },
   ],
   options: {
+    color: true,
     name: {
       type: 'input',
       name: 'Input Name',
@@ -37,12 +38,6 @@ export default {
       name: 'Check Label',
       value: 'Check',
       priority: 2,
-    },
-    color: {
-      type: 'input',
-      name: 'Color',
-      value: null,
-      priority: 3,
     },
     prependIcon: {
       type: 'input',
@@ -77,5 +72,6 @@ export default {
         value: false,
       },
     },
+    theme: true,
   },
 };

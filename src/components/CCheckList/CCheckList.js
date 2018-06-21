@@ -98,6 +98,8 @@ export default {
     const data = {
       props: {
         color: 'transparent',
+        dark: this.isThemeDark,
+        light: this.isThemeLight,
         flat: true,
       },
     };
