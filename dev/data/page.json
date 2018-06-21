@@ -588,6 +588,8 @@
                           "name": "save",
                           "type": "button",
                           "label": "Save",
+                          "color": "primary",
+                          "theme": "light",
                           "actions": {
                             "click": "save"
                           }

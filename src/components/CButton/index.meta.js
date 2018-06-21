@@ -16,17 +16,12 @@ export default {
     },
   ],
   options: {
+    color: true,
     label: {
       type: 'input',
       name: 'Button Label',
       value: 'Button',
       priority: 1,
-    },
-    color: {
-      type: 'input',
-      name: 'Color',
-      value: null,
-      priority: 2,
     },
     icon: {
       type: 'check',
@@ -64,5 +59,6 @@ export default {
       value: false,
       priority: 8,
     },
+    theme: true,
   },
 };

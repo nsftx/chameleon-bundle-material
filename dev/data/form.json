@@ -35,7 +35,7 @@
                   },
                   "validation": {
                     "required": true,
-                    "minLength": 2, 
+                    "minLength": 2,
                     "maxLength": 20,
                     "pattern": {
                       "predefined": null,
@@ -564,6 +564,8 @@
                   "name": "save",
                   "type": "button",
                   "label": "Save",
+                  "color": "primary",
+                  "theme": "light",
                   "actions": {
                     "click": "save"
                   }
