@@ -44,11 +44,11 @@ export default {
     {
       name: 'DataSourceChanged',
       help: 'Fires when table data source is changed',
-      schema: itemInterface,
     },
     {
       name: 'SelectedItemChanged',
       help: 'Fires when table item gets selected',
+      schema: itemInterface,
     },
     {
       name: 'PaginationChanged',

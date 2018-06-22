@@ -32,6 +32,7 @@ export default {
     {
       name: 'Selected',
       help: 'Select clicked and item selected',
+      schema: itemInterface,
     },
   ],
   options: {

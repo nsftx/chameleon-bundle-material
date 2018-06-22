@@ -1,0 +1,36 @@
+{
+  "pages": [
+    {
+      "name": "menu",
+      "type": "page",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "panel-1",
+          "flat": false,
+          "elements": [
+            {
+              "type": "menu",
+              "name": "menu-main",
+              "title": "Ride",
+              "color": "red",
+              "theme": "dark",
+              "main": false,
+              "layout": "mini",
+              "position": "left",
+              "height": null,
+              "width": null,
+              "autoGenerate": true,
+              "dataSource": {
+                "items": [
+                  { "id": 1, "label": "Home", "path": "/home", "icon": "home" },
+                  { "id": 2, "label": "Profile", "path": "/contact", "icon": "person" }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
