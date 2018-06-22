@@ -53,6 +53,11 @@ export default {
         attrs: getLayoutAttrs(this.config),
       }, items);
 
-    return this.renderElement('div', data, children, true);
+    return this.renderElement(
+      'v-card',
+      data,
+      children,
+      true,
+    );
   },
 };

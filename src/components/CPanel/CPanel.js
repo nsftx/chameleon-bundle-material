@@ -8,7 +8,9 @@ export default {
     const data = {
       key: this.schema.uid,
       props: {
-        color: this.getBindingValue(config.color),
+        color: config.color,
+        dark: this.isThemeDark,
+        light: this.isThemeLight,
         flat: config.flat,
       },
       style: {

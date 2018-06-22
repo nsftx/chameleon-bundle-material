@@ -25,7 +25,7 @@ const getIconElement = (createElement, index, context) => {
       staticClass: 'px-1',
       key: `icon-${index}`,
       props: {
-        color: self.fillLevel >= index ? 'primary' : '',
+        color: self.fillLevel >= index ? self.config.color : '',
       },
       on: {
         mouseenter() {

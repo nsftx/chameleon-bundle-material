@@ -97,19 +97,19 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-flexgrid renders correctly 1`] = `
-<div data-type="flexgrid" data-group="containers" data-uid="9" class="c-element c-flexgrid  c-element-parent  grid-list-undefined wrap container">
+<div data-type="flexgrid" data-group="containers" data-uid="9" class="c-element c-flexgrid  c-element-parent  card card--flat undefined grid-list-undefined wrap container" style="height:auto;">
   <div class="layout undefined wrap"></div>
 </div>
 `;
 
 exports[`AllComponents c-flexgrid-item renders correctly 1`] = `
-<div data-type="flexgrid-item" data-group="container-items" data-uid="10" class="c-element c-flexgrid-item  c-element-parent  xsundefined flex">
+<div data-type="flexgrid-item" data-group="container-items" data-uid="10" class="c-element c-flexgrid-item  c-element-parent  xsundefined undefined flex">
   <div class="c-element-children c-flexgrid-item-items"></div>
 </div>
 `;
 
 exports[`AllComponents c-form renders correctly 1`] = `
-<div data-type="form" data-group="widgets" data-uid="11" class="c-element c-form  c-element-parent  card card--flat transparent" style="height:auto;">
+<div data-type="form" data-group="widgets" data-uid="11" class="c-element c-form  c-element-parent  card card--flat" style="height:auto;">
   <form novalidate="novalidate" class="c-form c-element-children">
     <div class="card__text c-form-items"></div>
     <div class="card__actions"></div>
@@ -118,7 +118,7 @@ exports[`AllComponents c-form renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-hlist renders correctly 1`] = `
-<div data-type="hlist" data-group="containers" data-uid="12" class="c-element c-hlist  c-element-parent  card" style="height:auto;background-color:undefined;">
+<div data-type="hlist" data-group="containers" data-uid="12" class="c-element c-hlist  c-element-parent  card" style="height:auto;">
   <div class="c-element-children c-hlist-items"></div>
 </div>
 `;
@@ -134,7 +134,7 @@ exports[`AllComponents c-list renders correctly 1`] = `
     <div>
       <div class="data-iterator__actions">
         <div class="data-iterator__actions__select">Items per page:
-          <div tabindex="0" data-uid="226" aria-label="Items per page:" role="combobox" class="input-group input-group--append-icon input-group--hide-details input-group--text-field input-group--select input-group--auto primary--text">
+          <div tabindex="0" data-uid="228" aria-label="Items per page:" role="combobox" class="input-group input-group--append-icon input-group--hide-details input-group--text-field input-group--select input-group--auto primary--text">
             <div class="input-group__input">
               <div class="input-group__selections" style="overflow:hidden;">
                 <input aria-label="Items per page:" disabled="disabled" tabindex="-1" value="" class="input-group--select__autocomplete" style="flex:null;display:none;">
@@ -360,12 +360,12 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating btn--outline accent--text">
+                  <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">21</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
+                  <button type="button" class="btn btn--flat btn--floating btn--outline accent--text">
                     <div class="btn__content">22</div>
                   </button>
                 </td>
@@ -460,7 +460,7 @@ exports[`AllComponents c-rich-text renders correctly 1`] = `
 
 exports[`AllComponents c-select renders correctly 1`] = `
 <div data-type="select" data-group="inputs" data-uid="22" class="c-element c-select ">
-  <div tabindex="-1" data-uid="252" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete primary--text">
+  <div tabindex="-1" data-uid="254" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete primary--text">
     <div class="input-group__input">
       <div class="input-group__selections" style="overflow:hidden;">
         <input tabindex="0" role="combobox" value="" autocomplete="off" class="input-group--select__autocomplete" style="flex:null;">
@@ -491,7 +491,7 @@ exports[`AllComponents c-select renders correctly 1`] = `
 
 exports[`AllComponents c-select-list renders correctly 1`] = `
 <div data-type="select-list" data-group="inputs" data-uid="23" class="c-element c-select-list ">
-  <div tabindex="-1" data-uid="258" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete input-group--chips primary--text">
+  <div tabindex="-1" data-uid="260" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete input-group--chips primary--text">
     <div class="input-group__input">
       <div class="input-group__selections" style="overflow:hidden;">
         <input tabindex="0" role="combobox" value="" autocomplete="off" class="input-group--select__autocomplete" style="flex:null;">
@@ -576,7 +576,7 @@ exports[`AllComponents c-table renders correctly 1`] = `
     <div class="datatable table">
       <div class="datatable__actions">
         <div class="datatable__actions__select">Rows per page:
-          <div tabindex="0" data-uid="273" aria-label="Rows per page:" role="combobox" class="input-group input-group--append-icon input-group--hide-details input-group--text-field input-group--select input-group--auto primary--text">
+          <div tabindex="0" data-uid="275" aria-label="Rows per page:" role="combobox" class="input-group input-group--append-icon input-group--hide-details input-group--text-field input-group--select input-group--auto primary--text">
             <div class="input-group__input">
               <div class="input-group__selections" style="overflow:hidden;">
                 <input aria-label="Rows per page:" disabled="disabled" tabindex="-1" value="" class="input-group--select__autocomplete" style="flex:null;display:none;">
@@ -660,7 +660,7 @@ exports[`AllComponents c-tabs renders correctly 1`] = `
 
 exports[`AllComponents c-tags renders correctly 1`] = `
 <div data-type="tags" data-group="inputs" data-uid="29" class="c-element c-tags ">
-  <div tabindex="-1" data-uid="289" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete input-group--chips primary--text">
+  <div tabindex="-1" data-uid="291" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete input-group--chips primary--text">
     <div class="input-group__input">
       <div class="input-group__selections" style="overflow:hidden;">
         <input tabindex="0" role="combobox" value="" autocomplete="off" class="input-group--select__autocomplete" style="flex:null;">

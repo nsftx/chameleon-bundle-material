@@ -12,6 +12,8 @@
             {
               "type": "form",
               "name": "person",
+              "color": "",
+              "theme": "",
               "elements": [
                 {
                   "name": "firstName",

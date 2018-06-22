@@ -14,10 +14,9 @@ export default {
       },
       props: {
         color: self.config.color,
+        dark: self.isThemeDark,
+        light: self.isThemeLight,
         flat: self.config.flat,
-      },
-      style: {
-        backgroundColor: self.config.color,
       },
     };
 

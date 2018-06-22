@@ -74,7 +74,9 @@ export default {
 
     const data = {
       props: {
-        color: 'transparent',
+        color: context.config.color,
+        dark: context.isThemeDark,
+        light: context.isThemeLight,
         flat: true,
       },
     };

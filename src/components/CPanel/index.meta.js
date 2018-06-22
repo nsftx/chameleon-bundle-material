@@ -9,17 +9,7 @@ export default {
     '!container-items',
   ],
   options: {
-    color: {
-      type: 'input',
-      name: 'Color',
-      value: 'transparent',
-      validation: {
-        required: true,
-        minLength: 3,
-        maxLength: 25,
-      },
-      priority: 1,
-    },
+    color: true,
     flat: {
       type: 'check',
       name: 'No Shadow',
@@ -32,5 +22,6 @@ export default {
       value: null,
       priority: 3,
     },
+    theme: true,
   },
 };

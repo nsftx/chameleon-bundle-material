@@ -24,7 +24,7 @@ export default {
       priority: 1,
     },
     color: {
-      type: 'input',
+      type: 'colorPicker',
       name: 'Item header color',
       value: 'transparent',
       validation: {
@@ -35,7 +35,7 @@ export default {
       priority: 2,
     },
     contentColor: {
-      type: 'input',
+      type: 'colorPicker',
       name: 'Item content color',
       value: 'transparent',
       validation: {

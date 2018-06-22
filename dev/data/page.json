@@ -21,6 +21,8 @@
         {
           "type": "panel",
           "name": "panel-1",
+          "color": "",
+          "theme": "",
           "flat": false,
           "elements": [
             {
@@ -38,6 +40,8 @@
                     {
                       "type": "form",
                       "name": "person",
+                      "color": "",
+                      "theme": "",
                       "elements": [
                         {
                           "name": "firstName",
@@ -481,6 +485,7 @@
                           "ratingInfo": true,
                           "icon": "star",
                           "value": 0,
+                          "color": "blue",
                           "validation": {
                             "required": true
                           }
@@ -758,6 +763,7 @@
                           "type": "flexgrid-item",
                           "name": "flexgrid-item-1",
                           "width": "6",
+                          "color": "",
                           "elements": [
                             {
                               "type": "list",
@@ -803,6 +809,7 @@
                           "type": "flexgrid-item",
                           "name": "flexgrid-item-1",
                           "width": "6",
+                          "color": "",
                           "elements": [
                             {
                               "name": "firstName1",
