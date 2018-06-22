@@ -20,6 +20,7 @@ export default {
     },
   ],
   options: {
+    color: true,
     name: {
       type: 'input',
       name: 'Input Name',
@@ -90,5 +91,6 @@ export default {
         value: null,
       },
     },
+    theme: true,
   },
 };

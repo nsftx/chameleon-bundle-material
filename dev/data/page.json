@@ -58,6 +58,8 @@
                           "multiLine": false,
                           "clearable": true,
                           "disabled": false,
+                          "color": "",
+                          "theme": "",
                           "validateOn": "blur",
                           "mask": {
                             "predefined": false,
@@ -119,6 +121,8 @@
                           "tooltip": null,
                           "multiLine": false,
                           "clearable": true,
+                          "color": "",
+                          "theme": "",
                           "validateOn": "blur",
                           "validation": {
                             "required": true
@@ -139,6 +143,8 @@
                           "clearable": false,
                           "readonly": false,
                           "validateOn": "blur",
+                          "color": "green",
+                          "theme": "",
                           "validation": {
                             "required": true
                           },
@@ -191,6 +197,8 @@
                           "multiple": false,
                           "clearable": false,
                           "readonly": false,
+                          "color": "green",
+                          "theme": "",
                           "validateOn": "blur",
                           "mask": {
                             "predefined": false,
@@ -236,6 +244,8 @@
                           "multiple": true,
                           "clearable": true,
                           "readonly": false,
+                          "color": "green",
+                          "theme": "",
                           "validateOn": "blur",
                           "mask": {
                             "predefined": false,
@@ -422,6 +432,8 @@
                           "tooltip": null,
                           "clearable": true,
                           "fullWidth": true,
+                          "color": "red",
+                          "theme": "dark",
                           "validation": {
                             "required": true,
                             "minDate": "",
@@ -445,6 +457,8 @@
                           "clearable": true,
                           "fullWidth": false,
                           "width": "260",
+                          "color": "red",
+                          "theme": "dark",
                           "validation": {
                             "required": true,
                             "minDate": "",
