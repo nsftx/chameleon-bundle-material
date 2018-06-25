@@ -18,6 +18,7 @@ const getMessage = (createElement, context) => {
 
 const getIconElement = (createElement, index, context) => {
   const self = context;
+  self.config.color = self.config.color || 'blue';
 
   const el = createElement(
     'v-icon',
@@ -25,7 +26,7 @@ const getIconElement = (createElement, index, context) => {
       staticClass: 'px-1',
       key: `icon-${index}`,
       props: {
-        color: self.fillLevel >= index ? self.config.color : 'primary',
+        color: self.fillLevel >= index ? self.config.color : self.config.baseColor,
       },
       on: {
         mouseenter() {

@@ -1,3 +1,4 @@
+
 .c-rich-text
   position: relative
 
@@ -9,3 +10,25 @@
     .ql-toolbar
     .ql-container
       border-color: #FF5252
+
+  &.theme--dark
+    .ql-snow 
+      .ql-stroke
+        stroke: #fff
+
+      .ql-fill
+        fill: #fff
+
+      .ql-picker
+        color: #fff
+
+      .ql-editor
+        &.ql-blank
+          &:before
+            color: #bbb
+
+      .ql-picker-options
+        background-color: #424242      
+
+
+

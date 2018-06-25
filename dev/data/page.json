@@ -383,6 +383,7 @@
                             "italic",
                             "link"
                           ],
+                          "theme": "light",
                           "value": "Test rich <b>content</b>."
                         },
                         {
@@ -393,7 +394,8 @@
                           "validation": {
                             "required": false
                           },
-                          "toolbar": "advanced"
+                          "toolbar": "full",
+                          "theme": "dark"
                         },
                         {
                           "name": "payin",
@@ -498,8 +500,8 @@
                           "maxRating": 5,
                           "ratingInfo": true,
                           "icon": "star",
+                          "light": true,
                           "value": 0,
-                          "color": "blue",
                           "validation": {
                             "required": true
                           }

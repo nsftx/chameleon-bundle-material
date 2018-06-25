@@ -134,7 +134,7 @@ exports[`AllComponents c-list renders correctly 1`] = `
     <div>
       <div class="data-iterator__actions">
         <div class="data-iterator__actions__select">Items per page:
-          <div tabindex="0" data-uid="228" aria-label="Items per page:" role="combobox" class="input-group input-group--append-icon input-group--hide-details input-group--text-field input-group--select input-group--auto primary--text">
+          <div tabindex="0" data-uid="229" aria-label="Items per page:" role="combobox" class="input-group input-group--append-icon input-group--hide-details input-group--text-field input-group--select input-group--auto primary--text">
             <div class="input-group__input">
               <div class="input-group__selections" style="overflow:hidden;">
                 <input aria-label="Items per page:" disabled="disabled" tabindex="-1" value="" class="input-group--select__autocomplete" style="flex:null;display:none;">
@@ -365,7 +365,7 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating btn--outline accent--text">
+                  <button type="button" class="btn btn--flat btn--floating">
                     <div class="btn__content">22</div>
                   </button>
                 </td>
@@ -382,7 +382,7 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
+                  <button type="button" class="btn btn--flat btn--floating btn--outline accent--text">
                     <div class="btn__content">25</div>
                   </button>
                 </td>
@@ -453,14 +453,14 @@ exports[`AllComponents c-rating renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-rich-text renders correctly 1`] = `
-<div data-type="rich-text" data-group="inputs" data-uid="21" class="c-element c-rich-text  mb-3">
+<div data-type="rich-text" data-group="inputs" data-uid="21" class="c-element c-rich-text  card card--flat mb-3" style="height:auto;">
   <div></div>
 </div>
 `;
 
 exports[`AllComponents c-select renders correctly 1`] = `
 <div data-type="select" data-group="inputs" data-uid="22" class="c-element c-select ">
-  <div tabindex="-1" data-uid="254" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete primary--text">
+  <div tabindex="-1" data-uid="256" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete primary--text">
     <div class="input-group__input">
       <div class="input-group__selections" style="overflow:hidden;">
         <input tabindex="0" role="combobox" value="" autocomplete="off" class="input-group--select__autocomplete" style="flex:null;">
@@ -491,7 +491,7 @@ exports[`AllComponents c-select renders correctly 1`] = `
 
 exports[`AllComponents c-select-list renders correctly 1`] = `
 <div data-type="select-list" data-group="inputs" data-uid="23" class="c-element c-select-list ">
-  <div tabindex="-1" data-uid="260" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete input-group--chips primary--text">
+  <div tabindex="-1" data-uid="262" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete input-group--chips primary--text">
     <div class="input-group__input">
       <div class="input-group__selections" style="overflow:hidden;">
         <input tabindex="0" role="combobox" value="" autocomplete="off" class="input-group--select__autocomplete" style="flex:null;">
@@ -576,7 +576,7 @@ exports[`AllComponents c-table renders correctly 1`] = `
     <div class="datatable table">
       <div class="datatable__actions">
         <div class="datatable__actions__select">Rows per page:
-          <div tabindex="0" data-uid="275" aria-label="Rows per page:" role="combobox" class="input-group input-group--append-icon input-group--hide-details input-group--text-field input-group--select input-group--auto primary--text">
+          <div tabindex="0" data-uid="277" aria-label="Rows per page:" role="combobox" class="input-group input-group--append-icon input-group--hide-details input-group--text-field input-group--select input-group--auto primary--text">
             <div class="input-group__input">
               <div class="input-group__selections" style="overflow:hidden;">
                 <input aria-label="Rows per page:" disabled="disabled" tabindex="-1" value="" class="input-group--select__autocomplete" style="flex:null;display:none;">
@@ -660,7 +660,7 @@ exports[`AllComponents c-tabs renders correctly 1`] = `
 
 exports[`AllComponents c-tags renders correctly 1`] = `
 <div data-type="tags" data-group="inputs" data-uid="29" class="c-element c-tags ">
-  <div tabindex="-1" data-uid="291" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete input-group--chips primary--text">
+  <div tabindex="-1" data-uid="293" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete input-group--chips primary--text">
     <div class="input-group__input">
       <div class="input-group__selections" style="overflow:hidden;">
         <input tabindex="0" role="combobox" value="" autocomplete="off" class="input-group--select__autocomplete" style="flex:null;">

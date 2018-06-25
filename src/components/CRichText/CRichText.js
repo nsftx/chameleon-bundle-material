@@ -121,6 +121,11 @@ export default {
         'rich-text--error': this.hasError,
         'mb-3': true,
       },
+      props: {
+        flat: true,
+        dark: this.isThemeDark,
+        light: this.isThemeLight,
+      },
     };
 
     const children = createElement(
@@ -130,7 +135,7 @@ export default {
       },
     );
 
-    return this.renderElement('div', data, children);
+    return this.renderElement('v-card', data, children);
   },
   mounted() {
     const urls = [
