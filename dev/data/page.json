@@ -603,7 +603,7 @@
                           "type": "button",
                           "label": "Save",
                           "color": "primary",
-                          "theme": "light",
+                          "theme": "dark",
                           "actions": {
                             "click": "save"
                           }
