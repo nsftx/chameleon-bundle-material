@@ -63,6 +63,7 @@ const getProps = (context) => {
     appendIcon: getPropAppendIcon(config),
     clearable: config.clearable && !config.readonly,
     deletableChips: context.chips && !config.readonly,
+    chips: context.chips,
     hint: config.hint,
     items: config.dataSource ? config.dataSource.items : [],
     label: config.label,
