@@ -18,9 +18,7 @@ const getItemContent = (context, createElement) => {
   const el = createElement(
     'v-card',
     {
-      staticStyle: {
-        backgroundColor: element.contentColor,
-      },
+      staticClass: element.contentColor,
     },
     [
       context.renderChildElement('v-card-text'),
@@ -52,13 +50,11 @@ const getListeners = (context) => {
 export default {
   extends: Element,
   render(createElement) {
-    const data = {
+    const props = {
       key: this.schema.uid,
       props: this.config,
-      staticStyle: {
-        backgroundColor: this.config.headerColor,
-      },
       on: getListeners(this),
+      staticClass: this.config.headerColor,
     };
 
     const children = [
@@ -66,6 +62,11 @@ export default {
       getItemContent(this, createElement),
     ];
 
-    return this.renderElement('v-expansion-panel-content', data, children, true);
+    return this.renderElement(
+      'v-expansion-panel-content',
+      props,
+      children,
+      true,
+    );
   },
 };

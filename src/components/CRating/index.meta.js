@@ -22,6 +22,18 @@ export default {
     },
   ],
   options: {
+    color: {
+      type: 'colorPicker',
+      name: 'Color',
+      value: '',
+      priority: 2,
+    },
+    baseColor: {
+      type: 'colorPicker',
+      name: 'Base Color',
+      value: 'grey',
+      priority: 3,
+    },
     name: {
       type: 'input',
       name: 'Input Name',
@@ -32,25 +44,25 @@ export default {
       type: 'input',
       name: 'Rating Label',
       value: 'How did you like our fat bunny',
-      priority: 2,
+      priority: 4,
     },
     maxRating: {
       type: 'input',
       name: 'Max Rating',
       value: 5,
-      priority: 4,
+      priority: 6,
     },
     ratingInfo: {
       type: 'check',
       name: 'Rating Info',
       value: true,
-      priority: 5,
+      priority: 7,
     },
     icon: {
       type: 'input',
       name: 'Rating Icon',
       value: 'star',
-      priority: 3,
+      priority: 5,
     },
     validation: {
       type: 'group',

@@ -75,18 +75,7 @@ export default {
      * @property {Object} validation Validation rules for color input field
      * @property {Number} priority Color input field priority
      */
-    color: {
-      type: 'input',
-      name: 'Color',
-      value: 'transparent',
-      validation: {
-        required: true,
-        minLength: 3,
-        maxLength: 25,
-      },
-      priority: 1,
-    },
-
+    color: true,
     /**
      * @type {Object}
      * @property {String} type Flat input field type
@@ -116,5 +105,6 @@ export default {
       value: false,
       priority: 3,
     },
+    theme: true,
   },
 };

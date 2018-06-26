@@ -9,6 +9,7 @@ export default {
     '!flexgrid-item',
   ],
   options: {
+    color: true,
     width: {
       type: 'select',
       name: 'Width',
@@ -66,5 +67,6 @@ export default {
       value: '12',
       priority: 1,
     },
+    theme: true,
   },
 };

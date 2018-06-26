@@ -7,6 +7,7 @@ export default {
     'flexgrid-item',
   ],
   options: {
+    color: true,
     itemsCount: {
       type: 'childrenCountInput',
       name: 'Item Count',
@@ -67,5 +68,6 @@ export default {
       value: false,
       priority: 4,
     },
+    theme: true,
   },
 };

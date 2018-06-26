@@ -21,6 +21,8 @@
         {
           "type": "panel",
           "name": "panel-1",
+          "color": "",
+          "theme": "",
           "flat": false,
           "elements": [
             {
@@ -38,6 +40,8 @@
                     {
                       "type": "form",
                       "name": "person",
+                      "color": "",
+                      "theme": "",
                       "elements": [
                         {
                           "name": "firstName",
@@ -54,6 +58,8 @@
                           "multiLine": false,
                           "clearable": true,
                           "disabled": false,
+                          "color": "",
+                          "theme": "",
                           "validateOn": "blur",
                           "mask": {
                             "predefined": false,
@@ -115,6 +121,8 @@
                           "tooltip": null,
                           "multiLine": false,
                           "clearable": true,
+                          "color": "",
+                          "theme": "",
                           "validateOn": "blur",
                           "validation": {
                             "required": true
@@ -135,6 +143,8 @@
                           "readonly": false,
                           "disabled": false,
                           "validateOn": "blur",
+                          "color": "green",
+                          "theme": "",
                           "validation": {
                             "required": true
                           },
@@ -172,6 +182,8 @@
                           "multiple": true,
                           "clearable": true,
                           "readonly": false,
+                          "color": "green",
+                          "theme": "",
                           "disabled": false,
                           "validateOn": "blur",
                           "validation": {
@@ -225,6 +237,8 @@
                           "multiple": true,
                           "clearable": true,
                           "readonly": false,
+                          "color": "green",
+                          "theme": "",
                           "disabled": false,
                           "validateOn": "blur",
                           "validation": {
@@ -359,6 +373,7 @@
                             "italic",
                             "link"
                           ],
+                          "theme": "light",
                           "value": "Test rich <b>content</b>."
                         },
                         {
@@ -369,7 +384,8 @@
                           "validation": {
                             "required": false
                           },
-                          "toolbar": "advanced"
+                          "toolbar": "full",
+                          "theme": "dark"
                         },
                         {
                           "name": "payin",
@@ -408,6 +424,8 @@
                           "tooltip": null,
                           "clearable": true,
                           "fullWidth": true,
+                          "color": "red",
+                          "theme": "dark",
                           "validation": {
                             "required": true,
                             "minDate": "",
@@ -431,6 +449,8 @@
                           "clearable": true,
                           "fullWidth": false,
                           "width": "260",
+                          "color": "red",
+                          "theme": "dark",
                           "validation": {
                             "required": true,
                             "minDate": "",
@@ -470,6 +490,7 @@
                           "maxRating": 5,
                           "ratingInfo": true,
                           "icon": "star",
+                          "light": true,
                           "value": 0,
                           "validation": {
                             "required": true
@@ -484,7 +505,8 @@
                           "hint": null,
                           "persistentHint": false,
                           "hideDetails": false,
-                          "color": "primary",
+                          "color": "red",
+                          "theme": "light",
                           "disabled": false,
                           "value": [],
                           "validateOn": "blur",
@@ -521,6 +543,7 @@
                           "color": "primary",
                           "disabled": false,
                           "value": null,
+                          "theme": "light",
                           "validation": {
                             "required": true
                           },
@@ -545,7 +568,8 @@
                           "name": "rememberCheck",
                           "type": "check",
                           "label": "Remember me",
-                          "color": "primary",
+                          "color": "blue",
+                          "theme": "light",
                           "prependIcon": null,
                           "appendIcon": null,
                           "hint": null,
@@ -578,6 +602,8 @@
                           "name": "save",
                           "type": "button",
                           "label": "Save",
+                          "color": "primary",
+                          "theme": "light",
                           "actions": {
                             "click": "save"
                           }
@@ -654,6 +680,8 @@
                       "type": "list",
                       "hideActions": false,
                       "wrap": true,
+                      "color": "yellow",
+                      "theme": "light",
                       "dataSource": {
                         "items": [
                           {
@@ -732,6 +760,8 @@
                       "type": "flexgrid",
                       "name": "flexgrid",
                       "fluid": true,
+                      "color": "",
+                      "theme": "light",
                       "direction": "row",
                       "spacing": "md",
                       "elements": [
@@ -739,6 +769,7 @@
                           "type": "flexgrid-item",
                           "name": "flexgrid-item-1",
                           "width": "6",
+                          "color": "",
                           "elements": [
                             {
                               "type": "list",
@@ -784,6 +815,7 @@
                           "type": "flexgrid-item",
                           "name": "flexgrid-item-1",
                           "width": "6",
+                          "color": "",
                           "elements": [
                             {
                               "name": "firstName1",
@@ -832,9 +864,11 @@
                       "name": "accordion",
                       "multipleExpand": false,
                       "alternativeDesign": "",
-                      "color": "#FF5252",
+                      "color": "",
+                      "contentColor": "yellow",
                       "contentRipple": true,
                       "hideItemActions": true,
+                      "theme": "light",
                       "elements": [
                         {
                           "type": "accordion-item",

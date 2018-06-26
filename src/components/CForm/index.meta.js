@@ -18,12 +18,14 @@ export default {
     },
   ],
   options: {
+    color: true,
     name: {
       type: 'input',
       name: 'Name',
       value: 'form',
       priority: 1,
     },
+    theme: true,
   },
   children: [
     'inputs',

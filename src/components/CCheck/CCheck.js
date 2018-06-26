@@ -56,6 +56,8 @@ const getProps = (context) => {
     prependIcon: config.prependIcon,
     disabled: config.disabled,
     color: config.color,
+    dark: context.isThemeDark,
+    light: context.isThemeLight,
     inputValue: context.value || false,
     value: config.value || false,
     required: getPropRequired(config),

@@ -39,19 +39,19 @@ export default {
       priority: 2,
     },
     color: {
-      type: 'input',
+      type: 'colorPicker',
       name: 'Color',
       value: '',
       priority: 3,
     },
     trackColor: {
-      type: 'input',
+      type: 'colorPicker',
       name: 'Track Color',
       value: '',
       priority: 4,
     },
     thumbColor: {
-      type: 'input',
+      type: 'colorPicker',
       name: 'Thumb Color',
       value: '',
       priority: 5,

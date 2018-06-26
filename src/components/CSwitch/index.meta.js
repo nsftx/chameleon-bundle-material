@@ -20,6 +20,7 @@ export default {
     },
   ],
   options: {
+    color: true,
     name: {
       type: 'input',
       name: 'Input Name',
@@ -31,12 +32,6 @@ export default {
       name: 'Switch Label',
       value: 'Switch',
       priority: 2,
-    },
-    color: {
-      type: 'input',
-      name: 'Color',
-      value: 'primary',
-      priority: 3,
     },
     prependIcon: {
       type: 'input',

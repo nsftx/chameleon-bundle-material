@@ -35,6 +35,8 @@ const getProps = (context) => {
 
   const props = {
     appendIcon: config.appendIcon,
+    dark: context.isThemeDark,
+    light: context.isThemeLight,
     hint: config.hint,
     persistentHint: config.persistentHint,
     prependIcon: config.prependIcon,
@@ -46,7 +48,6 @@ const getProps = (context) => {
 
 const getItemProps = (context, item) => {
   const config = context.config;
-
   const mapProps = filter(context.dataSource.schema, i => !isNil(i.mapName));
   const itemProps = Object.keys(item);
   const value = !mapProps.length ? item[itemProps[0]] : item.value;

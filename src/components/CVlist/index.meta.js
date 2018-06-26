@@ -76,7 +76,7 @@ export default {
      * @property {Number} priority Color input field priority
      */
     color: {
-      type: 'input',
+      type: 'colorPicker',
       name: 'Color',
       value: 'transparent',
       validation: {
@@ -116,5 +116,6 @@ export default {
       value: false,
       priority: 3,
     },
+    theme: true,
   },
 };

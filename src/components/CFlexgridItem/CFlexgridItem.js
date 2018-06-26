@@ -6,6 +6,7 @@ export default {
     const data = {
       class: {
         [`xs${this.config.width}`]: true,
+        [this.config.color]: true,
         flex: true,
       },
     };

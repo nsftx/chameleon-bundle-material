@@ -69,6 +69,7 @@ export default {
       ],
       priority: 2,
     },
+    theme: true,
     validation: {
       type: 'group',
       group: 'validation',
