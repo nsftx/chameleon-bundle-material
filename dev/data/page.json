@@ -39,12 +39,12 @@
                   "elements": [
                     {
                       "type": "form",
-                      "name": "person",
+                      "name": "",
                       "color": "",
                       "theme": "",
                       "enabled": true,
-                      "save": {
-                        "name": "save_button",
+                      "submit": {
+                        "name": "submit_button",
                         "label": "Submit",
                         "color": "primary",
                         "theme": "dark"
@@ -601,6 +601,7 @@
                           "appendIcon": null,
                           "hint": null,
                           "disabled": false,
+                          "required": true,
                           "persistentHint": false
                         }
                       ]

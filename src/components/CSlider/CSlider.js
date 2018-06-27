@@ -41,14 +41,6 @@ const getPropTick = (config) => {
   return false;
 };
 
-const getPropValidateOnBlur = (config) => {
-  if (config.validation && config.validateOn) {
-    return config.validateOn === 'blur';
-  }
-
-  return false;
-};
-
 const getProps = (context) => {
   const config = context.config;
   config.value = context.value || 0;
@@ -70,7 +62,6 @@ const getProps = (context) => {
     inputValue: context.value,
     value: context.value,
     disabled: config.disabled,
-    validateOn: getPropValidateOnBlur(config),
     required: getPropRequired(config),
     rules: validator.getRules(config, context.validators),
   };

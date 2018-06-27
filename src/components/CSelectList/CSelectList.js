@@ -61,14 +61,6 @@ const getPropRequired = (config) => {
   return false;
 };
 
-const getPropValidateOnBlur = (config) => {
-  if (config.validation && config.validateOn) {
-    return config.validateOn === 'blur';
-  }
-
-  return false;
-};
-
 const setItemProps = (context) => {
   const self = context;
   const data = self.config.dataSource;
@@ -103,10 +95,9 @@ const getProps = (context) => {
     readonly: config.readonly,
     disabled: config.disabled,
     required: getPropRequired(config),
-    returnObject: true,
     rules: validator.getRules(config, context.validators),
+    returnObject: true,
     value: config.value,
-    validateOn: getPropValidateOnBlur(config),
   };
   return props;
 };

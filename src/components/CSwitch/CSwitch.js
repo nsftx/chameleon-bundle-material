@@ -1,4 +1,4 @@
-import { fieldable } from '@mixins';
+import { fieldable, validatable } from '@mixins';
 import Element from '../Element';
 
 const getAttrs = (context) => {
@@ -49,6 +49,7 @@ export default {
   extends: Element,
   mixins: [
     fieldable,
+    validatable,
   ],
   render() {
     const data = {

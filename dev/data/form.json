@@ -30,7 +30,6 @@
                   "multiLine": false,
                   "clearable": true,
                   "disabled": false,
-                  "validateOn": "blur",
                   "mask": {
                     "predefined": false,
                     "value": null
@@ -61,7 +60,6 @@
                   "tooltip": null,
                   "multiLine": false,
                   "clearable": true,
-                  "validateOn": "blur",
                   "mask": {
                     "predefined": false,
                     "value": null
@@ -91,7 +89,6 @@
                   "tooltip": null,
                   "multiLine": false,
                   "clearable": true,
-                  "validateOn": "blur",
                   "validation": {
                     "required": true
                   },
@@ -542,21 +539,20 @@
                   "appendIcon": null,
                   "hint": null,
                   "disabled": false,
+                  "required": true,
                   "persistentHint": false,
                   "value": true
                 }
               ],
-              "enabled": false,
-              "save": {
-                "name": "save_button",
-                "action": "save",
-                "label": "Save",
+              "enabled": true,
+              "submit": {
+                "name": "submit_button",
+                "label": "Submit",
                 "color": "primary",
                 "theme": "light"
               },
               "clear": {
                 "name": "clear_button",
-                "action": "clear",
                 "label": "Clear",
                 "color": "red",
                 "theme": "light"

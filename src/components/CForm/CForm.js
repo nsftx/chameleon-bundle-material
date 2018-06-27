@@ -1,4 +1,9 @@
-import { concat, each, filter, kebabCase, isArray, isNil, isObject, map, merge } from 'lodash';
+import {
+  filter,
+  kebabCase,
+  isNil,
+  map,
+} from 'lodash';
 import { v4 } from 'uuid';
 import Element from '../Element';
 
@@ -21,6 +26,9 @@ const getFormActions = (context, createElement) => {
       {
         props: {
           definition: button,
+        },
+        attrs: {
+          action: true,
         },
         key: `${button.name}_${uuid()}`,
         on: {
@@ -63,18 +71,25 @@ export default {
       },
     };
   },
+  data() {
+    return {
+      entity: {},
+      errors: [],
+    };
+  },
   computed: {
     formActions() {
       return {
-        save: this.config.save,
+        submit: this.config.submit,
         clear: this.config.clear,
       };
     },
     formActionsStatus() {
       return this.config.enabled;
     },
-    entity() {
-      return this.getEntity();
+    form() {
+      const formName = this.config.name;
+      return this.$refs[formName];
     },
   },
   methods: {
@@ -84,43 +99,34 @@ export default {
     getFields() {
       return filter(this.config.elements, n => isNil(n.actions));
     },
-    getEntity() {
-      const entity = {};
-      each(this.getFields(), (field) => {
-        if (field.name) {
-          // Remove reactivity from output
-          // TODO: Investigate if this has any benefit
-          entity[field.name] = isObject(field.value)
-            ? merge(isArray(field.value) ? [] : {}, field.value)
-            : field.value;
+    validateForm() {
+      this.form.validate();
+      let valid = true;
+      map(this.form.$children, (input) => {
+        // We need to remove submit & clear from validation
+        if (!input.$attrs.action) {
+          if (!input.validate()) {
+            this.errors.push(input.errorBucket);
+            valid = false;
+          } else {
+            this.entity[input.name] = input.value;
+          }
         }
       });
 
-      return entity;
-    },
-    getErrors() {
-      let errors = [];
-      // TODO fix for validation in new beta-3 vuetify
-      each(this.getForm().inputs, (input) => {
-        if (input.errorBucket.length) {
-          errors = concat(errors, map(input.errorBucket, error => error));
-        }
-      });
-
-      return errors;
+      return valid;
     },
     clear() {
-      console.log('Clear actions TODO');
+      this.form.reset();
     },
-    save() {
-      const formName = this.config.name;
-      const form = this.$refs[formName];
-      console.log('TODO SAVE form ', form);
-      /* if (form.validate()) {
-        this.sendToEventBus('Saved', this.getEntity());
+    submit() {
+      this.errors = [];
+      this.entity = {};
+      if (this.validateForm()) {
+        this.sendToEventBus('Submited', this.entity);
       } else {
-        this.sendToEventBus('Errored', this.getErrors());
-      } */
+        this.sendToEventBus('Errored', this.errors);
+      }
     },
   },
   render(createElement) {

@@ -91,14 +91,6 @@ const getPropType = (config) => {
   return 'text';
 };
 
-const getPropValidateOnBlur = (config) => {
-  if (config.validation && config.validateOn) {
-    return config.validateOn === 'blur';
-  }
-
-  return false;
-};
-
 const getProps = (context) => {
   const config = context.config;
   const mask = getMask(config);
@@ -125,7 +117,6 @@ const getProps = (context) => {
     suffix: getPropSuffix(config),
     type: getPropType(config),
     value: context.value,
-    validateOn: getPropValidateOnBlur(config),
   };
 
   if (mask) props.mask = mask;

@@ -4,9 +4,9 @@ export default {
   name: 'Form',
   icon: 'subtitles',
   optionGroups: {
-    save: {
-      key: 'save',
-      name: 'Default Save Action',
+    submit: {
+      key: 'submit',
+      name: 'Default Submit Action',
     },
     clear: {
       key: 'clear',
@@ -15,8 +15,8 @@ export default {
   },
   actions: [
     {
-      name: 'save',
-      help: 'Save Form',
+      name: 'submit',
+      help: 'Submit Form',
     },
     {
       name: 'clear',
@@ -25,7 +25,7 @@ export default {
   ],
   events: [
     {
-      name: 'Saved',
+      name: 'Submited',
     },
     {
       name: 'Cleared',
@@ -48,13 +48,13 @@ export default {
       name: 'Enable Default Actions',
       value: true,
     },
-    save: {
+    submit: {
       type: 'group',
-      group: 'save',
+      group: 'submit',
       label: {
         type: 'input',
         name: 'Button Label',
-        value: 'Save',
+        value: 'Submit',
       },
       color: {
         type: 'colorPicker',
