@@ -11,6 +11,49 @@ const getComponentTag = (name, context) => {
 
 const uuid = () => v4();
 
+const getFormActions = (context, createElement) => {
+  if (!context.formActionsStatus) return false;
+
+  return createElement(
+    'v-card-actions',
+    map(context.formActions, (button, action) => createElement(
+      getComponentTag('button', context),
+      {
+        props: {
+          definition: button,
+        },
+        key: `${button.name}_${uuid()}`,
+        on: {
+          click() {
+            context[action]();
+          },
+        },
+      })),
+  );
+};
+
+const getFormInputs = (context, createElement) => createElement(
+  'v-card-text',
+  {
+    staticClass: `${context.$options.name}-items`,
+  },
+  map(context.getFields(), field => createElement(
+    getComponentTag(field.type, context),
+    {
+      props: {
+        definition: field,
+      },
+      on: {
+        input(value) {
+          const currentField = field;
+          currentField.value = value;
+          context.$emit('input', value);
+        },
+      },
+    },
+  )),
+);
+
 export default {
   extends: Element,
   provide() {
@@ -21,14 +64,20 @@ export default {
     };
   },
   computed: {
+    formActions() {
+      return {
+        save: this.config.save,
+        clear: this.config.clear,
+      };
+    },
+    formActionsStatus() {
+      return this.config.enabled;
+    },
     entity() {
       return this.getEntity();
     },
   },
   methods: {
-    getActions() {
-      return filter(this.config.actions, n => !isNil(n.actions));
-    },
     getForm() {
       return this.$refs[this.config.name];
     },
@@ -60,19 +109,22 @@ export default {
 
       return errors;
     },
+    clear() {
+      console.log('Clear actions TODO');
+    },
     save() {
       const formName = this.config.name;
       const form = this.$refs[formName];
-      if (form.validate()) {
+      console.log('TODO SAVE form ', form);
+      /* if (form.validate()) {
         this.sendToEventBus('Saved', this.getEntity());
       } else {
         this.sendToEventBus('Errored', this.getErrors());
-      }
+      } */
     },
   },
   render(createElement) {
     const context = this;
-
     const data = {
       props: {
         color: context.config.color,
@@ -82,8 +134,6 @@ export default {
       },
     };
 
-    // TODO: Extract children render function
-    // Arrow function madness ahead
     const children = createElement(
       'v-form',
       {
@@ -91,49 +141,8 @@ export default {
         staticClass: `${this.$options.name} ${context.baseChildrenClass}`,
       },
       [
-        createElement(
-          'v-card-text',
-          {
-            staticClass: `${context.$options.name}-items`,
-          },
-          map(this.getFields(), (field) => {
-            const self = this;
-            return createElement(
-              getComponentTag(field.type, this),
-              {
-                props: {
-                  definition: field,
-                },
-                // TODO: Expand field listeners if needed
-                // Should fields be able to trigger flow?
-                on: {
-                  input(value) {
-                    const currentField = field;
-                    currentField.value = value;
-                    self.$emit('input', value);
-                  },
-                },
-              },
-            );
-          }),
-        ),
-        createElement(
-          'v-card-actions',
-          map(this.getActions(), button => createElement(this.getElementTag('button'),
-            {
-              // Dynamic key to disable component re-use
-              key: `${button.name}_${uuid()}`,
-              props: {
-                definition: button,
-              },
-              on: {
-                click() {
-                  context.save();
-                },
-              },
-            },
-          )),
-        ),
+        getFormInputs(this, createElement),
+        getFormActions(this, createElement),
       ],
     );
 

@@ -546,24 +546,21 @@
                   "value": true
                 }
               ],
-              "actions": [
-                {
-                  "name": "htmlMarkup",
-                  "type": "html",
-                  "label": "Html Markup",
-                  "value": "<h1>This is heading 1</h1>"
-                },
-                {
-                  "name": "save",
-                  "type": "button",
-                  "label": "Save",
-                  "color": "primary",
-                  "theme": "light",
-                  "actions": {
-                    "click": "save"
-                  }
-                }
-              ]
+              "enabled": false,
+              "save": {
+                "name": "save_button",
+                "action": "save",
+                "label": "Save",
+                "color": "primary",
+                "theme": "light"
+              },
+              "clear": {
+                "name": "clear_button",
+                "action": "clear",
+                "label": "Clear",
+                "color": "red",
+                "theme": "light"
+              }
             }
           ]
         }

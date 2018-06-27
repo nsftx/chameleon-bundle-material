@@ -42,6 +42,19 @@
                       "name": "person",
                       "color": "",
                       "theme": "",
+                      "enabled": true,
+                      "save": {
+                        "name": "save_button",
+                        "label": "Submit",
+                        "color": "primary",
+                        "theme": "dark"
+                      },
+                      "clear": {
+                        "name": "clear_button",
+                        "label": "Clear",
+                        "color": "red",
+                        "theme": "dark"
+                      },
                       "elements": [
                         {
                           "name": "firstName",
@@ -589,24 +602,6 @@
                           "hint": null,
                           "disabled": false,
                           "persistentHint": false
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "name": "htmlMarkup",
-                          "type": "html",
-                          "label": "Html Markup",
-                          "value": "<h1>This is heading 1</h1>"
-                        },
-                        {
-                          "name": "save",
-                          "type": "button",
-                          "label": "Save",
-                          "color": "primary",
-                          "theme": "dark",
-                          "actions": {
-                            "click": "save"
-                          }
                         }
                       ]
                     }
