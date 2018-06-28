@@ -95,7 +95,7 @@ exports[`AllComponents c-date renders correctly 1`] = `
     </div>
   </div>
   <div class="v-menu__content" style="max-height:auto;min-width:290px;max-width:290px;top:12px;left:12px;transform-origin:top left;z-index:0;display:none;">
-    <div data-type="date" data-group="inputs" data-uid="40" class="c-element c-picker ">
+    <div data-type="date" data-group="inputs" data-uid="41" class="c-element c-picker ">
       <div class="v-picker v-card v-picker--date">
         <div class="v-picker__title primary">
           <div class="v-date-picker-title">
@@ -339,7 +339,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
     </div>
   </div>
   <div class="v-menu__content" style="max-height:auto;min-width:0px;max-width:520px;top:12px;left:12px;transform-origin:top left;z-index:0;display:none;">
-    <div data-type="date-range" data-group="inputs" data-uid="41" class="c-element c-picker  left">
+    <div data-type="date-range" data-group="inputs" data-uid="42" class="c-element c-picker  left">
       <div class="v-picker v-card v-picker--date">
         <div class="v-picker__title primary">
           <div class="v-date-picker-title">
@@ -550,7 +550,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
         </div>
       </div>
     </div>
-    <div data-type="date-range" data-group="inputs" data-uid="42" class="c-element c-picker  left">
+    <div data-type="date-range" data-group="inputs" data-uid="43" class="c-element c-picker  left">
       <div class="v-picker v-card v-picker--date">
         <div class="v-picker__title primary">
           <div class="v-date-picker-title">
@@ -1452,22 +1452,41 @@ exports[`AllComponents c-text renders correctly 1`] = `
 </div>
 `;
 
+exports[`AllComponents c-text-area renders correctly 1`] = `
+<div data-type="text-area" data-group="inputs" data-uid="34" class="c-element c-text-area ">
+  <div class="v-input v-textarea v-text-field">
+    <div class="v-input__control">
+      <div class="v-input__slot" style="height:undefined;">
+        <div class="v-text-field__slot">
+          <textarea tabindex="0" rows="5">undefined</textarea>
+        </div>
+      </div>
+      <div class="v-text-field__details">
+        <div class="v-messages">
+          <div class="v-messages__wrapper"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`AllComponents c-video renders correctly 1`] = `
-<div data-type="video" data-group="widgets" data-uid="34" class="c-element c-video " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
+<div data-type="video" data-group="widgets" data-uid="35" class="c-element c-video " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
   <video width="100%" height="100%" style="position:absolute;top:0;left:0;"></video>
 </div>
 `;
 
 exports[`AllComponents c-video-stream renders correctly 1`] = `
-<div data-type="video-stream" data-group="widgets" data-uid="35" class="c-element c-video-stream " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
+<div data-type="video-stream" data-group="widgets" data-uid="36" class="c-element c-video-stream " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
   <img width="100%" height="100%" style="position:absolute;top:0;left:0;">
 </div>
 `;
 
 exports[`AllComponents c-vlist renders correctly 1`] = `
-<div data-type="vlist" data-group="containers" data-uid="36" class="c-element c-vlist  v-card" style="height:undefined;background-color:undefined;">
+<div data-type="vlist" data-group="containers" data-uid="37" class="c-element c-vlist  v-card" style="height:undefined;background-color:undefined;">
   <div class="c-element-children c-vlist-items"></div>
 </div>
 `;
 
-exports[`AllComponents c-youtube renders correctly 1`] = `<div data-type="youtube" data-group="widgets" data-uid="37" class="c-element c-youtube "></div>`;
+exports[`AllComponents c-youtube renders correctly 1`] = `<div data-type="youtube" data-group="widgets" data-uid="38" class="c-element c-youtube "></div>`;

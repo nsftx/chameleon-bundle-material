@@ -68,11 +68,10 @@
                           "hint": null,
                           "persistentHint": false,
                           "tooltip": null,
-                          "multiLine": false,
                           "clearable": true,
                           "disabled": false,
-                          "color": "",
-                          "theme": "",
+                          "color": "red",
+                          "theme": "light",
                           "validateOn": "blur",
                           "mask": {
                             "predefined": false,
@@ -102,7 +101,6 @@
                           "hint": null,
                           "persistentHint": false,
                           "tooltip": null,
-                          "multiLine": false,
                           "clearable": true,
                           "validateOn": "blur",
                           "mask": {
@@ -122,6 +120,25 @@
                           "value": "Dragoje"
                         },
                         {
+                          "name": "personalData",
+                          "type": "text-area",
+                          "label": "Personal Data",
+                          "prependIcon": "person",
+                          "appendIcon": null,
+                          "rowHeight": 22,
+                          "rows": 5,
+                          "autoGrow": false,
+                          "outline": false,
+                          "clearable": true,
+                          "disabled": false,
+                          "color": "red",
+                          "theme": "light",
+                          "value": "Personal Data ..... ",
+                          "validation": {
+                            "required": true
+                          }
+                        },
+                        {
                           "name": "fullName",
                           "type": "calculation",
                           "label": "Full Name",
@@ -132,7 +149,6 @@
                           "placeholder": "Please enter formula",
                           "hint": null,
                           "tooltip": null,
-                          "multiLine": false,
                           "clearable": true,
                           "color": "",
                           "theme": "",
@@ -300,7 +316,6 @@
                           "hint": "Credit card must have valid expiration date",
                           "persistentHint": true,
                           "tooltip": "Some tooltip",
-                          "multiLine": false,
                           "clearable": true,
                           "validateOn": "blur",
                           "mask": {
@@ -825,7 +840,6 @@
                               "hint": null,
                               "persistentHint": false,
                               "tooltip": null,
-                              "multiLine": false,
                               "clearable": true,
                               "validateOn": "blur",
                               "mask": {
@@ -883,7 +897,6 @@
                               "hint": null,
                               "persistentHint": false,
                               "tooltip": null,
-                              "multiLine": false,
                               "clearable": true,
                               "validateOn": "blur",
                               "mask": {
@@ -921,7 +934,6 @@
                               "hint": null,
                               "persistentHint": false,
                               "tooltip": null,
-                              "multiLine": false,
                               "clearable": true,
                               "validateOn": "blur",
                               "mask": {

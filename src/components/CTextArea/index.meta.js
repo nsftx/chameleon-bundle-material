@@ -63,28 +63,28 @@ export default {
       value: null,
       priority: 4,
     },
-    prefix: {
-      type: 'input',
-      name: 'Prefix',
-      value: null,
+    autoGrow: {
+      type: 'check',
+      name: 'Auto Grow',
+      value: false,
       priority: 5,
-    },
-    suffix: {
-      type: 'input',
-      name: 'Suffix',
-      value: null,
-      priority: 6,
     },
     placeholder: {
       type: 'input',
       name: 'Placeholder Text',
-      value: null,
+      value: false,
+      priority: 6,
+    },
+    outline: {
+      type: 'check',
+      name: 'Outline',
+      value: false,
       priority: 7,
     },
-    hint: {
+    rowHeight: {
       type: 'input',
-      name: 'Hint Text',
-      value: null,
+      name: 'Row Height',
+      value: 5,
       priority: 8,
     },
     tooltip: {
@@ -105,41 +105,13 @@ export default {
       value: false,
       priority: 12,
     },
-    mask: {
-      type: 'subGroup',
-      name: 'Mask',
-      predefined: {
-        type: 'input',
-        name: 'Predefined',
-        value: null,
-      },
-    },
     validation: {
       type: 'group',
       group: 'validation',
       required: {
         type: 'check',
-        name: 'Enable required',
+        name: 'Required',
         value: false,
-      },
-      pattern: {
-        type: 'subGroup',
-        name: 'Pattern',
-        predefined: {
-          type: 'input',
-          name: 'Predefined',
-          value: null,
-        },
-      },
-      minLength: {
-        type: 'input',
-        name: 'Min Length',
-        value: null,
-      },
-      maxLength: {
-        type: 'input',
-        name: 'Max Length',
-        value: null,
       },
     },
     theme: true,

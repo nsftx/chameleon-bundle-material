@@ -185,6 +185,12 @@ export default {
       group: 'inputs',
     },
   },
+  'c-text-area': {
+    _schema: {
+      type: 'text-area',
+      group: 'inputs',
+    },
+  },
   'c-video': {
     _schema: {
       type: 'video',
