@@ -59,14 +59,6 @@ const getPropRequired = (config) => {
   return false;
 };
 
-const getPropMultiline = (config) => {
-  if (['calculation', 'number', 'money'].indexOf(config.type) > -1) {
-    return false;
-  }
-
-  return config.multiLine;
-};
-
 const getPropSuffix = (config) => {
   if (['money'].indexOf(config.type) > -1 && config.currency) {
     return config.currency[config.suffix];
@@ -107,7 +99,6 @@ const getProps = (context) => {
     dark: context.isThemeDark,
     light: context.isThemeLight,
     disabled: config.disabled || false,
-    multiLine: getPropMultiline(config),
     persistentHint: config.persistentHint,
     placeholder: config.placeholder,
     prefix: getPropPrefix(config),
