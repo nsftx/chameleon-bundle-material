@@ -1,6 +1,6 @@
 import { fieldable, validatable } from '@mixins';
 import { validator } from '@validators';
-import { isNil } from 'lodash';
+import { isNil, isNaN } from 'lodash';
 import Element from '../Element';
 
 const getAttrs = (context) => {
@@ -16,9 +16,10 @@ const getListeners = (context) => {
 
   const listeners = {
     input(value) {
-      self.value = value;
-      self.sendToEventBus('Changed', { value });
-      self.$emit('input', value);
+      const newValue = isNaN(value) ? context.config.validation.min || 0 : value;
+      self.value = newValue;
+      self.sendToEventBus('Changed', { newValue });
+      self.$emit('input', newValue);
     },
   };
 

@@ -23,7 +23,7 @@ export default {
     const data = {
       props: {
         key: this.schema.uid,
-        id: this.schema.uid,
+        id: String(this.schema.uid),
       },
     };
 

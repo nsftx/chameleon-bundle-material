@@ -97,7 +97,7 @@ export default {
       min: {
         type: 'input',
         name: 'Min Value',
-        value: 1,
+        value: 0,
       },
       max: {
         type: 'input',
