@@ -105,10 +105,12 @@ export default {
     };
 
     const children = [
+      createElement('v-label', this.config.label),
       map(this.config.dataSource.items,
         item => createElement('v-checkbox',
           {
             attrs: getItemAttrs(this),
+            staticlass: 'mt-0',
             props: getItemProps(this, item),
             on: getItemListeners(this, item),
           },

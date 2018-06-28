@@ -62,6 +62,7 @@ exports[`AllComponents c-check renders correctly 1`] = `
 
 exports[`AllComponents c-check-list renders correctly 1`] = `
 <div data-type="check-list" data-group="inputs" data-uid="6" class="c-element c-check-list  v-card v-card--flat transparent" style="height:undefined;">
+  <label aria-hidden="true" class="v-label" style="left:0px;right:auto;position:relative;"></label>
   <div class="input-group__details error--text"></div>
 </div>
 `;
@@ -1110,9 +1111,7 @@ exports[`AllComponents c-radio-list renders correctly 1`] = `
 <div data-type="radio-list" data-group="inputs" data-uid="22" class="v-input c-element c-radio-list  v-input--selection-controls v-input--radio-group v-input--radio-group--column">
   <div class="v-input__control">
     <div class="v-input__slot" style="height:auto;">
-      <div role="radiogroup" class="v-input--radio-group__input">
-        <div class="input-group__details error--text"></div>
-      </div>
+      <div role="radiogroup" class="v-input--radio-group__input"></div>
     </div>
     <div class="v-messages">
       <div class="v-messages__wrapper"></div>
