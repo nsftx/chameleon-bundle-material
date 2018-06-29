@@ -7,12 +7,11 @@ const getListeners = (context) => {
   const self = context;
 
   const listeners = {
-    change(payload) {
+    input(payload) {
       self.value = payload;
       const items = self.value;
       self.sendToEventBus('Changed', { items });
       self.$emit('input', payload);
-      self.validate();
     },
   };
 

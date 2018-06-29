@@ -17,6 +17,7 @@ const getListeners = (context) => {
 
   const listeners = {
     input(value) {
+      self.value = value;
       self.config.value = value;
       self.sendToEventBus('Selected', value);
       self.$emit('input', value);

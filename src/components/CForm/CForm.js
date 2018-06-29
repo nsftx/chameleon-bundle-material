@@ -118,6 +118,7 @@ export default {
     },
     clear() {
       this.form.reset();
+      this.sendToEventBus('Cleared', {});
     },
     submit() {
       this.errors = [];

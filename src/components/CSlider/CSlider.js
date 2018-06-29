@@ -11,12 +11,21 @@ const getAttrs = (context) => {
   return attrs;
 };
 
+const getMinMax = (config) => {
+  const min = !isNil(config.validation) ? config.validation.min : 0;
+  const max = !isNil(config.validation) ? config.validation.max : 0;
+  return {
+    min,
+    max,
+  };
+};
+
 const getListeners = (context) => {
   const self = context;
 
   const listeners = {
     input(value) {
-      const newValue = isNaN(value) ? context.config.validation.min || 0 : value;
+      const newValue = isNaN(value) ? getMinMax(self.config).min : value;
       self.value = newValue;
       self.sendToEventBus('Changed', { newValue });
       self.$emit('input', newValue);
@@ -44,7 +53,7 @@ const getPropTick = (config) => {
 
 const getProps = (context) => {
   const config = context.config;
-  config.value = context.value || 0;
+  config.value = context.value || getMinMax(config).min;
 
   const props = {
     label: config.label,
@@ -56,12 +65,11 @@ const getProps = (context) => {
     trackColor: config.trackColor,
     thumbColor: config.thumbColor,
     thumbLabel: config.thumbLabel,
-    min: !isNil(config.validation) ? config.validation.min : null,
-    max: !isNil(config.validation) ? config.validation.max : null,
+    min: getMinMax(config).min,
+    max: getMinMax(config).max,
     step: config.step,
     ticks: getPropTick(config),
-    inputValue: context.value,
-    value: context.value,
+    value: config.value,
     disabled: config.disabled,
     required: getPropRequired(config),
     rules: validator.getRules(config, context.validators),
