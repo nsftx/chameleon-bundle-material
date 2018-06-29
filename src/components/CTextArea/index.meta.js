@@ -1,8 +1,8 @@
 export default {
   group: 'inputs',
-  type: 'text',
-  name: 'Text Box',
-  icon: 'title',
+  type: 'text-area',
+  name: 'Text Area',
+  icon: 'text_fields',
   optionGroups: {
     validation: {
       key: 'validation',
