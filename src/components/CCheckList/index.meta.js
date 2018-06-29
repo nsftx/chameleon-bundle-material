@@ -38,8 +38,8 @@ export default {
     },
     label: {
       type: 'input',
-      name: 'Radio Label',
-      value: 'Radio',
+      name: 'Check List Label',
+      value: 'Check List',
       priority: 2,
     },
     prependIcon: {
