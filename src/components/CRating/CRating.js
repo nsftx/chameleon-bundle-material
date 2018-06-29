@@ -120,7 +120,7 @@ export default {
             input(e) {
               if (isNil(e)) {
                 self.value = null;
-                self.setRating(0, true);
+                self.setRating(0, false);
               }
             },
           },
