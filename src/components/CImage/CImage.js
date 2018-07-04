@@ -10,7 +10,10 @@ const renderImage = (createElement, context) => {
     attrs: {
       src,
     },
-    staticStyle: {},
+    staticStyle: {
+      maxWidth: '100%',
+      maxHeight: '100%',
+    },
   };
 
   if (context.hasWidth) data.staticStyle.width = context.width;
