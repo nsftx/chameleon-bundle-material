@@ -24,6 +24,8 @@ const renderImage = (createElement, context) => {
   const data = {
     attrs: {
       src,
+      title: context.config.title,
+      alt: context.config.alternativeText,
     },
     staticStyle: {
       maxWidth: '100%',
