@@ -14,6 +14,10 @@ export default {
       name: 'ImageSourceChanged',
       help: 'Fires when image source is changed',
     },
+    {
+      name: 'Clicked',
+      help: 'Fires when image is clicked',
+    },
   ],
   options: {
     src: {

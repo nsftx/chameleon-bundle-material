@@ -31,6 +31,15 @@ const renderImage = (createElement, context) => {
       maxWidth: '100%',
       maxHeight: '100%',
     },
+    on: {
+      click() {
+        const payload = context.config.src;
+        context.$emit('click', payload);
+        context.sendToEventBus('Clicked', {
+          payload,
+        });
+      },
+    },
   };
 
   if (context.hasWidth) data.staticStyle.width = context.width;
