@@ -18,7 +18,6 @@ const getProps = (context) => {
     label: config.label,
     autoGrow: config.autoGrow,
     outline: config.outline,
-    rowHeight: config.rowHeight,
     rows: config.rows,
     color: config.color,
     dark: context.isThemeDark,

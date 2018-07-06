@@ -67,12 +67,6 @@ export default {
       type: 'check',
       name: 'Auto Grow',
       value: false,
-      priority: 5,
-    },
-    placeholder: {
-      type: 'input',
-      name: 'Placeholder Text',
-      value: false,
       priority: 6,
     },
     outline: {
@@ -81,29 +75,29 @@ export default {
       value: false,
       priority: 7,
     },
-    rowHeight: {
+    rows: {
       type: 'input',
-      name: 'Row Height',
+      name: 'Number of Rows',
       value: 5,
-      priority: 8,
+      priority: 5,
     },
     tooltip: {
       type: 'input',
       name: 'Tooltip Text',
       value: null,
-      priority: 9,
+      priority: 8,
     },
     clearable: {
       type: 'check',
       name: 'Enable Input Reset',
       value: false,
-      priority: 10,
+      priority: 9,
     },
     disabled: {
       type: 'check',
       name: 'Disable Input',
       value: false,
-      priority: 12,
+      priority: 10,
     },
     validation: {
       type: 'group',
