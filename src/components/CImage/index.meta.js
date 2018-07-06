@@ -34,11 +34,17 @@ export default {
       value: null,
       priority: 4,
     },
+    title: {
+      type: 'Input',
+      name: 'Title',
+      value: null,
+      priority: 5,
+    },
     alternativeText: {
       type: 'Input',
       name: 'Alternative text',
       value: null,
-      priority: 5,
+      priority: 6,
     },
   },
 };
