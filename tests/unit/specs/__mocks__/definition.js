@@ -77,6 +77,12 @@ export default {
       group: 'widgets',
     },
   },
+  'c-image': {
+    _schema: {
+      type: 'image',
+      group: 'widgets',
+    },
+  },
   'c-list': {
     _schema: {
       type: 'list',
