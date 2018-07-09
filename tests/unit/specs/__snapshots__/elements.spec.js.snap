@@ -1,195 +1,875 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AllComponents c-accordion renders correctly 1`] = `<ul data-type="accordion" data-group="containers" data-uid="1" class="expansion-panel c-element c-accordion  c-element-parent "></ul>`;
+exports[`AllComponents c-accordion renders correctly 1`] = `<ul data-type="accordion" data-group="containers" data-uid="1" class="v-expansion-panel c-element c-accordion  c-element-parent "></ul>`;
 
 exports[`AllComponents c-accordion-item renders correctly 1`] = `
-<li tabindex="0" data-type="accordion-item" data-group="container-items" data-uid="2" class="expansion-panel__container c-element c-accordion-item  c-element-parent ">
-  <div class="expansion-panel__header">
+<li tabindex="0" data-type="accordion-item" data-group="container-items" data-uid="2" class="v-expansion-panel__container c-element c-accordion-item  c-element-parent ">
+  <div class="v-expansion-panel__header">
     <div></div>
     <div class="header__icon">
-      <i aria-hidden="true" class="icon material-icons">keyboard_arrow_down</i>
+      <i aria-hidden="true" class="v-icon material-icons">keyboard_arrow_down</i>
     </div>
   </div>
-  <div class="expansion-panel__body" style="display:none;">
-    <div class="card" style="height:auto;">
-      <div class="card__text c-element-children c-accordion-item-items"></div>
+  <div class="v-expansion-panel__body" style="display:none;">
+    <div class="v-card" style="height:undefined;">
+      <div class="v-card__text c-element-children c-accordion-item-items"></div>
     </div>
   </div>
 </li>
 `;
 
 exports[`AllComponents c-button renders correctly 1`] = `
-<button type="button" data-type="button" data-group="inputs" data-uid="3" class="c-element c-button  btn primary">
-  <div class="btn__content"></div>
+<button type="button" data-type="button" data-group="inputs" data-uid="3" class="c-element c-button  v-btn primary">
+  <div class="v-btn__content"></div>
 </button>
 `;
 
 exports[`AllComponents c-calculation renders correctly 1`] = `
 <div data-type="calculation" data-group="inputs" data-uid="4" class="c-element c-calculation ">
-  <div class="input-group input-group--text-field primary--text">
-    <div class="input-group__input">
-      <input tabindex="0" type="text">
-    </div>
-    <div class="input-group__details">
-      <!---->
+  <div class="v-input v-text-field">
+    <div class="v-input__control">
+      <div class="v-input__slot" style="height:undefined;">
+        <div class="v-text-field__slot">
+          <input tabindex="0" type="text">
+        </div>
+      </div>
+      <div class="v-text-field__details">
+        <div class="v-messages">
+          <div class="v-messages__wrapper"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`AllComponents c-check renders correctly 1`] = `
-<div tabindex="0" role="checkbox" aria-checked="false" data-type="check" data-group="inputs" data-uid="5" class="c-element c-check  input-group checkbox input-group--selection-controls accent--text">
-  <div class="input-group__input">
-    <i aria-hidden="true" class="icon icon--selection-control material-icons">check_box_outline_blank</i>
-    <div class="input-group--selection-controls__ripple"></div>
-  </div>
-  <div class="input-group__details">
-    <!---->
+<div data-type="check" data-group="inputs" data-uid="5" class="v-input c-element c-check  v-input--selection-controls v-input--checkbox">
+  <div class="v-input__control">
+    <div class="v-input__slot" style="height:undefined;">
+      <div class="v-input--selection-controls__input">
+        <input aria-checked="false" role="checkbox" type="checkbox">
+        <div class="v-input--selection-controls__ripple"></div>
+        <i aria-hidden="true" class="v-icon material-icons">check_box_outline_blank</i>
+      </div>
+    </div>
+    <div class="v-messages">
+      <div class="v-messages__wrapper"></div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`AllComponents c-check-list renders correctly 1`] = `
-<div data-type="check-list" data-group="inputs" data-uid="6" class="c-element c-check-list  card card--flat transparent" style="height:auto;">
+<div data-type="check-list" data-group="inputs" data-uid="6" class="c-element c-check-list  v-card v-card--flat transparent" style="height:undefined;">
+  <label aria-hidden="true" class="v-label" style="left:0px;right:auto;position:relative;"></label>
   <div class="input-group__details error--text"></div>
 </div>
 `;
 
 exports[`AllComponents c-date renders correctly 1`] = `
-<div data-type="date" data-group="inputs" data-uid="7" class="menu c-element c-date " style="display:block;">
-  <div class="menu__activator">
-    <div class="input-group input-group--prepend-icon input-group--text-field primary--text">
-      <div class="input-group__input">
-        <i aria-hidden="true" class="icon material-icons input-group__prepend-icon">event</i>
-        <input readonly="readonly" tabindex="0" type="text">
-        <i aria-hidden="true" class="icon material-icons input-group__append-icon"></i>
+<div data-type="date" data-group="inputs" data-uid="7" class="v-menu c-element c-date " style="display:block;">
+  <div class="v-menu__activator">
+    <div class="v-input v-text-field v-input--is-readonly">
+      <div class="v-input__prepend-outer">
+        <div class="v-input__icon v-input__icon--prepend">
+          <i aria-hidden="true" class="v-icon material-icons">event</i>
+        </div>
       </div>
-      <div class="input-group__details">
-        <!---->
+      <div class="v-input__control">
+        <div class="v-input__slot" style="height:undefined;">
+          <div class="v-text-field__slot">
+            <input readonly="readonly" tabindex="0" type="text">
+          </div>
+          <div class="v-input__append-inner">
+            <div class="v-input__icon v-input__icon--">
+              <i aria-hidden="true" class="v-icon v-icon--link material-icons"></i>
+            </div>
+          </div>
+        </div>
+        <div class="v-text-field__details">
+          <div class="v-messages">
+            <div class="v-messages__wrapper"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="menu__content" style="max-height:auto;min-width:290px;max-width:290px;top:12px;left:12px;transform-origin:top left;z-index:0;display:none;">
-    <c-picker></c-picker>
+  <div class="v-menu__content" style="max-height:auto;min-width:290px;max-width:290px;top:12px;left:12px;transform-origin:top left;z-index:0;display:none;">
+    <div data-type="date" data-group="inputs" data-uid="41" class="c-element c-picker ">
+      <div class="v-picker v-card v-picker--date">
+        <div class="v-picker__title primary">
+          <div class="v-date-picker-title">
+            <div class="v-picker__title__btn v-date-picker-title__year">2018</div>
+            <div class="v-picker__title__btn v-date-picker-title__date active">
+              <div>&nbsp;</div>
+            </div>
+          </div>
+        </div>
+        <div class="v-picker__body" style="width:290px;">
+          <div>
+            <div class="v-date-picker-header">
+              <button type="button" class="v-btn v-btn--icon">
+                <div class="v-btn__content">
+                  <i aria-hidden="true" class="v-icon material-icons">$vuetify.icons.next</i>
+                </div>
+              </button>
+              <div class="v-date-picker-header__value"><strong class="accent--text">July 2018</strong></div>
+              <button type="button" class="v-btn v-btn--icon">
+                <div class="v-btn__content">
+                  <i aria-hidden="true" class="v-icon material-icons">$vuetify.icons.prev</i>
+                </div>
+              </button>
+            </div>
+            <div class="v-date-picker-table v-date-picker-table--date">
+              <table>
+                <thead>
+                  <tr>
+                    <th>S</th>
+                    <th>M</th>
+                    <th>T</th>
+                    <th>W</th>
+                    <th>T</th>
+                    <th>F</th>
+                    <th>S</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">1</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">2</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">3</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">4</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">5</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline accent--text">
+                        <div class="v-btn__content">6</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">7</div>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">8</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">9</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">10</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">11</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">12</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">13</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">14</div>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">15</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">16</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">17</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">18</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">19</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">20</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">21</div>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">22</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">23</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">24</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">25</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">26</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">27</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">28</div>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">29</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">30</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">31</div>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`AllComponents c-date-range renders correctly 1`] = `
-<div data-type="date-range" data-group="inputs" data-uid="8" class="menu c-element c-date-range " style="display:block;">
-  <div class="menu__activator">
-    <div class="input-group input-group--dirty input-group--prepend-icon input-group--text-field primary--text">
-      <div class="input-group__input">
-        <i aria-hidden="true" class="icon material-icons input-group__prepend-icon">event</i>
-        <input readonly="readonly" tabindex="0" type="text" value="null - null">
-        <i aria-hidden="true" class="icon material-icons input-group__append-icon input-group__icon-cb input-group__icon-clearable">clear</i>
+<div data-type="date-range" data-group="inputs" data-uid="9" class="v-menu c-element c-date-range " style="display:block;">
+  <div class="v-menu__activator">
+    <div class="v-input v-text-field v-input--is-label-active v-input--is-dirty v-input--is-readonly">
+      <div class="v-input__prepend-outer">
+        <div class="v-input__icon v-input__icon--prepend">
+          <i aria-hidden="true" class="v-icon material-icons">event</i>
+        </div>
       </div>
-      <div class="input-group__details">
-        <!---->
+      <div class="v-input__control">
+        <div class="v-input__slot" style="height:undefined;">
+          <div class="v-text-field__slot">
+            <input readonly="readonly" tabindex="0" type="text" value="null - null">
+          </div>
+          <div class="v-input__append-inner">
+            <div class="v-input__icon v-input__icon--clear">
+              <i aria-hidden="true" class="v-icon v-icon--link material-icons">clear</i>
+            </div>
+          </div>
+        </div>
+        <div class="v-text-field__details">
+          <div class="v-messages">
+            <div class="v-messages__wrapper"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="menu__content" style="max-height:auto;min-width:0px;max-width:520px;top:12px;left:12px;transform-origin:top left;z-index:0;display:none;">
-    <c-picker class="left"></c-picker>
-    <c-picker class="left"></c-picker>
+  <div class="v-menu__content" style="max-height:auto;min-width:0px;max-width:520px;top:12px;left:12px;transform-origin:top left;z-index:0;display:none;">
+    <div data-type="date-range" data-group="inputs" data-uid="42" class="c-element c-picker  left">
+      <div class="v-picker v-card v-picker--date">
+        <div class="v-picker__title primary">
+          <div class="v-date-picker-title">
+            <div class="v-picker__title__btn v-date-picker-title__year">2018</div>
+            <div class="v-picker__title__btn v-date-picker-title__date active">
+              <div>&nbsp;</div>
+            </div>
+          </div>
+        </div>
+        <div class="v-picker__body" style="width:290px;">
+          <div>
+            <div class="v-date-picker-header">
+              <button type="button" class="v-btn v-btn--icon">
+                <div class="v-btn__content">
+                  <i aria-hidden="true" class="v-icon material-icons">$vuetify.icons.next</i>
+                </div>
+              </button>
+              <div class="v-date-picker-header__value"><strong class="accent--text">July 2018</strong></div>
+              <button type="button" class="v-btn v-btn--icon">
+                <div class="v-btn__content">
+                  <i aria-hidden="true" class="v-icon material-icons">$vuetify.icons.prev</i>
+                </div>
+              </button>
+            </div>
+            <div class="v-date-picker-table v-date-picker-table--date">
+              <table>
+                <thead>
+                  <tr>
+                    <th>S</th>
+                    <th>M</th>
+                    <th>T</th>
+                    <th>W</th>
+                    <th>T</th>
+                    <th>F</th>
+                    <th>S</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">1</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">2</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">3</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">4</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">5</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline accent--text">
+                        <div class="v-btn__content">6</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">7</div>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">8</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">9</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">10</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">11</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">12</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">13</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">14</div>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">15</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">16</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">17</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">18</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">19</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">20</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">21</div>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">22</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">23</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">24</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">25</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">26</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">27</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">28</div>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">29</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">30</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">31</div>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div data-type="date-range" data-group="inputs" data-uid="43" class="c-element c-picker  left">
+      <div class="v-picker v-card v-picker--date">
+        <div class="v-picker__title primary">
+          <div class="v-date-picker-title">
+            <div class="v-picker__title__btn v-date-picker-title__year">2018</div>
+            <div class="v-picker__title__btn v-date-picker-title__date active">
+              <div>&nbsp;</div>
+            </div>
+          </div>
+        </div>
+        <div class="v-picker__body" style="width:290px;">
+          <div>
+            <div class="v-date-picker-header">
+              <button type="button" class="v-btn v-btn--icon">
+                <div class="v-btn__content">
+                  <i aria-hidden="true" class="v-icon material-icons">$vuetify.icons.next</i>
+                </div>
+              </button>
+              <div class="v-date-picker-header__value"><strong class="accent--text">July 2018</strong></div>
+              <button type="button" class="v-btn v-btn--icon">
+                <div class="v-btn__content">
+                  <i aria-hidden="true" class="v-icon material-icons">$vuetify.icons.prev</i>
+                </div>
+              </button>
+            </div>
+            <div class="v-date-picker-table v-date-picker-table--date">
+              <table>
+                <thead>
+                  <tr>
+                    <th>S</th>
+                    <th>M</th>
+                    <th>T</th>
+                    <th>W</th>
+                    <th>T</th>
+                    <th>F</th>
+                    <th>S</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">1</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">2</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">3</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">4</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">5</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline accent--text">
+                        <div class="v-btn__content">6</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">7</div>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">8</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">9</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">10</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">11</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">12</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">13</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">14</div>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">15</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">16</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">17</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">18</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">19</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">20</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">21</div>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">22</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">23</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">24</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">25</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">26</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">27</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">28</div>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">29</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">30</div>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                        <div class="v-btn__content">31</div>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`AllComponents c-flexgrid renders correctly 1`] = `
-<div data-type="flexgrid" data-group="containers" data-uid="9" class="c-element c-flexgrid  c-element-parent  card card--flat undefined grid-list-undefined wrap container" style="height:auto;">
+<div data-type="flexgrid" data-group="containers" data-uid="12" class="c-element c-flexgrid  c-element-parent  v-card v-card--flat undefined grid-list-undefined wrap container" style="height:undefined;">
   <div class="layout undefined wrap"></div>
 </div>
 `;
 
 exports[`AllComponents c-flexgrid-item renders correctly 1`] = `
-<div data-type="flexgrid-item" data-group="container-items" data-uid="10" class="c-element c-flexgrid-item  c-element-parent  xsundefined undefined flex">
+<div data-type="flexgrid-item" data-group="container-items" data-uid="13" class="c-element c-flexgrid-item  c-element-parent  xsundefined undefined flex">
   <div class="c-element-children c-flexgrid-item-items"></div>
 </div>
 `;
 
 exports[`AllComponents c-form renders correctly 1`] = `
-<div data-type="form" data-group="widgets" data-uid="11" class="c-element c-form  c-element-parent  card card--flat" style="height:auto;">
-  <form novalidate="novalidate" class="c-form c-element-children">
-    <div class="card__text c-form-items"></div>
-    <div class="card__actions"></div>
+<div data-type="form" data-group="widgets" data-uid="14" class="c-element c-form  c-element-parent  v-card v-card--flat" style="height:undefined;">
+  <form novalidate="novalidate" class="v-form c-form c-element-children">
+    <div class="v-card__text c-form-items"></div>
   </form>
 </div>
 `;
 
 exports[`AllComponents c-hlist renders correctly 1`] = `
-<div data-type="hlist" data-group="containers" data-uid="12" class="c-element c-hlist  c-element-parent  card" style="height:auto;">
+<div data-type="hlist" data-group="containers" data-uid="15" class="c-element c-hlist  c-element-parent  v-card" style="height:undefined;">
   <div class="c-element-children c-hlist-items"></div>
 </div>
 `;
 
-exports[`AllComponents c-html renders correctly 1`] = `<div data-type="html" data-group="widgets" data-uid="13" class="c-element c-html ">undefined</div>`;
+exports[`AllComponents c-html renders correctly 1`] = `<div data-type="html" data-group="widgets" data-uid="16" class="c-element c-html ">undefined</div>`;
 
 exports[`AllComponents c-list renders correctly 1`] = `
-<div data-type="list" data-group="widgets" data-uid="14" class="c-element c-list  card" style="height:auto;">
-  <div class="data-iterator">
+<div data-type="list" data-group="widgets" data-uid="17" class="c-element c-list  v-card" style="height:undefined;">
+  <div class="v-data-iterator">
     <div class="layout">
       <div class="text-xs-center" style="width:100%;">No data available</div>
     </div>
     <div>
-      <div class="data-iterator__actions">
-        <div class="data-iterator__actions__select">Items per page:
-          <div tabindex="0" data-uid="229" aria-label="Items per page:" role="combobox" class="input-group input-group--append-icon input-group--hide-details input-group--text-field input-group--select input-group--auto primary--text">
-            <div class="input-group__input">
-              <div class="input-group__selections" style="overflow:hidden;">
-                <input aria-label="Items per page:" disabled="disabled" tabindex="-1" value="" class="input-group--select__autocomplete" style="flex:null;display:none;">
-              </div>
-              <div class="menu" style="display:inline-block;">
-                <div class="menu__content menu__content--select menu__content--auto" style="max-height:200px;min-width:75px;max-width:auto;top:12px;left:12px;transform-origin:top left;z-index:0;display:none;">
-                  <div class="card" style="height:auto;">
-                    <div class="list">
-                      <div>
-                        <a class="list__tile list__tile--link">
-                          <div class="list__tile__content">
-                            <div class="list__tile__title">5</div>
-                          </div>
-                        </a>
+      <div class="v-data-iterator__actions">
+        <div class="v-data-iterator__actions__select">Items per page:
+          <div role="combobox" class="v-input v-text-field v-select v-input--hide-details v-input--is-label-active v-input--is-dirty">
+            <div class="v-input__control">
+              <div class="v-input__slot" style="height:undefined;">
+                <div class="v-menu" style="display:inline-block;">
+                  <div class="v-menu__activator">
+                    <div class="v-select__slot">
+                      <div class="v-select__selections">
+                        <div class="v-select__selection v-select__selection--comma">10</div>
+                        <input readonly="readonly" tabindex="0" type="text" autocomplete="on" aria-readonly="false">
                       </div>
-                      <div>
-                        <a class="list__tile list__tile--link">
-                          <div class="list__tile__content">
-                            <div class="list__tile__title">10</div>
-                          </div>
-                        </a>
+                      <div class="v-input__append-inner">
+                        <div class="v-input__icon v-input__icon--append">
+                          <i aria-hidden="true" class="v-icon material-icons">$vuetify.icons.dropdown</i>
+                        </div>
                       </div>
-                      <div>
-                        <a class="list__tile list__tile--link">
-                          <div class="list__tile__content">
-                            <div class="list__tile__title">15</div>
-                          </div>
-                        </a>
-                      </div>
-                      <div>
-                        <a class="list__tile list__tile--link">
-                          <div class="list__tile__content">
-                            <div class="list__tile__title">20</div>
-                          </div>
-                        </a>
+                    </div>
+                  </div>
+                  <div class="v-menu__content v-menu__content--auto" style="max-height:200px;min-width:75px;max-width:auto;top:12px;left:12px;transform-origin:top left;z-index:0;display:none;">
+                    <div class="v-select-list v-card">
+                      <div class="v-list">
+                        <div>
+                          <a class="v-list__tile v-list__tile--link">
+                            <div class="v-list__tile__content">
+                              <div class="v-list__tile__title">5</div>
+                            </div>
+                          </a>
+                        </div>
+                        <div>
+                          <a class="v-list__tile v-list__tile--link v-list__tile--active primary--text">
+                            <div class="v-list__tile__content">
+                              <div class="v-list__tile__title">10</div>
+                            </div>
+                          </a>
+                        </div>
+                        <div>
+                          <a class="v-list__tile v-list__tile--link">
+                            <div class="v-list__tile__content">
+                              <div class="v-list__tile__title">15</div>
+                            </div>
+                          </a>
+                        </div>
+                        <div>
+                          <a class="v-list__tile v-list__tile--link">
+                            <div class="v-list__tile__content">
+                              <div class="v-list__tile__title">20</div>
+                            </div>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <i aria-hidden="true" class="icon material-icons input-group__append-icon input-group__icon-cb">arrow_drop_down</i>
+              <div class="v-text-field__details"></div>
             </div>
-            <div class="input-group__details"></div>
           </div>
         </div>
-        <div class="data-iterator__actions__range-controls">
-          <div class="data-iterator__actions__pagination">–</div>
-          <button disabled="disabled" type="button" aria-label="Previous page" class="btn btn--disabled btn--flat btn--icon">
-            <div class="btn__content">
-              <i aria-hidden="true" class="icon material-icons">chevron_left</i>
+        <div class="v-data-iterator__actions__range-controls">
+          <div class="v-data-iterator__actions__pagination">–</div>
+          <button disabled="disabled" type="button" aria-label="Previous page" class="v-btn v-btn--disabled v-btn--flat v-btn--icon">
+            <div class="v-btn__content">
+              <i aria-hidden="true" class="v-icon material-icons">chevron_left</i>
             </div>
           </button>
-          <button disabled="disabled" type="button" aria-label="Next page" class="btn btn--disabled btn--flat btn--icon">
-            <div class="btn__content">
-              <i aria-hidden="true" class="icon material-icons">chevron_right</i>
+          <button disabled="disabled" type="button" aria-label="Next page" class="v-btn v-btn--disabled v-btn--flat v-btn--icon">
+            <div class="v-btn__content">
+              <i aria-hidden="true" class="v-icon material-icons">chevron_right</i>
             </div>
           </button>
         </div>
@@ -199,41 +879,41 @@ exports[`AllComponents c-list renders correctly 1`] = `
 </div>
 `;
 
-exports[`AllComponents c-map renders correctly 1`] = `<div data-type="map" data-group="widgets" data-uid="15" class="c-element c-map " style="width:100%;height:400px;"></div>`;
+exports[`AllComponents c-map renders correctly 1`] = `<div data-type="map" data-group="widgets" data-uid="18" class="c-element c-map " style="width:100%;height:400px;"></div>`;
 
 exports[`AllComponents c-panel renders correctly 1`] = `
-<div data-type="panel" data-group="containers" data-uid="16" class="c-element c-panel  c-element-parent  card" style="height:auto;width:undefined;">
+<div data-type="panel" data-group="containers" data-uid="19" class="c-element c-panel  c-element-parent  v-card" style="height:undefined;width:undefined;">
   <div class="c-element-children c-panel-items"></div>
 </div>
 `;
 
 exports[`AllComponents c-picker renders correctly 1`] = `
-<div data-type="picker" data-group="inputs" data-uid="18" class="c-element c-picker ">
-  <div class="picker picker--date card" style="height:auto;">
-    <div class="picker__title primary">
-      <div class="date-picker-title">
-        <div class="picker__title__btn date-picker-title__year">2018</div>
-        <div class="picker__title__btn date-picker-title__date active">
+<div data-type="picker" data-group="inputs" data-uid="21" class="c-element c-picker ">
+  <div class="v-picker v-card v-picker--date">
+    <div class="v-picker__title primary">
+      <div class="v-date-picker-title">
+        <div class="v-picker__title__btn v-date-picker-title__year">2018</div>
+        <div class="v-picker__title__btn v-date-picker-title__date active">
           <div>&nbsp;</div>
         </div>
       </div>
     </div>
-    <div class="picker__body" style="width:290px;">
+    <div class="v-picker__body" style="width:290px;">
       <div>
-        <div class="date-picker-header">
-          <button type="button" class="btn btn--icon">
-            <div class="btn__content">
-              <i aria-hidden="true" class="icon material-icons">chevron_left</i>
+        <div class="v-date-picker-header">
+          <button type="button" class="v-btn v-btn--icon">
+            <div class="v-btn__content">
+              <i aria-hidden="true" class="v-icon material-icons">$vuetify.icons.next</i>
             </div>
           </button>
-          <div class="date-picker-header__value"><strong class="accent--text">June 2018</strong></div>
-          <button type="button" class="btn btn--icon">
-            <div class="btn__content">
-              <i aria-hidden="true" class="icon material-icons">chevron_right</i>
+          <div class="v-date-picker-header__value"><strong class="accent--text">July 2018</strong></div>
+          <button type="button" class="v-btn v-btn--icon">
+            <div class="v-btn__content">
+              <i aria-hidden="true" class="v-icon material-icons">$vuetify.icons.prev</i>
             </div>
           </button>
         </div>
-        <div class="date-picker-table date-picker-table--date">
+        <div class="v-date-picker-table v-date-picker-table--date">
           <table>
             <thead>
               <tr>
@@ -248,167 +928,167 @@ exports[`AllComponents c-picker renders correctly 1`] = `
             </thead>
             <tbody>
               <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">1</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">1</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">2</div>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">3</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">2</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">4</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">3</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">5</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">4</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">6</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">5</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">7</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline accent--text">
+                    <div class="v-btn__content">6</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">8</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">9</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">7</div>
                   </button>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">10</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">8</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">11</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">9</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">12</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">10</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">13</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">11</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">14</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">12</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">15</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">13</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">16</div>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">17</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">18</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">19</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">20</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">21</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">22</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">23</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">14</div>
                   </button>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">24</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">15</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating btn--outline accent--text">
-                    <div class="btn__content">25</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">16</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">26</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">17</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">27</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">18</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">28</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">19</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">29</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">20</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn--flat btn--floating">
-                    <div class="btn__content">30</div>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">21</div>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">22</div>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">23</div>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">24</div>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">25</div>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">26</div>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">27</div>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">28</div>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">29</div>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">30</div>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                    <div class="v-btn__content">31</div>
                   </button>
                 </td>
               </tr>
@@ -422,150 +1102,190 @@ exports[`AllComponents c-picker renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-placeholder renders correctly 1`] = `
-<div data-type="placeholder" data-group="containers" data-uid="17" class="c-element c-placeholder ">
-  <router-view></router-view>
+<div data-type="placeholder" data-group="containers" data-uid="20" class="c-element c-placeholder ">
+  <!---->
 </div>
 `;
 
 exports[`AllComponents c-radio-list renders correctly 1`] = `
-<div role="radiogroup" data-type="radio-list" data-group="inputs" data-uid="19" class="c-element c-radio-list  input-group radio-group radio-group--column">
-  <div class="input-group__input">
-    <div class="input-group__details error--text"></div>
-  </div>
-  <div class="input-group__details">
-    <!---->
+<div data-type="radio-list" data-group="inputs" data-uid="22" class="v-input c-element c-radio-list  v-input--selection-controls v-input--radio-group v-input--radio-group--column">
+  <div class="v-input__control">
+    <div class="v-input__slot" style="height:auto;">
+      <div role="radiogroup" class="v-input--radio-group__input"></div>
+    </div>
+    <div class="v-messages">
+      <div class="v-messages__wrapper"></div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`AllComponents c-rating renders correctly 1`] = `
-<div data-type="rating" data-group="inputs" data-uid="20" class="c-element c-rating  text-xs-center">
+<div data-type="rating" data-group="inputs" data-uid="23" class="c-element c-rating  v-card v-card--flat text-xs-center" style="height:undefined;">
   <div></div>
-  <div>
-    <i aria-hidden="true" class="icon px-1 material-icons">star</i>
-    <i aria-hidden="true" class="icon px-1 material-icons">star</i>
-    <i aria-hidden="true" class="icon px-1 material-icons">star</i>
-    <i aria-hidden="true" class="icon px-1 material-icons">star</i>
-    <i aria-hidden="true" class="icon px-1 material-icons">star</i>
+  <div class="v-input d-inline-block">
+    <div class="v-input__control">
+      <div class="v-input__slot" style="height:undefined;">
+        <i aria-hidden="true" class="v-icon px-1 v-icon--link material-icons">star</i>
+        <i aria-hidden="true" class="v-icon px-1 v-icon--link material-icons">star</i>
+        <i aria-hidden="true" class="v-icon px-1 v-icon--link material-icons">star</i>
+        <i aria-hidden="true" class="v-icon px-1 v-icon--link material-icons">star</i>
+        <i aria-hidden="true" class="v-icon px-1 v-icon--link material-icons">star</i>
+      </div>
+      <div class="v-messages">
+        <div class="v-messages__wrapper"></div>
+      </div>
+    </div>
   </div>
   <div class="rating__message"></div>
 </div>
 `;
 
 exports[`AllComponents c-rich-text renders correctly 1`] = `
-<div data-type="rich-text" data-group="inputs" data-uid="21" class="c-element c-rich-text  card card--flat mb-3" style="height:auto;">
+<div data-type="rich-text" data-group="inputs" data-uid="24" class="c-element c-rich-text  v-card v-card--flat mb-3" style="height:undefined;">
   <div></div>
 </div>
 `;
 
 exports[`AllComponents c-select renders correctly 1`] = `
-<div data-type="select" data-group="inputs" data-uid="22" class="c-element c-select ">
-  <div tabindex="-1" data-uid="256" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete primary--text">
-    <div class="input-group__input">
-      <div class="input-group__selections" style="overflow:hidden;">
-        <input tabindex="0" role="combobox" value="" autocomplete="off" class="input-group--select__autocomplete" style="flex:null;">
-      </div>
-      <div class="menu" style="display:inline-block;">
-        <div class="menu__content menu__content--select   menu__content--autocomplete" style="max-height:300px;min-width:0px;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
-          <div class="card" style="height:auto;">
-            <div class="list">
-              <div disabled="disabled" class="text--disabled">
-                <a disabled="disabled" class="list__tile list__tile--link list__tile--disabled">
-                  <div class="list__tile__content">
-                    <div class="list__tile__title">No data available</div>
+<div data-type="select" data-group="inputs" data-uid="25" class="c-element c-select ">
+  <div role="combobox" class="v-input v-text-field v-select">
+    <div class="v-input__control">
+      <div class="v-input__slot" style="height:undefined;">
+        <div class="v-menu" style="display:inline-block;">
+          <div class="v-menu__activator">
+            <div class="v-select__slot">
+              <div class="v-select__selections">
+                <input readonly="readonly" tabindex="0" type="text" autocomplete="on" aria-readonly="undefined">
+              </div>
+              <div class="v-input__append-inner">
+                <div class="v-input__icon v-input__icon--append">
+                  <i aria-hidden="true" class="v-icon material-icons">arrow_drop_down</i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="v-menu__content" style="max-height:300px;min-width:0px;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
+            <div class="v-select-list v-card">
+              <div class="v-list">
+                <div>
+                  <div class="v-list__tile">
+                    <div class="v-list__tile__content">
+                      <div class="v-list__tile__title">No data available</div>
+                    </div>
                   </div>
-                </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <i aria-hidden="true" class="icon material-icons input-group__append-icon input-group__icon-cb">arrow_drop_down</i>
-    </div>
-    <div class="input-group__details">
-      <!---->
+      <div class="v-text-field__details">
+        <div class="v-messages">
+          <div class="v-messages__wrapper"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`AllComponents c-select-list renders correctly 1`] = `
-<div data-type="select-list" data-group="inputs" data-uid="23" class="c-element c-select-list ">
-  <div tabindex="-1" data-uid="262" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete input-group--chips primary--text">
-    <div class="input-group__input">
-      <div class="input-group__selections" style="overflow:hidden;">
-        <input tabindex="0" role="combobox" value="" autocomplete="off" class="input-group--select__autocomplete" style="flex:null;">
-      </div>
-      <div class="menu" style="display:inline-block;">
-        <div class="menu__content menu__content--select   menu__content--autocomplete" style="max-height:300px;min-width:0px;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
-          <div class="card" style="height:auto;">
-            <div class="list">
-              <div disabled="disabled" class="text--disabled">
-                <a disabled="disabled" class="list__tile list__tile--link list__tile--disabled">
-                  <div class="list__tile__content">
-                    <div class="list__tile__title">No data available</div>
+<div data-type="select-list" data-group="inputs" data-uid="26" class="c-element c-select-list ">
+  <div role="combobox" class="v-input v-text-field v-select v-select--chips">
+    <div class="v-input__control">
+      <div class="v-input__slot" style="height:undefined;">
+        <div class="v-menu" style="display:inline-block;">
+          <div class="v-menu__activator">
+            <div class="v-select__slot">
+              <div class="v-select__selections">
+                <input readonly="readonly" tabindex="0" type="text" autocomplete="on" aria-readonly="undefined">
+              </div>
+              <div class="v-input__append-inner">
+                <div class="v-input__icon v-input__icon--append">
+                  <i aria-hidden="true" class="v-icon material-icons">arrow_drop_down</i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="v-menu__content" style="max-height:300px;min-width:0px;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
+            <div class="v-select-list v-card">
+              <div class="v-list">
+                <div>
+                  <div class="v-list__tile">
+                    <div class="v-list__tile__content">
+                      <div class="v-list__tile__title">No data available</div>
+                    </div>
                   </div>
-                </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <i aria-hidden="true" class="icon material-icons input-group__append-icon input-group__icon-cb">arrow_drop_down</i>
-    </div>
-    <div class="input-group__details">
-      <!---->
+      <div class="v-text-field__details">
+        <div class="v-messages">
+          <div class="v-messages__wrapper"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`AllComponents c-slider renders correctly 1`] = `
-<div role="slider" tabindex="0" data-type="slider" data-group="inputs" data-uid="24" class="c-element c-slider  input-group input-group--slider">
-  <div class="input-group__input">
-    <div class="slider">
-      <div class="slider__track__container">
-        <div class="slider__track" style="transition:;left:calc(NaN% + 6px);width:calc(NaN% - 6px);"></div>
-        <div class="slider__track-fill primary" style="transition:;width:calc(NaN% - 6px);"></div>
-      </div>
-      <div class="slider__thumb-container" style="transition:;left:NaN%;">
-        <div class="slider__thumb"></div>
+<div data-type="slider" data-group="inputs" data-uid="27" class="v-input c-element c-slider  v-input--slider">
+  <div class="v-input__control">
+    <div class="v-input__slot" style="height:undefined;">
+      <div class="v-slider">
+        <input role="slider" type="range" value="0" readonly="readonly" aria-readonly="false">
+        <div class="v-slider__track__container">
+          <div class="v-slider__track" style="transition:;left:7px;right:auto;width:100%;"></div>
+          <div class="v-slider__track-fill primary" style="transition:;left:0;right:auto;width:NaN%;"></div>
+        </div>
+        <div class="v-slider__thumb-container" style="transition:;left:NaN%;">
+          <div class="v-slider__thumb"></div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="input-group__details">
-    <!---->
+    <div class="v-messages">
+      <div class="v-messages__wrapper"></div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`AllComponents c-switch renders correctly 1`] = `
-<div tabindex="0" data-type="switch" data-group="inputs" data-uid="25" class="c-element c-switch  input-group input-group--selection-controls switch accent--text">
-  <div class="input-group__input">
-    <div class="input-group--selection-controls__container">
-      <div class="input-group--selection-controls__toggle"></div>
-      <div class="input-group--selection-controls__ripple"></div>
+<div data-type="switch" data-group="inputs" data-uid="28" class="v-input c-element c-switch  v-input--selection-controls v-input--switch">
+  <div class="v-input__control">
+    <div class="v-input__slot" style="height:undefined;">
+      <div class="v-input--selection-controls__input">
+        <input aria-checked="false" role="checkbox" type="checkbox">
+        <div class="v-input--selection-controls__ripple"></div>
+        <div class="v-input--switch__track"></div>
+        <div class="v-input--switch__thumb"></div>
+      </div>
     </div>
-  </div>
-  <div class="input-group__details">
-    <!---->
+    <div class="v-messages">
+      <div class="v-messages__wrapper"></div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`AllComponents c-tab-item renders correctly 1`] = `
-<div data-type="tab-item" data-group="container-items" data-uid="26" class="tabs__content c-element c-tab-item  c-element-parent " style="display:none;">
-  <div data-type="tab-item" data-group="container-items" data-uid="26" class="card" style="height:auto;background-color:undefined;">
-    <div class="card__text c-element-children c-tab-item-items"></div>
+<div data-type="tab-item" data-group="container-items" data-uid="29" id="29" class="v-tabs__content c-element c-tab-item  c-element-parent " style="display:none;">
+  <div data-type="tab-item" data-group="container-items" data-uid="29" class="v-card" style="height:undefined;background-color:undefined;">
+    <div class="v-card__text c-element-children c-tab-item-items"></div>
   </div>
 </div>
 `;
 
 exports[`AllComponents c-table renders correctly 1`] = `
-<div data-type="table" data-group="widgets" data-uid="27" class="c-element c-table  card" style="height:auto;">
+<div data-type="table" data-group="widgets" data-uid="30" class="c-element c-table  v-card" style="height:undefined;">
   <div>
-    <div class="table__overflow">
-      <table class="datatable table">
+    <div class="v-table__overflow">
+      <table class="v-datatable v-table">
         <tbody>
           <tr>
             <td colspan="0" class="text-xs-center">No data available</td>
@@ -573,65 +1293,76 @@ exports[`AllComponents c-table renders correctly 1`] = `
         </tbody>
       </table>
     </div>
-    <div class="datatable table">
-      <div class="datatable__actions">
-        <div class="datatable__actions__select">Rows per page:
-          <div tabindex="0" data-uid="277" aria-label="Rows per page:" role="combobox" class="input-group input-group--append-icon input-group--hide-details input-group--text-field input-group--select input-group--auto primary--text">
-            <div class="input-group__input">
-              <div class="input-group__selections" style="overflow:hidden;">
-                <input aria-label="Rows per page:" disabled="disabled" tabindex="-1" value="" class="input-group--select__autocomplete" style="flex:null;display:none;">
-              </div>
-              <div class="menu" style="display:inline-block;">
-                <div class="menu__content menu__content--select menu__content--auto" style="max-height:200px;min-width:75px;max-width:auto;top:12px;left:12px;transform-origin:top left;z-index:0;display:none;">
-                  <div class="card" style="height:auto;">
-                    <div class="list">
-                      <div>
-                        <a class="list__tile list__tile--link">
-                          <div class="list__tile__content">
-                            <div class="list__tile__title">5</div>
-                          </div>
-                        </a>
+    <div class="v-datatable v-table">
+      <div class="v-datatable__actions">
+        <div class="v-datatable__actions__select">Rows per page:
+          <div role="combobox" class="v-input v-text-field v-select v-input--hide-details v-input--is-label-active v-input--is-dirty">
+            <div class="v-input__control">
+              <div class="v-input__slot" style="height:undefined;">
+                <div class="v-menu" style="display:inline-block;">
+                  <div class="v-menu__activator">
+                    <div class="v-select__slot">
+                      <div class="v-select__selections">
+                        <div class="v-select__selection v-select__selection--comma">10</div>
+                        <input readonly="readonly" tabindex="0" type="text" autocomplete="on" aria-readonly="false">
                       </div>
-                      <div>
-                        <a class="list__tile list__tile--link">
-                          <div class="list__tile__content">
-                            <div class="list__tile__title">10</div>
-                          </div>
-                        </a>
+                      <div class="v-input__append-inner">
+                        <div class="v-input__icon v-input__icon--append">
+                          <i aria-hidden="true" class="v-icon material-icons">$vuetify.icons.dropdown</i>
+                        </div>
                       </div>
-                      <div>
-                        <a class="list__tile list__tile--link">
-                          <div class="list__tile__content">
-                            <div class="list__tile__title">15</div>
-                          </div>
-                        </a>
-                      </div>
-                      <div>
-                        <a class="list__tile list__tile--link">
-                          <div class="list__tile__content">
-                            <div class="list__tile__title">20</div>
-                          </div>
-                        </a>
+                    </div>
+                  </div>
+                  <div class="v-menu__content v-menu__content--auto" style="max-height:200px;min-width:75px;max-width:auto;top:12px;left:12px;transform-origin:top left;z-index:0;display:none;">
+                    <div class="v-select-list v-card">
+                      <div class="v-list">
+                        <div>
+                          <a class="v-list__tile v-list__tile--link">
+                            <div class="v-list__tile__content">
+                              <div class="v-list__tile__title">5</div>
+                            </div>
+                          </a>
+                        </div>
+                        <div>
+                          <a class="v-list__tile v-list__tile--link v-list__tile--active primary--text">
+                            <div class="v-list__tile__content">
+                              <div class="v-list__tile__title">10</div>
+                            </div>
+                          </a>
+                        </div>
+                        <div>
+                          <a class="v-list__tile v-list__tile--link">
+                            <div class="v-list__tile__content">
+                              <div class="v-list__tile__title">15</div>
+                            </div>
+                          </a>
+                        </div>
+                        <div>
+                          <a class="v-list__tile v-list__tile--link">
+                            <div class="v-list__tile__content">
+                              <div class="v-list__tile__title">20</div>
+                            </div>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <i aria-hidden="true" class="icon material-icons input-group__append-icon input-group__icon-cb">arrow_drop_down</i>
+              <div class="v-text-field__details"></div>
             </div>
-            <div class="input-group__details"></div>
           </div>
         </div>
-        <div class="datatable__actions__range-controls">
-          <div class="datatable__actions__pagination">–</div>
-          <button disabled="disabled" type="button" aria-label="Previous page" class="btn btn--disabled btn--flat btn--icon">
-            <div class="btn__content">
-              <i aria-hidden="true" class="icon material-icons">chevron_left</i>
+        <div class="v-datatable__actions__range-controls">
+          <div class="v-datatable__actions__pagination">–</div>
+          <button disabled="disabled" type="button" aria-label="Previous page" class="v-btn v-btn--disabled v-btn--flat v-btn--icon">
+            <div class="v-btn__content">
+              <i aria-hidden="true" class="v-icon material-icons">chevron_left</i>
             </div>
           </button>
-          <button disabled="disabled" type="button" aria-label="Next page" class="btn btn--disabled btn--flat btn--icon">
-            <div class="btn__content">
-              <i aria-hidden="true" class="icon material-icons">chevron_right</i>
+          <button disabled="disabled" type="button" aria-label="Next page" class="v-btn v-btn--disabled v-btn--flat v-btn--icon">
+            <div class="v-btn__content">
+              <i aria-hidden="true" class="v-icon material-icons">chevron_right</i>
             </div>
           </button>
         </div>
@@ -642,82 +1373,119 @@ exports[`AllComponents c-table renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-tabs renders correctly 1`] = `
-<div data-type="tabs" data-group="containers" data-uid="28" class="tabs c-element c-tabs  c-element-parent ">
-  <div class="tabs__bar">
+<div data-type="tabs" data-group="containers" data-uid="31" class="v-tabs c-element c-tabs  c-element-parent ">
+  <div class="v-tabs__bar">
     <!---->
-    <div class="tabs__wrapper">
-      <div class="tabs__container">
-        <div class="tabs__slider-wrapper" style="left:nullpx;transition:none;width:nullpx;">
-          <div class="tabs__slider accent"></div>
+    <div class="v-tabs__wrapper">
+      <div class="v-tabs__container">
+        <div class="v-tabs__slider-wrapper" style="left:nullpx;transition:none;width:nullpx;">
+          <div class="v-tabs__slider accent"></div>
         </div>
       </div>
     </div>
     <!---->
   </div>
-  <div class="tabs__items"></div>
+  <div class="v-tabs__items"></div>
 </div>
 `;
 
 exports[`AllComponents c-tags renders correctly 1`] = `
-<div data-type="tags" data-group="inputs" data-uid="29" class="c-element c-tags ">
-  <div tabindex="-1" data-uid="293" class="input-group input-group--append-icon input-group--text-field input-group--select input-group--autocomplete input-group--chips primary--text">
-    <div class="input-group__input">
-      <div class="input-group__selections" style="overflow:hidden;">
-        <input tabindex="0" role="combobox" value="" autocomplete="off" class="input-group--select__autocomplete" style="flex:null;">
-      </div>
-      <div class="menu" style="display:inline-block;">
-        <div class="menu__content menu__content--select   menu__content--autocomplete" style="max-height:300px;min-width:0px;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
-          <div class="card" style="height:auto;">
-            <div class="list">
-              <div disabled="disabled" class="text--disabled">
-                <a disabled="disabled" class="list__tile list__tile--link list__tile--disabled">
-                  <div class="list__tile__content">
-                    <div class="list__tile__title">No data available</div>
+<div data-type="tags" data-group="inputs" data-uid="32" class="c-element c-tags ">
+  <div role="combobox" class="v-input v-text-field v-select v-select--chips">
+    <div class="v-input__control">
+      <div class="v-input__slot" style="height:undefined;">
+        <div class="v-menu" style="display:inline-block;">
+          <div class="v-menu__activator">
+            <div class="v-select__slot">
+              <div class="v-select__selections">
+                <input readonly="readonly" tabindex="0" type="text" autocomplete="on" aria-readonly="undefined">
+              </div>
+              <div class="v-input__append-inner">
+                <div class="v-input__icon v-input__icon--append">
+                  <i aria-hidden="true" class="v-icon material-icons">arrow_drop_down</i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="v-menu__content" style="max-height:300px;min-width:0px;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
+            <div class="v-select-list v-card">
+              <div class="v-list">
+                <div>
+                  <div class="v-list__tile">
+                    <div class="v-list__tile__content">
+                      <div class="v-list__tile__title">No data available</div>
+                    </div>
                   </div>
-                </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <i aria-hidden="true" class="icon material-icons input-group__append-icon input-group__icon-cb">arrow_drop_down</i>
-    </div>
-    <div class="input-group__details">
-      <!---->
+      <div class="v-text-field__details">
+        <div class="v-messages">
+          <div class="v-messages__wrapper"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`AllComponents c-text renders correctly 1`] = `
-<div data-type="text" data-group="inputs" data-uid="30" class="c-element c-text ">
-  <div class="input-group input-group--text-field primary--text">
-    <div class="input-group__input">
-      <input tabindex="0" type="text">
+<div data-type="text" data-group="inputs" data-uid="33" class="c-element c-text ">
+  <div class="v-input v-text-field">
+    <div class="v-input__control">
+      <div class="v-input__slot" style="height:undefined;">
+        <div class="v-text-field__slot">
+          <input tabindex="0" type="text">
+        </div>
+      </div>
+      <div class="v-text-field__details">
+        <div class="v-messages">
+          <div class="v-messages__wrapper"></div>
+        </div>
+      </div>
     </div>
-    <div class="input-group__details">
-      <!---->
+  </div>
+</div>
+`;
+
+exports[`AllComponents c-text-area renders correctly 1`] = `
+<div data-type="text-area" data-group="inputs" data-uid="34" class="c-element c-text-area ">
+  <div class="v-input v-textarea v-text-field">
+    <div class="v-input__control">
+      <div class="v-input__slot" style="height:undefined;">
+        <div class="v-text-field__slot">
+          <textarea tabindex="0" rows="5">undefined</textarea>
+        </div>
+      </div>
+      <div class="v-text-field__details">
+        <div class="v-messages">
+          <div class="v-messages__wrapper"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`AllComponents c-video renders correctly 1`] = `
-<div data-type="video" data-group="widgets" data-uid="31" class="c-element c-video " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
+<div data-type="video" data-group="widgets" data-uid="35" class="c-element c-video " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
   <video width="100%" height="100%" style="position:absolute;top:0;left:0;"></video>
 </div>
 `;
 
 exports[`AllComponents c-video-stream renders correctly 1`] = `
-<div data-type="video-stream" data-group="widgets" data-uid="32" class="c-element c-video-stream " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
+<div data-type="video-stream" data-group="widgets" data-uid="36" class="c-element c-video-stream " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
   <img width="100%" height="100%" style="position:absolute;top:0;left:0;">
 </div>
 `;
 
 exports[`AllComponents c-vlist renders correctly 1`] = `
-<div data-type="vlist" data-group="containers" data-uid="33" class="c-element c-vlist  card" style="height:auto;background-color:undefined;">
+<div data-type="vlist" data-group="containers" data-uid="37" class="c-element c-vlist  v-card" style="height:undefined;background-color:undefined;">
   <div class="c-element-children c-vlist-items"></div>
 </div>
 `;
 
-exports[`AllComponents c-youtube renders correctly 1`] = `<div data-type="youtube" data-group="widgets" data-uid="34" class="c-element c-youtube "></div>`;
+exports[`AllComponents c-youtube renders correctly 1`] = `<div data-type="youtube" data-group="widgets" data-uid="38" class="c-element c-youtube "></div>`;

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   'c-accordion': {
     _schema: {
       type: 'accordion',
@@ -188,6 +188,12 @@ module.exports = {
   'c-text': {
     _schema: {
       type: 'text',
+      group: 'inputs',
+    },
+  },
+  'c-text-area': {
+    _schema: {
+      type: 'text-area',
       group: 'inputs',
     },
   },

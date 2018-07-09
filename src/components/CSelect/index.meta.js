@@ -79,6 +79,12 @@ export default {
       value: null,
       priority: 7,
     },
+    clearable: {
+      type: 'check',
+      name: 'Enable Input Clear',
+      value: false,
+      priority: 10,
+    },
     readonly: {
       type: 'check',
       name: 'Enable Readonly',

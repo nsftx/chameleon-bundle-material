@@ -59,14 +59,6 @@ const getPropRequired = (config) => {
   return false;
 };
 
-const getPropMultiline = (config) => {
-  if (['calculation', 'number', 'money'].indexOf(config.type) > -1) {
-    return false;
-  }
-
-  return config.multiLine;
-};
-
 const getPropSuffix = (config) => {
   if (['money'].indexOf(config.type) > -1 && config.currency) {
     return config.currency[config.suffix];
@@ -91,14 +83,6 @@ const getPropType = (config) => {
   return 'text';
 };
 
-const getPropValidateOnBlur = (config) => {
-  if (config.validation && config.validateOn) {
-    return config.validateOn === 'blur';
-  }
-
-  return false;
-};
-
 const getProps = (context) => {
   const config = context.config;
   const mask = getMask(config);
@@ -115,7 +99,6 @@ const getProps = (context) => {
     dark: context.isThemeDark,
     light: context.isThemeLight,
     disabled: config.disabled || false,
-    multiLine: getPropMultiline(config),
     persistentHint: config.persistentHint,
     placeholder: config.placeholder,
     prefix: getPropPrefix(config),
@@ -125,7 +108,6 @@ const getProps = (context) => {
     suffix: getPropSuffix(config),
     type: getPropType(config),
     value: context.value,
-    validateOn: getPropValidateOnBlur(config),
   };
 
   if (mask) props.mask = mask;

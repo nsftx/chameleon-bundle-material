@@ -1,33 +1,29 @@
 import { map, isNil, filter } from 'lodash';
 import { fieldable, validatable } from '@mixins';
+import { validator } from '@validators';
 import Element from '../Element';
-
-const createErrorMessage = (createElement, context) => {
-  const el = createElement(
-    'div',
-    {
-      staticClass: 'input-group__details error--text',
-    },
-    context.errorBucket[0],
-  );
-
-  return el;
-};
 
 const getListeners = (context) => {
   const self = context;
 
   const listeners = {
-    change(payload) {
+    input(payload) {
       self.value = payload;
       const items = self.value;
       self.sendToEventBus('Changed', { items });
       self.$emit('input', payload);
-      self.validate();
     },
   };
 
   return listeners;
+};
+
+const getPropRequired = (config) => {
+  if (config.validation) {
+    return !!config.validation.required;
+  }
+
+  return false;
 };
 
 const getProps = (context) => {
@@ -37,9 +33,12 @@ const getProps = (context) => {
     appendIcon: config.appendIcon,
     dark: context.isThemeDark,
     light: context.isThemeLight,
+    label: config.label,
     hint: config.hint,
     persistentHint: config.persistentHint,
     prependIcon: config.prependIcon,
+    required: getPropRequired(config),
+    rules: validator.getRules(config, context.validators),
     value: config.value,
   };
 
@@ -87,8 +86,6 @@ export default {
     this.loadData();
   },
   render(createElement) {
-    const message = createErrorMessage(createElement, this);
-
     if (isNil(this.config.dataSource)) {
       this.config.dataSource = {
         items: [],
@@ -110,7 +107,6 @@ export default {
             props: getItemProps(this, item),
           },
         )),
-      message,
     ];
 
     return this.renderElement('v-radio-group', data, children);

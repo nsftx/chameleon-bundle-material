@@ -99,12 +99,6 @@ export default {
       value: false,
       priority: 10,
     },
-    multiLine: {
-      type: 'check',
-      name: 'Enable Multiline',
-      value: false,
-      priority: 11,
-    },
     disabled: {
       type: 'check',
       name: 'Disable Input',

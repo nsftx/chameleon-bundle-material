@@ -80,7 +80,8 @@ const getListAvatar = (createElement, item) => {
 const getCardSlot = (createElement, context) => {
   const getChildren = (props) => {
     const item = props.item;
-    const mapProps = filter(context.dataSource.schema, i => !isNil(i.mapName));
+    const mapProps = !context.dataSource.schema ?
+      filter(context.dataSource.schema, i => !isNil(i.mapName)) : {};
     const itemProps = Object.keys(item);
     const title = !mapProps.length ? item[itemProps[0]] : item.title;
     const description = !mapProps.length ? item[itemProps[1]] : item.description;

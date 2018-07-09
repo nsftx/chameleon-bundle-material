@@ -1,4 +1,4 @@
-import { fieldable } from '@mixins';
+import { fieldable, validatable } from '@mixins';
 import Element from '../Element';
 
 const getAttrs = (context) => {
@@ -11,15 +11,21 @@ const getAttrs = (context) => {
   return attrs;
 };
 
-const getListeners = (context) => {
+const changeValue = (value, context) => {
   const self = context;
+  self.value = value;
+  const label = self.value ? context.config.label : '';
+  self.sendToEventBus('Changed', { label });
+  self.$emit('input', value);
+};
 
+const getListeners = (context) => {
   const listeners = {
     change(value) {
-      self.value = value;
-      const label = self.value ? context.config.label : '';
-      self.sendToEventBus('Changed', { label });
-      self.$emit('input', value);
+      changeValue(value, context);
+    },
+    input(value) {
+      changeValue(value, context);
     },
   };
 
@@ -49,6 +55,7 @@ export default {
   extends: Element,
   mixins: [
     fieldable,
+    validatable,
   ],
   render() {
     const data = {

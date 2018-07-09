@@ -39,9 +39,22 @@
                   "elements": [
                     {
                       "type": "form",
-                      "name": "person",
+                      "name": "",
                       "color": "",
                       "theme": "",
+                      "enabled": true,
+                      "submit": {
+                        "name": "submit_button",
+                        "label": "Submit",
+                        "color": "primary",
+                        "theme": "dark"
+                      },
+                      "clear": {
+                        "name": "clear_button",
+                        "label": "Clear",
+                        "color": "red",
+                        "theme": "dark"
+                      },
                       "elements": [
                         {
                           "name": "firstName",
@@ -55,11 +68,10 @@
                           "hint": null,
                           "persistentHint": false,
                           "tooltip": null,
-                          "multiLine": false,
                           "clearable": true,
                           "disabled": false,
-                          "color": "",
-                          "theme": "",
+                          "color": "red",
+                          "theme": "light",
                           "validateOn": "blur",
                           "mask": {
                             "predefined": false,
@@ -89,7 +101,6 @@
                           "hint": null,
                           "persistentHint": false,
                           "tooltip": null,
-                          "multiLine": false,
                           "clearable": true,
                           "validateOn": "blur",
                           "mask": {
@@ -109,6 +120,24 @@
                           "value": "Dragoje"
                         },
                         {
+                          "name": "personalData",
+                          "type": "text-area",
+                          "label": "Personal Data",
+                          "prependIcon": "person",
+                          "appendIcon": null,
+                          "rows": 2,
+                          "autoGrow": false,
+                          "outline": false,
+                          "clearable": true,
+                          "disabled": false,
+                          "color": "red",
+                          "theme": "light",
+                          "value": "Personal Data ..... ",
+                          "validation": {
+                            "required": true
+                          }
+                        },
+                        {
                           "name": "fullName",
                           "type": "calculation",
                           "label": "Full Name",
@@ -119,7 +148,6 @@
                           "placeholder": "Please enter formula",
                           "hint": null,
                           "tooltip": null,
-                          "multiLine": false,
                           "clearable": true,
                           "color": "",
                           "theme": "",
@@ -128,6 +156,46 @@
                             "required": true
                           },
                           "value": "${lastName} ${firstName}"
+                        },
+                        {
+                          "name": "country",
+                          "type": "select",
+                          "label": "Country",
+                          "prependIcon": "language",
+                          "appendIcon": null,
+                          "placeholder": "Please select a country",
+                          "hint": null,
+                          "persistentHint": false,
+                          "tooltip": null,
+                          "clearable": true,
+                          "readonly": false,
+                          "disabled": false,
+                          "validateOn": "blur",
+                          "color": "green",
+                          "theme": "",
+                          "validation": {
+                            "required": true
+                          },
+                          "dataSource": {
+                            "items": [
+                              {
+                                "value": 1,
+                                "name": "Italy"
+                              },
+                              {
+                                "value": 2,
+                                "name": "France"
+                              },
+                              {
+                                "value": 3,
+                                "name": "England"
+                              }
+                            ]
+                          },
+                          "value": {
+                            "value": 1,
+                            "name": "Italy"
+                          }
                         },
                         {
                           "name": "company",
@@ -140,11 +208,12 @@
                           "persistentHint": false,
                           "tooltip": null,
                           "multiple": true,
-                          "clearable": false,
+                          "clearable": true,
                           "readonly": false,
-                          "validateOn": "blur",
                           "color": "green",
                           "theme": "",
+                          "disabled": false,
+                          "validateOn": "blur",
                           "validation": {
                             "required": true
                           },
@@ -152,21 +221,21 @@
                             "items": [
                               {
                                 "value": 1,
-                                "text": "Lottoland Ltd.",
+                                "name": "Lottoland Ltd.",
                                 "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
                                 "icon": "business",
                                 "description": "Lottoland Solutions integrates our lottery betting games to operator platforms, with multi-million Euro jackpots guaranteed by Lottoland's proprietary risk management."
                               },
                               {
                                 "value": 2,
-                                "text": "Nsoft",
+                                "name": "Nsoft",
                                 "thumb": "https://vuetifyjs.com/static/doc-images/lists/2.jpg",
                                 "icon": "business",
                                 "description": "Lottoland Solutions integrates our lottery betting games to operator platforms, with multi-million Euro jackpots guaranteed by Lottoland's proprietary risk management."
                               },
                               {
                                 "value": 3,
-                                "text": "Superbet",
+                                "name": "Superbet",
                                 "thumb": "",
                                 "icon": "business",
                                 "description": "Lottoland Solutions integrates our lottery betting games to operator platforms, with multi-million Euro jackpots guaranteed by Lottoland's proprietary risk management."
@@ -175,58 +244,11 @@
                           },
                           "value": [
                             {
-                              "value": 3,
-                              "text": "Superbet",
-                              "thumb": "",
+                              "value": 2,
+                              "name": "Nsoft",
+                              "thumb": "https://vuetifyjs.com/static/doc-images/lists/2.jpg",
                               "icon": "business",
                               "description": "Lottoland Solutions integrates our lottery betting games to operator platforms, with multi-million Euro jackpots guaranteed by Lottoland's proprietary risk management."
-                            }
-                          ]
-                        },
-                        {
-                          "name": "country",
-                          "type": "select",
-                          "label": "Country",
-                          "prependIcon": "language",
-                          "appendIcon": null,
-                          "placeholder": "Please select a country",
-                          "hint": null,
-                          "persistentHint": false,
-                          "tooltip": null,
-                          "multiLine": false,
-                          "multiple": false,
-                          "clearable": false,
-                          "readonly": false,
-                          "color": "green",
-                          "theme": "",
-                          "validateOn": "blur",
-                          "mask": {
-                            "predefined": false,
-                            "value": null
-                          },
-                          "validation": {
-                            "required": true
-                          },
-                          "dataSource": {
-                            "items": [
-                              {
-                                "value": 1,
-                                "text": "Italy"
-                              },
-                              {
-                                "value": 2,
-                                "text": "France"
-                              },
-                              {
-                                "value": 3,
-                                "text": "England"
-                              }
-                            ]
-                          },
-                          "value": [
-                            {
-                              "value": 1,
-                              "text": "Italy"
                             }
                           ]
                         },
@@ -240,17 +262,13 @@
                           "hint": null,
                           "persistentHint": false,
                           "tooltip": null,
-                          "multiLine": false,
                           "multiple": true,
                           "clearable": true,
                           "readonly": false,
                           "color": "green",
                           "theme": "",
+                          "disabled": false,
                           "validateOn": "blur",
-                          "mask": {
-                            "predefined": false,
-                            "value": null
-                          },
                           "validation": {
                             "required": true
                           },
@@ -297,7 +315,6 @@
                           "hint": "Credit card must have valid expiration date",
                           "persistentHint": true,
                           "tooltip": "Some tooltip",
-                          "multiLine": false,
                           "clearable": true,
                           "validateOn": "blur",
                           "mask": {
@@ -515,8 +532,8 @@
                           "hint": null,
                           "persistentHint": false,
                           "hideDetails": false,
-                          "color": "red",
-                          "theme": "light",
+                          "color": "",
+                          "theme": "",
                           "disabled": false,
                           "value": [],
                           "validateOn": "blur",
@@ -598,25 +615,8 @@
                           "appendIcon": null,
                           "hint": null,
                           "disabled": false,
+                          "required": true,
                           "persistentHint": false
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "name": "htmlMarkup",
-                          "type": "html",
-                          "label": "Html Markup",
-                          "value": "<h1>This is heading 1</h1>"
-                        },
-                        {
-                          "name": "save",
-                          "type": "button",
-                          "label": "Save",
-                          "color": "primary",
-                          "theme": "light",
-                          "actions": {
-                            "click": "save"
-                          }
                         }
                       ]
                     }
@@ -839,7 +839,6 @@
                               "hint": null,
                               "persistentHint": false,
                               "tooltip": null,
-                              "multiLine": false,
                               "clearable": true,
                               "validateOn": "blur",
                               "mask": {
@@ -897,7 +896,6 @@
                               "hint": null,
                               "persistentHint": false,
                               "tooltip": null,
-                              "multiLine": false,
                               "clearable": true,
                               "validateOn": "blur",
                               "mask": {
@@ -935,7 +933,6 @@
                               "hint": null,
                               "persistentHint": false,
                               "tooltip": null,
-                              "multiLine": false,
                               "clearable": true,
                               "validateOn": "blur",
                               "mask": {

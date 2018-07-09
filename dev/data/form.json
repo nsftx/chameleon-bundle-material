@@ -27,10 +27,8 @@
                   "hint": null,
                   "persistentHint": false,
                   "tooltip": null,
-                  "multiLine": false,
                   "clearable": true,
                   "disabled": false,
-                  "validateOn": "blur",
                   "mask": {
                     "predefined": false,
                     "value": null
@@ -59,9 +57,7 @@
                   "hint": null,
                   "persistentHint": false,
                   "tooltip": null,
-                  "multiLine": false,
                   "clearable": true,
-                  "validateOn": "blur",
                   "mask": {
                     "predefined": false,
                     "value": null
@@ -79,6 +75,25 @@
                   "value": "Dragoje"
                 },
                 {
+                  "name": "personalData",
+                  "type": "text-area",
+                  "label": "Personal Data",
+                  "prependIcon": "person",
+                  "appendIcon": null,
+                  "rowHeight": 22,
+                  "rows": 5,
+                  "autoGrow": true,
+                  "outline": false,
+                  "clearable": true,
+                  "disabled": false,
+                  "color": "red",
+                  "theme": "light",
+                  "value": "Personal Data ..... ",
+                  "validation": {
+                    "required": true
+                  }
+                },
+                {
                   "name": "fullName",
                   "type": "calculation",
                   "label": "Full Name",
@@ -89,13 +104,49 @@
                   "placeholder": "Please enter formula",
                   "hint": null,
                   "tooltip": null,
-                  "multiLine": false,
                   "clearable": true,
-                  "validateOn": "blur",
                   "validation": {
                     "required": true
                   },
                   "value": "${lastName} ${firstName}"
+                },
+                {
+                  "name": "country",
+                  "type": "select",
+                  "label": "Country",
+                  "prependIcon": "language",
+                  "appendIcon": null,
+                  "placeholder": "Please select a country",
+                  "hint": null,
+                  "persistentHint": false,
+                  "tooltip": null,
+                  "clearable": true,
+                  "readonly": false,
+                  "disabled": false,
+                  "validateOn": "blur",
+                  "validation": {
+                    "required": true
+                  },
+                  "dataSource": {
+                    "items": [
+                      {
+                        "value": 1,
+                        "text": "Italy"
+                      },
+                      {
+                        "value": 2,
+                        "text": "France"
+                      },
+                      {
+                        "value": 3,
+                        "text": "England"
+                      }
+                    ]
+                  },
+                  "value": {
+                    "value": 1,
+                    "text": "Italy"
+                  }
                 },
                 {
                   "name": "company",
@@ -110,6 +161,7 @@
                   "multiple": true,
                   "clearable": false,
                   "readonly": false,
+                  "disabled": false,
                   "validateOn": "blur",
                   "validation": {
                     "required": true
@@ -150,52 +202,6 @@
                   ]
                 },
                 {
-                  "name": "country",
-                  "type": "select",
-                  "label": "Country",
-                  "prependIcon": "language",
-                  "appendIcon": null,
-                  "placeholder": "Please select a country",
-                  "hint": null,
-                  "persistentHint": false,
-                  "tooltip": null,
-                  "multiLine": false,
-                  "multiple": false,
-                  "clearable": false,
-                  "readonly": false,
-                  "disabled": false,
-                  "validateOn": "blur",
-                  "mask": {
-                    "predefined": false,
-                    "value": null
-                  },
-                  "validation": {
-                    "required": true
-                  },
-                  "dataSource": {
-                    "items": [
-                      {
-                        "value": 1,
-                        "text": "Italy"
-                      },
-                      {
-                        "value": 2,
-                        "text": "France"
-                      },
-                      {
-                        "value": 3,
-                        "text": "England"
-                      }
-                    ]
-                  },
-                  "value": [
-                    {
-                      "value": 1,
-                      "text": "Italy"
-                    }
-                  ]
-                },
-                {
                   "name": "language",
                   "type": "tags",
                   "label": "Language",
@@ -205,15 +211,11 @@
                   "hint": null,
                   "persistentHint": false,
                   "tooltip": null,
-                  "multiLine": false,
                   "multiple": true,
                   "clearable": true,
                   "readonly": false,
+                  "disabled": false,
                   "validateOn": "blur",
-                  "mask": {
-                    "predefined": false,
-                    "value": null
-                  },
                   "validation": {
                     "required": true
                   },
@@ -260,7 +262,6 @@
                   "hint": "Credit card must have valid expiration date",
                   "persistentHint": true,
                   "tooltip": "Some tooltip",
-                  "multiLine": false,
                   "clearable": true,
                   "validateOn": "blur",
                   "mask": {
@@ -553,28 +554,24 @@
                   "appendIcon": null,
                   "hint": null,
                   "disabled": false,
+                  "required": true,
                   "persistentHint": false,
                   "value": true
                 }
               ],
-              "actions": [
-                {
-                  "name": "htmlMarkup",
-                  "type": "html",
-                  "label": "Html Markup",
-                  "value": "<h1>This is heading 1</h1>"
-                },
-                {
-                  "name": "save",
-                  "type": "button",
-                  "label": "Save",
-                  "color": "primary",
-                  "theme": "light",
-                  "actions": {
-                    "click": "save"
-                  }
-                }
-              ]
+              "enabled": true,
+              "submit": {
+                "name": "submit_button",
+                "label": "Submit",
+                "color": "primary",
+                "theme": "light"
+              },
+              "clear": {
+                "name": "clear_button",
+                "label": "Clear",
+                "color": "red",
+                "theme": "light"
+              }
             }
           ]
         }

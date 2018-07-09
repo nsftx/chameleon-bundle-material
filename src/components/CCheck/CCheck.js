@@ -13,14 +13,6 @@ const getAttrs = (context) => {
   return attrs;
 };
 
-const getPropValidateOnBlur = (config) => {
-  if (config.validation && config.validateOn) {
-    return config.validateOn === 'blur';
-  }
-
-  return false;
-};
-
 const getListeners = (context) => {
   const self = context;
 
@@ -62,7 +54,6 @@ const getProps = (context) => {
     value: config.value || false,
     required: getPropRequired(config),
     rules: validator.getRules(config, context.validators),
-    validateOn: getPropValidateOnBlur(config),
   };
 
   return props;

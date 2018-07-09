@@ -1,10 +1,16 @@
 import { each, assign } from 'lodash';
-import { mount, createLocalVue } from 'vue-test-utils';
+import { mount, createLocalVue } from '@vue/test-utils';
 import { createRenderer } from 'vue-server-renderer';
-import Vuetify from 'vuetify';
-import * as components from '@components';
+import sinon from 'sinon';
 
-const mockDefinition = require('./__mocks__/definition');
+import Vuetify from 'vuetify';
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import * as components from '@components';
+import CPicker from '../../../src/components/CPicker';
+
+import connectorsMock from './__mocks__/connectors';
+import mockDefinition from './__mocks__/definition';
 
 const options = {
   namespace: 'c-',
@@ -20,22 +26,66 @@ const childrenComponents = [
   'CVlist',
 ];
 
+// Vuetify tests
+const expansionPanelProvide = () => ({
+  data: {},
+  focusable: true,
+  panelClick: () => null,
+  register: () => null,
+});
+
 describe('AllComponents', () => {
   // Set div with data-app attribute for components to use as wrapper
+  // Vuetify warning
   const app = document.createElement('div');
   app.setAttribute('data-app', true);
   document.body.appendChild(app);
 
+  const localVue = createLocalVue();
+  localVue.use(Vuetify);
+  localVue.use(VueRouter);
+  // Unknown custom element: <c-picker>
+  localVue.use(CPicker, options);
+
+  const router = new VueRouter({
+    mode: 'history',
+    routes: [
+      {
+        path: '/',
+        component: {
+          template: '<div><h2>Home</h2></div>',
+        },
+      },
+    ],
+  });
+
+  // Vuetify global options
+  Vue.prototype.$vuetify = {
+    application: {},
+    breakpoint: {},
+    dark: false,
+    icons: {},
+    lang: [],
+    options: [],
+    rtl: [],
+    theme: [],
+    goTo: () => { },
+    t: () => null,
+  };
+
+  localVue.prototype.$chameleon = {};
+
+  // const router = new VueRouter();
   each(components, (component, key) => {
     const renderer = createRenderer();
-    const localVue = createLocalVue();
-    localVue.use(component, options);
-    localVue.use(Vuetify);
+    const spyDestroy = sinon.stub();
+    const spyLoadData = sinon.stub();
 
-    const cmpName = Object.keys(localVue.options.components)[0];
+    localVue.use(component, options);
+
+    const cmpName = key.split(/(?=[A-Z])/).join('-').toLowerCase();
     const cmp = localVue.options.components[cmpName];
     const cmpDefinition = mockDefinition[cmpName];
-
     if (!cmpDefinition) return;
 
     const type = cmpDefinition._schema.type;
@@ -43,16 +93,29 @@ describe('AllComponents', () => {
     const definition = assign({ type }, cmpDefinition);
 
     const wrapper = mount(cmp, {
-      // Required prop definition
+      localVue,
+      Vuetify,
+      router,
       propsData: {
         definition,
       },
-      // Some components require global validators
-      mocks: {
-        $chameleon: {
-          validators: {},
+      provide: {
+        form: {
+          fields: [],
+          register: () => null,
         },
-        form: {},
+        expansionPanel: expansionPanelProvide(),
+      },
+      methods: {
+        loadConnectorData() {
+          spyLoadData();
+          return new Promise((resolve) => {
+            resolve(connectorsMock);
+          });
+        },
+      },
+      destroyed() {
+        spyDestroy();
       },
     });
 

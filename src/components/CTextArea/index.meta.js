@@ -1,21 +1,8 @@
-const itemInterface = [
-  {
-    name: 'value',
-    type: 'String',
-    label: 'Value',
-  },
-  {
-    name: 'text',
-    type: 'String',
-    label: 'Text',
-  },
-];
-
 export default {
   group: 'inputs',
-  type: 'tags',
-  name: 'Tags Select',
-  icon: 'playlist_add_check',
+  type: 'text-area',
+  name: 'Text Area',
+  icon: 'text_fields',
   optionGroups: {
     validation: {
       key: 'validation',
@@ -24,15 +11,30 @@ export default {
   },
   actions: [
     {
+      name: 'setInputValue',
+      help: 'Input field updated',
+    },
+    {
       name: 'setItemDisabledValue',
       help: 'Input field disabled value',
     },
   ],
   events: [
     {
-      name: 'Selected',
-      help: 'Select clicked and item selected',
-      schema: itemInterface,
+      name: 'Changed',
+      help: 'Input changed',
+    },
+    {
+      name: 'Cleared',
+      help: 'Input cleared / reset',
+    },
+    {
+      name: 'FocusedIn',
+      help: 'Input focused',
+    },
+    {
+      name: 'FocusedOut',
+      help: 'Input focused out / blurred',
     },
   ],
   options: {
@@ -45,8 +47,8 @@ export default {
     },
     label: {
       type: 'input',
-      name: 'Tags Label',
-      value: 'Tags',
+      name: 'TextBox Label',
+      value: 'Text Field',
       priority: 2,
     },
     prependIcon: {
@@ -61,55 +63,48 @@ export default {
       value: null,
       priority: 4,
     },
-    hint: {
+    autoGrow: {
+      type: 'check',
+      name: 'Auto Grow',
+      value: false,
+      priority: 6,
+    },
+    outline: {
+      type: 'check',
+      name: 'Outline',
+      value: false,
+      priority: 7,
+    },
+    rows: {
       type: 'input',
-      name: 'Hint Text',
-      value: null,
+      name: 'Number of Rows',
+      value: 5,
       priority: 5,
     },
     tooltip: {
       type: 'input',
       name: 'Tooltip Text',
       value: null,
-      priority: 6,
+      priority: 8,
     },
     clearable: {
       type: 'check',
-      name: 'Enable Input Clear',
-      value: false,
-      priority: 10,
-    },
-    readonly: {
-      type: 'check',
-      name: 'Enable Readonly',
-      value: false,
-      priority: 8,
-    },
-    disabled: {
-      type: 'check',
-      name: 'Disabled',
+      name: 'Enable Input Reset',
       value: false,
       priority: 9,
     },
-    multiple: {
+    disabled: {
       type: 'check',
-      name: 'Multiple Selections',
-      value: true,
-      priority: 7,
-    },
-    dataSource: {
-      type: 'dataSource',
-      group: 'data',
-      name: 'Data Source',
-      value: null,
-      schema: itemInterface,
+      name: 'Disable Input',
+      value: false,
+      priority: 10,
     },
     validation: {
       type: 'group',
       group: 'validation',
       required: {
         type: 'check',
-        name: 'Enable required',
+        name: 'Required',
         value: false,
       },
     },

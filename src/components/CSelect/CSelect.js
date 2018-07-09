@@ -1,4 +1,4 @@
-import { isArray, isNil, filter } from 'lodash';
+import { isNil, filter } from 'lodash';
 import { fieldable, validatable } from '@mixins';
 import { validator } from '@validators';
 import Element from '../Element';
@@ -17,10 +17,10 @@ const getListeners = (context) => {
 
   const listeners = {
     input(value) {
-      const selection = isArray(value) ? value : [value];
-      self.value = selection;
-      self.sendToEventBus('Selected', selection);
-      self.$emit('input', selection);
+      self.value = value;
+      self.config.value = value;
+      self.sendToEventBus('Selected', value);
+      self.$emit('input', value);
     },
   };
 
@@ -37,43 +37,35 @@ const getPropRequired = (config) => {
   return false;
 };
 
-const getPropValidateOnBlur = (config) => {
-  if (config.validation && config.validateOn) {
-    return config.validateOn === 'blur';
-  }
-
-  return false;
-};
-
-const getItemProps = (context) => {
+const setItemProps = (context) => {
   const self = context;
-  if (!isNil(self.config.dataSource.items) && self.config.dataSource.items.length > 0) {
-    const mapProps = filter(self.config.dataSource.schema, i => !isNil(i.mapName));
-    const itemProps = Object.keys(self.config.dataSource.items[0]);
-    self.selectProps.itemValue = !mapProps.length ? itemProps[0] : 'value';
-    self.selectProps.itemText = !mapProps.length ? itemProps[1] : 'text';
+  const data = self.config.dataSource;
+  if (!isNil(data) && !isNil(data.items) && data.items.length > 0) {
+    const mapProps = filter(data.items, i => !isNil(i.mapName));
+    const itemProps = Object.keys(data.items[0]);
+    self.config.itemValue = !mapProps.length ? itemProps[0] : 'value';
+    self.config.itemText = !mapProps.length ? itemProps[1] : 'text';
   }
 };
 
 const getProps = (context) => {
   const config = context.config;
+  setItemProps(context);
 
   const props = {
     appendIcon: getPropAppendIcon(config),
-    autocomplete: true,
-    chips: context.chips,
     clearable: config.clearable && !config.readonly,
-    deletableChips: context.chips && config.multiple && !config.readonly,
+    deletableChips: context.chips && !config.readonly,
+    chips: context.chips,
     hint: config.hint,
-    items: config.dataSource.items || [],
+    items: config.dataSource ? config.dataSource.items : [],
     label: config.label,
     loading: false,
-    itemValue: 'value',
-    itemText: 'text',
+    itemValue: config.itemValue,
+    itemText: config.itemText,
     color: config.color,
     dark: context.isThemeDark,
     light: context.isThemeLight,
-    multiLine: config.multiLine,
     multiple: config.multiple,
     openOnClear: config.clearable,
     persistentHint: config.persistentHint,
@@ -85,9 +77,7 @@ const getProps = (context) => {
     returnObject: true,
     rules: validator.getRules(config, context.validators),
     value: config.value,
-    validateOn: getPropValidateOnBlur(config),
   };
-
   return props;
 };
 
@@ -108,18 +98,15 @@ export default {
     loadData() {
       this.loadConnectorData().then((result) => {
         if (isNil(this.config.dataSource)) this.config.dataSource = {};
-        this.config.dataSource.items = result.items || [];
-        this.selectProps.items = result.items || [];
-        getItemProps(this);
+        this.config.dataSource.items = isNil(result) ? [] : result.items;
       });
     },
   },
   data() {
     return {
-      attrs: null,
       chips: false,
-      listeners: null,
-      selectProps: null,
+      selectAttr: {},
+      selectListeners: {},
     };
   },
   created() {
@@ -128,20 +115,17 @@ export default {
         items: [],
       };
     }
-
-    const context = this;
-    this.attrs = getAttrs(context);
-    this.selectProps = getProps(context);
-    this.listeners = getListeners(context);
+    this.selectAttr = getAttrs(this);
+    this.selectListeners = getListeners(this);
     this.loadData();
   },
   render(createElement) {
     const children = createElement(
       'v-select',
       {
-        attrs: this.attrs,
-        props: this.selectProps,
-        on: this.listeners,
+        props: getProps(this),
+        attrs: this.selectAttr,
+        on: this.selectListeners,
       },
     );
 

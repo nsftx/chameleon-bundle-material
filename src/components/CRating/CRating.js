@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { isNil, map } from 'lodash';
 import { fieldable, validatable } from '@mixins';
 import Element from '../Element';
 
@@ -33,11 +33,11 @@ const getIconElement = (createElement, index, context) => {
           self.fillLevel = index;
         },
         mouseleave() {
-          self.setRating();
+          self.setRating(self.value);
         },
         click() {
           self.value = index;
-          self.setRating(false, true);
+          self.setRating(self.value, true);
           self.$emit('input', self.value);
           self.sendToEventBus('Changed', { value: self.value });
         },
@@ -58,11 +58,11 @@ const getPropRequired = (config) => {
 };
 
 const getTitle = (createElement, context) => {
-  const hasLabel = context.config.label || _.isNil(context.config.label);
+  const hasLabel = context.config.label || isNil(context.config.label);
   if (!hasLabel && !context.value) return false;
 
   const required = getPropRequired(context.config);
-  let title = _.isNil(context.config.label) ? '' : context.config.label;
+  let title = isNil(context.config.label) ? '' : context.config.label;
   if (context.value) {
     title = `${title} (${context.value})`;
   }
@@ -90,14 +90,14 @@ export default {
   },
   methods: {
     setRating(value, validate) {
-      this.fillLevel = value || this.value;
+      this.fillLevel = value;
       if (validate) this.validate();
     },
   },
   render(createElement) {
     const self = this;
     const ratingCount = new Array(this.config.maxRating || 5);
-    const icons = _.map(ratingCount, (item, idx) => getIconElement(createElement, idx + 1, self));
+    const icons = map(ratingCount, (item, idx) => getIconElement(createElement, idx + 1, self));
     const title = getTitle(createElement, self);
     const message = getMessage(createElement, self);
 
@@ -106,18 +106,34 @@ export default {
         'rating--error': this.hasError,
         'text-xs-center': true,
       },
+      props: {
+        flat: true,
+      },
     };
 
     const children = [
       title,
       createElement(
-        'div',
+        'v-input',
+        {
+          on: {
+            input(e) {
+              if (isNil(e)) {
+                self.value = null;
+                self.setRating(0, false);
+              }
+            },
+          },
+          class: {
+            'd-inline-block': true,
+          },
+        },
         icons,
       ),
       message,
     ];
 
-    return this.renderElement('div', data, children);
+    return this.renderElement('v-card', data, children);
   },
   mounted() {
     this.fillLevel = parseInt(this.value, 10);

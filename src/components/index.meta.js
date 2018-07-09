@@ -29,6 +29,7 @@ export { default as table } from './CTable/index.meta';
 export { default as tabs } from './CTabs/index.meta';
 export { default as tags } from './CTags/index.meta';
 export { default as text } from './CText/index.meta';
+export { default as textArea } from './CTextArea/index.meta';
 export { default as video } from './CVideo/index.meta';
 export { default as videoStream } from './CVideoStream/index.meta';
 export { default as vlist } from './CVlist/index.meta';

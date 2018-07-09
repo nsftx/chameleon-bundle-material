@@ -1,5 +1,6 @@
 import { isNil, map, filter } from 'lodash';
 import { fieldable, validatable } from '@mixins';
+import { validator } from '@validators';
 import Element from '../Element';
 
 const createErrorMessage = (createElement, context) => {
@@ -40,6 +41,14 @@ const getItemListeners = (context) => {
   return listeners;
 };
 
+const getPropRequired = (config) => {
+  if (config.validation) {
+    return !!config.validation.required;
+  }
+
+  return false;
+};
+
 const getItemProps = (context, item) => {
   const config = context.config;
 
@@ -57,6 +66,8 @@ const getItemProps = (context, item) => {
     hint: config.hint,
     disabled: config.disabled,
     color: config.color,
+    required: getPropRequired(config),
+    rules: validator.getRules(config, context.validators),
     value,
   };
 
@@ -105,10 +116,12 @@ export default {
     };
 
     const children = [
+      createElement('v-label', this.config.label),
       map(this.config.dataSource.items,
         item => createElement('v-checkbox',
           {
             attrs: getItemAttrs(this),
+            staticClass: 'mt-0',
             props: getItemProps(this, item),
             on: getItemListeners(this, item),
           },
