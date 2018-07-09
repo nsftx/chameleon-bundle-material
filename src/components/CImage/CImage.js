@@ -15,18 +15,22 @@ const parseImageSrc = (context) => {
   return `${src}/${context.config.src}`;
 };
 
-const renderImage = (createElement, context) => {
+const getImageAttrs = (context) => {
   const isUrl = urlValidator(context.config.src);
   const src = isUrl ?
     context.config.src :
     parseImageSrc(context);
 
+  return {
+    src,
+    title: context.config.title,
+    alt: context.config.alternativeText,
+  };
+};
+
+const renderImage = (createElement, context) => {
   const data = {
-    attrs: {
-      src,
-      title: context.config.title,
-      alt: context.config.alternativeText,
-    },
+    attrs: getImageAttrs(context),
     staticStyle: {
       maxWidth: '100%',
       maxHeight: '100%',
