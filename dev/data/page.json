@@ -475,7 +475,7 @@
                           "tooltip": null,
                           "clearable": true,
                           "fullWidth": false,
-                          "width": "260",
+                          "width": "360",
                           "color": "red",
                           "theme": "dark",
                           "validation": {
