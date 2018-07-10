@@ -9,14 +9,9 @@ const resolve = file => require('path').resolve(__dirname, file);
 
 const extractPlugin = ExtractTextPlugin.extract({
   use: [
-    'css-loader',
-    {
-      loader: 'postcss-loader',
-      options: {
-        sourceMap: true,
-      },
-    },
-    'stylus-loader',
+    { loader: 'css-loader', options: { sourceMap: true } },
+    { loader: 'postcss-loader', options: { sourceMap: true } },
+    { loader: 'stylus-loader', options: { sourceMap: true } },
   ],
 });
 
@@ -54,14 +49,17 @@ module.exports = merge(baseWebpackConfig, {
       },
       {
         test: /\.vue$/,
-        loaders: [{
-          loader: 'vue-loader',
-          options: {
-            loaders: {
-              stylus: extractPlugin,
+        loaders: [
+          {
+            loader: 'vue-loader',
+            options: {
+              loaders: {
+                stylus: extractPlugin,
+              },
             },
           },
-        }, 'eslint-loader'],
+          'eslint-loader',
+        ],
         exclude: /node_modules/,
       },
       {
@@ -72,7 +70,7 @@ module.exports = merge(baseWebpackConfig, {
       {
         test: /\.styl$/,
         loaders: extractPlugin,
-        exclude: /node_modules/,
+        exclude: /node_modules\/(?!(vuetify)\/).*/,
       },
     ],
   },

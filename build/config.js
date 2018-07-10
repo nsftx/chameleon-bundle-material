@@ -13,34 +13,23 @@ const builds = {
   development: {
     config: {
       output: {
-        filename: 'index.js',
+        filename: 'bundle.js',
       },
       plugins: [
-        new ExtractTextPlugin('index.css'),
+        new ExtractTextPlugin('bundle.css'),
       ],
     },
   },
   production: {
     config: {
-      output: {
-        filename: 'index.min.js',
-      },
-      plugins: [
-        new ExtractTextPlugin('index.min.css'),
-      ],
-    },
-    env: 'production',
-  },
-  lite: {
-    config: {
       entry: {
-        app: './src/index.lite.js'
+        app: './src/index.js'
       },
       output: {
-        filename: 'index.lite.js',
+        filename: 'bundle.min.js',
       },
       plugins: [
-        new ExtractTextPlugin('index.lite.css'),
+        new ExtractTextPlugin('bundle.min.css'),
       ],
     },
     env: 'production',
@@ -51,7 +40,7 @@ const builds = {
         app: './src/index.meta.js'
       },
       output: {
-        filename: 'index.meta.js',
+        filename: 'bundle.meta.js',
         library: '__CHAMELEON_MATERIAL_META__',
       },
     },

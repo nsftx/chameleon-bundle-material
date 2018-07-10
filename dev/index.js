@@ -1,6 +1,10 @@
 import Vue from 'vue';
+import Vuetify from 'vuetify';
 import Chameleon from 'chameleon';
 import App from './App';
+import 'vuetify/src/stylus/main.styl';
+
+Vue.use(Vuetify);
 
 Vue.use(Chameleon, {
   isPreviewMode: true,
