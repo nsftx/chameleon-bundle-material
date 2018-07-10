@@ -3,7 +3,7 @@
   "namespace": "c-",
   "version": 21,
   "styles": [
-    "index.min.css"
+    "bundle.min.css"
   ],
   "scripts": [
     {
