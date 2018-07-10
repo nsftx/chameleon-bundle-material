@@ -1,4 +1,3 @@
-import Vuetify from 'vuetify';
 import { assign, each } from 'lodash';
 import namespace from './index.namespace';
 import * as components from './components';
@@ -13,8 +12,6 @@ export default {
         data: assign({}, options),
       });
     }
-
-    Vue.use(Vuetify);
 
     each(components, (component) => {
       Vue.use(component, {
