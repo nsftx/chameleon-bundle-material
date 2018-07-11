@@ -72,6 +72,11 @@ export default {
         value: false,
       },
     },
+    calendar: {
+      type: 'check',
+      name: 'Calendar View',
+      value: false,
+    },
     validation: {
       type: 'group',
       group: 'validation',

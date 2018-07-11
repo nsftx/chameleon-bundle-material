@@ -10,7 +10,7 @@ const getDatePickerProps = (context) => {
     dark: context.isThemeDark,
     light: context.isThemeLight,
     fullWidth: context.config.fullWidth,
-    width: context.config.width,
+    width: context.config.width || 290,
     value: context.value ? context.value.substring(0, 10) : null,
     min: context.config.allowedDates ? context.config.allowedDates.min : null,
     max: context.config.allowedDates ? context.config.allowedDates.max : null,

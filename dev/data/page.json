@@ -450,9 +450,11 @@
                           "hint": null,
                           "tooltip": null,
                           "clearable": true,
-                          "fullWidth": true,
+                          "fullWidth": false,
                           "color": "red",
                           "theme": "dark",
+                          "calendar": true,
+                          "width": 300,
                           "validation": {
                             "required": true,
                             "minDate": "",
