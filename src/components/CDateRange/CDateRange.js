@@ -21,7 +21,7 @@ const getMenuProps = (context) => {
     transition: isNil(config.transition) ? 'scale-transition' : config.transition,
     fullWidth: true,
     closeOnContentClick: false,
-    maxWidth: '520px',
+    maxWidth: '580px',
   };
 
   return props;

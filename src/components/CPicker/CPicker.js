@@ -10,7 +10,6 @@ const getDatePickerProps = (context) => {
     dark: context.isThemeDark,
     light: context.isThemeLight,
     fullWidth: context.config.fullWidth,
-    width: context.config.width,
     value: context.value ? context.value.substring(0, 10) : null,
     min: context.config.allowedDates ? context.config.allowedDates.min : null,
     max: context.config.allowedDates ? context.config.allowedDates.max : null,
@@ -64,6 +63,10 @@ const getTimePickerProps = (context) => {
     scrollable: true,
     autosave: true,
     value: context.parsedTimeValue,
+    color: context.config.color,
+    dark: context.isThemeDark,
+    light: context.isThemeLight,
+    fullWidth: context.config.fullWidth,
   };
 
   return props;
@@ -73,24 +76,27 @@ const getTimePickerActionSlot = (createElement, context) => {
   const self = context;
 
   const slot = {
-    default: () => createElement('v-card-actions', [
-      createElement('v-spacer'),
-      createElement('v-btn',
-        {
-          props: {
-            flat: true,
-            icon: true,
-          },
-          on: {
-            click() {
-              self.isTimeVisible = false;
+    default: () => createElement('v-card-actions', {
+      staticClass: 'pa-0',
+    },
+      [
+        createElement('v-spacer'),
+        createElement('v-btn',
+          {
+            props: {
+              flat: true,
+              icon: true,
+            },
+            on: {
+              click() {
+                self.isTimeVisible = false;
+              },
             },
           },
-        },
-        [
-          createElement('v-icon', 'date_range'),
-        ]),
-    ]),
+          [
+            createElement('v-icon', 'date_range'),
+          ]),
+      ]),
   };
 
   return slot;
@@ -101,9 +107,9 @@ const getTimePickerListeners = (context) => {
 
   const listeners = {
     input(value) {
-      const isPm = value.indexOf('pm') > -1;
-      const hours = parseInt(value.substring(0, 1), 10) + (isPm ? 12 : 0);
-      const minutes = parseInt(value.substring(2, 4), 10);
+      const splitTime = value.split(':');
+      const hours = splitTime[0];
+      const minutes = splitTime[1];
       const formattedValue = moment.utc(self.value).hours(hours).minutes(minutes).toISOString();
 
       if (self.value !== formattedValue) {
@@ -173,6 +179,7 @@ export default {
           {
             scopedSlots: getTimePickerActionSlot(createElement, this),
             props: getTimePickerProps(this),
+            staticClass: 'fill-height',
             on: getTimePickerListeners(this),
           },
         ),
@@ -184,12 +191,17 @@ export default {
           {
             scopedSlots: this.hasTimeComponent && getDatePickerActionSlot(createElement, this),
             props: getDatePickerProps(this),
+            staticClass: 'fill-height',
             on: getDatePickerListeners(this),
           },
         ),
       ]);
     }
 
-    return this.renderElement('div', {}, children);
+    return this.renderElement('div',
+      {
+        staticClass: 'fill-height',
+      },
+      children);
   },
 };
