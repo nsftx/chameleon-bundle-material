@@ -21,7 +21,7 @@ const getMenuProps = (context) => {
     transition: isNil(config.transition) ? 'scale-transition' : config.transition,
     fullWidth: true,
     closeOnContentClick: false,
-    maxWidth: '520px',
+    minWidth: 'auto',
   };
 
   return props;
@@ -84,6 +84,21 @@ const getAllowedDates = (context, endRange) => {
   return validateDates();
 };
 
+const getTextField = (context, createElement) =>
+  (context.calendar ? false : createElement(
+    'v-text-field',
+    {
+      slot: 'activator',
+      attrs: getTextAttrs(context),
+      props: getTextProps(context),
+      on: {
+        input(value) {
+          context.sendToEventBus('Changed', { value });
+        },
+      },
+    },
+  ));
+
 const getPickerDefinition = (context, endRange) => {
   const config = clone(context.config);
   config.allowedDates = getAllowedDates(context, endRange);
@@ -96,6 +111,8 @@ const getPickerDefinition = (context, endRange) => {
 
   return config;
 };
+
+const getPickerType = context => (context.calendar ? 'v-card' : 'v-menu');
 
 export default {
   extends: Element,
@@ -125,6 +142,9 @@ export default {
     formattedValue() {
       return `${this.formattedValueFrom} - ${this.formattedValueTo}`;
     },
+    calendar() {
+      return this.config.calendar;
+    },
   },
   methods: {
     setValue() {
@@ -137,37 +157,35 @@ export default {
   render(createElement) {
     const self = this;
 
-    const data = {
-      props: getMenuProps(this),
-      on: {
-        input(value) {
-          self.sendToEventBus('VisibilityChanged', { visible: value });
+    const data = () => {
+      if (self.calendar) {
+        return {
+          class: 'mt-1',
+          props: {
+            flat: true,
+          },
+        };
+      }
+      return {
+        props: getMenuProps(this),
+        on: {
+          input(value) {
+            self.sendToEventBus('VisibilityChanged', { visible: value });
+          },
         },
-      },
+      };
     };
 
     const children = [
-      createElement(
-        'v-text-field',
-        {
-          slot: 'activator',
-          attrs: getTextAttrs(this),
-          props: getTextProps(this),
-          on: {
-            input(value) {
-              self.sendToEventBus('Changed', { value });
-            },
-          },
-        },
-      ),
+      getTextField(self, createElement),
       createElement(
         this.getElementTag('picker'),
         {
-          staticClass: 'left',
           props: {
             definition: getPickerDefinition(this),
             startRange: true,
           },
+          staticClass: 'mr-1',
           on: {
             input(value) {
               self.valueFrom = value;
@@ -185,7 +203,6 @@ export default {
       createElement(
         this.getElementTag('picker'),
         {
-          staticClass: 'left',
           props: {
             definition: getPickerDefinition(this, true),
             endRange: true,
@@ -203,6 +220,6 @@ export default {
       ),
     ];
 
-    return this.renderElement('v-menu', data, children);
+    return this.renderElement(getPickerType(self), data(), children);
   },
 };

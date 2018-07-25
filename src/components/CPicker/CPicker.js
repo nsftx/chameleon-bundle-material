@@ -63,7 +63,12 @@ const getTimePickerProps = (context) => {
     noTitle: false,
     scrollable: true,
     autosave: true,
+    width: context.config.width || 290,
     value: context.parsedTimeValue,
+    color: context.config.color,
+    dark: context.isThemeDark,
+    light: context.isThemeLight,
+    fullWidth: context.config.fullWidth,
   };
 
   return props;
@@ -73,24 +78,27 @@ const getTimePickerActionSlot = (createElement, context) => {
   const self = context;
 
   const slot = {
-    default: () => createElement('v-card-actions', [
-      createElement('v-spacer'),
-      createElement('v-btn',
-        {
-          props: {
-            flat: true,
-            icon: true,
-          },
-          on: {
-            click() {
-              self.isTimeVisible = false;
+    default: () => createElement('v-card-actions', {
+      staticClass: 'pa-0',
+    },
+      [
+        createElement('v-spacer'),
+        createElement('v-btn',
+          {
+            props: {
+              flat: true,
+              icon: true,
+            },
+            on: {
+              click() {
+                self.isTimeVisible = false;
+              },
             },
           },
-        },
-        [
-          createElement('v-icon', 'date_range'),
-        ]),
-    ]),
+          [
+            createElement('v-icon', 'date_range'),
+          ]),
+      ]),
   };
 
   return slot;
@@ -101,9 +109,9 @@ const getTimePickerListeners = (context) => {
 
   const listeners = {
     input(value) {
-      const isPm = value.indexOf('pm') > -1;
-      const hours = parseInt(value.substring(0, 1), 10) + (isPm ? 12 : 0);
-      const minutes = parseInt(value.substring(2, 4), 10);
+      const splitTime = value.split(':');
+      const hours = splitTime[0];
+      const minutes = splitTime[1];
       const formattedValue = moment.utc(self.value).hours(hours).minutes(minutes).toISOString();
 
       if (self.value !== formattedValue) {
@@ -190,6 +198,13 @@ export default {
       ]);
     }
 
-    return this.renderElement('div', {}, children);
+    return this.renderElement('v-card',
+      {
+        staticClass: 'd-inline-block',
+        props: {
+          flat: true,
+        },
+      },
+      children);
   },
 };

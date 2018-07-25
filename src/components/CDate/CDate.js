@@ -15,15 +15,13 @@ const getPropRequired = (config) => {
 
 const getMenuProps = (context) => {
   const config = context.config;
-  const width = '290px';
 
   const props = {
     lazy: false,
     transition: isNil(config.transition) ? 'scale-transition' : config.transition,
     fullWidth: true,
-    maxWidth: width,
-    minWidth: width,
     closeOnContentClick: false,
+    minWidth: 'auto',
   };
 
   return props;
@@ -113,31 +111,22 @@ const getPicker = (context, createElement) => {
   );
 };
 
-const getTextField = (context, createElement) => {
-  const self = context;
-
-  if (self.config.calendar) return false;
-  return createElement(
+const getTextField = (context, createElement) =>
+  (context.calendar ? false : createElement(
     'v-text-field',
     {
       slot: 'activator',
-      attrs: getTextAttrs(self),
-      props: getTextProps(self),
+      attrs: getTextAttrs(context),
+      props: getTextProps(context),
       on: {
         input(value) {
-          self.sendToEventBus('Changed', { value });
+          context.sendToEventBus('Changed', { value });
         },
       },
     },
-  );
-};
+  ));
 
-const getPickerType = (context) => {
-  if (context.config.calendar) {
-    return 'div';
-  }
-  return 'v-menu';
-};
+const getPickerType = context => (context.calendar ? 'div' : 'v-menu');
 
 export default {
   extends: Element,
@@ -150,26 +139,28 @@ export default {
       formattedValue: null,
     };
   },
+  computed: {
+    calendar() {
+      return this.config.calendar;
+    },
+  },
   render(createElement) {
     const self = this;
 
-    const data = () => {
-      if (self.config.calendar) return {};
-      return {
-        props: getMenuProps(this),
-        on: {
-          input(value) {
-            self.sendToEventBus('VisibilityChanged', { visible: value });
-          },
+    const data = () => (self.config.calendar ? {} : {
+      props: getMenuProps(this),
+      on: {
+        input(value) {
+          self.sendToEventBus('VisibilityChanged', { visible: value });
         },
-      };
-    };
+      },
+    });
 
     const children = [
       getTextField(self, createElement),
       getPicker(self, createElement),
     ];
 
-    return this.renderElement(getPickerType(self), data, children);
+    return this.renderElement(getPickerType(self), data(), children);
   },
 };
