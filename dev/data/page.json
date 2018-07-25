@@ -476,7 +476,7 @@
                           "clearable": true,
                           "color": "red",
                           "theme": "dark",
-                          "calendar": false,
+                          "calendar": true,
                           "validation": {
                             "required": true,
                             "minDate": "",
