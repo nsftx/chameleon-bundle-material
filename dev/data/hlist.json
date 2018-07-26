@@ -11,6 +11,7 @@
           "theme": "",
           "flat": true,
           "gutter": true,
+          "height": "",
           "elements": [
             {
               "type": "youtube",

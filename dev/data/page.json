@@ -25,6 +25,7 @@
           "theme": "",
           "flat": false,
           "height": "",
+          "width": "",
           "elements": [
             {
               "type": "tabs",

@@ -6,6 +6,9 @@ export default {
   extends: Element,
   render() {
     const self = this;
+    const style = {
+      height: self.config.height,
+    };
 
     const data = {
       key: self.schema.uid,
@@ -18,12 +21,10 @@ export default {
         light: self.isThemeLight,
         flat: self.config.flat,
       },
-      style: {
-        height: self.config.height,
-      },
+      style,
     };
 
-    const children = this.renderChildElement('div');
+    const children = this.renderChildElement('div', { style });
 
     return this.renderElement('v-card', data, children, true);
   },

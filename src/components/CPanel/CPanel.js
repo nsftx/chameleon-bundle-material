@@ -5,6 +5,11 @@ export default {
   render() {
     const config = this.config;
 
+    const style = {
+      width: config.width,
+      height: config.height,
+    };
+
     const data = {
       key: this.schema.uid,
       props: {
@@ -13,13 +18,10 @@ export default {
         light: this.isThemeLight,
         flat: config.flat,
       },
-      style: {
-        width: config.width,
-        height: config.height,
-      },
+      style,
     };
 
-    const children = this.renderChildElement('div');
+    const children = this.renderChildElement('div', { style });
 
     return this.renderElement('v-card', data, children, true);
   },
