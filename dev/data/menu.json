@@ -8,6 +8,7 @@
           "type": "panel",
           "name": "panel-1",
           "flat": false,
+          "height": "250px",
           "elements": [
             {
               "type": "menu",
