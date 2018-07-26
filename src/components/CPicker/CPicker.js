@@ -10,6 +10,7 @@ const getDatePickerProps = (context) => {
     dark: context.isThemeDark,
     light: context.isThemeLight,
     fullWidth: context.config.fullWidth,
+    width: context.config.width || 290,
     value: context.value ? context.value.substring(0, 10) : null,
     min: context.config.allowedDates ? context.config.allowedDates.min : null,
     max: context.config.allowedDates ? context.config.allowedDates.max : null,
@@ -62,6 +63,7 @@ const getTimePickerProps = (context) => {
     noTitle: false,
     scrollable: true,
     autosave: true,
+    width: context.config.width || 290,
     value: context.parsedTimeValue,
     color: context.config.color,
     dark: context.isThemeDark,
@@ -179,7 +181,6 @@ export default {
           {
             scopedSlots: getTimePickerActionSlot(createElement, this),
             props: getTimePickerProps(this),
-            staticClass: 'fill-height',
             on: getTimePickerListeners(this),
           },
         ),
@@ -191,16 +192,18 @@ export default {
           {
             scopedSlots: this.hasTimeComponent && getDatePickerActionSlot(createElement, this),
             props: getDatePickerProps(this),
-            staticClass: 'fill-height',
             on: getDatePickerListeners(this),
           },
         ),
       ]);
     }
 
-    return this.renderElement('div',
+    return this.renderElement('v-card',
       {
-        staticClass: 'fill-height',
+        staticClass: 'd-inline-block',
+        props: {
+          flat: true,
+        },
       },
       children);
   },
