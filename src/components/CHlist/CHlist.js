@@ -18,6 +18,9 @@ export default {
         light: self.isThemeLight,
         flat: self.config.flat,
       },
+      style: {
+        height: self.config.height,
+      },
     };
 
     const children = this.renderChildElement('div');

@@ -15,6 +15,7 @@ export default {
       },
       style: {
         width: config.width,
+        height: config.height,
       },
     };
 
