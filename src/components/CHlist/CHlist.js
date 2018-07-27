@@ -6,10 +6,6 @@ export default {
   extends: Element,
   render() {
     const self = this;
-    const style = {
-      height: self.config.height,
-    };
-
     const data = {
       key: self.schema.uid,
       class: {
@@ -21,7 +17,12 @@ export default {
         light: self.isThemeLight,
         flat: self.config.flat,
       },
-      style,
+      style: {
+        height: self.config.height,
+      },
+    };
+    const style = {
+      height: '100%',
     };
 
     const children = this.renderChildElement('div', { style });

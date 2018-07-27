@@ -4,12 +4,6 @@ export default {
   extends: Element,
   render() {
     const config = this.config;
-
-    const style = {
-      width: config.width,
-      height: config.height,
-    };
-
     const data = {
       key: this.schema.uid,
       props: {
@@ -18,7 +12,14 @@ export default {
         light: this.isThemeLight,
         flat: config.flat,
       },
-      style,
+      style: {
+        width: config.width,
+        height: config.height,
+      },
+    };
+    const style = {
+      width: '100%',
+      height: '100%',
     };
 
     const children = this.renderChildElement('div', { style });
