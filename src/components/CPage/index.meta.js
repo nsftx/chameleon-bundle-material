@@ -52,6 +52,12 @@ export default {
       items: '=$app.pages',
       priority: 3,
     },
+    icon: {
+      type: 'iconSource',
+      name: 'Icon',
+      value: null,
+      priority: 4,
+    },
     layout: {
       type: 'group',
       group: 'layout',
@@ -98,11 +104,6 @@ export default {
       keywords: {
         type: 'input',
         name: 'Keywords',
-        value: null,
-      },
-      icon: {
-        type: 'input',
-        name: 'Icon',
         value: null,
       },
     },

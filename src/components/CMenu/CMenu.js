@@ -147,7 +147,7 @@ export default {
                 large: true,
               },
             },
-            'explore',
+            this.config.icon || 'explore',
           ),
         );
       }
