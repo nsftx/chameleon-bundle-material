@@ -1,0 +1,23 @@
+{
+  "pages": [
+    {
+      "name": "gallery",
+      "type": "page",
+      "elements": [
+        {
+          "type": "gallery",
+          "name": "gallery-1",
+          "color": "",
+          "theme": "",
+          "dataSource": {
+            "items": [
+              "https://picsum.photos/150/300?image=58",
+              "https://picsum.photos/150/300?image=63",
+              "https://picsum.photos/150/300?image=91"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

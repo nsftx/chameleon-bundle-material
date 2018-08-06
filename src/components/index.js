@@ -9,6 +9,7 @@ export { default as CDateRange } from './CDateRange';
 export { default as CFlexgrid } from './CFlexgrid';
 export { default as CFlexgridItem } from './CFlexgridItem';
 export { default as CForm } from './CForm';
+export { default as CGallery } from './CGallery';
 export { default as CHlist } from './CHlist';
 export { default as CHtml } from './CHtml';
 export { default as CImage } from './CImage';
