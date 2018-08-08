@@ -54,7 +54,7 @@ const getGalleryElement = (createElement, context, imageSource) => {
     'v-flex',
     {
       attrs: {
-        [`xs${context.config.gridSize}`]: true,
+        [`xs${context.config.gallery.gridSize}`]: true,
       },
       props: {
         key: i,
@@ -71,7 +71,7 @@ const getGalleryElement = (createElement, context, imageSource) => {
           createElement('v-card-media', {
             attrs: {
               src: getUrlValidator(item) ? item.source || item : parseImageSrc(context, item),
-              height: context.config.itemHeight || context.defaultHeight,
+              height: context.config.gallery.itemHeight || context.defaultHeight,
             },
           }),
         ]),

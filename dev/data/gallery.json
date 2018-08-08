@@ -10,13 +10,16 @@
           "color": "",
           "theme": "",
           "carousel": {
-            "enabled": true,
+            "enabled": false,
             "cycle": true,
             "hideControls": false,
             "hideDelimiters": true,
             "interval": 20000
           },
-          "gridSize": 2,
+         "gallery": {
+          "gridSize": 4,
+          "itemHeight": "200px"
+         },
           "gridMaxSize": false,
           "contentSpacing": "xl",
           "dataSource": {
