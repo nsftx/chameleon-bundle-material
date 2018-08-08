@@ -15,19 +15,19 @@
           "dataSource": {
             "items": [
               {
-                "src": "https://picsum.photos/150/300?image=58"
+                "source": "https://picsum.photos/150/300?image=58"
               },
               {
-                "src": "https://picsum.photos/150/300?image=63"
+                "source": "https://picsum.photos/150/300?image=63"
               },
               {
-                "src": "https://picsum.photos/150/300?image=71"
+                "source": "https://picsum.photos/150/300?image=71"
               },
               {
-                "src": "https://picsum.photos/150/300?image=58"
+                "source": "https://picsum.photos/150/300?image=58"
               },
               {
-                "src": "https://picsum.photos/150/300?image=63"
+                "source": "https://picsum.photos/150/300?image=63"
               }
             ]
           }

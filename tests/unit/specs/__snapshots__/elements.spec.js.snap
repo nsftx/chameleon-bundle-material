@@ -172,12 +172,12 @@ exports[`AllComponents c-date renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
                         <div class="v-btn__content">7</div>
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline accent--text">
                         <div class="v-btn__content">8</div>
                       </button>
                     </td>
@@ -419,12 +419,12 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
                         <div class="v-btn__content">7</div>
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline accent--text">
                         <div class="v-btn__content">8</div>
                       </button>
                     </td>
@@ -633,12 +633,12 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
                         <div class="v-btn__content">7</div>
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline accent--text">
                         <div class="v-btn__content">8</div>
                       </button>
                     </td>
@@ -797,7 +797,9 @@ exports[`AllComponents c-form renders correctly 1`] = `
 
 exports[`AllComponents c-gallery renders correctly 1`] = `
 <div grid-list-undefined="true" data-type="gallery" data-group="widgets" data-uid="15" class="c-element c-gallery  v-card" style="height:undefined;">
-  <div class="container"></div>
+  <div class="container">
+    <div class="layout row wrap"></div>
+  </div>
 </div>
 `;
 
@@ -986,12 +988,12 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline accent--text">
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
                     <div class="v-btn__content">7</div>
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline accent--text">
                     <div class="v-btn__content">8</div>
                   </button>
                 </td>

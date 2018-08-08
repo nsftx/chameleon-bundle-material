@@ -96,19 +96,19 @@ export default {
   },
   render(createElement) {
     const data = {
-      attrs: {
-        [`grid-list-${this.config.contentSpacing}`]: true,
-        fluid: this.config.gridMaxSize,
+      props: {
+        dark: this.isThemeDark,
+        light: this.isThemeLight,
+        color: this.config.color,
+        flat: true,
       },
     };
     const children = createElement(
       'v-container',
       {
-        props: {
-          dark: this.isThemeDark,
-          light: this.isThemeLight,
-          color: this.config.color,
-          flat: true,
+        attrs: {
+          [`grid-list-${this.config.contentSpacing}`]: true,
+          fluid: this.config.gridMaxSize,
         },
       },
       [
