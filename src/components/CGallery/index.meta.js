@@ -12,6 +12,10 @@ export default {
   name: 'Gallery',
   icon: 'view_module',
   optionGroups: {
+    gallery: {
+      key: 'gallery',
+      name: 'Gallery',
+    },
     carousel: {
       key: 'carousel',
       name: 'Carousel',
@@ -42,44 +46,6 @@ export default {
       priority: 1,
     },
     theme: true,
-    itemHeight: {
-      type: 'input',
-      name: 'Item Height',
-      value: '100px',
-      priority: 4,
-    },
-    gridSize: {
-      type: 'select',
-      name: 'Type of grid system',
-      value: 4,
-      items: [
-        {
-          name: 'One',
-          value: 12,
-        },
-        {
-          name: 'Two',
-          value: 6,
-        },
-        {
-          name: 'Three',
-          value: 4,
-        },
-        {
-          name: 'Four',
-          value: 3,
-        },
-        {
-          name: 'Six',
-          value: 2,
-        },
-        {
-          name: 'Twelve',
-          value: 1,
-        },
-      ],
-      priority: 5,
-    },
     contentSpacing: {
       type: 'select',
       name: 'Content Spacing',
@@ -106,38 +72,124 @@ export default {
           value: 'xl',
         },
       ],
-      priority: 6,
+      priority: 4,
     },
     gridMaxSize: {
       type: 'check',
       name: 'Max Size',
       value: false,
-      priority: 7,
+      priority: 5,
     },
     imageSource: {
       type: 'imageSource',
       group: 'data',
       name: 'Image Source',
       value: '',
-      priority: 8,
     },
     dataSource: {
       type: 'dataSource',
       group: 'data',
       name: 'Data Source',
       value: null,
-      priority: 9,
       schema: itemInterface,
+    },
+    gallery: {
+      type: 'group',
+      group: 'gallery',
+      itemHeight: {
+        type: 'input',
+        name: 'Item Height',
+        value: '100px',
+      },
+      gridSize: {
+        type: 'select',
+        name: 'Type of grid system',
+        value: 4,
+        items: [
+          {
+            name: 'One',
+            value: 12,
+          },
+          {
+            name: 'Two',
+            value: 6,
+          },
+          {
+            name: 'Three',
+            value: 4,
+          },
+          {
+            name: 'Four',
+            value: 3,
+          },
+          {
+            name: 'Six',
+            value: 2,
+          },
+          {
+            name: 'Twelve',
+            value: 1,
+          },
+        ],
+      },
     },
     carousel: {
       type: 'group',
       group: 'carousel',
-      enable: {
+      enabled: {
         type: 'check',
         name: 'Enable',
         value: false,
       },
-      priority: 10,
+      cycle: {
+        type: 'check',
+        name: 'Should Cycle Through Images',
+        value: true,
+      },
+      hideControls: {
+        type: 'check',
+        name: 'Hide The Navigation Controls',
+        value: false,
+      },
+      hideDelimiters: {
+        type: 'check',
+        name: 'Hide Panel With Carousel Delimiters',
+        value: false,
+      },
+      prevIcon: {
+        type: 'iconSource',
+        name: 'Displayed Icon For Pagination Previous Item',
+        value: 'prev',
+      },
+      nextIcon: {
+        type: 'iconSource',
+        name: 'Displayed Icon For Pagination Next Item',
+        value: 'next',
+      },
+      delimiterIcon: {
+        type: 'iconSource',
+        name: 'Icon For Carousel Delimiter',
+        value: 'delimiter',
+      },
+      interval: {
+        type: 'select',
+        name: 'The Duration Between Image Cycles',
+        value: 6000,
+        items: [
+          {
+            name: 'Default',
+            value: 6000,
+          },
+          {
+            name: 'Slow',
+            value: 10000,
+          },
+          {
+            name: 'Fast',
+            value: 2000,
+          },
+        ],
+      },
     },
   },
 };

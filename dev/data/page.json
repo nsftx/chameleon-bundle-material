@@ -1040,6 +1040,10 @@
                     {
                       "type": "gallery",
                       "name": "Gallery widget",
+                      "carousel": {
+                        "enabled": false,
+                        "cycle": true
+                      },
                       "itemHeight": "",
                       "gridSize": 3,
                       "gridMaxSize": true,

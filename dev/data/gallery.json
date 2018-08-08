@@ -9,6 +9,13 @@
           "name": "gallery-1",
           "color": "",
           "theme": "",
+          "carousel": {
+            "enabled": true,
+            "cycle": true,
+            "hideControls": false,
+            "hideDelimiters": true,
+            "interval": 20000
+          },
           "gridSize": 2,
           "gridMaxSize": false,
           "contentSpacing": "xl",

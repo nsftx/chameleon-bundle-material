@@ -21,6 +21,64 @@ const getUrlValidator = (item) => {
   return urlValidator(src);
 };
 
+const getGalleryElement = (createElement, context, imageSource) => {
+  const carousel = context.config.carousel;
+
+  if (carousel.enabled) {
+    const data = {
+      props: {
+        cycle: carousel.cycle,
+        nextIcon: carousel.nextIcon,
+        prevIcon: carousel.prevIcon,
+        delimiterIcon: carousel.delimiterIcon,
+        hideControls: carousel.hideControls,
+        hideDelimiters: carousel.hideDelimiters,
+        interval: carousel.interval,
+      },
+    };
+    return createElement('v-carousel',
+      data,
+      [
+        map(imageSource, (item, i) => createElement(
+          'v-carousel-item',
+          {
+            attrs: {
+              key: i,
+              src: getUrlValidator(item) ? item.source || item : parseImageSrc(context, item),
+            },
+          },
+        )),
+      ]);
+  }
+  return map(imageSource, (item, i) => createElement(
+    'v-flex',
+    {
+      attrs: {
+        [`xs${context.config.gridSize}`]: true,
+      },
+      props: {
+        key: i,
+      },
+    },
+    [
+      createElement('v-card', {
+        props: {
+          flat: true,
+          tile: true,
+        },
+      },
+        [
+          createElement('v-card-media', {
+            attrs: {
+              src: getUrlValidator(item) ? item.source || item : parseImageSrc(context, item),
+              height: context.config.itemHeight || context.defaultHeight,
+            },
+          }),
+        ]),
+    ],
+  ));
+};
+
 const getImages = (createElement, context) => {
   // TODO refactor this and use diferent methods for imageSource and dataSource
   const items = context.config.imageSource || context.items;
@@ -35,33 +93,7 @@ const getImages = (createElement, context) => {
         },
       },
       [
-        map(imageSource, (item, i) => createElement(
-          'v-flex',
-          {
-            attrs: {
-              [`xs${context.config.gridSize}`]: true,
-            },
-            props: {
-              key: i,
-            },
-          },
-          [
-            createElement('v-card', {
-              props: {
-                flat: true,
-                tile: true,
-              },
-            },
-              [
-                createElement('v-card-media', {
-                  attrs: {
-                    src: getUrlValidator(item) ? item.source || item : parseImageSrc(context, item),
-                    height: context.config.itemHeight || context.defaultHeight,
-                  },
-                }),
-              ]),
-          ],
-        )),
+        getGalleryElement(createElement, context, imageSource),
       ]);
   }
   return [];
