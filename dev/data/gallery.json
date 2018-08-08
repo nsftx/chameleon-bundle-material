@@ -9,11 +9,26 @@
           "name": "gallery-1",
           "color": "",
           "theme": "",
+          "gridSize": 2,
+          "gridMaxSize": false,
+          "contentSpacing": "xl",
           "dataSource": {
             "items": [
-              "https://picsum.photos/150/300?image=58",
-              "https://picsum.photos/150/300?image=63",
-              "https://picsum.photos/150/300?image=91"
+              {
+                "src": "https://picsum.photos/150/300?image=58"
+              },
+              {
+                "src": "https://picsum.photos/150/300?image=63"
+              },
+              {
+                "src": "https://picsum.photos/150/300?image=71"
+              },
+              {
+                "src": "https://picsum.photos/150/300?image=58"
+              },
+              {
+                "src": "https://picsum.photos/150/300?image=63"
+              }
             ]
           }
         }

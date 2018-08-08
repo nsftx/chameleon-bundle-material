@@ -1040,13 +1040,21 @@
                     {
                       "type": "gallery",
                       "name": "Gallery widget",
-                      "dataSource": {
-                        "items": [
-                          "https://picsum.photos/150/300?image=58",
-                          "https://picsum.photos/150/300?image=63",
-                          "https://picsum.photos/150/300?image=71"
-                        ]
-                      }
+                      "itemHeight": "",
+                      "gridSize": 3,
+                      "gridMaxSize": true,
+                      "contentSpacing": "sm",
+                      "imageSource": [
+                        "https://picsum.photos/150/300?image=58",
+                        "https://picsum.photos/150/300?image=63",
+                        "https://picsum.photos/150/300?image=71",
+                        "https://picsum.photos/150/300?image=58",
+                        "https://picsum.photos/150/300?image=63",
+                        "https://picsum.photos/150/300?image=71",
+                        "https://picsum.photos/150/300?image=58",
+                        "https://picsum.photos/150/300?image=63",
+                        "https://picsum.photos/150/300?image=71"
+                      ]
                     }
                   ]
                 }

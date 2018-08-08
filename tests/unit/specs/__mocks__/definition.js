@@ -65,6 +65,12 @@ export default {
       group: 'widgets',
     },
   },
+  'c-gallery': {
+    _schema: {
+      type: 'gallery',
+      group: 'widgets',
+    },
+  },
   'c-hlist': {
     _schema: {
       type: 'hlist',
