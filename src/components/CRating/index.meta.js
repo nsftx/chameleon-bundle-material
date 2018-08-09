@@ -59,7 +59,7 @@ export default {
       priority: 7,
     },
     icon: {
-      type: 'input',
+      type: 'iconSource',
       name: 'Rating Icon',
       value: 'star',
       priority: 5,

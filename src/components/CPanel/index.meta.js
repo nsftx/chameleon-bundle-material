@@ -22,6 +22,12 @@ export default {
       value: null,
       priority: 3,
     },
+    height: {
+      type: 'input',
+      name: 'Height',
+      value: null,
+      priority: 4,
+    },
     theme: true,
   },
 };

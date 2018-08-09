@@ -247,10 +247,8 @@ export default {
       'v-card',
       {
         props: {
-          dark: this.isThemeDark,
-          light: this.isThemeLight,
-          color: this.config.color,
           flat: this.config.flat,
+          color: this.config.color,
         },
       },
       table,

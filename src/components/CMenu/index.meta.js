@@ -79,6 +79,11 @@ export default {
       value: null,
       priority: 10,
     },
+    icon: {
+      type: 'iconSource',
+      name: 'Icon',
+      value: null,
+    },
     autoGenerate: {
       type: 'check',
       group: 'data',

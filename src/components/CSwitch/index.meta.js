@@ -34,13 +34,13 @@ export default {
       priority: 2,
     },
     prependIcon: {
-      type: 'input',
+      type: 'iconSource',
       name: 'Prepend Icon',
       value: null,
       priority: 4,
     },
     appendIcon: {
-      type: 'input',
+      type: 'iconSource',
       name: 'Append Icon',
       value: null,
       priority: 5,

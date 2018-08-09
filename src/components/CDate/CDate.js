@@ -15,15 +15,13 @@ const getPropRequired = (config) => {
 
 const getMenuProps = (context) => {
   const config = context.config;
-  const width = '290px';
 
   const props = {
     lazy: false,
     transition: isNil(config.transition) ? 'scale-transition' : config.transition,
     fullWidth: true,
-    maxWidth: width,
-    minWidth: width,
     closeOnContentClick: false,
+    minWidth: 'auto',
   };
 
   return props;
@@ -93,6 +91,43 @@ const getPickerProps = (context) => {
   return props;
 };
 
+const getPicker = (context, createElement) => {
+  const self = context;
+
+  return createElement(
+    self.getElementTag('picker'),
+    {
+      props: getPickerProps(context),
+      on: {
+        input(value) {
+          self.value = value;
+          self.sendToEventBus('Changed', { value });
+        },
+        formattedInput(value) {
+          self.formattedValue = value;
+        },
+      },
+    },
+  );
+};
+
+const getTextField = (context, createElement) =>
+  (context.calendar ? false : createElement(
+    'v-text-field',
+    {
+      slot: 'activator',
+      attrs: getTextAttrs(context),
+      props: getTextProps(context),
+      on: {
+        input(value) {
+          context.sendToEventBus('Changed', { value });
+        },
+      },
+    },
+  ));
+
+const getPickerType = context => (context.calendar ? 'div' : 'v-menu');
+
 export default {
   extends: Element,
   mixins: [
@@ -104,49 +139,28 @@ export default {
       formattedValue: null,
     };
   },
+  computed: {
+    calendar() {
+      return this.config.calendar;
+    },
+  },
   render(createElement) {
     const self = this;
 
-    const data = {
+    const data = () => (self.config.calendar ? {} : {
       props: getMenuProps(this),
       on: {
         input(value) {
           self.sendToEventBus('VisibilityChanged', { visible: value });
         },
       },
-    };
+    });
 
     const children = [
-      createElement(
-        'v-text-field',
-        {
-          slot: 'activator',
-          attrs: getTextAttrs(this),
-          props: getTextProps(this),
-          on: {
-            input(value) {
-              self.sendToEventBus('Changed', { value });
-            },
-          },
-        },
-      ),
-      createElement(
-        this.getElementTag('picker'),
-        {
-          props: getPickerProps(this),
-          on: {
-            input(value) {
-              self.value = value;
-              self.sendToEventBus('Changed', { value });
-            },
-            formattedInput(value) {
-              self.formattedValue = value;
-            },
-          },
-        },
-      ),
+      getTextField(self, createElement),
+      getPicker(self, createElement),
     ];
 
-    return this.renderElement('v-menu', data, children);
+    return this.renderElement(getPickerType(self), data(), children);
   },
 };

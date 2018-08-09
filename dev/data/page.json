@@ -24,6 +24,8 @@
           "color": "",
           "theme": "",
           "flat": false,
+          "height": "",
+          "width": "",
           "elements": [
             {
               "type": "tabs",
@@ -450,9 +452,9 @@
                           "hint": null,
                           "tooltip": null,
                           "clearable": true,
-                          "fullWidth": true,
                           "color": "red",
                           "theme": "dark",
+                          "calendar": false,
                           "validation": {
                             "required": true,
                             "minDate": "",
@@ -474,10 +476,9 @@
                           "hint": null,
                           "tooltip": null,
                           "clearable": true,
-                          "fullWidth": false,
-                          "width": "360",
                           "color": "red",
                           "theme": "dark",
+                          "calendar": true,
                           "validation": {
                             "required": true,
                             "minDate": "",
@@ -630,6 +631,8 @@
                     {
                       "name": "shoppingTable",
                       "type": "table",
+                      "color": "",
+                      "theme": "",
                       "dataSource": {
                         "schema": [
                           {
