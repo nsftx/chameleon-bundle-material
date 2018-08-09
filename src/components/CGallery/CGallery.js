@@ -15,14 +15,23 @@ const parseImageSrc = (context, item) => {
   return `${src}/${item}`;
 };
 
+const toggleCarousel = (context, value) => {
+  const self = context;
+  self.config.carousel.enabled = value;
+};
+
 const getUrlValidator = (item) => {
   if (isNil(item)) return true;
-  const src = item.source || item;
+  const src = item.image || item.thumb || item;
   return urlValidator(src);
 };
 
+const getCarouselSource = item => item.image || item.thumb || item;
+const getGallerySource = item => item.thumb || item.image || item;
+
 const getGalleryElement = (createElement, context, imageSource) => {
-  const carousel = context.config.carousel;
+  const self = context;
+  const carousel = self.config.carousel;
 
   if (carousel.enabled) {
     const data = {
@@ -34,6 +43,7 @@ const getGalleryElement = (createElement, context, imageSource) => {
         hideControls: carousel.hideControls,
         hideDelimiters: carousel.hideDelimiters,
         interval: carousel.interval,
+        value: self.target,
       },
     };
     return createElement('v-carousel',
@@ -44,10 +54,29 @@ const getGalleryElement = (createElement, context, imageSource) => {
           {
             attrs: {
               key: i,
-              src: getUrlValidator(item) ? item.source || item : parseImageSrc(context, item),
+              src: getUrlValidator(item) ?
+                getCarouselSource(item) : parseImageSrc(context, item),
             },
           },
         )),
+        createElement('v-btn', {
+          props: {
+            flat: true,
+            dark: true,
+          },
+          staticClass: 'pa-0 ma-0',
+          style: {
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            top: 0,
+          },
+          on: {
+            click() {
+              toggleCarousel(self, false);
+            },
+          },
+        }),
       ]);
   }
   return map(imageSource, (item, i) => createElement(
@@ -70,8 +99,18 @@ const getGalleryElement = (createElement, context, imageSource) => {
         [
           createElement('v-card-media', {
             attrs: {
-              src: getUrlValidator(item) ? item.source || item : parseImageSrc(context, item),
+              src: getUrlValidator(item) ? getGallerySource(item) : parseImageSrc(context, item),
               height: context.config.gallery.itemHeight || context.defaultHeight,
+              id: i,
+            },
+            style: {
+              cursor: 'pointer',
+            },
+            on: {
+              click(e) {
+                self.target = Number(e.target.parentElement.id);
+                toggleCarousel(context, true);
+              },
             },
           }),
         ]),
@@ -80,7 +119,6 @@ const getGalleryElement = (createElement, context, imageSource) => {
 };
 
 const getImages = (createElement, context) => {
-  // TODO refactor this and use diferent methods for imageSource and dataSource
   const items = context.config.imageSource || context.items;
   const imageSource = isArray(items) ? items : [items];
 
@@ -104,6 +142,7 @@ export default {
   data() {
     return {
       items: [],
+      target: 0,
       defaultHeight: '100px',
     };
   },

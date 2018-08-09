@@ -1040,12 +1040,14 @@
                     {
                       "type": "gallery",
                       "name": "Gallery widget",
+                      "gallery": {
+                        "gridSize": 3,
+                        "itemHeight": ""
+                      },
                       "carousel": {
                         "enabled": false,
                         "cycle": true
                       },
-                      "itemHeight": "",
-                      "gridSize": 3,
                       "gridMaxSize": true,
                       "contentSpacing": "sm",
                       "imageSource": [

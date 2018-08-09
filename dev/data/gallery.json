@@ -13,31 +13,68 @@
             "enabled": false,
             "cycle": true,
             "hideControls": false,
-            "hideDelimiters": true,
+            "hideDelimiters": false,
             "interval": 20000
           },
-         "gallery": {
-          "gridSize": 4,
-          "itemHeight": "200px"
-         },
+          "gallery": {
+            "gridSize": 4,
+            "itemHeight": "200px"
+          },
           "gridMaxSize": false,
           "contentSpacing": "xl",
           "dataSource": {
             "items": [
               {
-                "source": "https://picsum.photos/150/300?image=58"
+                "image": "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
+                "thumb": ""
               },
               {
-                "source": "https://picsum.photos/150/300?image=63"
+                "image": "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
+                "thumb": "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
               },
               {
-                "source": "https://picsum.photos/150/300?image=71"
+                "image": "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
+                "thumb": ""
               },
               {
-                "source": "https://picsum.photos/150/300?image=58"
+                "image": "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
+                "thumb": ""
               },
               {
-                "source": "https://picsum.photos/150/300?image=63"
+                "image": "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
+                "thumb": ""
+              },
+              {
+                "image": "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
+                "thumb": "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+              },
+              {
+                "image": "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
+                "thumb": ""
+              },
+              {
+                "image": "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
+                "thumb": ""
+              },
+              {
+                "image": "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
+                "thumb": ""
+              },
+              {
+                "image": "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
+                "thumb": "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+              },
+              {
+                "image": "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
+                "thumb": ""
+              },
+              {
+                "image": "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
+                "thumb": ""
+              },
+              {
+                "image": "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
+                "thumb": ""
               }
             ]
           }

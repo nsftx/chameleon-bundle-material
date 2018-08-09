@@ -1,8 +1,13 @@
 const itemInterface = [
   {
-    name: 'source',
+    name: 'image',
     type: 'String',
-    label: 'Source',
+    label: 'Image',
+  },
+  {
+    name: 'thumb',
+    type: 'String',
+    label: 'Thumb',
   },
 ];
 
@@ -159,17 +164,17 @@ export default {
       prevIcon: {
         type: 'iconSource',
         name: 'Displayed Icon For Pagination Previous Item',
-        value: 'prev',
+        value: 'arrow_back',
       },
       nextIcon: {
         type: 'iconSource',
         name: 'Displayed Icon For Pagination Next Item',
-        value: 'next',
+        value: 'arrow_forward',
       },
       delimiterIcon: {
         type: 'iconSource',
         name: 'Icon For Carousel Delimiter',
-        value: 'delimiter',
+        value: 'adjust',
       },
       interval: {
         type: 'select',
