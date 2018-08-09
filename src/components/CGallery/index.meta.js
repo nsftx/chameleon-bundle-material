@@ -143,7 +143,7 @@ export default {
       group: 'carousel',
       enabled: {
         type: 'check',
-        name: 'Enable',
+        name: 'Always Enabled',
         value: false,
       },
       cycle: {

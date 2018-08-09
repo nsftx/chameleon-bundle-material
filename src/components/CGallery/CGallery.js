@@ -17,7 +17,7 @@ const parseImageSrc = (context, item) => {
 
 const toggleCarousel = (context, value) => {
   const self = context;
-  self.config.carousel.enabled = value;
+  self.active = value;
 };
 
 const getUrlValidator = (item) => {
@@ -29,11 +29,37 @@ const getUrlValidator = (item) => {
 const getCarouselSource = item => item.image || item.thumb || item;
 const getGallerySource = item => item.thumb || item.image || item;
 
+const getCloseBtnOverlay = (createElement, context) => {
+  const enabled = context.config.carousel.enabled;
+  if (!enabled) {
+    return createElement('v-btn', {
+      props: {
+        flat: true,
+        dark: true,
+      },
+      staticClass: 'pa-0 ma-0',
+      style: {
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        top: 0,
+      },
+      on: {
+        click() {
+          toggleCarousel(context, false);
+        },
+      },
+    });
+  }
+  return false;
+};
+
 const getGalleryElement = (createElement, context, imageSource) => {
   const self = context;
   const carousel = self.config.carousel;
+  const active = self.active || self.config.carousel.enabled;
 
-  if (carousel.enabled) {
+  if (active) {
     const data = {
       props: {
         cycle: carousel.cycle,
@@ -59,24 +85,7 @@ const getGalleryElement = (createElement, context, imageSource) => {
             },
           },
         )),
-        createElement('v-btn', {
-          props: {
-            flat: true,
-            dark: true,
-          },
-          staticClass: 'pa-0 ma-0',
-          style: {
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            top: 0,
-          },
-          on: {
-            click() {
-              toggleCarousel(self, false);
-            },
-          },
-        }),
+        getCloseBtnOverlay(createElement, self),
       ]);
   }
   return map(imageSource, (item, i) => createElement(
@@ -143,6 +152,7 @@ export default {
     return {
       items: [],
       target: 0,
+      active: false,
       defaultHeight: '100px',
     };
   },
