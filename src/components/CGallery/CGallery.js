@@ -57,7 +57,7 @@ const getCloseBtnOverlay = (createElement, context) => {
 const getGalleryElement = (createElement, context, imageSource) => {
   const self = context;
   const carousel = self.config.carousel;
-  const active = self.active || self.config.carousel.enabled;
+  const active = self.active || (self.config.carousel && self.config.carousel.enabled);
 
   if (active) {
     const data = {
