@@ -96,7 +96,7 @@ exports[`AllComponents c-date renders correctly 1`] = `
     </div>
   </div>
   <div class="v-menu__content" style="max-height:auto;min-width:auto;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
-    <div data-type="date" data-group="inputs" data-uid="42" class="c-element c-picker d-inline-block v-card v-card--flat" style="height:undefined;">
+    <div data-type="date" data-group="inputs" data-uid="43" class="c-element c-picker d-inline-block v-card v-card--flat" style="height:undefined;">
       <div class="v-picker v-card v-picker--date">
         <div class="v-picker__title primary">
           <div class="v-date-picker-title">
@@ -343,7 +343,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
     </div>
   </div>
   <div class="v-menu__content" style="max-height:auto;min-width:auto;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
-    <div data-type="date-range" data-group="inputs" data-uid="43" class="c-element c-picker d-inline-block mr-1 v-card v-card--flat" style="height:undefined;">
+    <div data-type="date-range" data-group="inputs" data-uid="44" class="c-element c-picker d-inline-block mr-1 v-card v-card--flat" style="height:undefined;">
       <div class="v-picker v-card v-picker--date">
         <div class="v-picker__title primary">
           <div class="v-date-picker-title">
@@ -557,7 +557,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
         </div>
       </div>
     </div>
-    <div data-type="date-range" data-group="inputs" data-uid="44" class="c-element c-picker d-inline-block v-card v-card--flat" style="height:undefined;">
+    <div data-type="date-range" data-group="inputs" data-uid="45" class="c-element c-picker d-inline-block v-card v-card--flat" style="height:undefined;">
       <div class="v-picker v-card v-picker--date">
         <div class="v-picker__title primary">
           <div class="v-date-picker-title">
@@ -793,16 +793,24 @@ exports[`AllComponents c-form renders correctly 1`] = `
 </div>
 `;
 
+exports[`AllComponents c-gallery renders correctly 1`] = `
+<div data-type="gallery" data-group="widgets" data-uid="15" class="c-element c-gallery  v-card v-card--flat" style="height:undefined;">
+  <div class="container grid-list-undefined">
+    <div class="layout row wrap"></div>
+  </div>
+</div>
+`;
+
 exports[`AllComponents c-hlist renders correctly 1`] = `
-<div data-type="hlist" data-group="containers" data-uid="15" class="c-element c-hlist  c-element-parent  v-card" style="height:undefined;">
+<div data-type="hlist" data-group="containers" data-uid="16" class="c-element c-hlist  c-element-parent  v-card" style="height:undefined;">
   <div class="c-element-children c-hlist-items" style="height:100%;"></div>
 </div>
 `;
 
-exports[`AllComponents c-html renders correctly 1`] = `<div data-type="html" data-group="widgets" data-uid="16" class="c-element c-html ">undefined</div>`;
+exports[`AllComponents c-html renders correctly 1`] = `<div data-type="html" data-group="widgets" data-uid="17" class="c-element c-html ">undefined</div>`;
 
 exports[`AllComponents c-image renders correctly 1`] = `
-<div data-type="image" data-group="widgets" data-uid="17" class="c-element c-image ">
+<div data-type="image" data-group="widgets" data-uid="18" class="c-element c-image ">
   <div style="width:120px;height:120px;">
     <i aria-hidden="true" class="v-icon material-icons" style="width:120px;height:120px;font-size:40px;">image</i>
   </div>
@@ -810,7 +818,7 @@ exports[`AllComponents c-image renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-list renders correctly 1`] = `
-<div data-type="list" data-group="widgets" data-uid="18" class="c-element c-list  v-card" style="height:undefined;">
+<div data-type="list" data-group="widgets" data-uid="19" class="c-element c-list  v-card" style="height:undefined;">
   <div class="v-data-iterator">
     <div class="layout">
       <div class="text-xs-center" style="width:100%;">No data available</div>
@@ -893,16 +901,16 @@ exports[`AllComponents c-list renders correctly 1`] = `
 </div>
 `;
 
-exports[`AllComponents c-map renders correctly 1`] = `<div data-type="map" data-group="widgets" data-uid="19" class="c-element c-map " style="width:100%;height:400px;"></div>`;
+exports[`AllComponents c-map renders correctly 1`] = `<div data-type="map" data-group="widgets" data-uid="20" class="c-element c-map " style="width:100%;height:400px;"></div>`;
 
 exports[`AllComponents c-panel renders correctly 1`] = `
-<div data-type="panel" data-group="containers" data-uid="20" class="c-element c-panel  c-element-parent  v-card" style="height:undefined;width:undefined;">
+<div data-type="panel" data-group="containers" data-uid="21" class="c-element c-panel  c-element-parent  v-card" style="height:undefined;width:undefined;">
   <div class="c-element-children c-panel-items" style="width:100%;height:100%;"></div>
 </div>
 `;
 
 exports[`AllComponents c-picker renders correctly 1`] = `
-<div data-type="picker" data-group="inputs" data-uid="22" class="c-element c-picker d-inline-block v-card v-card--flat" style="height:undefined;">
+<div data-type="picker" data-group="inputs" data-uid="23" class="c-element c-picker d-inline-block v-card v-card--flat" style="height:undefined;">
   <div class="v-picker v-card v-picker--date">
     <div class="v-picker__title primary">
       <div class="v-date-picker-title">
@@ -1119,13 +1127,13 @@ exports[`AllComponents c-picker renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-placeholder renders correctly 1`] = `
-<div data-type="placeholder" data-group="containers" data-uid="21" class="c-element c-placeholder ">
+<div data-type="placeholder" data-group="containers" data-uid="22" class="c-element c-placeholder ">
   <!---->
 </div>
 `;
 
 exports[`AllComponents c-radio-list renders correctly 1`] = `
-<div data-type="radio-list" data-group="inputs" data-uid="23" class="v-input c-element c-radio-list  v-input--selection-controls v-input--radio-group v-input--radio-group--column">
+<div data-type="radio-list" data-group="inputs" data-uid="24" class="v-input c-element c-radio-list  v-input--selection-controls v-input--radio-group v-input--radio-group--column">
   <div class="v-input__control">
     <div class="v-input__slot" style="height:auto;">
       <div role="radiogroup" class="v-input--radio-group__input"></div>
@@ -1138,7 +1146,7 @@ exports[`AllComponents c-radio-list renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-rating renders correctly 1`] = `
-<div data-type="rating" data-group="inputs" data-uid="24" class="c-element c-rating  v-card v-card--flat text-xs-center" style="height:undefined;">
+<div data-type="rating" data-group="inputs" data-uid="25" class="c-element c-rating  v-card v-card--flat text-xs-center" style="height:undefined;">
   <div></div>
   <div class="v-input d-inline-block">
     <div class="v-input__control">
@@ -1159,13 +1167,13 @@ exports[`AllComponents c-rating renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-rich-text renders correctly 1`] = `
-<div data-type="rich-text" data-group="inputs" data-uid="25" class="c-element c-rich-text  v-card v-card--flat mb-3" style="height:undefined;">
+<div data-type="rich-text" data-group="inputs" data-uid="26" class="c-element c-rich-text  v-card v-card--flat mb-3" style="height:undefined;">
   <div></div>
 </div>
 `;
 
 exports[`AllComponents c-select renders correctly 1`] = `
-<div data-type="select" data-group="inputs" data-uid="26" class="c-element c-select ">
+<div data-type="select" data-group="inputs" data-uid="27" class="c-element c-select ">
   <div role="combobox" class="v-input v-text-field v-select">
     <div class="v-input__control">
       <div class="v-input__slot" style="height:undefined;">
@@ -1208,7 +1216,7 @@ exports[`AllComponents c-select renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-select-list renders correctly 1`] = `
-<div data-type="select-list" data-group="inputs" data-uid="27" class="c-element c-select-list ">
+<div data-type="select-list" data-group="inputs" data-uid="28" class="c-element c-select-list ">
   <div role="combobox" class="v-input v-text-field v-select v-select--chips">
     <div class="v-input__control">
       <div class="v-input__slot" style="height:undefined;">
@@ -1251,7 +1259,7 @@ exports[`AllComponents c-select-list renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-slider renders correctly 1`] = `
-<div data-type="slider" data-group="inputs" data-uid="28" class="v-input c-element c-slider  v-input--slider">
+<div data-type="slider" data-group="inputs" data-uid="29" class="v-input c-element c-slider  v-input--slider">
   <div class="v-input__control">
     <div class="v-input__slot" style="height:undefined;">
       <div class="v-slider">
@@ -1273,11 +1281,11 @@ exports[`AllComponents c-slider renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-switch renders correctly 1`] = `
-<div data-type="switch" data-group="inputs" data-uid="29" class="v-input c-element c-switch  v-input--selection-controls v-input--switch">
+<div data-type="switch" data-group="inputs" data-uid="30" class="v-input c-element c-switch  v-input--selection-controls v-input--switch">
   <div class="v-input__control">
     <div class="v-input__slot" style="height:undefined;">
       <div class="v-input--selection-controls__input">
-        <input aria-checked="false" role="checkbox" type="checkbox" data-type="switch" data-group="inputs" data-uid="29">
+        <input aria-checked="false" role="checkbox" type="checkbox" data-type="switch" data-group="inputs" data-uid="30">
         <div class="v-input--selection-controls__ripple"></div>
         <div class="v-input--switch__track"></div>
         <div class="v-input--switch__thumb"></div>
@@ -1291,15 +1299,15 @@ exports[`AllComponents c-switch renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-tab-item renders correctly 1`] = `
-<div data-type="tab-item" data-group="container-items" data-uid="30" id="30" class="v-tabs__content c-element c-tab-item  c-element-parent " style="display:none;">
-  <div data-type="tab-item" data-group="container-items" data-uid="30" class="v-card" style="height:undefined;background-color:undefined;">
+<div data-type="tab-item" data-group="container-items" data-uid="31" id="31" class="v-tabs__content c-element c-tab-item  c-element-parent " style="display:none;">
+  <div data-type="tab-item" data-group="container-items" data-uid="31" class="v-card" style="height:undefined;background-color:undefined;">
     <div class="v-card__text c-element-children c-tab-item-items"></div>
   </div>
 </div>
 `;
 
 exports[`AllComponents c-table renders correctly 1`] = `
-<div data-type="table" data-group="widgets" data-uid="31" class="c-element c-table  v-card" style="height:undefined;">
+<div data-type="table" data-group="widgets" data-uid="32" class="c-element c-table  v-card" style="height:undefined;">
   <div>
     <div class="v-table__overflow">
       <table class="v-datatable v-table">
@@ -1389,7 +1397,7 @@ exports[`AllComponents c-table renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-tabs renders correctly 1`] = `
-<div data-type="tabs" data-group="containers" data-uid="32" class="v-tabs c-element c-tabs  c-element-parent ">
+<div data-type="tabs" data-group="containers" data-uid="33" class="v-tabs c-element c-tabs  c-element-parent ">
   <div class="v-tabs__bar">
     <!---->
     <div class="v-tabs__wrapper">
@@ -1406,7 +1414,7 @@ exports[`AllComponents c-tabs renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-tags renders correctly 1`] = `
-<div data-type="tags" data-group="inputs" data-uid="33" class="c-element c-tags ">
+<div data-type="tags" data-group="inputs" data-uid="34" class="c-element c-tags ">
   <div role="combobox" class="v-input v-text-field v-select v-select--chips">
     <div class="v-input__control">
       <div class="v-input__slot" style="height:undefined;">
@@ -1449,7 +1457,7 @@ exports[`AllComponents c-tags renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-text renders correctly 1`] = `
-<div data-type="text" data-group="inputs" data-uid="34" class="c-element c-text ">
+<div data-type="text" data-group="inputs" data-uid="35" class="c-element c-text ">
   <div class="v-input v-text-field">
     <div class="v-input__control">
       <div class="v-input__slot" style="height:undefined;">
@@ -1468,7 +1476,7 @@ exports[`AllComponents c-text renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-text-area renders correctly 1`] = `
-<div data-type="text-area" data-group="inputs" data-uid="35" class="c-element c-text-area ">
+<div data-type="text-area" data-group="inputs" data-uid="36" class="c-element c-text-area ">
   <div class="v-input v-textarea v-text-field">
     <div class="v-input__control">
       <div class="v-input__slot" style="height:undefined;">
@@ -1487,21 +1495,21 @@ exports[`AllComponents c-text-area renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-video renders correctly 1`] = `
-<div data-type="video" data-group="widgets" data-uid="36" class="c-element c-video " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
+<div data-type="video" data-group="widgets" data-uid="37" class="c-element c-video " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
   <video width="100%" height="100%" style="position:absolute;top:0;left:0;"></video>
 </div>
 `;
 
 exports[`AllComponents c-video-stream renders correctly 1`] = `
-<div data-type="video-stream" data-group="widgets" data-uid="37" class="c-element c-video-stream " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
+<div data-type="video-stream" data-group="widgets" data-uid="38" class="c-element c-video-stream " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
   <img width="100%" height="100%" style="position:absolute;top:0;left:0;">
 </div>
 `;
 
 exports[`AllComponents c-vlist renders correctly 1`] = `
-<div data-type="vlist" data-group="containers" data-uid="38" class="c-element c-vlist  v-card" style="height:undefined;background-color:undefined;">
+<div data-type="vlist" data-group="containers" data-uid="39" class="c-element c-vlist  v-card" style="height:undefined;background-color:undefined;">
   <div class="c-element-children c-vlist-items"></div>
 </div>
 `;
 
-exports[`AllComponents c-youtube renders correctly 1`] = `<div data-type="youtube" data-group="widgets" data-uid="39" class="c-element c-youtube "></div>`;
+exports[`AllComponents c-youtube renders correctly 1`] = `<div data-type="youtube" data-group="widgets" data-uid="40" class="c-element c-youtube "></div>`;

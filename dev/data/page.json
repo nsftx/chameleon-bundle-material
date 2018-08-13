@@ -1031,6 +1031,38 @@
                       "libraries": "places"
                     }
                   ]
+                },
+                {
+                  "type": "tab-item",
+                  "icon": "view_module",
+                  "title": "Gallery",
+                  "elements": [
+                    {
+                      "type": "gallery",
+                      "name": "Gallery widget",
+                      "gallery": {
+                        "gridSize": 3,
+                        "itemHeight": ""
+                      },
+                      "carousel": {
+                        "enabled": false,
+                        "cycle": true
+                      },
+                      "gridMaxSize": true,
+                      "contentSpacing": "sm",
+                      "imageSource": [
+                        "https://picsum.photos/150/300?image=58",
+                        "https://picsum.photos/150/300?image=63",
+                        "https://picsum.photos/150/300?image=71",
+                        "https://picsum.photos/150/300?image=58",
+                        "https://picsum.photos/150/300?image=63",
+                        "https://picsum.photos/150/300?image=71",
+                        "https://picsum.photos/150/300?image=58",
+                        "https://picsum.photos/150/300?image=63",
+                        "https://picsum.photos/150/300?image=71"
+                      ]
+                    }
+                  ]
                 }
               ]
             }

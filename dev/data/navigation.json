@@ -82,6 +82,12 @@
             "icon": "menu",
             "path": "/menu",
             "name": "menu"
+          },
+          {
+            "title": "Gallery",
+            "icon": "view_module",
+            "path": "/gallery",
+            "name": "gallery"
           }
         ]
       }
