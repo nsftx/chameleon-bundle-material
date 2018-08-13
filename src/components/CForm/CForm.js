@@ -47,6 +47,7 @@ const getFormInputs = (context, createElement) => map(context.getFields(),
       props: {
         definition: field,
       },
+      staticClass: `${context.$options.name}-items`,
       on: {
         input(value) {
           const currentField = field;
