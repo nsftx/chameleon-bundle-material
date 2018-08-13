@@ -182,7 +182,7 @@ exports[`AllComponents c-date renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
                         <div class="v-btn__content">9</div>
                       </button>
                     </td>
@@ -204,7 +204,7 @@ exports[`AllComponents c-date renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline accent--text">
                         <div class="v-btn__content">13</div>
                       </button>
                     </td>
@@ -429,7 +429,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
                         <div class="v-btn__content">9</div>
                       </button>
                     </td>
@@ -451,7 +451,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline accent--text">
                         <div class="v-btn__content">13</div>
                       </button>
                     </td>
@@ -643,7 +643,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
                         <div class="v-btn__content">9</div>
                       </button>
                     </td>
@@ -665,7 +665,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline accent--text">
                         <div class="v-btn__content">13</div>
                       </button>
                     </td>
@@ -789,9 +789,7 @@ exports[`AllComponents c-flexgrid-item renders correctly 1`] = `
 
 exports[`AllComponents c-form renders correctly 1`] = `
 <div data-type="form" data-group="widgets" data-uid="14" class="c-element c-form  c-element-parent  v-card v-card--flat" style="height:undefined;">
-  <form novalidate="novalidate" class="v-form c-form c-element-children">
-    <div class="v-card__text c-form-items"></div>
-  </form>
+  <form novalidate="novalidate" class="v-form c-form c-element-children"></form>
 </div>
 `;
 
@@ -990,7 +988,7 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline accent--text">
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
                     <div class="v-btn__content">9</div>
                   </button>
                 </td>
@@ -1012,7 +1010,7 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating">
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline accent--text">
                     <div class="v-btn__content">13</div>
                   </button>
                 </td>

@@ -40,17 +40,14 @@ const getFormActions = (context, createElement) => {
   );
 };
 
-const getFormInputs = (context, createElement) => createElement(
-  'v-card-text',
-  {
-    staticClass: `${context.$options.name}-items`,
-  },
-  map(context.getFields(), field => createElement(
+const getFormInputs = (context, createElement) => map(context.getFields(),
+  field => createElement(
     getComponentTag(field.type, context),
     {
       props: {
         definition: field,
       },
+      staticClass: `${context.$options.name}-items`,
       on: {
         input(value) {
           const currentField = field;
@@ -59,8 +56,7 @@ const getFormInputs = (context, createElement) => createElement(
         },
       },
     },
-  )),
-);
+  ));
 
 export default {
   extends: Element,
