@@ -42,14 +42,19 @@ export default {
       name: 'Path',
       value: '/',
       priority: 2,
+      validation: {
+        required: true,
+      },
     },
     parent: {
       type: 'select',
       name: 'Parent',
       value: null,
       displayProp: 'name',
+      clearable: true,
       valueProp: 'name',
       items: '=$app.pages',
+      filterItemsOut: '=$activePage.name',
       priority: 3,
     },
     icon: {
@@ -57,6 +62,12 @@ export default {
       name: 'Icon',
       value: null,
       priority: 4,
+    },
+    landingPage: {
+      type: 'check',
+      name: 'Set as landing page',
+      value: false,
+      priority: 5,
     },
     layout: {
       type: 'group',
