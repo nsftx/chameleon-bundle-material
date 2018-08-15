@@ -14,7 +14,6 @@ export default {
       name: 'Item title',
       value: 'Item title',
       validation: {
-        required: true,
         minLength: 2,
       },
       priority: 1,
