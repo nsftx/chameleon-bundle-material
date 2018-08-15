@@ -66,6 +66,7 @@ export default {
     landingPage: {
       type: 'check',
       name: 'Set as landing page',
+      hint: 'Overrides root \'/\' path',
       value: false,
       priority: 5,
     },
