@@ -24,6 +24,7 @@ export default {
       type: 'imageSource',
       name: 'Image source',
       value: null,
+      multiple: false,
       priority: 2,
     },
     width: {

@@ -89,6 +89,7 @@ export default {
       type: 'imageSource',
       group: 'data',
       name: 'Image Source',
+      multiple: true,
       value: '',
     },
     dataSource: {

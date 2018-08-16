@@ -1,4 +1,4 @@
-import { each, map, isArray, isNil, template } from 'lodash';
+import { each, map, isNil, template } from 'lodash';
 import { urlValidator } from '@validators';
 import Element from '../Element';
 
@@ -128,8 +128,8 @@ const getGalleryElement = (createElement, context, imageSource) => {
 };
 
 const getImages = (createElement, context) => {
-  const items = context.config.imageSource || context.items;
-  const imageSource = isArray(items) ? items : [items];
+  const imageSource = context.config.imageSource.length ?
+    context.config.imageSource : context.items;
 
   if (!isNil(imageSource && imageSource.length > 0)) {
     return createElement('v-layout',
