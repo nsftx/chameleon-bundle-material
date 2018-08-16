@@ -128,7 +128,7 @@ const getGalleryElement = (createElement, context, imageSource) => {
 };
 
 const getImages = (createElement, context) => {
-  const imageSource = context.config.imageSource.length ?
+  const imageSource = context.config.imageSource && context.config.imageSource.length ?
     context.config.imageSource : context.items;
 
   if (!isNil(imageSource && imageSource.length > 0)) {
