@@ -86,10 +86,9 @@ export default {
       priority: 5,
     },
     imageSource: {
-      type: 'imageSource',
+      type: 'gallerySource',
       group: 'data',
-      name: 'Image Source',
-      multiple: true,
+      name: 'Gallery Source',
       value: '',
     },
     dataSource: {
