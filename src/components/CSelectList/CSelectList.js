@@ -13,39 +13,54 @@ const getAvatar = (createElement, data) => {
   return createElement('v-icon', data.item.icon);
 };
 
+const setItemProps = (context, item) => {
+  const self = context;
+  const data = self.config.dataSource;
+  const mapProps = data && data.schema ? filter(data.schema, i => !isNil(i.mapName)) : [];
+  const itemProps = Object.keys(item);
+  self.config.itemValue = !mapProps.length ? itemProps[0] : 'value';
+  self.config.itemText = !mapProps.length ? itemProps[1] : 'text';
+};
+
 const getCardSlot = (createElement, context) => {
   const slot = {
-    selection: data => createElement('v-chip',
-      {
-        staticClass: 'chip--select-multi',
-        on: {
-          input: () => data.parent.selectItem(data.item),
+    selection: (data) => {
+      setItemProps(context, data.item);
+      return createElement('v-chip',
+        {
+          staticClass: 'chip--select-multi',
+          on: {
+            input: () => data.parent.selectItem(data.item),
+          },
+          props: {
+            close: true,
+            selected: data.selected,
+          },
         },
-        props: {
-          close: true,
-          selected: data.selected,
-        },
-      },
-      [
-        createElement('v-avatar', [
-          getAvatar(createElement, data),
-        ]),
-        data.item[context.config.itemText],
-      ],
-    ),
-    item: data => [
-      createElement('v-list-tile-avatar',
         [
-          getAvatar(createElement, data),
+          createElement('v-avatar', [
+            getAvatar(createElement, data),
+          ]),
+          data.item[context.config.itemText],
         ],
-      ),
-      createElement('v-list-tile-content', [
-        createElement('v-list-tile-title',
-          data.item[context.config.itemText]),
-        createElement('v-list-tile-sub-title',
-          data.item.description),
-      ]),
-    ],
+      );
+    },
+    item: (data) => {
+      setItemProps(context, data.item);
+      return [
+        createElement('v-list-tile-avatar',
+          [
+            getAvatar(createElement, data),
+          ],
+        ),
+        createElement('v-list-tile-content', [
+          createElement('v-list-tile-title',
+            data.item[context.config.itemText]),
+          createElement('v-list-tile-sub-title',
+            data.item.description),
+        ]),
+      ];
+    },
   };
 
   return slot;
@@ -61,19 +76,8 @@ const getPropRequired = (config) => {
   return false;
 };
 
-const setItemProps = (context) => {
-  const self = context;
-  const data = self.config.dataSource;
-  if (!isNil(data) && !isNil(data.items) && data.items.length > 0) {
-    const mapProps = filter(data.items, i => !isNil(i.mapName));
-    const itemProps = Object.keys(data.items[0]);
-    self.config.itemValue = !mapProps.length ? itemProps[0] : 'value';
-    self.config.itemText = !mapProps.length ? itemProps[1] : 'text';
-  }
-};
 const getProps = (context) => {
   const config = context.config;
-  setItemProps(context);
 
   const props = {
     appendIcon: getPropAppendIcon(config),
@@ -81,7 +85,7 @@ const getProps = (context) => {
     clearable: config.clearable && !config.readonly,
     deletableChips: context.chips && !config.readonly,
     hint: config.hint,
-    items: config.dataSource ? config.dataSource.items : [],
+    items: context.items || [],
     label: config.label,
     loading: false,
     itemValue: config.itemValue,

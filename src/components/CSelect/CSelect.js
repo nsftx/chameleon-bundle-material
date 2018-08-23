@@ -40,17 +40,17 @@ const getPropRequired = (config) => {
 const setItemProps = (context) => {
   const self = context;
   const data = self.config.dataSource;
-  if (!isNil(data) && !isNil(data.items) && data.items.length > 0) {
-    const mapProps = filter(data.items, i => !isNil(i.mapName));
-    const itemProps = Object.keys(data.items[0]);
-    self.config.itemValue = !mapProps.length ? itemProps[0] : 'value';
-    self.config.itemText = !mapProps.length ? itemProps[1] : 'text';
-  }
+  const mapProps = data && data.schema ? filter(data.schema, i => !isNil(i.mapName)) : [];
+  const itemProps = Object.keys(context.items[0]);
+  self.config.itemValue = !mapProps.length ? itemProps[0] : 'value';
+  self.config.itemText = !mapProps.length ? itemProps[1] : 'text';
 };
 
 const getProps = (context) => {
   const config = context.config;
-  setItemProps(context);
+  if (!isNil(context.items) && context.items.length !== 0) {
+    setItemProps(context);
+  }
 
   const props = {
     appendIcon: getPropAppendIcon(config),
@@ -58,7 +58,7 @@ const getProps = (context) => {
     deletableChips: context.chips && !config.readonly,
     chips: context.chips,
     hint: config.hint,
-    items: config.dataSource ? config.dataSource.items : [],
+    items: context.items || [],
     label: config.label,
     loading: false,
     itemValue: config.itemValue,
@@ -97,24 +97,19 @@ export default {
   methods: {
     loadData() {
       this.loadConnectorData().then((result) => {
-        if (isNil(this.config.dataSource)) this.config.dataSource = {};
-        this.config.dataSource.items = isNil(result) ? [] : result.items;
+        this.items = result.items || [];
       });
     },
   },
   data() {
     return {
       chips: false,
+      items: [],
       selectAttr: {},
       selectListeners: {},
     };
   },
   created() {
-    if (isNil(this.config.dataSource)) {
-      this.config.dataSource = {
-        items: [],
-      };
-    }
     this.selectAttr = getAttrs(this);
     this.selectListeners = getListeners(this);
     this.loadData();
