@@ -2,6 +2,7 @@ export default {
   type: 'page',
   name: 'Page',
   icon: 'browser',
+  hidden: true,
   actions: [
     {
       name: 'navigateToPage',
