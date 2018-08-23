@@ -50,7 +50,7 @@ const getItemProps = (context, item) => {
   const mapProps = filter(context.dataSource.schema, i => !isNil(i.mapName));
   const itemProps = Object.keys(item);
   const value = !mapProps.length ? item[itemProps[0]] : item.value;
-  const label = !mapProps.length ? item[itemProps[1]] : item.label;
+  const label = String(!mapProps.length ? item[itemProps[1] || itemProps[0]] : item.label);
 
   const props = {
     value,

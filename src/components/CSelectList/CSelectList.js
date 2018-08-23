@@ -19,7 +19,7 @@ const setItemProps = (context, item) => {
   const mapProps = data && data.schema ? filter(data.schema, i => !isNil(i.mapName)) : [];
   const itemProps = Object.keys(item);
   self.config.itemValue = !mapProps.length ? itemProps[0] : 'value';
-  self.config.itemText = !mapProps.length ? itemProps[1] : 'text';
+  self.config.itemText = String(!mapProps.length ? itemProps[1] || itemProps[0] : 'text');
 };
 
 const getCardSlot = (createElement, context) => {
