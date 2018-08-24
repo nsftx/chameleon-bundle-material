@@ -6,7 +6,7 @@ export default {
   icon: 'view_day',
   children: [
     '*',
-    '!accordion-item',
+    '!container-items',
   ],
   options: {
     title: {

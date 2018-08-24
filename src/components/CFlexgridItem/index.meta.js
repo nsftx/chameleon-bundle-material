@@ -6,7 +6,7 @@ export default {
   icon: 'view_compact',
   children: [
     '*',
-    '!flexgrid-item',
+    '!container-items',
   ],
   options: {
     color: true,
