@@ -9,10 +9,13 @@ export default {
         [this.config.color]: true,
         flex: true,
       },
+      props: {
+        flat: true,
+      },
     };
 
     const children = this.renderChildElement('div');
 
-    return this.renderElement('div', data, children, true);
+    return this.renderElement('v-card', data, children, true);
   },
 };

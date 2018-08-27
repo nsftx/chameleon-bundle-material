@@ -32,7 +32,7 @@ export default {
     const items = map(this.config.elements, element => createElement(
       this.getElementTag('flexgrid-item'),
       {
-        key: `${element.name}_${uuid()}`,
+        key: `${element.type}_${uuid()}`,
         props: {
           definition: element,
         },
