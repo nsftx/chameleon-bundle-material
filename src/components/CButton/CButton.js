@@ -19,7 +19,7 @@ const getProps = (context) => {
     dark: context.isThemeDark,
     light: context.isThemeLight,
     disabled: config.disabled,
-    icon: isUndefined(config.icon) ? false : config.icon,
+    icon: isUndefined(config.enableIcon) ? false : config.enableIcon,
     round: isUndefined(config.round) ? false : config.round,
     flat: isUndefined(config.flat) ? false : config.flat,
     block: isUndefined(config.block) ? false : config.block,
@@ -46,13 +46,20 @@ const getListeners = (context) => {
 
 export default {
   extends: Element,
-  render() {
+  render(createElement) {
     const data = {
       attrs: getAttrs(this),
       props: getProps(this),
       on: getListeners(this),
     };
 
-    return this.renderElement('v-btn', data, this.config.label);
+    const children = () => {
+      if (this.config.enableIcon) {
+        return createElement('v-icon', this.config.icon);
+      }
+      return this.config.label;
+    };
+
+    return this.renderElement('v-btn', data, children());
   },
 };
