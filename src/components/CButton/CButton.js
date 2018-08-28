@@ -19,7 +19,7 @@ const getProps = (context) => {
     dark: context.isThemeDark,
     light: context.isThemeLight,
     disabled: config.disabled,
-    icon: isUndefined(config.enableIcon) ? false : config.enableIcon,
+    icon: isUndefined(config.displayAsIcon) ? false : config.displayAsIcon,
     round: isUndefined(config.round) ? false : config.round,
     flat: isUndefined(config.flat) ? false : config.flat,
     block: isUndefined(config.block) ? false : config.block,
@@ -55,7 +55,7 @@ export default {
 
     const children = () => {
       const icon = createElement('v-icon', this.config.icon);
-      if (this.config.enableIcon) {
+      if (this.config.displayAsIcon) {
         return icon;
       }
       return [

@@ -29,9 +29,9 @@ export default {
       value: null,
       priority: 3,
     },
-    enableIcon: {
+    displayAsIcon: {
       type: 'check',
-      name: 'Show Button As Icon',
+      name: 'Display Button As Icon',
       value: false,
       priority: 4,
     },
