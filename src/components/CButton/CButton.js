@@ -54,10 +54,14 @@ export default {
     };
 
     const children = () => {
+      const icon = createElement('v-icon', this.config.icon);
       if (this.config.enableIcon) {
-        return createElement('v-icon', this.config.icon);
+        return icon;
       }
-      return this.config.label;
+      return [
+        icon,
+        this.config.label,
+      ];
     };
 
     return this.renderElement('v-btn', data, children());
