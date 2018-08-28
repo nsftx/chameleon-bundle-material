@@ -62,9 +62,9 @@ export default {
         value: '',
       },
       icon: {
-        type: 'check',
-        name: 'Icon',
-        value: false,
+        type: 'iconSource',
+        name: 'Icon Source',
+        value: null,
       },
       round: {
         type: 'check',
@@ -101,9 +101,9 @@ export default {
         value: '',
       },
       icon: {
-        type: 'check',
-        name: 'Icon',
-        value: false,
+        type: 'iconSource',
+        name: 'Icon Source',
+        value: null,
       },
       round: {
         type: 'check',
