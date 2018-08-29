@@ -3,6 +3,7 @@
     {
       "name": "form",
       "type": "page",
+      "theme": "dark",
       "elements": [
         {
           "type": "panel",
@@ -339,6 +340,7 @@
                   "name": "about",
                   "type": "rich-text",
                   "label": "About",
+                  "theme": "light",
                   "validation": {
                     "required": true
                   },
