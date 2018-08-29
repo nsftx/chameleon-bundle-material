@@ -14,9 +14,9 @@ Vue.use(Chameleon, {
         type: 'page',
         meta: {
           title: 'Home',
-          icon: 'dashboard',
         },
         name: 'Home',
+        icon: 'dashboard',
         path: '/',
         elements: [],
         theme: null,
@@ -33,6 +33,7 @@ Vue.use(Chameleon, {
         name: 'Contact',
         path: '/contact',
         parent: null,
+        icon: 'perm_contact_calendar',
         layout: {
           previewWidth: '960px',
           previewHeight: '1360px',
@@ -40,7 +41,6 @@ Vue.use(Chameleon, {
         },
         meta: {
           title: 'Contact',
-          icon: 'perm_contact_calendar',
         },
         theme: null,
         _id: null,

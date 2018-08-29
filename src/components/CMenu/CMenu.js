@@ -1,4 +1,4 @@
-import { each, map, snakeCase } from 'lodash';
+import { each, map } from 'lodash';
 import Element from '../Element';
 import '../../style/components/_menu.styl';
 
@@ -50,7 +50,7 @@ export default {
       if (this.config.autoGenerate) {
         const pages = this.getBindingValue('=$app.pages');
         this.items = map(pages, page => ({
-          icon: page.meta.icon || snakeCase(page.name),
+          icon: page.icon,
           label: page.meta.title,
           path: page.path,
         }));
