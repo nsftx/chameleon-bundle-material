@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { isNil, template } from 'lodash';
 import creditCardValidator from './creditCardValidator';
 import integerValidator from './integerValidator';
 import minValidator from './minValidator';
@@ -26,10 +26,10 @@ const validator = {
 // Library accepts only string so we need to coerce it
 // https://github.com/chriso/validator.js/
 // eslint-disable-next-line
-const getValue = value => _.isNil(value) || value === false ? '' : value + '';
+const getValue = value => isNil(value) || value === false ? '' : value + '';
 
 const getMessage = (result, data) => {
-  const message = result !== true ? _.template(result)(data) : true;
+  const message = result !== true ? template(result)(data) : true;
 
   return message;
 };
@@ -39,7 +39,7 @@ export default {
     const validation = config.validation;
     const rules = [];
 
-    if (_.isNil(validators) || _.isNil(validation)) return rules;
+    if (isNil(validators) || isNil(validation)) return rules;
 
     // TODO: Shorten/generalize rules functions
     if (validation.required) {
@@ -49,7 +49,7 @@ export default {
       ), { field: config.label }));
     }
 
-    if (!_.isUndefined(validation.min)) {
+    if (!isNil(validation.min) && validation.min !== '') {
       rules.push(value => getMessage(validator.min(
         validators.min,
         getValue(value),
@@ -57,7 +57,7 @@ export default {
       ), { field: config.label, limit: validation.min }));
     }
 
-    if (!_.isUndefined(validation.max)) {
+    if (!isNil(validation.max) && validation.max !== '') {
       rules.push(value => getMessage(validator.max(
         validators.max,
         getValue(value),
@@ -65,7 +65,7 @@ export default {
       ), { field: config.label, limit: validation.max }));
     }
 
-    if (!_.isUndefined(validation.minLength)) {
+    if (!isNil(validation.minLength) && validation.minLength !== '') {
       rules.push(value => getMessage(validator.minLength(
         validators.minLength,
         getValue(value),
@@ -73,7 +73,7 @@ export default {
       ), { field: config.label, limit: validation.minLength }));
     }
 
-    if (!_.isUndefined(validation.maxLength)) {
+    if (!isNil(validation.maxLength) && validation.maxLength !== '') {
       rules.push(value => getMessage(validator.maxLength(
         validators.maxLength,
         getValue(value),
@@ -81,7 +81,7 @@ export default {
       ), { field: config.label, limit: validation.maxLength }));
     }
 
-    if (!_.isUndefined(validation.minCount)) {
+    if (!isNil(validation.minCount) && validation.minCount !== '') {
       rules.push(value => getMessage(validator.minCount(
         validators.minCount,
         getValue(value),
@@ -89,7 +89,7 @@ export default {
       ), { field: config.label, limit: validation.minCount }));
     }
 
-    if (!_.isUndefined(validation.maxCount)) {
+    if (!isNil(validation.maxCount) && validation.maxCount !== '') {
       rules.push(value => getMessage(validator.maxCount(
         validators.maxCount,
         getValue(value),
