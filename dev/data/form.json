@@ -36,8 +36,8 @@
                   },
                   "validation": {
                     "required": true,
-                    "minLength": 2,
-                    "maxLength": 20,
+                    "minLength": null,
+                    "maxLength": null,
                     "pattern": {
                       "predefined": null,
                       "value": null

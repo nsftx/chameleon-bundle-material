@@ -82,8 +82,8 @@
                           },
                           "validation": {
                             "required": true,
-                            "minLength": 2,
-                            "maxLength": 20,
+                            "minLength": null,
+                            "maxLength": null,
                             "pattern": {
                               "predefined": null,
                               "value": null
@@ -113,7 +113,7 @@
                           "validation": {
                             "required": true,
                             "minLength": 2,
-                            "maxLength": 20,
+                            "maxLength": null,
                             "pattern": {
                               "predefined": null,
                               "value": null
@@ -507,7 +507,7 @@
                           "validateOn": "blur",
                           "validation": {
                             "required": true,
-                            "min": 1,
+                            "min": 0,
                             "max": 100
                           },
                           "step": 1
@@ -851,8 +851,8 @@
                               },
                               "validation": {
                                 "required": true,
-                                "minLength": 2,
-                                "maxLength": 20,
+                                "minLength": "",
+                                "maxLength": null,
                                 "pattern": {
                                   "predefined": null,
                                   "value": null
