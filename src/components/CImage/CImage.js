@@ -23,18 +23,17 @@ const getImageAttrs = (context) => {
 
   return {
     src,
-    title: context.config.title,
     alt: context.config.alternativeText,
+    height: context.config.height,
+    width: context.config.width,
+    contain: context.config.contain,
   };
 };
 
 const renderImage = (createElement, context) => {
   const data = {
     attrs: getImageAttrs(context),
-    staticStyle: {
-      maxWidth: '100%',
-      maxHeight: '100%',
-    },
+    staticStyle: {},
     on: {
       click() {
         const payload = context.config.src;
@@ -46,10 +45,7 @@ const renderImage = (createElement, context) => {
     },
   };
 
-  if (context.hasWidth) data.staticStyle.width = context.width;
-  if (context.hasHeight) data.staticStyle.height = context.height;
-
-  return createElement('img', data);
+  return createElement('v-img', data);
 };
 
 const renderPlaceholder = (createElement, context) => {
@@ -74,25 +70,23 @@ const renderPlaceholder = (createElement, context) => {
 
 export default {
   extends: Element,
-  computed: {
-    hasWidth() {
-      return !!this.config.width;
-    },
-    hasHeight() {
-      return !!this.config.height;
-    },
-    width() {
-      return this.config.width || '120px';
-    },
-    height() {
-      return this.config.height || '120px';
-    },
-  },
   render(createElement) {
+    const data = {
+      props: {
+        dark: this.isThemeDark,
+        light: this.isThemeLight,
+        color: this.config.color,
+        flat: true,
+      },
+      staticStyle: {
+        width: this.config.width,
+        height: this.config.height,
+      },
+    };
     const child = this.config.src ?
       renderImage(createElement, this) :
       renderPlaceholder(createElement, this);
 
-    return this.renderElement('div', {}, child);
+    return this.renderElement('v-card', data, child);
   },
 };

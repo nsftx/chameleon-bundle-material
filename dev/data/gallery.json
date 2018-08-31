@@ -18,63 +18,64 @@
           },
           "gallery": {
             "gridSize": 4,
-            "itemHeight": "200px"
+            "contain": false,
+            "itemHeight": ""
           },
           "gridMaxSize": false,
           "contentSpacing": "xl",
           "dataSource": {
             "items": [
               {
-                "image": "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
-                "thumb": ""
+                "image": "https://picsum.photos/600/300?image=0",
+                "thumb": "https://picsum.photos/300/150?image=0"
               },
               {
-                "image": "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
-                "thumb": "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+                "image": "https://picsum.photos/600/300?image=10",
+                "thumb": "https://picsum.photos/300/150?image=10"
               },
               {
-                "image": "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
-                "thumb": ""
+                "image": "https://picsum.photos/600/300?image=11",
+                "thumb": "https://picsum.photos/300/150?image=11"
               },
               {
-                "image": "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
-                "thumb": ""
+                "image": "https://picsum.photos/600/300?image=12",
+                "thumb": "https://picsum.photos/300/150?image=12"
               },
               {
-                "image": "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
-                "thumb": ""
+                "image": "https://picsum.photos/600/300?image=13",
+                "thumb": "https://picsum.photos/300/150?image=13"
               },
               {
-                "image": "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
-                "thumb": "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+                "image": "https://picsum.photos/600/300?image=14",
+                "thumb": "https://picsum.photos/300/150?image=14"
               },
               {
-                "image": "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
-                "thumb": ""
+                "image": "https://picsum.photos/600/300?image=15",
+                "thumb": "https://picsum.photos/300/150?image=15"
               },
               {
-                "image": "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
-                "thumb": ""
+                "image": "https://picsum.photos/600/300?image=16",
+                "thumb": "https://picsum.photos/300/150?image=16"
               },
               {
-                "image": "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
-                "thumb": ""
+                "image": "https://picsum.photos/600/300?image=17",
+                "thumb": "https://picsum.photos/300/150?image=17"
               },
               {
-                "image": "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
-                "thumb": "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+                "image": "https://picsum.photos/600/300?image=18",
+                "thumb": "https://picsum.photos/600/300?image=18"
               },
               {
-                "image": "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
-                "thumb": ""
+                "image": "https://picsum.photos/600/300?image=19",
+                "thumb": "https://picsum.photos/300/150?image=19"
               },
               {
-                "image": "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
-                "thumb": ""
+                "image": "https://picsum.photos/600/300?image=20",
+                "thumb": "https://picsum.photos/300/150?image=20"
               },
               {
-                "image": "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
-                "thumb": ""
+                "image": "https://picsum.photos/600/300?image=21",
+                "thumb": "https://picsum.photos/300/150?image=21"
               }
             ]
           }

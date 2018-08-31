@@ -20,6 +20,8 @@ export default {
     },
   ],
   options: {
+    color: true,
+    theme: true,
     src: {
       type: 'imageSource',
       name: 'Image source',
@@ -38,16 +40,16 @@ export default {
       value: null,
       priority: 4,
     },
-    title: {
-      type: 'Input',
-      name: 'Title',
-      value: null,
-      priority: 5,
-    },
     alternativeText: {
       type: 'Input',
       name: 'Alternative text',
       value: null,
+      priority: 5,
+    },
+    contain: {
+      type: 'check',
+      name: 'Crop Image Size',
+      value: false,
       priority: 6,
     },
   },
