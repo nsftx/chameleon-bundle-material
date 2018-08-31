@@ -1073,53 +1073,56 @@
     }
   ],
   "connectors": {
-    "chameleon": {
-      "name": "chameleon",
-      "type": "internalGraphql",
-      "description": "Chameleon Connector",
-      "disabled": false,
-      "options": {
-        "endpoint": "https://chameleon-ride.nsoft.com:8090/graphql"
+    "12gh67qa-904d-4a9a-89f2-0a5afd8f1464": {
+      "id": "12gh67qa-904d-4a9a-89f2-0a5afd8f1464",
+      "name": "Sample Local Connector",
+      "type": {
+        "name": "local",
+        "type": "internalLocal",
+        "description": "Local Connector",
+        "disabled": false,
+        "options": {
+          "endpoint": "https://chameleon.nsoft.com/static/data"
+        },
+        "multipleInstances": false
       },
+      "description": "Local Connector",
       "sources": {
-        "budgetStatuses": {
-          "name": "budgetStatuses",
-          "model": "BudgetStatus",
-          "params": {}
+        "galleryImages": {
+          "name": "galleryImages",
+          "model": "GalleryImages"
         },
-        "contactTypes": {
-          "name": "contactTypes",
-          "model": "ContactType",
-          "params": {}
+        "temperaturesPerCity": {
+          "name": "temperaturesPerCity",
+          "model": "TemperaturePerCity"
         },
-        "affixs": {
-          "name": "affixs",
-          "model": "Affix",
-          "params": {}
+        "populationPerAgeState": {
+          "name": "populationPerAgeState",
+          "model": "PopulationPerAgeState"
         },
-        "materialColors": {
-          "name": "materialColors",
-          "model": "MaterialColor",
-          "params": {}
+        "populationPerAge": {
+          "name": "populationPerAge",
+          "model": "PopulationPerAge"
         },
-        "noYesChoices": {
-          "name": "noYesChoices",
-          "model": "NoYesChoice",
-          "params": {}
+        "flowersCategorisation": {
+          "name": "flowersCategorisation",
+          "model": "FlowersCategorisation"
         },
-        "movies": {
-          "name": "movies",
-          "model": "Movie",
-          "params": {
-            "filters": {
-              "name": "filters",
-              "type": "InputFilters"
-            },
-            "pagination": {
-              "name": "pagination",
-              "type": "PaginationInput"
-            }
-          }
+        "activityCards": {
+          "name": "activityCards",
+          "model": "ActivityCards"
+        },
+        "icons": {
+          "name": "icons",
+          "model": "Icons"
+        },
+        "visionCameras": {
+          "name": "visionCameras",
+          "model": "VisionCameras"
+        },
+        "visionDetections": {
+          "name": "visionDetections",
+          "model": "VisionDetections"
         }
       }
     }
