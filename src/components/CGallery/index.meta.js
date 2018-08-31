@@ -106,6 +106,11 @@ export default {
         name: 'Item Height',
         value: '100px',
       },
+      contain: {
+        type: 'check',
+        name: 'Crop Image Size',
+        value: false,
+      },
       gridSize: {
         type: 'select',
         name: 'Type of grid system',

@@ -1,0 +1,20 @@
+{
+  "pages": [
+    {
+      "name": "gallery",
+      "type": "page",
+      "elements": [
+        {
+          "type": "image",
+          "color": "grey lighten-2",
+          "theme": false,
+          "contain": false,
+          "src": "https://picsum.photos/500/200?image=10",
+          "width": "",
+          "height": "",
+          "alternativeText": "Alternative Text"
+        }
+      ]
+    }
+  ]
+}

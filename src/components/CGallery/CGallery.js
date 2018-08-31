@@ -106,18 +106,20 @@ const getGalleryElement = (createElement, context, imageSource) => {
         },
       },
         [
-          createElement('v-card-media', {
+          createElement('v-img', {
             attrs: {
+              id: `img-${i}`,
+              alt: '',
               src: getUrlValidator(item) ? getGallerySource(item) : parseImageSrc(context, item),
-              height: context.config.gallery.itemHeight || context.defaultHeight,
-              id: i,
+              height: context.config.gallery.itemHeight,
+              contain: context.config.gallery.contain,
             },
             style: {
               cursor: 'pointer',
             },
             on: {
               click(e) {
-                self.target = Number(e.target.parentElement.id);
+                self.target = Number(e.target.parentElement.id.split('-')[1]);
                 toggleCarousel(context, true);
               },
             },
@@ -153,7 +155,6 @@ export default {
       items: [],
       target: 0,
       active: false,
-      defaultHeight: '100px',
     };
   },
   watch: {

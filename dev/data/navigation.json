@@ -88,6 +88,12 @@
             "icon": "view_module",
             "path": "/gallery",
             "name": "gallery"
+          },
+          {
+            "title": "Image",
+            "icon": "image",
+            "path": "/image",
+            "name": "image"
           }
         ]
       }
