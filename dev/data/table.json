@@ -15,27 +15,35 @@
               "theme": "dark",
               "rowsPerPage": 10,
               "dataSource": {
-                "name": "movies",
-                "model": "Movie",
+                "name": "temperaturesPerCity",
+                "model": "TemperaturePerCity",
                 "connector": {
-                  "name": "chameleon",
-                  "type": "internalGraphql"
+                  "id": "12gh67qa-904d-4a9a-89f2-0a5afd8f1464",
+                  "name": "Sample Local Connector",
+                  "type": "local"
                 },
                 "schema": [
                   {
-                    "name": "title",
-                    "type": "String"
+                    "name": "date",
+                    "type": "Date",
+                    "label": "Date"
                   },
                   {
-                    "name": "description",
-                    "type": "String"
+                    "name": "newYork",
+                    "type": "Number",
+                    "label": "New York"
+                  },
+                  {
+                    "name": "sanFrancisco",
+                    "type": "Number",
+                    "label": "San Francisco"
+                  },
+                  {
+                    "name": "austin",
+                    "type": "Number",
+                    "label": "Austin"
                   }
-                ],
-                "params": {
-                  "filters": {
-                    "searchQuery": "john"
-                  }
-                }
+                ]
               }
             }
           ]
