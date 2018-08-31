@@ -1043,7 +1043,8 @@
                       "name": "Gallery widget",
                       "gallery": {
                         "gridSize": 3,
-                        "itemHeight": ""
+                        "itemHeight": "",
+                        "contain": true
                       },
                       "carousel": {
                         "enabled": false,
@@ -1052,15 +1053,18 @@
                       "gridMaxSize": true,
                       "contentSpacing": "sm",
                       "imageSource": [
-                        "https://picsum.photos/150/300?image=58",
-                        "https://picsum.photos/150/300?image=63",
-                        "https://picsum.photos/150/300?image=71",
-                        "https://picsum.photos/150/300?image=58",
-                        "https://picsum.photos/150/300?image=63",
-                        "https://picsum.photos/150/300?image=71",
-                        "https://picsum.photos/150/300?image=58",
-                        "https://picsum.photos/150/300?image=63",
-                        "https://picsum.photos/150/300?image=71"
+                        "https://picsum.photos/600/300?image=0",
+                        "https://picsum.photos/600/300?image=10",
+                        "https://picsum.photos/600/300?image=11",
+                        "https://picsum.photos/600/300?image=12",
+                        "https://picsum.photos/600/300?image=13",
+                        "https://picsum.photos/600/300?image=14",
+                        "https://picsum.photos/600/300?image=15",
+                        "https://picsum.photos/600/300?image=16",
+                        "https://picsum.photos/600/300?image=18",
+                        "https://picsum.photos/600/300?image=19",
+                        "https://picsum.photos/600/300?image=20",
+                        "https://picsum.photos/600/300?image=21"
                       ]
                     }
                   ]
