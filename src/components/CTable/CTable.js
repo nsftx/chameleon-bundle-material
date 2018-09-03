@@ -59,39 +59,39 @@ const getScopedSlots = (createElement, context) => {
     const item = props.item;
     const columns = [];
 
-    each(keys(item), (key) => {
-      let content = item[key];
+    each(dataSource.schema, (schemaItem) => {
+      const contentProp = isNil(schemaItem.mapName) ? 'name' : 'mapName';
+
+      let content = item[schemaItem[contentProp]];
       const inferredProps = {};
 
-      if (dataSource && dataSource.schema) {
-        const column = dataSource.schema[key];
-        if (column) {
-          merge(inferredProps, getCellInferredProps(column));
+      const column = schemaItem;
+      if (column) {
+        merge(inferredProps, getCellInferredProps(column));
 
-          switch (toLower(column.type)) {
-            case 'icon':
-              content = [createElement('v-icon', content)];
-              break;
-            case 'image':
-              content = [
-                createElement('v-avatar', {
-                  attrs: {
-                    // NOTE: Expose in options?
-                    size: '32px',
-                  },
+        switch (toLower(column.type)) {
+          case 'icon':
+            content = [createElement('v-icon', content)];
+            break;
+          case 'image':
+            content = [
+              createElement('v-avatar', {
+                attrs: {
+                  // NOTE: Expose in options?
+                  size: '32px',
                 },
-                  [
-                    createElement('img', {
-                      attrs: {
-                        src: content,
-                      },
-                    }),
-                  ]),
-              ];
-              break;
-            default:
-              content = item[key];
-          }
+              },
+                [
+                  createElement('img', {
+                    attrs: {
+                      src: content,
+                    },
+                  }),
+                ]),
+            ];
+            break;
+          default:
+            content = item[schemaItem[contentProp]];
         }
       }
 
