@@ -5,17 +5,17 @@ import { logger, loggerNamespace } from '@utility';
 const getPreviewStyle = (context) => {
   const layout = context.config.layout;
   if (layout) {
-    const height = layout.fillHeight || layout.previewHeight;
+    const height = layout.fillHeight ? '100%' : layout.previewHeight;
 
     if (layout.fillHeight) {
       return {
-        height: '100%',
+        height,
       };
     }
     if (context.registry.isPreviewMode) {
       return {
-        width: layout.previewWidth,
         height,
+        width: layout.previewWidth,
         overflow: layout.overflow,
       };
     }
