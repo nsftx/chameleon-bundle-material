@@ -6,6 +6,7 @@ export default {
   icon: 'tab',
   children: [
     '*',
+    '!inputs',
     '!container-items',
   ],
   options: {

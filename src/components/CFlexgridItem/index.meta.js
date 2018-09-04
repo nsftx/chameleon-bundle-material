@@ -6,6 +6,7 @@ export default {
   icon: 'view_compact',
   children: [
     '*',
+    '!inputs',
     '!container-items',
   ],
   options: {
