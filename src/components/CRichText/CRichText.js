@@ -1,4 +1,4 @@
-import { isArray } from 'lodash';
+import { find, isArray, includes } from 'lodash';
 import { fieldable, validatable } from '@mixins';
 import Element from '../Element';
 
@@ -72,6 +72,16 @@ export default {
   methods: {
     setEditor() {
       this.value = this.config.value;
+      const link = Quill.import('formats/link');
+      // Modify url if desired
+      link.sanitize = (url) => {
+        const prefix = find(link.PROTOCOL_WHITELIST, prop => includes(url, prop));
+        if (!prefix) {
+          return `https://${url}`;
+        }
+
+        return url;
+      };
 
       this.editor = new Quill(this.$refs.editor, {
         theme: 'snow',
