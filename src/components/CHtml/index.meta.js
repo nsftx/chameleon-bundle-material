@@ -5,7 +5,7 @@ export default {
   icon: 'code',
   options: {
     value: {
-      type: 'input',
+      type: 'inputList',
       name: 'Html Code',
       value: null,
       priority: 1,
