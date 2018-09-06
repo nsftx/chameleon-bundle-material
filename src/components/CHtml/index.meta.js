@@ -8,7 +8,6 @@ export default {
       type: 'input',
       name: 'Html Code',
       value: null,
-      multiLine: true,
       priority: 1,
     },
     allowUnsafe: {

@@ -12,6 +12,12 @@ export default {
       },
     };
 
+    if (!this.config.value) {
+      data.staticStyle = {
+        height: '50px',
+      };
+    }
+
     return this.renderElement('div', data);
   },
 };
