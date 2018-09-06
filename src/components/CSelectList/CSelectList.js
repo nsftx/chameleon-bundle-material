@@ -90,7 +90,6 @@ const getProps = (context) => {
     loading: false,
     itemValue: config.itemValue,
     itemText: config.itemText,
-    multiLine: config.multiLine,
     multiple: config.multiple,
     openOnClear: config.clearable,
     persistentHint: config.persistentHint,

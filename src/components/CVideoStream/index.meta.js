@@ -20,7 +20,6 @@ export default {
       type: 'input',
       name: 'Stream Source',
       value: '',
-      multiline: true,
       priority: 2,
     },
     aspectRatio: {
