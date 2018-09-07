@@ -22,16 +22,17 @@ export default {
     },
   ],
   options: {
-    color: {
+    theme: true,
+    backgroundColor: {
       type: 'colorPicker',
-      name: 'Color',
-      value: '',
+      name: 'Icon Background Color',
+      value: 'accent',
       priority: 2,
     },
-    baseColor: {
+    color: {
       type: 'colorPicker',
-      name: 'Base Color',
-      value: 'grey',
+      name: 'Icon Color',
+      value: null,
       priority: 3,
     },
     name: {
@@ -50,19 +51,48 @@ export default {
       type: 'input',
       name: 'Max Rating',
       value: 5,
-      priority: 6,
+      priority: 5,
     },
     ratingInfo: {
       type: 'check',
-      name: 'Rating Info',
+      name: 'Rating Value Info',
       value: true,
+    },
+    emptyIcon: {
+      type: 'iconSource',
+      name: 'Empty Rating Icon',
+      value: 'star_border',
+      priority: 6,
+    },
+    fullIcon: {
+      type: 'iconSource',
+      name: 'Full Rating Icon',
+      value: 'star',
       priority: 7,
     },
-    icon: {
+    halfIcon: {
       type: 'iconSource',
-      name: 'Rating Icon',
-      value: 'star',
-      priority: 5,
+      name: 'Half Rating Icon',
+      value: 'star_half',
+      priority: 8,
+    },
+    halfIncrements: {
+      type: 'check',
+      name: 'Selection Of Half Increments',
+      value: true,
+      priority: 9,
+    },
+    readonly: {
+      type: 'check',
+      name: 'Readonly',
+      value: false,
+      priority: 10,
+    },
+    hover: {
+      type: 'check',
+      name: 'Hover',
+      value: true,
+      priority: 11,
     },
     validation: {
       type: 'group',

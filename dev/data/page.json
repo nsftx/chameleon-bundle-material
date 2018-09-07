@@ -518,8 +518,12 @@
                           "label": "How did you like our fat bunny",
                           "maxRating": 5,
                           "ratingInfo": true,
-                          "icon": "star",
-                          "light": true,
+                          "emptyIcon": "star_border",
+                          "fullIcon": "star",
+                          "halfIcon": "star_half",
+                          "halfIncrements": true,
+                          "readonly": false,
+                          "hover": true,
                           "value": 0,
                           "validation": {
                             "required": true
