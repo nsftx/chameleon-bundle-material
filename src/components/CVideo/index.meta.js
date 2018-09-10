@@ -45,6 +45,7 @@ export default {
     autoplay: {
       type: 'check',
       name: 'Autoplay',
+      hint: 'This might not work properly in Chrome',
       value: false,
       priority: 4,
     },

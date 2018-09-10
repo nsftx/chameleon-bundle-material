@@ -14,7 +14,6 @@ const getAttrs = (context) => {
   const attrs = {
     controls: config.controls,
     loop: config.repeat,
-    muted: config.muted,
     title: config.label,
     width: '100%',
     height: '100%',
@@ -136,5 +135,8 @@ export default {
     );
 
     return this.renderElement('div', data, children);
+  },
+  mounted() {
+    this.$refs.video.muted = this.config.muted;
   },
 };
