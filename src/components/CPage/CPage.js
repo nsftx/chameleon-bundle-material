@@ -4,13 +4,21 @@ import { logger, loggerNamespace } from '@utility';
 
 const getPreviewStyle = (context) => {
   const layout = context.config.layout;
+  if (layout) {
+    const height = layout.fillHeight ? '100%' : layout.previewHeight;
 
-  if (context.registry.isPreviewMode && layout) {
-    return {
-      width: layout.previewWidth,
-      height: layout.previewHeight,
-      overflow: layout.overflow,
-    };
+    if (layout.fillHeight) {
+      return {
+        height,
+      };
+    }
+    if (context.registry.isPreviewMode) {
+      return {
+        height,
+        width: layout.previewWidth,
+        overflow: layout.overflow,
+      };
+    }
   }
 
   return {};

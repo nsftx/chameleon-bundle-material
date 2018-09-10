@@ -74,6 +74,11 @@ export default {
     layout: {
       type: 'group',
       group: 'layout',
+      fillHeight: {
+        type: 'check',
+        name: 'Full Page Height',
+        value: false,
+      },
       previewWidth: {
         type: 'input',
         name: 'Preview Width',
