@@ -128,7 +128,7 @@ const getListeners = (context) => {
         self.sendToEventBus('Cleared', { text: value });
       }
       self.sendToEventBus('Changed', { text: value });
-      self.$emit('input', self.valu);
+      self.$emit('input', self.value);
     },
     blur() {
       self.sendToEventBus('FocusedOut', { text: self.value });

@@ -1,81 +1,96 @@
-import { isNil, map } from 'lodash';
 import { fieldable, validatable } from '@mixins';
+import { validator } from '@validators';
+import { isNil, isObject } from 'lodash';
 import Element from '../Element';
 
 require('../../style/components/_rating.styl');
-
-const getMessage = (createElement, context) => {
-  const el = createElement(
-    'div',
-    {
-      staticClass: 'rating__message',
-    },
-    context.errorBucket[0],
-  );
-
-  return el;
-};
-
-const getIconElement = (createElement, index, context) => {
-  const self = context;
-  self.config.color = self.config.color || 'blue';
-
-  const el = createElement(
-    'v-icon',
-    {
-      staticClass: 'px-1',
-      key: `icon-${index}`,
-      props: {
-        color: self.fillLevel >= index ? self.config.color : self.config.baseColor,
-      },
-      on: {
-        mouseenter() {
-          self.fillLevel = index;
-        },
-        mouseleave() {
-          self.setRating(self.value);
-        },
-        click() {
-          self.value = index;
-          self.setRating(self.value, true);
-          self.$emit('input', self.value);
-          self.sendToEventBus('Changed', { value: self.value });
-        },
-      },
-    },
-    context.config.icon || 'star',
-  );
-
-  return el;
-};
 
 const getPropRequired = (config) => {
   if (config.validation) {
     return !!config.validation.required;
   }
-
   return false;
 };
 
+const getRatingProps = (context) => {
+  const self = context;
+  const config = context.config;
+
+  return {
+    props: {
+      backgroundColor: config.backgroundColor || 'accent',
+      color: config.color || 'primary',
+      emptyIcon: config.emptyIcon || 'star_border',
+      fullIcon: config.fullIcon || 'star',
+      halfIcon: config.halfIcon || 'star_half',
+      halfIncrements: config.halfIncrements || false,
+      length: config.maxRating || '5',
+      readonly: config.readonly,
+      hover: config.hover,
+      value: self.value || 0,
+    },
+    on: {
+      input(value) {
+        self.value = value;
+        self.$emit('input', self.value);
+        self.sendToEventBus('Changed', { value: self.value });
+      },
+    },
+  };
+};
+
+const getHiddenInput = (createElement, context) => {
+  // Fake input, for c-form model
+  const self = context;
+  const config = self.config;
+  return createElement('v-input',
+    {
+      attrs: {
+        name: self.config.name || 'rating',
+      },
+      props: {
+        value: self.value || null,
+        required: getPropRequired(config),
+        rules: validator.getRules(config, self.validators),
+      },
+      staticClass: 'text-xs-center',
+      on: {
+        input(value) {
+          self.value = value;
+          self.$emit('input', value);
+        },
+      },
+    });
+};
+
+const getRating = (createElement, context) => createElement('v-rating', getRatingProps(context));
+
 const getTitle = (createElement, context) => {
   const hasLabel = context.config.label || isNil(context.config.label);
+
   if (!hasLabel && !context.value) return false;
 
   const required = getPropRequired(context.config);
   let title = isNil(context.config.label) ? '' : context.config.label;
-  if (context.value) {
+
+  if (context.value && context.config.ratingInfo) {
     title = `${title} (${context.value})`;
   }
 
   if (required) {
     title = `${title}*`;
   }
-
   return createElement(
     'div',
     title,
   );
 };
+
+const getRatingChildren = (context, createElement) => [
+  getTitle(createElement, context),
+  getRating(createElement, context),
+  getHiddenInput(createElement, context),
+];
 
 export default {
   extends: Element,
@@ -83,60 +98,25 @@ export default {
     fieldable,
     validatable,
   ],
-  data() {
-    return {
-      fillLevel: 0,
-    };
-  },
   methods: {
-    setRating(value, validate) {
-      this.fillLevel = value;
-      if (validate) this.validate();
+    setRating(context) {
+      this.value = isObject(context) ? context.value : context;
+      this.$emit('input', this.value);
     },
   },
   render(createElement) {
     const self = this;
-    const ratingCount = new Array(this.config.maxRating || 5);
-    const icons = map(ratingCount, (item, idx) => getIconElement(createElement, idx + 1, self));
-    const title = getTitle(createElement, self);
-    const message = getMessage(createElement, self);
-
     const data = {
       class: {
-        'rating--error': this.hasError,
         'text-xs-center': true,
       },
       props: {
+        dark: self.isThemeDark,
+        light: self.isThemeLight,
         flat: true,
       },
     };
-
-    const children = [
-      title,
-      createElement(
-        'v-input',
-        {
-          on: {
-            input(e) {
-              if (isNil(e)) {
-                self.value = null;
-                self.setRating(0, false);
-              }
-            },
-          },
-          class: {
-            'd-inline-block': true,
-          },
-        },
-        icons,
-      ),
-      message,
-    ];
-
+    const children = getRatingChildren(self, createElement);
     return this.renderElement('v-card', data, children);
-  },
-  mounted() {
-    this.fillLevel = parseInt(this.value, 10);
-    this.value = this.config.value || null;
   },
 };
