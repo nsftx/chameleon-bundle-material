@@ -29,6 +29,24 @@ const getPlaylistParameters = (context) => {
   };
 };
 
+const getPreviewOverlayElement = (createElement) => {
+  const overlay = createElement(
+    'div',
+    {
+      staticStyle: {
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        zIndex: 2,
+      },
+    },
+  );
+
+  return overlay;
+};
+
 const getVideoParameters = (context) => {
   const result = {
     videoId: getVideoId(context.value[0]),
@@ -37,7 +55,10 @@ const getVideoParameters = (context) => {
   return result;
 };
 
-const getPlayerMethod = (playlist, autoplay) => {
+const getPlayerMethod = (context) => {
+  const { playlist } = context;
+  const autoplay = context.config.autoplay && !context.registry.isPreviewMode;
+
   const method = autoplay ? 'load' : 'cue';
   const item = playlist ? 'Playlist' : 'VideoById';
 
@@ -75,7 +96,6 @@ export default {
       this.player = new window.YT.Player(this.$refs.youtube, {
         playerVars: {
           controls: this.config.controls,
-          videoId: 'M7lc1UVf-VE',
         },
         events: {
           onReady: this.onPlayerReady,
@@ -89,7 +109,7 @@ export default {
       }
     },
     onPlayerReady(event) {
-      const method = getPlayerMethod(this.playlist, this.config.autoplay);
+      const method = getPlayerMethod(this);
       const params = getPlayerParameters(this);
 
       this.player[method](params);
@@ -140,10 +160,18 @@ export default {
       this.createPlayer();
     });
   },
-  render() {
-    const data = {
-      ref: 'youtube',
-    };
-    return this.renderElement('div', data);
+  render(createElement) {
+    const children = [createElement(
+      'div',
+      {
+        ref: 'youtube',
+      },
+    )];
+
+    if (this.registry.isPreviewMode) {
+      children.unshift(getPreviewOverlayElement(createElement));
+    }
+
+    return this.renderElement('div', {}, children);
   },
 };
