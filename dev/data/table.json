@@ -12,7 +12,6 @@
             {
               "name": "shoppingTable",
               "type": "table",
-              "theme": "dark",
               "rowsPerPage": 10,
               "dataSource": {
                 "name": "temperaturesPerCity",

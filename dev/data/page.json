@@ -641,16 +641,20 @@
                       "dataSource": {
                         "schema": [
                           {
-                            "name": "value",
-                            "type": "String"
-                          },
-                          {
-                            "name": "name",
+                            "name": "title",
                             "type": "String"
                           },
                           {
                             "name": "description",
                             "type": "String"
+                          },
+                          {
+                            "name": "thumb",
+                            "type": "image"
+                          },
+                          {
+                            "name": "icon",
+                            "type": "icon"
                           }
                         ],
                         "items": [

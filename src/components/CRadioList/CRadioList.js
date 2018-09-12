@@ -82,9 +82,6 @@ export default {
       });
     },
   },
-  mounted() {
-    this.loadData();
-  },
   render(createElement) {
     if (isNil(this.config.dataSource)) {
       this.config.dataSource = {

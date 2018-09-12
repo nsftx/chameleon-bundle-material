@@ -185,7 +185,6 @@ export default {
   },
   mounted() {
     this.pagination = getPagination(this.config);
-    this.loadData();
   },
   render(createElement) {
     const list = createElement('v-data-iterator', {

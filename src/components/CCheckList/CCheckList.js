@@ -94,9 +94,6 @@ export default {
       });
     },
   },
-  mounted() {
-    this.loadData();
-  },
   render(createElement) {
     const message = createErrorMessage(createElement, this);
 

@@ -112,7 +112,6 @@ export default {
   created() {
     this.selectAttr = getAttrs(this);
     this.selectListeners = getListeners(this);
-    this.loadData();
   },
   render(createElement) {
     const children = createElement(
