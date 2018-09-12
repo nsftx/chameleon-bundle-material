@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import { v4 } from 'uuid';
 import Element from '../Element';
 
 const getProps = (context) => {
@@ -15,7 +14,6 @@ const getProps = (context) => {
   return props;
 };
 
-const uuid = () => v4();
 
 const getTabs = (context, createElement) => {
   const config = context.config;
@@ -34,7 +32,7 @@ const getTabs = (context, createElement) => {
     return createElement(
       'v-tab',
       {
-        key: `tab${i}_${uuid}`,
+        key: `tab${i}_${context.schema.uid}`,
       },
       children,
     );

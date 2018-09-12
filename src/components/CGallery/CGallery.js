@@ -79,10 +79,10 @@ const getGalleryElement = (createElement, context, imageSource) => {
           'v-carousel-item',
           {
             attrs: {
-              key: i,
               src: getUrlValidator(item) ?
                 getCarouselSource(item) : parseImageSrc(context, item),
             },
+            key: i,
           },
         )),
         getCloseBtnOverlay(createElement, self),
@@ -94,9 +94,7 @@ const getGalleryElement = (createElement, context, imageSource) => {
       attrs: {
         [`xs${context.config.gallery.gridSize}`]: true,
       },
-      props: {
-        key: i,
-      },
+      key: i,
     },
     [
       createElement('v-card', {

@@ -50,7 +50,7 @@ const getListeners = (context) => {
 export default {
   extends: Element,
   render(createElement) {
-    const props = {
+    const data = {
       key: this.schema.uid,
       props: this.config,
       on: getListeners(this),
@@ -64,7 +64,7 @@ export default {
 
     return this.renderElement(
       'v-expansion-panel-content',
-      props,
+      data,
       children,
       true,
     );

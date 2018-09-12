@@ -53,8 +53,7 @@ const getCellInferredProps = (cell) => {
 };
 
 const getScopedSlots = (createElement, context) => {
-  const self = context;
-  const dataSource = self.dataSource;
+  const dataSource = context.dataSource;
   const getColumns = (props) => {
     const item = props.item;
     const columns = [];

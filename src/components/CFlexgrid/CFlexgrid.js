@@ -1,5 +1,4 @@
 import { map } from 'lodash';
-import { v4 } from 'uuid';
 import Element from '../Element';
 
 const getContainerAttrs = (context) => {
@@ -24,7 +23,6 @@ const getLayoutAttrs = (context) => {
   return attrs;
 };
 
-const uuid = () => v4();
 
 export default {
   extends: Element,
@@ -32,7 +30,6 @@ export default {
     const items = map(this.config.elements, element => createElement(
       this.getElementTag('flexgrid-item'),
       {
-        key: `${element.type}_${uuid()}`,
         props: {
           definition: element,
         },
@@ -40,6 +37,7 @@ export default {
     ));
 
     const data = {
+      key: this.schema.uid,
       class: getContainerAttrs(this),
       props: {
         dark: this.isThemeDark,

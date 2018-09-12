@@ -5,20 +5,19 @@ require('../../style/components/_hlist.styl');
 export default {
   extends: Element,
   render() {
-    const self = this;
     const data = {
-      key: self.schema.uid,
+      key: this.schema.uid,
       class: {
-        [`${self.$options.name}--spaced`]: self.config.gutter,
+        [`${this.$options.name}--spaced`]: this.config.gutter,
       },
       props: {
-        color: self.config.color,
-        dark: self.isThemeDark,
-        light: self.isThemeLight,
-        flat: self.config.flat,
+        color: this.config.color,
+        dark: this.isThemeDark,
+        light: this.isThemeLight,
+        flat: this.config.flat,
       },
       style: {
-        height: self.config.height,
+        height: this.config.height,
       },
     };
     const style = {
