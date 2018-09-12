@@ -46,17 +46,13 @@ export default {
     selectItem(item) {
       this.sendToEventBus('SelectedItemChanged', item);
     },
-    setItemsOrLoad() {
-      if (this.config.autoGenerate) {
-        const pages = this.getBindingValue('=$app.pages');
-        this.items = map(pages, page => ({
-          icon: page.icon,
-          label: page.meta.title,
-          path: page.path,
-        }));
-      } else {
-        this.loadData();
-      }
+    setItems() {
+      const pages = this.getBindingValue('=$app.pages');
+      this.items = map(pages, page => ({
+        icon: page.icon,
+        label: page.meta.title,
+        path: page.path,
+      }));
     },
     renderDivider() {
       return this.$createElement(
@@ -182,8 +178,8 @@ export default {
         this.loadData();
       }
     },
-    autoGenerate() {
-      this.setItemsOrLoad();
+    autoGenerate(val) {
+      if (val) this.setItems();
     },
   },
   render(createElement) {
