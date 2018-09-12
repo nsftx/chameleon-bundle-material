@@ -186,9 +186,6 @@ export default {
       this.setItemsOrLoad();
     },
   },
-  mounted() {
-    this.setItemsOrLoad();
-  },
   render(createElement) {
     return this.renderElement(
       'v-navigation-drawer',
