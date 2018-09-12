@@ -6,6 +6,7 @@ export default {
   icon: 'view_day',
   children: [
     '*',
+    '!inputs',
     '!container-items',
   ],
   options: {
