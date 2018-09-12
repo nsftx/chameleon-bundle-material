@@ -4,6 +4,7 @@ export default {
   extends: Element,
   render() {
     const data = {
+      key: this.schema.uid,
       class: {
         [`xs${this.config.width}`]: true,
         [this.config.color]: true,
