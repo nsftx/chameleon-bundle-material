@@ -59,9 +59,9 @@ export default {
       }
 
       const position = this.config.iconPosition === 'right';
-      const icon = createElement('v-icon', {
+      const icon = this.config.icon ? createElement('v-icon', {
         class: position ? 'pl-2' : 'pr-2',
-      }, this.config.icon);
+      }, this.config.icon) : null;
 
       if (position) {
         return [
