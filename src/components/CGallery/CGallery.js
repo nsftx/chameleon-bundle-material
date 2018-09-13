@@ -163,9 +163,6 @@ export default {
       deep: true,
     },
   },
-  mounted() {
-    this.loadData();
-  },
   methods: {
     loadData() {
       this.loadConnectorData().then((result) => {
