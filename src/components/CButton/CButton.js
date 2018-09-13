@@ -54,9 +54,20 @@ export default {
     };
 
     const children = () => {
-      const icon = createElement('v-icon', this.config.icon);
       if (this.config.displayAsIcon) {
-        return icon;
+        return createElement('v-icon', this.config.icon);
+      }
+
+      const position = this.config.iconPosition === 'right';
+      const icon = createElement('v-icon', {
+        class: position ? 'pl-2' : 'pr-2',
+      }, this.config.icon);
+
+      if (position) {
+        return [
+          this.config.label,
+          icon,
+        ];
       }
       return [
         icon,
