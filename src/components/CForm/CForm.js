@@ -58,6 +58,16 @@ const getFormInputs = (context, createElement) => map(context.getFields(),
     },
   ));
 
+const getFormComponent = (context, createElement) => createElement('v-form',
+  {
+    ref: context.config.name,
+    staticClass: `${context.$options.name} ${context.baseChildrenClass}`,
+  },
+  [
+    getFormInputs(context, createElement),
+  ]);
+
+
 export default {
   extends: Element,
   provide() {
@@ -137,17 +147,10 @@ export default {
       },
     };
 
-    const children = createElement(
-      'v-form',
-      {
-        ref: this.config.name,
-        staticClass: `${this.$options.name} ${context.baseChildrenClass}`,
-      },
-      [
-        getFormInputs(this, createElement),
-        getFormActions(this, createElement),
-      ],
-    );
+    const children = [
+      getFormComponent(this, createElement),
+      getFormActions(this, createElement),
+    ];
 
     return this.renderElement('v-card', data, children, true);
   },

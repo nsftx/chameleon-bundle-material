@@ -66,6 +66,25 @@ export default {
         name: 'Icon Source',
         value: null,
       },
+      iconPosition: {
+        type: 'select',
+        name: 'Icon Position',
+        items: [
+          {
+            name: 'Left',
+            value: 'left',
+          },
+          {
+            name: 'Right',
+            value: 'right',
+          },
+        ],
+        returnObject: false,
+        displayProp: 'name',
+        valueProp: 'value',
+        value: 'left',
+        priority: 4,
+      },
       round: {
         type: 'check',
         name: 'Round Button',
@@ -104,6 +123,25 @@ export default {
         type: 'iconSource',
         name: 'Icon Source',
         value: null,
+      },
+      iconPosition: {
+        type: 'select',
+        name: 'Icon Position',
+        items: [
+          {
+            name: 'Left',
+            value: 'left',
+          },
+          {
+            name: 'Right',
+            value: 'right',
+          },
+        ],
+        returnObject: false,
+        displayProp: 'name',
+        valueProp: 'value',
+        value: 'left',
+        priority: 4,
       },
       round: {
         type: 'check',
