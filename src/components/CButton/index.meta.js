@@ -1,5 +1,5 @@
 export default {
-  group: 'inputs',
+  group: 'actions',
   type: 'button',
   name: 'Button',
   icon: 'crop_landscape',

@@ -1,5 +1,5 @@
 export default {
-  group: 'inputs',
+  group: 'actions',
   type: 'switch',
   name: 'Switch',
   icon: 'sync',
