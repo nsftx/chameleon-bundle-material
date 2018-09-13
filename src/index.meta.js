@@ -14,6 +14,10 @@ const elementGroups = {
     key: 'inputs',
     name: 'Inputs',
   },
+  actions: {
+    key: 'actions',
+    name: 'Actions',
+  },
   other: {
     key: 'other',
     name: 'Other',
