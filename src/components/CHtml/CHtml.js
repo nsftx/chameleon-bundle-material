@@ -1,23 +1,28 @@
+import { isNil } from 'lodash';
 import Element from '../Element';
 
 export default {
   extends: Element,
-  render() {
+  render(createElement) {
+    let icon = null;
     const data = {
-      attrs: {
-        class: this.config.name,
+      props: {
+        color: this.config.color,
+        dark: this.isThemeDark,
+        light: this.isThemeLight,
+        flat: true,
       },
-      domProps: {
-        innerHTML: this.config.value,
-      },
+      domProps: {},
     };
 
-    if (!this.config.value) {
-      data.staticStyle = {
-        height: '50px',
-      };
+    if (isNil(this.config.value) || !this.config.value.length) {
+      icon = createElement('v-icon', {
+        props: { xLarge: true },
+      }, 'code');
+    } else {
+      data.domProps.innerHTML = this.config.value;
     }
 
-    return this.renderElement('div', data);
+    return this.renderElement('v-card', data, icon);
   },
 };

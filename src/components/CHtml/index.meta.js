@@ -4,6 +4,8 @@ export default {
   name: 'Html',
   icon: 'code',
   options: {
+    color: true,
+    theme: true,
     value: {
       type: 'inputList',
       name: 'Html Code',

@@ -44,6 +44,25 @@
               "color": "primary",
               "round": true,
               "theme": "light"
+            },
+            {
+              "name": "html",
+              "type": "html",
+              "theme": "dark",
+              "color": "red",
+              "value": "<div>Testing html value</div>"
+            },
+            {
+              "name": "html",
+              "type": "html",
+              "value": ""
+            },
+            {
+              "name": "html",
+              "type": "html",
+              "theme": "dark",
+              "color": "red",
+              "value": null
             }
           ]
         }
