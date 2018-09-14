@@ -34,6 +34,16 @@
                 "required": false
               },
               "toolbar": "advanced"
+            },
+            {
+              "name": "button",
+              "type": "button",
+              "label": "Testing Button",
+              "icon": "people",
+              "iconPosition": "",
+              "color": "primary",
+              "round": true,
+              "theme": "light"
             }
           ]
         }
