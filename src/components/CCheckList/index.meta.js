@@ -31,7 +31,7 @@ export default {
   options: {
     color: true,
     name: {
-      type: 'input',
+      type: 'fieldNameInput',
       name: 'Input Name',
       value: null,
       priority: 1,
