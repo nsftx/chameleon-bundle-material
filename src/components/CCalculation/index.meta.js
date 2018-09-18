@@ -43,6 +43,9 @@ export default {
       name: 'Input Name',
       value: null,
       priority: 1,
+      validation: {
+        required: true,
+      },
     },
     label: {
       type: 'input',
