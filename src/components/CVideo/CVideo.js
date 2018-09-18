@@ -1,5 +1,4 @@
 import { isString, map, isNil } from 'lodash';
-import { fieldable } from '@mixins';
 import Element from '../Element';
 
 const sourceTypes = {
@@ -103,9 +102,6 @@ const getStaticStyle = (config) => {
 
 export default {
   extends: Element,
-  mixins: [
-    fieldable,
-  ],
   methods: {
     play() {
       this.$refs.video.play();
