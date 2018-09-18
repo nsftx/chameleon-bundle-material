@@ -1,5 +1,4 @@
 import { isNil } from 'lodash';
-import { fieldable } from '@mixins';
 import Element from '../Element';
 
 const getStreamType = (config) => {
@@ -30,9 +29,6 @@ const getStaticStyle = (config) => {
 
 export default {
   extends: Element,
-  mixins: [
-    fieldable,
-  ],
   render(createElement) {
     const data = {
       staticStyle: getStaticStyle(this.config),

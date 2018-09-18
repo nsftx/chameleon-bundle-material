@@ -72,8 +72,8 @@ export default {
   extends: Element,
   provide() {
     return {
-      form: {
-        fields: this.getFields(),
+      cEntity: {
+        fields: () => this.getFields(),
       },
     };
   },

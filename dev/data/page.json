@@ -123,7 +123,7 @@
                           "value": "Dragoje"
                         },
                         {
-                          "name": "personalData",
+                          "name": null,
                           "type": "text-area",
                           "label": "Personal Data",
                           "prependIcon": "person",
@@ -141,7 +141,7 @@
                           }
                         },
                         {
-                          "name": "fullName",
+                          "name": null,
                           "type": "calculation",
                           "label": "Full Name",
                           "prependIcon": "person",
@@ -152,7 +152,6 @@
                           "hint": null,
                           "tooltip": null,
                           "clearable": true,
-                          "color": "",
                           "theme": "",
                           "validateOn": "blur",
                           "validation": {
@@ -161,7 +160,7 @@
                           "value": "${lastName} ${firstName}"
                         },
                         {
-                          "name": "country",
+                          "name": null,
                           "type": "select",
                           "label": "Country",
                           "prependIcon": "language",
@@ -201,7 +200,7 @@
                           }
                         },
                         {
-                          "name": "company",
+                          "name": null,
                           "type": "select-list",
                           "label": "Company",
                           "prependIcon": "language",
@@ -256,7 +255,7 @@
                           ]
                         },
                         {
-                          "name": "language",
+                          "name": null,
                           "type": "tags",
                           "label": "Language",
                           "prependIcon": "language",
@@ -307,7 +306,7 @@
                           ]
                         },
                         {
-                          "name": "creditCard",
+                          "name": null,
                           "type": "text",
                           "label": "Credit Card Number",
                           "prependIcon": "credit_card",
@@ -335,7 +334,7 @@
                           "value": "375556917985515"
                         },
                         {
-                          "name": "quantity",
+                          "name": null,
                           "type": "number",
                           "label": "Quantity",
                           "prependIcon": "money",
@@ -364,7 +363,7 @@
                           "value": 100
                         },
                         {
-                          "name": "amount",
+                          "name": null,
                           "type": "number",
                           "label": "Amount",
                           "prependIcon": "money",
@@ -392,7 +391,7 @@
                           "value": 100.20
                         },
                         {
-                          "name": "about",
+                          "name": null,
                           "type": "rich-text",
                           "label": "About",
                           "validation": {
@@ -407,7 +406,7 @@
                           "value": "Test rich <b>content</b>."
                         },
                         {
-                          "name": "description",
+                          "name": null,
                           "type": "rich-text",
                           "label": "Description",
                           "placeholder": "Enter description",
@@ -418,7 +417,7 @@
                           "theme": "dark"
                         },
                         {
-                          "name": "payin",
+                          "name": null,
                           "type": "money",
                           "label": "Payin",
                           "prependIcon": "money",
@@ -444,7 +443,7 @@
                           "value": "120,35"
                         },
                         {
-                          "name": "dateOfBirth",
+                          "name": null,
                           "type": "date",
                           "label": "Date of Birth",
                           "prependIcon": null,
@@ -468,7 +467,7 @@
                           "format": "LLL"
                         },
                         {
-                          "name": "reportRange",
+                          "name": null,
                           "type": "date-range",
                           "label": "Report Range",
                           "prependIcon": null,
@@ -492,7 +491,7 @@
                           "format": "LLL"
                         },
                         {
-                          "name": "age",
+                          "name": null,
                           "type": "slider",
                           "label": "Age",
                           "color": "primary",
@@ -513,7 +512,7 @@
                           "step": 1
                         },
                         {
-                          "name": "rating",
+                          "name": null,
                           "type": "rating",
                           "label": "How did you like our fat bunny",
                           "maxRating": 5,
@@ -530,7 +529,7 @@
                           }
                         },
                         {
-                          "name": "cities",
+                          "name": null,
                           "type": "check-list",
                           "label": "Select cities",
                           "prependIcon": null,
@@ -566,7 +565,7 @@
                           }
                         },
                         {
-                          "name": "gender",
+                          "name": null,
                           "type": "radio-list",
                           "label": "Gender",
                           "prependIcon": null,
@@ -578,7 +577,7 @@
                           "value": null,
                           "theme": "light",
                           "validation": {
-                            "required": true
+                            "required": false
                           },
                           "dataSource": {
                             "items": [
@@ -598,7 +597,7 @@
                           }
                         },
                         {
-                          "name": "rememberCheck",
+                          "name": null,
                           "type": "check",
                           "label": "Remember me",
                           "color": "blue",
@@ -613,7 +612,7 @@
                           }
                         },
                         {
-                          "name": "rememberSwitch",
+                          "name": null,
                           "type": "switch",
                           "label": "Remember me",
                           "color": "primary",
@@ -840,34 +839,55 @@
                           "color": "",
                           "elements": [
                             {
-                              "name": "firstName1",
-                              "type": "text",
-                              "label": "First Name",
-                              "prependIcon": "person",
-                              "appendIcon": null,
-                              "prefix": null,
-                              "suffix": null,
-                              "placeholder": "Please enter your first name",
-                              "hint": null,
-                              "persistentHint": false,
-                              "tooltip": null,
-                              "clearable": true,
-                              "validateOn": "blur",
-                              "mask": {
-                                "predefined": false,
-                                "value": null
+                              "type": "form",
+                              "name": "",
+                              "color": "",
+                              "theme": "",
+                              "enabled": true,
+                              "submit": {
+                                "name": "submit_button",
+                                "label": "Submit",
+                                "color": "primary",
+                                "theme": "dark"
                               },
-                              "validation": {
-                                "required": true,
-                                "minLength": "",
-                                "maxLength": null,
-                                "pattern": {
-                                  "predefined": null,
-                                  "value": null
-                                },
-                                "custom": null
+                              "clear": {
+                                "name": "clear_button",
+                                "label": "Clear",
+                                "color": "red",
+                                "theme": "dark"
                               },
-                              "value": "Jadranko"
+                              "elements": [
+                                {
+                                  "name": "firstName1",
+                                  "type": "text",
+                                  "label": "First Name",
+                                  "prependIcon": "person",
+                                  "appendIcon": null,
+                                  "prefix": null,
+                                  "suffix": null,
+                                  "placeholder": "Please enter your first name",
+                                  "hint": null,
+                                  "persistentHint": false,
+                                  "tooltip": null,
+                                  "clearable": true,
+                                  "validateOn": "blur",
+                                  "mask": {
+                                    "predefined": false,
+                                    "value": null
+                                  },
+                                  "validation": {
+                                    "required": true,
+                                    "minLength": "",
+                                    "maxLength": null,
+                                    "pattern": {
+                                      "predefined": null,
+                                      "value": null
+                                    },
+                                    "custom": null
+                                  },
+                                  "value": "Jadranko"
+                                }
+                              ]
                             }
                           ]
                         }
@@ -897,34 +917,55 @@
                           "title": "Item 1",
                           "elements": [
                             {
-                              "name": "firstName1",
-                              "type": "text",
-                              "label": "First Name",
-                              "prependIcon": "person",
-                              "appendIcon": null,
-                              "prefix": null,
-                              "suffix": null,
-                              "placeholder": "Please enter your first name",
-                              "hint": null,
-                              "persistentHint": false,
-                              "tooltip": null,
-                              "clearable": true,
-                              "validateOn": "blur",
-                              "mask": {
-                                "predefined": false,
-                                "value": null
+                              "type": "form",
+                              "name": "",
+                              "color": "",
+                              "theme": "",
+                              "enabled": true,
+                              "submit": {
+                                "name": "submit_button",
+                                "label": "Submit",
+                                "color": "primary",
+                                "theme": "dark"
                               },
-                              "validation": {
-                                "required": true,
-                                "minLength": 2,
-                                "maxLength": 20,
-                                "pattern": {
-                                  "predefined": null,
-                                  "value": null
-                                },
-                                "custom": null
+                              "clear": {
+                                "name": "clear_button",
+                                "label": "Clear",
+                                "color": "red",
+                                "theme": "dark"
                               },
-                              "value": "Jadranko"
+                              "elements": [
+                                {
+                                  "name": "firstName1",
+                                  "type": "text",
+                                  "label": "First Name",
+                                  "prependIcon": "person",
+                                  "appendIcon": null,
+                                  "prefix": null,
+                                  "suffix": null,
+                                  "placeholder": "Please enter your first name",
+                                  "hint": null,
+                                  "persistentHint": false,
+                                  "tooltip": null,
+                                  "clearable": true,
+                                  "validateOn": "blur",
+                                  "mask": {
+                                    "predefined": false,
+                                    "value": null
+                                  },
+                                  "validation": {
+                                    "required": true,
+                                    "minLength": "",
+                                    "maxLength": null,
+                                    "pattern": {
+                                      "predefined": null,
+                                      "value": null
+                                    },
+                                    "custom": null
+                                  },
+                                  "value": "Jadranko"
+                                }
+                              ]
                             }
                           ]
                         },
@@ -934,34 +975,55 @@
                           "title": "Item 2",
                           "elements": [
                             {
-                              "name": "firstName2",
-                              "type": "text",
-                              "label": "First Name",
-                              "prependIcon": "person",
-                              "appendIcon": null,
-                              "prefix": null,
-                              "suffix": null,
-                              "placeholder": "Please enter your first name",
-                              "hint": null,
-                              "persistentHint": false,
-                              "tooltip": null,
-                              "clearable": true,
-                              "validateOn": "blur",
-                              "mask": {
-                                "predefined": false,
-                                "value": null
+                              "type": "form",
+                              "name": "",
+                              "color": "",
+                              "theme": "",
+                              "enabled": true,
+                              "submit": {
+                                "name": "submit_button",
+                                "label": "Submit",
+                                "color": "primary",
+                                "theme": "dark"
                               },
-                              "validation": {
-                                "required": true,
-                                "minLength": 2,
-                                "maxLength": 20,
-                                "pattern": {
-                                  "predefined": null,
-                                  "value": null
-                                },
-                                "custom": null
+                              "clear": {
+                                "name": "clear_button",
+                                "label": "Clear",
+                                "color": "red",
+                                "theme": "dark"
                               },
-                              "value": "Jadranko"
+                              "elements": [
+                                {
+                                  "name": "firstName1",
+                                  "type": "text",
+                                  "label": "First Name",
+                                  "prependIcon": "person",
+                                  "appendIcon": null,
+                                  "prefix": null,
+                                  "suffix": null,
+                                  "placeholder": "Please enter your first name",
+                                  "hint": null,
+                                  "persistentHint": false,
+                                  "tooltip": null,
+                                  "clearable": true,
+                                  "validateOn": "blur",
+                                  "mask": {
+                                    "predefined": false,
+                                    "value": null
+                                  },
+                                  "validation": {
+                                    "required": true,
+                                    "minLength": "",
+                                    "maxLength": null,
+                                    "pattern": {
+                                      "predefined": null,
+                                      "value": null
+                                    },
+                                    "custom": null
+                                  },
+                                  "value": "Jadranko"
+                                }
+                              ]
                             }
                           ]
                         }
