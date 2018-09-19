@@ -7,18 +7,15 @@ export default {
     apiKey: {
       type: 'input',
       name: 'Api Key',
+      value: null,
+      validation: {
+        required: true,
+      },
     },
     libraries: {
       type: 'input',
       name: 'Map Libraries',
-    },
-    width: {
-      type: 'input',
-      name: 'Map width',
-    },
-    height: {
-      type: 'input',
-      name: 'Map height',
+      value: null,
     },
   },
 };

@@ -4,17 +4,14 @@ import Element from '../Element';
 export default {
   extends: Element,
   props: {
-    height: {
-      type: String,
-      default: '400px',
-    },
-    width: {
-      type: String,
-      default: '100%',
-    },
     mapOptions: {
       type: Object,
     },
+  },
+  data() {
+    return {
+      apiKey: null,
+    };
   },
   methods: {
     load() {
@@ -27,26 +24,40 @@ export default {
 
       this.$emit('ready', map);
     },
+    activateMap() {
+      if (isNil(this.apiKey)) return;
+
+      const lib = this.config.libraries;
+      const libraries = isString(lib) || isNil(lib) ? lib : lib.join(',');
+      const url = `https://maps.googleapis.com/maps/api/js?key=${this.apiKey}&libraries=${libraries}`;
+
+      this.loadDependencies(url, 'google.maps').then(() => {
+        this.load();
+      });
+    },
+  },
+  computed: {
+    configApiKey() {
+      return this.config.apiKey;
+    },
   },
   render() {
     const data = {
       ref: 'map',
       style: {
-        width: this.config.width || this.width,
-        height: this.config.height || this.height,
+        width: '100%',
+        height: '100%',
       },
     };
 
     return this.renderElement('div', data);
   },
-  mounted() {
-    const apiKey = this.config.apiKey;
-    const lib = this.config.libraries;
-    const libraries = isString(lib) || isNil(lib) ? lib : lib.join(',');
-    const url = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=${libraries}`;
-
-    this.loadDependencies(url, 'google.maps').then(() => {
-      this.load();
-    });
+  watch: {
+    configApiKey(key) {
+      if (!isNil(key)) {
+        this.apiKey = key;
+        this.activateMap();
+      }
+    },
   },
 };
