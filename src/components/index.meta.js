@@ -7,6 +7,8 @@ export { default as checkList } from './CCheckList/index.meta';
 export { default as date } from './CDate/index.meta';
 export { default as dateRange } from './CDateRange/index.meta';
 export { default as flexgrid } from './CFlexgrid/index.meta';
+export { default as floatingButton } from './CFloatingButton/index.meta';
+export { default as floatingButtonItem } from './CFloatingButtonItem/index.meta';
 export { default as flexgridItem } from './CFlexgridItem/index.meta';
 export { default as form } from './CForm/index.meta';
 export { default as gallery } from './CGallery/index.meta';

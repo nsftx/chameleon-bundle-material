@@ -52,6 +52,7 @@ export default {
       props: getProps(this),
       on: getListeners(this),
     };
+    const notSelectable = this.config.notSelectable || false;
 
     const children = () => {
       if (this.config.displayAsIcon) {
@@ -75,6 +76,6 @@ export default {
       ];
     };
 
-    return this.renderElement('v-btn', data, children());
+    return this.renderElement('v-btn', data, children(), false, notSelectable);
   },
 };

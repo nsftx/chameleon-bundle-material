@@ -25,12 +25,15 @@ export default {
     themeable,
   ],
   methods: {
-    renderElement(tag, options, items, parentable) {
+    renderElement(tag, options, items, parentable, notSelectable) {
       const props = isNil(options) ? {} : cloneDeep(options);
       const staticClass = props.staticClass || '';
 
       props.attrs = merge(options.attrs, this.getSchemaAttributes());
-      props.staticClass = `${this.baseClass} ${this.$options.name} ${staticClass}`;
+
+      if (!notSelectable) {
+        props.staticClass = `${this.baseClass} ${this.$options.name} ${staticClass}`;
+      }
 
       if (parentable) {
         props.staticClass = `${props.staticClass} ${this.baseParentClass} ${staticClass}`;

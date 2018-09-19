@@ -63,6 +63,45 @@
               "theme": "dark",
               "color": "red",
               "value": null
+            },
+            {
+              "type": "panel",
+              "name": "panel",
+              "flat": true,
+              "elements": [
+                {
+                  "type": "floating-button",
+                  "direction": "top",
+                  "openOnHover": false,
+                  "align": "bottom right",
+                  "absolute": false,
+                  "fixed": false,
+                  "color": "red",
+                  "theme": "dark",
+                  "activator": {
+                    "icon": "account_circle",
+                    "displayAsIcon": true
+                  },
+                  "elements": [
+                    {
+                      "type": "floating-button-item",
+                      "title": "First floating button",
+                      "displayAsIcon": true,
+                      "color": "primary",
+                      "theme": "light",
+                      "icon": "edit"
+                    },
+                    {
+                      "type": "floating-button-item",
+                      "title": "Second floating button",
+                      "displayAsIcon": true,
+                      "color": "green",
+                      "theme": "dark",
+                      "icon": "add"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
