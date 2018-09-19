@@ -18,15 +18,16 @@ const getMath = () => {
 
 export default {
   extends: Text,
-  inject: ['form'],
+  inject: ['cEntity'],
   data() {
     return {
+      isResolvable: true,
       resolvedValue: null,
     };
   },
   computed: {
     fields() {
-      return reduce(this.form.fields, (result, field) => {
+      return reduce(this.cEntity.fields(), (result, field) => {
         const results = result;
         if (field.name !== this.$options.name) {
           results[field.name] = field.value;
@@ -66,7 +67,5 @@ export default {
     assign(this.config, {
       persistentHint: true,
     });
-
-    this.$on('blur', this.resolveValue);
   },
 };

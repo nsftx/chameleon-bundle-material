@@ -25,10 +25,13 @@ export default {
   ],
   options: {
     name: {
-      type: 'input',
+      type: 'fieldNameInput',
       name: 'Input Name',
       value: null,
       priority: 1,
+      validation: {
+        required: true,
+      },
     },
     toolbar: {
       type: 'select',

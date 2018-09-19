@@ -100,8 +100,8 @@ describe('AllComponents', () => {
         definition,
       },
       provide: {
-        form: {
-          fields: [],
+        cEntity: {
+          fields: () => [],
           register: () => null,
         },
         expansionPanel: expansionPanelProvide(),

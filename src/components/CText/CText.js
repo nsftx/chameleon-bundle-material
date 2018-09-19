@@ -131,6 +131,8 @@ const getListeners = (context) => {
       self.$emit('input', self.value);
     },
     blur() {
+      if (self.isResolvable) self.resolveValue();
+
       self.sendToEventBus('FocusedOut', { text: self.value });
     },
   };

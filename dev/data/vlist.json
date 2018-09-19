@@ -12,28 +12,39 @@
           "gutter": false,
           "elements": [
             {
-              "name": "about",
-              "type": "rich-text",
-              "label": "About",
-              "validation": {
-                "required": true
+              "type": "form",
+              "name": "",
+              "color": "",
+              "theme": "",
+              "enabled": true,
+              "submit": {
+                "name": "submit_button",
+                "label": "Submit",
+                "color": "primary",
+                "theme": "dark"
               },
-              "toolbar": [
-                "bold",
-                "italic",
-                "link"
-              ],
-              "value": "Test rich <b>content</b>."
-            },
-            {
-              "name": "description",
-              "type": "rich-text",
-              "label": "Description",
-              "placeholder": "Enter description",
-              "validation": {
-                "required": false
+              "clear": {
+                "name": "clear_button",
+                "label": "Clear",
+                "color": "red",
+                "theme": "dark"
               },
-              "toolbar": "advanced"
+              "elements": [
+                {
+                  "name": "about",
+                  "type": "rich-text",
+                  "label": "About",
+                  "validation": {
+                    "required": true
+                  },
+                  "toolbar": [
+                    "bold",
+                    "italic",
+                    "link"
+                  ],
+                  "value": "Test rich <b>content</b>."
+                }
+              ]
             },
             {
               "name": "button",
