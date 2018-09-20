@@ -16,7 +16,6 @@ const getProps = (context) => {
     fixed: config.fixed,
     [position[0]]: !relative,
     [position[1]]: !relative,
-    align: config.align,
     value: false,
   };
 

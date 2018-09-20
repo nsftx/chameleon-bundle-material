@@ -6,6 +6,12 @@ export default {
   type: 'floating-button',
   name: 'Floating Button',
   icon: 'control_point',
+  optionGroups: {
+    activator: {
+      key: 'activator',
+      name: 'Floating Button',
+    },
+  },
   children: [
     'floating-button-item',
   ],
@@ -32,13 +38,13 @@ export default {
     },
     absolute: {
       type: 'check',
-      name: 'Position The Element Absolutely',
+      name: 'Position Relative To The Containing Element',
       value: false,
       priority: 5,
     },
     fixed: {
       type: 'check',
-      name: 'Position The Element Fixed',
+      name: 'Position Relative To The Viewport / Browser Window',
       value: false,
       priority: 6,
     },

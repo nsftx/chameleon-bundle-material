@@ -76,6 +76,10 @@ export default {
       ];
     };
 
-    return this.renderElement('v-btn', data, children(), false, notSelectable);
+    if (notSelectable) {
+      return createElement('v-btn', data, [children()]);
+    }
+
+    return this.renderElement('v-btn', data, children());
   },
 };
