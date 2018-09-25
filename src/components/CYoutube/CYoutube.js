@@ -167,11 +167,17 @@ export default {
         ref: 'youtube',
       },
     )];
+    let props = {};
 
     if (this.registry.isPreviewMode) {
       children.unshift(getPreviewOverlayElement(createElement));
+      props = {
+        staticStyle: {
+          position: 'relative',
+        },
+      };
     }
 
-    return this.renderElement('div', {}, children);
+    return this.renderElement('div', props, children);
   },
 };
