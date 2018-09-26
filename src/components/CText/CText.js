@@ -8,7 +8,7 @@ const getAttrs = (context) => {
 
   const attrs = {
     name: config.name,
-    title: config.description.tooltip,
+    title: config.description ? config.description.tooltip : null,
   };
 
   /* if (!isUndefined(config.step)) {
@@ -98,12 +98,12 @@ const getProps = (context) => {
     disabled: config.disabled,
     label: config.label,
     readonly: config.readonly,
-    hint: config.description.hint,
-    placeholder: config.description.placeholder,
-    color: config.style.color,
+    hint: config.description ? config.description.hint : null,
+    placeholder: config.description ? config.description.placeholder : null,
+    color: config.style ? config.style.color : null,
     dark: context.isThemeDark,
     light: context.isThemeLight,
-    value: config.data.value,
+    value: config.data ? config.data.value : null,
     required: getPropRequired(config),
     rules: validator.getRules(config, context.validators),
     type: getPropType(config), // TODO implement type from context
