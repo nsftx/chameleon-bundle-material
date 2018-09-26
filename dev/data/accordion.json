@@ -47,34 +47,27 @@
                       },
                       "elements": [
                         {
-                          "name": "firstName1",
                           "type": "text",
+                          "name": "firstName",
                           "label": "First Name",
-                          "prependIcon": "person",
-                          "appendIcon": null,
-                          "prefix": null,
-                          "suffix": null,
-                          "placeholder": "Please enter your first name",
-                          "hint": null,
-                          "persistentHint": false,
-                          "tooltip": null,
                           "clearable": true,
-                          "validateOn": "blur",
-                          "mask": {
-                            "predefined": false,
-                            "value": null
+                          "disabled": false,
+                          "readonly": false,
+                          "description": {
+                            "placeholder": "Please enter your first name",
+                            "tooltip": "text tooltip",
+                            "hint": "some hint!!"
+                          },
+                          "data": {
+                            "value": "Test Text Input"
+                          },
+                          "style": {
+                            "color": null,
+                            "theme": "light"
                           },
                           "validation": {
-                            "required": true,
-                            "minLength": "",
-                            "maxLength": null,
-                            "pattern": {
-                              "predefined": null,
-                              "value": null
-                            },
-                            "custom": null
-                          },
-                          "value": "Jadranko"
+                            "required": true
+                          }
                         }
                       ]
                     }
@@ -105,34 +98,27 @@
                       },
                       "elements": [
                         {
-                          "name": "firstName1",
                           "type": "text",
-                          "label": "First Name",
-                          "prependIcon": "person",
-                          "appendIcon": null,
-                          "prefix": null,
-                          "suffix": null,
-                          "placeholder": "Please enter your first name",
-                          "hint": null,
-                          "persistentHint": false,
-                          "tooltip": null,
+                          "name": "lastName",
+                          "label": "Last Name",
                           "clearable": true,
-                          "validateOn": "blur",
-                          "mask": {
-                            "predefined": false,
-                            "value": null
+                          "disabled": false,
+                          "readonly": false,
+                          "description": {
+                            "placeholder": "Please enter your last name",
+                            "tooltip": "text tooltip",
+                            "hint": "some hint!!"
+                          },
+                          "data": {
+                            "value": "Test Text Input 2"
+                          },
+                          "style": {
+                            "color": null,
+                            "theme": "light"
                           },
                           "validation": {
-                            "required": true,
-                            "minLength": "",
-                            "maxLength": null,
-                            "pattern": {
-                              "predefined": null,
-                              "value": null
-                            },
-                            "custom": null
-                          },
-                          "value": "Jadranko"
+                            "required": true
+                          }
                         }
                       ]
                     }

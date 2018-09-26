@@ -8,7 +8,7 @@ import {
   themeable,
 } from '@mixins';
 
-import { cloneDeep, merge, isNil } from 'lodash';
+import { cloneDeep, merge, isNil, isObject } from 'lodash';
 /*
 This is a base element for all componets.
 This element applies elementable mixin from sdk, and
@@ -60,12 +60,20 @@ export default {
     setDataSource(source) {
       this.$set(this.config, 'dataSource', source);
     },
-    setInputValue(value) {
-      this.value = value;
-      this.$emit('input', value);
+    setInputValue(source) {
+      if (isObject(source)) {
+        this.value = source.value;
+      } else {
+        this.value = source;
+      }
+      this.$emit('input', this.value);
     },
-    setItemDisabledValue(value) {
-      this.$set(this.config, 'disabled', value);
+    setItemDisabledValue(source) {
+      if (isObject(source)) {
+        this.$set(this.config, 'disabled', source.value);
+      } else {
+        this.$set(this.config, 'disabled', source);
+      }
     },
   },
 };

@@ -1,4 +1,4 @@
-import { isBoolean, isNil, isUndefined } from 'lodash';
+import { isNil } from 'lodash';
 import { fieldable, validatable } from '@mixins';
 import { validator } from '@validators';
 import Element from '../Element';
@@ -8,11 +8,10 @@ const getAttrs = (context) => {
 
   const attrs = {
     name: config.name,
-    // If required tooltip should be added as child component VTooltip
-    title: config.tooltip,
+    title: config.description.tooltip,
   };
 
-  if (!isUndefined(config.step)) {
+  /* if (!isUndefined(config.step)) {
     if (isBoolean(config.step)) {
       if (config.step) {
         attrs.step = 1;
@@ -20,12 +19,12 @@ const getAttrs = (context) => {
     } else {
       attrs.step = config.step;
     }
-  }
+  } */
 
   return attrs;
 };
 
-const getMask = (config) => {
+/* const getMask = (config) => {
   const mask = config.mask;
   if (mask) {
     // Mask value has priority over predefined mask
@@ -47,7 +46,7 @@ const getMask = (config) => {
   }
 
   return null;
-};
+}; */
 
 const getPropRequired = (config) => {
   // Required validation is property in Vuetify
@@ -59,7 +58,7 @@ const getPropRequired = (config) => {
   return false;
 };
 
-const getPropSuffix = (config) => {
+/* const getPropSuffix = (config) => {
   if (['money'].indexOf(config.type) > -1 && config.currency) {
     return config.currency[config.suffix];
   }
@@ -73,7 +72,7 @@ const getPropPrefix = (config) => {
   }
 
   return config.prefix;
-};
+}; */
 
 const getPropType = (config) => {
   if (['number'].indexOf(config.type) > -1 && config.step) {
@@ -85,32 +84,33 @@ const getPropType = (config) => {
 
 const getProps = (context) => {
   const config = context.config;
-  const mask = getMask(config);
+  // const mask = getMask(config);
 
   // Hard-coded values are candidates for config
   const props = {
-    appendIcon: config.appendIcon,
-    clearable: config.clearable,
+    // suffix: getPropSuffix(config),
+    // prefix: getPropPrefix(config),
+    // prependIcon: config.prependIcon,
+    // appendIcon: config.appendIcon,
     counter: false,
-    hint: config.hint,
-    label: config.label,
     loading: false,
-    color: config.color,
+    clearable: config.clearable,
+    disabled: config.disabled,
+    label: config.label,
+    readonly: config.readonly,
+    hint: config.description.hint,
+    placeholder: config.description.placeholder,
+    color: config.style.color,
     dark: context.isThemeDark,
     light: context.isThemeLight,
-    disabled: config.disabled || false,
-    persistentHint: config.persistentHint,
-    placeholder: config.placeholder,
-    prefix: getPropPrefix(config),
-    prependIcon: config.prependIcon,
+    value: config.data.value,
     required: getPropRequired(config),
     rules: validator.getRules(config, context.validators),
-    suffix: getPropSuffix(config),
-    type: getPropType(config),
-    value: context.value,
+    type: getPropType(config), // TODO implement type from context
+    persistentHint: false, // TODO enable if password!
   };
 
-  if (mask) props.mask = mask;
+  // if (mask) props.mask = mask;
 
   return props;
 };
@@ -120,20 +120,20 @@ const getListeners = (context) => {
 
   const listeners = {
     focus() {
-      self.sendToEventBus('FocusedIn', { text: self.value });
+      self.sendToEventBus('FocusedIn', { value: self.value });
     },
     input(value) {
       self.value = value;
       if (isNil(value)) {
-        self.sendToEventBus('Cleared', { text: value });
+        self.sendToEventBus('Cleared', { value });
       }
-      self.sendToEventBus('Changed', { text: value });
+      self.sendToEventBus('Changed', { value });
       self.$emit('input', self.value);
     },
     blur() {
       if (self.isResolvable) self.resolveValue();
 
-      self.sendToEventBus('FocusedOut', { text: self.value });
+      self.sendToEventBus('FocusedOut', { value: self.value });
     },
   };
 

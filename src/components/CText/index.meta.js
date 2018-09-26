@@ -4,6 +4,18 @@ export default {
   name: 'Text Box',
   icon: 'title',
   optionGroups: {
+    data: {
+      key: 'data',
+      name: 'Data',
+    },
+    description: {
+      key: 'description',
+      name: 'Description',
+    },
+    style: {
+      key: 'style',
+      name: 'Style',
+    },
     validation: {
       key: 'validation',
       name: 'Validation',
@@ -50,70 +62,68 @@ export default {
     },
     label: {
       type: 'input',
-      name: 'TextBox Label',
+      name: 'Label',
       value: 'Text Field',
       priority: 2,
     },
-    prependIcon: {
-      type: 'iconSource',
-      name: 'Prepend Icon',
-      value: null,
-      priority: 3,
-    },
-    appendIcon: {
-      type: 'iconSource',
-      name: 'Append Icon',
-      value: null,
-      priority: 4,
-    },
-    prefix: {
-      type: 'input',
-      name: 'Prefix',
-      value: null,
-      priority: 5,
-    },
-    suffix: {
-      type: 'input',
-      name: 'Suffix',
-      value: null,
-      priority: 6,
-    },
-    placeholder: {
-      type: 'input',
-      name: 'Placeholder Text',
-      value: null,
-      priority: 7,
-    },
-    hint: {
-      type: 'input',
-      name: 'Hint Text',
-      value: null,
-      priority: 8,
-    },
-    tooltip: {
-      type: 'input',
-      name: 'Tooltip Text',
-      value: null,
-      priority: 9,
-    },
     clearable: {
       type: 'check',
-      name: 'Enable Input Reset',
+      name: 'Input Reset',
       value: false,
-      priority: 10,
+      priority: 3,
     },
     disabled: {
       type: 'check',
       name: 'Disable Input',
       value: false,
-      priority: 12,
+      priority: 4,
     },
-    mask: {
-      type: 'subGroup',
-      name: 'Mask',
-      predefined: {
+    readonly: {
+      type: 'check',
+      name: 'Readonly',
+      value: false,
+      priority: 5,
+    },
+    description: {
+      type: 'group',
+      group: 'description',
+      hint: {
         type: 'input',
-        name: 'Predefined',
+        name: 'Hint Text',
+        value: null,
+      },
+      tooltip: {
+        type: 'input',
+        name: 'Tooltip Text',
+        value: null,
+      },
+      placeholder: {
+        type: 'input',
+        name: 'Placeholder Text',
+        value: null,
+      },
+    },
+    data: {
+      type: 'group',
+      group: 'data',
+      value: {
+        type: 'input',
+        name: 'Input Source',
+        value: null,
+      },
+    },
+    style: {
+      type: 'group',
+      group: 'style',
+      color: {
+        type: 'colorPicker',
+        name: 'Color',
+        value: null,
+      },
+      theme: {
+        type: 'select',
+        name: 'Theme',
+        items: '=$themes',
         value: null,
       },
     },
@@ -125,26 +135,6 @@ export default {
         name: 'Enable required',
         value: false,
       },
-      pattern: {
-        type: 'subGroup',
-        name: 'Pattern',
-        predefined: {
-          type: 'input',
-          name: 'Predefined',
-          value: null,
-        },
-      },
-      minLength: {
-        type: 'input',
-        name: 'Min Length',
-        value: null,
-      },
-      maxLength: {
-        type: 'input',
-        name: 'Max Length',
-        value: null,
-      },
     },
-    theme: true,
   },
 };
