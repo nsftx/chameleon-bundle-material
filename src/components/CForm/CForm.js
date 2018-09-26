@@ -2,6 +2,7 @@ import {
   filter,
   kebabCase,
   isNil,
+  merge,
   map,
 } from 'lodash';
 import { v4 } from 'uuid';
@@ -25,7 +26,7 @@ const getFormActions = (context, createElement) => {
       getComponentTag('button', context),
       {
         props: {
-          definition: button,
+          definition: merge({ notSelectable: true }, button),
         },
         attrs: {
           action: true,
