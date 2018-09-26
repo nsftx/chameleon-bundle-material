@@ -8,6 +8,8 @@
           "type": "panel",
           "name": "panel-1",
           "flat": false,
+          "width": "100%",
+          "height": "400px",
           "elements": [
             {
               "type": "map",

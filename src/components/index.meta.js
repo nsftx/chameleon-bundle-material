@@ -14,6 +14,7 @@ export { default as hlist } from './CHlist/index.meta';
 export { default as html } from './CHtml/index.meta';
 export { default as image } from './CImage/index.meta';
 export { default as list } from './CList/index.meta';
+export { default as map } from './CMap/index.meta';
 export { default as menu } from './CMenu/index.meta';
 export { default as page } from './CPage/index.meta';
 export { default as panel } from './CPanel/index.meta';
