@@ -30,6 +30,7 @@ export default {
       const staticClass = props.staticClass || '';
 
       props.attrs = merge(options.attrs, this.getSchemaAttributes());
+
       props.staticClass = `${this.baseClass} ${this.$options.name} ${staticClass}`;
 
       if (parentable) {
