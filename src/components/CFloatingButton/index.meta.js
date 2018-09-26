@@ -1,6 +1,3 @@
-import { merge } from 'lodash';
-import CButton from '../CButton/index.meta';
-
 export default {
   group: 'actions',
   type: 'floating-button',
@@ -15,8 +12,6 @@ export default {
   children: [
     'floating-button-item',
   ],
-  actions: merge({}, CButton.actions),
-  events: merge({}, CButton.events),
   options: {
     color: true,
     theme: true,
@@ -96,19 +91,21 @@ export default {
       ],
       priority: 9,
     },
-    activator: merge(
-      {
-        type: 'group',
-        group: 'activator',
-      }, CButton.options, {
-        block: false,
-        displayAsIcon: {
-          value: true,
-        },
-        icon: {
-          value: 'add_circle',
-        },
+    activator: {
+      type: 'group',
+      group: 'activator',
+      icon: {
+        type: 'iconSource',
+        name: 'Icon Source',
+        value: 'add_circle',
+        priority: 1,
       },
-    ),
+      flat: {
+        type: 'check',
+        name: 'No Background',
+        value: false,
+        priority: 2,
+      },
+    },
   },
 };

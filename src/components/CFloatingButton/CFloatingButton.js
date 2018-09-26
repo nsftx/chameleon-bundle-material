@@ -2,8 +2,6 @@
 import { map, merge } from 'lodash';
 import Element from '../Element';
 
-require('../../style/components/_floating-button.styl');
-
 const getProps = (context) => {
   const config = context.config;
   const position = config.align.split(' ');
@@ -16,7 +14,7 @@ const getProps = (context) => {
     fixed: config.fixed,
     [position[0]]: !relative,
     [position[1]]: !relative,
-    value: false,
+    value: true,
   };
 
   return props;
@@ -32,7 +30,7 @@ const getChildSlot = (createElement, context) => {
       createElement(context.getElementTag('floating-button-item'),
         {
           props: {
-            definition: merge({}, data),
+            definition: merge({ displayAsIcon: true }, data),
           },
         }));
   }
@@ -44,12 +42,13 @@ const getChildSlot = (createElement, context) => {
       props: {
         definition: merge({
           notSelectable: true,
+          displayAsIcon: true,
           color: config.color || 'primary',
           theme: config.theme,
         }, config.activator),
       },
       slot: 'activator',
-    }, null, false, true));
+    }));
 
   return children;
 };
@@ -59,6 +58,9 @@ export default {
   render(createElement) {
     const data = {
       props: getProps(this),
+      staticStyle: {
+        display: 'inline-block',
+      },
     };
 
     const children = getChildSlot(createElement, this);

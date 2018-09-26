@@ -9,9 +9,11 @@ export default merge({}, CButton, {
   hidden: true,
   options: {
     block: false,
-    displayAsIcon: {
-      value: true,
-    },
+    label: false,
+    round: false,
+    depressed: false,
+    iconPosition: false,
+    displayAsIcon: false,
     icon: {
       value: 'add_circle',
     },
