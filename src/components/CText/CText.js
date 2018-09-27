@@ -10,43 +10,8 @@ const getAttrs = (context) => {
     name: config.name,
     title: config.description ? config.description.tooltip : null,
   };
-
-  /* if (!isUndefined(config.step)) {
-    if (isBoolean(config.step)) {
-      if (config.step) {
-        attrs.step = 1;
-      }
-    } else {
-      attrs.step = config.step;
-    }
-  } */
-
   return attrs;
 };
-
-/* const getMask = (config) => {
-  const mask = config.mask;
-  if (mask) {
-    // Mask value has priority over predefined mask
-    if (mask.value) {
-      return mask.value;
-    } else if (mask.predefined) {
-      // Map Chameleon masks to Vuetify masks
-      switch (mask.predefined) {
-        case 'creditCard':
-          return 'credit-card';
-        case 'shortTime':
-          return 'time';
-        case 'longTime':
-          return 'time-with-seconds';
-        default:
-          return null;
-      }
-    }
-  }
-
-  return null;
-}; */
 
 const getPropAppendIcon = (config) => {
   switch (config.type) {
@@ -89,26 +54,56 @@ const getPropRequired = (config) => {
   return false;
 };
 
+const getPropMask = (config) => {
+  switch (config.type) {
+    case 'text':
+      return config.mask;
+    case 'phone':
+      return config.mask;
+    default:
+      return null;
+  }
+};
+
 const getPropPrefix = config => (config.style ? config.style.prefix : null);
 const getPropSuffix = config => (config.style ? config.style.suffix : null);
 const getPropType = config => config.type || 'text';
 
 const setConfigValues = (context) => {
   const config = context;
-  if (!isNil(config.style) && !isNil(config.style.appendIcon)) {
-    config.style.appendIcon = getPropAppendIcon(config);
+  if (config.style) {
+    if (isNil(config.style.appendIcon)) {
+      config.style.appendIcon = getPropAppendIcon(config);
+    }
+    if (isNil(config.style.prependIcon)) {
+      config.style.prependIcon = getPropPrependIcon(config);
+    }
   }
-  if (!isNil(config.style) && !isNil(config.style.prependIcon)) {
-    config.style.prependIcon = getPropPrependIcon(config);
+};
+
+const setPropEmailPattern = (context) => {
+  const config = context;
+  if (config.type === 'email') {
+    config.validation.pattern = config.validation.pattern || /\S+@\S+\.\S+/;
+  }
+};
+
+const setPropPasswordPattern = (context) => {
+  const config = context;
+  if (config.type === 'password') {
+    config.validation.pattern = config.validation.pattern || /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
   }
 };
 
 const getProps = (context) => {
   const config = context.config;
-  // const mask = getMask(config);
+
+  setConfigValues(config);
+  setPropEmailPattern(config);
+  setPropPasswordPattern(config);
 
   const props = {
-    appendIcon: getPropAppendIcon(config),
+    appendIcon: config.style ? config.style.appendIcon : null,
     clearable: config.clearable,
     color: config.style ? config.style.color : null,
     counter: false,
@@ -121,18 +116,15 @@ const getProps = (context) => {
     persistentHint: getPropPersistentHint(config),
     placeholder: config.description ? config.description.placeholder : null,
     prefix: getPropPrefix(config),
-    prependIcon: getPropPrependIcon(config),
+    prependIcon: config.style ? config.style.prependIcon : null,
     readonly: config.readonly,
     required: getPropRequired(config),
     rules: validator.getRules(config, context.validators),
     suffix: getPropSuffix(config),
     type: getPropType(config),
+    mask: getPropMask(config),
     value: config.data ? config.data.value : null,
   };
-
-  setConfigValues(config);
-
-  // if (mask) props.mask = mask;
 
   return props;
 };

@@ -750,7 +750,33 @@
                                   },
                                   "style": {
                                     "color": null,
-                                    "theme": "light"
+                                    "theme": "light",
+                                    "prependIcon": "people"
+                                  },
+                                  "validation": {
+                                    "required": true
+                                  }
+                                },
+                                {
+                                  "type": "text",
+                                  "name": "numberValue2",
+                                  "label": "Enter Your Credit Card Number",
+                                  "clearable": true,
+                                  "disabled": false,
+                                  "readonly": false,
+                                  "description": {
+                                    "placeholder": "",
+                                    "tooltip": "number",
+                                    "hint": "some hint!!"
+                                  },
+                                  "data": {
+                                    "value": "375556917985515"
+                                  },
+                                  "mask": "credit-card",
+                                  "style": {
+                                    "color": null,
+                                    "theme": "light",
+                                    "prependIcon": "credit_card"
                                   },
                                   "validation": {
                                     "required": true
@@ -814,10 +840,10 @@
                                   "description": {
                                     "placeholder": "Please enter your Password",
                                     "tooltip": "password",
-                                    "hint": "Must be at least 8 characters"
+                                    "hint": "Minimum eight characters, at least one letter and one number"
                                   },
                                   "data": {
-                                    "value": "Test Text Input"
+                                    "value": "password12345"
                                   },
                                   "style": {
                                     "color": null,

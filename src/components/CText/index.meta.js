@@ -60,6 +60,15 @@ export default {
       email: {
         key: 'email',
         name: 'Email',
+        options: {
+          validation: {
+            pattern: {
+              type: 'input',
+              name: 'Email pattern',
+              value: /\S+@\S+\.\S+/,
+            },
+          },
+        },
       },
       money: {
         key: 'money',
@@ -76,16 +85,42 @@ export default {
       phone: {
         key: 'phone',
         name: 'Phone',
+        options: {
+          mask: {
+            type: 'select',
+            name: 'Phone Mask',
+            items: [
+              {
+                name: 'Phone (###) ### - ####',
+                value: 'phone',
+              },
+              {
+                name: 'Phone +### ## ### ###',
+                value: '+### ## ### ###',
+              },
+            ],
+            value: '+### ## ### ###',
+          },
+        },
       },
       url: {
         key: 'url',
-        name: 'Url'
+        name: 'Url',
       },
       password: {
         key: 'password',
         name: 'Password',
+        options: {
+          validation: {
+            pattern: {
+              type: 'input',
+              name: 'Password pattern',
+              value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+            },
+          },
+        },
       },
-    }
+    },
   },
   options: {
     name: {
@@ -184,6 +219,25 @@ export default {
         value: null,
       },
     },
+    mask: {
+      type: 'select',
+      name: 'Text Mask',
+      items: [
+        {
+          name: 'Credit Card (#### - #### - #### - ####)',
+          value: 'credit-card',
+        },
+        {
+          name: 'Time (##:##)',
+          value: 'time',
+        },
+        {
+          name: 'Time With Seconds (##:##:##)',
+          value: 'time-with-seconds',
+        },
+      ],
+      value: null,
+    },
     validation: {
       type: 'group',
       group: 'validation',
@@ -191,6 +245,16 @@ export default {
         type: 'check',
         name: 'Enable required',
         value: false,
+      },
+      minLength: {
+        type: 'input',
+        name: 'Min Length',
+        value: null,
+      },
+      maxLength: {
+        type: 'input',
+        name: 'Max Length',
+        value: null,
       },
     },
   },

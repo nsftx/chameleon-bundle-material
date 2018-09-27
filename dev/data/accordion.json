@@ -59,12 +59,13 @@
                             "hint": "phone"
                           },
                           "data": {
-                            "value": "+38763333444"
+                            "value": "+387 63 333 444"
                           },
                           "style": {
                             "color": null,
                             "theme": "light"
                           },
+                          "mask": "+### ## ### ###",
                           "validation": {
                             "required": true
                           }

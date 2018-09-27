@@ -109,7 +109,7 @@ export default {
         rules.push(value => getMessage(validator.pattern(
           validators.pattern,
           getValue(value),
-          validation.pattern.value,
+          validation.pattern,
         ), { field: config.label }));
       }
     }
