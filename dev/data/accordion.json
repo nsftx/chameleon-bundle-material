@@ -47,19 +47,19 @@
                       },
                       "elements": [
                         {
-                          "type": "text",
-                          "name": "firstName",
-                          "label": "First Name",
+                          "type": "phone",
+                          "name": "phoneValue",
+                          "label": "Phone",
                           "clearable": true,
                           "disabled": false,
                           "readonly": false,
                           "description": {
-                            "placeholder": "Please enter your first name",
-                            "tooltip": "text tooltip",
-                            "hint": "some hint!!"
+                            "placeholder": "Please enter your Phone",
+                            "tooltip": "phone",
+                            "hint": "phone"
                           },
                           "data": {
-                            "value": "Test Text Input"
+                            "value": "+38763333444"
                           },
                           "style": {
                             "color": null,
@@ -98,19 +98,19 @@
                       },
                       "elements": [
                         {
-                          "type": "text",
-                          "name": "lastName",
-                          "label": "Last Name",
+                          "type": "url",
+                          "name": "urlValue",
+                          "label": "Url",
                           "clearable": true,
                           "disabled": false,
                           "readonly": false,
                           "description": {
-                            "placeholder": "Please enter your last name",
-                            "tooltip": "text tooltip",
+                            "placeholder": "Website",
+                            "tooltip": "website adress",
                             "hint": "some hint!!"
                           },
                           "data": {
-                            "value": "Test Text Input 2"
+                            "value": "https://chameleon.nsoft.com"
                           },
                           "style": {
                             "color": null,

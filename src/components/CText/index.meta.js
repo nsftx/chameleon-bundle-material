@@ -49,8 +49,45 @@ export default {
       help: 'Input focused out / blurred',
     },
   ],
+  contextOptions: {
+    type: {
+      type: 'group',
+      group: 'Type',
+      generic: {
+        key: 'generic',
+        name: 'Generic',
+      },
+      email: {
+        key: 'email',
+        name: 'Email',
+      },
+      money: {
+        key: 'money',
+        name: 'Money',
+      },
+      number: {
+        key: 'number',
+        name: 'Number',
+      },
+      percentage: {
+        key: 'percentage',
+        name: 'Percentage',
+      },
+      phone: {
+        key: 'phone',
+        name: 'Phone',
+      },
+      url: {
+        key: 'url',
+        name: 'Url'
+      },
+      password: {
+        key: 'password',
+        name: 'Password',
+      },
+    }
+  },
   options: {
-    color: true,
     name: {
       type: 'fieldNameInput',
       name: 'Input Name',
@@ -124,6 +161,26 @@ export default {
         type: 'select',
         name: 'Theme',
         items: '=$themes',
+        value: null,
+      },
+      prependIcon: {
+        type: 'iconSource',
+        name: 'Prepend Icon',
+        value: null,
+      },
+      appendIcon: {
+        type: 'iconSource',
+        name: 'Append Icon',
+        value: null,
+      },
+      prefix: {
+        type: 'input',
+        name: 'Prefix',
+        value: null,
+      },
+      suffix: {
+        type: 'input',
+        name: 'Suffix',
         value: null,
       },
     },

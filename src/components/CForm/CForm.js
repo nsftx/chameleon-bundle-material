@@ -8,8 +8,10 @@ import {
 import { v4 } from 'uuid';
 import Element from '../Element';
 
+const textTypes = ['email', 'money', 'number', 'percentage', 'phone', 'url', 'password'];
+
 const getComponentTag = (name, context) => {
-  const type = ['number', 'money'].indexOf(name) > -1 ? 'text' : name;
+  const type = textTypes.indexOf(name) > -1 ? 'text' : name;
   const tag = kebabCase(type);
 
   return `${context.$options.namespace}${tag}`;

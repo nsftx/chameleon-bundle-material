@@ -48,6 +48,37 @@ const getAttrs = (context) => {
   return null;
 }; */
 
+const getPropAppendIcon = (config) => {
+  switch (config.type) {
+    case 'money':
+      return 'attach_money';
+    case 'password':
+      return 'visibility';
+    default:
+      return null;
+  }
+};
+
+const getPropPrependIcon = (config) => {
+  switch (config.type) {
+    case 'email':
+      return 'email';
+    case 'phone':
+      return 'phone';
+    case 'url':
+      return 'link';
+    case 'number':
+      return 'unfold_more';
+    case 'password':
+      return 'lock';
+    default:
+      return null;
+  }
+};
+
+// If type password, persistent hint is enabled by default
+const getPropPersistentHint = config => config.type === 'password';
+
 const getPropRequired = (config) => {
   // Required validation is property in Vuetify
   // This property sets * next to label
@@ -58,57 +89,48 @@ const getPropRequired = (config) => {
   return false;
 };
 
-/* const getPropSuffix = (config) => {
-  if (['money'].indexOf(config.type) > -1 && config.currency) {
-    return config.currency[config.suffix];
+const getPropPrefix = config => (config.style ? config.style.prefix : null);
+const getPropSuffix = config => (config.style ? config.style.suffix : null);
+const getPropType = config => config.type || 'text';
+
+const setConfigValues = (context) => {
+  const config = context;
+  if (isNil(config.appendIcon)) {
+    config.style.appendIcon = getPropAppendIcon(config);
   }
-
-  return config.suffix;
-};
-
-const getPropPrefix = (config) => {
-  if (['money'].indexOf(config.type) > -1 && config.currency) {
-    return config.currency[config.prefix];
+  if (isNil(config.prependIcon)) {
+    config.style.prependIcon = getPropPrependIcon(config);
   }
-
-  return config.prefix;
-}; */
-
-const getPropType = (config) => {
-  if (['number'].indexOf(config.type) > -1 && config.step) {
-    return config.type;
-  }
-
-  return 'text';
 };
 
 const getProps = (context) => {
   const config = context.config;
   // const mask = getMask(config);
 
-  // Hard-coded values are candidates for config
   const props = {
-    // suffix: getPropSuffix(config),
-    // prefix: getPropPrefix(config),
-    // prependIcon: config.prependIcon,
-    // appendIcon: config.appendIcon,
-    counter: false,
-    loading: false,
+    appendIcon: getPropAppendIcon(config),
     clearable: config.clearable,
-    disabled: config.disabled,
-    label: config.label,
-    readonly: config.readonly,
-    hint: config.description ? config.description.hint : null,
-    placeholder: config.description ? config.description.placeholder : null,
     color: config.style ? config.style.color : null,
+    counter: false,
     dark: context.isThemeDark,
+    disabled: config.disabled,
+    hint: config.description ? config.description.hint : null,
+    label: config.label,
     light: context.isThemeLight,
-    value: config.data ? config.data.value : null,
+    loading: false,
+    persistentHint: getPropPersistentHint(config),
+    placeholder: config.description ? config.description.placeholder : null,
+    prefix: getPropPrefix(config),
+    prependIcon: getPropPrependIcon(config),
+    readonly: config.readonly,
     required: getPropRequired(config),
     rules: validator.getRules(config, context.validators),
-    type: getPropType(config), // TODO implement type from context
-    persistentHint: false, // TODO enable if password!
+    suffix: getPropSuffix(config),
+    type: getPropType(config),
+    value: config.data ? config.data.value : null,
   };
+
+  setConfigValues(config);
 
   // if (mask) props.mask = mask;
 

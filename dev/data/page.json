@@ -734,19 +734,19 @@
                               },
                               "elements": [
                                 {
-                                  "type": "text",
-                                  "name": "firstName",
-                                  "label": "First Name",
+                                  "type": "number",
+                                  "name": "numberValue",
+                                  "label": "Enter Age",
                                   "clearable": true,
                                   "disabled": false,
                                   "readonly": false,
                                   "description": {
-                                    "placeholder": "Please enter your first name",
-                                    "tooltip": "text tooltip",
+                                    "placeholder": "",
+                                    "tooltip": "number",
                                     "hint": "some hint!!"
                                   },
                                   "data": {
-                                    "value": "Test Text Input"
+                                    "value": 22
                                   },
                                   "style": {
                                     "color": null,
@@ -805,16 +805,16 @@
                               },
                               "elements": [
                                 {
-                                  "type": "text",
-                                  "name": "firstName",
-                                  "label": "First Name",
+                                  "type": "password",
+                                  "name": "password",
+                                  "label": "Password",
                                   "clearable": true,
                                   "disabled": false,
                                   "readonly": false,
                                   "description": {
-                                    "placeholder": "Please enter your first name",
-                                    "tooltip": "text tooltip",
-                                    "hint": "some hint!!"
+                                    "placeholder": "Please enter your Password",
+                                    "tooltip": "password",
+                                    "hint": "Must be at least 8 characters"
                                   },
                                   "data": {
                                     "value": "Test Text Input"
@@ -856,19 +856,19 @@
                               },
                               "elements": [
                                 {
-                                  "type": "text",
-                                  "name": "firstName",
-                                  "label": "First Name",
+                                  "type": "email",
+                                  "name": "email",
+                                  "label": "Email",
                                   "clearable": true,
                                   "disabled": false,
                                   "readonly": false,
                                   "description": {
-                                    "placeholder": "Please enter your first name",
-                                    "tooltip": "text tooltip",
-                                    "hint": "some hint!!"
+                                    "placeholder": "Please enter your Email",
+                                    "tooltip": "Email",
+                                    "hint": "Enter valid email"
                                   },
                                   "data": {
-                                    "value": "Test Text Input"
+                                    "value": "test.test@gmail.com"
                                   },
                                   "style": {
                                     "color": null,
