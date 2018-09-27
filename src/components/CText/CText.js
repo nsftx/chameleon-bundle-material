@@ -95,10 +95,10 @@ const getPropType = config => config.type || 'text';
 
 const setConfigValues = (context) => {
   const config = context;
-  if (isNil(config.appendIcon)) {
+  if (!isNil(config.style) && !isNil(config.style.appendIcon)) {
     config.style.appendIcon = getPropAppendIcon(config);
   }
-  if (isNil(config.prependIcon)) {
+  if (!isNil(config.style) && !isNil(config.style.prependIcon)) {
     config.style.prependIcon = getPropPrependIcon(config);
   }
 };
