@@ -21,6 +21,12 @@ export default {
       name: 'Validation',
     },
   },
+  contextOptionGroups: {
+    type: {
+      key: 'type',
+      name: 'Type',
+    },
+  },
   actions: [
     {
       name: 'setInputValue',
@@ -51,72 +57,143 @@ export default {
   ],
   contextOptions: {
     type: {
-      type: 'group',
-      group: 'Type',
       generic: {
-        key: 'generic',
+        type: 'group',
         name: 'Generic',
+        priority: 1,
       },
       email: {
-        key: 'email',
+        type: 'group',
         name: 'Email',
-        options: {
-          validation: {
-            pattern: {
-              type: 'input',
-              name: 'Email pattern',
-              value: /\S+@\S+\.\S+/,
-            },
+        style: {
+          prependIcon: {
+            key: 'prependIcon',
+            type: 'iconSource',
+            name: 'Prepend Icon',
+            value: 'email',
+          },
+        },
+        validation: {
+          pattern: {
+            key: 'patternt',
+            type: 'input',
+            name: 'Email pattern',
+            value: /\S+@\S+\.\S+/,
+            disabled: true,
           },
         },
       },
       money: {
-        key: 'money',
+        type: 'group',
         name: 'Money',
-      },
-      number: {
-        key: 'number',
-        name: 'Number',
-      },
-      percentage: {
-        key: 'percentage',
-        name: 'Percentage',
-      },
-      phone: {
-        key: 'phone',
-        name: 'Phone',
-        options: {
-          mask: {
-            type: 'select',
-            name: 'Phone Mask',
-            items: [
-              {
-                name: 'Phone (###) ### - ####',
-                value: 'phone',
-              },
-              {
-                name: 'Phone +### ## ### ###',
-                value: '+### ## ### ###',
-              },
-            ],
-            value: '+### ## ### ###',
+        style: {
+          appendIcon: {
+            key: 'appendIcon',
+            type: 'iconSource',
+            name: 'Append Icon',
+            value: 'attach_money',
           },
         },
       },
+      number: {
+        type: 'group',
+        name: 'Number',
+        style: {
+          prependIcon: {
+            key: 'prependIcon',
+            type: 'iconSource',
+            name: 'Prepend Icon',
+            value: 'unfold_more',
+          },
+        },
+      },
+      percentage: {
+        type: 'group',
+        name: 'Percentage',
+        style: {
+          appendIcon: {
+            key: 'appendIcon',
+            type: 'iconSource',
+            name: 'Append Icon',
+            value: '%',
+          },
+        },
+      },
+      phone: {
+        type: 'group',
+        name: 'Phone',
+        style: {
+          prependIcon: {
+            key: 'prependIcon',
+            type: 'iconSource',
+            name: 'Prepend Icon',
+            value: 'phone',
+          },
+        },
+        mask: {
+          type: 'select',
+          name: 'Phone Mask',
+          items: [
+            {
+              name: 'None',
+              value: null,
+            },
+            {
+              name: 'Phone (###) ### - ####',
+              value: 'phone',
+            },
+            {
+              name: 'Phone +### ## ### ###',
+              value: '+### ## ### ###',
+            },
+          ],
+          value: '+### ## ### ###',
+        },
+      },
       url: {
-        key: 'url',
+        type: 'group',
         name: 'Url',
+        style: {
+          prependIcon: {
+            key: 'prependIcon',
+            type: 'iconSource',
+            name: 'Prepend Icon',
+            value: 'link',
+          },
+        },
       },
       password: {
-        key: 'password',
+        type: 'group',
         name: 'Password',
-        options: {
-          validation: {
-            pattern: {
-              type: 'input',
-              name: 'Password pattern',
-              value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-            },
+        style: {
+          appendIcon: {
+            key: 'appendIcon',
+            type: 'iconSource',
+            name: 'Append Icon',
+            value: 'visibility',
+          },
+          prependIcon: {
+            key: 'prependIcon',
+            type: 'iconSource',
+            name: 'Prepend Icon',
+            value: 'lock',
+          },
+        },
+        description: {
+          persistentHint: {
+            key: 'persistentHint',
+            type: 'check',
+            name: 'Persisstent Hint',
+            value: true,
+            disabled: true,
+          },
+        },
+        validation: {
+          pattern: {
+            key: 'pattern',
+            type: 'input',
+            name: 'Password pattern',
+            value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
           },
         },
       },
@@ -218,25 +295,6 @@ export default {
         name: 'Suffix',
         value: null,
       },
-    },
-    mask: {
-      type: 'select',
-      name: 'Text Mask',
-      items: [
-        {
-          name: 'Credit Card (#### - #### - #### - ####)',
-          value: 'credit-card',
-        },
-        {
-          name: 'Time (##:##)',
-          value: 'time',
-        },
-        {
-          name: 'Time With Seconds (##:##:##)',
-          value: 'time-with-seconds',
-        },
-      ],
-      value: null,
     },
     validation: {
       type: 'group',

@@ -13,37 +13,6 @@ const getAttrs = (context) => {
   return attrs;
 };
 
-const getPropAppendIcon = (config) => {
-  switch (config.type) {
-    case 'money':
-      return 'attach_money';
-    case 'password':
-      return 'visibility';
-    default:
-      return null;
-  }
-};
-
-const getPropPrependIcon = (config) => {
-  switch (config.type) {
-    case 'email':
-      return 'email';
-    case 'phone':
-      return 'phone';
-    case 'url':
-      return 'link';
-    case 'number':
-      return 'unfold_more';
-    case 'password':
-      return 'lock';
-    default:
-      return null;
-  }
-};
-
-// If type password, persistent hint is enabled by default
-const getPropPersistentHint = config => config.type === 'password';
-
 const getPropRequired = (config) => {
   // Required validation is property in Vuetify
   // This property sets * next to label
@@ -69,38 +38,8 @@ const getPropPrefix = config => (config.style ? config.style.prefix : null);
 const getPropSuffix = config => (config.style ? config.style.suffix : null);
 const getPropType = config => config.type || 'text';
 
-const setConfigValues = (context) => {
-  const config = context;
-  if (config.style) {
-    if (isNil(config.style.appendIcon)) {
-      config.style.appendIcon = getPropAppendIcon(config);
-    }
-    if (isNil(config.style.prependIcon)) {
-      config.style.prependIcon = getPropPrependIcon(config);
-    }
-  }
-};
-
-const setPropEmailPattern = (context) => {
-  const config = context;
-  if (config.type === 'email') {
-    config.validation.pattern = config.validation.pattern || /\S+@\S+\.\S+/;
-  }
-};
-
-const setPropPasswordPattern = (context) => {
-  const config = context;
-  if (config.type === 'password') {
-    config.validation.pattern = config.validation.pattern || /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-  }
-};
-
 const getProps = (context) => {
   const config = context.config;
-
-  setConfigValues(config);
-  setPropEmailPattern(config);
-  setPropPasswordPattern(config);
 
   const props = {
     appendIcon: config.style ? config.style.appendIcon : null,
@@ -113,7 +52,7 @@ const getProps = (context) => {
     label: config.label,
     light: context.isThemeLight,
     loading: false,
-    persistentHint: getPropPersistentHint(config),
+    persistentHint: config.persistentHint || false,
     placeholder: config.description ? config.description.placeholder : null,
     prefix: getPropPrefix(config),
     prependIcon: config.style ? config.style.prependIcon : null,
