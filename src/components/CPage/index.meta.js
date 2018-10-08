@@ -80,12 +80,12 @@ export default {
         value: false,
       },
       previewWidth: {
-        type: 'input',
+        type: 'sizeInput',
         name: 'Preview Width',
         value: '960px',
       },
       previewHeight: {
-        type: 'input',
+        type: 'sizeInput',
         name: 'Preview Height',
         value: '1360px',
       },

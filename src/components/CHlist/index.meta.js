@@ -106,7 +106,7 @@ export default {
       priority: 3,
     },
     height: {
-      type: 'input',
+      type: 'sizeInput',
       name: 'Height',
       value: null,
       priority: 4,

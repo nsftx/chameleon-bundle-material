@@ -102,7 +102,7 @@ export default {
       type: 'group',
       group: 'gallery',
       itemHeight: {
-        type: 'input',
+        type: 'sizeInput',
         name: 'Item Height',
         value: '100px',
       },
