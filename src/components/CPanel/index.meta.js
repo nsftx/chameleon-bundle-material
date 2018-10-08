@@ -27,20 +27,6 @@ export default {
       name: 'Height',
       value: null,
       priority: 4,
-      units: [
-        {
-          value: 'px',
-          name: 'px',
-        },
-        {
-          value: '%',
-          name: '%',
-        },
-        {
-          value: 'eee',
-          name: 'eee',
-        },
-      ],
     },
     theme: true,
   },
