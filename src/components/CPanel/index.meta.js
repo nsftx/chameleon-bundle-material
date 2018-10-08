@@ -17,16 +17,30 @@ export default {
       priority: 2,
     },
     width: {
-      type: 'input',
+      type: 'sizeInput',
       name: 'Width',
       value: null,
       priority: 3,
     },
     height: {
-      type: 'input',
+      type: 'sizeInput',
       name: 'Height',
       value: null,
       priority: 4,
+      units: [
+        {
+          value: 'px',
+          name: 'px',
+        },
+        {
+          value: '%',
+          name: '%',
+        },
+        {
+          value: 'eee',
+          name: 'eee',
+        },
+      ],
     },
     theme: true,
   },
