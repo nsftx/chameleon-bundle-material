@@ -840,17 +840,18 @@
                                   "description": {
                                     "placeholder": "Please enter your Password",
                                     "tooltip": "password",
-                                    "hint": "Minimum eight characters, at least one letter and one number"
+                                    "hint": "At least 8 characters long, 1 lowercase letter, 1 capital letter, 1 number and 1 special character"
                                   },
                                   "data": {
-                                    "value": "password12345"
+                                    "value": "Password12345!"
                                   },
                                   "style": {
                                     "color": null,
                                     "theme": "light"
                                   },
                                   "validation": {
-                                    "required": true
+                                    "required": true,
+                                    "pattern": "^(?=.*[\\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\\w!@#$%^&*]{8,}$"
                                   }
                                 }
                               ]
@@ -901,7 +902,8 @@
                                     "theme": "light"
                                   },
                                   "validation": {
-                                    "required": true
+                                    "required": true,
+                                    "pattern": "^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
                                   }
                                 }
                               ]

@@ -1,4 +1,5 @@
-import { each, template } from 'lodash';
+import { each, isNil, template } from 'lodash';
+import { validatable } from '@mixins';
 import { urlValidator } from '@validators';
 import Element from '../Element';
 
@@ -15,11 +16,13 @@ const parseImageSrc = (context) => {
   return `${src}/${context.config.src}`;
 };
 
+// eslint-disable-next-line
+const getValue = value => isNil(value) || value === false ? '' : value + '';
+
 const getImageAttrs = (context) => {
-  const isUrl = urlValidator(context.config.src);
-  const src = isUrl ?
-    context.config.src :
-    parseImageSrc(context);
+  const config = context.config;
+  const isUrl = urlValidator(context.validators.isUrl, getValue(config.src));
+  const src = isUrl ? config.src : parseImageSrc(context);
 
   return {
     src,
@@ -70,6 +73,9 @@ const renderPlaceholder = (createElement, context) => {
 
 export default {
   extends: Element,
+  mixins: [
+    validatable,
+  ],
   render(createElement) {
     const data = {
       props: {

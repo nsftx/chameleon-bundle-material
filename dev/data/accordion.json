@@ -65,7 +65,7 @@
                             "color": null,
                             "theme": "light"
                           },
-                          "mask": "+### ## ### ###",
+                          "mask": "",
                           "validation": {
                             "required": true
                           }
@@ -118,7 +118,8 @@
                             "theme": "light"
                           },
                           "validation": {
-                            "required": true
+                            "required": true,
+                            "urlValidator": true
                           }
                         }
                       ]

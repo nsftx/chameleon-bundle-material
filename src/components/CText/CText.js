@@ -23,17 +23,6 @@ const getPropRequired = (config) => {
   return false;
 };
 
-const getPropMask = (config) => {
-  switch (config.type) {
-    case 'text':
-      return config.mask;
-    case 'phone':
-      return config.mask;
-    default:
-      return null;
-  }
-};
-
 const getPropPrefix = config => (config.style ? config.style.prefix : null);
 const getPropSuffix = config => (config.style ? config.style.suffix : null);
 const getPropType = config => config.type || 'text';
@@ -61,7 +50,7 @@ const getProps = (context) => {
     rules: validator.getRules(config, context.validators),
     suffix: getPropSuffix(config),
     type: getPropType(config),
-    mask: getPropMask(config),
+    mask: config.mask ? config.mask : null,
     value: config.data ? config.data.value : null,
   };
 

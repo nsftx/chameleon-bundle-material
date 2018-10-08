@@ -1,4 +1,5 @@
 import { each, map, isNil, template } from 'lodash';
+import { validatable } from '@mixins';
 import { urlValidator } from '@validators';
 import Element from '../Element';
 
@@ -20,10 +21,13 @@ const toggleCarousel = (context, value) => {
   self.active = value;
 };
 
-const getUrlValidator = (item) => {
+// eslint-disable-next-line
+const getValue = value => isNil(value) || value === false ? '' : value + '';
+
+const getUrlValidator = (context, item) => {
   if (isNil(item)) return true;
   const src = item.image || item.thumb || item;
-  return urlValidator(src);
+  return urlValidator(context.validators.isUrl, getValue(src));
 };
 
 const getCarouselSource = item => item.image || item.thumb || item;
@@ -79,7 +83,7 @@ const getGalleryElement = (createElement, context, imageSource) => {
           'v-carousel-item',
           {
             attrs: {
-              src: getUrlValidator(item) ?
+              src: getUrlValidator(context, item) ?
                 getCarouselSource(item) : parseImageSrc(context, item),
             },
             key: i,
@@ -108,7 +112,8 @@ const getGalleryElement = (createElement, context, imageSource) => {
             attrs: {
               id: `img-${i}`,
               alt: '',
-              src: getUrlValidator(item) ? getGallerySource(item) : parseImageSrc(context, item),
+              src: getUrlValidator(context, item) ?
+                getGallerySource(item) : parseImageSrc(context, item),
               height: context.config.gallery.itemHeight,
               contain: context.config.gallery.contain,
             },
@@ -148,6 +153,9 @@ const getImages = (createElement, context) => {
 
 export default {
   extends: Element,
+  mixins: [
+    validatable,
+  ],
   data() {
     return {
       items: [],

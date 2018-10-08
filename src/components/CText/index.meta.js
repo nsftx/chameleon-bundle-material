@@ -75,10 +75,10 @@ export default {
         },
         validation: {
           pattern: {
-            key: 'patternt',
+            key: 'pattern',
             type: 'input',
             name: 'Email pattern',
-            value: /\S+@\S+\.\S+/,
+            value: '^[a-zA-Z0-9.!#$%&\'*+\\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$',
             disabled: true,
           },
         },
@@ -133,20 +133,23 @@ export default {
         mask: {
           type: 'select',
           name: 'Phone Mask',
+          group: 'general',
           items: [
             {
-              name: 'None',
-              value: null,
+              label: 'None',
+              value: '',
             },
             {
-              name: 'Phone (###) ### - ####',
+              label: 'Phone (###) ### - ####',
               value: 'phone',
             },
             {
-              name: 'Phone +### ## ### ###',
+              label: 'Phone +### ## ### ###',
               value: '+### ## ### ###',
             },
           ],
+          displayProp: 'label',
+          valueProp: 'value',
           value: '+### ## ### ###',
         },
       },
@@ -159,6 +162,15 @@ export default {
             type: 'iconSource',
             name: 'Prepend Icon',
             value: 'link',
+          },
+        },
+        validation: {
+          urlValidator: {
+            key: 'urlValidator',
+            type: 'check',
+            name: 'Url Validator',
+            value: true,
+            disabled: true,
           },
         },
       },
@@ -187,13 +199,18 @@ export default {
             value: true,
             disabled: true,
           },
+          hint: {
+            type: 'input',
+            name: 'Hint Text',
+            value: 'At least 8 characters long, 1 lowercase letter, 1 capital letter, 1 number and 1 special character',
+          },
         },
         validation: {
           pattern: {
             key: 'pattern',
             type: 'input',
             name: 'Password pattern',
-            value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+            value: '^(?=.*[\\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\\w!@#$%^&*]{8,}$',
           },
         },
       },

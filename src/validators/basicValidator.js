@@ -9,6 +9,7 @@ import minCountValidator from './minCountValidator';
 import maxCountValidator from './maxCountValidator';
 import patternValidator from './patternValidator';
 import requiredValidator from './requiredValidator';
+import urlValidator from './urlValidator';
 
 const validator = {
   creditCard: creditCardValidator,
@@ -21,6 +22,7 @@ const validator = {
   maxCount: maxCountValidator,
   pattern: patternValidator,
   required: requiredValidator,
+  urlValidator,
 };
 
 // Library accepts only string so we need to coerce it
@@ -112,6 +114,13 @@ export default {
           validation.pattern,
         ), { field: config.label }));
       }
+    }
+
+    if (!isNil(validation.urlValidator)) {
+      rules.push(value => getMessage(validator.urlValidator(
+        validators.isUrl,
+        getValue(value),
+      ), { field: config.label }));
     }
 
     return rules;
