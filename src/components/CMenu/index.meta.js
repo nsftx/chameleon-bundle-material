@@ -61,13 +61,13 @@ export default {
       priority: 7,
     },
     height: {
-      type: 'input',
+      type: 'sizeInput',
       name: 'Height',
       value: null,
       priority: 8,
     },
     width: {
-      type: 'input',
+      type: 'sizeInput',
       name: 'Width',
       value: null,
       priority: 9,
