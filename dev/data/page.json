@@ -837,6 +837,9 @@
                                   "clearable": true,
                                   "disabled": false,
                                   "readonly": false,
+                                  "context": {
+                                    "type": "password"
+                                  },
                                   "description": {
                                     "placeholder": "Please enter your Password",
                                     "tooltip": "password",
@@ -846,6 +849,7 @@
                                     "value": "Password12345!"
                                   },
                                   "style": {
+                                    "appendIcon": "visibility",
                                     "color": null,
                                     "theme": "light"
                                   },

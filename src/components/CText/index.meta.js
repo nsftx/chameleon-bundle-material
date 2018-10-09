@@ -39,6 +39,14 @@ export default {
   ],
   events: [
     {
+      name: 'AppendIconClicked',
+      help: 'On Append icon click',
+    },
+    {
+      name: 'PrependIconClicked',
+      help: 'On Prepend icon click',
+    },
+    {
       name: 'Changed',
       help: 'Input changed',
     },
@@ -58,7 +66,7 @@ export default {
   contextOptions: {
     type: {
       generic: {
-        type: 'group',
+        type: 'text',
         name: 'Generic',
         priority: 1,
       },
@@ -87,11 +95,11 @@ export default {
         type: 'group',
         name: 'Money',
         style: {
-          appendIcon: {
-            key: 'appendIcon',
-            type: 'iconSource',
-            name: 'Append Icon',
-            value: 'attach_money',
+          prefix: {
+            key: 'prefix',
+            type: 'input',
+            name: 'prefix',
+            value: '$',
           },
         },
       },
@@ -249,6 +257,12 @@ export default {
       name: 'Readonly',
       value: false,
       priority: 5,
+    },
+    mask: {
+      type: 'select',
+      name: 'Phone Mask',
+      value: '',
+      hidden: true,
     },
     description: {
       type: 'group',

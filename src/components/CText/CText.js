@@ -25,8 +25,6 @@ const getPropRequired = (config) => {
 
 const getPropPrefix = config => (config.style ? config.style.prefix : null);
 const getPropSuffix = config => (config.style ? config.style.suffix : null);
-const getPropType = config => config.type || 'text';
-
 const getProps = (context) => {
   const config = context.config;
 
@@ -49,8 +47,8 @@ const getProps = (context) => {
     required: getPropRequired(config),
     rules: validator.getRules(config, context.validators),
     suffix: getPropSuffix(config),
-    type: getPropType(config),
-    mask: config.mask ? config.mask : null,
+    type: context.type,
+    mask: config.mask || null,
     value: config.data ? config.data.value : null,
   };
 
@@ -61,6 +59,13 @@ const getListeners = (context) => {
   const self = context;
 
   const listeners = {
+    'click:append': (e) => {
+      self.onIconAppendClick(e);
+      self.sendToEventBus('AppendIconClicked', e);
+    },
+    'click:prepend': (e) => {
+      self.sendToEventBus('PrependIconClicked', e);
+    },
     focus() {
       self.sendToEventBus('FocusedIn', { value: self.value });
     },
@@ -88,6 +93,35 @@ export default {
     fieldable,
     validatable,
   ],
+  computed: {
+    inputType() {
+      return this.config.context ? this.config.context.type : 'text';
+    },
+  },
+  watch: {
+    inputType(newV) {
+      this.type = newV;
+    },
+  },
+  data() {
+    return {
+      type: 'text',
+      show: false,
+    };
+  },
+  methods: {
+    onIconAppendClick() {
+      this.show = !this.show;
+      const contextOption = this.config.context.type;
+      // Password icon method
+      if (contextOption === 'password') {
+        this.type = this.show ? 'text' : 'password';
+      }
+    },
+  },
+  mounted() {
+    this.type = this.inputType;
+  },
   render(createElement) {
     const data = {
       attrs: getAttrs(this),
