@@ -3,7 +3,7 @@ import Element from '../Element';
 import '../../style/components/_table.styl';
 
 const getPropRowsPerPageItems = (value) => {
-  if (isNil(value)) {
+  if (!value) {
     return [5, 10, 15, 20];
   } else if (isString(value)) {
     if (value.indexOf(',') > -1) {
@@ -127,7 +127,7 @@ const getHeadersProp = (dataSource) => {
 const getClientPagination = (config, setPagination) => defaults(setPagination || {}, {
   rowsPerPage: config.rowsPerPage,
   sortBy: config.sortBy,
-  descending: config.sort === 'desc',
+  descending: config.sort ? config.sort === 'desc' : null,
   page: config.startPage,
 });
 
@@ -181,9 +181,13 @@ const getListeners = (context) => {
 
   return {
     'update:pagination': (value) => {
-      self.pagination = getClientPagination(self.config, value);
-      self.loadData();
-      self.sendToEventBus('PaginationChanged', value);
+      console.log('DSP', JSON.stringify(self.dataSourceParams), JSON.stringify(self.pagination));
+
+      if (self.pagination) {
+        self.pagination = getClientPagination(self.config, value);
+        self.loadData();
+        self.sendToEventBus('PaginationChanged', value);
+      }
     },
   };
 };
@@ -200,6 +204,8 @@ export default {
   methods: {
     loadData() {
       setDataSourceParams(this);
+
+      console.log(this.dataSourceParams);
 
       this.loadConnectorData().then((result) => {
         this.items = result.items || [];
@@ -223,6 +229,10 @@ export default {
       },
       deep: true,
     },
+  },
+  mounted() {
+    this.pagination = getClientPagination(this.config);
+    this.loadData();
   },
   render(createElement) {
     const table = createElement('v-data-table', {
