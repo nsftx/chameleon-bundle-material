@@ -112,14 +112,6 @@ export default {
       value: null,
       priority: 11,
     },
-    sortDisabled: {
-      flat: {
-        type: 'check',
-        name: 'No Shadow',
-        value: false,
-        priority: 2,
-      },
-    },
     theme: true,
   },
 };
