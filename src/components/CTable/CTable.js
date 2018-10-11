@@ -181,8 +181,6 @@ const getListeners = (context) => {
 
   return {
     'update:pagination': (value) => {
-      console.log('DSP', JSON.stringify(self.dataSourceParams), JSON.stringify(self.pagination));
-
       if (self.pagination) {
         self.pagination = getClientPagination(self.config, value);
         self.loadData();
@@ -204,8 +202,6 @@ export default {
   methods: {
     loadData() {
       setDataSourceParams(this);
-
-      console.log(this.dataSourceParams);
 
       this.loadConnectorData().then((result) => {
         this.items = result.items || [];
