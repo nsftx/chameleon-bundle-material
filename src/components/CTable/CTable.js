@@ -170,7 +170,7 @@ const setDataSourceParams = (context) => {
 
   self.dataSourceParams = merge(self.dataSourceParams, {
     pageSize: self.pagination.rowsPerPage,
-    sort: self.config.sort,
+    sort: self.pagination.descending ? 'desc' : 'asc',
     sortBy: self.pagination.sortBy,
     currentPage: self.pagination.page,
   });
