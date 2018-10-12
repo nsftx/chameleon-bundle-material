@@ -27,8 +27,7 @@ const validator = {
 
 // Library accepts only string so we need to coerce it
 // https://github.com/chriso/validator.js/
-// eslint-disable-next-line
-const getValue = value => isNil(value) || value === false ? '' : value + '';
+const getValue = value => (isNil(value) || value === false ? '' : `${value}`);
 
 const getMessage = (result, data) => {
   const message = result !== true ? template(result)(data) : true;

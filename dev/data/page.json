@@ -734,9 +734,12 @@
                               },
                               "elements": [
                                 {
-                                  "type": "number",
+                                  "type": "text",
                                   "name": "numberValue",
                                   "label": "Enter Age",
+                                  "context": {
+                                    "type": "number"
+                                  },
                                   "clearable": true,
                                   "disabled": false,
                                   "readonly": false,
@@ -831,7 +834,7 @@
                               },
                               "elements": [
                                 {
-                                  "type": "password",
+                                  "type": "text",
                                   "name": "password",
                                   "label": "Password",
                                   "clearable": true,
@@ -887,12 +890,15 @@
                               },
                               "elements": [
                                 {
-                                  "type": "email",
+                                  "type": "text",
                                   "name": "email",
                                   "label": "Email",
                                   "clearable": true,
                                   "disabled": false,
                                   "readonly": false,
+                                  "context": {
+                                    "type": "email"
+                                  },
                                   "description": {
                                     "placeholder": "Please enter your Email",
                                     "tooltip": "Email",

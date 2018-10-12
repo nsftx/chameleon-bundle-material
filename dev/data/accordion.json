@@ -47,12 +47,15 @@
                       },
                       "elements": [
                         {
-                          "type": "phone",
+                          "type": "text",
                           "name": "phoneValue",
                           "label": "Phone",
                           "clearable": true,
                           "disabled": false,
                           "readonly": false,
+                          "context": {
+                            "type": "phone"
+                          },
                           "description": {
                             "placeholder": "Please enter your Phone",
                             "tooltip": "phone",
@@ -99,12 +102,15 @@
                       },
                       "elements": [
                         {
-                          "type": "url",
+                          "type": "text",
                           "name": "urlValue",
                           "label": "Url",
                           "clearable": true,
                           "disabled": false,
                           "readonly": false,
+                          "context": {
+                            "type": "url"
+                          },
                           "description": {
                             "placeholder": "Website",
                             "tooltip": "website adress",

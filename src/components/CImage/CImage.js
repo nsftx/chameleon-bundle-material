@@ -16,8 +16,7 @@ const parseImageSrc = (context) => {
   return `${src}/${context.config.src}`;
 };
 
-// eslint-disable-next-line
-const getValue = value => isNil(value) || value === false ? '' : value + '';
+const getValue = value => (isNil(value) || value === false ? '' : `${value}`);
 
 const getImageAttrs = (context) => {
   const config = context.config;

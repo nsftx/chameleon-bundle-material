@@ -21,8 +21,7 @@ const toggleCarousel = (context, value) => {
   self.active = value;
 };
 
-// eslint-disable-next-line
-const getValue = value => isNil(value) || value === false ? '' : value + '';
+const getValue = value => (isNil(value) || value === false ? '' : `${value}`);
 
 const getUrlValidator = (context, item) => {
   if (isNil(item)) return true;
