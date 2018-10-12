@@ -97,8 +97,8 @@ export default {
     type() {
       const type = this.config.context ? this.config.context.type : 'text';
 
-      if (type === 'password') {
-        return this.show ? 'text' : 'password';
+      if (type === 'password' && this.show) {
+        return 'text';
       }
 
       return type;
