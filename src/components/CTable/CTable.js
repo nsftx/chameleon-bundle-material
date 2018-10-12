@@ -181,7 +181,7 @@ const getListeners = (context) => {
 
   return {
     'update:pagination': (value) => {
-      if (self.pagination) {
+      if (self.pagination && self.totalItems) {
         self.pagination = getClientPagination(self.config, value);
         self.loadData();
         self.sendToEventBus('PaginationChanged', value);
@@ -195,7 +195,7 @@ export default {
   data() {
     return {
       items: [],
-      pagination: {},
+      pagination: null,
       totalItems: null,
     };
   },
