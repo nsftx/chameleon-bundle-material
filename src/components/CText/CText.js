@@ -94,33 +94,25 @@ export default {
     validatable,
   ],
   computed: {
-    inputType() {
-      return this.config.context ? this.config.context.type : 'text';
-    },
-  },
-  watch: {
-    inputType(newV) {
-      this.type = newV;
+    type() {
+      const type = this.config.context ? this.config.context.type : 'text';
+
+      if (type === 'password') {
+        return this.show ? 'text' : 'password';
+      }
+
+      return type;
     },
   },
   data() {
     return {
-      type: 'text',
       show: false,
     };
   },
   methods: {
     onIconAppendClick() {
       this.show = !this.show;
-      const contextOption = this.config.context.type;
-      // Password icon method
-      if (contextOption === 'password') {
-        this.type = this.show ? 'text' : 'password';
-      }
     },
-  },
-  mounted() {
-    this.type = this.inputType;
   },
   render(createElement) {
     const data = {
