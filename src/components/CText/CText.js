@@ -1,4 +1,4 @@
-import { isBoolean, isNil, isUndefined } from 'lodash';
+import { isNil } from 'lodash';
 import { fieldable, validatable } from '@mixins';
 import { validator } from '@validators';
 import Element from '../Element';
@@ -8,45 +8,9 @@ const getAttrs = (context) => {
 
   const attrs = {
     name: config.name,
-    // If required tooltip should be added as child component VTooltip
-    title: config.tooltip,
+    title: config.description ? config.description.tooltip : null,
   };
-
-  if (!isUndefined(config.step)) {
-    if (isBoolean(config.step)) {
-      if (config.step) {
-        attrs.step = 1;
-      }
-    } else {
-      attrs.step = config.step;
-    }
-  }
-
   return attrs;
-};
-
-const getMask = (config) => {
-  const mask = config.mask;
-  if (mask) {
-    // Mask value has priority over predefined mask
-    if (mask.value) {
-      return mask.value;
-    } else if (mask.predefined) {
-      // Map Chameleon masks to Vuetify masks
-      switch (mask.predefined) {
-        case 'creditCard':
-          return 'credit-card';
-        case 'shortTime':
-          return 'time';
-        case 'longTime':
-          return 'time-with-seconds';
-        default:
-          return null;
-      }
-    }
-  }
-
-  return null;
 };
 
 const getPropRequired = (config) => {
@@ -59,58 +23,34 @@ const getPropRequired = (config) => {
   return false;
 };
 
-const getPropSuffix = (config) => {
-  if (['money'].indexOf(config.type) > -1 && config.currency) {
-    return config.currency[config.suffix];
-  }
-
-  return config.suffix;
-};
-
-const getPropPrefix = (config) => {
-  if (['money'].indexOf(config.type) > -1 && config.currency) {
-    return config.currency[config.prefix];
-  }
-
-  return config.prefix;
-};
-
-const getPropType = (config) => {
-  if (['number'].indexOf(config.type) > -1 && config.step) {
-    return config.type;
-  }
-
-  return 'text';
-};
-
+const getPropPrefix = config => (config.style ? config.style.prefix : null);
+const getPropSuffix = config => (config.style ? config.style.suffix : null);
 const getProps = (context) => {
   const config = context.config;
-  const mask = getMask(config);
 
-  // Hard-coded values are candidates for config
   const props = {
-    appendIcon: config.appendIcon,
+    appendIcon: config.style ? config.style.appendIcon : null,
     clearable: config.clearable,
+    color: config.style ? config.style.color : null,
     counter: false,
-    hint: config.hint,
-    label: config.label,
-    loading: false,
-    color: config.color,
     dark: context.isThemeDark,
+    disabled: config.disabled,
+    hint: config.description ? config.description.hint : null,
+    label: config.label,
     light: context.isThemeLight,
-    disabled: config.disabled || false,
-    persistentHint: config.persistentHint,
-    placeholder: config.placeholder,
+    loading: false,
+    persistentHint: config.persistentHint || false,
+    placeholder: config.description ? config.description.placeholder : null,
     prefix: getPropPrefix(config),
-    prependIcon: config.prependIcon,
+    prependIcon: config.style ? config.style.prependIcon : null,
+    readonly: config.readonly,
     required: getPropRequired(config),
     rules: validator.getRules(config, context.validators),
     suffix: getPropSuffix(config),
-    type: getPropType(config),
-    value: context.value,
+    type: context.type,
+    mask: config.mask || null,
+    value: config.data ? config.data.value : null,
   };
-
-  if (mask) props.mask = mask;
 
   return props;
 };
@@ -119,21 +59,28 @@ const getListeners = (context) => {
   const self = context;
 
   const listeners = {
+    'click:append': (e) => {
+      self.onIconAppendClick(e);
+      self.sendToEventBus('AppendIconClicked', e);
+    },
+    'click:prepend': (e) => {
+      self.sendToEventBus('PrependIconClicked', e);
+    },
     focus() {
-      self.sendToEventBus('FocusedIn', { text: self.value });
+      self.sendToEventBus('FocusedIn', { value: self.value });
     },
     input(value) {
       self.value = value;
       if (isNil(value)) {
-        self.sendToEventBus('Cleared', { text: value });
+        self.sendToEventBus('Cleared', { value });
       }
-      self.sendToEventBus('Changed', { text: value });
+      self.sendToEventBus('Changed', { value });
       self.$emit('input', self.value);
     },
     blur() {
       if (self.isResolvable) self.resolveValue();
 
-      self.sendToEventBus('FocusedOut', { text: self.value });
+      self.sendToEventBus('FocusedOut', { value: self.value });
     },
   };
 
@@ -146,6 +93,27 @@ export default {
     fieldable,
     validatable,
   ],
+  computed: {
+    type() {
+      const type = this.config.context ? this.config.context.type : 'text';
+
+      if (type === 'password' && this.show) {
+        return 'text';
+      }
+
+      return type;
+    },
+  },
+  data() {
+    return {
+      show: false,
+    };
+  },
+  methods: {
+    onIconAppendClick() {
+      this.show = !this.show;
+    },
+  },
   render(createElement) {
     const data = {
       attrs: getAttrs(this),

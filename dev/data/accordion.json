@@ -47,34 +47,31 @@
                       },
                       "elements": [
                         {
-                          "name": "firstName1",
                           "type": "text",
-                          "label": "First Name",
-                          "prependIcon": "person",
-                          "appendIcon": null,
-                          "prefix": null,
-                          "suffix": null,
-                          "placeholder": "Please enter your first name",
-                          "hint": null,
-                          "persistentHint": false,
-                          "tooltip": null,
+                          "name": "phoneValue",
+                          "label": "Phone",
                           "clearable": true,
-                          "validateOn": "blur",
-                          "mask": {
-                            "predefined": false,
-                            "value": null
+                          "disabled": false,
+                          "readonly": false,
+                          "context": {
+                            "type": "phone"
                           },
+                          "description": {
+                            "placeholder": "Please enter your Phone",
+                            "tooltip": "phone",
+                            "hint": "phone"
+                          },
+                          "data": {
+                            "value": "+387 63 333 444"
+                          },
+                          "style": {
+                            "color": null,
+                            "theme": "light"
+                          },
+                          "mask": "",
                           "validation": {
-                            "required": true,
-                            "minLength": "",
-                            "maxLength": null,
-                            "pattern": {
-                              "predefined": null,
-                              "value": null
-                            },
-                            "custom": null
-                          },
-                          "value": "Jadranko"
+                            "required": true
+                          }
                         }
                       ]
                     }
@@ -105,34 +102,31 @@
                       },
                       "elements": [
                         {
-                          "name": "firstName1",
                           "type": "text",
-                          "label": "First Name",
-                          "prependIcon": "person",
-                          "appendIcon": null,
-                          "prefix": null,
-                          "suffix": null,
-                          "placeholder": "Please enter your first name",
-                          "hint": null,
-                          "persistentHint": false,
-                          "tooltip": null,
+                          "name": "urlValue",
+                          "label": "Url",
                           "clearable": true,
-                          "validateOn": "blur",
-                          "mask": {
-                            "predefined": false,
-                            "value": null
+                          "disabled": false,
+                          "readonly": false,
+                          "context": {
+                            "type": "url"
+                          },
+                          "description": {
+                            "placeholder": "Website",
+                            "tooltip": "website adress",
+                            "hint": "some hint!!"
+                          },
+                          "data": {
+                            "value": "https://chameleon.nsoft.com"
+                          },
+                          "style": {
+                            "color": null,
+                            "theme": "light"
                           },
                           "validation": {
                             "required": true,
-                            "minLength": "",
-                            "maxLength": null,
-                            "pattern": {
-                              "predefined": null,
-                              "value": null
-                            },
-                            "custom": null
-                          },
-                          "value": "Jadranko"
+                            "urlValidator": true
+                          }
                         }
                       ]
                     }

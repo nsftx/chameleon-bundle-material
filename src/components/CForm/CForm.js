@@ -9,8 +9,7 @@ import { v4 } from 'uuid';
 import Element from '../Element';
 
 const getComponentTag = (name, context) => {
-  const type = ['number', 'money'].indexOf(name) > -1 ? 'text' : name;
-  const tag = kebabCase(type);
+  const tag = kebabCase(name);
 
   return `${context.$options.namespace}${tag}`;
 };

@@ -10,4 +10,5 @@ export default {
   validatorIntegerMessage: 'The ${field} field must be an integer.',
   validatorPatternMessage: 'The ${field} field does not conform to pattern.',
   validatorRequiredMessage: 'The ${field} field is required.',
+  validatorIsUrlMessage: 'The ${field} field is invalid.',
 };

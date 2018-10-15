@@ -7,7 +7,7 @@ export default {
       return this.theme === 'light';
     },
     theme() {
-      return this.config.theme;
+      return this.config.style ? this.config.style.theme : this.config.theme;
     },
   },
 };

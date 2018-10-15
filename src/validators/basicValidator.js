@@ -9,6 +9,7 @@ import minCountValidator from './minCountValidator';
 import maxCountValidator from './maxCountValidator';
 import patternValidator from './patternValidator';
 import requiredValidator from './requiredValidator';
+import urlValidator from './urlValidator';
 
 const validator = {
   creditCard: creditCardValidator,
@@ -21,12 +22,12 @@ const validator = {
   maxCount: maxCountValidator,
   pattern: patternValidator,
   required: requiredValidator,
+  urlValidator,
 };
 
 // Library accepts only string so we need to coerce it
 // https://github.com/chriso/validator.js/
-// eslint-disable-next-line
-const getValue = value => isNil(value) || value === false ? '' : value + '';
+const getValue = value => (isNil(value) || value === false ? '' : `${value}`);
 
 const getMessage = (result, data) => {
   const message = result !== true ? template(result)(data) : true;
@@ -109,9 +110,16 @@ export default {
         rules.push(value => getMessage(validator.pattern(
           validators.pattern,
           getValue(value),
-          validation.pattern.value,
+          validation.pattern,
         ), { field: config.label }));
       }
+    }
+
+    if (!isNil(validation.urlValidator)) {
+      rules.push(value => getMessage(validator.urlValidator(
+        validators.isUrl,
+        getValue(value),
+      ), { field: config.label }));
     }
 
     return rules;

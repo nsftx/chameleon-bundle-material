@@ -53,6 +53,9 @@ export default {
         required: {
           message: translations.validatorRequiredMessage,
         },
+        isUrl: {
+          message: translations.validatorIsUrlMessage,
+        },
       };
     },
   },

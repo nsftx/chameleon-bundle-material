@@ -17,63 +17,50 @@
               "theme": "",
               "elements": [
                 {
-                  "name": "firstName",
                   "type": "text",
+                  "name": "firstName",
                   "label": "First Name",
-                  "prependIcon": "person",
-                  "appendIcon": null,
-                  "prefix": null,
-                  "suffix": null,
-                  "placeholder": "Please enter your first name",
-                  "hint": null,
-                  "persistentHint": false,
-                  "tooltip": null,
                   "clearable": true,
                   "disabled": false,
-                  "mask": {
-                    "predefined": false,
-                    "value": null
+                  "readonly": false,
+                  "description": {
+                    "placeholder": "Please enter your first name",
+                    "tooltip": "text tooltip",
+                    "hint": "some hint!!"
+                  },
+                  "data": {
+                    "value": "Test Text Input"
+                  },
+                  "style": {
+                    "color": null,
+                    "theme": "light"
                   },
                   "validation": {
-                    "required": true,
-                    "minLength": null,
-                    "maxLength": null,
-                    "pattern": {
-                      "predefined": null,
-                      "value": null
-                    },
-                    "custom": null
-                  },
-                  "value": "Jadranko"
+                    "required": true
+                  }
                 },
                 {
-                  "name": "lastName",
                   "type": "text",
+                  "name": "lastName",
                   "label": "Last Name",
-                  "prependIcon": "person",
-                  "appendIcon": null,
-                  "prefix": null,
-                  "suffix": null,
-                  "placeholder": "Please enter your last name",
-                  "hint": null,
-                  "persistentHint": false,
-                  "tooltip": null,
                   "clearable": true,
-                  "mask": {
-                    "predefined": false,
-                    "value": null
+                  "disabled": false,
+                  "readonly": false,
+                  "description": {
+                    "placeholder": "Please enter your last name",
+                    "tooltip": "text tooltip",
+                    "hint": "some hint!!"
+                  },
+                  "data": {
+                    "value": "Test Text Input"
+                  },
+                  "style": {
+                    "color": null,
+                    "theme": "light"
                   },
                   "validation": {
-                    "required": true,
-                    "minLength": 2,
-                    "maxLength": 20,
-                    "pattern": {
-                      "predefined": null,
-                      "value": null
-                    },
-                    "custom": null
-                  },
-                  "value": "Dragoje"
+                    "required": true
+                  }
                 },
                 {
                   "name": "personalData",
@@ -95,21 +82,27 @@
                   }
                 },
                 {
-                  "name": "fullName",
+                  "name": "calculation",
                   "type": "calculation",
                   "label": "Full Name",
-                  "prependIcon": "person",
-                  "appendIcon": null,
-                  "prefix": null,
-                  "suffix": null,
-                  "placeholder": "Please enter formula",
-                  "hint": null,
-                  "tooltip": null,
                   "clearable": true,
+                  "disabled": false,
+                  "readonly": false,
+                  "description": {
+                    "placeholder": "Please enter your last name",
+                    "tooltip": "text tooltip",
+                    "hint": "some hint!!"
+                  },
+                  "data": {
+                    "value": "Test Text Input"
+                  },
+                  "style": {
+                    "color": null,
+                    "theme": "light"
+                  },
                   "validation": {
                     "required": true
-                  },
-                  "value": "${lastName} ${firstName}"
+                  }
                 },
                 {
                   "name": "country",
@@ -252,91 +245,6 @@
                   ]
                 },
                 {
-                  "name": "creditCard",
-                  "type": "text",
-                  "label": "Credit Card Number",
-                  "prependIcon": "credit_card",
-                  "appendIcon": null,
-                  "prefix": null,
-                  "suffix": null,
-                  "placeholder": "Please enter your credit card number",
-                  "hint": "Credit card must have valid expiration date",
-                  "persistentHint": true,
-                  "tooltip": "Some tooltip",
-                  "clearable": true,
-                  "validateOn": "blur",
-                  "mask": {
-                    "predefined": "creditCard",
-                    "value": null
-                  },
-                  "validation": {
-                    "required": true,
-                    "pattern": {
-                      "predefined": "creditCard",
-                      "value": null
-                    },
-                    "custom": null
-                  },
-                  "value": "375556917985515"
-                },
-                {
-                  "name": "quantity",
-                  "type": "number",
-                  "label": "Quantity",
-                  "prependIcon": "money",
-                  "appendIcon": null,
-                  "prefix": null,
-                  "suffix": "EUR",
-                  "placeholder": null,
-                  "hint": null,
-                  "persistentHint": false,
-                  "tooltip": null,
-                  "clearable": true,
-                  "step": 10,
-                  "validateOn": "blur",
-                  "mask": {
-                    "predefined": false,
-                    "value": null
-                  },
-                  "validation": {
-                    "required": true,
-                    "pattern": {
-                      "predefined": "integer",
-                      "value": null
-                    },
-                    "custom": null
-                  },
-                  "value": 100
-                },
-                {
-                  "name": "amount",
-                  "type": "number",
-                  "label": "Amount",
-                  "prependIcon": "money",
-                  "appendIcon": null,
-                  "prefix": null,
-                  "suffix": "EUR",
-                  "placeholder": null,
-                  "hint": null,
-                  "persistentHint": false,
-                  "tooltip": null,
-                  "clearable": true,
-                  "validateOn": "blur",
-                  "mask": {
-                    "predefined": false,
-                    "value": null
-                  },
-                  "validation": {
-                    "required": true,
-                    "pattern": {
-                      "predefined": null,
-                      "value": "^-?\\d*(\\.\\d+)?$"
-                    },
-                    "custom": null
-                  },
-                  "value": 100.20
-                },
-                {
                   "name": "about",
                   "type": "rich-text",
                   "label": "About",
@@ -360,32 +268,6 @@
                     "required": false
                   },
                   "toolbar": "advanced"
-                },
-                {
-                  "name": "payin",
-                  "type": "money",
-                  "label": "Payin",
-                  "prependIcon": "money",
-                  "appendIcon": null,
-                  "suffix": "symbol",
-                  "prefix": null,
-                  "placeholder": "Enter payin amount",
-                  "hint": null,
-                  "persistentHint": false,
-                  "tooltip": null,
-                  "clearable": true,
-                  "currency": {
-                    "name": "EUR",
-                    "symbol": "€"
-                  },
-                  "validateOn": "blur",
-                  "validation": {
-                    "required": true,
-                    "pattern": {
-                      "value": "^-?\\d*(\\,\\d+)?$"
-                    }
-                  },
-                  "value": "120,35"
                 },
                 {
                   "name": "dateOfBirth",
