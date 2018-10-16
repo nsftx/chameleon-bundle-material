@@ -181,7 +181,7 @@ const getListeners = (context) => {
 
   return {
     'update:pagination': (value) => {
-      if (self.pagination && self.totalItems) {
+      if (self.pagination && self.dataLoaded) {
         self.pagination = getClientPagination(self.config, value);
         self.loadData();
         self.sendToEventBus('PaginationChanged', value);
@@ -197,6 +197,7 @@ export default {
       items: [],
       pagination: null,
       totalItems: null,
+      dataLoaded: false,
     };
   },
   methods: {
@@ -206,6 +207,7 @@ export default {
       this.loadConnectorData().then((result) => {
         this.items = result.items || [];
         this.totalItems = result.pagination ? result.pagination.totalResults : 0;
+        this.dataLoaded = true;
         this.sendToEventBus('DataSourceChanged', this.dataSource);
       });
     },
