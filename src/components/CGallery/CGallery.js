@@ -82,7 +82,7 @@ const getGalleryElement = (createElement, context, imageSource) => {
           'v-carousel-item',
           {
             attrs: {
-              src: getUrlValidator(context, item) ?
+              src: getUrlValidator(context, item) === true ?
                 getCarouselSource(item) : parseImageSrc(context, item),
             },
             key: i,
@@ -111,7 +111,7 @@ const getGalleryElement = (createElement, context, imageSource) => {
             attrs: {
               id: `img-${i}`,
               alt: '',
-              src: getUrlValidator(context, item) ?
+              src: getUrlValidator(context, item) === true ?
                 getGallerySource(item) : parseImageSrc(context, item),
               height: context.config.gallery.itemHeight,
               contain: context.config.gallery.contain,
