@@ -91,15 +91,25 @@ export default {
     sortBy: {
       type: 'input',
       group: 'data',
-      name: 'Sort Items By',
+      name: 'Default Sorting By',
       value: null,
       priority: 10,
     },
-    sortDescending: {
-      type: 'check',
+    sort: {
+      type: 'select',
       group: 'data',
-      name: 'Sort Descending',
-      value: false,
+      name: 'Default Sorting',
+      items: [
+        {
+          name: 'Ascending',
+          value: 'asc',
+        },
+        {
+          name: 'Descending',
+          value: 'desc',
+        },
+      ],
+      value: null,
       priority: 11,
     },
     theme: true,

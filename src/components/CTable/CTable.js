@@ -3,7 +3,7 @@ import Element from '../Element';
 import '../../style/components/_table.styl';
 
 const getPropRowsPerPageItems = (value) => {
-  if (isNil(value)) {
+  if (!value) {
     return [5, 10, 15, 20];
   } else if (isString(value)) {
     if (value.indexOf(',') > -1) {
@@ -79,14 +79,13 @@ const getScopedSlots = (createElement, context) => {
                   // NOTE: Expose in options?
                   size: '32px',
                 },
-              },
-                [
-                  createElement('img', {
-                    attrs: {
-                      src: content,
-                    },
-                  }),
-                ]),
+              }, [
+                createElement('img', {
+                  attrs: {
+                    src: content,
+                  },
+                }),
+              ]),
             ];
             break;
           default:
@@ -125,24 +124,12 @@ const getHeadersProp = (dataSource) => {
   }, getCellInferredProps(column))));
 };
 
-const getPagination = (config) => {
-  const defaultPagination = {
-    descending: false,
-    sortBy: null,
-    rowsPerPage: 10,
-    page: 1,
-    totalItems: 0,
-  };
-
-  const pagination = defaults({
-    rowsPerPage: config.rowsPerPage,
-    sortBy: config.sortBy,
-    descending: config.sortDescending,
-    page: config.startPage,
-  }, defaultPagination);
-
-  return pagination;
-};
+const getClientPagination = (config, setPagination) => defaults(setPagination || {}, {
+  rowsPerPage: config.rowsPerPage,
+  sortBy: config.sortBy,
+  descending: config.sort ? config.sort === 'desc' : null,
+  page: config.startPage,
+});
 
 const getProps = (context) => {
   const config = context.config;
@@ -158,6 +145,7 @@ const getProps = (context) => {
     headers: columns ? getHeadersProp(dataSource) : [],
     itemKey: columns ? keys(columns[0])[0] : 'id',
     loading: context.loadingDataSource,
+    mustSort: false,
     rowsPerPageItems: getPropRowsPerPageItems(config.rowsPerPageItems),
   };
 
@@ -174,26 +162,32 @@ const getProps = (context) => {
   return props;
 };
 
+const setDataSourceParams = (context) => {
+  const self = context;
+
+  // Remove params set in SDK
+  delete self.dataSourceParams.pagination;
+
+  self.dataSourceParams = merge(self.dataSourceParams, {
+    pageSize: self.pagination.rowsPerPage,
+    sort: self.pagination.descending ? 'desc' : 'asc',
+    sortBy: self.pagination.sortBy,
+    currentPage: self.pagination.page,
+  });
+};
+
 const getListeners = (context) => {
   const self = context;
 
-  const listeners = {
+  return {
     'update:pagination': (value) => {
-      /*
-      Weird solution but since we are changing paging this
-      gets triggered a lot of times since we do not have
-      sync modifier.
-      */
-      if (self.pagination && self.pagination.totalItems && self.dataSourceParams.pagination) {
-        self.dataSourceParams.pagination.page = value.page;
+      if (self.pagination && self.dataLoaded) {
+        self.pagination = getClientPagination(self.config, value);
         self.loadData();
+        self.sendToEventBus('PaginationChanged', value);
       }
-      self.sendToEventBus('PaginationChanged', value);
-      self.pagination = value;
     },
   };
-
-  return listeners;
 };
 
 export default {
@@ -203,13 +197,17 @@ export default {
       items: [],
       pagination: null,
       totalItems: null,
+      dataLoaded: false,
     };
   },
   methods: {
     loadData() {
+      setDataSourceParams(this);
+
       this.loadConnectorData().then((result) => {
         this.items = result.items || [];
         this.totalItems = result.pagination ? result.pagination.totalResults : 0;
+        this.dataLoaded = true;
         this.sendToEventBus('DataSourceChanged', this.dataSource);
       });
     },
@@ -231,7 +229,8 @@ export default {
     },
   },
   mounted() {
-    this.pagination = getPagination(this.config);
+    this.pagination = getClientPagination(this.config);
+    this.loadData();
   },
   render(createElement) {
     const table = createElement('v-data-table', {
