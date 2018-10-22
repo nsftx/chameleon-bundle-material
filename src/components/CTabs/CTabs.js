@@ -2,13 +2,15 @@ import _ from 'lodash';
 import Element from '../Element';
 
 const getProps = (context) => {
+  const config = context.config;
   const props = {
-    centered: context.alignment === 'center',
-    color: context.headerColor,
-    grow: context.fillSpace,
-    iconsAndText: _.some(context.elements, element => !!element.icon),
-    right: context.alignment === 'right',
-    sliderColor: context.sliderColor,
+    centered: config.alignment === 'center',
+    color: config.headerColor,
+    grow: config.fillSpace,
+    iconsAndText: _.some(config.elements, element => !!element.icon),
+    right: config.alignment === 'right',
+    sliderColor: config.sliderColor,
+    value: 0,
   };
 
   return props;
@@ -47,13 +49,15 @@ export default {
     const self = this;
     const data = {
       key: self.schema.uid,
-      props: getProps(self.config),
+      props: getProps(self),
       on: {
-        input(value) {
-          const label = self.config.elements[value].title;
-          self.sendToEventBus('SelectedItemChanged', {
-            label,
-          });
+        change(value) {
+          if (value) {
+            const label = self.config.elements[value].title;
+            self.sendToEventBus('SelectedItemChanged', {
+              label,
+            });
+          }
         },
       },
     };

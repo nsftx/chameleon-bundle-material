@@ -22,9 +22,6 @@ export default {
   render(createElement) {
     const data = {
       key: this.schema.uid,
-      props: {
-        id: String(this.schema.uid),
-      },
     };
 
     const children = getTabItemContent(this, createElement);

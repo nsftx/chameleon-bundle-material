@@ -104,9 +104,7 @@
                         "items": [
                           {
                             "title": "Frozen Yogurt",
-                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                            "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
-                            "icon": "language"
+                            "description": "calories: 159, fat: 6.0, carbs: 24, calories"
                           },
                           {
                             "title": "Ice cream sandwich",
