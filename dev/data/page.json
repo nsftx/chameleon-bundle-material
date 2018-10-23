@@ -513,6 +513,8 @@
                       "type": "table",
                       "color": "",
                       "theme": "",
+                      "imageRadius": true,
+                      "header": "List title",
                       "dataSource": {
                         "schema": [
                           {
@@ -577,20 +579,19 @@
                       "type": "list",
                       "hideActions": false,
                       "wrap": true,
-                      "color": "yellow",
+                      "header": "List header",
+                      "color": "",
                       "theme": "light",
                       "dataSource": {
                         "items": [
                           {
                             "title": "Frozen Yogurt",
-                            "summary": "calories: 159, fat: 6.0, carbs: 24, calories",
-                            "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
-                            "icon": "language"
+                            "summary": "calories: 159, fat: 6.0, carbs: 24, calories"
                           },
                           {
                             "title": "Ice cream sandwich",
                             "summary": "calories: 159, fat: 6.0, carbs: 24, calories",
-                            "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
+                            "thumb": "https://picsum.photos/600/300?image=0",
                             "icon": "language"
                           },
                           {

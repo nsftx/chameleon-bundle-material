@@ -65,16 +65,25 @@ const getPagination = (config) => {
   return pagination;
 };
 
-const getListAvatar = (createElement, item) => {
-  if (item.thumb) {
-    return createElement('img', {
-      attrs: {
-        src: item.thumb,
-      },
-    });
+const getListAvatar = (createElement, item, context) => {
+  if (!item.thumb && !item.icon) {
+    return null;
   }
-
-  return createElement('v-icon', item.icon);
+  const children = () => {
+    if (item.thumb) {
+      return createElement('img', {
+        attrs: {
+          src: item.thumb,
+        },
+      });
+    }
+    return createElement('v-icon', item.icon);
+  };
+  return createElement('v-list-tile-avatar', {
+    props: {
+      tile: !context.config.imageRadius,
+    },
+  }, [children()]);
 };
 
 const getCardSlot = (createElement, context) => {
@@ -100,9 +109,7 @@ const getCardSlot = (createElement, context) => {
           },
         },
           [
-            createElement('v-list-tile-avatar', [
-              getListAvatar(createElement, item),
-            ]),
+            getListAvatar(createElement, item, context),
             createElement('v-list-tile-content', [
               createElement('v-list-tile-title', title),
               createElement('v-list-tile-sub-title', description),
@@ -187,6 +194,13 @@ export default {
     this.pagination = getPagination(this.config);
   },
   render(createElement) {
+    let header = null;
+    if (this.config.header) {
+      header = createElement('v-subheader', {
+        slot: 'header',
+      }, this.config.header);
+    }
+
     const list = createElement('v-data-iterator', {
       attrs: {
         name: this.config.name,
@@ -195,7 +209,7 @@ export default {
       props: getProps(this),
       on: getListeners(this),
       scopedSlots: getCardSlot(createElement, this),
-    });
+    }, [header]);
 
     return this.renderElement(
       'v-card',
