@@ -198,9 +198,6 @@ export default {
     if (this.config.header) {
       header = createElement('v-subheader', {
         slot: 'header',
-        props: {
-          vIf: this.config.header,
-        },
       }, this.config.header);
     }
 
