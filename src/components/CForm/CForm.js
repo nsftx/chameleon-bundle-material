@@ -25,7 +25,7 @@ const getFormActions = (context, createElement) => {
       getComponentTag('button', context),
       {
         props: {
-          definition: merge({ notSelectable: true }, button),
+          definition: merge({ unselectable: true }, button),
         },
         attrs: {
           action: true,

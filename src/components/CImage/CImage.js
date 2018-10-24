@@ -88,9 +88,14 @@ export default {
         height: this.config.height,
       },
     };
+    const unselectable = this.config.unselectable || false;
     const child = this.config.src ?
       renderImage(createElement, this) :
       renderPlaceholder(createElement, this);
+
+    if (unselectable) {
+      return createElement('v-card', data, [child]);
+    }
 
     return this.renderElement('v-card', data, child);
   },

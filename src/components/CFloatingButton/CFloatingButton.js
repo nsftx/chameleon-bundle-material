@@ -41,7 +41,7 @@ const getChildSlot = (createElement, context) => {
     {
       props: {
         definition: merge({
-          notSelectable: true,
+          unselectable: true,
           displayAsIcon: true,
           color: config.color || 'primary',
           theme: config.theme,
