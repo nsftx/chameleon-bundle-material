@@ -40,8 +40,8 @@ const getChildSlot = (createElement, context) => {
   children.unshift(createElement('c-button',
     {
       props: {
+        unselectable: true,
         definition: merge({
-          unselectable: true,
           displayAsIcon: true,
           color: config.color || 'primary',
           theme: config.theme,
