@@ -92,6 +92,10 @@ export default {
       renderImage(createElement, this) :
       renderPlaceholder(createElement, this);
 
+    if (this.unselectable) {
+      return createElement('v-card', data, [child]);
+    }
+
     return this.renderElement('v-card', data, child);
   },
 };

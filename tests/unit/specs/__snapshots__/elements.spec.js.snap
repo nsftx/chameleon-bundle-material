@@ -95,7 +95,7 @@ exports[`AllComponents c-date renders correctly 1`] = `
       </div>
     </div>
   </div>
-  <div class="v-menu__content" style="max-height:auto;min-width:auto;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
+  <div class="v-menu__content theme--light " style="max-height:auto;min-width:auto;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
     <div data-type="date" data-group="inputs" data-uid="43" class="c-element c-picker d-inline-block v-card v-card--flat theme--light" style="height:undefined;">
       <div class="v-picker v-card v-picker--date theme--light">
         <div class="v-picker__title primary">
@@ -180,7 +180,7 @@ exports[`AllComponents c-date renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">9</div>
                       </button>
                     </td>
@@ -259,7 +259,7 @@ exports[`AllComponents c-date renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">24</div>
                       </button>
                     </td>
@@ -340,7 +340,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
       </div>
     </div>
   </div>
-  <div class="v-menu__content" style="max-height:auto;min-width:auto;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
+  <div class="v-menu__content theme--light " style="max-height:auto;min-width:auto;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
     <div data-type="date-range" data-group="inputs" data-uid="44" class="c-element c-picker d-inline-block mr-1 v-card v-card--flat theme--light" style="height:undefined;">
       <div class="v-picker v-card v-picker--date theme--light">
         <div class="v-picker__title primary">
@@ -425,7 +425,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">9</div>
                       </button>
                     </td>
@@ -504,7 +504,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">24</div>
                       </button>
                     </td>
@@ -637,7 +637,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">9</div>
                       </button>
                     </td>
@@ -716,7 +716,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">24</div>
                       </button>
                     </td>
@@ -839,7 +839,7 @@ exports[`AllComponents c-list renders correctly 1`] = `
                   </div>
                 </div>
                 <div class="v-menu">
-                  <div class="v-menu__content v-menu__content--auto " style="max-height:200px;min-width:75px;max-width:auto;top:12px;left:12px;transform-origin:top left;z-index:0;display:none;">
+                  <div class="v-menu__content theme--light v-menu__content--auto " style="max-height:200px;min-width:75px;max-width:auto;top:12px;left:12px;transform-origin:top left;z-index:0;display:none;">
                     <div class="v-select-list v-card theme--light">
                       <div class="v-list theme--light">
                         <div>
@@ -990,7 +990,7 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                     <div class="v-btn__content">9</div>
                   </button>
                 </td>
@@ -1069,7 +1069,7 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                     <div class="v-btn__content">24</div>
                   </button>
                 </td>
@@ -1182,7 +1182,7 @@ exports[`AllComponents c-select renders correctly 1`] = `
           </div>
         </div>
         <div class="v-menu">
-          <div class="v-menu__content" style="max-height:300px;min-width:0px;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
+          <div class="v-menu__content theme--light " style="max-height:300px;min-width:0px;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
             <div class="v-select-list v-card theme--light">
               <div class="v-list theme--light">
                 <div>
@@ -1223,7 +1223,7 @@ exports[`AllComponents c-select-list renders correctly 1`] = `
           </div>
         </div>
         <div class="v-menu">
-          <div class="v-menu__content" style="max-height:300px;min-width:0px;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
+          <div class="v-menu__content theme--light " style="max-height:300px;min-width:0px;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
             <div class="v-select-list v-card theme--light">
               <div class="v-list theme--light">
                 <div>
@@ -1253,7 +1253,7 @@ exports[`AllComponents c-slider renders correctly 1`] = `
   <div class="v-input__control">
     <div class="v-input__slot" style="height:undefined;">
       <div class="v-slider">
-        <input role="slider" value="0" readonly="readonly" aria-readonly="false">
+        <input role="slider" value="0" readonly="readonly" aria-readonly="false" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" data-type="slider" data-group="inputs" data-uid="29">
         <div class="v-slider__track__container">
           <div class="v-slider__track" style="transition:;left:7px;right:auto;width:100%;"></div>
           <div class="v-slider__track-fill primary" style="transition:;left:0;right:auto;width:NaN%;"></div>
@@ -1278,7 +1278,9 @@ exports[`AllComponents c-switch renders correctly 1`] = `
         <input aria-checked="false" role="checkbox" type="checkbox" data-type="switch" data-group="inputs" data-uid="30">
         <div class="v-input--selection-controls__ripple"></div>
         <div class="v-input--switch__track theme--light"></div>
-        <div class="v-input--switch__thumb theme--light"></div>
+        <div class="v-input--switch__thumb theme--light">
+          <!---->
+        </div>
       </div>
     </div>
     <div class="v-messages theme--light">
@@ -1289,7 +1291,7 @@ exports[`AllComponents c-switch renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-tab-item renders correctly 1`] = `
-<div data-type="tab-item" data-group="container-items" data-uid="31" id="31" class="v-tabs__content c-element c-tab-item  c-element-parent " style="display:none;">
+<div data-type="tab-item" data-group="container-items" data-uid="31" class="v-window-item c-element c-tab-item  c-element-parent " style="display:none;">
   <div data-type="tab-item" data-group="container-items" data-uid="31" class="v-card theme--light" style="height:undefined;background-color:undefined;">
     <div class="v-card__text c-element-children c-tab-item-items"></div>
   </div>
@@ -1311,12 +1313,11 @@ exports[`AllComponents c-table renders correctly 1`] = `
     <div class="v-datatable v-table theme--light">
       <div class="v-datatable__actions">
         <div class="v-datatable__actions__select">Rows per page:
-          <div role="combobox" class="v-input v-text-field v-select v-input--hide-details v-input--is-label-active v-input--is-dirty theme--light">
+          <div role="combobox" class="v-input v-text-field v-select v-input--hide-details theme--light">
             <div class="v-input__control">
               <div class="v-input__slot" style="height:undefined;">
                 <div class="v-select__slot">
                   <div class="v-select__selections">
-                    <div class="v-select__selection v-select__selection--comma">10</div>
                     <input aria-label="Rows per page:" readonly="readonly" type="text" autocomplete="on" aria-readonly="false">
                   </div>
                   <div class="v-input__append-inner">
@@ -1326,7 +1327,7 @@ exports[`AllComponents c-table renders correctly 1`] = `
                   </div>
                 </div>
                 <div class="v-menu">
-                  <div class="v-menu__content v-menu__content--auto " style="max-height:200px;min-width:75px;max-width:auto;top:12px;left:12px;transform-origin:top left;z-index:0;display:none;">
+                  <div class="v-menu__content theme--light v-menu__content--auto " style="max-height:200px;min-width:75px;max-width:auto;top:12px;left:12px;transform-origin:top left;z-index:0;display:none;">
                     <div class="v-select-list v-card theme--light">
                       <div class="v-list theme--light">
                         <div>
@@ -1337,7 +1338,7 @@ exports[`AllComponents c-table renders correctly 1`] = `
                           </a>
                         </div>
                         <div>
-                          <a class="v-list__tile v-list__tile--link v-list__tile--active theme--light primary--text">
+                          <a class="v-list__tile v-list__tile--link theme--light">
                             <div class="v-list__tile__content">
                               <div class="v-list__tile__title">10</div>
                             </div>
@@ -1367,12 +1368,12 @@ exports[`AllComponents c-table renders correctly 1`] = `
         </div>
         <div class="v-datatable__actions__range-controls">
           <div class="v-datatable__actions__pagination">–</div>
-          <button disabled="disabled" type="button" aria-label="Previous page" class="v-btn v-btn--disabled v-btn--flat v-btn--icon theme--light">
+          <button type="button" aria-label="Previous page" class="v-btn v-btn--flat v-btn--icon theme--light">
             <div class="v-btn__content">
               <i aria-hidden="true" class="v-icon material-icons theme--light">$vuetify.icons.prev</i>
             </div>
           </button>
-          <button disabled="disabled" type="button" aria-label="Next page" class="v-btn v-btn--disabled v-btn--flat v-btn--icon theme--light">
+          <button type="button" aria-label="Next page" class="v-btn v-btn--flat v-btn--icon theme--light">
             <div class="v-btn__content">
               <i aria-hidden="true" class="v-icon material-icons theme--light">$vuetify.icons.next</i>
             </div>
@@ -1397,7 +1398,9 @@ exports[`AllComponents c-tabs renders correctly 1`] = `
     </div>
     <!---->
   </div>
-  <div class="v-tabs__items"></div>
+  <div class="v-window">
+    <div class="v-window__container" style="height:undefined;"></div>
+  </div>
 </div>
 `;
 
@@ -1417,7 +1420,7 @@ exports[`AllComponents c-tags renders correctly 1`] = `
           </div>
         </div>
         <div class="v-menu">
-          <div class="v-menu__content" style="max-height:300px;min-width:0px;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
+          <div class="v-menu__content theme--light " style="max-height:300px;min-width:0px;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
             <div class="v-select-list v-card theme--light">
               <div class="v-list theme--light">
                 <div>
