@@ -131,7 +131,7 @@ export default {
       this.errors = [];
       this.entity = {};
       if (this.validateForm()) {
-        this.sendToEventBus('Submited', this.entity);
+        this.sendToEventBus('Submitted', this.entity);
       } else {
         this.sendToEventBus('Errored', this.errors);
       }
