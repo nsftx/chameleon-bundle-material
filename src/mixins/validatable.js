@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { each } from 'lodash';
 import { validator } from '@validators';
 
 export default {
@@ -64,7 +64,7 @@ export default {
       this.errorBucket = [];
 
       if (this.rules) {
-        _.each(this.rules, (rule) => {
+        each(this.rules, (rule) => {
           const isValid = rule(this.value);
           if (isValid !== true) {
             this.errorBucket.push(isValid);
