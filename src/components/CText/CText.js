@@ -95,7 +95,7 @@ export default {
   ],
   computed: {
     type() {
-      const type = this.config.context ? this.config.context.type : 'text';
+      const type = this.config.subtype ? this.config.subtype : 'text';
 
       if (type === 'password' && this.show) {
         return 'text';
