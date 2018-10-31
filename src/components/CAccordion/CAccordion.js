@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { map, merge } from 'lodash';
 import Element from '../Element';
 
 const getItemProps = (context) => {
@@ -28,11 +28,11 @@ export default {
   render(createElement) {
     const config = this.config;
     const childrenProps = getItemProps(this);
-    const accordion = _.map(config.elements, (element, index) => createElement(
+    const accordion = map(config.elements, (element, index) => createElement(
       this.getElementTag('accordion-item'),
       {
         props: {
-          definition: _.merge({}, element, childrenProps),
+          definition: merge({}, element, childrenProps),
         },
         attrs: {
           tabIndex: index,

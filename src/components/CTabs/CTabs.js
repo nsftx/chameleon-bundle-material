@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { concat, map, merge, some } from 'lodash';
 import Element from '../Element';
 
 const getProps = (context) => {
@@ -7,7 +7,7 @@ const getProps = (context) => {
     centered: config.alignment === 'center',
     color: config.headerColor,
     grow: config.fillSpace,
-    iconsAndText: _.some(config.elements, element => !!element.icon),
+    iconsAndText: some(config.elements, element => !!element.icon),
     right: config.alignment === 'right',
     sliderColor: config.sliderColor,
     value: 0,
@@ -19,7 +19,7 @@ const getProps = (context) => {
 
 const getTabs = (context, createElement) => {
   const config = context.config;
-  const tabs = _.map(config.elements, (element, i) => {
+  const tabs = map(config.elements, (element, i) => {
     const children = [element.title];
 
     if (element.icon) {
@@ -64,18 +64,18 @@ export default {
 
     const tabs = getTabs(self, createElement);
 
-    const items = _.map(self.config.elements, element => createElement(
+    const items = map(self.config.elements, element => createElement(
       self.getElementTag('tab-item'),
       {
         props: {
-          definition: _.merge({},
+          definition: merge({},
             element,
             { contentColor: self.config.contentColor }),
         },
       },
     ));
 
-    const children = _.concat(tabs,
+    const children = concat(tabs,
       createElement(
         'v-tabs-items',
         items,
