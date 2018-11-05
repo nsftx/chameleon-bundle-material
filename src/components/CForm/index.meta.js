@@ -25,7 +25,7 @@ export default {
   ],
   events: [
     {
-      name: 'Submited',
+      name: 'Submitted',
     },
     {
       name: 'Cleared',

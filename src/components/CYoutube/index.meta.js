@@ -1,14 +1,3 @@
-/* eslint-disable */
-/**
- * @module YouTube
- * @typicalname CYoutube
- *
- * @desc Widget that enables embedding of YouTube videos, playlists, user uploads, and search results
- *
- * @group widgets
- */
-/* eslint-enable */
-
 export default {
   group: 'widgets',
   type: 'youtube',
