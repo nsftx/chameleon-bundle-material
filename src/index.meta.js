@@ -37,6 +37,10 @@ const optionGroups = {
     key: 'data',
     name: 'Data',
   },
+  style: {
+    key: 'style',
+    name: 'Style',
+  },
 };
 
 export default {
