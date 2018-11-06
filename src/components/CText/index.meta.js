@@ -59,7 +59,7 @@ export default {
   ],
   contextOptions: {
     type: {
-      name: 'type',
+      name: 'Type',
       options: 'subtype',
     },
   },
@@ -123,6 +123,7 @@ export default {
             },
             validation: {
               pattern: {
+                key: 'pattern',
                 type: 'input',
                 name: 'Email pattern',
                 value: '^[a-zA-Z0-9.!#$%&\'*+\\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$',
@@ -224,20 +225,15 @@ export default {
           options: {
             style: {
               appendIcon: {
-                key: 'appendIcon',
-                type: 'iconSource',
-                name: 'Append Icon',
                 value: 'visibility',
               },
               prependIcon: {
-                key: 'prependIcon',
-                type: 'iconSource',
-                name: 'Prepend Icon',
                 value: 'lock',
               },
             },
             description: {
               persistentHint: {
+                key: 'persistentHint',
                 type: 'check',
                 name: 'Persisstent Hint',
                 value: true,
@@ -249,6 +245,7 @@ export default {
             },
             validation: {
               pattern: {
+                key: 'pattern',
                 type: 'input',
                 name: 'Password pattern',
                 value: '^(?=.*[\\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\\w!@#$%^&*]{8,}$',

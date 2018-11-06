@@ -1,4 +1,4 @@
-import { isNil } from 'lodash';
+import { isNil, isObject } from 'lodash';
 import { fieldable, validatable } from '@mixins';
 import { validator } from '@validators';
 import Element from '../Element';
@@ -95,7 +95,12 @@ export default {
   ],
   computed: {
     type() {
-      const type = this.config.subtype ? this.config.subtype : 'text';
+      const subtype = this.config.subtype;
+      let type = 'text';
+
+      if (subtype) {
+        type = isObject(subtype) ? subtype.value : subtype;
+      }
 
       if (type === 'password' && this.show) {
         return 'text';
