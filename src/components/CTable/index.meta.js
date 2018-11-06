@@ -32,26 +32,25 @@ export default {
     },
   ],
   options: {
-    color: true,
     flat: {
       type: 'check',
       name: 'No Shadow',
       value: false,
-      priority: 2,
+      priority: 1,
     },
     noDataText: {
       type: 'input',
       group: 'localization',
       name: 'No Data Text',
       value: null,
-      priority: 3,
+      priority: 2,
     },
     noResultsText: {
       type: 'input',
       group: 'localization',
       name: 'No Results Text',
       value: null,
-      priority: 4,
+      priority: 3,
     },
     rowsPerPageText: {
       type: 'input',
@@ -112,6 +111,32 @@ export default {
       value: null,
       priority: 11,
     },
-    theme: true,
+    theme: {
+      group: 'style',
+      priority: 12,
+    },
+    color: {
+      group: 'style',
+      priority: 13,
+    },
+    alternetingRows: {
+      group: 'style',
+      type: 'check',
+      name: 'Enable alterneting rows',
+      value: false,
+      priority: 14,
+    },
+    alternetingRowColor: {
+      group: 'style',
+      type: 'colorPicker',
+      name: 'Alterneting row color',
+      priority: 15,
+    },
+    headerColor: {
+      group: 'style',
+      type: 'colorPicker',
+      name: 'Header color',
+      priority: 16,
+    },
   },
 };

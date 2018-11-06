@@ -52,6 +52,26 @@ const getCellInferredProps = (cell) => {
   };
 };
 
+const getAlternatingRowColor = (rowParity, context) => {
+  const colorClass = context.config.color ? context.config.color.split(' ') : [];
+  const colorName = colorClass.length ? colorClass[0] : 'grey';
+  let alternatingRowColor = context.config.alternetingRowColor || `${colorName} darken-2`;
+
+  // use darken and lighten classes if alternetingRowColor is not set
+  if (colorClass.length > 1 && !context.config.alternetingRowColor) {
+    const colorWeight = colorClass[1].split('-')[0] === 'darken' ? 'lighten-3' : 'darken-3';
+    alternatingRowColor = `${colorName} ${colorWeight}`;
+  }
+
+  return rowParity % 2 === 0 ? alternatingRowColor : `${context.config.color}`;
+};
+
+const setRowColor = (rowIndex, context) => {
+  const isAlternetingRowOption = context.config.alternetingRows;
+  // eslint-disable-next-line
+  return isAlternetingRowOption ? getAlternatingRowColor(rowIndex, context) : null;
+};
+
 const getScopedSlots = (createElement, context) => {
   const dataSource = context.dataSource;
   const getColumns = (props) => {
@@ -101,8 +121,10 @@ const getScopedSlots = (createElement, context) => {
     return columns;
   };
 
+
   const slot = {
     items: props => createElement('tr', {
+      staticClass: setRowColor(props.index, context),
       on: {
         click() {
           const item = props.item;
@@ -115,11 +137,12 @@ const getScopedSlots = (createElement, context) => {
   return slot;
 };
 
-const getHeadersProp = (dataSource) => {
+const getHeadersProp = (dataSource, config) => {
   const columns = dataSource.schema;
 
   return map(columns, column => (merge({
     value: column.name,
+    class: config.headerColor || config.color,
     text: column.title || column.name,
   }, getCellInferredProps(column))));
 };
@@ -142,7 +165,7 @@ const getProps = (context) => {
     light: context.isThemeLight,
     items: context.items,
     hideHeaders: !columns,
-    headers: columns ? getHeadersProp(dataSource) : [],
+    headers: columns ? getHeadersProp(dataSource, config) : [],
     itemKey: columns ? keys(columns[0])[0] : 'id',
     loading: context.loadingDataSource,
     mustSort: false,
