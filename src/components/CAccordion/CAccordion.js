@@ -28,27 +28,32 @@ export default {
   render(createElement) {
     const config = this.config;
     const childrenProps = getItemProps(this);
-    const accordion = map(config.elements, (element, index) => createElement(
-      this.getElementTag('accordion-item'),
-      {
-        props: {
-          definition: merge({}, element, childrenProps),
-        },
-        attrs: {
-          tabIndex: index,
-        },
-        on: getListeners(this),
-      },
-    ));
+    const expand = [];
+    const accordion = map(config.elements, (element, index) => {
+      expand.push(this.config.expandAll || element.openOnStart);
+      return createElement(
+        this.getElementTag('accordion-item'),
+        {
+          props: {
+            definition: merge({}, element, childrenProps),
+            index,
+          },
+          attrs: {
+            tabIndex: index,
+          },
+          on: getListeners(this),
+        });
+    });
 
     return this.renderElement(
       'v-expansion-panel',
       {
         props: {
-          expand: config.multipleExpand,
+          expand: this.config.leaveOpen,
           dark: this.isThemeDark,
           light: this.isThemeLight,
           [config.alternativeDesign]: true,
+          value: expand,
         },
       },
       accordion,

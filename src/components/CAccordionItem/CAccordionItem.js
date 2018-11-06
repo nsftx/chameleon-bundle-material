@@ -33,11 +33,10 @@ const getListeners = (context) => {
 
   const listeners = {
     input(value) {
-      self.value = value;
       // Same event gets emited for every expansion panel being toggled
       // distinguishing them by value: true || false
       self.$emit('change', {
-        value: self.value,
+        value,
         index: self.$attrs.tabIndex,
         item: self.config,
       });
