@@ -19,5 +19,11 @@ export default {
       },
       priority: 1,
     },
+    openOnStart: {
+      type: 'check',
+      name: 'Open on start',
+      value: false,
+      priority: 2,
+    },
   },
 };

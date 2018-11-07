@@ -802,7 +802,8 @@
                     {
                       "type": "accordion",
                       "name": "accordion",
-                      "multipleExpand": false,
+                      "expandAll": false,
+                      "leaveOpen": true,
                       "alternativeDesign": "",
                       "color": "",
                       "contentColor": "yellow",
@@ -814,6 +815,7 @@
                           "type": "accordion-item",
                           "name": "accordion-item-1",
                           "title": "Item 1",
+                          "openOnStart": false,
                           "elements": [
                             {
                               "type": "form",
@@ -870,6 +872,7 @@
                           "type": "accordion-item",
                           "name": "accordion-item-2",
                           "title": "Item 2",
+                          "openOnStart": true,
                           "elements": [
                             {
                               "type": "form",
