@@ -21,12 +21,6 @@ export default {
       name: 'Validation',
     },
   },
-  contextOptionGroups: {
-    type: {
-      key: 'type',
-      name: 'Type',
-    },
-  },
   actions: [
     {
       name: 'setInputValue',
@@ -65,164 +59,8 @@ export default {
   ],
   contextOptions: {
     type: {
-      generic: {
-        type: 'text',
-        name: 'Generic',
-        priority: 1,
-      },
-      email: {
-        type: 'group',
-        name: 'Email',
-        style: {
-          prependIcon: {
-            key: 'prependIcon',
-            type: 'iconSource',
-            name: 'Prepend Icon',
-            value: 'email',
-          },
-        },
-        validation: {
-          pattern: {
-            key: 'pattern',
-            type: 'input',
-            name: 'Email pattern',
-            value: '^[a-zA-Z0-9.!#$%&\'*+\\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$',
-            disabled: true,
-          },
-        },
-      },
-      money: {
-        type: 'group',
-        name: 'Money',
-        style: {
-          prefix: {
-            key: 'prefix',
-            type: 'input',
-            name: 'prefix',
-            value: '$',
-          },
-        },
-      },
-      number: {
-        type: 'group',
-        name: 'Number',
-        style: {
-          prependIcon: {
-            key: 'prependIcon',
-            type: 'iconSource',
-            name: 'Prepend Icon',
-            value: 'unfold_more',
-          },
-        },
-      },
-      percentage: {
-        type: 'group',
-        name: 'Percentage',
-        style: {
-          appendIcon: {
-            key: 'appendIcon',
-            type: 'iconSource',
-            name: 'Append Icon',
-            value: '%',
-          },
-        },
-      },
-      phone: {
-        type: 'group',
-        name: 'Phone',
-        style: {
-          prependIcon: {
-            key: 'prependIcon',
-            type: 'iconSource',
-            name: 'Prepend Icon',
-            value: 'phone',
-          },
-        },
-        mask: {
-          type: 'select',
-          name: 'Phone Mask',
-          group: 'general',
-          items: [
-            {
-              label: 'None',
-              value: '',
-            },
-            {
-              label: 'Phone (###) ### - ####',
-              value: 'phone',
-            },
-            {
-              label: 'Phone +### ## ### ###',
-              value: '+### ## ### ###',
-            },
-          ],
-          displayProp: 'label',
-          valueProp: 'value',
-          value: '+### ## ### ###',
-          hidden: false,
-        },
-      },
-      url: {
-        type: 'group',
-        name: 'Url',
-        style: {
-          prependIcon: {
-            key: 'prependIcon',
-            type: 'iconSource',
-            name: 'Prepend Icon',
-            value: 'link',
-          },
-        },
-        validation: {
-          urlValidator: {
-            key: 'urlValidator',
-            type: 'check',
-            name: 'Url Validator',
-            value: true,
-            disabled: true,
-          },
-        },
-      },
-      password: {
-        type: 'group',
-        name: 'Password',
-        style: {
-          appendIcon: {
-            key: 'appendIcon',
-            type: 'iconSource',
-            name: 'Append Icon',
-            value: 'visibility',
-          },
-          prependIcon: {
-            key: 'prependIcon',
-            type: 'iconSource',
-            name: 'Prepend Icon',
-            value: 'lock',
-          },
-        },
-        description: {
-          persistentHint: {
-            key: 'persistentHint',
-            type: 'check',
-            name: 'Persisstent Hint',
-            value: true,
-            disabled: true,
-          },
-          hint: {
-            type: 'input',
-            name: 'Hint Text',
-            value: 'At least 8 characters long, 1 lowercase letter, 1 capital letter, 1 number and 1 special character',
-          },
-        },
-        validation: {
-          pattern: {
-            key: 'pattern',
-            type: 'input',
-            name: 'Password pattern',
-            value: '^(?=.*[\\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\\w!@#$%^&*]{8,}$',
-          },
-        },
-      },
+      name: 'Type',
+      options: 'subtype',
     },
   },
   options: {
@@ -264,6 +102,164 @@ export default {
       name: 'Phone Mask',
       value: '',
       hidden: true,
+    },
+    subtype: {
+      type: 'select',
+      name: 'Textbox type',
+      items: [
+        {
+          label: 'Generic',
+          value: 'generic',
+          options: {},
+        },
+        {
+          label: 'Email',
+          value: 'email',
+          options: {
+            style: {
+              prependIcon: {
+                value: 'email',
+              },
+            },
+            validation: {
+              pattern: {
+                key: 'pattern',
+                type: 'input',
+                name: 'Email pattern',
+                value: '^[a-zA-Z0-9.!#$%&\'*+\\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$',
+                disabled: true,
+              },
+            },
+          },
+        },
+        {
+          label: 'Money',
+          value: 'money',
+          options: {
+            style: {
+              suffix: {
+                value: '$',
+              },
+            },
+          },
+        },
+        {
+          label: 'Number',
+          value: 'number',
+          options: {
+            style: {
+              prependIcon: {
+                value: 'unfold_more',
+              },
+            },
+          },
+        },
+        {
+          label: 'Percentage',
+          value: 'percentage',
+          options: {
+            style: {
+              appendIcon: {
+                value: '%',
+              },
+            },
+          },
+        },
+        {
+          label: 'Phone',
+          value: 'phone',
+          options: {
+            style: {
+              prependIcon: {
+                value: 'phone',
+              },
+            },
+            mask: {
+              type: 'select',
+              name: 'Phone Mask',
+              group: 'general',
+              items: [
+                {
+                  label: 'None',
+                  value: '',
+                },
+                {
+                  label: 'Phone (###) ### - ####',
+                  value: 'phone',
+                },
+                {
+                  label: 'Phone +### ## ### ###',
+                  value: '+### ## ### ###',
+                },
+              ],
+              displayProp: 'label',
+              valueProp: 'value',
+              value: '+### ## ### ###',
+              hidden: false,
+            },
+          },
+        },
+        {
+          label: 'Url',
+          value: 'url',
+          options: {
+            style: {
+              prependIcon: {
+                value: 'link',
+              },
+            },
+            validation: {
+              urlValidator: {
+                key: 'urlValidator',
+                type: 'check',
+                name: 'Url Validator',
+                value: true,
+                disabled: true,
+              },
+            },
+          },
+        },
+        {
+          label: 'Password',
+          value: 'password',
+          options: {
+            style: {
+              appendIcon: {
+                value: 'visibility',
+              },
+              prependIcon: {
+                value: 'lock',
+              },
+            },
+            description: {
+              persistentHint: {
+                key: 'persistentHint',
+                type: 'check',
+                name: 'Persisstent Hint',
+                value: true,
+                disabled: true,
+              },
+              hint: {
+                value: 'At least 8 characters long, 1 lowercase letter, 1 capital letter, 1 number and 1 special character',
+              },
+            },
+            validation: {
+              pattern: {
+                key: 'pattern',
+                type: 'input',
+                name: 'Password pattern',
+                value: '^(?=.*[\\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\\w!@#$%^&*]{8,}$',
+              },
+            },
+          },
+        },
+      ],
+      displayProp: 'label',
+      valueProp: 'value',
+      value: 'generic',
+      returnObject: true,
+      hint: 'Changing TextBox type will reset other fields',
+      persistentHint: true,
     },
     description: {
       type: 'group',
