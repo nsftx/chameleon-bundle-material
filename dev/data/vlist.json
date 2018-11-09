@@ -51,6 +51,7 @@
               "type": "button",
               "label": "Testing Button",
               "icon": "people",
+              "block": true,
               "iconPosition": "",
               "color": "primary",
               "round": true,
