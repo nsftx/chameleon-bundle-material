@@ -9,9 +9,7 @@
       "type": "page",
       "icon": "home",
       "layout": {
-        "previewWidth": "auto",
-        "previewHeight": "auto",
-        "overflow": "hidden"
+        "previewWidth": "auto"
       },
       "meta": {
         "title": "Test",
