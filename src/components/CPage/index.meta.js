@@ -74,36 +74,10 @@ export default {
     layout: {
       type: 'group',
       group: 'layout',
-      fillHeight: {
-        type: 'check',
-        name: 'Full Page Height',
-        value: false,
-      },
       previewWidth: {
         type: 'sizeInput',
         name: 'Preview Width',
         value: '960px',
-      },
-      previewHeight: {
-        type: 'sizeInput',
-        name: 'Preview Height',
-        value: '1360px',
-      },
-      overflow: {
-        type: 'select',
-        name: 'Preview Overflow',
-        value: 'hidden',
-        items: [
-          {
-            name: 'Hidden',
-            value: 'hidden',
-          },
-          {
-            name: 'Scroll',
-            value: 'scroll',
-          },
-        ],
-        priority: 6,
       },
     },
     meta: {
