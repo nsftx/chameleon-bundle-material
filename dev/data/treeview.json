@@ -1,0 +1,30 @@
+{
+  "pages": [
+    {
+      "name": "table",
+      "type": "page",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "panel-1",
+          "flat": false,
+          "elements": [
+            {
+              "type": "treeview",
+              "style": {
+                "color": null,
+                "theme": "light"
+              },
+              "data": {
+                "itemValue": "id",
+                "itemDisplay": "name",
+                "itemChildren": "children",
+                "dataSource": {}
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

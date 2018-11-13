@@ -18,6 +18,12 @@
             "name": "page"
           },
           {
+            "title": "Tree View",
+            "icon": "list_alt",
+            "path": "/treeview",
+            "name": "treeview"
+          },
+          {
             "title": "Accordion",
             "icon": "view_day",
             "path": "/accordion",
