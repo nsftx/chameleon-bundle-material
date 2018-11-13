@@ -55,10 +55,10 @@ const getCellInferredProps = (cell) => {
 const getAlternatingRowColor = (rowParity, context) => {
   const colorClass = context.config.color ? context.config.color.split(' ') : [];
   const colorName = colorClass.length ? colorClass[0] : 'grey';
-  let alternatingRowColor = context.config.alternetingRowColor || `${colorName} darken-2`;
+  let alternatingRowColor = context.config.alternatingRowColor || `${colorName} darken-2`;
 
   // use darken and lighten classes if alternetingRowColor is not set
-  if (colorClass.length > 1 && !context.config.alternetingRowColor) {
+  if (colorClass.length > 1 && !context.config.alternatingRowColor) {
     const colorWeight = colorClass[1].split('-')[0] === 'darken' ? 'lighten-3' : 'darken-3';
     alternatingRowColor = `${colorName} ${colorWeight}`;
   }
@@ -67,9 +67,9 @@ const getAlternatingRowColor = (rowParity, context) => {
 };
 
 const setRowColor = (rowIndex, context) => {
-  const isAlternetingRowOption = context.config.alternetingRows;
-  // eslint-disable-next-line
-  return isAlternetingRowOption ? getAlternatingRowColor(rowIndex, context) : null;
+  const isAlternatingRowOption = context.config.alternatingRows;
+
+  return isAlternatingRowOption ? getAlternatingRowColor(rowIndex, context) : null;
 };
 
 const getScopedSlots = (createElement, context) => {
