@@ -119,17 +119,17 @@ export default {
       group: 'style',
       priority: 13,
     },
-    alternetingRows: {
+    alternatingRows: {
       group: 'style',
       type: 'check',
-      name: 'Enable alterneting rows',
+      name: 'Enable alternating rows',
       value: false,
       priority: 14,
     },
-    alternetingRowColor: {
+    alternatingRowColor: {
       group: 'style',
       type: 'colorPicker',
-      name: 'Alterneting row color',
+      name: 'Alternating row color',
       value: null,
       priority: 15,
     },
