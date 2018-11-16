@@ -1,10 +1,20 @@
+import {
+  each,
+  filter,
+  isArray,
+  isEmpty,
+  isNil,
+  isObject,
+  sortBy,
+} from 'lodash';
 import Element from '../Element';
+import '../../style/components/_treeview.styl';
 
-const items = [
+const data = [
   {
     id: 1,
     name: 'Applications :',
-    children: [
+    items: [
       { id: 2, name: 'Calendar : app' },
       { id: 3, name: 'Chrome : app' },
       { id: 4, name: 'Webstorm : app' },
@@ -13,15 +23,15 @@ const items = [
   {
     id: 5,
     name: 'Documents :',
-    children: [
+    items: [
       {
         id: 6,
         name: 'vuetify :',
-        children: [
+        items: [
           {
             id: 7,
             name: 'src :',
-            children: [
+            items: [
               { id: 8, name: 'index : ts' },
               { id: 9, name: 'bootstrap : ts' },
             ],
@@ -31,11 +41,11 @@ const items = [
       {
         id: 10,
         name: 'material2 :',
-        children: [
+        items: [
           {
             id: 11,
             name: 'src :',
-            children: [
+            items: [
               { id: 12, name: 'v-btn : ts' },
               { id: 13, name: 'v-card : ts' },
               { id: 14, name: 'v-window : ts' },
@@ -48,20 +58,15 @@ const items = [
   {
     id: 15,
     name: 'Downloads :',
-    children: [
-      { id: 16, name: 'October : pdf' },
-      { id: 17, name: 'November : pdf' },
-      { id: 18, name: 'Tutorial : html' },
-    ],
   },
   {
     id: 19,
     name: 'Videos :',
-    children: [
+    items: [
       {
         id: 20,
         name: 'Tutorials :',
-        children: [
+        items: [
           { id: 21, name: 'Basic layouts : mp4' },
           { id: 22, name: 'Advanced techniques : mp4' },
           { id: 23, name: 'All about app : dir' },
@@ -79,11 +84,16 @@ const getProps = (context) => {
   return {
     dark: context.isThemeDark,
     light: context.isThemeLight,
-    color: config.style ? config.style.color : null,
     items: context.items, // dataSource
-    itemKey: config.data.itemValue,
-    itemText: config.data.itemDisplay,
-    itemChildren: config.data.itemChildren,
+    itemKey: context.itemValue,
+    itemText: context.itemDisplay,
+    itemChildren: context.itemChildren,
+    loadChildren: context.getChildren,
+    open: context.open,
+    selectable: config.selection !== 'none',
+    selectedColor: config.selectorColor,
+    openAll: context.openOnLoad, // Vuetify wtf!?
+    openOnClick: true,
   };
 };
 
@@ -92,10 +102,31 @@ const getListeners = (context) => {
   return {
     input(value) {
       self.value = value;
-      console.log('event input value ', value);
       self.$emit('input', value);
     },
   };
+};
+
+const getTreeSlot = (createElement, context) => {
+  const slot = {
+    prepend: (items) => {
+      if (context.getMapType() === 'image') {
+        return createElement('c-image', {
+          props: {
+            definition: {
+              width: '100px',
+              height: '100px',
+              src: items.item[context.itemDisplay],
+            },
+          },
+        });
+      }
+      return null;
+    },
+    // Label is not slot we can't change it's value
+    // append
+  };
+  return slot;
 };
 
 export default {
@@ -103,28 +134,137 @@ export default {
   data() {
     return {
       items: [],
+      open: [],
     };
   },
-  props: {
-    itemChildren: {
-      type: String,
-      default: 'children',
+  computed: {
+    allItems() {
+      if (this.items.length) {
+        return this.getAllItems();
+      }
+      return null;
     },
-    itemDisplay: {
-      type: String,
-      default: 'name',
+    firstItem() {
+      if (this.items.length) {
+        const first = filter(this.items, item => item[this.itemChildren]);
+        return first[0] || null;
+      }
+      return null;
     },
-    itemValue: {
-      type: String,
-      default: 'id',
+    itemChildren() {
+      if (this.items.length) {
+        // User-defined key
+        const itemChildren = this.config.itemChildren;
+        if (!isNil(itemChildren) && !isEmpty(itemChildren)) {
+          return itemChildren;
+          // Predefined 'children' key
+        } else if (!isNil(this.items[0].children)) {
+          return 'children';
+        }
+        // Find first array key
+        let firstChild = null;
+        const filtered = item => each(item, (value, key) => {
+          if (isArray(value)) {
+            firstChild = key;
+          }
+          if (isObject(value) && isNil(firstChild)) filtered(value);
+        });
+        filtered(this.items);
+        return firstChild;
+      }
+      return null;
+    },
+    itemValue() {
+      if (this.items.length) {
+        // User-defined key
+        const itemValue = this.config.itemValue;
+        if (!isNil(itemValue) && !isEmpty(itemValue)) {
+          return itemValue;
+          // Predefined 'id' key
+        } else if (!isNil(this.items[0].id)) {
+          return 'id';
+        }
+      }
+      return null;
+    },
+    itemDisplay() {
+      if (this.items.length) {
+        // User-defined key
+        const itemDisplay = this.config.itemDisplay;
+        if (!isNil(itemDisplay) && !isEmpty(itemDisplay)) {
+          return itemDisplay;
+          // Predefined 'name' key
+        } else if (!isNil(this.items[0].name)) {
+          return 'name';
+        }
+      }
+      return null;
+    },
+    openOnLoad() {
+      let openState = false;
+      this.open = [];
+      switch (this.config.defaultState) {
+        case 'first':
+          if (this.items.length > 0) {
+            this.open.push(this.firstItem[this.itemValue]);
+          }
+          openState = false;
+          break;
+        case 'all':
+          // HACK since openAll is only working on component load
+          // set open value trought array (this.open) of item id's
+          if (this.items.length > 0) {
+            this.open = this.allItems;
+          }
+          openState = true;
+          break;
+        default:
+          openState = false;
+      }
+      return openState;
+    },
+    schemaType() {
+      if (this.dataSource) return this.dataSource.schema;
+      return null;
     },
   },
   methods: {
+    getMapType() {
+      const type = filter(this.schemaType, (schema) => {
+        const name = schema.mapName || schema.name;
+        return name === this.itemDisplay;
+      });
+      return type.length ? type[0].mapType : null;
+    },
+    // Get all children id's (open state is controlled by this)
+    getAllItems() {
+      const leafs = [];
+      const searchTree = (items) => {
+        each(items, (child) => {
+          if (child[this.itemChildren] && child[this.itemChildren].length > 0) {
+            searchTree(child[this.itemChildren]);
+          }
+          if (child[this.itemValue]) leafs.push(child[this.itemValue]);
+        });
+      };
+      searchTree(this.items);
+      return sortBy(leafs);
+    },
     loadData() {
-      this.loadConnectorData().then(() => {
-        // this.items = result.items || [];
+      this.loadConnectorData().then((result) => {
+        this.items = result.items || data;
         this.sendToEventBus('DataSourceChanged', this.dataSource);
       });
+    },
+    async getChildren(item) {
+      const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+      await pause(1500);
+      const test = {
+        id: 333,
+        name: 'Applications 2 :',
+      };
+      item[this.itemChildren].push(test);
     },
   },
   watch: {
@@ -135,17 +275,14 @@ export default {
       deep: true,
     },
   },
-  mounted() {
-    // this.loadData();
-    // TODO remove this
-    this.items = items;
-  },
-  render() {
+  render(createElement) {
     return this.renderElement(
       'v-treeview',
       {
         props: getProps(this),
         on: getListeners(this),
+        staticClass: this.config.color,
+        scopedSlots: getTreeSlot(createElement, this),
       },
     );
   },

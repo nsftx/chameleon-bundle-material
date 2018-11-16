@@ -1,3 +1,21 @@
+const itemInterface = [
+  {
+    name: 'id',
+    type: 'String',
+    label: 'Key',
+  },
+  {
+    name: 'name',
+    type: '',
+    label: 'Name',
+  },
+  {
+    name: 'children',
+    type: 'Array',
+    label: 'Children',
+  },
+];
+
 export default {
   group: 'widgets',
   type: 'treeview',
@@ -63,6 +81,7 @@ export default {
       group: 'data',
       name: 'Data Source',
       value: null,
+      schema: itemInterface,
     },
     itemChildren: {
       type: 'input',
@@ -153,15 +172,15 @@ export default {
       items: [
         {
           name: 'Single Select',
-          value: 'singleSelect',
+          value: 'single',
         },
         {
           name: 'Multi Select',
-          value: 'multiSelect',
+          value: 'multi',
         },
         {
           name: 'Leafs Single Select',
-          value: 'singleSelectOnlyLeafs',
+          value: 'singleLeafs',
         },
         {
           name: 'None',

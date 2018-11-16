@@ -11,16 +11,14 @@
           "elements": [
             {
               "type": "treeview",
-              "style": {
-                "color": null,
-                "theme": "light"
-              },
-              "data": {
-                "itemValue": "id",
-                "itemDisplay": "name",
-                "itemChildren": "children",
-                "dataSource": {}
-              }
+              "color": null,
+              "theme": "light",
+              "itemValue": "id",
+              "itemDisplay": "name",
+              "itemChildren": "",
+              "dataSource": {},
+              "defaultState": "all",
+              "selection": "single"
             }
           ]
         }
