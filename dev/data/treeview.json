@@ -14,7 +14,7 @@
               "color": null,
               "theme": "light",
               "itemValue": "id",
-              "itemDisplay": "name",
+              "itemDisplay": "",
               "itemChildren": "",
               "dataSource": {},
               "defaultState": "all",

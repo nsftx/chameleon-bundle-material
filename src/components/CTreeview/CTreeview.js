@@ -3,6 +3,7 @@ import {
   filter,
   isArray,
   isEmpty,
+  isString,
   isNil,
   isObject,
   sortBy,
@@ -13,42 +14,42 @@ import '../../style/components/_treeview.styl';
 const data = [
   {
     id: 1,
-    name: 'Applications :',
+    display: 'Applications :',
     items: [
-      { id: 2, name: 'Calendar : app' },
-      { id: 3, name: 'Chrome : app' },
-      { id: 4, name: 'Webstorm : app' },
+      { id: 2, display: 'Calendar : app' },
+      { id: 3, display: 'Chrome : app' },
+      { id: 4, display: 'Webstorm : app' },
     ],
   },
   {
     id: 5,
-    name: 'Documents :',
+    display: 'Documents :',
     items: [
       {
         id: 6,
-        name: 'vuetify :',
+        display: 'vuetify :',
         items: [
           {
             id: 7,
-            name: 'src :',
+            display: 'src :',
             items: [
-              { id: 8, name: 'index : ts' },
-              { id: 9, name: 'bootstrap : ts' },
+              { id: 8, display: 'index : ts' },
+              { id: 9, display: 'bootstrap : ts' },
             ],
           },
         ],
       },
       {
         id: 10,
-        name: 'material2 :',
+        display: 'material2 :',
         items: [
           {
             id: 11,
-            name: 'src :',
+            display: 'src :',
             items: [
-              { id: 12, name: 'v-btn : ts' },
-              { id: 13, name: 'v-card : ts' },
-              { id: 14, name: 'v-window : ts' },
+              { id: 12, display: 'v-btn : ts' },
+              { id: 13, display: 'v-card : ts' },
+              { id: 14, display: 'v-window : ts' },
             ],
           },
         ],
@@ -57,23 +58,23 @@ const data = [
   },
   {
     id: 15,
-    name: 'Downloads :',
+    display: 'Downloads :',
   },
   {
     id: 19,
-    name: 'Videos :',
+    display: 'Videos :',
     items: [
       {
         id: 20,
-        name: 'Tutorials :',
+        display: 'Tutorials :',
         items: [
-          { id: 21, name: 'Basic layouts : mp4' },
-          { id: 22, name: 'Advanced techniques : mp4' },
-          { id: 23, name: 'All about app : dir' },
+          { id: 21, display: 'Basic layouts : mp4' },
+          { id: 22, display: 'Advanced techniques : mp4' },
+          { id: 23, display: 'All about app : dir' },
         ],
       },
-      { id: 24, name: 'Intro : mov' },
-      { id: 25, name: 'Conference introduction : avi' },
+      { id: 24, display: 'Intro : mov' },
+      { id: 25, display: 'Conference introduction : avi' },
     ],
   },
 ];
@@ -82,6 +83,9 @@ const getProps = (context) => {
   const config = context.config;
 
   return {
+    activatable: true,
+    activeClass: 'grey lighten-4',
+    multipleActive: true,
     dark: context.isThemeDark,
     light: context.isThemeLight,
     items: context.items, // dataSource
@@ -118,8 +122,12 @@ const getTreeSlot = (createElement, context) => {
               height: '100px',
               src: items.item[context.itemDisplay],
             },
+            unselectable: true,
           },
         });
+      }
+      if (context.getMapType() === 'icon') {
+        return createElement('v-icon', {}, items.item[context.itemDisplay]);
       }
       return null;
     },
@@ -197,6 +205,16 @@ export default {
         } else if (!isNil(this.items[0].name)) {
           return 'name';
         }
+        // Find first string key
+        let firstChild = null;
+        const filtered = item => each(item, (value, key) => {
+          if (isString(value)) {
+            firstChild = key;
+          }
+          if (isObject(value) && isNil(firstChild)) filtered(value);
+        });
+        filtered(this.items);
+        return firstChild;
       }
       return null;
     },
