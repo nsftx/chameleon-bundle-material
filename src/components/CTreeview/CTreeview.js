@@ -11,74 +11,6 @@ import {
 import Element from '../Element';
 import '../../style/components/_treeview.styl';
 
-const data = [
-  {
-    id: 1,
-    display: 'Applications :',
-    items: [
-      { id: 2, display: 'Calendar : app' },
-      { id: 3, display: 'Chrome : app' },
-      { id: 4, display: 'Webstorm : app' },
-    ],
-  },
-  {
-    id: 5,
-    display: 'Documents :',
-    items: [
-      {
-        id: 6,
-        display: 'vuetify :',
-        items: [
-          {
-            id: 7,
-            display: 'src :',
-            items: [
-              { id: 8, display: 'index : ts' },
-              { id: 9, display: 'bootstrap : ts' },
-            ],
-          },
-        ],
-      },
-      {
-        id: 10,
-        display: 'material2 :',
-        items: [
-          {
-            id: 11,
-            display: 'src :',
-            items: [
-              { id: 12, display: 'v-btn : ts' },
-              { id: 13, display: 'v-card : ts' },
-              { id: 14, display: 'v-window : ts' },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 15,
-    display: 'Downloads :',
-  },
-  {
-    id: 19,
-    display: 'Videos :',
-    items: [
-      {
-        id: 20,
-        display: 'Tutorials :',
-        items: [
-          { id: 21, display: 'Basic layouts : mp4' },
-          { id: 22, display: 'Advanced techniques : mp4' },
-          { id: 23, display: 'All about app : dir' },
-        ],
-      },
-      { id: 24, display: 'Intro : mov' },
-      { id: 25, display: 'Conference introduction : avi' },
-    ],
-  },
-];
-
 const getProps = (context) => {
   const config = context.config;
 
@@ -98,6 +30,7 @@ const getProps = (context) => {
     selectedColor: config.selectorColor,
     openAll: context.openOnLoad, // Vuetify wtf!?
     openOnClick: true,
+    value: context.value,
   };
 };
 
@@ -106,9 +39,30 @@ const getListeners = (context) => {
   return {
     input(value) {
       self.value = value;
-      self.$emit('input', value);
+      // TODO enable single select, currently value gets sorted on 'input'
+      // so it's not possible to tell which item was added last one
+      if (self.config.selection === 'single' && value.length > 1) {
+        console.log('value ', JSON.stringify(value));
+        // self.value.shift();
+      }
     },
   };
+};
+
+const renderPlaceholder = (createElement, context) => {
+  const icon = createElement(
+    'v-icon',
+    {
+      props: { xLarge: true },
+    },
+    'list_alt',
+  );
+
+  return context.renderElement('v-card', {
+    props: {
+      flat: true,
+    },
+  }, [icon]);
 };
 
 const getTreeSlot = (createElement, context) => {
@@ -131,8 +85,8 @@ const getTreeSlot = (createElement, context) => {
       }
       return null;
     },
-    // Label is not slot we can't change it's value
-    // append
+    // Label - it is not slot, so we can't change it's value
+    // https://github.com/vuetifyjs/vuetify/pull/5567
   };
   return slot;
 };
@@ -143,6 +97,7 @@ export default {
     return {
       items: [],
       open: [],
+      value: [],
     };
   },
   computed: {
@@ -229,7 +184,7 @@ export default {
           openState = false;
           break;
         case 'all':
-          // HACK since openAll is only working on component load
+          // Since openAll is only working on component load
           // set open value trought array (this.open) of item id's
           if (this.items.length > 0) {
             this.open = this.allItems;
@@ -244,6 +199,12 @@ export default {
     schemaType() {
       if (this.dataSource) return this.dataSource.schema;
       return null;
+    },
+    togglePosition() {
+      return this.config.expanderPosition === 'right' ? 'c-right-toggle' : '';
+    },
+    checkPosition() {
+      return this.config.selectorPosition === 'right' ? 'c-right-check' : '';
     },
   },
   methods: {
@@ -270,11 +231,12 @@ export default {
     },
     loadData() {
       this.loadConnectorData().then((result) => {
-        this.items = result.items || data;
+        this.items = result.items || [];
         this.sendToEventBus('DataSourceChanged', this.dataSource);
       });
     },
     async getChildren(item) {
+      // We have this error https://github.com/vuetifyjs/vuetify/issues/5550
       const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 
       await pause(1500);
@@ -294,12 +256,15 @@ export default {
     },
   },
   render(createElement) {
+    if (!this.items.length && this.registry.isPreviewMode) {
+      return renderPlaceholder(createElement, this);
+    }
     return this.renderElement(
       'v-treeview',
       {
         props: getProps(this),
         on: getListeners(this),
-        staticClass: this.config.color,
+        staticClass: `${this.config.color} ${this.togglePosition} ${this.checkPosition}`,
         scopedSlots: getTreeSlot(createElement, this),
       },
     );

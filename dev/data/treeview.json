@@ -11,12 +11,36 @@
           "elements": [
             {
               "type": "treeview",
-              "color": null,
+              "color": "",
               "theme": "light",
               "itemValue": "id",
               "itemDisplay": "",
               "itemChildren": "",
-              "dataSource": {},
+              "expanderPosition": "right",
+              "selectorPosition": "right",
+              "dataSource": {
+                "name": "treeview",
+                "model": "treeview",
+                "connector": {
+                  "id": "12gh67qa-904d-4a9a-89f2-0a5afd8f1464",
+                  "name": "Sample Local Connector",
+                  "type": "local"
+                },
+                "schema": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  },
+                  {
+                    "name": "name",
+                    "type": "String"
+                  },
+                  {
+                    "name": "items",
+                    "type": "Array"
+                  }
+                ]
+              },
               "defaultState": "all",
               "selection": "single"
             }

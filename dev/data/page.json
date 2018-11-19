@@ -1092,6 +1092,10 @@
         "visionDetections": {
           "name": "visionDetections",
           "model": "VisionDetections"
+        },
+        "treeview": {
+          "name": "treeview",
+          "model": "Treeview"
         }
       }
     }
