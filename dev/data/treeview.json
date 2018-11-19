@@ -16,8 +16,8 @@
               "itemValue": "id",
               "itemDisplay": "",
               "itemChildren": "",
-              "expanderPosition": "right",
-              "selectorPosition": "right",
+              "expanderPosition": "left",
+              "selectorPosition": "left",
               "dataSource": {
                 "name": "treeview",
                 "model": "treeview",
@@ -41,7 +41,7 @@
                   }
                 ]
               },
-              "defaultState": "all",
+              "defaultState": "first",
               "selection": "single"
             }
           ]

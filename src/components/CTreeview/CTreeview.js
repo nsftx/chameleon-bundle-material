@@ -18,6 +18,7 @@ const getProps = (context) => {
     activatable: true,
     activeClass: 'grey lighten-4',
     multipleActive: true,
+    active: context.active,
     dark: context.isThemeDark,
     light: context.isThemeLight,
     items: context.items, // dataSource
@@ -25,10 +26,10 @@ const getProps = (context) => {
     itemText: context.itemDisplay,
     itemChildren: context.itemChildren,
     loadChildren: context.getChildren,
-    open: context.open,
     selectable: config.selection !== 'none',
     selectedColor: config.selectorColor,
-    openAll: context.openOnLoad, // Vuetify wtf!?
+    open: context.open,
+    openAll: context.openOnLoad,
     openOnClick: true,
     value: context.value,
   };
@@ -42,9 +43,15 @@ const getListeners = (context) => {
       // TODO enable single select, currently value gets sorted on 'input'
       // so it's not possible to tell which item was added last one
       if (self.config.selection === 'single' && value.length > 1) {
-        console.log('value ', JSON.stringify(value));
-        // self.value.shift();
+        // TODO self.value.shift();
       }
+      context.$emit('SelectionChanged', { active: value });
+    },
+    'update:active': (value) => {
+      context.$emit('ActiveItemChanged', { active: value });
+    },
+    'update:open': (value) => {
+      context.$emit('StateChanged', { active: value });
     },
   };
 };
@@ -95,6 +102,7 @@ export default {
   extends: Element,
   data() {
     return {
+      active: [],
       items: [],
       open: [],
       value: [],
@@ -208,6 +216,9 @@ export default {
     },
   },
   methods: {
+    addItem() {
+      // TODO
+    },
     getMapType() {
       const type = filter(this.schemaType, (schema) => {
         const name = schema.mapName || schema.name;
@@ -245,6 +256,21 @@ export default {
         name: 'Applications 2 :',
       };
       item[this.itemChildren].push(test);
+    },
+    setState(state) {
+      // Array of id's
+      this.open = state;
+      this.$emit('StateChanged', this.open);
+    },
+    setSelection(selection) {
+      // Array of id's
+      this.value = selection;
+      this.$emit('SelectionChanged', this.value);
+    },
+    setActiveItem(active) {
+      // Array of id's
+      this.active = active;
+      this.$emit('ActiveItemChanged', this.active);
     },
   },
   watch: {
