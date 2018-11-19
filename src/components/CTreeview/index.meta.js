@@ -76,7 +76,7 @@ export default {
     },
     {
       name: 'GetAsyncChildren',
-      help: 'Fires when children property of branch in empty array',
+      help: 'Fires when children property of branch is an empty array',
     },
   ],
   options: {
