@@ -74,6 +74,10 @@ export default {
       name: 'ActiveItemChanged',
       help: 'Fires active element item is changed',
     },
+    {
+      name: 'GetAsyncChildren',
+      help: 'Fires when children property of branch in empty array',
+    },
   ],
   options: {
     dataSource: {

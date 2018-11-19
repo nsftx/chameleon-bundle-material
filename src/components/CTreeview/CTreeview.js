@@ -21,7 +21,7 @@ const getProps = (context) => {
     active: context.active,
     dark: context.isThemeDark,
     light: context.isThemeLight,
-    items: context.items, // dataSource
+    items: context.items,
     itemKey: context.itemValue,
     itemText: context.itemDisplay,
     itemChildren: context.itemChildren,
@@ -247,15 +247,8 @@ export default {
       });
     },
     async getChildren(item) {
-      // We have this error https://github.com/vuetifyjs/vuetify/issues/5550
-      const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
-
-      await pause(1500);
-      const test = {
-        id: 333,
-        name: 'Applications 2 :',
-      };
-      item[this.itemChildren].push(test);
+      this.$emit('GetAsyncChildren', item);
+      // addItem();
     },
     setState(state) {
       // Array of id's
