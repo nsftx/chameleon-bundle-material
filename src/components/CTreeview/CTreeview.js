@@ -155,6 +155,18 @@ export default {
         } else if (!isNil(this.items[0].id)) {
           return 'id';
         }
+        let level = 0;
+        const searchTree = (items) => {
+          each(items, (child) => {
+            level += 1;
+            this.$set(child, 'id', level);
+            if (child[this.itemChildren] && child[this.itemChildren].length > 0) {
+              searchTree(child[this.itemChildren]);
+            }
+          });
+        };
+        searchTree(this.items);
+        return 'id';
       }
       return null;
     },

@@ -13,7 +13,7 @@
               "type": "treeview",
               "color": "",
               "theme": "light",
-              "itemValue": "id",
+              "itemValue": "",
               "itemDisplay": "",
               "itemChildren": "",
               "expanderPosition": "left",
