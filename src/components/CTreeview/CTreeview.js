@@ -216,7 +216,7 @@ export default {
       }
       return openState;
     },
-    schemaType() {
+    dataSourceSchema() {
       if (this.dataSource) return this.dataSource.schema;
       return null;
     },
@@ -232,7 +232,7 @@ export default {
       // TODO
     },
     getMapType() {
-      const type = filter(this.schemaType, (schema) => {
+      const type = filter(this.dataSourceSchema, (schema) => {
         const name = schema.mapName || schema.name;
         return name === this.itemDisplay;
       });
