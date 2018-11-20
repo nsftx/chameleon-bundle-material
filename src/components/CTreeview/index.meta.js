@@ -174,24 +174,24 @@ export default {
       group: 'behaviour',
       name: 'Selection',
       items: [
-        {
+        /* {
           name: 'Single Select',
           value: 'single',
-        },
+        }, */
         {
           name: 'Multi Select',
           value: 'multi',
         },
-        {
+        /* {
           name: 'Leafs Single Select',
           value: 'singleLeafs',
-        },
+        }, */
         {
           name: 'None',
           value: 'none',
         },
       ],
-      value: 'multiSelect',
+      value: 'multi',
     },
   },
 };
