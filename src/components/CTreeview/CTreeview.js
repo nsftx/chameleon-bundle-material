@@ -45,13 +45,13 @@ const getListeners = (context) => {
       if (self.config.selection === 'single' && value.length > 1) {
         // TODO self.value.shift();
       }
-      context.$emit('SelectionChanged', { active: value });
+      context.sendToEventBus('SelectionChanged', { active: value });
     },
     'update:active': (value) => {
-      context.$emit('ActiveItemChanged', { active: value });
+      context.sendToEventBus('ActiveItemChanged', { active: value });
     },
     'update:open': (value) => {
-      context.$emit('StateChanged', { active: value });
+      context.sendToEventBus('StateChanged', { active: value });
     },
   };
 };
@@ -259,23 +259,23 @@ export default {
       });
     },
     async getChildren(item) {
-      this.$emit('GetAsyncChildren', item);
+      this.sendToEventBus('GetAsyncChildren', item);
       // addItem();
     },
     setState(state) {
       // Array of id's
       this.open = state;
-      this.$emit('StateChanged', this.open);
+      this.sendToEventBus('StateChanged', this.open);
     },
     setSelection(selection) {
       // Array of id's
       this.value = selection;
-      this.$emit('SelectionChanged', this.value);
+      this.sendToEventBus('SelectionChanged', this.value);
     },
     setActiveItem(active) {
       // Array of id's
       this.active = active;
-      this.$emit('ActiveItemChanged', this.active);
+      this.sendToEventBus('ActiveItemChanged', this.active);
     },
   },
   watch: {
