@@ -228,8 +228,9 @@ export default {
     },
   },
   methods: {
-    addItem() {
-      // TODO
+    addItem(source, id) {
+      const item = this.getItemById(id);
+      item.items = source;
     },
     getMapType() {
       const type = filter(this.dataSourceSchema, (schema) => {
@@ -252,6 +253,19 @@ export default {
       searchTree(this.items);
       return sortBy(leafs);
     },
+    getItemById(id) {
+      let item = null;
+      const searchTree = (items) => {
+        each(items, (child) => {
+          if (child[this.itemValue] === id) item = child;
+          if (child[this.itemChildren] && child[this.itemChildren].length > 0) {
+            searchTree(child[this.itemChildren]);
+          }
+        });
+      };
+      searchTree(this.items);
+      return item;
+    },
     loadData() {
       this.loadConnectorData().then((result) => {
         this.items = result.items || [];
@@ -259,8 +273,19 @@ export default {
       });
     },
     async getChildren(item) {
-      this.sendToEventBus('GetAsyncChildren', item);
-      // addItem();
+      const connector = this.options.connector;
+      const id = this.dataSource.connector.id;
+      const type = this.options.connectors[id];
+
+      if (connector) {
+        connector.getSourceData(type, this.dataSource).then((result) => {
+          if (result && item) {
+            // Can't add directly to item
+            // this.addItem(result, item[this.itemValue]);
+          }
+        });
+      }
+      // this.sendToEventBus('GetAsyncChildren', item);
     },
     setState(state) {
       // Array of id's
