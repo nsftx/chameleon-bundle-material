@@ -42,7 +42,7 @@ export default {
       props: {
         dark: this.isThemeDark,
         light: this.isThemeLight,
-        flat: true,
+        flat: this.config.flat,
       },
     };
 

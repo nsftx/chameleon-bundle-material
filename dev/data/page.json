@@ -31,7 +31,9 @@
               "alignment": "center",
               "headerColor": "red",
               "sliderColor": "blue",
-              "fillSpace": true,
+              "theme": "dark",
+              "grow": false,
+              "contentColor": "transparent",
               "elements": [
                 {
                   "type": "tab-item",
@@ -42,7 +44,7 @@
                       "type": "form",
                       "name": "",
                       "color": "",
-                      "theme": "",
+                      "theme": "light",
                       "enabled": true,
                       "submit": {
                         "name": "submit_button",
@@ -657,6 +659,7 @@
                       "name": "flexgrid",
                       "fluid": true,
                       "color": "",
+                      "flat": false,
                       "theme": "light",
                       "direction": "row",
                       "spacing": "md",

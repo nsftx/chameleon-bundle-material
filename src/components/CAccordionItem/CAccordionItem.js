@@ -19,6 +19,7 @@ const getItemContent = (context, createElement) => {
     'v-card',
     {
       staticClass: element.contentColor,
+      flat: true,
     },
     [
       context.renderChildElement('v-card-text'),

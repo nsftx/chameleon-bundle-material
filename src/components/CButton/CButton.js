@@ -12,10 +12,9 @@ const getAttrs = (context) => {
 
 const getProps = (context) => {
   const config = context.config;
-  const defaultColor = 'primary';
 
   const props = {
-    color: config.color || defaultColor,
+    color: config.color,
     dark: context.isThemeDark,
     light: context.isThemeLight,
     disabled: config.disabled,

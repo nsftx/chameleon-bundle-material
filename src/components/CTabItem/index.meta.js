@@ -19,5 +19,11 @@ export default {
       },
       priority: 1,
     },
+    icon: {
+      type: 'iconSource',
+      name: 'Icon Source',
+      value: null,
+      priority: 2,
+    },
   },
 };
