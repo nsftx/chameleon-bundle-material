@@ -105,7 +105,6 @@ export default {
 
     const data = {
       props: {
-        color: 'transparent',
         dark: this.isThemeDark,
         light: this.isThemeLight,
         flat: true,
@@ -113,7 +112,12 @@ export default {
     };
 
     const children = [
-      createElement('v-label', this.config.label),
+      createElement('v-label', {
+        props: {
+          dark: this.isThemeDark,
+          light: this.isThemeLight,
+        },
+      }, this.config.label),
       map(this.config.dataSource.items,
         item => createElement('v-checkbox',
           {

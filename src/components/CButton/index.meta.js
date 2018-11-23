@@ -16,7 +16,9 @@ export default {
     },
   ],
   options: {
-    color: true,
+    color: {
+      value: 'green accent-4',
+    },
     label: {
       type: 'input',
       name: 'Button Label',

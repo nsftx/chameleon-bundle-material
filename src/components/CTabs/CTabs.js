@@ -4,12 +4,14 @@ import Element from '../Element';
 const getProps = (context) => {
   const config = context.config;
   const props = {
+    dark: context.isThemeDark,
+    light: context.isThemeLight,
     centered: config.alignment === 'center',
     color: config.headerColor,
-    grow: config.fillSpace,
     iconsAndText: some(config.elements, element => !!element.icon),
     right: config.alignment === 'right',
     sliderColor: config.sliderColor,
+    grow: config.grow,
     value: 0,
   };
 
@@ -68,9 +70,9 @@ export default {
       self.getElementTag('tab-item'),
       {
         props: {
-          definition: merge({},
-            element,
-            { contentColor: self.config.contentColor }),
+          definition: merge({}, element, {
+            contentColor: this.config.contentColor,
+          }),
         },
       },
     ));
@@ -78,6 +80,12 @@ export default {
     const children = concat(tabs,
       createElement(
         'v-tabs-items',
+        {
+          props: {
+            dark: this.isThemeDark,
+            light: this.isThemeLight,
+          },
+        },
         items,
       ),
     );

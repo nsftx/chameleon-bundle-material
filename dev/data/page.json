@@ -31,7 +31,9 @@
               "alignment": "center",
               "headerColor": "red",
               "sliderColor": "blue",
-              "fillSpace": true,
+              "theme": "dark",
+              "grow": false,
+              "contentColor": "transparent",
               "elements": [
                 {
                   "type": "tab-item",
@@ -42,7 +44,7 @@
                       "type": "form",
                       "name": "",
                       "color": "",
-                      "theme": "",
+                      "theme": "light",
                       "enabled": true,
                       "submit": {
                         "name": "submit_button",
@@ -505,6 +507,7 @@
                   "type": "tab-item",
                   "icon": "grid_on",
                   "title": "Table and list",
+                  "gridMaxSize": true,
                   "elements": [
                     {
                       "name": "shoppingTable",
@@ -651,12 +654,14 @@
                   "type": "tab-item",
                   "icon": "view_compact",
                   "title": "Flex grid",
+                  "gridMaxSize": true,
                   "elements": [
                     {
                       "type": "flexgrid",
                       "name": "flexgrid",
                       "fluid": true,
                       "color": "",
+                      "flat": false,
                       "theme": "light",
                       "direction": "row",
                       "spacing": "md",
@@ -796,6 +801,7 @@
                   "type": "tab-item",
                   "icon": "view_day",
                   "title": "Accordion",
+                  "gridMaxSize": true,
                   "elements": [
                     {
                       "type": "accordion",
@@ -930,6 +936,7 @@
                   "type": "tab-item",
                   "icon": "theaters",
                   "title": "Video & YT",
+                  "gridMaxSize": true,
                   "elements": [
                     {
                       "type": "vlist",
@@ -989,6 +996,7 @@
                   "type": "tab-item",
                   "icon": "place",
                   "title": "Map",
+                  "gridMaxSize": true,
                   "elements": [
                     {
                       "type": "map",
@@ -1002,6 +1010,7 @@
                   "type": "tab-item",
                   "icon": "view_module",
                   "title": "Gallery",
+                  "gridMaxSize": true,
                   "elements": [
                     {
                       "type": "gallery",

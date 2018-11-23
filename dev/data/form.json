@@ -3,7 +3,7 @@
     {
       "name": "form",
       "type": "page",
-      "theme": "dark",
+      "theme": "light",
       "elements": [
         {
           "type": "panel",

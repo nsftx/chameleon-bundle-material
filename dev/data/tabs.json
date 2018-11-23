@@ -11,10 +11,11 @@
           "elements": [
             {
               "type": "tabs",
-              "alignment": "left",
+              "alignment": "",
               "headerColor": "red",
               "sliderColor": "blue",
-              "fillSpace": true,
+              "contentColor": "transparent",
+              "theme": "dark",
               "elements": [
                 {
                   "type": "tab-item",

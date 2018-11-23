@@ -13,6 +13,7 @@ export default {
     },
   ],
   options: {
+    theme: true,
     itemsCount: {
       type: 'childrenCountInput',
       name: 'Item count',
@@ -23,27 +24,55 @@ export default {
       },
       priority: 1,
     },
-    color: {
+    grow: {
+      type: 'check',
+      name: 'Tabs Full With',
+      value: false,
+      priority: 2,
+    },
+    alignment: {
+      type: 'select',
+      name: 'Tabs Position',
+      items: [
+        {
+          id: 1,
+          name: 'Left',
+          value: '',
+        },
+        {
+          id: 2,
+          name: 'Right',
+          value: 'right',
+        },
+        {
+          id: 3,
+          name: 'Center',
+          value: 'center',
+        },
+      ],
+      returnObject: false,
+      displayProp: 'name',
+      valueProp: 'value',
+      value: '',
+      priority: 3,
+    },
+    headerColor: {
       type: 'colorPicker',
       name: 'Item header color',
-      value: 'transparent',
-      validation: {
-        required: true,
-        minLength: 3,
-        maxLength: 25,
-      },
-      priority: 2,
+      value: null,
+      priority: 4,
+    },
+    sliderColor: {
+      type: 'colorPicker',
+      name: 'Item slider color',
+      value: null,
+      priority: 5,
     },
     contentColor: {
       type: 'colorPicker',
       name: 'Item content color',
-      value: 'transparent',
-      validation: {
-        required: true,
-        minLength: 3,
-        maxLength: 25,
-      },
-      priority: 3,
+      value: null,
+      priority: 6,
     },
   },
 };

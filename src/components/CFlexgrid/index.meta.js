@@ -62,11 +62,17 @@ export default {
       value: 'md',
       priority: 3,
     },
+    flat: {
+      type: 'check',
+      name: 'No Shadow',
+      value: false,
+      priority: 4,
+    },
     fluid: {
       type: 'check',
       name: 'Full Width',
       value: false,
-      priority: 4,
+      priority: 5,
     },
     theme: true,
   },
