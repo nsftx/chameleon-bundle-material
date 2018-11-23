@@ -1,7 +1,33 @@
 import { concat, map, merge, some } from 'lodash';
 import Element from '../Element';
 
-const getProps = (context) => {
+const createTabItems = (context, createElement) =>
+  map(context.config.elements, element => createElement(
+    context.getElementTag('tab-item'),
+    {
+      props: {
+        definition: merge({}, element, {
+          contentColor: context.config.contentColor,
+        }),
+      },
+    },
+  ));
+
+const getListeners = (context) => {
+  const listeners = {
+    change(value) {
+      if (value) {
+        const label = context.config.elements[value].title;
+        context.sendToEventBus('SelectedItemChanged', {
+          label,
+        });
+      }
+    },
+  };
+  return listeners;
+};
+
+const getProperties = (context) => {
   const config = context.config;
   const props = {
     dark: context.isThemeDark,
@@ -51,32 +77,12 @@ export default {
     const self = this;
     const data = {
       key: self.schema.uid,
-      props: getProps(self),
-      on: {
-        change(value) {
-          if (value) {
-            const label = self.config.elements[value].title;
-            self.sendToEventBus('SelectedItemChanged', {
-              label,
-            });
-          }
-        },
-      },
+      props: getProperties(self),
+      on: getListeners(self),
     };
 
     const tabs = getTabs(self, createElement);
-
-    const items = map(self.config.elements, element => createElement(
-      self.getElementTag('tab-item'),
-      {
-        props: {
-          definition: merge({}, element, {
-            contentColor: this.config.contentColor,
-          }),
-        },
-      },
-    ));
-
+    const items = createTabItems(self, createElement);
     const children = concat(tabs,
       createElement(
         'v-tabs-items',
