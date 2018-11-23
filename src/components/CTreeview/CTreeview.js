@@ -283,9 +283,12 @@ export default {
             // Can't add directly to item
             // this.addItem(result, item[this.itemValue]);
           }
+        }).catch(() => {
+          this.sendToEventBus('GetAsyncChildren', item);
         });
+      } else {
+        this.sendToEventBus('GetAsyncChildren', item);
       }
-      // this.sendToEventBus('GetAsyncChildren', item);
     },
     setState(state) {
       // Array of id's
