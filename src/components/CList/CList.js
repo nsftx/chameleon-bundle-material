@@ -122,7 +122,7 @@ const getCardSlot = (createElement, context) => {
   const slot = {
     item: props => createElement('v-flex', {
       attrs: {
-        xs12: true,
+        [`xs${context.config.noOfRows}`]: true,
       },
     },
       [

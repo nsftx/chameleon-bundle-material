@@ -87,12 +87,32 @@ export default {
       value: true,
       priority: 5,
     },
+    noOfRows: {
+      type: 'select',
+      name: 'Grid Type',
+      items: [
+        {
+          name: '1',
+          value: '12',
+        },
+        {
+          name: '2',
+          value: '6',
+        },
+        {
+          name: '3',
+          value: '4',
+        },
+      ],
+      value: '12',
+      priority: 7,
+    },
     noDataText: {
       type: 'input',
       group: 'localization',
       name: 'No Data Text',
       value: null,
-      priority: 7,
+      priority: 8,
     },
     noResultsText: {
       type: 'input',
