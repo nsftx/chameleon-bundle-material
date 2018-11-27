@@ -101,51 +101,51 @@ const getListAvatar = (createElement, item, context) => {
   }, [children()]);
 };
 
-const getCardSlot = (createElement, context) => {
-  const getChildren = (props) => {
-    const item = props.item;
-    const mapProps = context.dataSource.schema ?
-      filter(context.dataSource.schema, i => !isNil(i.mapName)) : {};
-    const itemProps = Object.keys(item);
-    const title = !mapProps.length ? item[itemProps[0]] : item.title;
-    const description = !mapProps.length ? item[itemProps[1]] : item.description;
+const getChildrenItems = (createElement, context, props) => {
+  const item = props.item;
+  const mapProps = context.dataSource.schema ?
+    filter(context.dataSource.schema, i => !isNil(i.mapName)) : {};
+  const itemProps = Object.keys(item);
+  const title = !mapProps.length ? item[itemProps[0]] : item.title;
+  const description = !mapProps.length ? item[itemProps[1]] : item.description;
 
-    return [
-      createElement('v-list', {
-        class: {
-          [context.config.color]: true,
-        },
+  return createElement('v-list-tile', {
+    on: {
+      click() {
+        context.sendToEventBus('SelectedItemChanged', item);
       },
-        [
-          createElement('v-list-tile', {
-            on: {
-              click() {
-                context.sendToEventBus('SelectedItemChanged', item);
-              },
-            },
+    },
+  },
+    [
+      getListAvatar(createElement, item, context),
+      createElement('v-list-tile-content', [
+        createElement('v-list-tile-title', {
+          class: `c-list-title ${context.config.titleColor}`,
+          style: {
+            height: item.label ? 'inherit' : 0,
+            borderRadius: context.config.titleRadius ? '5px' : 0,
           },
-            [
-              getListAvatar(createElement, item, context),
-              createElement('v-list-tile-content', [
-                createElement('v-list-tile-title', {
-                  class: `c-list-title ${context.config.titleColor}`,
-                  style: {
-                    height: item.label ? 'inherit' : 0,
-                    borderRadius: context.config.titleRadius ? '5px' : 0,
-                  },
-                }, item.label),
-                createElement('v-list-tile-title', title),
-                createElement('v-list-tile-sub-title', {
-                  class: { overflow: context.config.showOverflow },
-                }, item.subtitle),
-                createElement('v-list-tile-sub-title', {
-                  class: 'c-list-description',
-                }, description),
-              ]),
-            ]),
-        ]),
-    ];
-  };
+        }, item.label),
+        createElement('v-list-tile-title', title),
+        createElement('v-list-tile-sub-title', {
+          class: { overflow: context.config.showOverflow },
+        }, item.subtitle),
+        createElement('v-list-tile-sub-title', {
+          class: 'c-list-description',
+        }, description),
+      ]),
+    ]);
+};
+
+const getCardSlot = (createElement, context) => {
+  const getChildren = props => [
+    createElement('v-list', {
+      class: {
+        [context.config.color]: true,
+      },
+    },
+      [getChildrenItems(createElement, context, props)]),
+  ];
 
   const slot = {
     item: props => createElement('v-flex', {
