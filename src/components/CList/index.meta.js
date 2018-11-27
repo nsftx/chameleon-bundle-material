@@ -95,46 +95,54 @@ export default {
     color: {
       value: null,
       group: 'style',
+      priority: 2,
     },
     theme: {
       value: null,
       group: 'style',
+      priority: 1,
     },
     flat: {
       type: 'check',
       group: 'style',
       name: 'No Shadow',
       value: false,
+      priority: 9,
     },
     imageRadius: {
       type: 'check',
       group: 'style',
       name: 'Image Radius',
       value: true,
+      priority: 7,
     },
     itemRadius: {
       type: 'check',
       group: 'style',
       name: 'Item Radius',
       value: true,
+      priority: 6,
     },
     fluid: {
       type: 'check',
       group: 'style',
       name: 'Full Width',
       value: true,
+      priority: 8,
     },
-    titleBorderRadius: {
+    titleRadius: {
       type: 'check',
       group: 'style',
       name: 'Title Background Radius',
       value: true,
+      priority: 5,
     },
     titleColor: {
       type: 'colorPicker',
       group: 'style',
       name: 'Title Background Color',
       value: 'green accent-4',
+      priority: 3,
     },
     spacing: {
       type: 'select',
@@ -167,6 +175,14 @@ export default {
         },
       ],
       value: 'md',
+      priority: 4,
+    },
+    showOverflow: {
+      type: 'check',
+      group: 'style',
+      name: 'Show Text Overflow',
+      value: false,
+      priority: 10,
     },
     noDataText: {
       type: 'input',

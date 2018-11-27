@@ -131,11 +131,13 @@ const getCardSlot = (createElement, context) => {
                   class: `c-list-title ${context.config.titleColor}`,
                   style: {
                     height: item.label ? 'inherit' : 0,
-                    borderRadius: context.config.titleBorderRadius ? '5px' : 0,
+                    borderRadius: context.config.titleRadius ? '5px' : 0,
                   },
                 }, item.label),
                 createElement('v-list-tile-title', title),
-                createElement('v-list-tile-sub-title', item.subtitle),
+                createElement('v-list-tile-sub-title', {
+                  class: { overflow: context.config.showOverflow },
+                }, item.subtitle),
                 createElement('v-list-tile-sub-title', {
                   class: 'c-list-description',
                 }, description),
