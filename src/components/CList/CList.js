@@ -7,6 +7,8 @@ import {
 } from 'lodash';
 import Element from '../Element';
 
+require('../../style/components/_list.styl');
+
 const getContainerClasses = (context) => {
   const config = context.config;
   const attrs = {
@@ -125,8 +127,18 @@ const getCardSlot = (createElement, context) => {
             [
               getListAvatar(createElement, item, context),
               createElement('v-list-tile-content', [
+                createElement('v-list-tile-title', {
+                  class: `c-list-title ${context.config.titleColor}`,
+                  style: {
+                    height: item.label ? 'inherit' : 0,
+                    borderRadius: context.config.titleBorderRadius ? '5px' : 0,
+                  },
+                }, item.label),
                 createElement('v-list-tile-title', title),
-                createElement('v-list-tile-sub-title', description),
+                createElement('v-list-tile-sub-title', item.subtitle),
+                createElement('v-list-tile-sub-title', {
+                  class: 'c-list-description',
+                }, description),
               ]),
             ]),
         ]),
@@ -141,6 +153,9 @@ const getCardSlot = (createElement, context) => {
     },
       [
         createElement('v-card', {
+          style: {
+            borderRadius: context.config.itemRadius ? '5px' : 0,
+          },
           props: {
             flat: true,
           },

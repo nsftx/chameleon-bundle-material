@@ -1,8 +1,18 @@
 const itemInterface = [
   {
+    name: 'label',
+    type: 'String',
+    label: 'Label',
+  },
+  {
     name: 'title',
     type: 'String',
     label: 'Title',
+  },
+  {
+    name: 'subtitle',
+    type: 'String',
+    label: 'Subtitle',
   },
   {
     name: 'description',
@@ -56,36 +66,11 @@ export default {
     },
   ],
   options: {
-    color: true,
-    header: {
-      type: 'input',
-      name: 'Header',
-      value: null,
-      priority: 2,
-    },
-    flat: {
-      type: 'check',
-      name: 'No Shadow',
-      value: false,
-      priority: 3,
-    },
     hideActions: {
       type: 'check',
       name: 'Hide Actions',
       value: false,
-      priority: 4,
-    },
-    imageRadius: {
-      type: 'check',
-      name: 'Image Radius',
-      value: true,
-      priority: 5,
-    },
-    fluid: {
-      type: 'check',
-      name: 'Full Width',
-      value: true,
-      priority: 6,
+      priority: 3,
     },
     noOfRows: {
       type: 'select',
@@ -105,10 +90,55 @@ export default {
         },
       ],
       value: '12',
-      priority: 7,
+      priority: 2,
+    },
+    color: {
+      value: null,
+      group: 'style',
+    },
+    theme: {
+      value: null,
+      group: 'style',
+    },
+    flat: {
+      type: 'check',
+      group: 'style',
+      name: 'No Shadow',
+      value: false,
+    },
+    imageRadius: {
+      type: 'check',
+      group: 'style',
+      name: 'Image Radius',
+      value: true,
+    },
+    itemRadius: {
+      type: 'check',
+      group: 'style',
+      name: 'Item Radius',
+      value: true,
+    },
+    fluid: {
+      type: 'check',
+      group: 'style',
+      name: 'Full Width',
+      value: true,
+    },
+    titleBorderRadius: {
+      type: 'check',
+      group: 'style',
+      name: 'Title Background Radius',
+      value: true,
+    },
+    titleColor: {
+      type: 'colorPicker',
+      group: 'style',
+      name: 'Title Background Color',
+      value: 'green accent-4',
     },
     spacing: {
       type: 'select',
+      group: 'style',
       name: 'Spacing',
       items: [
         {
@@ -137,35 +167,36 @@ export default {
         },
       ],
       value: 'md',
-      priority: 8,
     },
     noDataText: {
       type: 'input',
       group: 'localization',
       name: 'No Data Text',
       value: null,
-      priority: 9,
     },
     noResultsText: {
       type: 'input',
       group: 'localization',
       name: 'No Results Text',
       value: null,
-      priority: 10,
     },
     rowsPerPageText: {
       type: 'input',
       group: 'localization',
       name: 'Rows Per Page Text',
       value: null,
-      priority: 11,
+    },
+    header: {
+      type: 'input',
+      group: 'data',
+      name: 'Header',
+      value: null,
     },
     dataSource: {
       type: 'dataSource',
       group: 'data',
       name: 'Data Source',
       value: null,
-      priority: 12,
       schema: itemInterface,
     },
     rowsPerPageItems: {
@@ -173,36 +204,30 @@ export default {
       group: 'data',
       name: 'Rows Per Page Items',
       value: null,
-      priority: 13,
     },
     rowsPerPage: {
       type: 'input',
       group: 'data',
       name: 'Rows Per Page',
       value: 5,
-      priority: 14,
     },
     startPage: {
       type: 'input',
       group: 'data',
       name: 'Start With Page',
       value: 1,
-      priority: 15,
     },
     sortBy: {
       type: 'input',
       group: 'data',
       name: 'Sort Items By',
       value: null,
-      priority: 16,
     },
     sortDescending: {
       type: 'check',
       group: 'data',
       name: 'Sort Descending',
       value: false,
-      priority: 17,
     },
-    theme: true,
   },
 };

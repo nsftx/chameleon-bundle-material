@@ -19,9 +19,12 @@
               "hideActions": false,
               "color": "yellow",
               "theme": "light",
+              "titleColor": "teal darken-3",
+              "titleBorderRadius": true,
               "noOfRows": "4",
               "spacing": "md",
               "fluid": true,
+              "itemRadius": true,
               "dataSource": {
                 "items": [
                   {
