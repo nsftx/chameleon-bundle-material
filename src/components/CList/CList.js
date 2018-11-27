@@ -187,7 +187,7 @@ const getListeners = (context) => {
 const getListHeader = (createElement, context) => {
   let header = null;
   if (context.config.header) {
-    header = createElement('v-subheader', {
+    header = createElement('v-label', {
       slot: 'header',
     }, context.config.header);
   }

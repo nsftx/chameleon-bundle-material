@@ -10,8 +10,8 @@
           "flat": false,
           "width": "100%",
           "height": "100%",
-          "color": "red",
-          "theme": "light",
+          "color": "",
+          "theme": "dark",
           "elements": [
             {
               "name": "shoppingList",
@@ -25,6 +25,7 @@
               "spacing": "md",
               "fluid": true,
               "itemRadius": true,
+              "header": "Header",
               "dataSource": {
                 "items": [
                   {
