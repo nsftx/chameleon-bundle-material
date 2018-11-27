@@ -1,9 +1,9 @@
 import { map } from 'lodash';
 import Element from '../Element';
 
-const getContainerAttrs = (context) => {
+const getContainerClass = (context) => {
   const config = context.config;
-  const attrs = {
+  const classes = {
     [config.color]: true,
     fluid: config.fluid,
     [`grid-list-${config.spacing}`]: true,
@@ -11,7 +11,7 @@ const getContainerAttrs = (context) => {
     container: true,
   };
 
-  return attrs;
+  return classes;
 };
 
 const getLayoutAttrs = (context) => {
@@ -38,7 +38,7 @@ export default {
 
     const data = {
       key: this.schema.uid,
-      class: getContainerAttrs(this),
+      class: getContainerClass(this),
       props: {
         dark: this.isThemeDark,
         light: this.isThemeLight,

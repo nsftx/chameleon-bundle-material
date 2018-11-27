@@ -10,16 +10,18 @@
           "flat": false,
           "width": "100%",
           "height": "100%",
-          "color": "transparent",
+          "color": "red",
+          "theme": "light",
           "elements": [
             {
               "name": "shoppingList",
               "type": "list",
               "hideActions": false,
-              "wrap": true,
               "color": "yellow",
               "theme": "light",
               "noOfRows": "4",
+              "spacing": "md",
+              "fluid": true,
               "dataSource": {
                 "items": [
                   {
