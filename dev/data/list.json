@@ -26,6 +26,7 @@
               "fluid": true,
               "itemRadius": true,
               "header": "Header",
+              "showOverflow": true,
               "dataSource": {
                 "items": [
                   {
