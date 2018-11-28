@@ -5,19 +5,27 @@
       "type": "page",
       "elements": [
         {
-          "type": "vlist",
+          "type": "panel",
           "name": "list-1",
           "flat": false,
-          "color": "transparent",
-          "gutter": false,
+          "width": "100%",
+          "height": "100%",
+          "color": "",
+          "theme": "dark",
           "elements": [
             {
               "name": "shoppingList",
               "type": "list",
               "hideActions": false,
-              "wrap": true,
               "color": "yellow",
               "theme": "light",
+              "titleColor": "teal darken-3",
+              "titleRadius": true,
+              "noOfRows": "4",
+              "spacing": "md",
+              "fluid": true,
+              "itemRadius": true,
+              "header": "Header",
               "dataSource": {
                 "items": [
                   {

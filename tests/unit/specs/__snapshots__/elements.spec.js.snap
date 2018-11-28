@@ -19,7 +19,7 @@ exports[`AllComponents c-accordion-item renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-button renders correctly 1`] = `
-<button type="button" data-type="button" data-group="inputs" data-uid="3" class="c-element c-button  v-btn theme--light primary">
+<button type="button" data-type="button" data-group="inputs" data-uid="3" class="c-element c-button  v-btn theme--light">
   <div class="v-btn__content"></div>
 </button>
 `;
@@ -61,7 +61,7 @@ exports[`AllComponents c-check renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-check-list renders correctly 1`] = `
-<div data-type="check-list" data-group="inputs" data-uid="6" class="c-element c-check-list  v-card v-card--flat theme--light transparent" style="height:undefined;">
+<div data-type="check-list" data-group="inputs" data-uid="6" class="c-element c-check-list  v-card v-card--flat theme--light" style="height:undefined;">
   <label aria-hidden="true" class="v-label theme--light" style="left:0px;right:auto;position:relative;"></label>
   <div class="input-group__details error--text"></div>
 </div>
@@ -220,7 +220,7 @@ exports[`AllComponents c-date renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">16</div>
                       </button>
                     </td>
@@ -279,7 +279,7 @@ exports[`AllComponents c-date renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">27</div>
                       </button>
                     </td>
@@ -463,7 +463,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">16</div>
                       </button>
                     </td>
@@ -522,7 +522,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">27</div>
                       </button>
                     </td>
@@ -673,7 +673,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">16</div>
                       </button>
                     </td>
@@ -732,7 +732,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">27</div>
                       </button>
                     </td>
@@ -764,7 +764,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-flexgrid renders correctly 1`] = `
-<div data-type="flexgrid" data-group="containers" data-uid="12" class="c-element c-flexgrid  c-element-parent  v-card v-card--flat theme--light undefined grid-list-undefined wrap container" style="height:undefined;">
+<div data-type="flexgrid" data-group="containers" data-uid="12" class="c-element c-flexgrid  c-element-parent  v-card theme--light undefined grid-list-undefined wrap container" style="height:undefined;">
   <div class="layout undefined wrap"></div>
 </div>
 `;
@@ -810,9 +810,9 @@ exports[`AllComponents c-image renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-list renders correctly 1`] = `
-<div data-type="list" data-group="widgets" data-uid="19" class="c-element c-list  v-card theme--light" style="height:undefined;">
+<div data-type="list" data-group="widgets" data-uid="19" class="c-element c-list  v-card theme--light grid-list-undefined transparent wrap container" style="height:undefined;">
   <div class="v-data-iterator theme--light">
-    <div class="layout">
+    <div class="layout wrap">
       <div class="text-xs-center" style="width:100%;">No data available</div>
     </div>
     <div>
@@ -1024,7 +1024,7 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                     <div class="v-btn__content">16</div>
                   </button>
                 </td>
@@ -1083,7 +1083,7 @@ exports[`AllComponents c-picker renders correctly 1`] = `
                   </button>
                 </td>
                 <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                  <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                     <div class="v-btn__content">27</div>
                   </button>
                 </td>
@@ -1286,7 +1286,7 @@ exports[`AllComponents c-switch renders correctly 1`] = `
 
 exports[`AllComponents c-tab-item renders correctly 1`] = `
 <div data-type="tab-item" data-group="container-items" data-uid="31" class="v-window-item c-element c-tab-item  c-element-parent " style="display:none;">
-  <div data-type="tab-item" data-group="container-items" data-uid="31" class="v-card theme--light" style="height:undefined;background-color:undefined;">
+  <div class="v-card v-card--flat theme--light" style="height:undefined;">
     <div class="v-card__text c-element-children c-tab-item-items"></div>
   </div>
 </div>

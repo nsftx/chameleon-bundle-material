@@ -1,8 +1,18 @@
 const itemInterface = [
   {
+    name: 'label',
+    type: 'String',
+    label: 'Label',
+  },
+  {
     name: 'title',
     type: 'String',
     label: 'Title',
+  },
+  {
+    name: 'subtitle',
+    type: 'String',
+    label: 'Subtitle',
   },
   {
     name: 'description',
@@ -56,64 +66,153 @@ export default {
     },
   ],
   options: {
-    color: true,
-    header: {
-      type: 'input',
-      name: 'Header',
-      value: null,
-      priority: 2,
-    },
-    flat: {
-      type: 'check',
-      name: 'No Shadow',
-      value: false,
-      priority: 3,
-    },
     hideActions: {
       type: 'check',
       name: 'Hide Actions',
       value: false,
-      priority: 4,
+      priority: 3,
+    },
+    noOfRows: {
+      type: 'select',
+      name: 'Grid Type',
+      items: [
+        {
+          name: '1',
+          value: '12',
+        },
+        {
+          name: '2',
+          value: '6',
+        },
+        {
+          name: '3',
+          value: '4',
+        },
+      ],
+      value: '12',
+      priority: 2,
+    },
+    color: {
+      value: null,
+      group: 'style',
+      priority: 2,
+    },
+    theme: {
+      value: null,
+      group: 'style',
+      priority: 1,
+    },
+    flat: {
+      type: 'check',
+      group: 'style',
+      name: 'No Shadow',
+      value: false,
+      priority: 9,
     },
     imageRadius: {
       type: 'check',
+      group: 'style',
       name: 'Image Radius',
+      value: true,
+      priority: 7,
+    },
+    itemRadius: {
+      type: 'check',
+      group: 'style',
+      name: 'Item Radius',
       value: true,
       priority: 6,
     },
-    wrap: {
+    fluid: {
       type: 'check',
-      name: 'Stacked Items',
+      group: 'style',
+      name: 'Full Width',
+      value: true,
+      priority: 8,
+    },
+    titleRadius: {
+      type: 'check',
+      group: 'style',
+      name: 'Title Background Radius',
       value: true,
       priority: 5,
+    },
+    titleColor: {
+      type: 'colorPicker',
+      group: 'style',
+      name: 'Title Background Color',
+      value: 'green accent-4',
+      priority: 3,
+    },
+    spacing: {
+      type: 'select',
+      group: 'style',
+      name: 'Spacing',
+      items: [
+        {
+          name: 'None',
+          value: '',
+        },
+        {
+          name: 'Extra-Small',
+          value: 'xs',
+        },
+        {
+          name: 'Small',
+          value: 'sm',
+        },
+        {
+          name: 'Medium',
+          value: 'md',
+        },
+        {
+          name: 'Large',
+          value: 'lg',
+        },
+        {
+          name: 'Extra-Large',
+          value: 'xl',
+        },
+      ],
+      value: 'md',
+      priority: 4,
+    },
+    showOverflow: {
+      type: 'check',
+      group: 'style',
+      name: 'Show Text Overflow',
+      value: false,
+      priority: 10,
     },
     noDataText: {
       type: 'input',
       group: 'localization',
       name: 'No Data Text',
       value: null,
-      priority: 7,
     },
     noResultsText: {
       type: 'input',
       group: 'localization',
       name: 'No Results Text',
       value: null,
-      priority: 8,
     },
     rowsPerPageText: {
       type: 'input',
       group: 'localization',
       name: 'Rows Per Page Text',
       value: null,
-      priority: 9,
+    },
+    header: {
+      type: 'input',
+      group: 'data',
+      name: 'Header',
+      value: null,
     },
     dataSource: {
       type: 'dataSource',
       group: 'data',
       name: 'Data Source',
       value: null,
-      priority: 10,
       schema: itemInterface,
     },
     rowsPerPageItems: {
@@ -121,36 +220,30 @@ export default {
       group: 'data',
       name: 'Rows Per Page Items',
       value: null,
-      priority: 11,
     },
     rowsPerPage: {
       type: 'input',
       group: 'data',
       name: 'Rows Per Page',
       value: 5,
-      priority: 12,
     },
     startPage: {
       type: 'input',
       group: 'data',
       name: 'Start With Page',
       value: 1,
-      priority: 13,
     },
     sortBy: {
       type: 'input',
       group: 'data',
       name: 'Sort Items By',
       value: null,
-      priority: 14,
     },
     sortDescending: {
       type: 'check',
       group: 'data',
       name: 'Sort Descending',
       value: false,
-      priority: 15,
     },
-    theme: true,
   },
 };

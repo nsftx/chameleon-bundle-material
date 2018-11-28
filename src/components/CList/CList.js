@@ -7,6 +7,21 @@ import {
 } from 'lodash';
 import Element from '../Element';
 
+require('../../style/components/_list.styl');
+
+const getContainerClasses = (context) => {
+  const config = context.config;
+  const attrs = {
+    [`grid-list-${config.spacing}`]: true,
+    transparent: true,
+    fluid: config.fluid,
+    wrap: true,
+    container: true,
+  };
+
+  return attrs;
+};
+
 const getPropRowsPerPageItems = (value) => {
   if (isNil(value)) {
     return [5, 10, 15, 20];
@@ -86,49 +101,64 @@ const getListAvatar = (createElement, item, context) => {
   }, [children()]);
 };
 
-const getCardSlot = (createElement, context) => {
-  const getChildren = (props) => {
-    const item = props.item;
-    const mapProps = context.dataSource.schema ?
-      filter(context.dataSource.schema, i => !isNil(i.mapName)) : {};
-    const itemProps = Object.keys(item);
-    const title = !mapProps.length ? item[itemProps[0]] : item.title;
-    const description = !mapProps.length ? item[itemProps[1]] : item.description;
+const getChildrenItems = (createElement, context, props) => {
+  const item = props.item;
+  const mapProps = context.dataSource.schema ?
+    filter(context.dataSource.schema, i => !isNil(i.mapName)) : {};
+  const itemProps = Object.keys(item);
+  const title = !mapProps.length ? item[itemProps[0]] : item.title;
+  const description = !mapProps.length ? item[itemProps[1]] : item.description;
 
-    const listOptions = {
-      staticClass: 'transparent',
-    };
-
-    return [
-      createElement('v-list', listOptions, [
-        createElement('v-list-tile', {
-          on: {
-            click() {
-              context.sendToEventBus('SelectedItemChanged', item);
-            },
+  return createElement('v-list-tile', {
+    on: {
+      click() {
+        context.sendToEventBus('SelectedItemChanged', item);
+      },
+    },
+  },
+    [
+      getListAvatar(createElement, item, context),
+      createElement('v-list-tile-content', [
+        createElement('v-list-tile-title', {
+          class: `c-list-title ${context.config.titleColor}`,
+          style: {
+            height: item.label ? 'inherit' : 0,
+            borderRadius: context.config.titleRadius ? '5px' : 0,
           },
-        },
-          [
-            getListAvatar(createElement, item, context),
-            createElement('v-list-tile-content', [
-              createElement('v-list-tile-title', title),
-              createElement('v-list-tile-sub-title', description),
-            ]),
-          ]),
+        }, item.label),
+        createElement('v-list-tile-title', title),
+        createElement('v-list-tile-sub-title', {
+          class: { overflow: context.config.showOverflow },
+        }, item.subtitle),
+        createElement('v-list-tile-sub-title', {
+          class: 'c-list-description',
+        }, description),
       ]),
-    ];
-  };
+    ]);
+};
+
+const getCardSlot = (createElement, context) => {
+  const getChildren = props => [
+    createElement('v-list', {
+      class: {
+        [context.config.color]: true,
+      },
+    },
+      [getChildrenItems(createElement, context, props)]),
+  ];
 
   const slot = {
     item: props => createElement('v-flex', {
       attrs: {
-        xs12: true,
+        [`xs${context.config.noOfRows}`]: true,
       },
     },
       [
         createElement('v-card', {
+          style: {
+            borderRadius: context.config.itemRadius ? '5px' : 0,
+          },
           props: {
-            color: 'transparent',
             flat: true,
           },
         }, getChildren(props)),
@@ -155,6 +185,28 @@ const getListeners = (context) => {
 
   return listeners;
 };
+
+const getListHeader = (createElement, context) => {
+  let header = null;
+  if (context.config.header) {
+    header = createElement('v-label', {
+      slot: 'header',
+    }, context.config.header);
+  }
+  return header;
+};
+
+const getListComponent = (createElement, context) => createElement('v-data-iterator', {
+  attrs: {
+    wrap: true,
+  },
+  props: getProps(context),
+  on: getListeners(context),
+  scopedSlots: getCardSlot(createElement, context),
+},
+  [
+    getListHeader(createElement, context),
+  ]);
 
 export default {
   extends: Element,
@@ -194,34 +246,21 @@ export default {
     this.pagination = getPagination(this.config);
   },
   render(createElement) {
-    let header = null;
-    if (this.config.header) {
-      header = createElement('v-subheader', {
-        slot: 'header',
-      }, this.config.header);
-    }
-
-    const list = createElement('v-data-iterator', {
-      attrs: {
-        name: this.config.name,
-        wrap: this.config.wrap,
+    const data = {
+      class: getContainerClasses(this),
+      props: {
+        dark: this.isThemeDark,
+        light: this.isThemeLight,
+        flat: this.config.flat,
       },
-      props: getProps(this),
-      on: getListeners(this),
-      scopedSlots: getCardSlot(createElement, this),
-    }, [header]);
+    };
+
+    const list = getListComponent(createElement, this);
 
     return this.renderElement(
       'v-card',
-      {
-        props: {
-          dark: this.isThemeDark,
-          light: this.isThemeLight,
-          color: this.config.color,
-          flat: this.config.flat,
-        },
-      },
-      list,
+      data,
+      [list],
     );
   },
 };
