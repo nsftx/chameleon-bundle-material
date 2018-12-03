@@ -8,20 +8,24 @@ export default {
       endpoint: 'https://chameleon.nsoft.com/static/data',
     },
     sources: {
-      populationPerAge: {
-        name: 'populationPerAge',
+      populationsPerAge: {
+        name: 'populationsPerAge',
+        id: 'populationsPerAge',
         model: 'PopulationPerAge',
       },
-      populationPerAgeState: {
-        name: 'populationPerAgeState',
+      populationsPerAgeState: {
+        name: 'populationsPerAgeState',
+        id: 'populationsPerAgeState',
         model: 'PopulationPerAgeState',
       },
       temperaturesPerCity: {
         name: 'temperaturesPerCity',
+        id: 'temperaturesPerCity',
         model: 'TemperaturePerCity',
       },
-      flowersCategorisation: {
-        name: 'flowersCategorisation',
+      flowerCategorisations: {
+        name: 'flowerCategorisations',
+        id: 'flowerCategorisations',
         model: 'FlowersCategorisation',
       },
     },
