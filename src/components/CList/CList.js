@@ -118,22 +118,23 @@ const getChildrenItems = (createElement, context, props) => {
   },
     [
       getListAvatar(createElement, item, context),
-      createElement('v-list-tile-content', [
-        createElement('v-list-tile-title', {
-          class: `c-list-title ${context.config.titleColor}`,
-          style: {
-            height: item.label ? 'inherit' : 0,
-            borderRadius: context.config.titleRadius ? '5px' : 0,
-          },
-        }, item.label),
-        createElement('v-list-tile-title', title),
-        createElement('v-list-tile-sub-title', {
-          class: { overflow: context.config.showOverflow },
-        }, item.subtitle),
-        createElement('v-list-tile-sub-title', {
-          class: 'c-list-description',
-        }, description),
-      ]),
+      createElement('v-list-tile-content', {
+        class: { overflow: context.config.showOverflow },
+      },
+        [
+          createElement('v-list-tile-title', {
+            class: `c-list-title ${context.config.titleColor}`,
+            style: {
+              height: item.label ? 'inherit' : 0,
+              borderRadius: context.config.titleRadius ? '5px' : 0,
+            },
+          }, item.label),
+          createElement('v-list-tile-title', title),
+          createElement('v-list-tile-sub-title', item.subtitle),
+          createElement('v-list-tile-sub-title', {
+            class: 'c-list-description',
+          }, description),
+        ]),
     ]);
 };
 
