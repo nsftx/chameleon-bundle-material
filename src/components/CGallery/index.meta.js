@@ -1,3 +1,5 @@
+import { binding } from '@nsoft/chameleon-sdk/src/utility';
+
 const itemInterface = [
   {
     name: 'image',
@@ -89,13 +91,23 @@ export default {
       type: 'gallerySource',
       group: 'data',
       name: 'Gallery Source',
-      value: '',
+      value: null,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= element.dataSource != null %>'),
+      },
     },
     dataSource: {
       type: 'dataSource',
       group: 'data',
       name: 'Data Source',
       value: null,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= element.imageSource != null && element.imageSource.length > 0 %>'),
+      },
       schema: itemInterface,
     },
     gallery: {

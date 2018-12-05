@@ -1,3 +1,5 @@
+import { binding } from '@nsoft/chameleon-sdk/src/utility';
+
 export default {
   group: 'containers',
   type: 'tabs',
@@ -54,6 +56,11 @@ export default {
       displayProp: 'name',
       valueProp: 'value',
       value: '',
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= element.grow %>'),
+      },
       priority: 3,
     },
     headerColor: {

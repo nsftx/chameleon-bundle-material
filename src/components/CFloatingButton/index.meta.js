@@ -1,3 +1,5 @@
+import { binding } from '@nsoft/chameleon-sdk/src/utility';
+
 export default {
   group: 'actions',
   type: 'floating-button',
@@ -65,6 +67,11 @@ export default {
           value: 'top',
         },
       ],
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= element.itemsCount == 0 %>'),
+      },
       priority: 7,
     },
     align: {
@@ -89,6 +96,11 @@ export default {
           value: 'top left',
         },
       ],
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= !element.fixed && !element.absolute %>'),
+      },
       priority: 9,
     },
     activator: {
