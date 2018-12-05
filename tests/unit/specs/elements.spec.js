@@ -1,4 +1,4 @@
-import { each, assign } from 'lodash';
+import { assign, each, omit } from 'lodash';
 import { mount, createLocalVue } from '@vue/test-utils';
 import { createRenderer } from 'vue-server-renderer';
 import sinon from 'sinon';
@@ -8,7 +8,6 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import * as components from '@components';
 import CPicker from '../../../src/components/CPicker';
-
 import connectorsMock from './__mocks__/connectors';
 import mockDefinition from './__mocks__/definition';
 
@@ -74,9 +73,8 @@ describe('AllComponents', () => {
   };
 
   localVue.prototype.$chameleon = {};
-
-  // const router = new VueRouter();
-  each(components, (component, key) => {
+  const materialComponents = omit(components, 'CPicker');
+  each(materialComponents, (component, key) => {
     const renderer = createRenderer();
     const spyDestroy = sinon.stub();
     const spyLoadData = sinon.stub();
