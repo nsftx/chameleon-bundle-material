@@ -12,7 +12,6 @@ require('../../style/components/_list.styl');
 const getContainerClasses = (context) => {
   const config = context.config;
   const attrs = {
-    [`grid-list-${config.spacing}`]: true,
     transparent: true,
     fluid: config.fluid,
     wrap: true,
@@ -46,6 +45,7 @@ const getProps = (context) => {
     hideActions: config.hideActions,
     items: hasDataSource ? context.items : [],
     contentTag: 'v-layout',
+    contentClass: 'ma-0',
   };
 
   const rowsPerPageText = context.localize(config.rowsPerPageText);
@@ -151,6 +151,7 @@ const getCardSlot = (createElement, context) => {
   const slot = {
     item: props => createElement('v-flex', {
       attrs: {
+        [`pa-${context.config.spacing}`]: true,
         [`xs${context.config.noOfRows}`]: true,
       },
     },

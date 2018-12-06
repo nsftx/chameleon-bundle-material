@@ -39,6 +39,10 @@ export default {
       name: 'Spacing',
       items: [
         {
+          name: 'None',
+          value: '',
+        },
+        {
           name: 'Extra-Small',
           value: 'xs',
         },
@@ -59,7 +63,7 @@ export default {
           value: 'xl',
         },
       ],
-      value: 'md',
+      value: '',
       priority: 3,
     },
     flat: {

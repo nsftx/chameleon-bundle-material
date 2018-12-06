@@ -2,12 +2,12 @@ const itemInterface = [
   {
     name: 'label',
     type: 'String',
-    label: 'Label',
+    label: 'Title 1',
   },
   {
     name: 'title',
     type: 'String',
-    label: 'Title',
+    label: 'Title 2',
   },
   {
     name: 'subtitle',
@@ -151,30 +151,26 @@ export default {
       items: [
         {
           name: 'None',
-          value: '',
-        },
-        {
-          name: 'Extra-Small',
-          value: 'xs',
+          value: 0,
         },
         {
           name: 'Small',
-          value: 'sm',
+          value: 1,
         },
         {
           name: 'Medium',
-          value: 'md',
+          value: 2,
         },
         {
           name: 'Large',
-          value: 'lg',
+          value: 3,
         },
         {
           name: 'Extra-Large',
-          value: 'xl',
+          value: 4,
         },
       ],
-      value: 'md',
+      value: 0,
       priority: 4,
     },
     showOverflow: {
