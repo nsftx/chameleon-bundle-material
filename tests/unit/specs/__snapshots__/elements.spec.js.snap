@@ -96,7 +96,7 @@ exports[`AllComponents c-date renders correctly 1`] = `
     </div>
   </div>
   <div class="v-menu__content theme--light " style="max-height:auto;min-width:auto;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
-    <div data-type="date" data-group="inputs" data-uid="43" class="c-element c-picker d-inline-block v-card v-card--flat theme--light" style="height:undefined;">
+    <div class="d-inline-block v-card v-card--flat theme--light" style="height:undefined;">
       <div class="v-picker v-card v-picker--date theme--light">
         <div class="v-picker__title primary">
           <div class="v-date-picker-title">
@@ -155,7 +155,7 @@ exports[`AllComponents c-date renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">3</div>
                       </button>
                     </td>
@@ -165,7 +165,7 @@ exports[`AllComponents c-date renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">5</div>
                       </button>
                     </td>
@@ -320,7 +320,7 @@ exports[`AllComponents c-date renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-date-range renders correctly 1`] = `
-<div data-type="date-range" data-group="inputs" data-uid="9" class="v-menu c-element c-date-range ">
+<div data-type="date-range" data-group="inputs" data-uid="8" class="v-menu c-element c-date-range ">
   <div class="v-menu__activator">
     <div class="v-input v-text-field v-input--is-label-active v-input--is-dirty v-input--is-readonly theme--light">
       <div class="v-input__prepend-outer">
@@ -348,7 +348,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
     </div>
   </div>
   <div class="v-menu__content theme--light " style="max-height:auto;min-width:auto;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
-    <div data-type="date-range" data-group="inputs" data-uid="44" class="c-element c-picker d-inline-block mr-1 v-card v-card--flat theme--light" style="height:undefined;">
+    <div class="d-inline-block mr-1 v-card v-card--flat theme--light" style="height:undefined;">
       <div class="v-picker v-card v-picker--date theme--light">
         <div class="v-picker__title primary">
           <div class="v-date-picker-title">
@@ -407,7 +407,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">3</div>
                       </button>
                     </td>
@@ -417,7 +417,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">5</div>
                       </button>
                     </td>
@@ -567,7 +567,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
         </div>
       </div>
     </div>
-    <div data-type="date-range" data-group="inputs" data-uid="45" class="c-element c-picker d-inline-block v-card v-card--flat theme--light" style="height:undefined;">
+    <div class="d-inline-block v-card v-card--flat theme--light" style="height:undefined;">
       <div class="v-picker v-card v-picker--date theme--light">
         <div class="v-picker__title primary">
           <div class="v-date-picker-title">
@@ -626,7 +626,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">3</div>
                       </button>
                     </td>
@@ -636,7 +636,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">5</div>
                       </button>
                     </td>
@@ -791,25 +791,25 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-flexgrid renders correctly 1`] = `
-<div data-type="flexgrid" data-group="containers" data-uid="12" class="c-element c-flexgrid  c-element-parent  v-card theme--light undefined grid-list-undefined wrap container" style="height:undefined;">
+<div data-type="flexgrid" data-group="containers" data-uid="9" class="c-element c-flexgrid  c-element-parent  v-card theme--light undefined grid-list-undefined wrap container" style="height:undefined;">
   <div class="layout undefined wrap"></div>
 </div>
 `;
 
 exports[`AllComponents c-flexgrid-item renders correctly 1`] = `
-<div data-type="flexgrid-item" data-group="container-items" data-uid="13" class="c-element c-flexgrid-item  c-element-parent  v-card v-card--flat theme--light xsundefined undefined flex" style="height:undefined;">
+<div data-type="flexgrid-item" data-group="container-items" data-uid="10" class="c-element c-flexgrid-item  c-element-parent  v-card v-card--flat theme--light xsundefined undefined flex" style="height:undefined;">
   <div class="c-element-children c-flexgrid-item-items"></div>
 </div>
 `;
 
 exports[`AllComponents c-form renders correctly 1`] = `
-<div data-type="form" data-group="widgets" data-uid="14" class="c-element c-form  c-element-parent  v-card v-card--flat theme--light" style="height:undefined;">
+<div data-type="form" data-group="widgets" data-uid="11" class="c-element c-form  c-element-parent  v-card v-card--flat theme--light" style="height:undefined;">
   <form novalidate="novalidate" class="v-form c-form c-element-children"></form>
 </div>
 `;
 
 exports[`AllComponents c-gallery renders correctly 1`] = `
-<div data-type="gallery" data-group="widgets" data-uid="15" class="c-element c-gallery  v-card v-card--flat theme--light" style="height:undefined;">
+<div data-type="gallery" data-group="widgets" data-uid="12" class="c-element c-gallery  v-card v-card--flat theme--light" style="height:undefined;">
   <div class="container grid-list-undefined">
     <div class="layout row wrap"></div>
   </div>
@@ -817,19 +817,19 @@ exports[`AllComponents c-gallery renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-hlist renders correctly 1`] = `
-<div data-type="hlist" data-group="containers" data-uid="16" class="c-element c-hlist  c-element-parent  v-card theme--light" style="height:undefined;">
+<div data-type="hlist" data-group="containers" data-uid="13" class="c-element c-hlist  c-element-parent  v-card theme--light" style="height:undefined;">
   <div class="c-element-children c-hlist-items" style="height:100%;"></div>
 </div>
 `;
 
 exports[`AllComponents c-html renders correctly 1`] = `
-<div data-type="html" data-group="widgets" data-uid="17" class="c-element c-html  v-card v-card--flat theme--light" style="height:undefined;">
+<div data-type="html" data-group="widgets" data-uid="14" class="c-element c-html  v-card v-card--flat theme--light" style="height:undefined;">
   <i aria-hidden="true" class="v-icon material-icons theme--light" style="font-size:40px;">code</i>
 </div>
 `;
 
 exports[`AllComponents c-image renders correctly 1`] = `
-<div data-type="image" data-group="widgets" data-uid="18" class="c-element c-image  v-card v-card--flat theme--light" style="height:undefined;width:undefined;">
+<div data-type="image" data-group="widgets" data-uid="15" class="c-element c-image  v-card v-card--flat theme--light" style="height:undefined;width:undefined;">
   <div style="width:undefined;height:undefined;">
     <i aria-hidden="true" class="v-icon material-icons theme--light" style="font-size:40px;width:undefined;height:undefined;">image</i>
   </div>
@@ -837,7 +837,7 @@ exports[`AllComponents c-image renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-list renders correctly 1`] = `
-<div data-type="list" data-group="widgets" data-uid="19" class="c-element c-list  v-card theme--light grid-list-undefined transparent wrap container" style="height:undefined;">
+<div data-type="list" data-group="widgets" data-uid="16" class="c-element c-list  v-card theme--light grid-list-undefined transparent wrap container" style="height:undefined;">
   <div class="v-data-iterator theme--light">
     <div class="layout wrap">
       <div class="text-xs-center" style="width:100%;">No data available</div>
@@ -918,238 +918,16 @@ exports[`AllComponents c-list renders correctly 1`] = `
 </div>
 `;
 
-exports[`AllComponents c-map renders correctly 1`] = `<div data-type="map" data-group="widgets" data-uid="20" class="c-element c-map " style="width:100%;height:100%;"></div>`;
+exports[`AllComponents c-map renders correctly 1`] = `<div data-type="map" data-group="widgets" data-uid="17" class="c-element c-map " style="width:100%;height:100%;"></div>`;
 
 exports[`AllComponents c-panel renders correctly 1`] = `
-<div data-type="panel" data-group="containers" data-uid="21" class="c-element c-panel  c-element-parent  v-card theme--light" style="height:undefined;width:undefined;">
+<div data-type="panel" data-group="containers" data-uid="18" class="c-element c-panel  c-element-parent  v-card theme--light" style="height:undefined;width:undefined;">
   <div class="c-element-children c-panel-items" style="width:100%;height:100%;"></div>
 </div>
 `;
 
-exports[`AllComponents c-picker renders correctly 1`] = `
-<div data-type="picker" data-group="inputs" data-uid="23" class="c-element c-picker d-inline-block v-card v-card--flat theme--light" style="height:undefined;">
-  <div class="v-picker v-card v-picker--date theme--light">
-    <div class="v-picker__title primary">
-      <div class="v-date-picker-title">
-        <div class="v-picker__title__btn v-date-picker-title__year">2018</div>
-        <div class="v-picker__title__btn v-date-picker-title__date v-picker__title__btn--active">
-          <div>&nbsp;</div>
-        </div>
-      </div>
-    </div>
-    <div class="v-picker__body theme--light" style="width:290px;">
-      <div>
-        <div class="v-date-picker-header theme--light">
-          <button type="button" class="v-btn v-btn--icon theme--light">
-            <div class="v-btn__content">
-              <i aria-hidden="true" class="v-icon material-icons theme--light">$vuetify.icons.next</i>
-            </div>
-          </button>
-          <div class="v-date-picker-header__value"><strong class="accent--text">December 2018</strong></div>
-          <button type="button" class="v-btn v-btn--icon theme--light">
-            <div class="v-btn__content">
-              <i aria-hidden="true" class="v-icon material-icons theme--light">$vuetify.icons.prev</i>
-            </div>
-          </button>
-        </div>
-        <div class="v-date-picker-table v-date-picker-table--date theme--light">
-          <table>
-            <thead>
-              <tr>
-                <th>S</th>
-                <th>M</th>
-                <th>T</th>
-                <th>W</th>
-                <th>T</th>
-                <th>F</th>
-                <th>S</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">1</div>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">2</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
-                    <div class="v-btn__content">3</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">4</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">5</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">6</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">7</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">8</div>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">9</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">10</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">11</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">12</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">13</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">14</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">15</div>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">16</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">17</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">18</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">19</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">20</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">21</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">22</div>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">23</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">24</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">25</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">26</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">27</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">28</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">29</div>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">30</div>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
-                    <div class="v-btn__content">31</div>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`AllComponents c-placeholder renders correctly 1`] = `
-<div data-type="placeholder" data-group="containers" data-uid="22" class="c-element c-placeholder ">
+<div data-type="placeholder" data-group="containers" data-uid="19" class="c-element c-placeholder ">
   <div>
     <h2>Home</h2>
   </div>
@@ -1157,7 +935,7 @@ exports[`AllComponents c-placeholder renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-radio-list renders correctly 1`] = `
-<div data-type="radio-list" data-group="inputs" data-uid="24" class="v-input c-element c-radio-list  v-input--selection-controls v-input--radio-group v-input--radio-group--column theme--light">
+<div data-type="radio-list" data-group="inputs" data-uid="20" class="v-input c-element c-radio-list  v-input--selection-controls v-input--radio-group v-input--radio-group--column theme--light">
   <div class="v-input__control">
     <div class="v-input__slot" style="height:auto;">
       <div role="radiogroup" class="v-input--radio-group__input"></div>
@@ -1170,7 +948,7 @@ exports[`AllComponents c-radio-list renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-rating renders correctly 1`] = `
-<div data-type="rating" data-group="inputs" data-uid="25" class="c-element c-rating  v-card v-card--flat theme--light text-xs-center" style="height:undefined;">
+<div data-type="rating" data-group="inputs" data-uid="21" class="c-element c-rating  v-card v-card--flat theme--light text-xs-center" style="height:undefined;">
   <div></div>
   <div class="v-rating">
     <i aria-hidden="true" class="v-icon v-icon--link material-icons theme--light accent--text">star_border</i>
@@ -1191,13 +969,13 @@ exports[`AllComponents c-rating renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-rich-text renders correctly 1`] = `
-<div data-type="rich-text" data-group="inputs" data-uid="26" class="c-element c-rich-text  v-card v-card--flat theme--light mb-3" style="height:undefined;">
+<div data-type="rich-text" data-group="inputs" data-uid="22" class="c-element c-rich-text  v-card v-card--flat theme--light mb-3" style="height:undefined;">
   <div></div>
 </div>
 `;
 
 exports[`AllComponents c-select renders correctly 1`] = `
-<div data-type="select" data-group="inputs" data-uid="27" class="c-element c-select ">
+<div data-type="select" data-group="inputs" data-uid="23" class="c-element c-select ">
   <div role="combobox" class="v-input v-text-field v-select theme--light">
     <div class="v-input__control">
       <div class="v-input__slot" style="height:undefined;">
@@ -1238,7 +1016,7 @@ exports[`AllComponents c-select renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-select-list renders correctly 1`] = `
-<div data-type="select-list" data-group="inputs" data-uid="28" class="c-element c-select-list ">
+<div data-type="select-list" data-group="inputs" data-uid="24" class="c-element c-select-list ">
   <div role="combobox" class="v-input v-text-field v-select v-select--chips theme--light">
     <div class="v-input__control">
       <div class="v-input__slot" style="height:undefined;">
@@ -1279,11 +1057,11 @@ exports[`AllComponents c-select-list renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-slider renders correctly 1`] = `
-<div data-type="slider" data-group="inputs" data-uid="29" class="v-input c-element c-slider  v-input--slider theme--light">
+<div data-type="slider" data-group="inputs" data-uid="25" class="v-input c-element c-slider  v-input--slider theme--light">
   <div class="v-input__control">
     <div class="v-input__slot" style="height:undefined;">
       <div class="v-slider">
-        <input role="slider" value="0" readonly="readonly" aria-readonly="false" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" data-type="slider" data-group="inputs" data-uid="29">
+        <input role="slider" value="0" readonly="readonly" aria-readonly="false" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" data-type="slider" data-group="inputs" data-uid="25">
         <div class="v-slider__track__container">
           <div class="v-slider__track" style="transition:;left:7px;right:auto;width:100%;"></div>
           <div class="v-slider__track-fill primary" style="transition:;left:0;right:auto;width:NaN%;"></div>
@@ -1301,11 +1079,11 @@ exports[`AllComponents c-slider renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-switch renders correctly 1`] = `
-<div data-type="switch" data-group="inputs" data-uid="30" class="v-input c-element c-switch  v-input--selection-controls v-input--switch theme--light">
+<div data-type="switch" data-group="inputs" data-uid="26" class="v-input c-element c-switch  v-input--selection-controls v-input--switch theme--light">
   <div class="v-input__control">
     <div class="v-input__slot" style="height:undefined;">
       <div class="v-input--selection-controls__input">
-        <input aria-checked="false" role="checkbox" type="checkbox" data-type="switch" data-group="inputs" data-uid="30">
+        <input aria-checked="false" role="checkbox" type="checkbox" data-type="switch" data-group="inputs" data-uid="26">
         <div class="v-input--selection-controls__ripple"></div>
         <div class="v-input--switch__track theme--light"></div>
         <div class="v-input--switch__thumb theme--light">
@@ -1321,7 +1099,7 @@ exports[`AllComponents c-switch renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-tab-item renders correctly 1`] = `
-<div data-type="tab-item" data-group="container-items" data-uid="31" class="v-window-item c-element c-tab-item  c-element-parent " style="display:none;">
+<div data-type="tab-item" data-group="container-items" data-uid="27" class="v-window-item c-element c-tab-item  c-element-parent " style="display:none;">
   <div class="v-card v-card--flat theme--light" style="height:undefined;">
     <div class="v-card__text c-element-children c-tab-item-items"></div>
   </div>
@@ -1329,7 +1107,7 @@ exports[`AllComponents c-tab-item renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-table renders correctly 1`] = `
-<div data-type="table" data-group="widgets" data-uid="32" class="c-element c-table  v-card theme--light" style="height:undefined;">
+<div data-type="table" data-group="widgets" data-uid="28" class="c-element c-table  v-card theme--light" style="height:undefined;">
   <div>
     <div class="v-table__overflow">
       <table class="v-datatable v-table theme--light">
@@ -1416,7 +1194,7 @@ exports[`AllComponents c-table renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-tabs renders correctly 1`] = `
-<div data-type="tabs" data-group="containers" data-uid="33" class="v-tabs c-element c-tabs  c-element-parent ">
+<div data-type="tabs" data-group="containers" data-uid="29" class="v-tabs c-element c-tabs  c-element-parent ">
   <div class="v-tabs__bar theme--light">
     <!---->
     <div class="v-tabs__wrapper">
@@ -1435,7 +1213,7 @@ exports[`AllComponents c-tabs renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-tags renders correctly 1`] = `
-<div data-type="tags" data-group="inputs" data-uid="34" class="c-element c-tags ">
+<div data-type="tags" data-group="inputs" data-uid="30" class="c-element c-tags ">
   <div role="combobox" class="v-input v-text-field v-select v-select--chips theme--light">
     <div class="v-input__control">
       <div class="v-input__slot" style="height:undefined;">
@@ -1476,7 +1254,7 @@ exports[`AllComponents c-tags renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-text renders correctly 1`] = `
-<div data-type="text" data-group="inputs" data-uid="35" class="c-element c-text ">
+<div data-type="text" data-group="inputs" data-uid="31" class="c-element c-text ">
   <div class="v-input v-text-field theme--light">
     <div class="v-input__control">
       <div class="v-input__slot" style="height:undefined;">
@@ -1495,7 +1273,7 @@ exports[`AllComponents c-text renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-text-area renders correctly 1`] = `
-<div data-type="text-area" data-group="inputs" data-uid="36" class="c-element c-text-area ">
+<div data-type="text-area" data-group="inputs" data-uid="32" class="c-element c-text-area ">
   <div class="v-input v-textarea v-text-field theme--light">
     <div class="v-input__control">
       <div class="v-input__slot" style="height:undefined;">
@@ -1514,25 +1292,25 @@ exports[`AllComponents c-text-area renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-video renders correctly 1`] = `
-<div data-type="video" data-group="widgets" data-uid="37" class="c-element c-video " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
+<div data-type="video" data-group="widgets" data-uid="33" class="c-element c-video " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
   <video width="100%" height="100%" style="position:absolute;top:0;left:0;"></video>
 </div>
 `;
 
 exports[`AllComponents c-video-stream renders correctly 1`] = `
-<div data-type="video-stream" data-group="widgets" data-uid="38" class="c-element c-video-stream " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
+<div data-type="video-stream" data-group="widgets" data-uid="34" class="c-element c-video-stream " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
   <img width="100%" height="100%" style="position:absolute;top:0;left:0;">
 </div>
 `;
 
 exports[`AllComponents c-vlist renders correctly 1`] = `
-<div data-type="vlist" data-group="containers" data-uid="39" class="c-element c-vlist  c-element-parent  v-card theme--light" style="height:undefined;background-color:undefined;">
+<div data-type="vlist" data-group="containers" data-uid="35" class="c-element c-vlist  c-element-parent  v-card theme--light" style="height:undefined;background-color:undefined;">
   <div class="c-element-children c-vlist-items"></div>
 </div>
 `;
 
 exports[`AllComponents c-youtube renders correctly 1`] = `
-<div data-type="youtube" data-group="widgets" data-uid="40" class="c-element c-youtube ">
+<div data-type="youtube" data-group="widgets" data-uid="36" class="c-element c-youtube ">
   <div></div>
 </div>
 `;

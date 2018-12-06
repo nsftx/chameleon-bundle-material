@@ -2,7 +2,6 @@ export default {
   group: 'container-items',
   type: 'accordion-item',
   name: 'Accordion Item',
-  hidden: true,
   icon: 'view_day',
   children: [
     '*',

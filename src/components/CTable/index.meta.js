@@ -1,3 +1,5 @@
+import { binding } from '@nsoft/chameleon-sdk/src/utility';
+
 export default {
   group: 'widgets',
   type: 'table',
@@ -131,6 +133,11 @@ export default {
       type: 'colorPicker',
       name: 'Alternating row color',
       value: null,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= !element.alternatingRows %>'),
+      },
       priority: 15,
     },
     headerColor: {

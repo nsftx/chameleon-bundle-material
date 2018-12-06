@@ -198,7 +198,7 @@ export default {
       ]);
     }
 
-    return this.renderElement('v-card',
+    return createElement('v-card',
       {
         staticClass: 'd-inline-block',
         props: {

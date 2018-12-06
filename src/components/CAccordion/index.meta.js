@@ -1,3 +1,5 @@
+import { binding } from '@nsoft/chameleon-sdk/src/utility';
+
 export default {
   group: 'containers',
   type: 'accordion',
@@ -80,7 +82,12 @@ export default {
     expandAll: {
       type: 'check',
       name: 'Expanded all items',
-      value: true,
+      value: false,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= !element.leaveOpen %>'),
+      },
       priority: 6,
     },
     contentRipple: {

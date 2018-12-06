@@ -1,3 +1,5 @@
+import { binding } from '@nsoft/chameleon-sdk/src/utility';
+
 export default {
   group: 'widgets',
   type: 'form',
@@ -7,10 +9,20 @@ export default {
     submit: {
       key: 'submit',
       name: 'Default Submit Action',
+      hidden: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= !element.enabled %>'),
+      },
     },
     clear: {
       key: 'clear',
       name: 'Default Clear Action',
+      hidden: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= !element.enabled %>'),
+      },
     },
   },
   actions: [
