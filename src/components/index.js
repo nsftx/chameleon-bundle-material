@@ -4,6 +4,7 @@ export { default as CButton } from './CButton';
 export { default as CFloatingButton } from './CFloatingButton';
 export { default as CFloatingButtonItem } from './CFloatingButtonItem';
 export { default as CCalculation } from './CCalculation';
+export { default as CCalendar } from './CCalendar';
 export { default as CCheck } from './CCheck';
 export { default as CCheckList } from './CCheckList';
 export { default as CDate } from './CDate';

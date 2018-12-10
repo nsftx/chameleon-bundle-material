@@ -2,7 +2,7 @@ export default {
   group: 'inputs',
   type: 'date-range',
   name: 'Date Range',
-  icon: 'date_range',
+  icon: 'event_available',
   optionGroups: {
     validation: {
       key: 'validation',
@@ -87,12 +87,6 @@ export default {
       name: 'Enable Input Clear',
       value: false,
       priority: 9,
-    },
-    calendar: {
-      type: 'check',
-      name: 'Set Calendar View',
-      value: false,
-      priority: 10,
     },
     validation: {
       type: 'group',

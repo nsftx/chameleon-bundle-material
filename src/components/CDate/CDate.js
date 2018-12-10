@@ -112,7 +112,7 @@ const getPicker = (context, createElement) => {
 };
 
 const getTextField = (context, createElement) =>
-  (context.calendar ? false : createElement(
+  createElement(
     'v-text-field',
     {
       slot: 'activator',
@@ -124,9 +124,7 @@ const getTextField = (context, createElement) =>
         },
       },
     },
-  ));
-
-const getPickerType = context => (context.calendar ? 'div' : 'v-menu');
+  );
 
 export default {
   extends: Element,
@@ -139,28 +137,23 @@ export default {
       formattedValue: null,
     };
   },
-  computed: {
-    calendar() {
-      return this.config.calendar;
-    },
-  },
   render(createElement) {
     const self = this;
 
-    const data = () => (self.config.calendar ? {} : {
+    const data = {
       props: getMenuProps(this),
       on: {
         input(value) {
           self.sendToEventBus('VisibilityChanged', { visible: value });
         },
       },
-    });
+    };
 
     const children = [
       getTextField(self, createElement),
       getPicker(self, createElement),
     ];
 
-    return this.renderElement(getPickerType(self), data(), children);
+    return this.renderElement('v-menu', data, children);
   },
 };

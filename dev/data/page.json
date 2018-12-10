@@ -330,7 +330,6 @@
                           "clearable": true,
                           "color": "red",
                           "theme": "dark",
-                          "calendar": false,
                           "validation": {
                             "required": true,
                             "minDate": "",
@@ -354,7 +353,22 @@
                           "clearable": true,
                           "color": "red",
                           "theme": "dark",
-                          "calendar": true,
+                          "validation": {
+                            "required": true,
+                            "minDate": "",
+                            "maxDate": ""
+                          },
+                          "time": {
+                            "enabled": true
+                          },
+                          "value": null,
+                          "format": "LLL"
+                        },
+                        {
+                          "name": null,
+                          "type": "calendar",
+                          "color": "red",
+                          "theme": "dark",
                           "validation": {
                             "required": true,
                             "minDate": "",
