@@ -84,8 +84,9 @@ const getAllowedDates = (context, endRange) => {
   return validateDates();
 };
 
-const getTextField = (context, createElement) =>
-  createElement(
+const getTextField = (context, createElement) => {
+  const self = context;
+  return createElement(
     'v-text-field',
     {
       slot: 'activator',
@@ -93,11 +94,14 @@ const getTextField = (context, createElement) =>
       props: getTextProps(context),
       on: {
         input(value) {
+          self.valueFrom = value;
+          self.valueTo = value;
           context.sendToEventBus('Changed', { value });
         },
       },
     },
   );
+};
 
 const getPickerDefinition = (context, endRange) => {
   const config = clone(context.config);
@@ -190,8 +194,10 @@ export default {
   },
   methods: {
     setValue() {
-      if (this.valueFrom && this.valueTo) {
+      if (!isNil(this.valueFrom) && !isNil(this.valueTo)) {
         this.value = [this.valueFrom, this.valueTo];
+      } else {
+        this.value = null;
         this.$emit('input', this.value);
       }
     },

@@ -111,8 +111,9 @@ const getPicker = (context, createElement) => {
   );
 };
 
-const getTextField = (context, createElement) =>
-  createElement(
+const getTextField = (context, createElement) => {
+  const self = context;
+  return createElement(
     'v-text-field',
     {
       slot: 'activator',
@@ -120,11 +121,13 @@ const getTextField = (context, createElement) =>
       props: getTextProps(context),
       on: {
         input(value) {
+          self.value = value;
           context.sendToEventBus('Changed', { value });
         },
       },
     },
   );
+};
 
 export default {
   extends: Element,

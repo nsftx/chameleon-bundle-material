@@ -1,7 +1,7 @@
 export default {
   group: 'inputs',
   type: 'date-range',
-  name: 'Date Range',
+  name: 'Date Range Input',
   icon: 'event_available',
   optionGroups: {
     validation: {
@@ -97,12 +97,12 @@ export default {
         value: false,
       },
       minDate: {
-        type: 'input',
+        type: 'date',
         name: 'Min Date',
         value: null,
       },
       maxDate: {
-        type: 'input',
+        type: 'date',
         name: 'Max Date',
         value: null,
       },

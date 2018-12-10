@@ -57,7 +57,6 @@ const getHiddenInput = (createElement, context) => {
       on: {
         input(value) {
           self.value = value;
-          self.$emit('input', value);
         },
       },
     });

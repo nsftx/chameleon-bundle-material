@@ -2,6 +2,10 @@ import { fieldable } from '@mixins';
 import Element from '../Element';
 
 const getDatePickerProps = (context) => {
+  const self = context;
+  const today = new Date().toISOString().substr(0, 10);
+
+  self.value = context.value ? context.value.substring(0, 10) : today;
   const props = {
     noTitle: false,
     scrollable: true,
@@ -11,7 +15,7 @@ const getDatePickerProps = (context) => {
     light: context.isThemeLight,
     fullWidth: context.config.fullWidth,
     width: context.config.width || 290,
-    value: context.value ? context.value.substring(0, 10) : null,
+    value: self.value,
     min: context.config.allowedDates ? context.config.allowedDates.min : null,
     max: context.config.allowedDates ? context.config.allowedDates.max : null,
   };
@@ -172,7 +176,6 @@ export default {
   },
   render(createElement) {
     const children = [];
-    this.value = this.config.value;
 
     if (this.hasTimeComponent && this.isTimeVisible) {
       children.push([

@@ -1,7 +1,7 @@
 export default {
   group: 'inputs',
   type: 'date',
-  name: 'Date',
+  name: 'Date Input',
   icon: 'calendar_today',
   optionGroups: {
     validation: {
@@ -97,12 +97,12 @@ export default {
         value: false,
       },
       minDate: {
-        type: 'input',
+        type: 'date',
         name: 'Min Date',
         value: null,
       },
       maxDate: {
-        type: 'input',
+        type: 'date',
         name: 'Max Date',
         value: null,
       },
