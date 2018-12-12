@@ -26,12 +26,18 @@ export default {
         required: true,
       },
     },
+    label: {
+      type: 'input',
+      name: 'Notification Message Label',
+      value: 'Calendar',
+      priority: 2,
+    },
     // ????
     format: {
-      type: 'input',
+      type: 'select',
       name: 'Date Format',
       value: 'LLL',
-      priority: 2,
+      priority: 3,
     },
     time: {
       type: 'subGroup',
@@ -41,12 +47,11 @@ export default {
         name: 'Enable time',
         value: false,
       },
-      priority: 3,
+      priority: 4,
     },
     validation: {
       type: 'group',
       group: 'validation',
-      // ??
       required: {
         type: 'check',
         name: 'Enable required',

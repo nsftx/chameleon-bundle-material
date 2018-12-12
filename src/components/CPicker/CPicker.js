@@ -1,11 +1,10 @@
+import { isNil } from 'lodash';
 import { fieldable } from '@mixins';
 import Element from '../Element';
 
 const getDatePickerProps = (context) => {
   const self = context;
-  const today = new Date().toISOString().substr(0, 10);
-
-  self.value = context.value ? context.value.substring(0, 10) : today;
+  self.value = context.config.value ? context.config.value.substring(0, 10) : null;
   const props = {
     noTitle: false,
     scrollable: true,
@@ -55,7 +54,9 @@ const getDatePickerListeners = (context) => {
 
   const listeners = {
     input(value) {
-      self.value = moment.utc(value).toISOString();
+      self.value = !isNil(value) ? moment.utc(value).toISOString() : value;
+      self.$emit('input', self.value);
+      self.$emit('formattedInput', self.formattedValue);
     },
   };
 
@@ -121,6 +122,8 @@ const getTimePickerListeners = (context) => {
       if (self.value !== formattedValue) {
         self.value = formattedValue;
       }
+      self.$emit('input', self.value);
+      self.$emit('formattedInput', self.formattedValue);
     },
   };
 
@@ -166,12 +169,6 @@ export default {
       const parsedValue = value.format('LT').replace(/\s/g, '').toLowerCase();
 
       return parsedValue;
-    },
-  },
-  watch: {
-    value() {
-      this.$emit('input', this.value);
-      this.$emit('formattedInput', this.formattedValue);
     },
   },
   render(createElement) {

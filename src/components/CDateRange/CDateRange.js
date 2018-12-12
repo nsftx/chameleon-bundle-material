@@ -189,6 +189,9 @@ export default {
   },
   computed: {
     formattedValue() {
+      if (isNil(this.formattedValueFrom) && isNil(this.formattedValueTo)) {
+        return null;
+      }
       return `${this.formattedValueFrom} - ${this.formattedValueTo}`;
     },
   },

@@ -82,7 +82,7 @@ const getAllowedDates = (context) => {
 const getPickerProps = (context) => {
   const definition = context.config;
   definition.allowedDates = getAllowedDates(definition);
-  if (context.value) definition.value = context.value;
+  definition.value = context.value;
 
   const props = {
     definition,

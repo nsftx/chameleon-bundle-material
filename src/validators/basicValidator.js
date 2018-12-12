@@ -47,7 +47,7 @@ export default {
       rules.push(value => getMessage(validator.required(
         validators.required,
         getValue(value),
-      ), { field: config.label }));
+      ), { field: config.label || config.name }));
     }
 
     if (!isNil(validation.min) && validation.min !== '') {
@@ -55,7 +55,7 @@ export default {
         validators.min,
         getValue(value),
         validation.min,
-      ), { field: config.label, limit: validation.min }));
+      ), { field: config.label || config.name, limit: validation.min }));
     }
 
     if (!isNil(validation.max) && validation.max !== '') {
@@ -63,7 +63,7 @@ export default {
         validators.max,
         getValue(value),
         validation.max,
-      ), { field: config.label, limit: validation.max }));
+      ), { field: config.label || config.name, limit: validation.max }));
     }
 
     if (!isNil(validation.minLength) && validation.minLength !== '') {
@@ -71,7 +71,7 @@ export default {
         validators.minLength,
         getValue(value),
         validation.minLength,
-      ), { field: config.label, limit: validation.minLength }));
+      ), { field: config.label || config.name, limit: validation.minLength }));
     }
 
     if (!isNil(validation.maxLength) && validation.maxLength !== '') {
@@ -79,7 +79,7 @@ export default {
         validators.maxLength,
         getValue(value),
         validation.maxLength,
-      ), { field: config.label, limit: validation.maxLength }));
+      ), { field: config.label || config.name, limit: validation.maxLength }));
     }
 
     if (!isNil(validation.minCount) && validation.minCount !== '') {
@@ -87,7 +87,7 @@ export default {
         validators.minCount,
         getValue(value),
         validation.minCount,
-      ), { field: config.label, limit: validation.minCount }));
+      ), { field: config.label || config.name, limit: validation.minCount }));
     }
 
     if (!isNil(validation.maxCount) && validation.maxCount !== '') {
@@ -95,7 +95,7 @@ export default {
         validators.maxCount,
         getValue(value),
         validation.maxCount,
-      ), { field: config.label, limit: validation.maxCount }));
+      ), { field: config.label || config.name, limit: validation.maxCount }));
     }
 
     if (validation.pattern) {
@@ -104,14 +104,14 @@ export default {
         rules.push(value => getMessage(validator[predefined](
           validators[predefined],
           getValue(value),
-        ), { field: config.label }));
+        ), { field: config.label || config.name }));
       } else {
         // Pattern validator
         rules.push(value => getMessage(validator.pattern(
           validators.pattern,
           getValue(value),
           validation.pattern,
-        ), { field: config.label }));
+        ), { field: config.label || config.name }));
       }
     }
 
@@ -119,7 +119,7 @@ export default {
       rules.push(value => getMessage(validator.urlValidator(
         validators.isUrl,
         getValue(value),
-      ), { field: config.label }));
+      ), { field: config.label || config.name }));
     }
 
     return rules;
