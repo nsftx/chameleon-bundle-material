@@ -42,7 +42,7 @@
                   "elements": [
                     {
                       "type": "form",
-                      "name": "",
+                      "name": "form",
                       "color": "",
                       "theme": "light",
                       "enabled": true,
@@ -106,7 +106,7 @@
                           }
                         },
                         {
-                          "name": null,
+                          "name": "text-area",
                           "type": "text-area",
                           "label": "Personal Data",
                           "prependIcon": "person",
@@ -147,7 +147,7 @@
                           }
                         },
                         {
-                          "name": null,
+                          "name": "select",
                           "type": "select",
                           "label": "Country",
                           "prependIcon": "language",
@@ -187,7 +187,7 @@
                           }
                         },
                         {
-                          "name": null,
+                          "name": "select-list",
                           "type": "select-list",
                           "label": "Company",
                           "prependIcon": "language",
@@ -242,7 +242,7 @@
                           ]
                         },
                         {
-                          "name": null,
+                          "name": "tags",
                           "type": "tags",
                           "label": "Language",
                           "prependIcon": "language",
@@ -293,7 +293,7 @@
                           ]
                         },
                         {
-                          "name": null,
+                          "name": "rich-text",
                           "type": "rich-text",
                           "label": "About",
                           "validation": {
@@ -308,7 +308,7 @@
                           "value": "Test rich <b>content</b>."
                         },
                         {
-                          "name": null,
+                          "name": "rich-text-full",
                           "type": "rich-text",
                           "label": "Description",
                           "placeholder": "Enter description",
@@ -319,7 +319,7 @@
                           "theme": "dark"
                         },
                         {
-                          "name": null,
+                          "name": "date",
                           "type": "date",
                           "label": "Date of Birth",
                           "prependIcon": null,
@@ -330,7 +330,6 @@
                           "clearable": true,
                           "color": "red",
                           "theme": "dark",
-                          "calendar": false,
                           "validation": {
                             "required": true,
                             "minDate": "",
@@ -343,7 +342,7 @@
                           "format": "LLL"
                         },
                         {
-                          "name": null,
+                          "name": "date-range",
                           "type": "date-range",
                           "label": "Report Range",
                           "prependIcon": null,
@@ -354,7 +353,6 @@
                           "clearable": true,
                           "color": "red",
                           "theme": "dark",
-                          "calendar": true,
                           "validation": {
                             "required": true,
                             "minDate": "",
@@ -367,7 +365,23 @@
                           "format": "LLL"
                         },
                         {
-                          "name": null,
+                          "name": "calendar",
+                          "type": "calendar",
+                          "color": "red",
+                          "theme": "dark",
+                          "validation": {
+                            "required": true,
+                            "minDate": "",
+                            "maxDate": ""
+                          },
+                          "time": {
+                            "enabled": true
+                          },
+                          "value": null,
+                          "format": "LLL"
+                        },
+                        {
+                          "name": "slider",
                           "type": "slider",
                           "label": "Age",
                           "color": "primary",
@@ -388,7 +402,7 @@
                           "step": 1
                         },
                         {
-                          "name": null,
+                          "name": "rating",
                           "type": "rating",
                           "label": "How did you like our fat bunny",
                           "maxRating": 5,
@@ -405,7 +419,7 @@
                           }
                         },
                         {
-                          "name": null,
+                          "name": "check-list",
                           "type": "check-list",
                           "label": "Select cities",
                           "prependIcon": null,
@@ -441,7 +455,7 @@
                           }
                         },
                         {
-                          "name": null,
+                          "name": "radio-list",
                           "type": "radio-list",
                           "label": "Gender",
                           "prependIcon": null,
@@ -473,7 +487,7 @@
                           }
                         },
                         {
-                          "name": null,
+                          "name": "check",
                           "type": "check",
                           "label": "Remember me",
                           "color": "blue",
@@ -488,7 +502,7 @@
                           }
                         },
                         {
-                          "name": null,
+                          "name": "switch",
                           "type": "switch",
                           "label": "Remember me",
                           "color": "primary",

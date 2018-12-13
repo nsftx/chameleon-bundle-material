@@ -84,8 +84,9 @@ const getAllowedDates = (context, endRange) => {
   return validateDates();
 };
 
-const getTextField = (context, createElement) =>
-  (context.calendar ? false : createElement(
+const getTextField = (context, createElement) => {
+  const self = context;
+  return createElement(
     'v-text-field',
     {
       slot: 'activator',
@@ -93,11 +94,14 @@ const getTextField = (context, createElement) =>
       props: getTextProps(context),
       on: {
         input(value) {
+          self.valueFrom = value;
+          self.valueTo = value;
           context.sendToEventBus('Changed', { value });
         },
       },
     },
-  ));
+  );
+};
 
 const getPickerDefinition = (context, endRange) => {
   const config = clone(context.config);
@@ -112,7 +116,52 @@ const getPickerDefinition = (context, endRange) => {
   return config;
 };
 
-const getPickerType = context => (context.calendar ? 'v-card' : 'v-menu');
+const getPicker = (context, createElement) => {
+  const self = context;
+  return [
+    getTextField(self, createElement),
+    createElement(
+      self.getElementTag('picker'),
+      {
+        props: {
+          definition: getPickerDefinition(context),
+          startRange: true,
+        },
+        staticClass: 'mr-1',
+        on: {
+          input(value) {
+            self.valueFrom = value;
+            if (moment(self.valueFrom).isAfter(self.valueTo)) {
+              self.valueTo = self.valueFrom;
+            }
+            self.sendToEventBus('Changed', { value });
+          },
+          formattedInput(value) {
+            self.formattedValueFrom = value;
+          },
+        },
+      },
+    ),
+    createElement(
+      context.getElementTag('picker'),
+      {
+        props: {
+          definition: getPickerDefinition(context, true),
+          endRange: true,
+        },
+        on: {
+          input(value) {
+            self.valueTo = value;
+            self.sendToEventBus('Changed', { value });
+          },
+          formattedInput(value) {
+            self.formattedValueTo = value;
+          },
+        },
+      },
+    ),
+  ];
+};
 
 export default {
   extends: Element,
@@ -140,16 +189,18 @@ export default {
   },
   computed: {
     formattedValue() {
+      if (isNil(this.formattedValueFrom) && isNil(this.formattedValueTo)) {
+        return null;
+      }
       return `${this.formattedValueFrom} - ${this.formattedValueTo}`;
-    },
-    calendar() {
-      return this.config.calendar;
     },
   },
   methods: {
     setValue() {
-      if (this.valueFrom && this.valueTo) {
+      if (!isNil(this.valueFrom) && !isNil(this.valueTo)) {
         this.value = [this.valueFrom, this.valueTo];
+      } else {
+        this.value = null;
         this.$emit('input', this.value);
       }
     },
@@ -157,69 +208,17 @@ export default {
   render(createElement) {
     const self = this;
 
-    const data = () => {
-      if (self.calendar) {
-        return {
-          class: 'mt-1',
-          props: {
-            flat: true,
-          },
-        };
-      }
-      return {
-        props: getMenuProps(this),
-        on: {
-          input(value) {
-            self.sendToEventBus('VisibilityChanged', { visible: value });
-          },
+    const data = {
+      props: getMenuProps(this),
+      on: {
+        input(value) {
+          self.sendToEventBus('VisibilityChanged', { visible: value });
         },
-      };
+      },
     };
 
-    const children = [
-      getTextField(self, createElement),
-      createElement(
-        this.getElementTag('picker'),
-        {
-          props: {
-            definition: getPickerDefinition(this),
-            startRange: true,
-          },
-          staticClass: 'mr-1',
-          on: {
-            input(value) {
-              self.valueFrom = value;
-              if (moment(self.valueFrom).isAfter(self.valueTo)) {
-                self.valueTo = self.valueFrom;
-              }
-              self.sendToEventBus('Changed', { value });
-            },
-            formattedInput(value) {
-              self.formattedValueFrom = value;
-            },
-          },
-        },
-      ),
-      createElement(
-        this.getElementTag('picker'),
-        {
-          props: {
-            definition: getPickerDefinition(this, true),
-            endRange: true,
-          },
-          on: {
-            input(value) {
-              self.valueTo = value;
-              self.sendToEventBus('Changed', { value });
-            },
-            formattedInput(value) {
-              self.formattedValueTo = value;
-            },
-          },
-        },
-      ),
-    ];
+    const children = getPicker(this, createElement);
 
-    return this.renderElement(getPickerType(self), data(), children);
+    return this.renderElement('v-menu', data, children);
   },
 };
