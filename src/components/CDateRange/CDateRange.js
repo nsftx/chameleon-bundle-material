@@ -121,7 +121,7 @@ const getPicker = (context, createElement) => {
   return [
     getTextField(self, createElement),
     createElement(
-      context.getElementTag('picker'),
+      self.getElementTag('picker'),
       {
         props: {
           definition: getPickerDefinition(context),

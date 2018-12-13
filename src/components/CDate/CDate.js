@@ -1,4 +1,4 @@
-import { isNil } from 'lodash';
+import { clone, isNil } from 'lodash';
 import { fieldable, validatable } from '@mixins';
 import { validator } from '@validators';
 import Element from '../Element';
@@ -80,15 +80,14 @@ const getAllowedDates = (context) => {
 };
 
 const getPickerProps = (context) => {
-  const definition = context.config;
-  definition.allowedDates = getAllowedDates(definition);
-  definition.value = context.value;
+  const config = clone(context.config);
+  config.allowedDates = getAllowedDates(config);
 
-  const props = {
-    definition,
-  };
+  if (context.value) {
+    config.value = context.value;
+  }
 
-  return props;
+  return config;
 };
 
 const getPicker = (context, createElement) => {
@@ -97,7 +96,9 @@ const getPicker = (context, createElement) => {
   return createElement(
     self.getElementTag('picker'),
     {
-      props: getPickerProps(context),
+      props: {
+        definition: getPickerProps(context),
+      },
       on: {
         input(value) {
           self.value = value;

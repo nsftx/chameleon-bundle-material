@@ -5,6 +5,7 @@ import Element from '../Element';
 const getDatePickerProps = (context) => {
   const self = context;
   self.value = context.config.value ? context.config.value.substring(0, 10) : null;
+
   const props = {
     noTitle: false,
     scrollable: true,
@@ -156,7 +157,7 @@ export default {
     },
     formattedValue() {
       if (this.value) {
-        const format = this.config.format || (this.hasTimeComponent ? 'LLL' : 'LL');
+        const format = this.config.format;
         const formattedValue = moment.utc(this.value).format(format);
 
         return formattedValue;

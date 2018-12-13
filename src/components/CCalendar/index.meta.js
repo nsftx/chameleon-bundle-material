@@ -21,7 +21,7 @@ export default {
       type: 'fieldNameInput',
       name: 'Input Name used by Form',
       value: null,
-      priority: 1,
+      priority: 2,
       validation: {
         required: true,
       },
@@ -30,13 +30,6 @@ export default {
       type: 'input',
       name: 'Notification Message Label',
       value: 'Calendar',
-      priority: 2,
-    },
-    // ????
-    format: {
-      type: 'select',
-      name: 'Date Format',
-      value: 'LLL',
       priority: 3,
     },
     time: {
