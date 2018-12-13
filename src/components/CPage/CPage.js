@@ -10,8 +10,10 @@ const getPreviewStyle = (context) => {
       width: layout.previewWidth,
     };
   }
-
-  return {};
+  return {
+    height: '100%',
+    width: '100%',
+  };
 };
 
 export default {
