@@ -20,7 +20,7 @@
               "selectorPosition": "left",
               "dataSource": {
                 "name": "treeview",
-                "model": "treeview",
+                "model": "Treeview",
                 "connector": {
                   "id": "12gh67qa-904d-4a9a-89f2-0a5afd8f1464",
                   "name": "Sample Local Connector",
