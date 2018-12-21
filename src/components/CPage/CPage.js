@@ -97,6 +97,7 @@ export default {
         props: {
           dark: this.isThemeDark,
           light: this.isThemeLight,
+          color: this.config.color,
           flat: true,
         },
         staticClass: baseClass,

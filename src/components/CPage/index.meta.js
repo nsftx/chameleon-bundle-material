@@ -32,6 +32,7 @@ export default {
     },
   },
   options: {
+    color: true,
     name: {
       type: 'input',
       name: 'Name',
