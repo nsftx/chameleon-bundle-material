@@ -230,9 +230,12 @@ export default {
       value: 1,
     },
     sortBy: {
-      type: 'input',
+      type: 'select',
       group: 'data',
       name: 'Sort Items By',
+      items: itemInterface,
+      displayProp: 'label',
+      valueProp: 'name',
       value: null,
     },
     sortDescending: {

@@ -141,7 +141,7 @@ const getHeadersProp = (dataSource, config) => {
   const columns = dataSource.schema;
 
   return map(columns, column => (merge({
-    value: column.name,
+    value: column.mapName || column.name,
     class: config.headerColor || config.color,
     text: column.title || column.name,
   }, getCellInferredProps(column))));
