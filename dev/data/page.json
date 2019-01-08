@@ -568,6 +568,8 @@
                       "header": "List header",
                       "color": "",
                       "theme": "light",
+                      "rowsPerPage": 5,
+                      "startPage": 1,
                       "dataSource": {
                         "items": [
                           {

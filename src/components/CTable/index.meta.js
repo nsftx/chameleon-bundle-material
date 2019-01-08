@@ -96,6 +96,7 @@ export default {
       items: '=$activePageElement.dataSource.schema',
       valueProp: ['mapName', 'name'],
       displayProp: ['title', 'name'],
+      returnObject: true,
       priority: 10,
     },
     sort: {

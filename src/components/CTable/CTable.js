@@ -150,12 +150,20 @@ const getHeadersProp = (dataSource, config) => {
   }, getCellInferredProps(column))));
 };
 
-const getClientPagination = (config, setPagination) => defaults(setPagination || {}, {
-  rowsPerPage: config.rowsPerPage,
-  sortBy: config.sortBy,
-  descending: config.sort ? config.sort === 'desc' : null,
-  page: config.startPage,
-});
+const getClientPagination = (config, setPagination) => {
+  const sort = () => {
+    if (config.sortBy) {
+      return config.sortBy.mapName ? config.sortBy.mapName : config.sortBy.name;
+    }
+    return config.sortBy;
+  };
+  return defaults(setPagination || {}, {
+    rowsPerPage: config.rowsPerPage,
+    sortBy: sort(),
+    descending: config.sort ? config.sort === 'desc' : false,
+    page: config.startPage,
+  });
+};
 
 const getProps = (context) => {
   const config = context.config;
@@ -196,8 +204,8 @@ const setDataSourceParams = (context) => {
 
   self.dataSourceParams = merge(self.dataSourceParams, {
     pageSize: self.pagination.rowsPerPage,
-    sort: self.pagination.descending ? 'desc' : 'asc',
-    sortBy: self.pagination.sortBy,
+    sort: self.config.sort,
+    sortBy: self.pagination.sortBy ? self.pagination.sortBy.name : self.pagination.sortBy,
     currentPage: self.pagination.page,
   });
 };
@@ -253,7 +261,6 @@ export default {
   },
   mounted() {
     this.pagination = getClientPagination(this.config);
-    this.loadData();
   },
   render(createElement) {
     const table = createElement('v-data-table', {
