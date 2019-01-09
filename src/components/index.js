@@ -26,6 +26,7 @@ export { default as CPicker } from './CPicker';
 export { default as CRadioList } from './CRadioList';
 export { default as CRating } from './CRating';
 export { default as CRichText } from './CRichText';
+export { default as CRepeater } from './CRepeater';
 export { default as CSelect } from './CSelect';
 export { default as CSelectList } from './CSelectList';
 export { default as CSlider } from './CSlider';
