@@ -6,7 +6,6 @@ export default {
   data() {
     return {
       items: [],
-      children: [],
     };
   },
   watch: {
@@ -25,6 +24,7 @@ export default {
   },
   render(createElement) {
     const config = this.config;
+    let children = [];
     const data = {
       key: this.schema.uid,
       props: {
@@ -38,7 +38,7 @@ export default {
     };
 
     if (this.items.length) {
-      this.children = map(this.items, () =>
+      children = map(this.items, () =>
         createElement(this.getElementTag(config.elements[0].type), {
           props: {
             definition: config.elements[0],
@@ -46,6 +46,6 @@ export default {
         }));
     }
 
-    return this.renderElement('v-card', data, this.children, true);
+    return this.renderElement('v-card', data, children, true);
   },
 };
