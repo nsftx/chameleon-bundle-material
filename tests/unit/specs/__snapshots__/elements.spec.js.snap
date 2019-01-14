@@ -11,7 +11,7 @@ exports[`AllComponents c-accordion-item renders correctly 1`] = `
     </div>
   </div>
   <div class="v-expansion-panel__body" style="display:none;">
-    <div class="v-card theme--light" style="height:undefined;">
+    <div class="v-card v-sheet theme--light elevation-2">
       <div class="v-card__text c-element-children c-accordion-item-items"></div>
     </div>
   </div>
@@ -61,7 +61,7 @@ exports[`AllComponents c-check renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-check-list renders correctly 1`] = `
-<div data-type="check-list" data-group="inputs" data-uid="6" class="c-element c-check-list  v-card v-card--flat theme--light" style="height:undefined;">
+<div data-type="check-list" data-group="inputs" data-uid="6" class="c-element c-check-list  v-card v-sheet theme--light">
   <label aria-hidden="true" class="v-label theme--light" style="left:0px;right:auto;position:relative;"></label>
   <div class="input-group__details error--text"></div>
 </div>
@@ -96,11 +96,11 @@ exports[`AllComponents c-date renders correctly 1`] = `
     </div>
   </div>
   <div class="v-menu__content theme--light " style="max-height:auto;min-width:auto;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
-    <div class="d-inline-block v-card v-card--flat theme--light" style="height:undefined;">
+    <div class="d-inline-block v-card v-sheet theme--light">
       <div class="v-picker v-card v-picker--date theme--light">
         <div class="v-picker__title primary">
           <div class="v-date-picker-title">
-            <div class="v-picker__title__btn v-date-picker-title__year">2018</div>
+            <div class="v-picker__title__btn v-date-picker-title__year">2019</div>
             <div class="v-picker__title__btn v-date-picker-title__date v-picker__title__btn--active">
               <div>&nbsp;</div>
             </div>
@@ -114,7 +114,11 @@ exports[`AllComponents c-date renders correctly 1`] = `
                   <i aria-hidden="true" class="v-icon material-icons theme--light">$vuetify.icons.next</i>
                 </div>
               </button>
-              <div class="v-date-picker-header__value"><strong class="accent--text">December 2018</strong></div>
+              <div class="v-date-picker-header__value">
+                <div class="accent--text">
+                  <button>January 2019</button>
+                </div>
+              </div>
               <button type="button" class="v-btn v-btn--icon theme--light">
                 <div class="v-btn__content">
                   <i aria-hidden="true" class="v-icon material-icons theme--light">$vuetify.icons.prev</i>
@@ -138,17 +142,11 @@ exports[`AllComponents c-date renders correctly 1`] = `
                   <tr>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">1</div>
                       </button>
                     </td>
-                  </tr>
-                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">2</div>
@@ -165,10 +163,12 @@ exports[`AllComponents c-date renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">5</div>
                       </button>
                     </td>
+                  </tr>
+                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">6</div>
@@ -184,8 +184,6 @@ exports[`AllComponents c-date renders correctly 1`] = `
                         <div class="v-btn__content">8</div>
                       </button>
                     </td>
-                  </tr>
-                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">9</div>
@@ -206,13 +204,15 @@ exports[`AllComponents c-date renders correctly 1`] = `
                         <div class="v-btn__content">12</div>
                       </button>
                     </td>
+                  </tr>
+                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">13</div>
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">14</div>
                       </button>
                     </td>
@@ -221,8 +221,6 @@ exports[`AllComponents c-date renders correctly 1`] = `
                         <div class="v-btn__content">15</div>
                       </button>
                     </td>
-                  </tr>
-                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">16</div>
@@ -243,6 +241,8 @@ exports[`AllComponents c-date renders correctly 1`] = `
                         <div class="v-btn__content">19</div>
                       </button>
                     </td>
+                  </tr>
+                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">20</div>
@@ -258,8 +258,6 @@ exports[`AllComponents c-date renders correctly 1`] = `
                         <div class="v-btn__content">22</div>
                       </button>
                     </td>
-                  </tr>
-                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">23</div>
@@ -280,6 +278,8 @@ exports[`AllComponents c-date renders correctly 1`] = `
                         <div class="v-btn__content">26</div>
                       </button>
                     </td>
+                  </tr>
+                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">27</div>
@@ -295,8 +295,6 @@ exports[`AllComponents c-date renders correctly 1`] = `
                         <div class="v-btn__content">29</div>
                       </button>
                     </td>
-                  </tr>
-                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">30</div>
@@ -322,7 +320,7 @@ exports[`AllComponents c-date renders correctly 1`] = `
 exports[`AllComponents c-date-range renders correctly 1`] = `
 <div data-type="date-range" data-group="inputs" data-uid="8" class="v-menu c-element c-date-range ">
   <div class="v-menu__activator">
-    <div class="v-input v-text-field v-input--is-label-active v-input--is-dirty v-input--is-readonly theme--light">
+    <div class="v-input v-text-field v-input--is-readonly theme--light">
       <div class="v-input__prepend-outer">
         <div class="v-input__icon v-input__icon--prepend">
           <i aria-hidden="true" class="v-icon material-icons theme--light">event</i>
@@ -331,11 +329,11 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
       <div class="v-input__control">
         <div class="v-input__slot" style="height:undefined;">
           <div class="v-text-field__slot">
-            <input readonly="readonly" type="text" value="null - null">
+            <input readonly="readonly" type="text">
           </div>
           <div class="v-input__append-inner">
-            <div class="v-input__icon v-input__icon--clear">
-              <i aria-hidden="true" class="v-icon v-icon--link material-icons theme--light">$vuetify.icons.clear</i>
+            <div class="v-input__icon v-input__icon--">
+              <i aria-hidden="true" class="v-icon v-icon--link material-icons theme--light"></i>
             </div>
           </div>
         </div>
@@ -348,11 +346,11 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
     </div>
   </div>
   <div class="v-menu__content theme--light " style="max-height:auto;min-width:auto;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
-    <div class="d-inline-block mr-1 v-card v-card--flat theme--light" style="height:undefined;">
+    <div class="d-inline-block mr-1 v-card v-sheet theme--light">
       <div class="v-picker v-card v-picker--date theme--light">
         <div class="v-picker__title primary">
           <div class="v-date-picker-title">
-            <div class="v-picker__title__btn v-date-picker-title__year">2018</div>
+            <div class="v-picker__title__btn v-date-picker-title__year">2019</div>
             <div class="v-picker__title__btn v-date-picker-title__date v-picker__title__btn--active">
               <div>&nbsp;</div>
             </div>
@@ -366,7 +364,11 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                   <i aria-hidden="true" class="v-icon material-icons theme--light">$vuetify.icons.next</i>
                 </div>
               </button>
-              <div class="v-date-picker-header__value"><strong class="accent--text">December 2018</strong></div>
+              <div class="v-date-picker-header__value">
+                <div class="accent--text">
+                  <button>January 2019</button>
+                </div>
+              </div>
               <button type="button" class="v-btn v-btn--icon theme--light">
                 <div class="v-btn__content">
                   <i aria-hidden="true" class="v-icon material-icons theme--light">$vuetify.icons.prev</i>
@@ -390,17 +392,11 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                   <tr>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">1</div>
                       </button>
                     </td>
-                  </tr>
-                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">2</div>
@@ -417,10 +413,12 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">5</div>
                       </button>
                     </td>
+                  </tr>
+                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">6</div>
@@ -436,8 +434,6 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                         <div class="v-btn__content">8</div>
                       </button>
                     </td>
-                  </tr>
-                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">9</div>
@@ -458,13 +454,15 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                         <div class="v-btn__content">12</div>
                       </button>
                     </td>
+                  </tr>
+                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">13</div>
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">14</div>
                       </button>
                     </td>
@@ -473,8 +471,6 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                         <div class="v-btn__content">15</div>
                       </button>
                     </td>
-                  </tr>
-                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">16</div>
@@ -495,6 +491,8 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                         <div class="v-btn__content">19</div>
                       </button>
                     </td>
+                  </tr>
+                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">20</div>
@@ -510,8 +508,6 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                         <div class="v-btn__content">22</div>
                       </button>
                     </td>
-                  </tr>
-                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">23</div>
@@ -532,6 +528,8 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                         <div class="v-btn__content">26</div>
                       </button>
                     </td>
+                  </tr>
+                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">27</div>
@@ -547,8 +545,6 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                         <div class="v-btn__content">29</div>
                       </button>
                     </td>
-                  </tr>
-                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">30</div>
@@ -567,11 +563,11 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
         </div>
       </div>
     </div>
-    <div class="d-inline-block v-card v-card--flat theme--light" style="height:undefined;">
+    <div class="d-inline-block v-card v-sheet theme--light">
       <div class="v-picker v-card v-picker--date theme--light">
         <div class="v-picker__title primary">
           <div class="v-date-picker-title">
-            <div class="v-picker__title__btn v-date-picker-title__year">2018</div>
+            <div class="v-picker__title__btn v-date-picker-title__year">2019</div>
             <div class="v-picker__title__btn v-date-picker-title__date v-picker__title__btn--active">
               <div>&nbsp;</div>
             </div>
@@ -585,7 +581,11 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                   <i aria-hidden="true" class="v-icon material-icons theme--light">$vuetify.icons.next</i>
                 </div>
               </button>
-              <div class="v-date-picker-header__value"><strong class="accent--text">December 2018</strong></div>
+              <div class="v-date-picker-header__value">
+                <div class="accent--text">
+                  <button>January 2019</button>
+                </div>
+              </div>
               <button type="button" class="v-btn v-btn--icon theme--light">
                 <div class="v-btn__content">
                   <i aria-hidden="true" class="v-icon material-icons theme--light">$vuetify.icons.prev</i>
@@ -609,17 +609,11 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                   <tr>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">1</div>
                       </button>
                     </td>
-                  </tr>
-                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">2</div>
@@ -636,10 +630,12 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">5</div>
                       </button>
                     </td>
+                  </tr>
+                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">6</div>
@@ -655,8 +651,6 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                         <div class="v-btn__content">8</div>
                       </button>
                     </td>
-                  </tr>
-                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">9</div>
@@ -677,13 +671,15 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                         <div class="v-btn__content">12</div>
                       </button>
                     </td>
+                  </tr>
+                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">13</div>
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">14</div>
                       </button>
                     </td>
@@ -692,8 +688,6 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                         <div class="v-btn__content">15</div>
                       </button>
                     </td>
-                  </tr>
-                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">16</div>
@@ -714,6 +708,8 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                         <div class="v-btn__content">19</div>
                       </button>
                     </td>
+                  </tr>
+                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">20</div>
@@ -729,8 +725,6 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                         <div class="v-btn__content">22</div>
                       </button>
                     </td>
-                  </tr>
-                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">23</div>
@@ -751,6 +745,8 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                         <div class="v-btn__content">26</div>
                       </button>
                     </td>
+                  </tr>
+                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">27</div>
@@ -766,8 +762,6 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                         <div class="v-btn__content">29</div>
                       </button>
                     </td>
-                  </tr>
-                  <tr>
                     <td>
                       <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">30</div>
@@ -791,25 +785,25 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-flexgrid renders correctly 1`] = `
-<div data-type="flexgrid" data-group="containers" data-uid="9" class="c-element c-flexgrid  c-element-parent  v-card theme--light undefined grid-list-undefined wrap container" style="height:undefined;">
+<div data-type="flexgrid" data-group="containers" data-uid="9" class="c-element c-flexgrid  c-element-parent  v-card v-sheet theme--light elevation-2 undefined grid-list-undefined wrap container">
   <div class="layout undefined wrap"></div>
 </div>
 `;
 
 exports[`AllComponents c-flexgrid-item renders correctly 1`] = `
-<div data-type="flexgrid-item" data-group="container-items" data-uid="10" class="c-element c-flexgrid-item  c-element-parent  v-card v-card--flat theme--light xsundefined undefined flex" style="height:undefined;">
+<div data-type="flexgrid-item" data-group="container-items" data-uid="10" class="c-element c-flexgrid-item  c-element-parent  v-card v-sheet theme--light xsundefined undefined flex">
   <div class="c-element-children c-flexgrid-item-items"></div>
 </div>
 `;
 
 exports[`AllComponents c-form renders correctly 1`] = `
-<div data-type="form" data-group="widgets" data-uid="11" class="c-element c-form  c-element-parent  v-card v-card--flat theme--light" style="height:undefined;">
+<div data-type="form" data-group="widgets" data-uid="11" class="c-element c-form  c-element-parent  v-card v-sheet theme--light">
   <form novalidate="novalidate" class="v-form c-form c-element-children"></form>
 </div>
 `;
 
 exports[`AllComponents c-gallery renders correctly 1`] = `
-<div data-type="gallery" data-group="widgets" data-uid="12" class="c-element c-gallery  v-card v-card--flat theme--light" style="height:undefined;">
+<div data-type="gallery" data-group="widgets" data-uid="12" class="c-element c-gallery  v-card v-sheet theme--light">
   <div class="container grid-list-undefined">
     <div class="layout row wrap"></div>
   </div>
@@ -817,19 +811,19 @@ exports[`AllComponents c-gallery renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-hlist renders correctly 1`] = `
-<div data-type="hlist" data-group="containers" data-uid="13" class="c-element c-hlist  c-element-parent  v-card theme--light" style="height:undefined;">
+<div data-type="hlist" data-group="containers" data-uid="13" class="c-element c-hlist  c-element-parent  v-card v-sheet theme--light elevation-2" style="height:undefined;">
   <div class="c-element-children c-hlist-items" style="height:100%;"></div>
 </div>
 `;
 
 exports[`AllComponents c-html renders correctly 1`] = `
-<div data-type="html" data-group="widgets" data-uid="14" class="c-element c-html  v-card v-card--flat theme--light" style="height:undefined;">
+<div data-type="html" data-group="widgets" data-uid="14" class="c-element c-html  v-card v-sheet theme--light">
   <i aria-hidden="true" class="v-icon material-icons theme--light" style="font-size:40px;">code</i>
 </div>
 `;
 
 exports[`AllComponents c-image renders correctly 1`] = `
-<div data-type="image" data-group="widgets" data-uid="15" class="c-element c-image  v-card v-card--flat theme--light" style="height:undefined;width:undefined;">
+<div data-type="image" data-group="widgets" data-uid="15" class="c-element c-image  v-card v-sheet theme--light" style="width:undefined;height:undefined;">
   <div style="width:undefined;height:undefined;">
     <i aria-hidden="true" class="v-icon material-icons theme--light" style="font-size:40px;width:undefined;height:undefined;">image</i>
   </div>
@@ -837,9 +831,9 @@ exports[`AllComponents c-image renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-list renders correctly 1`] = `
-<div data-type="list" data-group="widgets" data-uid="16" class="c-element c-list  v-card theme--light grid-list-undefined transparent wrap container" style="height:undefined;">
+<div data-type="list" data-group="widgets" data-uid="16" class="c-element c-list  v-card v-sheet theme--light elevation-2 transparent wrap container">
   <div class="v-data-iterator theme--light">
-    <div class="layout wrap">
+    <div class="layout wrap ma-0">
       <div class="text-xs-center" style="width:100%;">No data available</div>
     </div>
     <div>
@@ -862,29 +856,29 @@ exports[`AllComponents c-list renders correctly 1`] = `
                 <div class="v-menu">
                   <div class="v-menu__content theme--light v-menu__content--auto " style="max-height:200px;min-width:75px;max-width:auto;top:12px;left:12px;transform-origin:top left;z-index:0;display:none;">
                     <div class="v-select-list v-card theme--light">
-                      <div class="v-list theme--light">
-                        <div>
+                      <div role="list" class="v-list theme--light">
+                        <div role="listitem">
                           <a class="v-list__tile v-list__tile--link theme--light">
                             <div class="v-list__tile__content">
                               <div class="v-list__tile__title">5</div>
                             </div>
                           </a>
                         </div>
-                        <div>
+                        <div role="listitem">
                           <a class="v-list__tile v-list__tile--link v-list__tile--active theme--light primary--text">
                             <div class="v-list__tile__content">
                               <div class="v-list__tile__title">10</div>
                             </div>
                           </a>
                         </div>
-                        <div>
+                        <div role="listitem">
                           <a class="v-list__tile v-list__tile--link theme--light">
                             <div class="v-list__tile__content">
                               <div class="v-list__tile__title">15</div>
                             </div>
                           </a>
                         </div>
-                        <div>
+                        <div role="listitem">
                           <a class="v-list__tile v-list__tile--link theme--light">
                             <div class="v-list__tile__content">
                               <div class="v-list__tile__title">20</div>
@@ -921,7 +915,7 @@ exports[`AllComponents c-list renders correctly 1`] = `
 exports[`AllComponents c-map renders correctly 1`] = `<div data-type="map" data-group="widgets" data-uid="17" class="c-element c-map " style="width:100%;height:100%;"></div>`;
 
 exports[`AllComponents c-panel renders correctly 1`] = `
-<div data-type="panel" data-group="containers" data-uid="18" class="c-element c-panel  c-element-parent  v-card theme--light" style="height:undefined;width:undefined;">
+<div data-type="panel" data-group="containers" data-uid="18" class="c-element c-panel  c-element-parent  v-card v-sheet theme--light elevation-2" style="width:undefined;height:undefined;">
   <div class="c-element-children c-panel-items" style="width:100%;height:100%;"></div>
 </div>
 `;
@@ -948,7 +942,7 @@ exports[`AllComponents c-radio-list renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-rating renders correctly 1`] = `
-<div data-type="rating" data-group="inputs" data-uid="21" class="c-element c-rating  v-card v-card--flat theme--light text-xs-center" style="height:undefined;">
+<div data-type="rating" data-group="inputs" data-uid="21" class="c-element c-rating  v-card v-sheet theme--light text-xs-center">
   <div></div>
   <div class="v-rating">
     <i aria-hidden="true" class="v-icon v-icon--link material-icons theme--light accent--text">star_border</i>
@@ -969,7 +963,7 @@ exports[`AllComponents c-rating renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-rich-text renders correctly 1`] = `
-<div data-type="rich-text" data-group="inputs" data-uid="22" class="c-element c-rich-text  v-card v-card--flat theme--light mb-3" style="height:undefined;">
+<div data-type="rich-text" data-group="inputs" data-uid="22" class="c-element c-rich-text  v-card v-sheet theme--light mb-3">
   <div></div>
 </div>
 `;
@@ -992,11 +986,11 @@ exports[`AllComponents c-select renders correctly 1`] = `
         <div class="v-menu">
           <div class="v-menu__content theme--light " style="max-height:300px;min-width:0px;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
             <div class="v-select-list v-card theme--light">
-              <div class="v-list theme--light">
-                <div>
+              <div role="list" class="v-list theme--light">
+                <div role="listitem">
                   <div class="v-list__tile theme--light">
                     <div class="v-list__tile__content">
-                      <div class="v-list__tile__title">No data available</div>
+                      <div class="v-list__tile__title">null</div>
                     </div>
                   </div>
                 </div>
@@ -1033,11 +1027,11 @@ exports[`AllComponents c-select-list renders correctly 1`] = `
         <div class="v-menu">
           <div class="v-menu__content theme--light " style="max-height:300px;min-width:0px;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
             <div class="v-select-list v-card theme--light">
-              <div class="v-list theme--light">
-                <div>
+              <div role="list" class="v-list theme--light">
+                <div role="listitem">
                   <div class="v-list__tile theme--light">
                     <div class="v-list__tile__content">
-                      <div class="v-list__tile__title">No data available</div>
+                      <div class="v-list__tile__title">null</div>
                     </div>
                   </div>
                 </div>
@@ -1063,8 +1057,8 @@ exports[`AllComponents c-slider renders correctly 1`] = `
       <div class="v-slider">
         <input role="slider" value="0" readonly="readonly" aria-readonly="false" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" data-type="slider" data-group="inputs" data-uid="25">
         <div class="v-slider__track__container">
-          <div class="v-slider__track" style="transition:;left:7px;right:auto;width:100%;"></div>
-          <div class="v-slider__track-fill primary" style="transition:;left:0;right:auto;width:NaN%;"></div>
+          <div class="v-slider__track" style="transition:;left:auto;right:7px;width:100%;"></div>
+          <div class="v-slider__track-fill primary" style="transition:;left:auto;right:0;width:NaN%;"></div>
         </div>
         <div class="v-slider__thumb-container" style="transition:;left:NaN%;">
           <div class="v-slider__thumb"></div>
@@ -1100,14 +1094,14 @@ exports[`AllComponents c-switch renders correctly 1`] = `
 
 exports[`AllComponents c-tab-item renders correctly 1`] = `
 <div data-type="tab-item" data-group="container-items" data-uid="27" class="v-window-item c-element c-tab-item  c-element-parent " style="display:none;">
-  <div class="v-card v-card--flat theme--light" style="height:undefined;">
+  <div class="v-card v-sheet theme--light">
     <div class="v-card__text c-element-children c-tab-item-items"></div>
   </div>
 </div>
 `;
 
 exports[`AllComponents c-table renders correctly 1`] = `
-<div data-type="table" data-group="widgets" data-uid="28" class="c-element c-table  v-card theme--light" style="height:undefined;">
+<div data-type="table" data-group="widgets" data-uid="28" class="c-element c-table  v-card v-sheet theme--light elevation-2">
   <div>
     <div class="v-table__overflow">
       <table class="v-datatable v-table theme--light">
@@ -1137,29 +1131,29 @@ exports[`AllComponents c-table renders correctly 1`] = `
                 <div class="v-menu">
                   <div class="v-menu__content theme--light v-menu__content--auto " style="max-height:200px;min-width:75px;max-width:auto;top:12px;left:12px;transform-origin:top left;z-index:0;display:none;">
                     <div class="v-select-list v-card theme--light">
-                      <div class="v-list theme--light">
-                        <div>
+                      <div role="list" class="v-list theme--light">
+                        <div role="listitem">
                           <a class="v-list__tile v-list__tile--link theme--light">
                             <div class="v-list__tile__content">
                               <div class="v-list__tile__title">5</div>
                             </div>
                           </a>
                         </div>
-                        <div>
+                        <div role="listitem">
                           <a class="v-list__tile v-list__tile--link theme--light">
                             <div class="v-list__tile__content">
                               <div class="v-list__tile__title">10</div>
                             </div>
                           </a>
                         </div>
-                        <div>
+                        <div role="listitem">
                           <a class="v-list__tile v-list__tile--link theme--light">
                             <div class="v-list__tile__content">
                               <div class="v-list__tile__title">15</div>
                             </div>
                           </a>
                         </div>
-                        <div>
+                        <div role="listitem">
                           <a class="v-list__tile v-list__tile--link theme--light">
                             <div class="v-list__tile__content">
                               <div class="v-list__tile__title">20</div>
@@ -1230,11 +1224,11 @@ exports[`AllComponents c-tags renders correctly 1`] = `
         <div class="v-menu">
           <div class="v-menu__content theme--light " style="max-height:300px;min-width:0px;max-width:auto;top:12px;left:0px;transform-origin:top left;z-index:0;display:none;">
             <div class="v-select-list v-card theme--light">
-              <div class="v-list theme--light">
-                <div>
+              <div role="list" class="v-list theme--light">
+                <div role="listitem">
                   <div class="v-list__tile theme--light">
                     <div class="v-list__tile__content">
-                      <div class="v-list__tile__title">No data available</div>
+                      <div class="v-list__tile__title">null</div>
                     </div>
                   </div>
                 </div>
@@ -1304,7 +1298,7 @@ exports[`AllComponents c-video-stream renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-vlist renders correctly 1`] = `
-<div data-type="vlist" data-group="containers" data-uid="35" class="c-element c-vlist  c-element-parent  v-card theme--light" style="height:undefined;background-color:undefined;">
+<div data-type="vlist" data-group="containers" data-uid="35" class="c-element c-vlist  c-element-parent  v-card v-sheet theme--light elevation-2" style="background-color:undefined;">
   <div class="c-element-children c-vlist-items"></div>
 </div>
 `;

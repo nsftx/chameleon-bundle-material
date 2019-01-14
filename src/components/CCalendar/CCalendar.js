@@ -47,6 +47,7 @@ const getPicker = (context, createElement) => {
       on: {
         input(value) {
           self.value = value;
+          self.$emit('input', value);
           self.sendToEventBus('Changed', { value });
         },
       },
@@ -74,11 +75,6 @@ const getHiddenInput = (context, createElement) => {
         value: self.value || null,
         required: getPropRequired(config),
         rules: validator.getRules(config, self.validators),
-      },
-      on: {
-        input(value) {
-          self.value = value;
-        },
       },
     });
 };
