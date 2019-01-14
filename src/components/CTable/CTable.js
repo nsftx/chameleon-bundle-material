@@ -72,6 +72,32 @@ const setRowColor = (rowIndex, context) => {
   return isAlternatingRowOption ? getAlternatingRowColor(rowIndex, context) : null;
 };
 
+const getSlotContent = (createElement, column, content) => {
+  let result = content;
+  // Set table column depeneding on mapped or default value type
+  const type = toLower(column.mapType) || toLower(column.type);
+
+  if (type === 'icon') {
+    result = [createElement('v-icon', content)];
+  } else if (type === 'image') {
+    result = [
+      createElement('v-avatar', {
+        attrs: {
+          size: '32px',
+        },
+      },
+        [
+          createElement('img', {
+            attrs: {
+              src: content,
+            },
+          }),
+        ]),
+    ];
+  }
+  return result;
+};
+
 const getScopedSlots = (createElement, context) => {
   const dataSource = context.dataSource;
   const getColumns = (props) => {
@@ -88,31 +114,7 @@ const getScopedSlots = (createElement, context) => {
         const column = schemaItem;
         if (column) {
           merge(inferredProps, getCellInferredProps(column));
-
-          switch (toLower(column.type)) {
-            case 'icon':
-              content = [createElement('v-icon', content)];
-              break;
-            case 'image':
-              content = [
-                createElement('v-avatar', {
-                  attrs: {
-                    // NOTE: Expose in options?
-                    size: '32px',
-                  },
-                },
-                  [
-                    createElement('img', {
-                      attrs: {
-                        src: content,
-                      },
-                    }),
-                  ]),
-              ];
-              break;
-            default:
-              content = item[schemaItem[contentProp]];
-          }
+          content = getSlotContent(createElement, column, content);
         }
 
         columns.push(createElement('td', {
