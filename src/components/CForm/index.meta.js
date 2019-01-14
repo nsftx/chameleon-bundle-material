@@ -55,10 +55,10 @@ export default {
       priority: 1,
     },
     theme: true,
-    enabled: {
+    autoSubmit: {
       type: 'check',
-      name: 'Enable Default Actions',
-      value: true,
+      name: 'Auto Submit Form',
+      value: false,
     },
     submit: {
       type: 'group',

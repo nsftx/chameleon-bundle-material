@@ -45,7 +45,7 @@
                       "name": "form",
                       "color": "",
                       "theme": "light",
-                      "enabled": true,
+                      "autoSubmit": true,
                       "submit": {
                         "name": "submit_button",
                         "label": "Submit",
@@ -735,7 +735,7 @@
                               "name": "",
                               "color": "",
                               "theme": "",
-                              "enabled": true,
+                              "autoSubmit": false,
                               "submit": {
                                 "name": "submit_button",
                                 "label": "Submit",
@@ -837,7 +837,7 @@
                               "name": "",
                               "color": "",
                               "theme": "",
-                              "enabled": true,
+                              "autoSubmit": false,
                               "submit": {
                                 "name": "submit_button",
                                 "label": "Submit",
@@ -894,7 +894,7 @@
                               "name": "",
                               "color": "",
                               "theme": "",
-                              "enabled": true,
+                              "autoSubmit": true,
                               "submit": {
                                 "name": "submit_button",
                                 "label": "Submit",

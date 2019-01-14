@@ -17,7 +17,7 @@ const getComponentTag = (name, context) => {
 const uuid = () => v4();
 
 const getFormActions = (context, createElement) => {
-  if (!context.formActionsStatus) return false;
+  if (context.formActionsStatus) return false;
 
   return createElement(
     'v-card-actions',
@@ -41,6 +41,13 @@ const getFormActions = (context, createElement) => {
   );
 };
 
+const updateEvents = (context, field, value, event) => {
+  const currentField = field;
+  currentField.value = value;
+  context.$emit(event, value);
+  if (context.config.autoSubmit) context.submit();
+};
+
 const getFormInputs = (context, createElement) => map(context.getFields(),
   field => createElement(
     getComponentTag(field.type, context),
@@ -51,9 +58,10 @@ const getFormInputs = (context, createElement) => map(context.getFields(),
       staticClass: `${context.$options.name}-items`,
       on: {
         input(value) {
-          const currentField = field;
-          currentField.value = value;
-          context.$emit('input', value);
+          updateEvents(context, field, value, 'input');
+        },
+        change(value) {
+          updateEvents(context, field, value, 'change');
         },
       },
     },
@@ -92,7 +100,7 @@ export default {
       };
     },
     formActionsStatus() {
-      return this.config.enabled;
+      return this.config.autoSubmit;
     },
     form() {
       const formName = this.config.name;
@@ -128,6 +136,7 @@ export default {
       this.sendToEventBus('Cleared', {});
     },
     submit() {
+      console.log('submit');
       this.errors = [];
       this.entity = {};
       if (this.validateForm()) {
