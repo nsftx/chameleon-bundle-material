@@ -98,6 +98,7 @@ export default {
     loadData() {
       this.loadConnectorData().then((result) => {
         this.items = result.items || [];
+        this.sendToEventBus('DataSourceChanged', this.dataSource);
       });
     },
   },

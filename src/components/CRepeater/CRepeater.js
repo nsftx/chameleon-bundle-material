@@ -1,4 +1,4 @@
-import { map } from 'lodash';
+import { isNil, map, cloneDeep } from 'lodash';
 import Element from '../Element';
 
 export default {
@@ -7,6 +7,11 @@ export default {
     return {
       items: [],
     };
+  },
+  computed: {
+    element() {
+      return this.config.elements[0];
+    },
   },
   watch: {
     dataSource: {
@@ -30,20 +35,30 @@ export default {
       props: {
         flat: config.flat,
       },
-      staticClass: `${this.$options.name} ${this.baseChildrenClass}`,
+      staticClass: `${this.baseChildrenClass}`,
       style: {
         width: '100%',
         height: '100%',
       },
     };
 
-    if (this.items.length) {
-      children = map(this.items, () =>
-        createElement(this.getElementTag(config.elements[0].type), {
+    if (this.items.length && this.element && !isNil(this.element.dataSource)) {
+      children = map(this.items, (item) => {
+        const elementDefinition = this.element;
+        elementDefinition.dataSource.items = [cloneDeep(item)];
+        elementDefinition.dataSource.local = true;
+        return createElement(this.getElementTag(this.element.type), {
           props: {
-            definition: config.elements[0],
+            definition: elementDefinition,
           },
-        }));
+        });
+      });
+    } else if (this.element && isNil(this.element.dataSource)) {
+      children = createElement(this.getElementTag(this.element.type), {
+        props: {
+          definition: config.elements[0],
+        },
+      });
     }
 
     return this.renderElement('v-card', data, children, true);
