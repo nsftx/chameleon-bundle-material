@@ -24,58 +24,22 @@
           "gridMaxSize": false,
           "contentSpacing": "xl",
           "dataSource": {
-            "items": [
+            "id": "galleryImages",
+            "name": "galleryImages",
+            "model": "GalleryImages",
+            "connector": {
+              "id": "12gh67qa-904d-4a9a-89f2-0a5afd8f1464",
+              "name": "Sample Local Connector",
+              "type": "local"
+            },
+            "schema": [
               {
-                "image": "https://picsum.photos/600/300?image=0",
-                "thumb": "https://picsum.photos/300/150?image=0"
+                "name": "image",
+                "type": "Image"
               },
               {
-                "image": "https://picsum.photos/600/300?image=10",
-                "thumb": "https://picsum.photos/300/150?image=10"
-              },
-              {
-                "image": "https://picsum.photos/600/300?image=11",
-                "thumb": "https://picsum.photos/300/150?image=11"
-              },
-              {
-                "image": "https://picsum.photos/600/300?image=12",
-                "thumb": "https://picsum.photos/300/150?image=12"
-              },
-              {
-                "image": "https://picsum.photos/600/300?image=13",
-                "thumb": "https://picsum.photos/300/150?image=13"
-              },
-              {
-                "image": "https://picsum.photos/600/300?image=14",
-                "thumb": "https://picsum.photos/300/150?image=14"
-              },
-              {
-                "image": "https://picsum.photos/600/300?image=15",
-                "thumb": "https://picsum.photos/300/150?image=15"
-              },
-              {
-                "image": "https://picsum.photos/600/300?image=16",
-                "thumb": "https://picsum.photos/300/150?image=16"
-              },
-              {
-                "image": "https://picsum.photos/600/300?image=17",
-                "thumb": "https://picsum.photos/300/150?image=17"
-              },
-              {
-                "image": "https://picsum.photos/600/300?image=18",
-                "thumb": "https://picsum.photos/600/300?image=18"
-              },
-              {
-                "image": "https://picsum.photos/600/300?image=19",
-                "thumb": "https://picsum.photos/300/150?image=19"
-              },
-              {
-                "image": "https://picsum.photos/600/300?image=20",
-                "thumb": "https://picsum.photos/300/150?image=20"
-              },
-              {
-                "image": "https://picsum.photos/600/300?image=21",
-                "thumb": "https://picsum.photos/300/150?image=21"
+                "name": "thumb",
+                "type": "Image"
               }
             ]
           }

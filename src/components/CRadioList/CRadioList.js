@@ -7,7 +7,7 @@ const getListeners = (context) => {
   const self = context;
 
   const listeners = {
-    input(payload) {
+    change(payload) {
       self.value = payload;
       const items = self.value;
       self.sendToEventBus('Changed', { items });

@@ -448,7 +448,7 @@
                   "value": true
                 }
               ],
-              "enabled": true,
+              "autoSubmit": true,
               "submit": {
                 "name": "submit_button",
                 "label": "Submit",

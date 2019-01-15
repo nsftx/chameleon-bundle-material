@@ -2,7 +2,7 @@ const itemInterface = [
   {
     name: 'id',
     type: 'String',
-    label: 'Key',
+    label: 'Id',
   },
   {
     name: 'name',

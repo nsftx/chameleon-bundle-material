@@ -12,7 +12,7 @@ export default {
       hidden: {
         current: false,
         default: false,
-        expression: binding.setExpression('<%= !element.enabled %>'),
+        expression: binding.setExpression('<%= element.autoSubmit %>'),
       },
     },
     clear: {
@@ -21,7 +21,7 @@ export default {
       hidden: {
         current: false,
         default: false,
-        expression: binding.setExpression('<%= !element.enabled %>'),
+        expression: binding.setExpression('<%= element.autoSubmit %>'),
       },
     },
   },
@@ -55,10 +55,10 @@ export default {
       priority: 1,
     },
     theme: true,
-    enabled: {
+    autoSubmit: {
       type: 'check',
-      name: 'Enable Default Actions',
-      value: true,
+      name: 'Auto Submit Form',
+      value: false,
     },
     submit: {
       type: 'group',

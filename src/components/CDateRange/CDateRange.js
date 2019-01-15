@@ -134,6 +134,7 @@ const getPicker = (context, createElement) => {
             if (moment(self.valueFrom).isAfter(self.valueTo)) {
               self.valueTo = self.valueFrom;
             }
+            self.$emit('input', value);
             self.sendToEventBus('Changed', { value });
           },
           formattedInput(value) {
@@ -152,6 +153,7 @@ const getPicker = (context, createElement) => {
         on: {
           input(value) {
             self.valueTo = value;
+            self.$emit('input', value);
             self.sendToEventBus('Changed', { value });
           },
           formattedInput(value) {

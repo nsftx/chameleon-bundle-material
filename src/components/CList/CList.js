@@ -3,6 +3,7 @@ import {
   isNil,
   isString,
   map,
+  merge,
   filter,
 } from 'lodash';
 import Element from '../Element';
@@ -59,25 +60,6 @@ const getProps = (context) => {
   if (context.pagination) props.pagination = context.pagination;
 
   return props;
-};
-
-const getPagination = (config) => {
-  const defaultPagination = {
-    descending: false,
-    sortBy: null,
-    rowsPerPage: 10,
-    page: 1,
-    totalItems: 0,
-  };
-
-  const pagination = defaults({
-    rowsPerPage: config.rowsPerPage,
-    sortBy: config.sortBy,
-    descending: config.sortDescending,
-    page: config.startPage,
-  }, defaultPagination);
-
-  return pagination;
 };
 
 const getListAvatar = (createElement, item, context) => {
@@ -171,17 +153,29 @@ const getCardSlot = (createElement, context) => {
   return slot;
 };
 
+const getClientPagination = (config, setPagination) => {
+  const sort = () => {
+    if (config.sortBy) {
+      return config.sortBy.mapName ? config.sortBy.mapName : config.sortBy.name;
+    }
+    return config.sortBy;
+  };
+  return defaults(setPagination || {}, {
+    rowsPerPage: config.rowsPerPage,
+    sortBy: sort(),
+    descending: config.sort ? config.sort === 'desc' : null,
+    page: config.startPage,
+  });
+};
+
 const getListeners = (context) => {
   const self = context;
 
   const listeners = {
     'update:pagination': (value) => {
-      if (self.pagination && self.pagination.totalItems && self.dataSourceParams.pagination) {
-        self.dataSourceParams.pagination.page = value.page;
-        self.loadData();
-      }
+      self.pagination = getClientPagination(self.config, value);
+      self.loadData();
       self.sendToEventBus('PaginationChanged', value);
-      self.pagination = value;
     },
   };
 
@@ -221,14 +215,20 @@ export default {
   },
   methods: {
     loadData() {
+      // Remove params set in SDK
+      delete this.dataSourceParams.pagination;
+      // Set server pagination
+      this.dataSourceParams = merge(this.dataSourceParams, {
+        pageSize: this.pagination.rowsPerPage,
+        sort: this.pagination.descending ? 'desc' : 'asc',
+        sortBy: this.pagination.sortBy ? this.pagination.sortBy.name : this.pagination.sortBy,
+        currentPage: this.pagination.page,
+      });
       this.loadConnectorData().then((result) => {
         this.items = result.items || [];
         this.totalItems = result.pagination ? result.pagination.totalResults : 0;
         this.sendToEventBus('DataSourceChanged', this.dataSource);
       });
-    },
-    setPage() {
-      // todo
     },
     setRowsPerPage(context) {
       if (context.rows && this.pagination) {
@@ -245,7 +245,7 @@ export default {
     },
   },
   mounted() {
-    this.pagination = getPagination(this.config);
+    this.pagination = getClientPagination(this.config);
   },
   render(createElement) {
     const data = {

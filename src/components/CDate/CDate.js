@@ -102,6 +102,7 @@ const getPicker = (context, createElement) => {
       on: {
         input(value) {
           self.value = value;
+          self.$emit('input', value);
           self.sendToEventBus('Changed', { value });
         },
         formattedInput(value) {

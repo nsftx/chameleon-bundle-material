@@ -90,10 +90,13 @@ export default {
       priority: 9,
     },
     sortBy: {
-      type: 'input',
+      type: 'select',
       group: 'data',
       name: 'Default Sorting By',
-      value: null,
+      items: '=$activePageElement.dataSource.schema',
+      valueProp: ['mapName', 'name'],
+      displayProp: ['title', 'name'],
+      returnObject: true,
       priority: 10,
     },
     sort: {

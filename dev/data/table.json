@@ -10,9 +10,10 @@
           "flat": false,
           "elements": [
             {
-              "name": "shoppingTable",
+              "name": "temperaturesPerCity",
               "type": "table",
               "rowsPerPage": 10,
+              "startPage": 1,
               "dataSource": {
                 "name": "temperaturesPerCity",
                 "id": "temperaturesPerCity",

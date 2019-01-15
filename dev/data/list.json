@@ -27,6 +27,8 @@
               "itemRadius": true,
               "header": "Header",
               "showOverflow": true,
+              "rowsPerPage": 5,
+              "startPage": 1,
               "dataSource": {
                 "items": [
                   {
