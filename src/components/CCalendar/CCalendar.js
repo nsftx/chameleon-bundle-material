@@ -76,6 +76,11 @@ const getHiddenInput = (context, createElement) => {
         required: getPropRequired(config),
         rules: validator.getRules(config, self.validators),
       },
+      on: {
+        input(value) {
+          self.value = value;
+        },
+      },
     });
 };
 
