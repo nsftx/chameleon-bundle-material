@@ -523,13 +523,23 @@
                   "title": "Table and list",
                   "elements": [
                     {
-                      "name": "shoppingTable",
+                      "name": "activityCards",
                       "type": "table",
                       "color": "",
                       "theme": "",
                       "imageRadius": true,
+                      "rowsPerPage": 5,
+                      "startPage": 1,
                       "header": "List title",
                       "dataSource": {
+                        "id": "activityCards",
+                        "name": "activityCards",
+                        "model": "ActivityCards",
+                        "connector": {
+                          "id": "12gh67qa-904d-4a9a-89f2-0a5afd8f1464",
+                          "name": "Sample Local Connector",
+                          "type": "local"
+                        },
                         "schema": [
                           {
                             "name": "title",
@@ -547,44 +557,6 @@
                             "name": "icon",
                             "type": "icon"
                           }
-                        ],
-                        "items": [
-                          {
-                            "title": "Frozen Yogurt",
-                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                            "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
-                            "icon": "language"
-                          },
-                          {
-                            "title": "Ice cream sandwich",
-                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                            "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
-                            "icon": "language"
-                          },
-                          {
-                            "title": "Eclair",
-                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                            "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
-                            "icon": "language"
-                          },
-                          {
-                            "title": "Frozen Yogurt",
-                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                            "thumb": "https://vuetifyjs.com/static/doc-images/lists/1.jpg",
-                            "icon": "language"
-                          },
-                          {
-                            "title": "Ice cream sandwich",
-                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                            "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
-                            "icon": "language"
-                          },
-                          {
-                            "title": "Eclair",
-                            "description": "calories: 159, fat: 6.0, carbs: 24, calories",
-                            "thumb": "https://vuetifyjs.com/static/doc-images/cards/desert.jpg",
-                            "icon": "language"
-                          }
                         ]
                       }
                     },
@@ -596,6 +568,8 @@
                       "header": "List header",
                       "color": "",
                       "theme": "light",
+                      "rowsPerPage": 5,
+                      "startPage": 1,
                       "dataSource": {
                         "items": [
                           {
@@ -1075,42 +1049,52 @@
       "description": "Local Connector",
       "sources": {
         "galleryImages": {
+          "id": "galleryImages",
           "name": "galleryImages",
           "model": "GalleryImages"
         },
         "temperaturesPerCity": {
+          "id": "temperaturesPerCity",
           "name": "temperaturesPerCity",
           "model": "TemperaturePerCity"
         },
         "populationPerAgeState": {
+          "id": "populationPerAgeState",
           "name": "populationPerAgeState",
           "model": "PopulationPerAgeState"
         },
         "populationPerAge": {
+          "id": "populationPerAge",
           "name": "populationPerAge",
           "model": "PopulationPerAge"
         },
         "flowersCategorisation": {
+          "id": "flowersCategorisation",
           "name": "flowersCategorisation",
           "model": "FlowersCategorisation"
         },
         "activityCards": {
+          "id": "activityCards",
           "name": "activityCards",
           "model": "ActivityCards"
         },
         "icons": {
+          "id": "icons",
           "name": "icons",
           "model": "Icons"
         },
         "visionCameras": {
+          "id": "visionCameras",
           "name": "visionCameras",
           "model": "VisionCameras"
         },
         "visionDetections": {
+          "id": "visionDetections",
           "name": "visionDetections",
           "model": "VisionDetections"
         },
         "treeview": {
+          "id": "treeview",
           "name": "treeview",
           "model": "Treeview"
         }

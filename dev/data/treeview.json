@@ -19,6 +19,7 @@
               "expanderPosition": "left",
               "selectorPosition": "left",
               "dataSource": {
+                "id": "treeview",
                 "name": "treeview",
                 "model": "Treeview",
                 "connector": {

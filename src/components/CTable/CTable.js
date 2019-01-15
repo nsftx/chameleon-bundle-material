@@ -72,51 +72,56 @@ const setRowColor = (rowIndex, context) => {
   return isAlternatingRowOption ? getAlternatingRowColor(rowIndex, context) : null;
 };
 
+const getSlotContent = (createElement, column, content) => {
+  let result = content;
+  // Set table column depeneding on mapped or default value type
+  const type = toLower(column.mapType) || toLower(column.type);
+
+  if (type === 'icon') {
+    result = [createElement('v-icon', content)];
+  } else if (type === 'image') {
+    result = [
+      createElement('v-avatar', {
+        attrs: {
+          size: '32px',
+        },
+      },
+        [
+          createElement('img', {
+            attrs: {
+              src: content,
+            },
+          }),
+        ]),
+    ];
+  }
+  return result;
+};
+
 const getScopedSlots = (createElement, context) => {
   const dataSource = context.dataSource;
   const getColumns = (props) => {
     const item = props.item;
     const columns = [];
 
-    each(dataSource.schema, (schemaItem) => {
-      const contentProp = isNil(schemaItem.mapName) ? 'name' : 'mapName';
+    if (dataSource && dataSource.schema) {
+      each(dataSource.schema, (schemaItem) => {
+        const contentProp = isNil(schemaItem.mapName) ? 'name' : 'mapName';
 
-      let content = item[schemaItem[contentProp]];
-      const inferredProps = {};
+        let content = item[schemaItem[contentProp]];
+        const inferredProps = {};
 
-      const column = schemaItem;
-      if (column) {
-        merge(inferredProps, getCellInferredProps(column));
-
-        switch (toLower(column.type)) {
-          case 'icon':
-            content = [createElement('v-icon', content)];
-            break;
-          case 'image':
-            content = [
-              createElement('v-avatar', {
-                attrs: {
-                  // NOTE: Expose in options?
-                  size: '32px',
-                },
-              }, [
-                createElement('img', {
-                  attrs: {
-                    src: content,
-                  },
-                }),
-              ]),
-            ];
-            break;
-          default:
-            content = item[schemaItem[contentProp]];
+        const column = schemaItem;
+        if (column) {
+          merge(inferredProps, getCellInferredProps(column));
+          content = getSlotContent(createElement, column, content);
         }
-      }
 
-      columns.push(createElement('td', {
-        staticClass: `text-xs-${inferredProps.align}`,
-      }, content));
-    });
+        columns.push(createElement('td', {
+          staticClass: `text-xs-${inferredProps.align}`,
+        }, content));
+      });
+    }
 
     return columns;
   };
@@ -141,18 +146,26 @@ const getHeadersProp = (dataSource, config) => {
   const columns = dataSource.schema;
 
   return map(columns, column => (merge({
-    value: column.name,
+    value: column.mapName || column.name,
     class: config.headerColor || config.color,
     text: column.title || column.name,
   }, getCellInferredProps(column))));
 };
 
-const getClientPagination = (config, setPagination) => defaults(setPagination || {}, {
-  rowsPerPage: config.rowsPerPage,
-  sortBy: config.sortBy,
-  descending: config.sort ? config.sort === 'desc' : null,
-  page: config.startPage,
-});
+const getClientPagination = (config, setPagination) => {
+  const sort = () => {
+    if (config.sortBy) {
+      return config.sortBy.mapName ? config.sortBy.mapName : config.sortBy.name;
+    }
+    return config.sortBy;
+  };
+  return defaults(setPagination || {}, {
+    rowsPerPage: config.rowsPerPage,
+    sortBy: sort(),
+    descending: config.sort ? config.sort === 'desc' : false,
+    page: config.startPage,
+  });
+};
 
 const getProps = (context) => {
   const config = context.config;
@@ -193,8 +206,8 @@ const setDataSourceParams = (context) => {
 
   self.dataSourceParams = merge(self.dataSourceParams, {
     pageSize: self.pagination.rowsPerPage,
-    sort: self.pagination.descending ? 'desc' : 'asc',
-    sortBy: self.pagination.sortBy,
+    sort: self.config.sort,
+    sortBy: self.pagination.sortBy ? self.pagination.sortBy.name : self.pagination.sortBy,
     currentPage: self.pagination.page,
   });
 };
@@ -234,9 +247,6 @@ export default {
         this.sendToEventBus('DataSourceChanged', this.dataSource);
       });
     },
-    setPage() {
-      // todo
-    },
     setRowsPerPage(context) {
       if (context.rows && this.pagination) {
         this.pagination.rowsPerPage = context.rows;
@@ -253,7 +263,6 @@ export default {
   },
   mounted() {
     this.pagination = getClientPagination(this.config);
-    this.loadData();
   },
   render(createElement) {
     const table = createElement('v-data-table', {
