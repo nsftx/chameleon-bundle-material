@@ -17,7 +17,7 @@ const getComponentTag = (name, context) => {
 const uuid = () => v4();
 
 const getFormActions = (context, createElement) => {
-  if (!context.formActionsStatus) return false;
+  if (context.formActionsStatus) return false;
 
   return createElement(
     'v-card-actions',
@@ -54,6 +54,7 @@ const getFormInputs = (context, createElement) => map(context.getFields(),
           const currentField = field;
           currentField.value = value;
           context.$emit('input', value);
+          if (context.config.autoSubmit) context.submit();
         },
       },
     },
@@ -92,7 +93,7 @@ export default {
       };
     },
     formActionsStatus() {
-      return this.config.enabled;
+      return this.config.autoSubmit;
     },
     form() {
       const formName = this.config.name;

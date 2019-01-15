@@ -60,6 +60,7 @@ export default {
     },
   },
   'c-form': {
+    autoSubmit: true,
     _schema: {
       type: 'form',
       group: 'widgets',
