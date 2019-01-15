@@ -12,7 +12,7 @@ export default {
       hidden: {
         current: false,
         default: false,
-        expression: binding.setExpression('<%= !element.enabled %>'),
+        expression: binding.setExpression('<%= element.autoSubmit %>'),
       },
     },
     clear: {
@@ -21,7 +21,7 @@ export default {
       hidden: {
         current: false,
         default: false,
-        expression: binding.setExpression('<%= !element.enabled %>'),
+        expression: binding.setExpression('<%= element.autoSubmit %>'),
       },
     },
   },
