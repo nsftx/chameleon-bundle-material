@@ -105,8 +105,8 @@ export default {
         flat: true,
       },
       staticStyle: {
-        width: this.config.width,
-        height: this.config.height,
+        width: this.config.width || '50px',
+        height: this.config.height || '100%',
       },
     };
     const child = this.config.src || (this.items && this.items.length) ?

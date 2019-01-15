@@ -48,6 +48,7 @@ export default {
     },
     src: {
       type: 'imageSource',
+      group: 'data',
       name: 'Image source',
       value: null,
       priority: 2,
