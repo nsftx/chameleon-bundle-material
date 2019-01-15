@@ -25,6 +25,7 @@ export { default as placeholder } from './CPlaceholder/index.meta';
 export { default as radioList } from './CRadioList/index.meta';
 export { default as rating } from './CRating/index.meta';
 export { default as richText } from './CRichText/index.meta';
+export { default as repeater } from './CRepeater/index.meta';
 export { default as select } from './CSelect/index.meta';
 export { default as selectList } from './CSelectList/index.meta';
 export { default as slider } from './CSlider/index.meta';

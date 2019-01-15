@@ -3,7 +3,7 @@ import { validatable } from '@mixins';
 import { urlValidator } from '@validators';
 import Element from '../Element';
 
-const parseImageSrc = (context) => {
+const parseImageSrc = (context, image) => {
   const srcConfig = context.registry.staticAppAssets;
   const srcParams = srcConfig.urlParams;
   let src = `${srcConfig.baseUrl}${srcConfig.appUrl}`;
@@ -13,15 +13,16 @@ const parseImageSrc = (context) => {
     src = template(src)({ [key]: paramValue });
   });
 
-  return `${src}/${context.config.src}`;
+  return `${src}/${image}`;
 };
 
 const getValue = value => (isNil(value) || value === false ? '' : `${value}`);
 
 const getImageAttrs = (context) => {
   const config = context.config;
-  const isUrl = urlValidator(context.validators.isUrl, getValue(config.src));
-  const src = isUrl === true ? config.src : parseImageSrc(context);
+  const imageSrc = context.items || config.src;
+  const isUrl = urlValidator(context.validators.isUrl, getValue(imageSrc));
+  const src = isUrl === true ? imageSrc : parseImageSrc(context, imageSrc);
 
   return {
     src,
@@ -35,7 +36,6 @@ const getImageAttrs = (context) => {
 const renderImage = (createElement, context) => {
   const data = {
     attrs: getImageAttrs(context),
-    staticStyle: {},
     on: {
       click() {
         const payload = context.config.src;
@@ -75,6 +75,27 @@ export default {
   mixins: [
     validatable,
   ],
+  data() {
+    return {
+      items: [],
+    };
+  },
+  watch: {
+    dataSource: {
+      handler() {
+        this.loadData();
+      },
+      deep: true,
+    },
+  },
+  methods: {
+    loadData() {
+      this.loadConnectorData().then((result) => {
+        this.items = result.items ? result.items[0].url : '';
+        this.sendToEventBus('DataSourceChanged', this.dataSource);
+      });
+    },
+  },
   render(createElement) {
     const data = {
       props: {
@@ -84,11 +105,11 @@ export default {
         flat: true,
       },
       staticStyle: {
-        width: this.config.width,
-        height: this.config.height,
+        width: this.config.width || '50px',
+        height: this.config.height || '100%',
       },
     };
-    const child = this.config.src ?
+    const child = this.config.src || (this.items && this.items.length) ?
       renderImage(createElement, this) :
       renderPlaceholder(createElement, this);
 

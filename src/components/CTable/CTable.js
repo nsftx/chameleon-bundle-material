@@ -75,7 +75,7 @@ const setRowColor = (rowIndex, context) => {
 const getSlotContent = (createElement, column, content) => {
   let result = content;
   // Set table column depeneding on mapped or default value type
-  const type = toLower(column.mapType) || toLower(column.type);
+  const type = column.mapType || column.type;
 
   if (type === 'icon') {
     result = [createElement('v-icon', content)];
