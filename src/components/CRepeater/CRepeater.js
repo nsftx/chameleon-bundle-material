@@ -41,6 +41,7 @@ export default {
     const style = {
       opacity: '0.3',
       pointerEvents: 'none',
+      userSelect: 'none',
     };
 
     if (this.items.length && this.element && !isNil(this.element.dataSource)) {
@@ -55,7 +56,7 @@ export default {
           },
           // Add parent static class so that it can inherit parent (container) style
           staticClass: `${this.$options.namespace}${this.$parent.$attrs['data-type']}-item`,
-          style: this.registry.isPreviewMode && index >= 1 ? style : '',
+          style: this.registry.isPreviewMode && index >= 1 ? style : null,
         });
       });
     } else if (this.element && isNil(this.element.dataSource)) {
