@@ -11,7 +11,7 @@ const getListeners = (context) => {
       self.value = payload;
       const items = self.value;
       self.sendToEventBus('Changed', { items });
-      self.$emit('change', payload);
+      self.$emit('input', payload);
     },
   };
 
