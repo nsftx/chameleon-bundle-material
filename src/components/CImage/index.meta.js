@@ -1,3 +1,5 @@
+import { binding } from '@nsoft/chameleon-sdk/src/utility';
+
 const itemInterface = [
   {
     name: 'url',
@@ -44,6 +46,11 @@ export default {
       name: 'Data Source',
       value: null,
       schema: itemInterface,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= element.src != null && element.src.length > 0 %>'),
+      },
       priority: 1,
     },
     src: {
@@ -51,6 +58,11 @@ export default {
       group: 'data',
       name: 'Image source',
       value: null,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= element.dataSource != null %>'),
+      },
       priority: 2,
     },
     width: {

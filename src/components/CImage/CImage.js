@@ -21,6 +21,8 @@ const getValue = value => (isNil(value) || value === false ? '' : `${value}`);
 const getImageAttrs = (context) => {
   const config = context.config;
   const imageSrc = context.items || config.src;
+  if (isNil(imageSrc) || imageSrc.length === 0) return null;
+
   const isUrl = urlValidator(context.validators.isUrl, getValue(imageSrc));
   const src = isUrl === true ? imageSrc : parseImageSrc(context, imageSrc);
 

@@ -1,9 +1,29 @@
+import { binding } from '@nsoft/chameleon-sdk/src/utility';
+
+const itemInterface = [
+  {
+    name: 'url',
+    type: 'String',
+    label: 'Url',
+  },
+];
+
 export default {
   group: 'widgets',
   type: 'video',
   name: 'Video',
   icon: 'theaters',
+  optionGroups: {
+    data: {
+      key: 'data',
+      name: 'Data',
+    },
+  },
   actions: [
+    {
+      name: 'setDataSource',
+      help: 'Sets table data source from event data',
+    },
     {
       name: 'play',
       help: 'Start playing',
@@ -14,6 +34,10 @@ export default {
     },
   ],
   events: [
+    {
+      name: 'DataSourceChanged',
+      help: 'Fires when table data source is changed',
+    },
     {
       name: 'PlayerReadyChanged',
       help: 'Video ready state changed',
@@ -47,7 +71,7 @@ export default {
       name: 'Autoplay',
       hint: 'This might not work properly in Chrome',
       value: false,
-      priority: 4,
+      priority: 3,
     },
     controls: {
       type: 'check',
@@ -59,19 +83,13 @@ export default {
       type: 'check',
       name: 'Repeat',
       value: false,
-      priority: 5,
+      priority: 4,
     },
     muted: {
       type: 'check',
       name: 'Mute Volume',
       value: false,
-      priority: 6,
-    },
-    value: {
-      type: 'inputList',
-      name: 'Video Sources',
-      value: [],
-      priority: 2,
+      priority: 5,
     },
     aspectRatio: {
       type: 'select',
@@ -91,7 +109,32 @@ export default {
         },
       ],
       value: 'auto',
-      priority: 3,
+      priority: 2,
+    },
+    value: {
+      type: 'inputList',
+      group: 'data',
+      name: 'Video Source',
+      value: [],
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= element.dataSource != null %>'),
+      },
+      priority: 2,
+    },
+    dataSource: {
+      type: 'dataSource',
+      group: 'data',
+      name: 'Data Source',
+      value: null,
+      schema: itemInterface,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= element.value != null && element.value.length > 0 %>'),
+      },
+      priority: 1,
     },
   },
 };
