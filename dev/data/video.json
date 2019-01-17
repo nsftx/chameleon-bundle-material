@@ -28,7 +28,7 @@
               "type": "video-stream",
               "name": "video stream widget",
               "streamType": "img",
-              "value": "http://admin:SyncShop17@172.20.50.245/Streaming/channels/102/httppreview",
+              "value": "http://172.20.117.170/w/5b23c6ec604d289dd4cc0638/cameras/5a15a06cef65b86646ee443e/live",
               "aspectRatio": "auto"
             }
           ]

@@ -1,8 +1,36 @@
+import { binding } from '@nsoft/chameleon-sdk/src/utility';
+
+const itemInterface = [
+  {
+    name: 'url',
+    type: 'String',
+    label: 'Url',
+  },
+];
+
 export default {
   group: 'widgets',
   type: 'video-stream',
   name: 'Video Stream',
   icon: 'video_call',
+  optionGroups: {
+    data: {
+      key: 'data',
+      name: 'Data',
+    },
+  },
+  actions: [
+    {
+      name: 'setDataSource',
+      help: 'Sets table data source from event data',
+    },
+  ],
+  events: [
+    {
+      name: 'DataSourceChanged',
+      help: 'Fires when table data source is changed',
+    },
+  ],
   options: {
     streamType: {
       type: 'select',
@@ -15,12 +43,6 @@ export default {
       ],
       value: 'img',
       priority: 1,
-    },
-    value: {
-      type: 'input',
-      name: 'Stream Source',
-      value: '',
-      priority: 2,
     },
     aspectRatio: {
       type: 'select',
@@ -40,7 +62,32 @@ export default {
         },
       ],
       value: 'auto',
-      priority: 3,
+      priority: 2,
+    },
+    value: {
+      type: 'input',
+      group: 'data',
+      name: 'Stream Source',
+      value: null,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= element.dataSource != null %>'),
+      },
+      priority: 2,
+    },
+    dataSource: {
+      type: 'dataSource',
+      group: 'data',
+      name: 'Data Source',
+      value: null,
+      schema: itemInterface,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= element.value != null && element.value.length > 0 %>'),
+      },
+      priority: 1,
     },
   },
 };
