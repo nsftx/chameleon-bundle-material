@@ -1,4 +1,4 @@
-import { find, isArray, includes } from 'lodash';
+import { find, isArray, isObject, includes } from 'lodash';
 import { fieldable, validatable } from '@mixins';
 import Element from '../Element';
 
@@ -66,12 +66,34 @@ export default {
   ],
   data() {
     return {
+      items: null,
       editor: null,
     };
   },
+  watch: {
+    dataSource: {
+      handler() {
+        this.loadData();
+      },
+      deep: true,
+    },
+  },
+  computed: {
+    textValue() {
+      if (this.items && this.items.length) {
+        return isObject(this.items[0]) ? this.items[0].text : this.items[0];
+      }
+      return this.config.value;
+    },
+  },
   methods: {
+    loadData() {
+      this.loadConnectorData().then((result) => {
+        this.items = result.items;
+        this.sendToEventBus('DataSourceChanged', this.dataSource);
+      });
+    },
     setEditor() {
-      this.value = this.config.value;
       const link = Quill.import('formats/link');
       // Modify url if desired
       link.sanitize = (url) => {
@@ -91,17 +113,17 @@ export default {
         },
       });
 
-      if (this.value) {
-        this.editor.clipboard.dangerouslyPasteHTML(this.value);
+      if (this.textValue) {
+        this.editor.clipboard.dangerouslyPasteHTML(this.textValue);
       }
 
       this.editor.on('selection-change', (range) => {
         if (range) {
           this.$emit('focus', this.editor);
-          this.sendToEventBus('FocusedIn', { text: this.value });
+          this.sendToEventBus('FocusedIn', { text: this.textValue });
         } else {
           this.$emit('blur', this.editor);
-          this.sendToEventBus('FocusedOut', { text: this.value });
+          this.sendToEventBus('FocusedOut', { text: this.textValue });
         }
       });
 
@@ -113,10 +135,10 @@ export default {
           html = '';
         }
 
-        this.value = html;
+        this.config.value = html;
         this.validate();
-        this.$emit('input', this.value);
-        this.sendToEventBus('Changed', { text: this.value });
+        this.$emit('input', this.textValue);
+        this.sendToEventBus('Changed', { text: this.textValue });
       });
     },
   },
@@ -126,6 +148,8 @@ export default {
       Figure out the way to separate custom controls in form (maybe on form level)
       Vuetify controls already have spacing between
     */
+    this.value = this.textValue;
+
     const data = {
       class: {
         'rich-text--error': this.hasError,

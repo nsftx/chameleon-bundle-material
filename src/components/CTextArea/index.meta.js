@@ -25,6 +25,10 @@ export default {
   },
   actions: [
     {
+      name: 'setDataSource',
+      help: 'Sets text data source from event data',
+    },
+    {
       name: 'setInputValue',
       help: 'Input field updated',
     },
@@ -34,6 +38,10 @@ export default {
     },
   ],
   events: [
+    {
+      name: 'DataSourceChanged',
+      help: 'Fires when text data source is changed',
+    },
     {
       name: 'Changed',
       help: 'Input changed',
