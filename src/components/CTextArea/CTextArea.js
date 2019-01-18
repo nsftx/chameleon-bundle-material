@@ -1,6 +1,6 @@
 import { fieldable, validatable } from '@mixins';
 import { validator } from '@validators';
-import { isNil } from 'lodash';
+import { isNil, isObject } from 'lodash';
 import Element from '../Element';
 
 const getPropRequired = (config) => {
@@ -29,7 +29,7 @@ const getProps = (context) => {
     disabled: config.disabled,
     required: getPropRequired(config),
     rules: validator.getRules(config, context.validators),
-    value: context.value,
+    value: context.textValue,
   };
 
   return props;
@@ -41,6 +41,38 @@ export default {
     fieldable,
     validatable,
   ],
+  data() {
+    return {
+      items: null,
+    };
+  },
+  watch: {
+    dataSource: {
+      handler() {
+        this.loadData();
+      },
+      deep: true,
+    },
+  },
+  computed: {
+    textValue() {
+      if (this.items && this.items.length) {
+        return isObject(this.items[0]) ? this.items[0].text : this.items[0];
+      }
+      return this.config.value;
+    },
+  },
+  methods: {
+    loadData() {
+      this.loadConnectorData().then((result) => {
+        this.items = result.items;
+        this.sendToEventBus('DataSourceChanged', this.dataSource);
+      });
+    },
+  },
+  mounted() {
+    this.value = this.textValue;
+  },
   render(createElement) {
     const self = this;
     const data = {

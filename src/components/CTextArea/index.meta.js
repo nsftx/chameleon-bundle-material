@@ -1,9 +1,23 @@
+import { binding } from '@nsoft/chameleon-sdk/src/utility';
+
+const itemInterface = [
+  {
+    name: 'text',
+    type: 'String',
+    label: 'Text',
+  },
+];
+
 export default {
   group: 'inputs',
   type: 'text-area',
   name: 'Text Area',
   icon: 'text_fields',
   optionGroups: {
+    data: {
+      key: 'data',
+      name: 'Data',
+    },
     validation: {
       key: 'validation',
       name: 'Validation',
@@ -101,6 +115,31 @@ export default {
       name: 'Disable Input',
       value: false,
       priority: 10,
+    },
+    value: {
+      type: 'inputList',
+      group: 'data',
+      name: 'Input Source',
+      value: null,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= element.dataSource != null %>'),
+      },
+      priority: 2,
+    },
+    dataSource: {
+      type: 'dataSource',
+      group: 'data',
+      name: 'Data Source',
+      value: null,
+      schema: itemInterface,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= element.value != null && element.value.length > 0 %>'),
+      },
+      priority: 1,
     },
     validation: {
       type: 'group',
