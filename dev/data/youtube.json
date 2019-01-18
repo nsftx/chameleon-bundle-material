@@ -13,10 +13,11 @@
           "elements": [
             {
               "type": "youtube",
-              "name": "you tube",
+              "name": "youtube",
               "autoplay": false,
-              "playlist": "",
-              "repeat": false,
+              "repeat": true,
+              "controls": true,
+              "playlist": "playlist",
               "value": [
                 "https://www.youtube.com/watch?v=2bnZliAjPUk",
                 "https://www.youtube.com/watch?v=4Rc-NGWEHdU",
@@ -25,10 +26,11 @@
             },
             {
               "type": "youtube",
-              "name": "you tube",
-              "autoplay": false,
-              "playlist": "",
-              "repeat": false,
+              "name": "youtube",
+              "playlist": "playlist",
+              "muted": true,
+              "controls": false,
+              "autoplay": true,
               "value": [
                 "https://www.youtube.com/watch?v=2bnZliAjPUk"
               ]
