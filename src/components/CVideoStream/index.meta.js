@@ -22,13 +22,13 @@ export default {
   actions: [
     {
       name: 'setDataSource',
-      help: 'Sets table data source from event data',
+      help: 'Sets video strema data source from event data',
     },
   ],
   events: [
     {
       name: 'DataSourceChanged',
-      help: 'Fires when table data source is changed',
+      help: 'Fires when video stream data source is changed',
     },
   ],
   options: {

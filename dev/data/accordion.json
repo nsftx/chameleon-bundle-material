@@ -61,9 +61,7 @@
                             "tooltip": "phone",
                             "hint": "phone"
                           },
-                          "data": {
-                            "value": "+387 63 333 444"
-                          },
+                          "value": "+387 63 333 444",
                           "style": {
                             "color": null,
                             "theme": "light"
@@ -116,9 +114,7 @@
                             "tooltip": "website adress",
                             "hint": "some hint!!"
                           },
-                          "data": {
-                            "value": "https://chameleon.nsoft.com"
-                          },
+                          "value": "https://chameleon.nsoft.com",
                           "style": {
                             "color": null,
                             "theme": "light"

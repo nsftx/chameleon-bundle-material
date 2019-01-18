@@ -49,7 +49,7 @@ const getProps = (context) => {
     suffix: getPropSuffix(config),
     type: context.type,
     mask: config.mask || null,
-    value: config.data ? config.data.value : null,
+    value: context.textValue,
   };
 
   return props;
@@ -93,7 +93,27 @@ export default {
     fieldable,
     validatable,
   ],
+  data() {
+    return {
+      items: null,
+      show: false,
+    };
+  },
+  watch: {
+    dataSource: {
+      handler() {
+        this.loadData();
+      },
+      deep: true,
+    },
+  },
   computed: {
+    textValue() {
+      if (this.items && this.items.length) {
+        return isObject(this.items[0]) ? this.items[0].text : this.items[0];
+      }
+      return this.config.value;
+    },
     type() {
       const subtype = this.config.subtype;
       let type = 'text';
@@ -109,12 +129,16 @@ export default {
       return type;
     },
   },
-  data() {
-    return {
-      show: false,
-    };
+  mounted() {
+    this.value = this.textValue;
   },
   methods: {
+    loadData() {
+      this.loadConnectorData().then((result) => {
+        this.items = result.items;
+        this.sendToEventBus('DataSourceChanged', this.dataSource);
+      });
+    },
     onIconAppendClick() {
       this.show = !this.show;
     },
@@ -125,7 +149,6 @@ export default {
       props: getProps(this),
       on: getListeners(this),
     };
-
     const children = [
       createElement(
         'v-text-field',

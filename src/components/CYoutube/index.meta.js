@@ -22,7 +22,7 @@ export default {
   actions: [
     {
       name: 'setDataSource',
-      help: 'Sets table data source from event data',
+      help: 'Sets youtube data source from event data',
     },
     {
       name: 'play',
@@ -40,7 +40,7 @@ export default {
   events: [
     {
       name: 'DataSourceChanged',
-      help: 'Fires when table data source is changed',
+      help: 'Fires when youtube data source is changed',
     },
     {
       name: 'PlayerReadyChanged',

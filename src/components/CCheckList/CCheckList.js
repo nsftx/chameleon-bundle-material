@@ -80,6 +80,11 @@ export default {
     fieldable,
     validatable,
   ],
+  data() {
+    return {
+      items: [],
+    };
+  },
   watch: {
     dataSource: {
       handler() {
@@ -90,18 +95,13 @@ export default {
   methods: {
     loadData() {
       this.loadConnectorData().then((result) => {
-        this.config.dataSource.items = result.items || [];
+        this.items = result.items || [];
+        this.sendToEventBus('DataSourceChanged', this.dataSource);
       });
     },
   },
   render(createElement) {
     const message = createErrorMessage(createElement, this);
-
-    if (isNil(this.config.dataSource)) {
-      this.config.dataSource = {
-        items: [],
-      };
-    }
 
     const data = {
       props: {
@@ -118,7 +118,7 @@ export default {
           light: this.isThemeLight,
         },
       }, this.config.label),
-      map(this.config.dataSource.items,
+      map(this.items,
         item => createElement('v-checkbox',
           {
             attrs: getItemAttrs(this),
