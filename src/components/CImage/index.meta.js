@@ -56,7 +56,7 @@ export default {
       disabled: {
         current: false,
         default: false,
-        expression: binding.setExpression('<%= element.src != null && element.src.length > 0 %>'),
+        expression: binding.setExpression('<%= !isNil(element.src) && element.src.length > 0 %>', expressionImport),
       },
       priority: 1,
     },
