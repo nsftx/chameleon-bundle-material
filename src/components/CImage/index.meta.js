@@ -1,4 +1,5 @@
-import { binding } from '@nsoft/chameleon-sdk/src/utility';
+import { isNil } from 'lodash';
+import { binding } from '@utility';
 
 const itemInterface = [
   {
@@ -7,6 +8,12 @@ const itemInterface = [
     label: 'Url',
   },
 ];
+
+const expressionImport = {
+  imports: {
+    isNil,
+  },
+};
 
 export default {
   group: 'widgets',
@@ -61,7 +68,7 @@ export default {
       disabled: {
         current: false,
         default: false,
-        expression: binding.setExpression('<%= element.dataSource != null %>'),
+        expression: binding.setExpression('<%= !isNil(element.dataSource) %>', expressionImport),
       },
       priority: 2,
     },

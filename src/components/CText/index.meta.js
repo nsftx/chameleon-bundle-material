@@ -1,4 +1,11 @@
-import { binding } from '@nsoft/chameleon-sdk/src/utility';
+import { isNil } from 'lodash';
+import { binding } from '@utility';
+
+const expressionImport = {
+  imports: {
+    isNil,
+  },
+};
 
 const itemInterface = [
   {
@@ -306,7 +313,7 @@ export default {
       disabled: {
         current: false,
         default: false,
-        expression: binding.setExpression('<%= element.dataSource != null %>'),
+        expression: binding.setExpression('<%= !isNil(element.dataSource) %>', expressionImport),
       },
       priority: 2,
     },
@@ -319,7 +326,7 @@ export default {
       disabled: {
         current: false,
         default: false,
-        expression: binding.setExpression('<%= element.value != null && element.value.length > 0 %>'),
+        expression: binding.setExpression('<%= !isNil(element.value) && element.value.length > 0 %>', expressionImport),
       },
       priority: 1,
     },
