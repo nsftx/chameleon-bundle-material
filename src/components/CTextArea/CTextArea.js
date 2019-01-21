@@ -41,11 +41,6 @@ export default {
     fieldable,
     validatable,
   ],
-  data() {
-    return {
-      items: null,
-    };
-  },
   watch: {
     dataSource: {
       handler() {
@@ -60,14 +55,6 @@ export default {
         return isObject(this.items[0]) ? this.items[0].text : this.items[0];
       }
       return this.config.value;
-    },
-  },
-  methods: {
-    loadData() {
-      this.loadConnectorData().then((result) => {
-        this.items = result.items;
-        this.sendToEventBus('DataSourceChanged', this.dataSource);
-      });
     },
   },
   mounted() {

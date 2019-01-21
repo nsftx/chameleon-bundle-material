@@ -67,14 +67,16 @@ export default {
   extends: Element,
   data() {
     return {
-      items: null,
       player: null,
       playlist: '',
     };
   },
   computed: {
     value() {
-      return this.items || this.config.value;
+      if (this.items && this.items.length) {
+        return isObject(this.items[0]) ? this.items[0].url : this.items[0];
+      }
+      return this.config.value;
     },
   },
   watch: {
@@ -86,12 +88,6 @@ export default {
     },
   },
   methods: {
-    loadData() {
-      this.loadConnectorData().then((result) => {
-        this.items = result.items || null;
-        this.sendToEventBus('DataSourceChanged', this.dataSource);
-      });
-    },
     createPlayer() {
       this.player = new window.YT.Player(this.$refs.youtube, {
         videoId: 'VIDEO_ID',

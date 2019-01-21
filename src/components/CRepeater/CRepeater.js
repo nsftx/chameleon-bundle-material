@@ -3,11 +3,6 @@ import Element from '../Element';
 
 export default {
   extends: Element,
-  data() {
-    return {
-      items: [],
-    };
-  },
   computed: {
     element() {
       return this.config.elements[0];
@@ -18,13 +13,6 @@ export default {
       handler() {
         this.loadData();
       },
-    },
-  },
-  methods: {
-    loadData() {
-      this.loadConnectorData().then((result) => {
-        this.items = result.items || [];
-      });
     },
   },
   render(createElement) {

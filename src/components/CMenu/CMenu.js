@@ -7,7 +7,6 @@ export default {
   data() {
     return {
       isVisible: true,
-      items: [],
     };
   },
   computed: {
@@ -37,12 +36,6 @@ export default {
     },
   },
   methods: {
-    loadData() {
-      this.loadConnectorData().then((result) => {
-        this.items = result.items || [];
-        this.sendToEventBus('DataSourceChanged', this.dataSource);
-      });
-    },
     selectItem(item) {
       this.sendToEventBus('SelectedItemChanged', item);
     },

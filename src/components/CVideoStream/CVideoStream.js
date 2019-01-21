@@ -29,11 +29,6 @@ const getStaticStyle = (config) => {
 
 export default {
   extends: Element,
-  data() {
-    return {
-      items: null,
-    };
-  },
   watch: {
     dataSource: {
       handler() {
@@ -42,26 +37,24 @@ export default {
       deep: true,
     },
   },
-  methods: {
-    loadData() {
-      this.loadConnectorData().then((result) => {
-        this.items = result.items;
-        this.sendToEventBus('DataSourceChanged', this.dataSource);
-      });
+  computed: {
+    streamValue() {
+      if (this.items && this.items.length) {
+        return isObject(this.items[0]) ? this.items[0].url : this.items[0];
+      }
+      return this.config.value;
     },
   },
   render(createElement) {
     const data = {
       staticStyle: getStaticStyle(this.config),
     };
-    const source = this.items || this.config.value;
-    const sourceValue = isObject(source) ? source.url : source;
 
     const children = createElement(
       getStreamType(this.config),
       {
         attrs: {
-          src: sourceValue || null,
+          src: this.streamValue || null,
           width: '100%',
           height: '100%',
         },

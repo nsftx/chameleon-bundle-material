@@ -95,7 +95,6 @@ export default {
   ],
   data() {
     return {
-      items: null,
       show: false,
     };
   },
@@ -133,12 +132,6 @@ export default {
     this.value = this.textValue;
   },
   methods: {
-    loadData() {
-      this.loadConnectorData().then((result) => {
-        this.items = result.items;
-        this.sendToEventBus('DataSourceChanged', this.dataSource);
-      });
-    },
     onIconAppendClick() {
       this.show = !this.show;
     },

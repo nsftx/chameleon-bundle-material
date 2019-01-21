@@ -102,11 +102,6 @@ const getStaticStyle = (config) => {
 
 export default {
   extends: Element,
-  data() {
-    return {
-      items: null,
-    };
-  },
   watch: {
     dataSource: {
       handler() {
@@ -116,12 +111,6 @@ export default {
     },
   },
   methods: {
-    loadData() {
-      this.loadConnectorData().then((result) => {
-        this.items = result.items;
-        this.sendToEventBus('DataSourceChanged', this.dataSource);
-      });
-    },
     play() {
       this.$refs.video.play();
     },

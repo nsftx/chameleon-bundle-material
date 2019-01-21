@@ -3,11 +3,6 @@ import Element from '../Element';
 
 export default {
   extends: Element,
-  data() {
-    return {
-      items: null,
-    };
-  },
   watch: {
     dataSource: {
       handler() {
@@ -22,14 +17,6 @@ export default {
         return isObject(this.items[0]) ? this.items[0].html : this.items[0];
       }
       return this.config.value;
-    },
-  },
-  methods: {
-    loadData() {
-      this.loadConnectorData().then((result) => {
-        this.items = result.items;
-        this.sendToEventBus('DataSourceChanged', this.dataSource);
-      });
     },
   },
   render(createElement) {

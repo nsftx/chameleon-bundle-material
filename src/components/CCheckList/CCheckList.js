@@ -50,8 +50,9 @@ const getPropRequired = (config) => {
 };
 
 const getItemProps = (context, item) => {
-  const config = context.config;
+  if (isNil(context.dataSource)) return null;
 
+  const config = context.config;
   const mapProps = filter(context.dataSource.schema, i => !isNil(i.mapName));
   const itemProps = Object.keys(item);
   const value = !mapProps.length ? item[itemProps[0]] : item.value;
@@ -80,24 +81,11 @@ export default {
     fieldable,
     validatable,
   ],
-  data() {
-    return {
-      items: [],
-    };
-  },
   watch: {
     dataSource: {
       handler() {
         this.loadData();
       },
-    },
-  },
-  methods: {
-    loadData() {
-      this.loadConnectorData().then((result) => {
-        this.items = result.items || [];
-        this.sendToEventBus('DataSourceChanged', this.dataSource);
-      });
     },
   },
   render(createElement) {
@@ -111,14 +99,10 @@ export default {
       },
     };
 
-    const children = [
-      createElement('v-label', {
-        props: {
-          dark: this.isThemeDark,
-          light: this.isThemeLight,
-        },
-      }, this.config.label),
-      map(this.items,
+    const getItems = () => {
+      if (isNil(this.items)) return null;
+
+      return map(this.items,
         item => createElement('v-checkbox',
           {
             attrs: getItemAttrs(this),
@@ -126,7 +110,17 @@ export default {
             props: getItemProps(this, item),
             on: getItemListeners(this, item),
           },
-        )),
+        ));
+    };
+
+    const children = [
+      createElement('v-label', {
+        props: {
+          dark: this.isThemeDark,
+          light: this.isThemeLight,
+        },
+      }, this.config.label),
+      getItems(),
       message,
     ];
 

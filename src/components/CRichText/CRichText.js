@@ -58,6 +58,47 @@ const getToolbar = (config) => {
   return toolbar;
 };
 
+const getLink = () => {
+  const link = Quill.import('formats/link');
+  // Modify url if desired
+  link.sanitize = (url) => {
+    const prefix = find(link.PROTOCOL_WHITELIST, prop => includes(url, prop));
+    if (!prefix) {
+      return `https://${url}`;
+    }
+
+    return url;
+  };
+};
+
+const setEditorEvents = (context) => {
+  const self = context;
+
+  self.editor.on('selection-change', (range) => {
+    if (range) {
+      self.$emit('focus', self.editor);
+      self.sendToEventBus('FocusedIn', { text: self.textValue });
+    } else {
+      self.$emit('blur', self.editor);
+      self.sendToEventBus('FocusedOut', { text: self.textValue });
+    }
+  });
+
+  self.editor.on('text-change', () => {
+    let html = self.$refs.editor.children[0].innerHTML;
+
+    // Handle empty editor
+    if (html === '<p><br></p>') {
+      html = '';
+    }
+
+    self.value = html;
+    self.validate();
+    self.$emit('input', self.textValue);
+    self.sendToEventBus('Changed', { text: self.textValue });
+  });
+};
+
 export default {
   extends: Element,
   mixins: [
@@ -66,7 +107,6 @@ export default {
   ],
   data() {
     return {
-      items: null,
       editor: null,
     };
   },
@@ -87,24 +127,8 @@ export default {
     },
   },
   methods: {
-    loadData() {
-      this.loadConnectorData().then((result) => {
-        this.items = result.items;
-        this.sendToEventBus('DataSourceChanged', this.dataSource);
-      });
-    },
     setEditor() {
-      const link = Quill.import('formats/link');
-      // Modify url if desired
-      link.sanitize = (url) => {
-        const prefix = find(link.PROTOCOL_WHITELIST, prop => includes(url, prop));
-        if (!prefix) {
-          return `https://${url}`;
-        }
-
-        return url;
-      };
-
+      getLink();
       this.editor = new Quill(this.$refs.editor, {
         theme: 'snow',
         placeholder: this.config.placeholder,
@@ -117,29 +141,7 @@ export default {
         this.editor.clipboard.dangerouslyPasteHTML(this.textValue);
       }
 
-      this.editor.on('selection-change', (range) => {
-        if (range) {
-          this.$emit('focus', this.editor);
-          this.sendToEventBus('FocusedIn', { text: this.textValue });
-        } else {
-          this.$emit('blur', this.editor);
-          this.sendToEventBus('FocusedOut', { text: this.textValue });
-        }
-      });
-
-      this.editor.on('text-change', () => {
-        let html = this.$refs.editor.children[0].innerHTML;
-
-        // Handle empty editor
-        if (html === '<p><br></p>') {
-          html = '';
-        }
-
-        this.config.value = html;
-        this.validate();
-        this.$emit('input', this.textValue);
-        this.sendToEventBus('Changed', { text: this.textValue });
-      });
+      setEditorEvents(this);
     },
   },
   render(createElement) {
@@ -148,7 +150,6 @@ export default {
       Figure out the way to separate custom controls in form (maybe on form level)
       Vuetify controls already have spacing between
     */
-    this.value = this.textValue;
 
     const data = {
       class: {

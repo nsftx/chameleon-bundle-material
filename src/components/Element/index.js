@@ -24,7 +24,18 @@ export default {
     reactionable,
     themeable,
   ],
+  data() {
+    return {
+      items: null,
+    };
+  },
   methods: {
+    loadData() {
+      this.loadConnectorData().then((result) => {
+        this.items = result.items || null;
+        this.sendToEventBus('DataSourceChanged', this.dataSource);
+      });
+    },
     renderElement(tag, options, items, parentable) {
       const props = isNil(options) ? {} : cloneDeep(options);
       const staticClass = props.staticClass || '';
