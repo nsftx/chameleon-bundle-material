@@ -8,6 +8,13 @@ Vue.use(Vuetify);
 
 Vue.use(Chameleon, {
   isPreviewMode: true,
+  staticAppAssets: {
+    baseUrl: 'https://storage.googleapis.com/chameleon-storage-dev',
+    appUrl: '/apps/${appId}/assets',
+    urlParams: {
+      appId: '=$app.id',
+    },
+  },
   app: {
     pages: [
       {

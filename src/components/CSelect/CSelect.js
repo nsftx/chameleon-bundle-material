@@ -94,18 +94,9 @@ export default {
       },
     },
   },
-  methods: {
-    loadData() {
-      this.loadConnectorData().then((result) => {
-        this.items = result.items || [];
-        this.sendToEventBus('DataSourceChanged', this.dataSource);
-      });
-    },
-  },
   data() {
     return {
       chips: false,
-      items: [],
       selectAttr: {},
       selectListeners: {},
     };

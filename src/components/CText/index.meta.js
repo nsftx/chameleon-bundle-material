@@ -1,3 +1,20 @@
+import { isNil } from 'lodash';
+import { binding } from '@utility';
+
+const expressionImport = {
+  imports: {
+    isNil,
+  },
+};
+
+const itemInterface = [
+  {
+    name: 'text',
+    type: 'String',
+    label: 'Text',
+  },
+];
+
 export default {
   group: 'inputs',
   type: 'text',
@@ -23,6 +40,10 @@ export default {
   },
   actions: [
     {
+      name: 'setDataSource',
+      help: 'Sets text data source from event data',
+    },
+    {
       name: 'setInputValue',
       help: 'Input field updated',
     },
@@ -32,6 +53,10 @@ export default {
     },
   ],
   events: [
+    {
+      name: 'DataSourceChanged',
+      help: 'Fires when text data source is changed',
+    },
     {
       name: 'AppendIconClicked',
       help: 'On Append icon click',
@@ -280,14 +305,30 @@ export default {
         value: null,
       },
     },
-    data: {
-      type: 'group',
+    value: {
+      type: 'input',
       group: 'data',
-      value: {
-        type: 'input',
-        name: 'Input Source',
-        value: null,
+      name: 'Input Source',
+      value: null,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= !isNil(element.dataSource) %>', expressionImport),
       },
+      priority: 2,
+    },
+    dataSource: {
+      type: 'dataSource',
+      group: 'data',
+      name: 'Data Source',
+      value: null,
+      schema: itemInterface,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= !isNil(element.value) && element.value.length > 0 %>', expressionImport),
+      },
+      priority: 1,
     },
     style: {
       type: 'group',

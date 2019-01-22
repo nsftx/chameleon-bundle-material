@@ -1,15 +1,46 @@
+import { isNil } from 'lodash';
+import { binding } from '@utility';
+
+const itemInterface = [
+  {
+    name: 'text',
+    type: 'String',
+    label: 'Text',
+  },
+];
+
+const expressionImport = {
+  imports: {
+    isNil,
+  },
+};
+
 export default {
   group: 'inputs',
   type: 'rich-text',
   name: 'Rich Text',
   icon: 'text_format',
   optionGroups: {
+    data: {
+      key: 'data',
+      name: 'Data',
+    },
     validation: {
       key: 'validation',
       name: 'Validation',
     },
   },
+  actions: [
+    {
+      name: 'setDataSource',
+      help: 'Sets text data source from event data',
+    },
+  ],
   events: [
+    {
+      name: 'DataSourceChanged',
+      help: 'Fires when text data source is changed',
+    },
     {
       name: 'Changed',
       help: 'Text input changed',
@@ -73,6 +104,31 @@ export default {
       priority: 2,
     },
     theme: true,
+    value: {
+      type: 'input',
+      group: 'data',
+      name: 'Input Source',
+      value: null,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= !isNil(element.dataSource) %>', expressionImport),
+      },
+      priority: 2,
+    },
+    dataSource: {
+      type: 'dataSource',
+      group: 'data',
+      name: 'Data Source',
+      value: null,
+      schema: itemInterface,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= !isNil(element.value) && element.value.length > 0 %>', expressionImport),
+      },
+      priority: 1,
+    },
     validation: {
       type: 'group',
       group: 'validation',

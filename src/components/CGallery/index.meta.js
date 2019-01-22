@@ -1,4 +1,5 @@
-import { binding } from '@nsoft/chameleon-sdk/src/utility';
+import { isNil } from 'lodash';
+import { binding } from '@utility';
 
 const itemInterface = [
   {
@@ -12,6 +13,12 @@ const itemInterface = [
     label: 'Thumb',
   },
 ];
+
+const expressionImport = {
+  imports: {
+    isNil,
+  },
+};
 
 export default {
   group: 'widgets',
@@ -95,7 +102,7 @@ export default {
       disabled: {
         current: false,
         default: false,
-        expression: binding.setExpression('<%= element.dataSource != null %>'),
+        expression: binding.setExpression('<%= !isNil(element.dataSource) %>', expressionImport),
       },
     },
     dataSource: {
@@ -106,7 +113,7 @@ export default {
       disabled: {
         current: false,
         default: false,
-        expression: binding.setExpression('<%= element.imageSource != null && element.imageSource.length > 0 %>'),
+        expression: binding.setExpression('<%= !isNil(element.imageSource) && element.imageSource.length > 0 %>', expressionImport),
       },
       schema: itemInterface,
     },

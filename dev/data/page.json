@@ -71,9 +71,7 @@
                             "tooltip": "text tooltip",
                             "hint": "some hint!!"
                           },
-                          "data": {
-                            "value": "Test Text Input"
-                          },
+                          "value": "Test Text Input",
                           "style": {
                             "color": null,
                             "theme": "light"
@@ -94,9 +92,7 @@
                             "tooltip": "text tooltip",
                             "hint": "some hint!!"
                           },
-                          "data": {
-                            "value": "Test Text Input"
-                          },
+                          "value": "Test Text Input",
                           "style": {
                             "color": null,
                             "theme": "light"
@@ -738,9 +734,7 @@
                                     "tooltip": "number",
                                     "hint": "some hint!!"
                                   },
-                                  "data": {
-                                    "value": 22
-                                  },
+                                  "value": 22,
                                   "style": {
                                     "color": null,
                                     "theme": "light",
@@ -762,9 +756,7 @@
                                     "tooltip": "number",
                                     "hint": "some hint!!"
                                   },
-                                  "data": {
-                                    "value": "375556917985515"
-                                  },
+                                  "value": "375556917985515",
                                   "mask": "credit-card",
                                   "style": {
                                     "color": null,
@@ -840,9 +832,7 @@
                                     "tooltip": "password",
                                     "hint": "At least 8 characters long, 1 lowercase letter, 1 capital letter, 1 number and 1 special character"
                                   },
-                                  "data": {
-                                    "value": "Password12345!"
-                                  },
+                                  "value": "Password12345!",
                                   "style": {
                                     "appendIcon": "visibility",
                                     "color": null,
@@ -897,9 +887,7 @@
                                     "tooltip": "Email",
                                     "hint": "Enter valid email"
                                   },
-                                  "data": {
-                                    "value": "test.test@gmail.com"
-                                  },
+                                  "value": "test.test@gmail.com",
                                   "style": {
                                     "color": null,
                                     "theme": "light"

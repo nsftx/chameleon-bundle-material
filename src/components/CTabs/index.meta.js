@@ -1,4 +1,4 @@
-import { binding } from '@nsoft/chameleon-sdk/src/utility';
+import { binding } from '@utility';
 
 export default {
   group: 'containers',

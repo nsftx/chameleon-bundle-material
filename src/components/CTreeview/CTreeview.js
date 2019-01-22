@@ -103,27 +103,26 @@ export default {
   data() {
     return {
       active: [],
-      items: [],
       open: [],
       value: [],
     };
   },
   computed: {
     allItems() {
-      if (this.items.length) {
+      if (!isNil(this.items) && this.items.length) {
         return this.getAllItems();
       }
       return null;
     },
     firstItem() {
-      if (this.items.length) {
+      if (!isNil(this.items) && this.items.length) {
         const first = filter(this.items, item => item[this.itemChildren]);
         return first[0] || null;
       }
       return null;
     },
     itemChildren() {
-      if (this.items.length) {
+      if (!isNil(this.items) && this.items.length) {
         // User-defined key
         const itemChildren = this.config.itemChildren;
         if (!isNil(itemChildren) && !isEmpty(itemChildren)) {
@@ -146,7 +145,7 @@ export default {
       return null;
     },
     itemValue() {
-      if (this.items.length) {
+      if (!isNil(this.items) && this.items.length) {
         // User-defined key
         const itemValue = this.config.itemValue;
         if (!isNil(itemValue) && !isEmpty(itemValue)) {
@@ -171,7 +170,7 @@ export default {
       return null;
     },
     itemDisplay() {
-      if (this.items.length) {
+      if (!isNil(this.items) && this.items.length) {
         // User-defined key
         const itemDisplay = this.config.itemDisplay;
         if (!isNil(itemDisplay) && !isEmpty(itemDisplay)) {
@@ -196,6 +195,8 @@ export default {
     openOnLoad() {
       let openState = false;
       this.open = [];
+      if (isNil(this.items)) return openState;
+
       switch (this.config.defaultState) {
         case 'first':
           if (this.items.length > 0) {
@@ -266,12 +267,6 @@ export default {
       searchTree(this.items);
       return item;
     },
-    loadData() {
-      this.loadConnectorData().then((result) => {
-        this.items = result.items || [];
-        this.sendToEventBus('DataSourceChanged', this.dataSource);
-      });
-    },
     async getChildren(item) {
       const connector = this.options.connector;
       const id = this.dataSource.connector.id;
@@ -315,7 +310,7 @@ export default {
     },
   },
   render(createElement) {
-    if (!this.items.length && this.registry.isPreviewMode) {
+    if (isNil(this.items)) {
       return renderPlaceholder(createElement, this);
     }
     return this.renderElement(

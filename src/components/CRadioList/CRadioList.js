@@ -46,6 +46,8 @@ const getProps = (context) => {
 };
 
 const getItemProps = (context, item) => {
+  if (isNil(context.dataSource)) return null;
+
   const config = context.config;
   const mapProps = filter(context.dataSource.schema, i => !isNil(i.mapName));
   const itemProps = Object.keys(item);
@@ -75,20 +77,7 @@ export default {
       },
     },
   },
-  methods: {
-    loadData() {
-      this.loadConnectorData().then((result) => {
-        this.config.dataSource.items = result.items || [];
-      });
-    },
-  },
   render(createElement) {
-    if (isNil(this.config.dataSource)) {
-      this.config.dataSource = {
-        items: [],
-      };
-    }
-
     const data = {
       attrs: {
         name: this.config.name,
@@ -97,14 +86,16 @@ export default {
       on: getListeners(this),
     };
 
-    const children = [
-      map(this.config.dataSource.items,
+    let children = null;
+
+    if (!isNil(this.items)) {
+      children = map(this.items,
         item => createElement('v-radio',
           {
             props: getItemProps(this, item),
           },
-        )),
-    ];
+        ));
+    }
 
     return this.renderElement('v-radio-group', data, children);
   },

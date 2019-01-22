@@ -1,3 +1,6 @@
+import { isNil } from 'lodash';
+import { binding } from '@utility';
+
 const itemInterface = [
   {
     name: 'url',
@@ -5,6 +8,12 @@ const itemInterface = [
     label: 'Url',
   },
 ];
+
+const expressionImport = {
+  imports: {
+    isNil,
+  },
+};
 
 export default {
   group: 'widgets',
@@ -44,6 +53,11 @@ export default {
       name: 'Data Source',
       value: null,
       schema: itemInterface,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= !isNil(element.src) && element.src.length > 0 %>', expressionImport),
+      },
       priority: 1,
     },
     src: {
@@ -51,6 +65,11 @@ export default {
       group: 'data',
       name: 'Image source',
       value: null,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= !isNil(element.dataSource) %>', expressionImport),
+      },
       priority: 2,
     },
     width: {

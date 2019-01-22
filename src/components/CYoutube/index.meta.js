@@ -1,9 +1,36 @@
+import { isNil } from 'lodash';
+import { binding } from '@utility';
+
+const itemInterface = [
+  {
+    name: 'url',
+    type: 'String',
+    label: 'Url',
+  },
+];
+
+const expressionImport = {
+  imports: {
+    isNil,
+  },
+};
+
 export default {
   group: 'widgets',
   type: 'youtube',
   name: 'YouTube',
   icon: 'ondemand_video',
+  optionGroups: {
+    data: {
+      key: 'data',
+      name: 'Data',
+    },
+  },
   actions: [
+    {
+      name: 'setDataSource',
+      help: 'Sets youtube data source from event data',
+    },
     {
       name: 'play',
       help: 'Start playing',
@@ -18,6 +45,10 @@ export default {
     },
   ],
   events: [
+    {
+      name: 'DataSourceChanged',
+      help: 'Fires when youtube data source is changed',
+    },
     {
       name: 'PlayerReadyChanged',
       help: 'Video ready state changed',
@@ -72,21 +103,11 @@ export default {
       items: [
         {
           id: 1,
-          name: 'Video',
-          value: '',
-        },
-        {
-          id: 2,
           name: 'Playlist',
           value: 'playlist',
         },
         {
           id: 3,
-          name: 'User Uploads',
-          value: 'user_uploads',
-        },
-        {
-          id: 4,
           name: 'Search Results',
           value: 'search',
         },
@@ -94,7 +115,7 @@ export default {
       returnObject: false,
       displayProp: 'name',
       valueProp: 'value',
-      value: '',
+      value: 'playlist',
       priority: 1,
     },
     repeat: {
@@ -106,8 +127,27 @@ export default {
     value: {
       type: 'inputList',
       name: 'Video/Playlist Source',
-      value: [],
+      group: 'data',
+      value: null,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= !isNil(element.dataSource) %>', expressionImport),
+      },
       priority: 2,
+    },
+    dataSource: {
+      type: 'dataSource',
+      group: 'data',
+      name: 'Data Source',
+      value: null,
+      schema: itemInterface,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= !isNil(element.value) && element.value.length > 0 %>', expressionImport),
+      },
+      priority: 1,
     },
   },
 };

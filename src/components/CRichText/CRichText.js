@@ -1,4 +1,4 @@
-import { find, isArray, includes } from 'lodash';
+import { find, isArray, isObject, includes } from 'lodash';
 import { fieldable, validatable } from '@mixins';
 import Element from '../Element';
 
@@ -58,6 +58,47 @@ const getToolbar = (config) => {
   return toolbar;
 };
 
+const getLink = () => {
+  const link = Quill.import('formats/link');
+  // Modify url if desired
+  link.sanitize = (url) => {
+    const prefix = find(link.PROTOCOL_WHITELIST, prop => includes(url, prop));
+    if (!prefix) {
+      return `https://${url}`;
+    }
+
+    return url;
+  };
+};
+
+const setEditorEvents = (context) => {
+  const self = context;
+
+  self.editor.on('selection-change', (range) => {
+    if (range) {
+      self.$emit('focus', self.editor);
+      self.sendToEventBus('FocusedIn', { text: self.textValue });
+    } else {
+      self.$emit('blur', self.editor);
+      self.sendToEventBus('FocusedOut', { text: self.textValue });
+    }
+  });
+
+  self.editor.on('text-change', () => {
+    let html = self.$refs.editor.children[0].innerHTML;
+
+    // Handle empty editor
+    if (html === '<p><br></p>') {
+      html = '';
+    }
+
+    self.value = html;
+    self.validate();
+    self.$emit('input', self.textValue);
+    self.sendToEventBus('Changed', { text: self.textValue });
+  });
+};
+
 export default {
   extends: Element,
   mixins: [
@@ -69,20 +110,25 @@ export default {
       editor: null,
     };
   },
+  watch: {
+    dataSource: {
+      handler() {
+        this.loadData();
+      },
+      deep: true,
+    },
+  },
+  computed: {
+    textValue() {
+      if (this.items && this.items.length) {
+        return isObject(this.items[0]) ? this.items[0].text : this.items[0];
+      }
+      return this.config.value;
+    },
+  },
   methods: {
     setEditor() {
-      this.value = this.config.value;
-      const link = Quill.import('formats/link');
-      // Modify url if desired
-      link.sanitize = (url) => {
-        const prefix = find(link.PROTOCOL_WHITELIST, prop => includes(url, prop));
-        if (!prefix) {
-          return `https://${url}`;
-        }
-
-        return url;
-      };
-
+      getLink();
       this.editor = new Quill(this.$refs.editor, {
         theme: 'snow',
         placeholder: this.config.placeholder,
@@ -91,33 +137,11 @@ export default {
         },
       });
 
-      if (this.value) {
-        this.editor.clipboard.dangerouslyPasteHTML(this.value);
+      if (this.textValue) {
+        this.editor.clipboard.dangerouslyPasteHTML(this.textValue);
       }
 
-      this.editor.on('selection-change', (range) => {
-        if (range) {
-          this.$emit('focus', this.editor);
-          this.sendToEventBus('FocusedIn', { text: this.value });
-        } else {
-          this.$emit('blur', this.editor);
-          this.sendToEventBus('FocusedOut', { text: this.value });
-        }
-      });
-
-      this.editor.on('text-change', () => {
-        let html = this.$refs.editor.children[0].innerHTML;
-
-        // Handle empty editor
-        if (html === '<p><br></p>') {
-          html = '';
-        }
-
-        this.value = html;
-        this.validate();
-        this.$emit('input', this.value);
-        this.sendToEventBus('Changed', { text: this.value });
-      });
+      setEditorEvents(this);
     },
   },
   render(createElement) {
@@ -126,6 +150,7 @@ export default {
       Figure out the way to separate custom controls in form (maybe on form level)
       Vuetify controls already have spacing between
     */
+
     const data = {
       class: {
         'rich-text--error': this.hasError,

@@ -1,4 +1,4 @@
-import { isString, map, isNil } from 'lodash';
+import { isString, isObject, map, isNil } from 'lodash';
 import Element from '../Element';
 
 const sourceTypes = {
@@ -58,11 +58,11 @@ const getSourceType = (source) => {
   return sourceTypes.mp4;
 };
 
-const getSources = (createElement, context) => {
-  const config = context.config;
-  const srcValues = isString(config.value) ? [config.value] : config.value;
+const getSources = (createElement, data) => {
+  const srcValues = isString(data) ? [data] : data;
 
-  const sources = map(srcValues, (source) => {
+  const sources = map(srcValues, (value) => {
+    const source = isObject(value) ? value.url : value;
     const el = createElement(
       'source',
       {
@@ -102,6 +102,14 @@ const getStaticStyle = (config) => {
 
 export default {
   extends: Element,
+  watch: {
+    dataSource: {
+      handler() {
+        this.loadData();
+      },
+      deep: true,
+    },
+  },
   methods: {
     play() {
       this.$refs.video.play();
@@ -114,6 +122,7 @@ export default {
     const data = {
       staticStyle: getStaticStyle(this.config),
     };
+    const source = this.items || this.config.value;
 
     const children = createElement(
       'video',
@@ -127,7 +136,7 @@ export default {
           left: 0,
         },
       },
-      getSources(createElement, this),
+      getSources(createElement, source),
     );
 
     return this.renderElement('div', data, children);

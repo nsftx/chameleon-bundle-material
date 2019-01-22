@@ -1,4 +1,4 @@
-import { isNil } from 'lodash';
+import { isNil, isObject } from 'lodash';
 import Element from '../Element';
 
 const getStreamType = (config) => {
@@ -29,6 +29,22 @@ const getStaticStyle = (config) => {
 
 export default {
   extends: Element,
+  watch: {
+    dataSource: {
+      handler() {
+        this.loadData();
+      },
+      deep: true,
+    },
+  },
+  computed: {
+    streamValue() {
+      if (this.items && this.items.length) {
+        return isObject(this.items[0]) ? this.items[0].url : this.items[0];
+      }
+      return this.config.value;
+    },
+  },
   render(createElement) {
     const data = {
       staticStyle: getStaticStyle(this.config),
@@ -38,7 +54,7 @@ export default {
       getStreamType(this.config),
       {
         attrs: {
-          src: this.registry.isPreviewMode ? null : this.config.value,
+          src: this.streamValue || null,
           width: '100%',
           height: '100%',
         },

@@ -1,25 +1,20 @@
-import { isNil, filter, map, merge } from 'lodash';
+import { isNil, isObject, filter, map, merge } from 'lodash';
 import Element from '../Element';
 
-const getVideoId = (url) => {
+const getVideoId = (src) => {
+  const url = isObject(src) ? src.url : src;
   const re = /https?:\/\/(?:[0-9A-Z-]+\.)?(?:youtu\.be\/|youtube(?:-nocookie)?\.com\S*?[^\w\s-])([\w-]{11})(?=[^\w-]|$)(?![?=&+%\w.-]*(?:['"][^<>]*>|<\/a>))[?=&+%\w.-]*/ig;
   const result = re.exec(url);
 
   return result ? result[1] : null;
 };
 
-const getPlaylistId = (url) => {
-  const re = /https?:\/\/(?:[0-9A-Z-]+\.)?(?:youtu\.be\/|youtube(?:-nocookie)?\.com\S*?[^\w\s-])?.*?(?:list)=(.*?)(?:&|$)/ig;
-  const result = re.exec(url);
-
-  return result ? result[1] : null;
-};
-
 const getPlaylistParameters = (context) => {
-  if (context.predefinedPlaylist) {
+  if (context.config.playlist !== 'playlist') {
+    const value = isObject(context.value[0]) ? context.value[0].url : context.value[0];
     return {
-      listType: context.predefinedPlaylist,
-      list: context.predefinedPlaylist === 'playlist' ? getPlaylistId(context.value[0]) : context.value[0],
+      listType: context.config.playlist,
+      list: value,
     };
   }
 
@@ -47,34 +42,25 @@ const getPreviewOverlayElement = (createElement) => {
   return overlay;
 };
 
-const getVideoParameters = (context) => {
-  const result = {
-    videoId: getVideoId(context.value[0]),
-  };
-
-  return result;
-};
-
 const getPlayerMethod = (context) => {
-  const { playlist } = context;
   const autoplay = context.config.autoplay && !context.registry.isPreviewMode;
 
   const method = autoplay ? 'load' : 'cue';
-  const item = playlist ? 'Playlist' : 'VideoById';
+  const item = context.playlist ? 'Playlist' : 'VideoById';
 
   return `${method}${item}`;
 };
 
 const getPlayerParameters = (context) => {
-  const params = {
-    loop: context.config.repeat,
+  let params = {
+    videoId: context.value ? getVideoId(context.value[0]) : null,
   };
 
   if (context.playlist) {
-    return merge(getPlaylistParameters(context), params);
+    params = merge(getPlaylistParameters(context), params);
   }
 
-  return merge(getVideoParameters(context), params);
+  return params;
 };
 
 export default {
@@ -83,19 +69,30 @@ export default {
     return {
       player: null,
       playlist: '',
-      predefinedPlaylist: false,
     };
   },
   computed: {
     value() {
+      if (this.items && this.items.length) {
+        return isObject(this.items[0]) ? this.items[0].url : this.items[0];
+      }
       return this.config.value;
+    },
+  },
+  watch: {
+    dataSource: {
+      handler() {
+        this.loadData();
+      },
+      deep: true,
     },
   },
   methods: {
     createPlayer() {
       this.player = new window.YT.Player(this.$refs.youtube, {
+        videoId: 'VIDEO_ID',
         playerVars: {
-          controls: this.config.controls,
+          controls: this.config.controls ? 1 : 0,
         },
         events: {
           onReady: this.onPlayerReady,
@@ -103,16 +100,21 @@ export default {
           onError: this.onPlayerError,
         },
       });
-
-      if (this.config.muted) {
-        this.player.mute();
-      }
     },
     onPlayerReady(event) {
       const method = getPlayerMethod(this);
       const params = getPlayerParameters(this);
 
       this.player[method](params);
+
+      if (this.config.muted) {
+        this.player.mute();
+      }
+
+      if (this.config.repeat) {
+        this.player.setLoop(true);
+      }
+
       this.sendToEventBus('PlayerReadyChanged', event);
     },
     onPlayerStateChange(event) {
@@ -147,14 +149,7 @@ export default {
     },
   },
   mounted() {
-    if (isNil(this.config.playlist)) {
-      this.config.playlist = {};
-    }
-    if (isNil(this.config.value)) {
-      this.config.value = {};
-    }
-    this.playlist = this.config.playlist.length || this.config.value.length > 1;
-    this.predefinedPlaylist = this.config.playlist.length ? this.config.playlist : false;
+    this.playlist = this.value && this.value.length > 1;
 
     this.loadDependencies('https://www.youtube.com/iframe_api', 'YT.Player').then(() => {
       this.createPlayer();

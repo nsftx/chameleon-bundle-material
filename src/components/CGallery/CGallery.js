@@ -157,7 +157,6 @@ export default {
   ],
   data() {
     return {
-      items: [],
       target: 0,
       active: false,
     };
@@ -168,14 +167,6 @@ export default {
         this.loadData();
       },
       deep: true,
-    },
-  },
-  methods: {
-    loadData() {
-      this.loadConnectorData().then((result) => {
-        this.items = result.items || [];
-        this.sendToEventBus('DataSourceChanged', this.items);
-      });
     },
   },
   render(createElement) {

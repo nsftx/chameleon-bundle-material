@@ -10,8 +10,8 @@
           "theme": false,
           "contain": false,
           "src": "https://picsum.photos/500/200?image=10",
-          "width": "",
-          "height": "",
+          "width": "200px",
+          "height": "100%",
           "alternativeText": "Alternative Text"
         }
       ]
