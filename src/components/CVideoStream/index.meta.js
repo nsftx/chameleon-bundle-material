@@ -44,8 +44,12 @@ export default {
       name: 'Stream Type',
       items: [
         {
-          name: 'Simple',
-          value: 'img',
+          name: 'Image',
+          value: 'image',
+        },
+        {
+          name: 'MPEG-1',
+          value: 'jsmpeg',
         },
       ],
       value: 'img',
@@ -82,6 +86,18 @@ export default {
         expression: binding.setExpression('<%= !isNil(element.dataSource) %>', expressionImport),
       },
       priority: 2,
+    },
+    valueMask: {
+      type: 'input',
+      group: 'data',
+      name: 'Stream Source Mask',
+      value: null,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= !isNil(element.dataSource) %>', expressionImport),
+      },
+      priority: 3,
     },
     dataSource: {
       type: 'dataSource',
