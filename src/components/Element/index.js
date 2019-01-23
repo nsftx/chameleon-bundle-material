@@ -31,9 +31,11 @@ export default {
   },
   methods: {
     loadData() {
-      this.loadConnectorData().then((result) => {
+      return this.loadConnectorData().then((result) => {
         this.items = result.items || null;
         this.sendToEventBus('DataSourceChanged', this.dataSource);
+
+        return result;
       });
     },
     renderElement(tag, options, items, parentable) {
