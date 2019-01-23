@@ -2,6 +2,7 @@ import {
   each,
   filter,
   isArray,
+  isEqual,
   isEmpty,
   isString,
   isNil,
@@ -51,6 +52,10 @@ const getListeners = (context) => {
       context.sendToEventBus('ActiveItemChanged', { active: value });
     },
     'update:open': (value) => {
+      // Don't remove this if you don't wanna fall into the loop
+      if (!isEqual(self.open, value)) {
+        self.open = value;
+      }
       context.sendToEventBus('StateChanged', { active: value });
     },
   };
@@ -98,6 +103,11 @@ const getTreeSlot = (createElement, context) => {
   return slot;
 };
 
+const checkIfValid = (context, value) => {
+  const status = filter(context.items, item => !isNil(item[value]));
+  return status.length;
+};
+
 export default {
   extends: Element,
   data() {
@@ -117,7 +127,7 @@ export default {
     firstItem() {
       if (!isNil(this.items) && this.items.length) {
         const first = filter(this.items, item => item[this.itemChildren]);
-        return first[0] || null;
+        return first[1] || null;
       }
       return null;
     },
@@ -126,7 +136,7 @@ export default {
         // User-defined key
         const itemChildren = this.config.itemChildren;
         if (!isNil(itemChildren) && !isEmpty(itemChildren)) {
-          return itemChildren;
+          if (checkIfValid(this, itemChildren)) return itemChildren;
           // Predefined 'children' key
         } else if (!isNil(this.items[0].children)) {
           return 'children';
@@ -149,7 +159,7 @@ export default {
         // User-defined key
         const itemValue = this.config.itemValue;
         if (!isNil(itemValue) && !isEmpty(itemValue)) {
-          return itemValue;
+          if (checkIfValid(this, itemValue)) return itemValue;
           // Predefined 'id' key
         } else if (!isNil(this.items[0].id)) {
           return 'id';
@@ -174,7 +184,7 @@ export default {
         // User-defined key
         const itemDisplay = this.config.itemDisplay;
         if (!isNil(itemDisplay) && !isEmpty(itemDisplay)) {
-          return itemDisplay;
+          if (checkIfValid(this, itemDisplay)) return itemDisplay;
           // Predefined 'name' key
         } else if (!isNil(this.items[0].name)) {
           return 'name';
@@ -194,22 +204,15 @@ export default {
     },
     openOnLoad() {
       let openState = false;
-      this.open = [];
       if (isNil(this.items)) return openState;
 
       switch (this.config.defaultState) {
         case 'first':
-          if (this.items.length > 0) {
-            this.open.push(this.firstItem[this.itemValue]);
-          }
           openState = false;
           break;
         case 'all':
           // Since openAll is only working on component load
           // set open value trought array (this.open) of item id's
-          if (this.items.length > 0) {
-            this.open = this.allItems;
-          }
           openState = true;
           break;
         default:
@@ -305,6 +308,14 @@ export default {
     dataSource: {
       handler() {
         this.loadData();
+      },
+      deep: true,
+    },
+    items: {
+      handler() {
+        if (this.config.defaultState === 'first' && this.items && this.items.length > 0) {
+          this.open.push(this.firstItem[this.itemValue]);
+        }
       },
       deep: true,
     },
