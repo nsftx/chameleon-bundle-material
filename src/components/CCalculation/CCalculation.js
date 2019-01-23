@@ -1,5 +1,5 @@
 import { assign, isArray, reduce, sum, template } from 'lodash';
-import Text from '../CText/CText';
+import TextInput from '../CTextInput/CTextInput';
 
 const templateLiteralRegex = /\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g;
 
@@ -17,7 +17,7 @@ const getMath = () => {
 };
 
 export default {
-  extends: Text,
+  extends: TextInput,
   inject: ['cEntity'],
   data() {
     return {
