@@ -127,7 +127,7 @@ export default {
     firstItem() {
       if (!isNil(this.items) && this.items.length) {
         const first = filter(this.items, item => item[this.itemChildren]);
-        return first[1] || null;
+        return first[0] || null;
       }
       return null;
     },
@@ -307,15 +307,11 @@ export default {
   watch: {
     dataSource: {
       handler() {
-        this.loadData();
-      },
-      deep: true,
-    },
-    items: {
-      handler() {
-        if (this.config.defaultState === 'first' && this.items && this.items.length > 0) {
-          this.open.push(this.firstItem[this.itemValue]);
-        }
+        this.loadData().then(() => {
+          if (!isNil(this.items)) {
+            this.open.push(this.firstItem[this.itemValue]);
+          }
+        });
       },
       deep: true,
     },
