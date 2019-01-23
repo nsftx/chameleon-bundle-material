@@ -956,9 +956,23 @@
                         {
                           "type": "video-stream",
                           "name": "video stream widget",
-                          "streamType": "img",
-                          "value": "http://admin:SyncShop17@172.20.50.245/Streaming/channels/102/httppreview",
-                          "aspectRatio": "auto"
+                          "streamType": "jsmpeg",
+                          "value": null,
+                          "valueMask": "wss://vision.nsoft.com/streaming/${_id}?type=high",
+                          "aspectRatio": "auto",
+                          "dataSource": {
+                            "local": true,
+                            "items": [
+                              {
+                                "thumb": "5c48351c604d2872fad4cb2c",
+                                "enabled": true,
+                                "address": "rtsp://admin:SyncShop17@172.20.50.243:554/Streaming/Channels/101",
+                                "process_camera": true,
+                                "_id": "5c3e2853c1f89736c4a5742d",
+                                "name": "Pano"
+                              }
+                            ]
+                          }
                         }
                       ]
                     }
