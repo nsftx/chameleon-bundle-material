@@ -35,7 +35,7 @@ export { default as CTabItem } from './CTabItem';
 export { default as CTable } from './CTable';
 export { default as CTabs } from './CTabs';
 export { default as CTags } from './CTags';
-export { default as CText } from './CText';
+export { default as CTextInput } from './CTextInput';
 export { default as CTextArea } from './CTextArea';
 export { default as CTreeview } from './CTreeview';
 export { default as CVideo } from './CVideo';

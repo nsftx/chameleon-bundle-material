@@ -115,14 +115,14 @@ export default {
     },
     type() {
       const subtype = this.config.subtype;
-      let type = 'text';
+      let type = 'text-input';
 
       if (subtype) {
         type = isObject(subtype) ? subtype.value : subtype;
       }
 
       if (type === 'password' && this.show) {
-        return 'text';
+        return 'text-input';
       }
 
       return type;

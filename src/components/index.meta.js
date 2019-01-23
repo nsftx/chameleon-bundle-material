@@ -34,7 +34,7 @@ export { default as tabItem } from './CTabItem/index.meta';
 export { default as table } from './CTable/index.meta';
 export { default as tabs } from './CTabs/index.meta';
 export { default as tags } from './CTags/index.meta';
-export { default as text } from './CText/index.meta';
+export { default as textInput } from './CTextInput/index.meta';
 export { default as textArea } from './CTextArea/index.meta';
 export { default as treeview } from './CTreeview/index.meta';
 export { default as video } from './CVideo/index.meta';

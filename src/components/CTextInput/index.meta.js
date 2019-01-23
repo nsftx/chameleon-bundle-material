@@ -17,8 +17,8 @@ const itemInterface = [
 
 export default {
   group: 'inputs',
-  type: 'text',
-  name: 'Text Box',
+  type: 'text-input',
+  name: 'Text Input',
   icon: 'title',
   optionGroups: {
     data: {
@@ -130,7 +130,7 @@ export default {
     },
     subtype: {
       type: 'select',
-      name: 'Textbox type',
+      name: 'Text Input Type',
       items: [
         {
           label: 'Generic',
