@@ -5,7 +5,7 @@ const { assign } = require('lodash');
 const FormData = require('form-data');
 const manifest = require('./manifest.json');
 
-const deployEndpoint = 'https://chameleon-ride.nsoft.com:8090/bundles';
+const deployEndpoint = 'https://api.staging-chameleon.nsoft.cloud/bundles';
 const deployMethod = manifest.version > 1 ? 'put' : 'post';
 
 const resolveDist = filePath => path.join(__dirname, '../dist/', filePath);
@@ -23,6 +23,7 @@ axios[deployMethod](deployEndpoint, form, {
 }).then((response) => {
   console.log('Successfully deployed bundle =>', JSON.stringify(response.data));
 }).catch((error) => {
+  console.log('error ', error);
   const result = error.response.data;
   const message = result.message || result;
   console.log('Error deploying bundle =>', JSON.stringify(message));
