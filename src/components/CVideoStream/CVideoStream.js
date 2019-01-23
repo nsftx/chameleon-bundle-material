@@ -1,4 +1,4 @@
-import { isNil, isObject, template, upperFirst } from 'lodash';
+import { isNil, isFunction, isObject, template, upperFirst } from 'lodash';
 import Element from '../Element';
 
 export default {
@@ -55,7 +55,6 @@ export default {
       let type = isNil(this.config.streamType) ? 'image' : this.config.streamType;
 
       if (type === 'img') type = 'image';
-      if (type === 'mpeg') type = 'jsmpeg';
 
       return upperFirst(type);
     },
@@ -129,5 +128,10 @@ export default {
     return this.renderElement('div', {
       staticStyle: this.staticStyle,
     }, children);
+  },
+  beforeDestroy() {
+    if (this.player && isFunction(this.player.destroy)) {
+      this.player.destroy();
+    }
   },
 };
