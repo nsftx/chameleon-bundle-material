@@ -13,13 +13,18 @@ const itemInterface = [
     type: 'String',
     label: 'Text',
   },
+  {
+    name: 'url',
+    type: 'String',
+    label: 'Url',
+  },
 ];
 
 export default {
-  group: 'widgts',
+  group: 'widgets',
   type: 'text',
   name: 'Text',
-  icon: 'text-format',
+  icon: 'text_format',
   optionGroups: {
     data: {
       key: 'data',
@@ -28,6 +33,15 @@ export default {
     style: {
       key: 'style',
       name: 'Style',
+    },
+    url: {
+      key: 'url',
+      name: 'Url',
+      hidden: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= element.textStyle !== "a" %>'),
+      },
     },
   },
   actions: [
@@ -43,11 +57,34 @@ export default {
     },
   ],
   options: {
-    tooltip: {
-      type: 'input',
-      group: 'data',
-      name: 'Text Tooltip',
+    textStyle: {
+      type: 'select',
+      name: 'Text Type',
       value: null,
+      clearable: true,
+      items: [
+        {
+          name: 'Bold',
+          value: 'b',
+        },
+        {
+          name: 'Italic',
+          value: 'i',
+        },
+        {
+          name: 'Strikethrough',
+          value: 'del',
+        },
+        {
+          name: 'Underline',
+          value: 'ins',
+        },
+        {
+          name: 'Link',
+          value: 'a',
+        },
+      ],
+      priority: 1,
     },
     text: {
       type: 'input',
@@ -61,6 +98,18 @@ export default {
       },
       priority: 2,
     },
+    urlText: {
+      type: 'input',
+      group: 'data',
+      name: 'Text Url Source',
+      value: null,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= element.textStyle !== "a" %>'),
+      },
+      priority: 3,
+    },
     dataSource: {
       type: 'dataSource',
       group: 'data',
@@ -70,61 +119,41 @@ export default {
       disabled: {
         current: false,
         default: false,
-        expression: binding.setExpression('<%= !isNil(element.value) && element.value.length > 0 %>', expressionImport),
+        expression: binding.setExpression('<%= !isNil(element.text) && element.text.length > 0 %>', expressionImport),
       },
+      priority: 4,
+    },
+    target: {
+      type: 'select',
+      name: 'Where To Open The Link',
+      group: 'url',
+      value: null,
+      clearable: true,
+      items: [
+        {
+          name: 'New Tab',
+          value: '_blank',
+        },
+        {
+          name: 'Same Window',
+          value: '_parent',
+        },
+      ],
+    },
+    color: {
+      group: 'style',
       priority: 1,
     },
-    style: {
-      type: 'group',
+    theme: {
       group: 'style',
-      color: {
-        type: 'colorPicker',
-        name: 'Text Color',
-        value: null,
-      },
-      theme: {
-        type: 'select',
-        name: 'Theme',
-        items: '=$themes',
-        value: null,
-      },
-      textStyle: {
-        type: 'select',
-        name: 'Text Type',
-        value: null,
-        items: [
-          {
-            name: 'Bold',
-            value: 'b',
-          },
-          {
-            name: 'Italic',
-            value: 'i',
-          },
-          {
-            name: 'Strikethrough',
-            value: 'del',
-          },
-          {
-            name: 'Underline',
-            value: 'ins',
-          },
-          {
-            name: 'Link',
-            value: 'link',
-          },
-        ],
-      },
-      textSize: {
-        type: 'sizeInput',
-        name: 'Text Size',
-        value: '16px',
-      },
-      link: {
-        type: 'check',
-        name: 'Show as link',
-        value: false,
-      },
+      priority: 2,
+    },
+    textSize: {
+      type: 'sizeInput',
+      name: 'Text Size',
+      group: 'style',
+      value: '16px',
+      priority: 3,
     },
   },
 };
