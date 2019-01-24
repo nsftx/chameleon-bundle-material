@@ -142,18 +142,112 @@ export default {
     },
     color: {
       group: 'style',
+      returnType: 'value',
+      value: null,
       priority: 1,
-    },
-    theme: {
-      group: 'style',
-      priority: 2,
     },
     textSize: {
       type: 'sizeInput',
       name: 'Text Size',
       group: 'style',
       value: '16px',
+      priority: 2,
+    },
+    spacing: {
+      type: 'select',
+      name: 'Text Spacing Size',
+      group: 'style',
+      clearable: true,
+      items: [
+        {
+          name: 'Extra Small',
+          value: 1,
+        },
+        {
+          name: 'Small',
+          value: 2,
+        },
+        {
+          name: 'Medium',
+          value: 3,
+        },
+        {
+          name: 'Large',
+          value: 4,
+        },
+        {
+          name: 'Extra Large',
+          value: 5,
+        },
+      ],
+      value: null,
       priority: 3,
+    },
+    spacingDirection: {
+      type: 'select',
+      name: 'Text Spacing Direction (Side)',
+      group: 'style',
+      clearable: true,
+      items: [
+        {
+          name: 'All Directions',
+          value: 'a',
+        },
+        {
+          name: 'Top & Bottom',
+          value: 'y',
+        },
+        {
+          name: 'Left & Right',
+          value: 'x',
+        },
+        {
+          name: 'Top',
+          value: 't',
+        },
+        {
+          name: 'Right',
+          value: 'r',
+        },
+        {
+          name: 'Bottom',
+          value: 'b',
+        },
+        {
+          name: 'Left',
+          value: 'l',
+        },
+      ],
+      value: null,
+      /* value: {
+        current: null,
+        default: null,
+        expression: binding.setExpression('<%= !isNil(element.spacing) &&
+        isNil(element.spacingDirection) ? "a" : element.spacingDirection %>', expressionImport),
+      }, */
+      priority: 4,
+    },
+    aligment: {
+      type: 'select',
+      name: 'Text Aligment',
+      group: 'style',
+      clearable: true,
+      items: [
+        {
+          name: 'Left',
+          value: 'text-xs-left',
+        },
+        {
+          name: 'Right',
+          value: 'text-xs-right',
+        },
+        {
+          name: 'Center',
+          value: 'text-xs-center',
+        },
+      ],
+      value: null,
+      priority: 5,
     },
   },
 };
