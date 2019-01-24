@@ -219,12 +219,11 @@ export default {
         },
       ],
       value: null,
-      /* value: {
-        current: null,
-        default: null,
-        expression: binding.setExpression('<%= !isNil(element.spacing) &&
-        isNil(element.spacingDirection) ? "a" : element.spacingDirection %>', expressionImport),
-      }, */
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= isNil(element.spacing) %>', expressionImport),
+      },
       priority: 4,
     },
     aligment: {

@@ -41,12 +41,6 @@ export default {
     textType() {
       return this.config.textStyle || 'span';
     },
-    spacingDirection() {
-      if (isNil(this.config.spacingDirection) && !isNil(this.config.spacing)) {
-        return 'a';
-      }
-      return this.config.spacingDirection;
-    },
   },
   render(createElement) {
     const data = {
@@ -54,7 +48,6 @@ export default {
         fontSize: this.config.textSize,
         color: this.config.color,
       },
-      class: this.config.aligment,
       attrs: {
         href: this.textUrlValue,
         target: this.config.target,
@@ -65,9 +58,9 @@ export default {
       return renderPlaceholder(createElement, this);
     }
 
-    if (this.spacingDirection && this.config.spacing) {
+    if ((this.config.spacingDirection && this.config.spacing) || this.config.aligment) {
       const divStyle = {
-        class: `p${this.spacingDirection}-${this.config.spacing} ${this.config.aligment}`,
+        class: `p${this.config.spacingDirection}-${this.config.spacing} ${this.config.aligment}`,
       };
       const children = [
         createElement(this.textType, data, [this.textValue]),
