@@ -259,12 +259,12 @@ exports[`AllComponents c-date renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">23</div>
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">24</div>
                       </button>
                     </td>
@@ -509,12 +509,12 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">23</div>
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">24</div>
                       </button>
                     </td>
@@ -726,12 +726,12 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">23</div>
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">24</div>
                       </button>
                     </td>
@@ -1244,8 +1244,14 @@ exports[`AllComponents c-tags renders correctly 1`] = `
 </div>
 `;
 
+exports[`AllComponents c-text renders correctly 1`] = `
+<div data-type="text" data-group="inputs" data-uid="31" class="c-element c-text ">
+  <i aria-hidden="true" class="v-icon material-icons theme--light" style="font-size:40px;">text_format</i>
+</div>
+`;
+
 exports[`AllComponents c-text-area renders correctly 1`] = `
-<div data-type="text-area" data-group="inputs" data-uid="31" class="c-element c-text-area ">
+<div data-type="text-area" data-group="inputs" data-uid="32" class="c-element c-text-area ">
   <div class="v-input v-textarea v-text-field theme--light">
     <div class="v-input__control">
       <div class="v-input__slot" style="height:undefined;">
@@ -1264,25 +1270,25 @@ exports[`AllComponents c-text-area renders correctly 1`] = `
 `;
 
 exports[`AllComponents c-video renders correctly 1`] = `
-<div data-type="video" data-group="widgets" data-uid="32" class="c-element c-video " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
+<div data-type="video" data-group="widgets" data-uid="33" class="c-element c-video " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
   <video width="100%" height="100%" style="position:absolute;top:0;left:0;"></video>
 </div>
 `;
 
 exports[`AllComponents c-video-stream renders correctly 1`] = `
-<div data-type="video-stream" data-group="widgets" data-uid="33" class="c-element c-video-stream " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
+<div data-type="video-stream" data-group="widgets" data-uid="34" class="c-element c-video-stream " style="position:relative;overflow:hidden;width:100%;height:auto;padding-top:0;">
   <img width="100%" height="100%" style="position:absolute;top:0;left:0;">
 </div>
 `;
 
 exports[`AllComponents c-vlist renders correctly 1`] = `
-<div data-type="vlist" data-group="containers" data-uid="34" class="c-element c-vlist  c-element-parent  v-card v-sheet theme--light elevation-2" style="background-color:undefined;">
+<div data-type="vlist" data-group="containers" data-uid="35" class="c-element c-vlist  c-element-parent  v-card v-sheet theme--light elevation-2" style="background-color:undefined;">
   <div class="c-element-children c-vlist-items"></div>
 </div>
 `;
 
 exports[`AllComponents c-youtube renders correctly 1`] = `
-<div data-type="youtube" data-group="widgets" data-uid="35" class="c-element c-youtube ">
+<div data-type="youtube" data-group="widgets" data-uid="36" class="c-element c-youtube ">
   <div></div>
 </div>
 `;

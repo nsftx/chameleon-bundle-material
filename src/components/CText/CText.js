@@ -13,6 +13,18 @@ const renderPlaceholder = (createElement, context) => {
   return context.renderElement('div', {}, [icon]);
 };
 
+const renderDivText = (createElement, value, context) => {
+  const data = value;
+  const divStyle = {
+    class: `p${context.config.spacingDirection}-${context.config.spacing} ${context.config.aligment}`,
+  };
+  const children = [
+    createElement(context.textType, data, [context.textValue]),
+  ];
+
+  return context.renderElement('div', divStyle, children);
+};
+
 export default {
   extends: Element,
   watch: {
@@ -59,14 +71,7 @@ export default {
     }
 
     if ((this.config.spacingDirection && this.config.spacing) || this.config.aligment) {
-      const divStyle = {
-        class: `p${this.config.spacingDirection}-${this.config.spacing} ${this.config.aligment}`,
-      };
-      const children = [
-        createElement(this.textType, data, [this.textValue]),
-      ];
-
-      return this.renderElement('div', divStyle, children);
+      return renderDivText(createElement, data, this);
     }
 
     return this.renderElement(this.textType, data, [this.textValue]);
