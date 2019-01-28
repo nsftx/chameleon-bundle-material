@@ -15,22 +15,22 @@ export default {
   },
   computed: {
     textValue() {
-      if (this.items && this.items.length) {
-        return isObject(this.items[0]) ? this.items[0].text : this.items[0];
-      }
-      return this.config.text;
+      return this.getItemValue('text');
     },
-    textUrlValue() {
-      if (this.items && this.items.length) {
-        return isObject(this.items[0]) ? this.items[0].link : this.items[0];
-      }
-      return this.config.link;
+    textLinkValue() {
+      return this.getItemValue('link');
     },
     textType() {
       return this.config.textStyle || 'span';
     },
   },
   methods: {
+    getItemValue(type) {
+      if (this.items && this.items.length) {
+        return isObject(this.items[0]) ? this.items[0][type] : this.items[0];
+      }
+      return this.config[type];
+    },
     renderPlaceholder() {
       const icon = this.$createElement(
         'v-icon',
@@ -61,7 +61,7 @@ export default {
         color: this.config.color,
       },
       attrs: {
-        href: this.textUrlValue,
+        href: this.textLinkValue,
         target: this.config.target,
       },
     };
