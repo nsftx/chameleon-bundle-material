@@ -14,9 +14,9 @@ const itemInterface = [
     label: 'Text',
   },
   {
-    name: 'url',
+    name: 'link',
     type: 'String',
-    label: 'Url',
+    label: 'Link',
   },
 ];
 
@@ -26,17 +26,9 @@ export default {
   name: 'Text',
   icon: 'text_format',
   optionGroups: {
-    data: {
-      key: 'data',
-      name: 'Data',
-    },
-    style: {
-      key: 'style',
-      name: 'Style',
-    },
-    url: {
-      key: 'url',
-      name: 'Url',
+    behaviour: {
+      key: 'behaviour',
+      name: 'Behaviour',
       hidden: {
         current: false,
         default: false,
@@ -98,18 +90,6 @@ export default {
       },
       priority: 2,
     },
-    urlText: {
-      type: 'input',
-      group: 'data',
-      name: 'Text Url Source',
-      value: null,
-      disabled: {
-        current: false,
-        default: false,
-        expression: binding.setExpression('<%= element.textStyle !== "a" %>'),
-      },
-      priority: 3,
-    },
     dataSource: {
       type: 'dataSource',
       group: 'data',
@@ -123,10 +103,21 @@ export default {
       },
       priority: 4,
     },
+    link: {
+      type: 'input',
+      group: 'behaviour',
+      name: 'Text Link Source',
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= !isNil(element.dataSource) %>', expressionImport),
+      },
+      value: null,
+    },
     target: {
       type: 'select',
       name: 'Where To Open The Link',
-      group: 'url',
+      group: 'behaviour',
       value: null,
       clearable: true,
       items: [

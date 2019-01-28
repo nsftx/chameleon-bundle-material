@@ -46,9 +46,9 @@ export default {
     },
     textUrlValue() {
       if (this.items && this.items.length) {
-        return isObject(this.items[0]) ? this.items[0].url : this.items[0];
+        return isObject(this.items[0]) ? this.items[0].link : this.items[0];
       }
-      return this.config.urlText;
+      return this.config.link;
     },
     textType() {
       return this.config.textStyle || 'span';
