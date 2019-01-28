@@ -952,7 +952,7 @@
                           "name": "video stream widget",
                           "streamType": "jsmpeg",
                           "value": null,
-                          "valueMask": "wss://vision.nsoft.com/streaming/${_id}?type=high",
+                          "valueMask": "wss://vision.nsoft.com/streaming/${_id}?type=low",
                           "aspectRatio": "auto",
                           "dataSource": {
                             "local": true,
@@ -962,7 +962,7 @@
                                 "enabled": true,
                                 "address": "rtsp://admin:SyncShop17@172.20.50.243:554/Streaming/Channels/101",
                                 "process_camera": true,
-                                "_id": "5c3e2853c1f89736c4a5742d",
+                                "_id": "5c3f37b7c1f89720c43e90f7",
                                 "name": "Pano"
                               }
                             ]

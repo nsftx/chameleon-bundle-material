@@ -61,12 +61,19 @@ export default {
   },
   methods: {
     createPlayer() {
+      this.destroyPlayer();
+
       if (this.streamValue) {
         this.player = new window[`${this.playerHandler}`].Player(this.streamValue, {
           canvas: this.$refs.canvas,
         });
 
         this.player.play();
+      }
+    },
+    destroyPlayer() {
+      if (this.player && isFunction(this.player.destroy)) {
+        this.player.destroy();
       }
     },
     renderTypeImage() {
@@ -104,9 +111,9 @@ export default {
   },
   watch: {
     dataSource: {
-      handler(current, previous) {
+      handler() {
         this.loadData().then(() => {
-          if (!isNil(previous) && !isNil(this.playerHandler)) {
+          if (!isNil(this.playerHandler)) {
             this.createPlayer();
           }
         });
@@ -116,8 +123,8 @@ export default {
   },
   mounted() {
     if (this.dependencies) {
-      this.playerHandler = this.dependencies.global;
-      this.loadDependencies(this.dependencies.files, this.playerHandler).then(() => {
+      this.loadDependencies(this.dependencies.files, this.dependencies.global).then(() => {
+        this.playerHandler = this.dependencies.global;
         this.createPlayer();
       });
     }
@@ -130,8 +137,6 @@ export default {
     }, children);
   },
   beforeDestroy() {
-    if (this.player && isFunction(this.player.destroy)) {
-      this.player.destroy();
-    }
+    this.destroyPlayer();
   },
 };
