@@ -100,6 +100,12 @@
             "icon": "image",
             "path": "/image",
             "name": "image"
+          },
+          {
+            "title": "Text",
+            "icon": "text_format",
+            "path": "/text",
+            "name": "text"
           }
         ]
       }

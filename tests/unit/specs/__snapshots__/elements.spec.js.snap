@@ -30,7 +30,7 @@ exports[`AllComponents c-calculation renders correctly 1`] = `
     <div class="v-input__control">
       <div class="v-input__slot" style="height:undefined;">
         <div class="v-text-field__slot">
-          <input type="text">
+          <input type="text-input">
         </div>
       </div>
       <div class="v-text-field__details">
@@ -254,7 +254,7 @@ exports[`AllComponents c-date renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">22</div>
                       </button>
                     </td>
@@ -286,7 +286,7 @@ exports[`AllComponents c-date renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">28</div>
                       </button>
                     </td>
@@ -504,7 +504,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">22</div>
                       </button>
                     </td>
@@ -536,7 +536,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">28</div>
                       </button>
                     </td>
@@ -721,7 +721,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">22</div>
                       </button>
                     </td>
@@ -753,7 +753,7 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                      <button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">28</div>
                       </button>
                     </td>
@@ -1246,20 +1246,7 @@ exports[`AllComponents c-tags renders correctly 1`] = `
 
 exports[`AllComponents c-text renders correctly 1`] = `
 <div data-type="text" data-group="inputs" data-uid="31" class="c-element c-text ">
-  <div class="v-input v-text-field theme--light">
-    <div class="v-input__control">
-      <div class="v-input__slot" style="height:undefined;">
-        <div class="v-text-field__slot">
-          <input type="text">
-        </div>
-      </div>
-      <div class="v-text-field__details">
-        <div class="v-messages theme--light">
-          <div class="v-messages__wrapper"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <i aria-hidden="true" class="v-icon material-icons theme--light" style="font-size:40px;">text_format</i>
 </div>
 `;
 

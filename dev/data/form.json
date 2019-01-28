@@ -17,7 +17,7 @@
               "theme": "",
               "elements": [
                 {
-                  "type": "text",
+                  "type": "text-input",
                   "name": "firstName",
                   "label": "First Name",
                   "clearable": true,
@@ -38,7 +38,7 @@
                   "value": "Test Text Input"
                 },
                 {
-                  "type": "text",
+                  "type": "text-input",
                   "name": "lastName",
                   "label": "Last Name",
                   "clearable": true,

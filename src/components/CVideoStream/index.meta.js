@@ -95,7 +95,7 @@ export default {
       disabled: {
         current: false,
         default: false,
-        expression: binding.setExpression('<%= !isNil(element.dataSource) %>', expressionImport),
+        expression: binding.setExpression('<%= isNil(element.dataSource) %>', expressionImport),
       },
       priority: 3,
     },

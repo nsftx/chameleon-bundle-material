@@ -60,7 +60,7 @@
                       },
                       "elements": [
                         {
-                          "type": "text",
+                          "type": "text-input",
                           "name": "firstName",
                           "label": "First Name",
                           "clearable": true,
@@ -81,7 +81,7 @@
                           }
                         },
                         {
-                          "type": "text",
+                          "type": "text-input",
                           "name": "lastName",
                           "label": "Last Name",
                           "clearable": true,
@@ -720,12 +720,10 @@
                               },
                               "elements": [
                                 {
-                                  "type": "text",
+                                  "type": "text-input",
                                   "name": "numberValue",
                                   "label": "Enter Age",
-                                  "context": {
-                                    "type": "number"
-                                  },
+                                  "subtype": "number",
                                   "clearable": true,
                                   "disabled": false,
                                   "readonly": false,
@@ -745,7 +743,7 @@
                                   }
                                 },
                                 {
-                                  "type": "text",
+                                  "type": "text-input",
                                   "name": "numberValue2",
                                   "label": "Enter Your Credit Card Number",
                                   "clearable": true,
@@ -818,15 +816,13 @@
                               },
                               "elements": [
                                 {
-                                  "type": "text",
+                                  "type": "text-input",
                                   "name": "password",
                                   "label": "Password",
                                   "clearable": true,
                                   "disabled": false,
                                   "readonly": false,
-                                  "context": {
-                                    "type": "password"
-                                  },
+                                  "subtype": "password",
                                   "description": {
                                     "placeholder": "Please enter your Password",
                                     "tooltip": "password",
@@ -873,15 +869,13 @@
                               },
                               "elements": [
                                 {
-                                  "type": "text",
+                                  "type": "text-input",
                                   "name": "email",
                                   "label": "Email",
                                   "clearable": true,
                                   "disabled": false,
                                   "readonly": false,
-                                  "context": {
-                                    "type": "email"
-                                  },
+                                  "subtype": "email",
                                   "description": {
                                     "placeholder": "Please enter your Email",
                                     "tooltip": "Email",

@@ -1,0 +1,45 @@
+{
+  "pages": [
+    {
+      "name": "video",
+      "type": "page",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "panel-1",
+          "flat": false,
+          "elements": [
+            {
+              "type": "text",
+              "textStyle": "b",
+              "color": "red",
+              "textSize": "26px",
+              "text": "Bold Text"
+            },
+            {
+              "type": "text",
+              "textStyle": "i",
+              "text": "Italic Text"
+            },
+            {
+              "type": "text",
+              "textStyle": "del",
+              "text": "Strikethrough Text"
+            },
+            {
+              "type": "text",
+              "textStyle": "ins",
+              "text": "Underline Text"
+            },
+            {
+              "type": "text",
+              "textStyle": "a",
+              "text": "Text Link",
+              "urlText": "https://chameleon.nsoft.com"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
