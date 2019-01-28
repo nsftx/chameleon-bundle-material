@@ -185,11 +185,11 @@ export default {
           value: 'a',
         },
         {
-          name: 'Top & Bottom',
+          name: 'Top and Bottom',
           value: 'y',
         },
         {
-          name: 'Left & Right',
+          name: 'Left and Right',
           value: 'x',
         },
         {
