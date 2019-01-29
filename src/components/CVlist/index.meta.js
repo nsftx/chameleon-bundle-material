@@ -12,6 +12,7 @@ export default {
     color: {
       type: 'colorPicker',
       name: 'Color',
+      group: 'style',
       value: 'transparent',
       validation: {
         required: true,
@@ -23,15 +24,26 @@ export default {
     flat: {
       type: 'check',
       name: 'No Shadow',
+      group: 'style',
       value: false,
       priority: 2,
     },
     gutter: {
       type: 'check',
       name: 'Spacing',
+      group: 'style',
       value: false,
       priority: 3,
     },
-    theme: true,
+    height: {
+      type: 'sizeInput',
+      name: 'Height',
+      group: 'style',
+      value: null,
+      priority: 4,
+    },
+    theme: {
+      group: 'style',
+    },
   },
 };
