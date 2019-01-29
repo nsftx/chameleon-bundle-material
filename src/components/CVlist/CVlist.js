@@ -18,6 +18,7 @@ export default {
       },
       style: {
         backgroundColor: this.config.color,
+        height: this.config.height,
       },
     };
 
