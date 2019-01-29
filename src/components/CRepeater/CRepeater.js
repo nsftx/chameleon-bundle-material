@@ -32,7 +32,13 @@ export default {
       userSelect: 'none',
     };
 
-    if (this.items.length && this.element && !isNil(this.element.dataSource)) {
+    if (this.element && (isNil(this.element.dataSource) || isNil(this.items))) {
+      children = createElement(this.getElementTag(this.element.type), {
+        props: {
+          definition: this.element,
+        },
+      });
+    } else {
       children = map(this.items, (item, index) => {
         const elementDefinition = cloneDeep(this.element);
         elementDefinition.dataSource.items = [item];
@@ -46,12 +52,6 @@ export default {
           staticClass: `${this.$options.namespace}${this.$parent.$attrs['data-type']}-item`,
           style: this.registry.isPreviewMode && index >= 1 ? style : null,
         });
-      });
-    } else if (this.element && isNil(this.element.dataSource)) {
-      children = createElement(this.getElementTag(this.element.type), {
-        props: {
-          definition: this.element,
-        },
       });
     }
 
