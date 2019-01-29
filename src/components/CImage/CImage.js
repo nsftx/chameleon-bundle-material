@@ -20,7 +20,7 @@ const getValue = value => (isNil(value) || value === false ? '' : `${value}`);
 
 const getImageAttrs = (context) => {
   const config = context.config;
-  const imageSrc = context.items || config.src;
+  const imageSrc = context.items ? context.items[0].url : config.src;
   if (isNil(imageSrc) || imageSrc.length === 0) return null;
 
   const isUrl = urlValidator(context.validators.isUrl, getValue(imageSrc));
@@ -94,8 +94,8 @@ export default {
         flat: true,
       },
       staticStyle: {
-        width: this.config.width || '50px',
-        height: this.config.height || '100%',
+        width: this.config.width || '40px',
+        height: this.config.height || '40px',
       },
     };
     const child = this.config.src || (this.items && this.items.length) ?
