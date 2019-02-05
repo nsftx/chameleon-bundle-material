@@ -20,18 +20,18 @@ const getValue = value => (isNil(value) || value === false ? '' : `${value}`);
 
 const getImageAttrs = (context) => {
   const config = context.config;
-  const imageSrc = context.items ? context.items[0].url : config.src;
-  if (isNil(imageSrc) || imageSrc.length === 0) return null;
 
-  const isUrl = urlValidator(context.validators.isUrl, getValue(imageSrc));
-  const src = isUrl === true ? imageSrc : parseImageSrc(context, imageSrc);
+  if (isNil(context.imageSrc) || context.imageSrc.length === 0) return null;
+
+  const isUrl = urlValidator(context.validators.isUrl, getValue(context.imageSrc));
+  const src = isUrl === true ? context.imageSrc : parseImageSrc(context, context.imageSrc);
 
   return {
     src,
-    alt: context.config.alternativeText,
-    height: context.config.height,
-    width: context.config.width,
-    contain: context.config.contain,
+    alt: config.alternativeText,
+    height: config.height,
+    width: config.width,
+    contain: config.contain,
   };
 };
 
@@ -40,7 +40,7 @@ const renderImage = (createElement, context) => {
     attrs: getImageAttrs(context),
     on: {
       click() {
-        const payload = context.config.src;
+        const payload = context.imageSrc;
         context.$emit('click', payload);
         context.sendToEventBus('Clicked', {
           payload,
@@ -85,6 +85,11 @@ export default {
       deep: true,
     },
   },
+  computed: {
+    imageSrc() {
+      return this.items && this.items.length ? this.items[0].url : this.config.src;
+    },
+  },
   render(createElement) {
     const data = {
       props: {
@@ -98,7 +103,7 @@ export default {
         height: this.config.height || '40px',
       },
     };
-    const child = this.config.src || (this.items && this.items.length) ?
+    const child = this.imageSrc ?
       renderImage(createElement, this) :
       renderPlaceholder(createElement, this);
 
