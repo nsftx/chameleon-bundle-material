@@ -1,3 +1,5 @@
+import { binding } from '@utility';
+
 const itemInterface = [
   {
     name: 'id',
@@ -33,6 +35,14 @@ export default {
     behaviour: {
       key: 'behaviour',
       name: 'Behaviour',
+    },
+    filter: {
+      key: 'filter',
+      name: 'Search / Filter',
+      hidden: {
+        default: false,
+        expression: binding.setExpression('<%= !element.filter %>'),
+      },
     },
   },
   actions: [
@@ -107,15 +117,26 @@ export default {
     },
     theme: {
       group: 'style',
+      priority: 1,
     },
     color: {
       group: 'style',
+      name: 'Background Color',
+      priority: 2,
+    },
+    activeClass: {
+      type: 'colorPicker',
+      group: 'style',
+      name: 'Active Tree Node Color',
+      value: null,
+      priority: 3,
     },
     selectorColor: {
       type: 'colorPicker',
       group: 'style',
       name: 'Selector Color',
       value: null,
+      priority: 4,
     },
     selectorPosition: {
       type: 'select',
@@ -132,6 +153,7 @@ export default {
         },
       ],
       value: 'left',
+      priority: 5,
     },
     expanderPosition: {
       type: 'select',
@@ -148,6 +170,7 @@ export default {
         },
       ],
       value: 'left',
+      priority: 6,
     },
     defaultState: {
       type: 'select',
@@ -192,6 +215,24 @@ export default {
         },
       ],
       value: 'multi',
+    },
+    filter: {
+      type: 'check',
+      group: 'behaviour',
+      name: 'Show Search / Filter',
+      value: false,
+    },
+    filterText: {
+      type: 'input',
+      group: 'filter',
+      name: 'Search / Filter Input Label',
+      value: 'Treeview Filter',
+    },
+    filterColor: {
+      type: 'colorPicker',
+      group: 'filter',
+      name: 'Color',
+      value: null,
     },
   },
 };
