@@ -17,10 +17,11 @@ const getProps = (context) => {
 
   return {
     activatable: true,
-    activeClass: 'grey lighten-4',
+    activeClass: config.activeClass || 'grey lighten-4',
     multipleActive: true,
     active: context.active,
     dark: context.isThemeDark,
+    filter: context.filter,
     light: context.isThemeLight,
     items: context.items,
     itemKey: context.itemValue,
@@ -29,9 +30,11 @@ const getProps = (context) => {
     loadChildren: context.getChildren,
     selectable: config.selection !== 'none',
     selectedColor: config.selectorColor,
+    search: context.search,
     open: context.open,
     openAll: context.openOnLoad,
     openOnClick: true,
+    returnObject: true, // Maybe expose in option if necessary,
     value: context.value,
   };
 };
@@ -46,17 +49,17 @@ const getListeners = (context) => {
       if (self.config.selection === 'single' && value.length > 1) {
         // TODO self.value.shift();
       }
-      context.sendToEventBus('SelectionChanged', { active: value });
+      context.sendToEventBus('SelectionChanged', value);
     },
     'update:active': (value) => {
-      context.sendToEventBus('ActiveItemChanged', { active: value });
+      context.sendToEventBus('ActiveItemChanged', value);
     },
     'update:open': (value) => {
       // Don't remove this if you don't wanna fall into the loop
       if (!isEqual(self.open, value)) {
         self.open = value;
       }
-      context.sendToEventBus('StateChanged', { active: value });
+      context.sendToEventBus('StateChanged', value);
     },
   };
 };
@@ -75,6 +78,29 @@ const renderPlaceholder = (createElement, context) => {
       flat: true,
     },
   }, [icon]);
+};
+
+const renderFilterSlot = (createElement, context) => {
+  const self = context;
+  return createElement(
+    'v-text-field', {
+      props: {
+        backgroundColor: self.config.color,
+        clearable: true,
+        clearIcon: 'add_circle_outline',
+        color: self.config.filterColor,
+        flat: true,
+        fullWidth: true,
+        hideDetails: true,
+        label: self.config.filterText,
+        value: self.search,
+      },
+      on: {
+        input(value) {
+          self.search = value;
+        },
+      },
+    });
 };
 
 const getTreeSlot = (createElement, context) => {
@@ -97,10 +123,27 @@ const getTreeSlot = (createElement, context) => {
       }
       return null;
     },
-    // Label - it is not slot, so we can't change it's value
-    // https://github.com/vuetifyjs/vuetify/pull/5567
+    label: (items) => {
+      if (context.getMapType() === 'image') {
+        return null;
+      }
+      return items.item[context.itemDisplay];
+    },
   };
   return slot;
+};
+
+const renderTreeView = (createElement, context, method) => {
+  const render = method ? context.renderElement : createElement;
+  return render(
+    'v-treeview',
+    {
+      props: getProps(context),
+      on: getListeners(context),
+      staticClass: `${context.config.color} ${context.togglePosition} ${context.checkPosition}`,
+      scopedSlots: getTreeSlot(createElement, context),
+    },
+  );
 };
 
 const checkIfValid = (context, value) => {
@@ -115,6 +158,7 @@ export default {
       active: [],
       open: [],
       value: [],
+      search: null,
     };
   },
   computed: {
@@ -123,6 +167,12 @@ export default {
         return this.getAllItems();
       }
       return null;
+    },
+    filter() {
+      return (item, search, text) => {
+        const itemText = item[text].toLowerCase();
+        return itemText.indexOf(search.toLowerCase()) > -1;
+      };
     },
     firstItem() {
       if (!isNil(this.items) && this.items.length) {
@@ -203,22 +253,9 @@ export default {
       return null;
     },
     openOnLoad() {
-      let openState = false;
-      if (isNil(this.items)) return openState;
-
-      switch (this.config.defaultState) {
-        case 'first':
-          openState = false;
-          break;
-        case 'all':
-          // Since openAll is only working on component load
-          // set open value trought array (this.open) of item id's
-          openState = true;
-          break;
-        default:
-          openState = false;
-      }
-      return openState;
+      if (isNil(this.items)) return false;
+      if (this.config.defaultState === 'all') return true;
+      return false;
     },
     dataSourceSchema() {
       if (this.dataSource) return this.dataSource.schema;
@@ -317,17 +354,21 @@ export default {
     },
   },
   render(createElement) {
+    const filterSlot = renderFilterSlot(createElement, this);
+    const treeViewSlot = renderTreeView(createElement, this);
     if (isNil(this.items)) {
       return renderPlaceholder(createElement, this);
     }
-    return this.renderElement(
-      'v-treeview',
-      {
-        props: getProps(this),
-        on: getListeners(this),
-        staticClass: `${this.config.color} ${this.togglePosition} ${this.checkPosition}`,
-        scopedSlots: getTreeSlot(createElement, this),
-      },
-    );
+    if (this.config.filter) {
+      return this.renderElement('v-card', {
+        props: {
+          flat: true,
+          dark: this.isThemeDark,
+          light: this.isThemeLight,
+        },
+        class: 'mx-auto',
+      }, [filterSlot, treeViewSlot]);
+    }
+    return renderTreeView(createElement, this, true);
   },
 };
