@@ -2,6 +2,7 @@ import {
   bindable,
   dependable,
   elementable,
+  errorable,
   localizable,
   sourceable,
   reactionable,
@@ -19,6 +20,7 @@ export default {
     bindable,
     dependable,
     elementable,
+    errorable,
     localizable,
     sourceable,
     reactionable,
@@ -28,6 +30,11 @@ export default {
     return {
       items: null,
     };
+  },
+  // If there is an error insde render method
+  // it will render default error template with error message
+  renderError() {
+    return this.renderErrorTemplate();
   },
   methods: {
     loadData() {

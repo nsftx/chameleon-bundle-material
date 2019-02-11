@@ -6,9 +6,7 @@ export default {
   watch: {
     dataSource: {
       handler() {
-        this.loadData().then(() => {
-          this.value = this.textValue;
-        });
+        this.loadData();
       },
       deep: true,
     },

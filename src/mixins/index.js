@@ -10,6 +10,7 @@ change path to ../../../chameleon-sdk/src/mixins
 export {
   bindable,
   dependable,
+  errorable,
   elementable,
   reactionable,
   sourceable,
