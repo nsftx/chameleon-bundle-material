@@ -11,13 +11,16 @@
           "elements": [
             {
               "type": "treeview",
-              "color": "",
+              "color": "red",
               "theme": "light",
               "itemValue": "",
               "itemDisplay": "",
               "itemChildren": "ch",
               "expanderPosition": "left",
               "selectorPosition": "left",
+              "activeClass": null,
+              "filter": true,
+              "filterText": "Filter",
               "dataSource": {
                 "id": "treeview",
                 "name": "treeview",
