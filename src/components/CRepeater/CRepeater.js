@@ -75,7 +75,7 @@ export default {
       userSelect: 'none',
     };
 
-    if (this.config.elements) {
+    if (this.config.elements && this.config.elements.length) {
       each(this.config.elements, (el) => {
         children.push(this.getRepeaterChildren(el, style));
       });
