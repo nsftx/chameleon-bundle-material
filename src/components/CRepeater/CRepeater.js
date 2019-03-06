@@ -23,7 +23,10 @@ export default {
             props: {
               definition: elDefinition,
             },
-          });
+          },
+            [
+              this.getElementChildren(elDefinition.elements, item),
+            ]);
         });
       }
       return null;
@@ -42,7 +45,6 @@ export default {
           elementDefinition.dataSource.items = [item];
           elementDefinition.dataSource.local = true;
         }
-
         return this.$createElement(this.getElementTag(elementDefinition.type), {
           props: {
             definition: elementDefinition,
