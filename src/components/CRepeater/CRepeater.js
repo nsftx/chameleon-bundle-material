@@ -1,13 +1,8 @@
-import { cloneDeep, isNil, map } from 'lodash';
+import { cloneDeep, each, isNil, map } from 'lodash';
 import Element from '../Element';
 
 export default {
   extends: Element,
-  computed: {
-    element() {
-      return this.config.elements[0];
-    },
-  },
   watch: {
     dataSource: {
       handler() {
@@ -15,7 +10,56 @@ export default {
       },
     },
   },
-  render(createElement) {
+  methods: {
+    getElementChildren(element, item) {
+      if (!element) return null;
+
+      return map(element, (el) => {
+        const elDefinition = el;
+        if (!isNil(elDefinition.dataSource)) {
+          elDefinition.dataSource.items = [item];
+          elDefinition.dataSource.local = true;
+        }
+        return this.$createElement(this.getElementTag(el.type), {
+          props: {
+            definition: elDefinition,
+          },
+        },
+          [
+            this.getElementChildren(elDefinition.elements, item),
+          ]);
+      });
+    },
+    getRepeaterChildren(element, style) {
+      if (isNil(this.config.dataSource) && isNil(this.items)) {
+        return this.$createElement(this.getElementTag(element.type), {
+          props: {
+            definition: element,
+          },
+        });
+      }
+      return map(this.items, (item, index) => {
+        const elementDefinition = cloneDeep(element);
+        if (!isNil(elementDefinition.dataSource)) {
+          elementDefinition.dataSource.items = [item];
+          elementDefinition.dataSource.local = true;
+        }
+        return this.$createElement(this.getElementTag(elementDefinition.type), {
+          props: {
+            definition: elementDefinition,
+          },
+          // Add parent static class so that it can inherit parent (container) style
+          staticClass: `${this.$options.namespace}${this.$parent.$attrs['data-type']}-item`,
+          style: this.registry.isPreviewMode && index >= 1 ? style : null,
+        },
+          [
+            this.getElementChildren(elementDefinition.elements, item),
+          ],
+        );
+      });
+    },
+  },
+  render() {
     const config = this.config;
     let children = [];
     const data = {
@@ -32,27 +76,19 @@ export default {
       userSelect: 'none',
     };
 
-    if (this.element && (isNil(this.element.dataSource) || isNil(this.items))) {
-      children = createElement(this.getElementTag(this.element.type), {
-        props: {
-          definition: this.element,
-        },
+    if (this.config.elements && this.config.elements.length) {
+      each(this.config.elements, (el) => {
+        children.push(this.getRepeaterChildren(el, style));
       });
     } else {
-      children = map(this.items, (item, index) => {
-        const elementDefinition = cloneDeep(this.element);
-        elementDefinition.dataSource.items = [item];
-        elementDefinition.dataSource.local = true;
-
-        return createElement(this.getElementTag(this.element.type), {
-          props: {
-            definition: elementDefinition,
-          },
-          // Add parent static class so that it can inherit parent (container) style
-          staticClass: `${this.$options.namespace}${this.$parent.$attrs['data-type']}-item`,
-          style: this.registry.isPreviewMode && index >= 1 ? style : null,
-        });
-      });
+      // Render placeholder
+      children = this.$createElement(
+        'v-icon',
+        {
+          props: { xLarge: true },
+        },
+        'repeat',
+      );
     }
 
     return this.renderElement('v-card', data, children, true);
