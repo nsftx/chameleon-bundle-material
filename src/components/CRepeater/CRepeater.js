@@ -12,24 +12,23 @@ export default {
   },
   methods: {
     getElementChildren(element, item) {
-      if (element) {
-        return map(element, (el) => {
-          const elDefinition = el;
-          if (!isNil(elDefinition.dataSource)) {
-            elDefinition.dataSource.items = [item];
-            elDefinition.dataSource.local = true;
-          }
-          return this.$createElement(this.getElementTag(el.type), {
-            props: {
-              definition: elDefinition,
-            },
+      if (!element) return null;
+
+      return map(element, (el) => {
+        const elDefinition = el;
+        if (!isNil(elDefinition.dataSource)) {
+          elDefinition.dataSource.items = [item];
+          elDefinition.dataSource.local = true;
+        }
+        return this.$createElement(this.getElementTag(el.type), {
+          props: {
+            definition: elDefinition,
           },
-            [
-              this.getElementChildren(elDefinition.elements, item),
-            ]);
-        });
-      }
-      return null;
+        },
+          [
+            this.getElementChildren(elDefinition.elements, item),
+          ]);
+      });
     },
     getRepeaterChildren(element, style) {
       if (isNil(this.config.dataSource) && isNil(this.items)) {
