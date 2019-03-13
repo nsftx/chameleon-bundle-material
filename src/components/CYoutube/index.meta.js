@@ -20,12 +20,6 @@ export default {
   type: 'youtube',
   name: 'YouTube',
   icon: 'ondemand_video',
-  optionGroups: {
-    data: {
-      key: 'data',
-      name: 'Data',
-    },
-  },
   actions: [
     {
       name: 'setDataSource',

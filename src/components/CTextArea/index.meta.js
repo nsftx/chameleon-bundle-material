@@ -21,10 +21,6 @@ export default {
   name: 'Text Area',
   icon: 'text_fields',
   optionGroups: {
-    data: {
-      key: 'data',
-      name: 'Data',
-    },
     validation: {
       key: 'validation',
       name: 'Validation',

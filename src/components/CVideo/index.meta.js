@@ -20,12 +20,6 @@ export default {
   type: 'video',
   name: 'Video',
   icon: 'theaters',
-  optionGroups: {
-    data: {
-      key: 'data',
-      name: 'Data',
-    },
-  },
   actions: [
     {
       name: 'setDataSource',

@@ -34,10 +34,6 @@ export default {
       key: 'carousel',
       name: 'Carousel',
     },
-    data: {
-      key: 'data',
-      name: 'Source',
-    },
   },
   actions: [
     {
