@@ -27,6 +27,7 @@ const getPropPrefix = config => (config.style ? config.style.prefix : null);
 const getPropSuffix = config => (config.style ? config.style.suffix : null);
 const getProps = (context) => {
   const config = context.config;
+  config.theme = config.style && config.style.theme;
 
   const props = {
     appendIcon: config.style ? config.style.appendIcon : null,

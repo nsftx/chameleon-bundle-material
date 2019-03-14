@@ -20,12 +20,6 @@ export default {
   type: 'html',
   name: 'Html',
   icon: 'code',
-  optionGroups: {
-    data: {
-      key: 'data',
-      name: 'Data',
-    },
-  },
   actions: [
     {
       name: 'setDataSource',

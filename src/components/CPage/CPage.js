@@ -1,5 +1,5 @@
 import { each, kebabCase, isNil } from 'lodash';
-import { elementable, reactionable, themeable } from '@mixins';
+import { elementable, reactionable, themable } from '@mixins';
 import { logger, loggerNamespace } from '@utility';
 
 const getPreviewStyle = (context) => {
@@ -20,7 +20,7 @@ export default {
   mixins: [
     elementable,
     reactionable,
-    themeable,
+    themable,
   ],
   computed: {
     elements() {
@@ -29,15 +29,15 @@ export default {
     name() {
       return this.config.name;
     },
-    theme() {
+    appTheme() {
       if (isNil(this.config.theme) && this.registry) {
         const app = this.registry.app;
-        if (app) {
+        if (app && app.theme) {
           return this.registry.app.theme;
         }
       }
 
-      return this.config.theme;
+      return null;
     },
   },
   methods: {
@@ -95,8 +95,8 @@ export default {
       'v-card',
       {
         props: {
-          dark: this.isThemeDark,
-          light: this.isThemeLight,
+          dark: this.appTheme ? this.appTheme === 'dark' : this.isThemeDark,
+          light: this.appTheme ? this.appTheme === 'light' : this.isThemeLight,
           color: this.config.color,
           flat: true,
         },

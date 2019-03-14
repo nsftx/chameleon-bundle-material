@@ -21,17 +21,9 @@ export default {
   name: 'Text Input',
   icon: 'title',
   optionGroups: {
-    data: {
-      key: 'data',
-      name: 'Data',
-    },
     description: {
       key: 'description',
       name: 'Description',
-    },
-    style: {
-      key: 'style',
-      name: 'Style',
     },
     validation: {
       key: 'validation',

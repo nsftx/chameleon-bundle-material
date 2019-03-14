@@ -20,12 +20,6 @@ export default {
   type: 'video-stream',
   name: 'Video Stream',
   icon: 'video_call',
-  optionGroups: {
-    data: {
-      key: 'data',
-      name: 'Data',
-    },
-  },
   actions: [
     {
       name: 'setDataSource',

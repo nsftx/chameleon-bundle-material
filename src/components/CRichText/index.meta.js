@@ -21,10 +21,6 @@ export default {
   name: 'Rich Text',
   icon: 'text_format',
   optionGroups: {
-    data: {
-      key: 'data',
-      name: 'Data',
-    },
     validation: {
       key: 'validation',
       name: 'Validation',

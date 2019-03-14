@@ -6,7 +6,7 @@ import {
   localizable,
   sourceable,
   reactionable,
-  themeable,
+  themable,
 } from '@mixins';
 
 import { cloneDeep, merge, isNil, isObject } from 'lodash';
@@ -24,7 +24,7 @@ export default {
     localizable,
     sourceable,
     reactionable,
-    themeable,
+    themable,
   ],
   data() {
     return {

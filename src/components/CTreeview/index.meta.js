@@ -24,14 +24,6 @@ export default {
   name: 'Tree View',
   icon: 'list_alt',
   optionGroups: {
-    data: {
-      key: 'data',
-      name: 'Data',
-    },
-    style: {
-      key: 'style',
-      name: 'Style',
-    },
     behaviour: {
       key: 'behaviour',
       name: 'Behaviour',

@@ -1,6 +1,5 @@
 export { default as fieldable } from './fieldable';
 export { default as localizable } from './localizable';
-export { default as themeable } from './themeable';
 export { default as validatable } from './validatable';
 
 /*
@@ -13,5 +12,6 @@ export {
   errorable,
   elementable,
   reactionable,
+  themable,
   sourceable,
 } from '@nsoft/chameleon-sdk/src/mixins';
