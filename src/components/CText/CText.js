@@ -1,4 +1,4 @@
-import { isObject, isNil } from 'lodash';
+import { isObject } from 'lodash';
 import Element from '../Element';
 
 export default {
@@ -64,7 +64,7 @@ export default {
       },
     };
 
-    if (isNil(this.textValue) || this.textValue === '') {
+    if (!this.textValue) {
       return this.renderPlaceholder();
     }
 
