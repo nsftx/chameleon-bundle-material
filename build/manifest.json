@@ -1,7 +1,7 @@
 {
   "name": "material",
   "namespace": "c-",
-  "version": 91,
+  "version": 92,
   "styles": [
     "bundle.min.css"
   ],
