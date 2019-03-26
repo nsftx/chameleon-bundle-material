@@ -1,10 +1,10 @@
 import { isNil, isObject } from 'lodash';
-import { fieldable, validatable } from '@mixins';
-import { validator } from '@validators';
+import { fieldable, validatable } from '@/mixins';
+import { validator } from '@/validators';
 import Element from '../Element';
 
 const getAttrs = (context) => {
-  const config = context.config;
+  const { config } = context;
 
   const attrs = {
     name: config.name,
@@ -26,7 +26,7 @@ const getPropRequired = (config) => {
 const getPropPrefix = config => (config.style ? config.style.prefix : null);
 const getPropSuffix = config => (config.style ? config.style.suffix : null);
 const getProps = (context) => {
-  const config = context.config;
+  const { config } = context;
   config.theme = config.style && config.style.theme;
 
   const props = {
@@ -115,7 +115,7 @@ export default {
       return this.config.value;
     },
     type() {
-      const subtype = this.config.subtype;
+      const { subtype } = this.config;
       let type = 'text-input';
 
       if (subtype) {

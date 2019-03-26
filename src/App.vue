@@ -72,72 +72,72 @@
 </template>
 
 <script>
-  import { v4 } from 'uuid';
-  import axios from 'axios';
-  import { assign, merge } from 'lodash';
-  import VJsoneditor from 'vue-jsoneditor';
-  import chameleonNotation from '@nsoft/chameleon-notation';
-  import connectorApi from '@nsoft/chameleon-sdk/src/api/connector';
+import { v4 } from 'uuid';
+import axios from 'axios';
+import { assign } from 'lodash';
+import VJsoneditor from 'vue-jsoneditor';
+import chameleonNotation from '@nsoft/chameleon-notation';
+import connectorApi from '@nsoft/chameleon-sdk/src/api/connector';
 
-  const navigation = require('./data/navigation.json');
-  const defaultJson = require('./data/page.json');
+const navigation = require('../public/data/navigation.json');
+const defaultJson = require('../public/data/page.json');
 
-  const http = axios.create({
-    timeout: 5000,
-  });
+const http = axios.create({
+  timeout: 5000,
+});
 
-  const uuid = () => v4();
+const uuid = () => v4();
 
-  export default {
-    name: 'app',
-    components: {
-      VJsoneditor,
+export default {
+  name: 'app',
+  components: {
+    VJsoneditor,
+  },
+  data() {
+    return {
+      toggleDrawer: true,
+      validation: null,
+      validators: null,
+      definition: null,
+      source: null,
+      navigation,
+      uuid,
+    };
+  },
+  computed: {
+    validationMessage() {
+      return this.validation && this.validation.message
+        ? this.validation.message.replace(/(?:\r\n|\r|\n)/g, '<br />') : '';
     },
-    data() {
-      return {
-        toggleDrawer: true,
-        validation: null,
-        validators: null,
-        definition: null,
-        source: null,
-        navigation,
-        uuid,
-      };
+  },
+  methods: {
+    getUniqueKey(type) {
+      return `${type}_${uuid()}`;
     },
-    computed: {
-      validationMessage() {
-        return this.validation && this.validation.message ?
-          this.validation.message.replace(/(?:\r\n|\r|\n)/g, '<br />') : '';
-      },
-    },
-    methods: {
-      getUniqueKey(type) {
-        return `${type}_${uuid()}`;
-      },
-      componentChanged(component) {
-        const self = this;
-        http.get(`/data/${component}.json`).then((response) => {
-          self.source = response.data.pages ? response.data.pages[0] : response.data;
-          self.definition = self.source;
-          self.validateNotation();
-        });
-      },
-      sourceChanged(value) {
-        this.definition = value;
-        this.validateNotation();
-      },
-      validateNotation() {
-        this.validation = chameleonNotation.validate(this.definition);
-      },
-    },
-    mounted() {
-      assign(this.$chameleon, {
-        connector: connectorApi,
-        connectors: defaultJson.connectors,
+    componentChanged(component) {
+      const self = this;
+      http.get(`/data/${component}.json`).then((response) => {
+        self.source = response.data.pages ? response.data.pages[0] : response.data;
+        self.definition = self.source;
+        self.validateNotation();
       });
-
-      this.definition = defaultJson.pages[0];
-      this.source = defaultJson.pages[0];
     },
-  };
+    sourceChanged(value) {
+      this.definition = value;
+      this.validateNotation();
+    },
+    validateNotation() {
+      this.validation = chameleonNotation.validate(this.definition);
+    },
+  },
+  mounted() {
+    assign(this.$chameleon, {
+      connector: connectorApi,
+      connectors: defaultJson.connectors,
+    });
+
+    [this.definition] = defaultJson.pages;
+    [this.source] = defaultJson.pages;
+  },
+};
 </script>

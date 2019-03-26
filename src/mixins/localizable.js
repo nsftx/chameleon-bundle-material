@@ -1,5 +1,5 @@
 import { isEmpty } from 'lodash';
-import locale from '@locale';
+import locale from '@/locale';
 
 export default {
   data() {

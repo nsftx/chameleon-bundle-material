@@ -7,15 +7,15 @@
   ],
   "scripts": [
     {
-        "script": "bundle.min.js",
-        "type": "components",
-        "global": "__CHAMELEON_MATERIAL__"
+      "script": "bundle.min.js",
+      "type": "components",
+      "global": "__CHAMELEON_MATERIAL__"
     },
     {
-        "script": "bundle.meta.js",
-        "type": "meta",
-        "global": "__CHAMELEON_MATERIAL_META__"
-     }
+      "script": "bundle.meta.js",
+      "type": "meta",
+      "global": "__CHAMELEON_MATERIAL_META__"
+    }
   ],
   "helpPath": "help"
 }

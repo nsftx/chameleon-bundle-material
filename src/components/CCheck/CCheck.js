@@ -1,10 +1,10 @@
-import { fieldable, validatable } from '@mixins';
-import { validator } from '@validators';
+import { fieldable, validatable } from '@/mixins';
+import { validator } from '@/validators';
 import Element from '../Element';
 
 
 const getAttrs = (context) => {
-  const config = context.config;
+  const { config } = context;
 
   const attrs = {
     name: config.name,
@@ -37,7 +37,7 @@ const getPropRequired = (config) => {
 };
 
 const getProps = (context) => {
-  const config = context.config;
+  const { config } = context;
 
   const props = {
     appendIcon: config.appendIcon,

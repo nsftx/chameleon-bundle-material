@@ -37,7 +37,7 @@ const getMessage = (result, data) => {
 
 export default {
   getRules(config, validators) {
-    const validation = config.validation;
+    const { validation } = config;
     const rules = [];
 
     if (isNil(validators) || isNil(validation)) return rules;
@@ -99,7 +99,7 @@ export default {
     }
 
     if (validation.pattern) {
-      const predefined = validation.pattern.predefined;
+      const { predefined } = validation.pattern;
       if (predefined) {
         rules.push(value => getMessage(validator[predefined](
           validators[predefined],

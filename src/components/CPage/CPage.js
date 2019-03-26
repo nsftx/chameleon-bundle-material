@@ -1,9 +1,9 @@
 import { each, kebabCase, isNil } from 'lodash';
-import { elementable, reactionable, themable } from '@mixins';
-import { logger, loggerNamespace } from '@utility';
+import { elementable, reactionable, themable } from '@/mixins';
+import { logger, loggerNamespace } from '@/utility';
 
 const getPreviewStyle = (context) => {
-  const layout = context.config.layout;
+  const { layout } = context.config;
   if (layout && context.registry.isPreviewMode) {
     return {
       height: '100%',
@@ -31,7 +31,7 @@ export default {
     },
     appTheme() {
       if (isNil(this.config.theme) && this.registry) {
-        const app = this.registry.app;
+        const { app } = this.registry;
         if (app && app.theme) {
           return this.registry.app.theme;
         }

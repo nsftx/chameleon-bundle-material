@@ -11,7 +11,7 @@ const getAttrs = (context) => {
 };
 
 const getProps = (context) => {
-  const config = context.config;
+  const { config } = context;
 
   const props = {
     color: config.color,

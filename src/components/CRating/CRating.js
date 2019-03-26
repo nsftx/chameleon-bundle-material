@@ -1,5 +1,5 @@
-import { fieldable, validatable } from '@mixins';
-import { validator } from '@validators';
+import { fieldable, validatable } from '@/mixins';
+import { validator } from '@/validators';
 import { isNil, isObject } from 'lodash';
 import Element from '../Element';
 
@@ -14,7 +14,7 @@ const getPropRequired = (config) => {
 
 const getRatingProps = (context) => {
   const self = context;
-  const config = context.config;
+  const { config } = context;
 
   return {
     props: {
@@ -42,7 +42,7 @@ const getRatingProps = (context) => {
 const getHiddenInput = (createElement, context) => {
   // Fake input, for c-form model
   const self = context;
-  const config = self.config;
+  const { config } = self;
   return createElement('v-input',
     {
       attrs: {

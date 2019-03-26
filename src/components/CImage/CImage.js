@@ -1,6 +1,6 @@
 import { each, isNil, template } from 'lodash';
-import { validatable } from '@mixins';
-import { urlValidator } from '@validators';
+import { validatable } from '@/mixins';
+import { urlValidator } from '@/validators';
 import Element from '../Element';
 
 const parseImageSrc = (context, image) => {
@@ -19,7 +19,7 @@ const parseImageSrc = (context, image) => {
 const getValue = value => (isNil(value) || value === false ? '' : `${value}`);
 
 const getImageAttrs = (context) => {
-  const config = context.config;
+  const { config } = context;
 
   if (isNil(context.imageSrc) || !context.imageSrc.length) return null;
 
@@ -103,9 +103,9 @@ export default {
         height: this.config.height || '40px',
       },
     };
-    const child = this.imageSrc ?
-      renderImage(createElement, this) :
-      renderPlaceholder(createElement, this);
+    const child = this.imageSrc
+      ? renderImage(createElement, this)
+      : renderPlaceholder(createElement, this);
 
     if (this.unselectable) {
       return createElement('v-card', data, [child]);

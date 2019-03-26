@@ -1,6 +1,6 @@
 import { isNil, filter } from 'lodash';
-import { fieldable, validatable } from '@mixins';
-import { validator } from '@validators';
+import { fieldable, validatable } from '@/mixins';
+import { validator } from '@/validators';
 import Element from '../Element';
 
 const getAttrs = (context) => {
@@ -47,7 +47,7 @@ const setItemProps = (context) => {
 };
 
 const getProps = (context) => {
-  const config = context.config;
+  const { config } = context;
   if (!isNil(context.items) && context.items.length !== 0) {
     setItemProps(context);
   }

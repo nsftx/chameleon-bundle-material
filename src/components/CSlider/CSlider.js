@@ -1,5 +1,5 @@
-import { fieldable, validatable } from '@mixins';
-import { validator } from '@validators';
+import { fieldable, validatable } from '@/mixins';
+import { validator } from '@/validators';
 import { isNil, isNaN } from 'lodash';
 import Element from '../Element';
 
@@ -52,7 +52,7 @@ const getPropTick = (config) => {
 };
 
 const getProps = (context) => {
-  const config = context.config;
+  const { config } = context;
   config.value = context.value || getMinMax(config).min;
 
   const props = {

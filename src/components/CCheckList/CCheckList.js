@@ -1,6 +1,6 @@
 import { isNil, map, filter } from 'lodash';
-import { fieldable, validatable } from '@mixins';
-import { validator } from '@validators';
+import { fieldable, validatable } from '@/mixins';
+import { validator } from '@/validators';
 import Element from '../Element';
 
 const createErrorMessage = (createElement, context) => {
@@ -16,7 +16,7 @@ const createErrorMessage = (createElement, context) => {
 };
 
 const getItemAttrs = (context) => {
-  const config = context.config;
+  const { config } = context;
 
   const attrs = {
     name: config.name,
@@ -52,7 +52,7 @@ const getPropRequired = (config) => {
 const getItemProps = (context, item) => {
   if (isNil(context.dataSource)) return null;
 
-  const config = context.config;
+  const { config } = context;
   const mapProps = filter(context.dataSource.schema, i => !isNil(i.mapName));
   const itemProps = Object.keys(item);
   const value = !mapProps.length ? item[itemProps[0]] : item.value;
@@ -109,8 +109,7 @@ export default {
             staticClass: 'mt-0',
             props: getItemProps(this, item),
             on: getItemListeners(this, item),
-          },
-        ));
+          }));
     };
 
     const children = [

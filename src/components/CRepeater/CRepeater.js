@@ -1,4 +1,6 @@
-import { cloneDeep, each, isNil, map } from 'lodash';
+import {
+  cloneDeep, each, isNil, map,
+} from 'lodash';
 import Element from '../Element';
 
 export default {
@@ -25,9 +27,9 @@ export default {
             definition: elDefinition,
           },
         },
-          [
-            this.getElementChildren(elDefinition.elements, item),
-          ]);
+        [
+          this.getElementChildren(elDefinition.elements, item),
+        ]);
       });
     },
     getRepeaterChildren(element, style) {
@@ -52,15 +54,14 @@ export default {
           staticClass: `${this.$options.namespace}${this.$parent.$attrs['data-type']}-item`,
           style: this.registry.isPreviewMode && index >= 1 ? style : null,
         },
-          [
-            this.getElementChildren(elementDefinition.elements, item),
-          ],
-        );
+        [
+          this.getElementChildren(elementDefinition.elements, item),
+        ]);
       });
     },
   },
   render() {
-    const config = this.config;
+    const { config } = this;
     let children = [];
     const data = {
       props: {

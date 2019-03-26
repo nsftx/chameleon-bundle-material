@@ -1,5 +1,5 @@
-import { fieldable, validatable } from '@mixins';
-import { validator } from '@validators';
+import { fieldable, validatable } from '@/mixins';
+import { validator } from '@/validators';
 import { isNil, isObject } from 'lodash';
 import Element from '../Element';
 
@@ -12,7 +12,7 @@ const getPropRequired = (config) => {
 };
 
 const getProps = (context) => {
-  const config = context.config;
+  const { config } = context;
 
   const props = {
     label: config.label,

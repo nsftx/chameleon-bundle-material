@@ -9,7 +9,6 @@ export default {
         props: {
           definition: this.definition,
         },
-      },
-    );
+      });
   },
 };

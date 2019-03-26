@@ -37,7 +37,8 @@ const getFormActions = (context, createElement) => {
             context[action]();
           },
         },
-      })),
+      },
+    )),
   );
 };
 

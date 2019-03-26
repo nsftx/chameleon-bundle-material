@@ -3,7 +3,7 @@ import { map, merge } from 'lodash';
 import Element from '../Element';
 
 const getProps = (context) => {
-  const config = context.config;
+  const { config } = context;
   const position = config.align.split(' ');
   const relative = !config.absolute && !config.fixed;
 
@@ -22,17 +22,16 @@ const getProps = (context) => {
 
 
 const getChildSlot = (createElement, context) => {
-  const config = context.config;
+  const { config } = context;
   let children = [];
 
   if (config.elements.length) {
-    children = map(config.elements, data =>
-      createElement(context.getElementTag('floating-button-item'),
-        {
-          props: {
-            definition: merge({ displayAsIcon: true }, data),
-          },
-        }));
+    children = map(config.elements, data => createElement(context.getElementTag('floating-button-item'),
+      {
+        props: {
+          definition: merge({ displayAsIcon: true }, data),
+        },
+      }));
   }
 
   /* Activator slot, can be used as single floating button
