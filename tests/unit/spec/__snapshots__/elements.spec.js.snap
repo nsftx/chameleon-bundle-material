@@ -205,10 +205,10 @@ exports[`AllComponents c-date renders correctly 1`] = `
                     <td><button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">25</div>
                       </button></td>
-                    <td><button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                    <td><button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">26</div>
                       </button></td>
-                    <td><button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                    <td><button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">27</div>
                       </button></td>
                     <td><button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
@@ -384,10 +384,10 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                     <td><button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">25</div>
                       </button></td>
-                    <td><button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                    <td><button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">26</div>
                       </button></td>
-                    <td><button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                    <td><button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">27</div>
                       </button></td>
                     <td><button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
@@ -536,10 +536,10 @@ exports[`AllComponents c-date-range renders correctly 1`] = `
                     <td><button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">25</div>
                       </button></td>
-                    <td><button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
+                    <td><button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
                         <div class="v-btn__content">26</div>
                       </button></td>
-                    <td><button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">
+                    <td><button type="button" class="v-btn v-btn--flat v-btn--floating v-btn--outline theme--light accent--text">
                         <div class="v-btn__content">27</div>
                       </button></td>
                     <td><button type="button" class="v-btn v-btn--flat v-btn--floating theme--light">

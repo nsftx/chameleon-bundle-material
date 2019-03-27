@@ -1,6 +1,6 @@
-workflow "Test, Build, and Publish" {
+workflow "Test and Build" {
   on = "push"
-  resolves = ["Publish"]
+  resolves = ["Build"]
 }
 
 action "Install Dependencies" {
@@ -18,18 +18,4 @@ action "Build" {
   needs = "Test"
   uses = "actions/npm@master"
   args = "run build"
-}
-
-# Filter for a new tag
-action "Tag" {
-  needs = "Build"
-  uses = "actions/bin/filter@master"
-  args = "tag"
-}
-
-action "Publish" {
-  needs = "Tag"
-  uses = "actions/npm@master"
-  args = "publish"
-  secrets = ["NPM_AUTH_TOKEN"]
 }
