@@ -1,4 +1,6 @@
-import { assign, isArray, reduce, sum, template } from 'lodash';
+import {
+  assign, isArray, reduce, sum, template,
+} from 'lodash';
 import TextInput from '../CTextInput/CTextInput';
 
 const templateLiteralRegex = /\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g;
@@ -10,7 +12,7 @@ const getMath = () => {
   };
 
   return reduce(native, (result, method) => {
-    //eslint-disable-next-line
+    // eslint-disable-next-line
     result[method] = Math[method];
     return result;
   }, lodash);

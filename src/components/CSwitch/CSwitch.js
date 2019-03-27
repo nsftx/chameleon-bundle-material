@@ -1,8 +1,8 @@
-import { fieldable, validatable } from '@mixins';
+import { fieldable, validatable } from '@/mixins';
 import Element from '../Element';
 
 const getAttrs = (context) => {
-  const config = context.config;
+  const { config } = context;
 
   const attrs = {
     name: config.name,
@@ -33,7 +33,7 @@ const getListeners = (context) => {
 };
 
 const getProps = (context) => {
-  const config = context.config;
+  const { config } = context;
 
   const props = {
     appendIcon: config.appendIcon,

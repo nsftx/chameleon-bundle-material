@@ -2,7 +2,7 @@ import { map, merge } from 'lodash';
 import Element from '../Element';
 
 const getItemProps = (context) => {
-  const config = context.config;
+  const { config } = context;
 
   const props = {
     headerColor: config.color,
@@ -26,7 +26,7 @@ const getListeners = (context) => {
 export default {
   extends: Element,
   render(createElement) {
-    const config = this.config;
+    const { config } = this;
     const childrenProps = getItemProps(this);
     const expand = [];
     const accordion = map(config.elements, (element, index) => {
@@ -42,7 +42,8 @@ export default {
             tabIndex: index,
           },
           on: getListeners(this),
-        });
+        },
+      );
     });
 
     return this.renderElement(

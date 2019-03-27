@@ -3,7 +3,7 @@ import Element from '../Element';
 export default {
   extends: Element,
   render() {
-    const config = this.config;
+    const { config } = this;
     const data = {
       key: this.schema.uid,
       props: {

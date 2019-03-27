@@ -1,6 +1,6 @@
 import { map, isNil, filter } from 'lodash';
-import { fieldable, validatable } from '@mixins';
-import { validator } from '@validators';
+import { fieldable, validatable } from '@/mixins';
+import { validator } from '@/validators';
 import Element from '../Element';
 
 const getListeners = (context) => {
@@ -27,7 +27,7 @@ const getPropRequired = (config) => {
 };
 
 const getProps = (context) => {
-  const config = context.config;
+  const { config } = context;
 
   const props = {
     appendIcon: config.appendIcon,
@@ -48,7 +48,7 @@ const getProps = (context) => {
 const getItemProps = (context, item) => {
   if (isNil(context.dataSource)) return null;
 
-  const config = context.config;
+  const { config } = context;
   const mapProps = filter(context.dataSource.schema, i => !isNil(i.mapName));
   const itemProps = Object.keys(item);
   const value = !mapProps.length ? item[itemProps[0]] : item.value;
@@ -93,8 +93,7 @@ export default {
         item => createElement('v-radio',
           {
             props: getItemProps(this, item),
-          },
-        ));
+          }));
     }
 
     return this.renderElement('v-radio-group', data, children);

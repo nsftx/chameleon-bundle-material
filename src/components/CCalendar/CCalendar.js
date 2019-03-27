@@ -1,6 +1,6 @@
 import { clone, isNil } from 'lodash';
-import { fieldable, validatable } from '@mixins';
-import { validator } from '@validators';
+import { fieldable, validatable } from '@/mixins';
+import { validator } from '@/validators';
 import Element from '../Element';
 
 const getAllowedDates = (context) => {
@@ -65,7 +65,7 @@ const getPropRequired = (config) => {
 const getHiddenInput = (context, createElement) => {
   // Fake input, for c-form model
   const self = context;
-  const config = self.config;
+  const { config } = self;
   return createElement('v-input',
     {
       attrs: {

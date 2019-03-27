@@ -1,5 +1,5 @@
 import { each } from 'lodash';
-import { validator } from '@validators';
+import { validator } from '@/validators';
 
 export default {
   data() {
@@ -20,7 +20,7 @@ export default {
       return !this.valid;
     },
     validators() {
-      const translations = this.translations;
+      const { translations } = this;
 
       return {
         creditCard: {

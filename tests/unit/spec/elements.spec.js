@@ -6,7 +6,7 @@ import sinon from 'sinon';
 import Vuetify from 'vuetify';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import * as components from '@components';
+import * as components from '@/components';
 import CPicker from '../../../src/components/CPicker';
 import connectorsMock from './__mocks__/connectors';
 import mockDefinition from './__mocks__/definition';
@@ -86,8 +86,8 @@ describe('AllComponents', () => {
     const cmpDefinition = mockDefinition[cmpName];
     if (!cmpDefinition) return;
 
-    const type = cmpDefinition._schema.type;
-    const group = cmpDefinition._schema.group;
+    const { type } = cmpDefinition._schema;
+    const { group } = cmpDefinition._schema;
     const definition = assign({ type }, cmpDefinition);
 
     const wrapper = mount(cmp, {

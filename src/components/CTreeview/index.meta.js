@@ -1,4 +1,4 @@
-import { binding } from '@utility';
+import { binding } from '@/utility';
 
 const itemInterface = [
   {

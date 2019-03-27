@@ -1,4 +1,6 @@
-import { isString, isObject, map, isNil } from 'lodash';
+import {
+  isString, isObject, map, isNil,
+} from 'lodash';
 import Element from '../Element';
 
 const sourceTypes = {
@@ -8,7 +10,7 @@ const sourceTypes = {
 };
 
 const getAttrs = (context) => {
-  const config = context.config;
+  const { config } = context;
 
   const attrs = {
     controls: config.controls,

@@ -1,6 +1,3 @@
-node_modules
-build
-dist
-dev
-tests/unit/coverage
-src/style
+/build/
+/dist/
+/tests/

@@ -13,7 +13,7 @@ import Element from '../Element';
 import '../../style/components/_treeview.styl';
 
 const getProps = (context) => {
-  const config = context.config;
+  const { config } = context;
 
   return {
     activatable: true,
@@ -100,7 +100,8 @@ const renderFilterSlot = (createElement, context) => {
           self.search = value;
         },
       },
-    });
+    },
+  );
 };
 
 const getTreeSlot = (createElement, context) => {
@@ -184,7 +185,7 @@ export default {
     itemChildren() {
       if (!isNil(this.items) && this.items.length) {
         // User-defined key
-        const itemChildren = this.config.itemChildren;
+        const { itemChildren } = this.config;
         if (!isNil(itemChildren) && !isEmpty(itemChildren)) {
           if (checkIfValid(this, itemChildren)) return itemChildren;
           // Predefined 'children' key
@@ -207,7 +208,7 @@ export default {
     itemValue() {
       if (!isNil(this.items) && this.items.length) {
         // User-defined key
-        const itemValue = this.config.itemValue;
+        const { itemValue } = this.config;
         if (!isNil(itemValue) && !isEmpty(itemValue)) {
           if (checkIfValid(this, itemValue)) return itemValue;
           // Predefined 'id' key
@@ -232,7 +233,7 @@ export default {
     itemDisplay() {
       if (!isNil(this.items) && this.items.length) {
         // User-defined key
-        const itemDisplay = this.config.itemDisplay;
+        const { itemDisplay } = this.config;
         if (!isNil(itemDisplay) && !isEmpty(itemDisplay)) {
           if (checkIfValid(this, itemDisplay)) return itemDisplay;
           // Predefined 'name' key
@@ -308,8 +309,8 @@ export default {
       return item;
     },
     async getChildren(item) {
-      const connector = this.options.connector;
-      const id = this.dataSource.connector.id;
+      const { connector } = this.options;
+      const { id } = this.dataSource.connector;
       const type = this.options.connectors[id];
 
       if (connector) {

@@ -1,6 +1,8 @@
-import { each, map, isNil, template } from 'lodash';
-import { validatable } from '@mixins';
-import { urlValidator } from '@validators';
+import {
+  each, map, isNil, template,
+} from 'lodash';
+import { validatable } from '@/mixins';
+import { urlValidator } from '@/validators';
 import Element from '../Element';
 
 const parseImageSrc = (context, item) => {
@@ -33,7 +35,7 @@ const getCarouselSource = item => item.image || item.thumb || item;
 const getGallerySource = item => item.thumb || item.image || item;
 
 const getCloseBtnOverlay = (createElement, context) => {
-  const enabled = context.config.carousel.enabled;
+  const { enabled } = context.config.carousel;
   if (!enabled) {
     return createElement('v-btn', {
       props: {
@@ -59,7 +61,7 @@ const getCloseBtnOverlay = (createElement, context) => {
 
 const getGalleryElement = (createElement, context, imageSource) => {
   const self = context;
-  const carousel = self.config.carousel;
+  const { carousel } = self.config;
   const active = self.active || (self.config.carousel && self.config.carousel.enabled);
 
   if (active) {
@@ -82,8 +84,8 @@ const getGalleryElement = (createElement, context, imageSource) => {
           'v-carousel-item',
           {
             attrs: {
-              src: getUrlValidator(context, item) === true ?
-                getCarouselSource(item) : parseImageSrc(context, item),
+              src: getUrlValidator(context, item) === true
+                ? getCarouselSource(item) : parseImageSrc(context, item),
             },
             key: i,
           },
@@ -106,34 +108,34 @@ const getGalleryElement = (createElement, context, imageSource) => {
           tile: true,
         },
       },
-        [
-          createElement('v-img', {
-            attrs: {
-              id: `img-${i}`,
-              alt: '',
-              src: getUrlValidator(context, item) === true ?
-                getGallerySource(item) : parseImageSrc(context, item),
-              height: context.config.gallery.itemHeight,
-              contain: context.config.gallery.contain,
+      [
+        createElement('v-img', {
+          attrs: {
+            id: `img-${i}`,
+            alt: '',
+            src: getUrlValidator(context, item) === true
+              ? getGallerySource(item) : parseImageSrc(context, item),
+            height: context.config.gallery.itemHeight,
+            contain: context.config.gallery.contain,
+          },
+          style: {
+            cursor: 'pointer',
+          },
+          on: {
+            click(e) {
+              self.target = Number(e.target.parentElement.id.split('-')[1]);
+              toggleCarousel(context, true);
             },
-            style: {
-              cursor: 'pointer',
-            },
-            on: {
-              click(e) {
-                self.target = Number(e.target.parentElement.id.split('-')[1]);
-                toggleCarousel(context, true);
-              },
-            },
-          }),
-        ]),
+          },
+        }),
+      ]),
     ],
   ));
 };
 
 const getImages = (createElement, context) => {
-  const imageSource = context.config.imageSource && context.config.imageSource.length ?
-    context.config.imageSource : context.items;
+  const imageSource = context.config.imageSource && context.config.imageSource.length
+    ? context.config.imageSource : context.items;
 
   if (!isNil(imageSource && imageSource.length > 0)) {
     return createElement('v-layout',
@@ -188,7 +190,8 @@ export default {
       },
       [
         getImages(createElement, this),
-      ]);
+      ],
+    );
 
     return this.renderElement('v-card', data, children);
   },

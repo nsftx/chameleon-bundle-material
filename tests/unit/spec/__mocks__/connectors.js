@@ -5,7 +5,7 @@ export default {
     description: 'Local Connector',
     disabled: false,
     options: {
-      endpoint: 'https://chameleon.nsoft.com/static/data',
+      endpoint: 'https://chameleon.nsoft.com/data',
     },
     sources: {
       populationsPerAge: {

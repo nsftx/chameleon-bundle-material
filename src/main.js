@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
-import Chameleon from 'chameleon';
+import Chameleon from './index';
 import App from './App';
 import 'vuetify/src/stylus/main.styl';
 
@@ -10,6 +10,7 @@ Vue.use(Chameleon, {
   isPreviewMode: true,
   staticAppAssets: {
     baseUrl: 'https://storage.googleapis.com/chameleon-storage-dev',
+    /* eslint-disable no-template-curly-in-string */
     appUrl: '/apps/${appId}/assets',
     urlParams: {
       appId: '=$app.id',
@@ -59,6 +60,8 @@ Vue.use(Chameleon, {
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  template: '<App/>',
+  render(h) {
+    return h(App);
+  },
   components: { App },
 });

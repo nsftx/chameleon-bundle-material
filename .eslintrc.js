@@ -1,40 +1,42 @@
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
-  parserOptions: {
-    sourceType: 'module'
-  },
   env: {
     browser: true,
   },
-  extends: 'airbnb-base',
+  extends: [
+    'plugin:vue/essential',
+    '@vue/airbnb',
+  ],
   plugins: [
-    'html'
+    'html',
   ],
   globals: {
     JSONEditor: true,
     moment: true,
     Quill: true,
   },
-  'settings': {
-    'import/resolver': {
-      'webpack': {
-        'config': 'build/webpack.base.config.js'
-      }
-    }
-  },
-  'rules': {
-    'no-console': 'off',
+  rules: {
     'import/extensions': ['error', 'always', {
-      'js': 'never',
-      'vue': 'never'
+      js: 'never',
+      vue: 'never',
     }],
-    'import/no-extraneous-dependencies': ['error', {
-      'optionalDependencies': ['tests/unit/index.js']
-    }],
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-underscore-dangle': ['error', {
-      allow: ['_schema', '_options'],
+      allow: [
+        '_id',
+        '_schema',
+      ],
     }],
-  }
-}
+  },
+  settings: {
+    'import/resolver': {
+      webpack: {
+        config: require.resolve('@vue/cli-service/webpack.config.js'),
+      },
+    },
+  },
+  parserOptions: {
+    parser: 'babel-eslint',
+  },
+};

@@ -1,5 +1,7 @@
-import { find, isArray, isObject, includes } from 'lodash';
-import { fieldable, validatable } from '@mixins';
+import {
+  find, isArray, isObject, includes,
+} from 'lodash';
+import { fieldable, validatable } from '@/mixins';
 import Element from '../Element';
 
 require('../../style/components/_rich-text.styl');

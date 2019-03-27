@@ -1,8 +1,11 @@
-import { concat, map, merge, some } from 'lodash';
+import {
+  concat, map, merge, some,
+} from 'lodash';
 import Element from '../Element';
 
-const createTabItems = (context, createElement) =>
-  map(context.config.elements, element => createElement(
+const createTabItems = (context, createElement) => {
+  const { elements } = context.config;
+  return map(elements, element => createElement(
     context.getElementTag('tab-item'),
     {
       props: {
@@ -12,6 +15,7 @@ const createTabItems = (context, createElement) =>
       },
     },
   ));
+};
 
 const getListeners = (context) => {
   const listeners = {
@@ -28,7 +32,7 @@ const getListeners = (context) => {
 };
 
 const getProperties = (context) => {
-  const config = context.config;
+  const { config } = context;
   const props = {
     dark: context.isThemeDark,
     light: context.isThemeLight,
@@ -46,7 +50,7 @@ const getProperties = (context) => {
 
 
 const getTabs = (context, createElement) => {
-  const config = context.config;
+  const { config } = context;
   const tabs = map(config.elements, (element, i) => {
     const children = [element.title];
 
@@ -93,8 +97,7 @@ export default {
           },
         },
         items,
-      ),
-    );
+      ));
 
     return this.renderElement('v-tabs', data, children, true);
   },

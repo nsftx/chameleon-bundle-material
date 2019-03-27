@@ -1,5 +1,5 @@
 import { isNil, filter } from 'lodash';
-import { validator } from '@validators';
+import { validator } from '@/validators';
 import CSelect from '../CSelect/CSelect';
 
 const getAvatar = (createElement, data) => {
@@ -42,8 +42,7 @@ const getCardSlot = (createElement, context) => {
             getAvatar(createElement, data),
           ]),
           data.item[context.config.itemText],
-        ],
-      );
+        ]);
     },
     item: (data) => {
       setItemProps(context, data.item);
@@ -51,8 +50,7 @@ const getCardSlot = (createElement, context) => {
         createElement('v-list-tile-avatar',
           [
             getAvatar(createElement, data),
-          ],
-        ),
+          ]),
         createElement('v-list-tile-content', [
           createElement('v-list-tile-title',
             data.item[context.config.itemText]),
@@ -77,7 +75,7 @@ const getPropRequired = (config) => {
 };
 
 const getProps = (context) => {
-  const config = context.config;
+  const { config } = context;
 
   const props = {
     appendIcon: getPropAppendIcon(config),

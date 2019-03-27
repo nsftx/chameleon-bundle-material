@@ -1,4 +1,4 @@
-import { binding } from '@utility';
+import { binding } from '@/utility';
 
 export default {
   group: 'widgets',

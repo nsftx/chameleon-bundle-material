@@ -11,7 +11,9 @@ zip.file('manifest.json', fs.readFileSync('./build/manifest.json'));
 
 if (manifest.styles) {
   each(manifest.styles, (style) => {
-    zip.file(style, fs.readFileSync(resolveDist(style)));
+    if (fs.existsSync(resolveDist(style))) {
+      zip.file(style, fs.readFileSync(resolveDist(style)));
+    }
   });
 }
 

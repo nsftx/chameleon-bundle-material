@@ -1,4 +1,6 @@
-import { isNil, isFunction, isObject, template, upperFirst } from 'lodash';
+import {
+  isNil, isFunction, isObject, template, upperFirst,
+} from 'lodash';
 import Element from '../Element';
 
 export default {

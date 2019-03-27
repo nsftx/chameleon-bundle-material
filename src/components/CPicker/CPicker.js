@@ -1,5 +1,5 @@
 import { isNil } from 'lodash';
-import { fieldable } from '@mixins';
+import { fieldable } from '@/mixins';
 import Element from '../Element';
 
 const getDatePickerProps = (context) => {
@@ -87,24 +87,24 @@ const getTimePickerActionSlot = (createElement, context) => {
     default: () => createElement('v-card-actions', {
       staticClass: 'pa-0',
     },
-      [
-        createElement('v-spacer'),
-        createElement('v-btn',
-          {
-            props: {
-              flat: true,
-              icon: true,
-            },
-            on: {
-              click() {
-                self.isTimeVisible = false;
-              },
+    [
+      createElement('v-spacer'),
+      createElement('v-btn',
+        {
+          props: {
+            flat: true,
+            icon: true,
+          },
+          on: {
+            click() {
+              self.isTimeVisible = false;
             },
           },
-          [
-            createElement('v-icon', 'date_range'),
-          ]),
-      ]),
+        },
+        [
+          createElement('v-icon', 'date_range'),
+        ]),
+    ]),
   };
 
   return slot;
@@ -157,7 +157,7 @@ export default {
     },
     formattedValue() {
       if (this.value) {
-        const format = this.config.format;
+        const { format } = this.config;
         const formattedValue = moment.utc(this.value).format(format);
 
         return formattedValue;

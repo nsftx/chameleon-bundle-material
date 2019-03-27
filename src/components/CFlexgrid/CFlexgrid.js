@@ -2,7 +2,7 @@ import { map } from 'lodash';
 import Element from '../Element';
 
 const getContainerClass = (context) => {
-  const config = context.config;
+  const { config } = context;
   const classes = {
     [config.color]: true,
     fluid: config.fluid,

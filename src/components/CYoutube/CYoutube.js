@@ -1,4 +1,6 @@
-import { isNil, isObject, filter, map, merge } from 'lodash';
+import {
+  isNil, isObject, filter, map, merge,
+} from 'lodash';
 import Element from '../Element';
 
 const getVideoId = (src) => {

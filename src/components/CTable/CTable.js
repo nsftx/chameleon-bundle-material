@@ -1,11 +1,13 @@
-import { defaults, each, isNil, isString, keys, map, merge, toLower } from 'lodash';
+import {
+  defaults, each, isNil, isString, keys, map, merge, toLower,
+} from 'lodash';
 import Element from '../Element';
 import '../../style/components/_table.styl';
 
 const getPropRowsPerPageItems = (value) => {
   if (!value) {
     return [5, 10, 15, 20];
-  } else if (isString(value)) {
+  } if (isString(value)) {
     if (value.indexOf(',') > -1) {
       return map(value.split(','), Number);
     }
@@ -44,7 +46,7 @@ const getCellInferredProps = (cell) => {
       align = 'left';
   }
 
-  if (cell.align) align = cell.align;
+  if (cell.align) ({ align } = cell);
 
   return {
     align,
@@ -86,22 +88,22 @@ const getSlotContent = (createElement, column, content) => {
           size: '32px',
         },
       },
-        [
-          createElement('img', {
-            attrs: {
-              src: content,
-            },
-          }),
-        ]),
+      [
+        createElement('img', {
+          attrs: {
+            src: content,
+          },
+        }),
+      ]),
     ];
   }
   return result;
 };
 
 const getScopedSlots = (createElement, context) => {
-  const dataSource = context.dataSource;
+  const { dataSource } = context;
   const getColumns = (props) => {
-    const item = props.item;
+    const { item } = props;
     const columns = [];
 
     if (dataSource && dataSource.schema) {
@@ -132,7 +134,7 @@ const getScopedSlots = (createElement, context) => {
       staticClass: setRowColor(props.index, context),
       on: {
         click() {
-          const item = props.item;
+          const { item } = props;
           context.sendToEventBus('SelectedItemChanged', item);
         },
       },
@@ -168,8 +170,8 @@ const getClientPagination = (config, setPagination) => {
 };
 
 const getProps = (context) => {
-  const config = context.config;
-  const dataSource = context.dataSource;
+  const { config } = context;
+  const { dataSource } = context;
   const hasDataSource = !isNil(dataSource);
   const columns = hasDataSource && dataSource.schema;
 

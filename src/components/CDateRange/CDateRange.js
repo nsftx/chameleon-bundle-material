@@ -1,6 +1,6 @@
 import { clone, isNil } from 'lodash';
-import { fieldable, validatable } from '@mixins';
-import { validator } from '@validators';
+import { fieldable, validatable } from '@/mixins';
+import { validator } from '@/validators';
 import Element from '../Element';
 
 const getPropRequired = (config) => {
@@ -14,7 +14,7 @@ const getPropRequired = (config) => {
 };
 
 const getMenuProps = (context) => {
-  const config = context.config;
+  const { config } = context;
 
   const props = {
     lazy: false,
@@ -28,7 +28,7 @@ const getMenuProps = (context) => {
 };
 
 const getTextAttrs = (context) => {
-  const config = context.config;
+  const { config } = context;
 
   const attrs = {
     name: config.name,
@@ -39,7 +39,7 @@ const getTextAttrs = (context) => {
 };
 
 const getTextProps = (context) => {
-  const config = context.config;
+  const { config } = context;
 
   const props = {
     readonly: true,
