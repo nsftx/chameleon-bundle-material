@@ -1,6 +1,22 @@
-workflow "Test, Build, and Publish" {
+workflow "Test and Build" {
   on = "push"
-  resolves = ["Publish"]
+  resolves = ["Build"]
+}
+
+action "Install Dependencies" {
+  uses = "actions/npm@master"
+  args = "install"
+}
+
+action "Test" {
+  needs = "Install Dependencies"
+  uses = "actions/npm@master"
+  args = "test"
+}
+
+action "Build" {
+  needs = "Test"workflow "Test and Build" {
+  on = "push"
 }
 
 action "Install Dependencies" {
@@ -19,17 +35,28 @@ action "Build" {
   uses = "actions/npm@master"
   args = "run build"
 }
-
-# Filter for a new tag
-action "Tag" {
-  needs = "Build"
-  uses = "actions/bin/filter@master"
-  args = "tag"
+workflow "Test and Build" {
+  on = "push"
 }
 
-action "Publish" {
-  needs = "Tag"
+action "Install Dependencies" {
   uses = "actions/npm@master"
-  args = "publish"
-  secrets = ["NPM_AUTH_TOKEN"]
+  args = "install"
+}
+
+action "Test" {
+  needs = "Install Dependencies"
+  uses = "actions/npm@master"
+  args = "test"
+}
+
+action "Build" {
+  needs = "Test"
+  uses = "actions/npm@master"
+  args = "run build"
+}
+  needs = "Test"
+
+  uses = "actions/npm@master"
+  args = "run build"
 }
