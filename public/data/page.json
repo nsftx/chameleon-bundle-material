@@ -8,9 +8,6 @@
       "name": "home",
       "type": "page",
       "icon": "home",
-      "layout": {
-        "previewWidth": "auto"
-      },
       "meta": {
         "title": "Test",
         "description": "Test Chameleon Page",

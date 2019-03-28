@@ -2,20 +2,6 @@ import { each, kebabCase, isNil } from 'lodash';
 import { elementable, reactionable, themable } from '@/mixins';
 import { logger, loggerNamespace } from '@/utility';
 
-const getPreviewStyle = (context) => {
-  const { layout } = context.config;
-  if (layout && context.registry.isPreviewMode) {
-    return {
-      height: '100%',
-      width: layout.previewWidth,
-    };
-  }
-  return {
-    height: '100%',
-    width: '100%',
-  };
-};
-
 export default {
   mixins: [
     elementable,
@@ -101,7 +87,10 @@ export default {
           flat: true,
         },
         staticClass: baseClass,
-        style: getPreviewStyle(this),
+        style: {
+          height: '100%',
+          width: '100%',
+        },
       },
       children,
     );

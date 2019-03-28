@@ -9,14 +9,16 @@
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
     "test:e2e": "vue-cli-service test:e2e",
-    "test:unit": "vue-cli-service test:unit --coverage",
-    "coverage": "npm test && codecov",
+    "test:unit": "vue-cli-service test:unit",
     "build": "vue-cli-service build --target lib --name bundle --entry src/index.js",
     "build-meta": "vue-cli-service build --no-clean --target lib --name bundle.meta --entry src/index.meta.js",
     "build-bundle": "npm run build && npm run build-meta && node build/cleanup.js",
     "zip-bundle": "node ./build/bundle.js",
     "bundle": "npm run build-bundle && npm run zip-bundle",
     "deploy-bundle": "node ./build/deploy.js"
+  },
+  "chameleon": {
+    "bundle": "material"
   },
   "dependencies": {
     "@nsoft/chameleon-notation": "^1.0.16",
