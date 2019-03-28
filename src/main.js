@@ -29,11 +29,6 @@ Vue.use(Chameleon, {
         elements: [],
         theme: null,
         parent: null,
-        layout: {
-          previewWidth: '960px',
-          previewHeight: '1360px',
-          overflow: 'hidden',
-        },
         _id: null,
       },
       {
@@ -42,11 +37,6 @@ Vue.use(Chameleon, {
         path: '/contact',
         parent: null,
         icon: 'perm_contact_calendar',
-        layout: {
-          previewWidth: '960px',
-          previewHeight: '1360px',
-          overflow: 'hidden',
-        },
         meta: {
           title: 'Contact',
         },

@@ -22,10 +22,6 @@ export default {
     { name: 'Loading' },
   ],
   optionGroups: {
-    layout: {
-      key: 'layout',
-      name: 'Layout',
-    },
     meta: {
       key: 'meta',
       name: 'Meta',
@@ -71,15 +67,6 @@ export default {
       hint: 'Overrides root \'/\' path',
       value: false,
       priority: 5,
-    },
-    layout: {
-      type: 'group',
-      group: 'layout',
-      previewWidth: {
-        type: 'sizeInput',
-        name: 'Preview Width',
-        value: '960px',
-      },
     },
     meta: {
       type: 'group',
