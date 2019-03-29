@@ -16,7 +16,7 @@
     "build-bundle": "npm run build && npm run build-meta && node build/cleanup.js",
     "zip-bundle": "node ./build/bundle.js",
     "bundle": "npm run build-bundle && npm run zip-bundle",
-    "deploy-bundle": "node ./build/deploy.js",
+    "deploy-bundle": "node ./build/deploy.js"
   },
   "chameleon": {
     "bundle": "material"
