@@ -17,7 +17,6 @@
     "zip-bundle": "node ./build/bundle.js",
     "bundle": "npm run build-bundle && npm run zip-bundle",
     "deploy-bundle": "node ./build/deploy.js",
-    "deploy": "npm run build && netlifyctl deploy"
   },
   "chameleon": {
     "bundle": "material"
