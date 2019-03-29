@@ -7,7 +7,7 @@ require('./style/main.styl');
 export default {
   install(Vue, options) {
     // eslint-disable-next-line
-    /* Vue.config.errorHandler = (error, vm, info) => {
+    Vue.config.errorHandler = (error, vm, info) => {
       const handler = vm.$options.methods.errorHandler;
       if (handler) {
         handler.call(vm, error, info);
@@ -19,7 +19,7 @@ export default {
       if (handler) {
         handler.call(vm, warning, trace);
       }
-    }; */
+    };
 
     if (options) {
       // eslint-disable-next-line
