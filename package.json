@@ -11,7 +11,7 @@
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit",
     "build": "CHM_TARGET=lib vue-cli-service build --target lib --name bundle --entry src/index.js",
-    "deploy": "CHM_TARGET=playground vue-cli-service build && netlify deploy",
+    "deploy": "CHM_TARGET=playground vue-cli-service build && netlify deploy --prod --dir=deploy-dist",
     "build-meta": "vue-cli-service build --no-clean --target lib --name bundle.meta --entry src/index.meta.js",
     "build-bundle": "npm run build && npm run build-meta && node build/cleanup.js",
     "zip-bundle": "node ./build/bundle.js",
