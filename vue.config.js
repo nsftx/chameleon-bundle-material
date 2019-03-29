@@ -1,3 +1,4 @@
+const path = require('path');
 const packageConfig = require('./package.json');
 
 const bundleName = packageConfig.chameleon.bundle.toUpperCase();
@@ -7,14 +8,18 @@ const isMeta = libName.indexOf('meta') >= 0;
 
 const globalSuffix = isMeta ? '_META' : '';
 
+const resolve = configPath => path.resolve(__dirname, configPath);
+
 module.exports = {
   lintOnSave: true,
+  outputDir: process.env.CHM_TARGET === 'lib'
+    ? resolve('./dist', process.env) : resolve('./deploy-dist', process.env),
   transpileDependencies: [
     '@nsoft/chameleon-sdk',
   ],
   chainWebpack: (wConfig) => {
     wConfig
-      .when(process.env.NODE_ENV === 'production', (config) => {
+      .when(process.env.NODE_ENV === 'production' && process.env.CHM_TARGET === 'lib', (config) => {
         config.output.library(`__CHAMELEON_${bundleName}${globalSuffix}__`);
         config.output.libraryExport('default');
 
