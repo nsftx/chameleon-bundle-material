@@ -72,6 +72,16 @@ export default {
       value: null,
       priority: 9,
     },
+    permanent: {
+      type: 'check',
+      name: 'The drawer remains visible regardless of screen size',
+      value: false,
+    },
+    absolute: {
+      type: 'check',
+      name: 'Position the element absolutely',
+      value: false,
+    },
     dataSource: {
       type: 'dataSource',
       group: 'data',

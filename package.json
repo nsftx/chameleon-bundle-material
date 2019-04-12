@@ -12,7 +12,7 @@
     "test:unit": "vue-cli-service test:unit",
     "build": "CHM_TARGET=lib vue-cli-service build --target lib --name bundle --entry src/index.js",
     "deploy": "CHM_TARGET=playground vue-cli-service build",
-    "build-meta": "vue-cli-service build --no-clean --target lib --name bundle.meta --entry src/index.meta.js",
+    "build-meta": "CHM_TARGET=lib vue-cli-service build --no-clean --target lib --name bundle.meta --entry src/index.meta.js",
     "build-bundle": "npm run build && npm run build-meta && node build/cleanup.js",
     "zip-bundle": "node ./build/bundle.js",
     "bundle": "npm run build-bundle && npm run zip-bundle",
@@ -30,7 +30,7 @@
     "quill": "^1.3.6",
     "uuid": "^3.3.2",
     "validator": "^9.4.1",
-    "vue": "^2.6.6",
+    "vue": "^2.6.10",
     "vue-jsoneditor": "^1.0.13",
     "vuetify": "^1.5.7"
   },
@@ -44,7 +44,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
-    "codecov": "^3.2.0",
+    "codecov": "^3.3.0",
     "eslint": "^5.8.0",
     "eslint-plugin-html": "^5.0.3",
     "eslint-plugin-vue": "^5.0.0",
@@ -52,8 +52,8 @@
     "sinon": "^7.3.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "vue-router": "^3.0.2",
+    "vue-router": "^3.0.3",
     "vue-server-renderer": "^2.6.10",
-    "vue-template-compiler": "^2.5.21"
+    "vue-template-compiler": "^2.6.10"
   }
 }

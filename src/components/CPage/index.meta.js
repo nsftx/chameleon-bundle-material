@@ -21,7 +21,18 @@ export default {
   events: [
     { name: 'Loading' },
   ],
+  contextOptions: {
+    layoutType: {
+      name: 'Layout Type',
+      options: 'layout.layoutType',
+      returnProp: 'layoutType',
+    },
+  },
   optionGroups: {
+    layout: {
+      key: 'layout',
+      name: 'Layout',
+    },
     meta: {
       key: 'meta',
       name: 'Meta',
@@ -67,6 +78,23 @@ export default {
       hint: 'Overrides root \'/\' path',
       value: false,
       priority: 5,
+    },
+    layout: {
+      type: 'group',
+      group: 'layout',
+      layoutType: {
+        type: 'select',
+        name: 'Select Page Layout Template',
+        items: '=$layoutTemplates',
+        valueProp: 'layoutType',
+        value: null,
+      },
+      layoutId: {
+        type: 'input',
+        name: 'Active page layout id',
+        hidden: true,
+        value: '',
+      },
     },
     meta: {
       type: 'group',

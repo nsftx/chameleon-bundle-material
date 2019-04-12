@@ -1,9 +1,30 @@
-import { each, kebabCase, isNil } from 'lodash';
-import { elementable, reactionable, themable } from '@/mixins';
+import {
+  each, find, kebabCase, isNil,
+} from 'lodash';
+import {
+  bindable, elementable, reactionable, themable,
+} from '@/mixins';
 import { logger, loggerNamespace } from '@/utility';
+import Element from '../Element';
+
+const getPreviewStyle = (context) => {
+  const { layout } = context.config;
+  if (layout && context.registry.isPreviewMode) {
+    return {
+      height: '100%',
+      width: layout.previewWidth,
+    };
+  }
+  return {
+    height: '100%',
+    width: '100%',
+  };
+};
 
 export default {
+  extends: Element,
   mixins: [
+    bindable,
     elementable,
     reactionable,
     themable,
@@ -15,18 +36,37 @@ export default {
     name() {
       return this.config.name;
     },
-    appTheme() {
+    theme() {
       if (isNil(this.config.theme) && this.registry) {
         const { app } = this.registry;
-        if (app && app.theme) {
+        if (app) {
           return this.registry.app.theme;
         }
       }
 
-      return null;
+      return this.config.theme;
     },
   },
   methods: {
+    renderPage(children) {
+      const baseName = this.$options.name;
+      const uniqueName = kebabCase(this.name);
+      const baseClass = `${baseName} ${baseName}-${uniqueName}`;
+      return this.renderElement(
+        'v-card',
+        {
+          props: {
+            dark: this.isThemeDark,
+            light: this.isThemeLight,
+            color: this.config.color,
+            flat: true,
+          },
+          staticClass: baseClass,
+          style: getPreviewStyle(this),
+        },
+        children,
+      );
+    },
     navigateToPage(payload, data) {
       if (isNil(data)) {
         logger.info(
@@ -58,9 +98,7 @@ export default {
     this.sendToEventBus('Loading');
   },
   render(createElement) {
-    const baseName = this.$options.name;
-    const uniqueName = kebabCase(this.name);
-    const baseClass = `${baseName} ${baseName}-${uniqueName}`;
+    const layout = this.config.layout ? this.config.layout.layoutId : null;
     const children = [];
 
     if (this.elements) {
@@ -77,22 +115,22 @@ export default {
       });
     }
 
-    return createElement(
-      'v-card',
-      {
+    // If page has an layout render it first, and set Page as an layout slot
+    if (layout) {
+      const activeLayouts = this.getBindingValue('=$appLayouts');
+      const layoutDefinition = find(activeLayouts, {
+        id: layout,
+      });
+      return createElement('c-layout', {
         props: {
-          dark: this.appTheme ? this.appTheme === 'dark' : this.isThemeDark,
-          light: this.appTheme ? this.appTheme === 'light' : this.isThemeLight,
-          color: this.config.color,
-          flat: true,
+          definition: layoutDefinition,
         },
-        staticClass: baseClass,
-        style: {
-          height: '100%',
-          width: '100%',
+        scopedSlots: {
+          default: () => this.renderPage(children),
         },
-      },
-      children,
-    );
+      });
+    }
+
+    return this.renderPage(children);
   },
 };
