@@ -8,13 +8,13 @@ export default {
     name: {
       type: 'input',
       name: 'Custom Layout Name',
-      value: null,
+      value: '=$activePageLayout.name',
       priority: 1,
     },
     layoutType: {
       type: 'input',
       name: 'Type',
-      value: null,
+      value: '=$activePageLayout.layoutType',
       disabled: true,
       priority: 1,
     },

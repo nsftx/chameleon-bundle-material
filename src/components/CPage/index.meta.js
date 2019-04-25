@@ -1,3 +1,4 @@
+
 export default {
   type: 'page',
   name: 'Page',
@@ -21,6 +22,7 @@ export default {
   events: [
     { name: 'Loading' },
   ],
+  // TODO set layout context options inside builder
   contextOptions: {
     layoutType: {
       name: 'Layout Type',
@@ -29,9 +31,13 @@ export default {
     },
   },
   optionGroups: {
+    template: {
+      key: 'template',
+      name: 'Templates',
+    },
     layout: {
       key: 'layout',
-      name: 'Layout',
+      name: 'Layouts',
     },
     meta: {
       key: 'meta',
@@ -43,7 +49,7 @@ export default {
     name: {
       type: 'input',
       name: 'Name',
-      value: null,
+      value: '=$activePage.name',
       priority: 1,
     },
     path: {
@@ -79,21 +85,32 @@ export default {
       value: false,
       priority: 5,
     },
-    layout: {
+    template: {
       type: 'group',
-      group: 'layout',
-      layoutType: {
+      group: 'template',
+      templateType: {
         type: 'select',
-        name: 'Select Page Layout Template',
+        name: 'Create Page Layout From Template',
         items: '=$layoutTemplates',
         valueProp: 'layoutType',
         value: null,
       },
+    },
+    layout: {
+      type: 'group',
+      group: 'layout',
       layoutId: {
+        type: 'select',
+        name: 'Select Page Layout',
+        items: '=$activeLayouts',
+        displayProp: 'name',
+        valueProp: 'id',
+        value: '=$activePageLayout.id',
+      },
+      layoutName: {
         type: 'input',
-        name: 'Active page layout id',
-        hidden: true,
-        value: '',
+        name: 'Set Custom Layout Name',
+        value: '=$activePageLayout.name',
       },
     },
     meta: {
@@ -102,7 +119,7 @@ export default {
       title: {
         type: 'input',
         name: 'Title',
-        value: null,
+        value: '=$activePage.meta.title',
       },
       description: {
         type: 'input',

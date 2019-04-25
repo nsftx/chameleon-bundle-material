@@ -1,6 +1,8 @@
 import { merge } from 'lodash';
 import Element from '../Element';
 
+require('../../style/components/_layout.styl');
+
 const getLayoutAttrs = () => {
   const attrs = {
     'data-wrapper': 'layout',
@@ -17,13 +19,13 @@ export default {
         {
           props: {
             definition: merge({}, this.config.elements[0], {
-              isVisible: true,
+              app: true,
               absolute: false,
-              permanent: true,
               fixed: true,
+              isVisible: true,
+              layout: 'mini',
               main: true,
-              title: 'Ride',
-              autoGenerate: true,
+              permanent: true,
             }),
           },
           attrs: getLayoutAttrs(),
@@ -31,55 +33,57 @@ export default {
       );
     },
     renderContent() {
-      return this.$createElement('v-container', {
-        attrs: {
-          'fill-height': true,
-          fluid: true,
-        },
-      },
-      [
-        this.$createElement('v-layout', {},
+      return this.$createElement('v-content', {},
+        [
+          this.$createElement('v-container', {
+            attrs: {
+              'fill-height': true,
+              fluid: true,
+            },
+            class: 'layout-container',
+          },
           [
-            this.$createElement('v-flex', {}, [
-              this.$scopedSlots.default(),
-            ]),
+            this.$createElement('v-layout', {},
+              [
+                this.$createElement('v-flex', {}, [
+                  this.$scopedSlots.default(),
+                ]),
+              ]),
           ]),
-      ]);
+        ]);
     },
     renderDesner() {
       // TODO when we get definition this will be separate component
       return this.$createElement('v-navigation-drawer', {
         props: {
-          isVisible: true,
+          app: true,
           absolute: false,
-          permanent: true,
           fixed: true,
-          main: true,
-          autoGenerate: true,
+          isVisible: true,
+          permanent: true,
           right: true,
           width: '50px',
         },
       });
     },
   },
-  render(createElement) {
+  render() {
     if (this.config.layoutType === 'blank') {
-      return this.renderElement('div', {},
-        [
-          this.$scopedSlots.default(),
-        ]);
-    }
-    const children = [
-      createElement('v-content', {
-        class: 'fill-height',
+      return this.renderElement('v-app', {
+        class: 'blank',
       },
       [
-        this.renderMenu(),
+        // Does "blank" need content?
         this.renderContent(),
-        this.renderDesner(),
-      ]),
+      ]);
+    }
+    // Just standard layout for now
+    const children = [
+      this.renderMenu(),
+      this.renderContent(),
+      this.renderDesner(),
     ];
 
-    return this.renderElement('div', {}, children);
+    return this.renderElement('v-app', {}, children);
   },
 };

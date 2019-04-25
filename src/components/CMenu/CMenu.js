@@ -11,9 +11,6 @@ export default {
     height() {
       return this.isFixed ? '100%' : this.config.height;
     },
-    isAbsolute() {
-      return this.config.absolute;
-    },
     isFixed() {
       return this.config.main;
     },
@@ -36,7 +33,7 @@ export default {
         key: this.schema.uid,
         class: this.getBindingValue(this.config.color),
         props: {
-          absolute: this.isAbsolute,
+          absolute: this.config.absolute,
           app: this.config.main,
           dark: this.isThemeDark,
           disableRouteWatcher: true,
@@ -197,9 +194,6 @@ export default {
       this.renderList(),
       createElement('v-spacer'),
     ];
-    if (this.unselectable) {
-      return createElement('v-navigation-drawer', this.getNavigationProps(), children);
-    }
     return this.renderElement(
       'v-navigation-drawer',
       this.getNavigationProps(),

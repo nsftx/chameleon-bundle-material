@@ -1,5 +1,5 @@
 import {
-  each, find, kebabCase, isNil,
+  each, kebabCase, isNil,
 } from 'lodash';
 import {
   bindable, elementable, reactionable, themable,
@@ -98,7 +98,7 @@ export default {
     this.sendToEventBus('Loading');
   },
   render(createElement) {
-    const layout = this.config.layout ? this.config.layout.layoutId : null;
+    const activePageLayout = this.getBindingValue('=$activePageLayout');
     const children = [];
 
     if (this.elements) {
@@ -116,14 +116,10 @@ export default {
     }
 
     // If page has an layout render it first, and set Page as an layout slot
-    if (layout) {
-      const activeLayouts = this.getBindingValue('=$appLayouts');
-      const layoutDefinition = find(activeLayouts, {
-        id: layout,
-      });
+    if (activePageLayout) {
       return createElement('c-layout', {
         props: {
-          definition: layoutDefinition,
+          definition: activePageLayout,
         },
         scopedSlots: {
           default: () => this.renderPage(children),
