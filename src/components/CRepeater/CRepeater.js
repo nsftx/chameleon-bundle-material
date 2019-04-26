@@ -46,12 +46,14 @@ export default {
           elementDefinition.dataSource.items = [item];
           elementDefinition.dataSource.local = true;
         }
+        // Get parent config (to get component type)
+        const parentConfig = this.$parent.$options.parent.config;
         return this.$createElement(this.getElementTag(elementDefinition.type), {
           props: {
             definition: elementDefinition,
           },
           // Add parent static class so that it can inherit parent (container) style
-          staticClass: `${this.$options.namespace}${this.$parent.$attrs['data-type']}-item`,
+          staticClass: `${this.$options.namespace}${parentConfig.type}-item`,
           style: this.registry.isPreviewMode && index >= 1 ? style : null,
         },
         [
