@@ -19,9 +19,7 @@ export default {
         {
           props: {
             definition: merge({}, this.config.elements[0], {
-              app: true,
               absolute: false,
-              fixed: true,
               isVisible: true,
               layout: 'mini',
               main: true,
@@ -60,9 +58,9 @@ export default {
           absolute: false,
           fixed: true,
           isVisible: true,
+          miniVariant: true,
           permanent: true,
           right: true,
-          width: '50px',
         },
       });
     },
