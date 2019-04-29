@@ -125,12 +125,12 @@ export default {
       name: 'Text Input Type',
       items: [
         {
-          name: 'Generic',
+          label: 'Generic',
           value: 'generic',
           options: {},
         },
         {
-          name: 'Email',
+          label: 'Email',
           value: 'email',
           options: {
             style: {
@@ -150,7 +150,7 @@ export default {
           },
         },
         {
-          name: 'Money',
+          label: 'Money',
           value: 'money',
           options: {
             style: {
@@ -161,7 +161,7 @@ export default {
           },
         },
         {
-          name: 'Number',
+          label: 'Number',
           value: 'number',
           options: {
             style: {
@@ -172,7 +172,7 @@ export default {
           },
         },
         {
-          name: 'Percentage',
+          label: 'Percentage',
           value: 'percentage',
           options: {
             style: {
@@ -183,7 +183,7 @@ export default {
           },
         },
         {
-          name: 'Phone',
+          label: 'Phone',
           value: 'phone',
           options: {
             style: {
@@ -197,25 +197,27 @@ export default {
               group: 'general',
               items: [
                 {
-                  name: 'None',
+                  label: 'None',
                   value: '',
                 },
                 {
-                  name: 'Phone (###) ### - ####',
+                  label: 'Phone (###) ### - ####',
                   value: 'phone',
                 },
                 {
-                  name: 'Phone +### ## ### ###',
+                  label: 'Phone +### ## ### ###',
                   value: '+### ## ### ###',
                 },
               ],
+              displayProp: 'label',
+              valueProp: 'value',
               value: '+### ## ### ###',
               hidden: false,
             },
           },
         },
         {
-          name: 'Url',
+          label: 'Url',
           value: 'url',
           options: {
             style: {
@@ -235,7 +237,7 @@ export default {
           },
         },
         {
-          name: 'Password',
+          label: 'Password',
           value: 'password',
           options: {
             style: {
@@ -269,6 +271,8 @@ export default {
           },
         },
       ],
+      displayProp: 'label',
+      valueProp: 'value',
       value: 'generic',
       returnObject: true,
       hint: 'Changing TextBox type will reset other fields',
