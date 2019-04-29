@@ -69,9 +69,11 @@ export default {
     if (this.config.layoutType === 'blank') {
       return this.renderElement('v-app', {
         class: 'blank',
+        props: {
+          [this.config.theme]: true,
+        },
       },
       [
-        // Does "blank" need content?
         this.renderContent(),
       ]);
     }
@@ -82,6 +84,10 @@ export default {
       this.renderDesner(),
     ];
 
-    return this.renderElement('v-app', {}, children);
+    return this.renderElement('v-app', {
+      props: {
+        [this.config.theme]: true,
+      },
+    }, children);
   },
 };

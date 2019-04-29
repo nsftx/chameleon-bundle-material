@@ -4,7 +4,7 @@ export default {
   icon: 'web',
   hidden: true,
   options: {
-    color: true,
+    theme: true,
     name: {
       type: 'input',
       name: 'Custom Layout Name',
