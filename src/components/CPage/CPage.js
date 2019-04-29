@@ -7,20 +7,6 @@ import {
 import { logger, loggerNamespace } from '@/utility';
 import Element from '../Element';
 
-const getPreviewStyle = (context) => {
-  const { layout } = context.config;
-  if (layout && context.registry.isPreviewMode) {
-    return {
-      height: '100%',
-      width: layout.previewWidth,
-    };
-  }
-  return {
-    height: '100%',
-    width: '100%',
-  };
-};
-
 export default {
   extends: Element,
   mixins: [
@@ -62,7 +48,10 @@ export default {
             flat: true,
           },
           staticClass: baseClass,
-          style: getPreviewStyle(this),
+          style: {
+            height: '100%',
+            width: '100%',
+          },
         },
         children,
       );
