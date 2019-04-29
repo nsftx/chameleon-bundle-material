@@ -5,7 +5,7 @@ require('../../style/components/_layout.styl');
 
 const getLayoutAttrs = () => {
   const attrs = {
-    'data-wrapper': 'layout',
+    'data-layout': true,
   };
   return attrs;
 };
@@ -69,6 +69,7 @@ export default {
     if (this.config.layoutType === 'blank') {
       return this.renderElement('v-app', {
         class: 'blank',
+        attrs: getLayoutAttrs(),
         props: {
           [this.config.theme]: true,
         },
@@ -85,6 +86,7 @@ export default {
     ];
 
     return this.renderElement('v-app', {
+      attrs: getLayoutAttrs(),
       props: {
         [this.config.theme]: true,
       },
