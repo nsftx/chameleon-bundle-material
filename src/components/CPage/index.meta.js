@@ -105,6 +105,7 @@ export default {
         items: '=$activeLayouts',
         displayProp: 'name',
         valueProp: 'id',
+        clearable: true,
         value: '=$activePageLayout.id',
       },
       layoutName: {
