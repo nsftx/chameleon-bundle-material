@@ -8,16 +8,20 @@ export default {
   install(Vue, options) {
     // eslint-disable-next-line
     Vue.config.errorHandler = (error, vm, info) => {
-      const handler = vm.$options.methods.errorHandler;
+      const self = vm && vm.error ? vm : vm.$parent;
+
+      const handler = self.$options.methods.errorHandler;
       if (handler) {
-        handler.call(vm, error, info);
+        handler.call(self, error, info);
       }
     };
     // eslint-disable-next-line
     Vue.config.warnHandler = (warning, vm, trace) => {
-      const handler = vm.$options.methods.warnHandler;
+      const self = vm && vm.warning ? vm : vm.$parent;
+
+      const handler = self.$options.methods.warnHandler;
       if (handler) {
-        handler.call(vm, warning, trace);
+        handler.call(self, warning, trace);
       }
     };
 

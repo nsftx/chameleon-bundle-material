@@ -17,6 +17,7 @@ export { default as CHlist } from './CHlist';
 export { default as CHtml } from './CHtml';
 export { default as CImage } from './CImage';
 export { default as CList } from './CList';
+export { default as CLayout } from './CLayout';
 export { default as CMap } from './CMap';
 export { default as CMenu } from './CMenu';
 export { default as CPanel } from './CPanel';

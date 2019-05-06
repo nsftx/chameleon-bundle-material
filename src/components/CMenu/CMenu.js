@@ -4,20 +4,12 @@ import '../../style/components/_menu.styl';
 
 export default {
   extends: Element,
-  data() {
-    return {
-      isVisible: true,
-    };
-  },
   computed: {
     autoGenerate() {
       return this.config.autoGenerate;
     },
     height() {
       return this.isFixed ? '100%' : this.config.height;
-    },
-    isAbsolute() {
-      return !this.isFixed;
     },
     isFixed() {
       return this.config.main;
@@ -36,6 +28,27 @@ export default {
     },
   },
   methods: {
+    getNavigationProps() {
+      return {
+        key: this.schema.uid,
+        class: this.getBindingValue(this.config.color),
+        props: {
+          absolute: this.config.absolute,
+          app: this.config.main,
+          dark: this.isThemeDark,
+          disableRouteWatcher: true,
+          fixed: this.isFixed,
+          height: this.height,
+          left: this.isLeft,
+          light: this.isThemeLight,
+          miniVariant: this.isMini,
+          permanent: this.config.permanent,
+          right: this.isRight,
+          value: this.config.isVisible,
+          width: this.config.width,
+        },
+      };
+    },
     selectItem(item) {
       this.sendToEventBus('SelectedItemChanged', item);
     },
@@ -176,31 +189,15 @@ export default {
     },
   },
   render(createElement) {
+    const children = [
+      this.renderTitle(),
+      this.renderList(),
+      createElement('v-spacer'),
+    ];
     return this.renderElement(
       'v-navigation-drawer',
-      {
-        key: this.schema.uid,
-        class: this.getBindingValue(this.config.color),
-        props: {
-          absolute: this.isAbsolute,
-          app: this.config.main,
-          dark: this.isThemeDark,
-          disableRouteWatcher: true,
-          fixed: this.isFixed,
-          height: this.height,
-          left: this.isLeft,
-          light: this.isThemeLight,
-          miniVariant: this.isMini,
-          right: this.isRight,
-          value: this.isVisible,
-          width: this.config.width,
-        },
-      },
-      [
-        this.renderTitle(),
-        this.renderList(),
-        createElement('v-spacer'),
-      ],
+      this.getNavigationProps(),
+      children,
     );
   },
 };

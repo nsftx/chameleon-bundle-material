@@ -1,9 +1,16 @@
-import { each, kebabCase, isNil } from 'lodash';
-import { elementable, reactionable, themable } from '@/mixins';
+import {
+  each, kebabCase, isNil,
+} from 'lodash';
+import {
+  bindable, elementable, reactionable, themable,
+} from '@/mixins';
 import { logger, loggerNamespace } from '@/utility';
+import Element from '../Element';
 
 export default {
+  extends: Element,
   mixins: [
+    bindable,
     elementable,
     reactionable,
     themable,
@@ -15,18 +22,40 @@ export default {
     name() {
       return this.config.name;
     },
-    appTheme() {
+    theme() {
       if (isNil(this.config.theme) && this.registry) {
         const { app } = this.registry;
-        if (app && app.theme) {
+        if (app) {
           return this.registry.app.theme;
         }
       }
 
-      return null;
+      return this.config.theme;
     },
   },
   methods: {
+    renderPage(children, component) {
+      const baseName = this.$options.name;
+      const uniqueName = kebabCase(this.name);
+      const baseClass = `${baseName} ${baseName}-${uniqueName}`;
+      return this.renderElement(
+        component,
+        {
+          props: {
+            dark: this.isThemeDark,
+            light: this.isThemeLight,
+            color: this.config.color,
+            flat: true,
+          },
+          staticClass: baseClass,
+          style: {
+            height: '100%',
+            width: '100%',
+          },
+        },
+        children,
+      );
+    },
     navigateToPage(payload, data) {
       if (isNil(data)) {
         logger.info(
@@ -58,9 +87,7 @@ export default {
     this.sendToEventBus('Loading');
   },
   render(createElement) {
-    const baseName = this.$options.name;
-    const uniqueName = kebabCase(this.name);
-    const baseClass = `${baseName} ${baseName}-${uniqueName}`;
+    const activePageLayout = this.getBindingValue('=$activePageLayout');
     const children = [];
 
     if (this.elements) {
@@ -77,22 +104,18 @@ export default {
       });
     }
 
-    return createElement(
-      'v-card',
-      {
+    // If page has an layout render it first, and set Page as an layout slot
+    if (activePageLayout) {
+      return createElement('c-layout', {
         props: {
-          dark: this.appTheme ? this.appTheme === 'dark' : this.isThemeDark,
-          light: this.appTheme ? this.appTheme === 'light' : this.isThemeLight,
-          color: this.config.color,
-          flat: true,
+          definition: activePageLayout,
         },
-        staticClass: baseClass,
-        style: {
-          height: '100%',
-          width: '100%',
+        scopedSlots: {
+          default: () => this.renderPage(children, 'v-card'),
         },
-      },
-      children,
-    );
+      });
+    }
+
+    return this.renderPage(children, 'v-app');
   },
 };
