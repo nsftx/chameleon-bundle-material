@@ -34,12 +34,12 @@ export default {
     },
   },
   methods: {
-    renderPage(children) {
+    renderPage(children, component) {
       const baseName = this.$options.name;
       const uniqueName = kebabCase(this.name);
       const baseClass = `${baseName} ${baseName}-${uniqueName}`;
       return this.renderElement(
-        'v-card',
+        component,
         {
           props: {
             dark: this.isThemeDark,
@@ -111,11 +111,11 @@ export default {
           definition: activePageLayout,
         },
         scopedSlots: {
-          default: () => this.renderPage(children),
+          default: () => this.renderPage(children, 'v-card'),
         },
       });
     }
 
-    return this.renderPage(children);
+    return this.renderPage(children, 'v-app');
   },
 };
