@@ -87,7 +87,6 @@ export default {
     this.sendToEventBus('Loading');
   },
   render(createElement) {
-    const activePageLayout = this.getBindingValue('=$activePageLayout');
     const children = [];
 
     if (this.elements) {
@@ -104,18 +103,6 @@ export default {
       });
     }
 
-    // If page has an layout render it first, and set Page as an layout slot
-    if (activePageLayout) {
-      return createElement('c-layout', {
-        props: {
-          definition: activePageLayout,
-        },
-        scopedSlots: {
-          default: () => this.renderPage(children, 'v-card'),
-        },
-      });
-    }
-
-    return this.renderPage(children, 'v-app');
+    return this.renderPage(children, 'v-card');
   },
 };
