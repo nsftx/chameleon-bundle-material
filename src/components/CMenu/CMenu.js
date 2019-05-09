@@ -110,11 +110,9 @@ export default {
           'v-list-tile',
           {
             class: 'menu-item',
-            props: {
-              href: item.path,
-            },
             on: {
               click() {
+                context.$router.push(item.path);
                 context.selectItem(item);
               },
             },
