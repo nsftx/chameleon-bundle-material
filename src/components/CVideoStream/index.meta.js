@@ -81,18 +81,6 @@ export default {
       },
       priority: 2,
     },
-    valueMask: {
-      type: 'input',
-      group: 'data',
-      name: 'Stream Source Mask',
-      value: null,
-      disabled: {
-        current: false,
-        default: false,
-        expression: binding.setExpression('<%= isNil(element.dataSource) %>', expressionImport),
-      },
-      priority: 3,
-    },
     dataSource: {
       type: 'dataSource',
       group: 'data',
