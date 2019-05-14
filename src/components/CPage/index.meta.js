@@ -55,7 +55,7 @@ export default {
     path: {
       type: 'input',
       name: 'Path',
-      value: '/',
+      value: '=$activePage.path',
       priority: 2,
       validation: {
         required: true,
