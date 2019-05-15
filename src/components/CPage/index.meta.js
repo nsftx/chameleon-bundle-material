@@ -85,17 +85,6 @@ export default {
       value: false,
       priority: 5,
     },
-    template: {
-      type: 'group',
-      group: 'template',
-      templateType: {
-        type: 'select',
-        name: 'Create Page Layout From Template',
-        items: '=$layoutTemplates',
-        valueProp: 'layoutType',
-        value: null,
-      },
-    },
     layout: {
       type: 'group',
       group: 'layout',
