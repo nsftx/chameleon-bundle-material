@@ -55,7 +55,7 @@ export default {
     path: {
       type: 'input',
       name: 'Path',
-      value: '/',
+      value: '=$activePage.path',
       priority: 2,
       validation: {
         required: true,
@@ -84,17 +84,6 @@ export default {
       hint: 'Overrides root \'/\' path',
       value: false,
       priority: 5,
-    },
-    template: {
-      type: 'group',
-      group: 'template',
-      templateType: {
-        type: 'select',
-        name: 'Create Page Layout From Template',
-        items: '=$layoutTemplates',
-        valueProp: 'layoutType',
-        value: null,
-      },
     },
     layout: {
       type: 'group',
