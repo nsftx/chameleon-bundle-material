@@ -1,5 +1,5 @@
 import {
-  isNil, isFunction, isObject, template, upperFirst,
+  isNil, isFunction, isObject, upperFirst,
 } from 'lodash';
 import Element from '../Element';
 
@@ -44,11 +44,10 @@ export default {
     },
     streamValue() {
       if (this.items && this.items.length) {
-        const isMasked = !isNil(this.config.valueMask);
         const isValueObject = isObject(this.items[0]);
         const value = isValueObject ? this.items[0].url : this.items[0];
 
-        return isMasked && isValueObject ? template(this.config.valueMask)(this.items[0]) : value;
+        return value;
       }
 
       return this.config.value;
