@@ -3,6 +3,7 @@ node_modules
 dist
 deploy-dist
 coverage
+dev
 
 /tests/e2e/reports/
 /tests/unit/coverage/
