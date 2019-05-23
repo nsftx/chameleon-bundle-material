@@ -25,5 +25,11 @@ export default {
       name: 'Data Source',
       value: null,
     },
+    flat: {
+      type: 'check',
+      group: 'style',
+      name: 'No Shadow',
+      value: true,
+    },
   },
 };
