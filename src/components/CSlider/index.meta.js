@@ -94,7 +94,7 @@ export default {
       group: 'validation',
       required: {
         type: 'check',
-        name: 'Enable required',
+        name: 'Required',
         value: false,
       },
       min: {
