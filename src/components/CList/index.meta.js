@@ -227,13 +227,6 @@ export default {
       value: 5,
       priority: 6,
     },
-    startPage: {
-      type: 'input',
-      group: 'data',
-      name: 'Start With Page',
-      value: 1,
-      priority: 5,
-    },
     sortBy: {
       type: 'select',
       group: 'data',
