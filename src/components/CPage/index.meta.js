@@ -22,14 +22,6 @@ export default {
   events: [
     { name: 'Loading' },
   ],
-  // TODO set layout context options inside builder
-  contextOptions: {
-    layoutType: {
-      name: 'Layout Type',
-      options: 'layout.layoutType',
-      returnProp: 'layoutType',
-    },
-  },
   optionGroups: {
     template: {
       key: 'template',
@@ -96,11 +88,6 @@ export default {
         valueProp: 'id',
         clearable: true,
         value: '=$activePageLayout.id',
-      },
-      layoutName: {
-        type: 'input',
-        name: 'Set Custom Layout Name',
-        value: '=$activePageLayout.name',
       },
     },
     meta: {
