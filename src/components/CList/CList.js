@@ -163,7 +163,6 @@ const getClientPagination = (config, setPagination) => {
     rowsPerPage: config.rowsPerPage,
     sortBy: sort(),
     descending: config.sort ? config.sort === 'desc' : null,
-    page: config.startPage,
   });
 };
 
@@ -221,7 +220,6 @@ export default {
         pageSize: this.pagination.rowsPerPage,
         sort: this.pagination.descending ? 'desc' : 'asc',
         sortBy: this.pagination.sortBy ? this.pagination.sortBy.name : this.pagination.sortBy,
-        currentPage: this.pagination.page,
       });
       this.loadConnectorData().then((result) => {
         this.items = result.items || [];
