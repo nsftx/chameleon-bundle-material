@@ -163,6 +163,7 @@ const getClientPagination = (config, setPagination) => {
     rowsPerPage: config.rowsPerPage,
     sortBy: sort(),
     descending: config.sort ? config.sort === 'desc' : null,
+    page: 1,
   });
 };
 
