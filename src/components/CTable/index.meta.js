@@ -90,6 +90,7 @@ export default {
       valueProp: ['mapName', 'name'],
       displayProp: ['title', 'name'],
       returnObject: true,
+      clearable: true,
       priority: 10,
     },
     sort: {
@@ -107,6 +108,7 @@ export default {
         },
       ],
       value: null,
+      clearable: true,
       priority: 11,
     },
     theme: {

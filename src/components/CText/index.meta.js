@@ -79,7 +79,7 @@ export default {
       priority: 1,
     },
     text: {
-      type: 'input',
+      type: 'inputList',
       group: 'data',
       name: 'Text Source',
       value: null,

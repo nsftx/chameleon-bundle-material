@@ -46,6 +46,7 @@ export default {
           value: 'jsmpeg',
         },
       ],
+      clearable: true,
       value: 'img',
       priority: 1,
     },

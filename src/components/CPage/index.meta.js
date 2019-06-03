@@ -77,6 +77,12 @@ export default {
       value: false,
       priority: 5,
     },
+    showInMenu: {
+      type: 'check',
+      name: 'Show in menu',
+      group: 'general',
+      priority: 6,
+    },
     layout: {
       type: 'group',
       group: 'layout',
