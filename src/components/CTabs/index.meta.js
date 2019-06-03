@@ -28,7 +28,7 @@ export default {
     },
     grow: {
       type: 'check',
-      name: 'Tabs Full With',
+      name: 'Tabs Full Width',
       value: false,
       priority: 2,
     },
