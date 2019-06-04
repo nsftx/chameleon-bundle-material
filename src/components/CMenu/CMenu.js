@@ -1,4 +1,4 @@
-import { each, map } from 'lodash';
+import { each, filter, map } from 'lodash';
 import Element from '../Element';
 import '../../style/components/_menu.styl';
 
@@ -54,7 +54,8 @@ export default {
     },
     setItems() {
       const pages = this.getBindingValue('=$app.pages');
-      this.items = map(pages, page => ({
+      const items = filter(pages, 'showInMenu');
+      this.items = map(items, page => ({
         icon: page.icon,
         label: page.meta.title,
         path: page.path,
