@@ -80,6 +80,7 @@ export default {
     showInMenu: {
       type: 'check',
       name: 'Show in menu',
+      value: true,
       group: 'general',
       priority: 6,
     },
