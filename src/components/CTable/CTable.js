@@ -165,7 +165,7 @@ const getClientPagination = (config, setPagination) => {
     rowsPerPage: config.rowsPerPage,
     sortBy: sort(),
     descending: config.sort ? config.sort === 'desc' : false,
-    page: config.startPage,
+    page: 1,
   });
 };
 
@@ -210,7 +210,6 @@ const setDataSourceParams = (context) => {
     pageSize: self.pagination.rowsPerPage,
     sort: self.config.sort,
     sortBy: self.pagination.sortBy ? self.pagination.sortBy.name : self.pagination.sortBy,
-    currentPage: self.pagination.page,
   });
 };
 
