@@ -41,13 +41,13 @@ export default {
     name: {
       type: 'input',
       name: 'Name',
-      value: '=$activePage.name',
+      value: null,
       priority: 1,
     },
     path: {
       type: 'input',
       name: 'Path',
-      value: '=$activePage.path',
+      value: null,
       priority: 2,
       validation: {
         required: true,
@@ -94,7 +94,7 @@ export default {
         displayProp: 'name',
         valueProp: 'id',
         clearable: true,
-        value: '=$activePageLayout.id',
+        value: null,
       },
     },
     meta: {
@@ -103,7 +103,7 @@ export default {
       title: {
         type: 'input',
         name: 'Title',
-        value: '=$activePage.meta.title',
+        value: null,
       },
       description: {
         type: 'input',

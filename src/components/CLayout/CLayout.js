@@ -62,6 +62,7 @@ export default {
           permanent: true,
           right: true,
         },
+        attrs: getLayoutAttrs(),
       });
     },
   },
