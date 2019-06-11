@@ -85,6 +85,7 @@ export default {
     },
     step: {
       type: 'input',
+      inputType: 'number',
       name: 'Step Value',
       value: 1,
       priority: 10,
@@ -99,11 +100,13 @@ export default {
       },
       min: {
         type: 'input',
+        inputType: 'number',
         name: 'Min Value',
         value: 0,
       },
       max: {
         type: 'input',
+        inputType: 'number',
         name: 'Max Value',
         value: 100,
       },
