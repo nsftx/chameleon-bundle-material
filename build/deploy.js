@@ -18,7 +18,7 @@ form.append('bundle', data, 'bundle.zip');
 
 axios[deployMethod](deployEndpoint, form, {
   headers: assign({
-    authorization: `Bearer ${process.argv[2]}`,
+    authorization: `Basic ${process.argv[2]}`,
   }, form.getHeaders()),
 }).then((response) => {
   console.log('Successfully deployed bundle =>', JSON.stringify(response.data));
