@@ -78,6 +78,12 @@ export default {
       value: false,
       priority: 5,
     },
+    height: {
+      type: 'sizeInput',
+      name: 'Height',
+      value: null,
+      priority: 6,
+    },
     theme: true,
   },
 };

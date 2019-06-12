@@ -44,11 +44,15 @@ export default {
         light: this.isThemeLight,
         flat: this.config.flat,
       },
+      style: {
+        height: this.config.height,
+      },
     };
 
     const children = createElement('v-layout',
       {
         attrs: getLayoutAttrs(this.config),
+        class: 'fill-height',
       }, items);
 
     return this.renderElement(
