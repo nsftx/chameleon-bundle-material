@@ -5,7 +5,7 @@ const { assign } = require('lodash');
 const FormData = require('form-data');
 const manifest = require('./manifest.json');
 
-const deployEndpoint = 'https://api.staging-chameleon.nsoft.cloud/bundles';
+const deployEndpoint = 'http://localhost:8090/bundles';
 const deployMethod = manifest.version > 1 ? 'put' : 'post';
 
 const resolveDist = filePath => path.join(__dirname, '../dist/', filePath);
@@ -18,7 +18,7 @@ form.append('bundle', data, 'bundle.zip');
 
 axios[deployMethod](deployEndpoint, form, {
   headers: assign({
-    authorization: `Bearer ${process.argv[2]}`,
+    authorization: `Basic ${process.argv[2]}`,
   }, form.getHeaders()),
 }).then((response) => {
   console.log('Successfully deployed bundle =>', JSON.stringify(response.data));
