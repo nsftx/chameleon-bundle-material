@@ -13,13 +13,14 @@ export default {
   },
   computed: {
     textValue() {
-      return this.getItemValue('text');
+      const val = this.getItemValue('text').join(',').replace(/,/g, '\n');
+      return val;
     },
     textLinkValue() {
       return this.getItemValue('link');
     },
     textType() {
-      return this.config.textStyle || 'span';
+      return this.config.textStyle || 'pre';
     },
   },
   methods: {
