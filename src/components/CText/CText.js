@@ -1,6 +1,8 @@
 import { isObject } from 'lodash';
 import Element from '../Element';
 
+require('../../style/components/_text.styl');
+
 export default {
   extends: Element,
   watch: {
@@ -13,14 +15,14 @@ export default {
   },
   computed: {
     textValue() {
-      const val = this.getItemValue('text').join(',').replace(/,/g, '\n');
-      return val;
+      const textValue = this.getItemValue('text').join(',').replace(/,/g, '\n');
+      return textValue;
     },
     textLinkValue() {
       return this.getItemValue('link');
     },
     textType() {
-      return this.config.textStyle || 'pre';
+      return this.config.textStyle || 'span';
     },
   },
   methods: {
