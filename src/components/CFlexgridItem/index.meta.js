@@ -11,9 +11,9 @@ export default {
   ],
   options: {
     color: true,
-    width: {
+    size: {
       type: 'select',
-      name: 'Width',
+      name: 'Size',
       items: [
         {
           name: '1',
