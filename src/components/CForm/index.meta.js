@@ -8,7 +8,7 @@ export default {
   optionGroups: {
     submit: {
       key: 'submit',
-      name: 'Default Submit Action',
+      name: 'Submit Action',
       hidden: {
         current: false,
         default: false,
@@ -17,7 +17,7 @@ export default {
     },
     clear: {
       key: 'clear',
-      name: 'Default Clear Action',
+      name: 'Clear Action',
       hidden: {
         current: false,
         default: false,
@@ -55,11 +55,6 @@ export default {
       priority: 1,
     },
     theme: true,
-    autoSubmit: {
-      type: 'check',
-      name: 'Auto Submit Form',
-      value: false,
-    },
     submit: {
       type: 'group',
       group: 'submit',
