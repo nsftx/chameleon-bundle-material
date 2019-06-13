@@ -6,7 +6,7 @@ export default {
     const data = {
       key: this.schema.uid,
       class: {
-        [`xs${this.config.width}`]: true,
+        [`xs${this.config.size}`]: true,
         [this.config.color]: true,
         flex: true,
       },
