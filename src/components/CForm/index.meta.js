@@ -9,20 +9,10 @@ export default {
     submit: {
       key: 'submit',
       name: 'Submit Action',
-      hidden: {
-        current: false,
-        default: false,
-        expression: binding.setExpression('<%= element.autoSubmit %>'),
-      },
     },
     clear: {
       key: 'clear',
       name: 'Clear Action',
-      hidden: {
-        current: false,
-        default: false,
-        expression: binding.setExpression('<%= element.autoSubmit %>'),
-      },
     },
   },
   actions: [
