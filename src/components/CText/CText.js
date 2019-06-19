@@ -15,7 +15,7 @@ export default {
   },
   computed: {
     textValue() {
-      const textValue = this.getItemValue('text').join('\n');
+      return this.getItemValue('text').join('\n');
       return textValue;
     },
     textLinkValue() {
