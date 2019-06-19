@@ -1,6 +1,6 @@
-# chameleon-vuetify
+# chameleon-bundle-material
 
-> Chameleon Vuetify Interpreter
+> Chameleon Material Bundle
 
 ## Project setup
 ```
