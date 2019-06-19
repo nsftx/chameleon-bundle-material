@@ -1,6 +1,8 @@
 import { isObject } from 'lodash';
 import Element from '../Element';
 
+require('../../style/components/_text.styl');
+
 export default {
   extends: Element,
   watch: {
@@ -13,7 +15,7 @@ export default {
   },
   computed: {
     textValue() {
-      return this.getItemValue('text');
+      return this.getItemValue('text').join('\n');
     },
     textLinkValue() {
       return this.getItemValue('link');
