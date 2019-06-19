@@ -1,6 +1,6 @@
 # chameleon-bundle-material
 
-> Chameleon Material Bundle
+> Material Bundle for Chameleon applications
 
 ## Project setup
 ```
