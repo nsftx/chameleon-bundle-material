@@ -8,21 +8,11 @@ export default {
   optionGroups: {
     submit: {
       key: 'submit',
-      name: 'Default Submit Action',
-      hidden: {
-        current: false,
-        default: false,
-        expression: binding.setExpression('<%= element.autoSubmit %>'),
-      },
+      name: 'Submit Action',
     },
     clear: {
       key: 'clear',
-      name: 'Default Clear Action',
-      hidden: {
-        current: false,
-        default: false,
-        expression: binding.setExpression('<%= element.autoSubmit %>'),
-      },
+      name: 'Clear Action',
     },
   },
   actions: [
@@ -55,11 +45,6 @@ export default {
       priority: 1,
     },
     theme: true,
-    autoSubmit: {
-      type: 'check',
-      name: 'Auto Submit Form',
-      value: false,
-    },
     submit: {
       type: 'group',
       group: 'submit',

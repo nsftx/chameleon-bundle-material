@@ -16,31 +16,27 @@ const getComponentTag = (name, context) => {
 
 const uuid = () => v4();
 
-const getFormActions = (context, createElement) => {
-  if (context.formActionsStatus) return false;
-
-  return createElement(
-    'v-card-actions',
-    map(context.formActions, (button, action) => createElement(
-      getComponentTag('button', context),
-      {
-        props: {
-          unselectable: true,
-          definition: merge({}, button),
-        },
-        attrs: {
-          action: true,
-        },
-        key: `${button.name}_${uuid()}`,
-        on: {
-          click() {
-            context[action]();
-          },
+const getFormActions = (context, createElement) => createElement(
+  'v-card-actions',
+  map(context.formActions, (button, action) => createElement(
+    getComponentTag('button', context),
+    {
+      props: {
+        unselectable: true,
+        definition: merge({}, button),
+      },
+      attrs: {
+        action: true,
+      },
+      key: `${button.name}_${uuid()}`,
+      on: {
+        click() {
+          context[action]();
         },
       },
-    )),
-  );
-};
+    },
+  )),
+);
 
 const getFormInputs = (context, createElement) => map(context.getFields(),
   field => createElement(
@@ -55,7 +51,6 @@ const getFormInputs = (context, createElement) => map(context.getFields(),
           const currentField = field;
           currentField.value = value;
           context.$emit('input', value);
-          if (context.config.autoSubmit) context.submit();
         },
       },
     },
@@ -92,9 +87,6 @@ export default {
         submit: this.config.submit,
         clear: this.config.clear,
       };
-    },
-    formActionsStatus() {
-      return this.config.autoSubmit;
     },
     form() {
       const formName = this.config.name;
