@@ -1,6 +1,7 @@
 import {
   isString, isObject, map, isNil,
 } from 'lodash';
+import { v4 } from 'uuid';
 import Element from '../Element';
 
 const sourceTypes = {
@@ -102,6 +103,12 @@ const getStaticStyle = (config) => {
   return style;
 };
 
+const uuid = () => v4();
+
+const getUniqueKey = () => {
+  return `video_${uuid()}`;
+};
+
 export default {
   extends: Element,
   watch: {
@@ -119,31 +126,45 @@ export default {
     pause() {
       this.$refs.video.pause();
     },
+    renderPlaceholder(createElement) {
+      const data = {
+        staticStyle: {
+          width: this.width,
+          height: '50px',
+        },
+      };
+      return createElement('div', data);
+    },
+    renderVideo(createElement, source) {
+      return createElement(
+        'video',
+        {
+          attrs: getAttrs(this),
+          on: getListeners(this),
+          ref: 'video',
+          key: getUniqueKey(),
+          staticStyle: {
+            position: this.config.aspectRatio !== 'auto' ? 'absolute' : 'relative',
+            top: 0,
+            left: 0,
+          },
+        },
+        getSources(createElement, source),
+      );
+    },
   },
   render(createElement) {
     const data = {
       staticStyle: getStaticStyle(this.config),
     };
     const source = this.items || this.config.value;
-
-    const children = createElement(
-      'video',
-      {
-        attrs: getAttrs(this),
-        on: getListeners(this),
-        ref: 'video',
-        staticStyle: {
-          position: this.config.aspectRatio !== 'auto' ? 'absolute' : 'relative',
-          top: 0,
-          left: 0,
-        },
-      },
-      getSources(createElement, source),
-    );
-
+    const children = source.length ? this.renderVideo(createElement, source)
+      : this.renderPlaceholder(createElement);
     return this.renderElement('div', data, children);
   },
   mounted() {
-    this.$refs.video.muted = this.config.muted;
+    if (!isNil(this.$refs.video)) {
+      this.$refs.video.muted = this.config.muted;
+    }
   },
 };
