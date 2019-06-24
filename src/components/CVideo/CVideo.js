@@ -33,18 +33,12 @@ const getListeners = (context) => {
   const listeners = {
     canplay: (event) => {
       self.sendToEventBus('PlayerReadyChanged', event);
-      console.log('PlayerReadyChanged');
-      console.log(event);
     },
     playing: (event) => {
       self.sendToEventBus('Played', event);
-      console.log('Played');
-      console.log(event);
     },
     pause: (event) => {
       self.sendToEventBus('Paused', event);
-      console.log('Paused');
-      console.log(event);
     },
     ended: (event) => {
       self.sendToEventBus('Ended', event);
@@ -120,13 +114,9 @@ export default {
   },
   methods: {
     play() {
-      console.log('play');
-      console.log(this.$refs.video);
       this.$refs.video.play();
     },
     pause() {
-      console.log('pause');
-      console.log(this.$refs.video);
       this.$refs.video.pause();
     },
     toggle() {
