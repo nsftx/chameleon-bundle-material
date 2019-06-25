@@ -1,6 +1,6 @@
 const path = require('path');
-const packageConfig = require('./package.json');
 const os = require('os');
+const packageConfig = require('./package.json');
 
 const bundleName = packageConfig.chameleon.bundle.toUpperCase();
 const nameIndex = process.argv.indexOf('--name');
@@ -27,6 +27,9 @@ module.exports = {
 
         config.externals({ vuetify: 'Vuetify', vue: 'Vue' });
       });
+
+    wConfig.module.rule('eslint').use('eslint-loader')
+      .tap(opts => ({ ...opts, emitWarning: false }));
   },
   parallel: process.env.CI ? false : defaultParallelism,
 };
