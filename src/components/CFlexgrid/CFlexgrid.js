@@ -15,9 +15,10 @@ const getContainerClass = (context) => {
 };
 
 const getLayoutAttrs = (context) => {
+  console.log(context.direction);
   const attrs = {
     [context.direction]: true,
-    wrap: true,
+    wrap: context.direction !== 'column',
   };
 
   return attrs;
@@ -45,6 +46,7 @@ export default {
         flat: this.config.flat,
       },
       style: {
+        overflow: 'hidden',
         height: this.config.height,
       },
     };
