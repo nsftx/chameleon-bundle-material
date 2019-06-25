@@ -120,7 +120,7 @@ export default {
       this.$refs.video.pause();
     },
     toggle() {
-      if (this.$refs.video.type === 'playing') {
+      if (!this.$refs.video.paused) {
         this.pause();
       } else {
         this.play();
