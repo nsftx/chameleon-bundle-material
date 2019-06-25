@@ -15,7 +15,6 @@ const getContainerClass = (context) => {
 };
 
 const getLayoutAttrs = (context) => {
-  console.log(context.direction);
   const attrs = {
     [context.direction]: true,
     wrap: context.direction !== 'column',
