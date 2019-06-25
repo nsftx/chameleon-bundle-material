@@ -105,10 +105,6 @@ const getStaticStyle = (config) => {
 
 const uuid = () => v4();
 
-const getUniqueKey = () => {
-  return `video_${uuid()}`;
-};
-
 export default {
   extends: Element,
   watch: {
@@ -142,7 +138,7 @@ export default {
           attrs: getAttrs(this),
           on: getListeners(this),
           ref: 'video',
-          key: getUniqueKey(),
+          key: uuid(),
           staticStyle: {
             position: this.config.aspectRatio !== 'auto' ? 'absolute' : 'relative',
             top: 0,
