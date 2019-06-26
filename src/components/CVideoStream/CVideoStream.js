@@ -75,6 +75,7 @@ export default {
     destroyPlayer() {
       if (this.player && isFunction(this.player.destroy)) {
         this.player.destroy();
+        this.player = null;
       }
     },
     renderTypeImage() {
@@ -109,6 +110,27 @@ export default {
         },
       );
     },
+    renderPlaceholder(createElement) {
+      const data = {
+        staticStyle: {
+          width: this.width,
+          height: '50px',
+        },
+      };
+
+      return createElement('div', data);
+    },
+    checkDependencies() {
+      if (this.dependencies && !isNil(window[this.dependencies.global])) {
+        this.playerHandler = this.dependencies.global;
+        return;
+      }
+      if (this.dependencies && isNil(window[this.dependencies.global])) {
+        this.loadDependencies(this.dependencies.files, this.dependencies.global).then(() => {
+          this.playerHandler = this.dependencies.global;
+        });
+      }
+    },
   },
   watch: {
     dataSource: {
@@ -121,6 +143,11 @@ export default {
       },
       deep: true,
     },
+    streamType(value) {
+      if (!isNil(value)) {
+        this.checkDependencies();
+      }
+    },
   },
   mounted() {
     if (this.dependencies) {
@@ -130,8 +157,8 @@ export default {
       });
     }
   },
-  render() {
-    const children = this[`renderType${this.streamType}`]();
+  render(createElement) {
+    const children = this.streamValue ? this[`renderType${this.streamType}`]() : this.renderPlaceholder(createElement);
 
     return this.renderElement('div', {
       staticStyle: this.staticStyle,
