@@ -15,7 +15,7 @@ export default {
   },
   computed: {
     textValue() {
-      return this.getItemValue('text').join('\n');
+      return this.getItemValue('text') ? this.getItemValue('text').join('\n') : null;
     },
     textLinkValue() {
       return this.getItemValue('link');
