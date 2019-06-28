@@ -9,6 +9,9 @@ export default {
     {
       name: 'setDataSource',
       help: 'Sets table data source from event data',
+      ignoreOwnEvents: [
+        'DataSourceChanged',
+      ],
     },
     {
       name: 'setPage',
