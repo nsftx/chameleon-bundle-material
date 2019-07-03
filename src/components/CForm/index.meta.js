@@ -1,5 +1,3 @@
-import { binding } from '@/utility';
-
 export default {
   group: 'widgets',
   type: 'form',

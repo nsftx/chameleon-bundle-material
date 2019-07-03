@@ -15,7 +15,7 @@ export default {
   },
   computed: {
     textValue() {
-      return this.getItemValue('text').join('\n');
+      return this.getItemValue('text');
     },
     textLinkValue() {
       return this.getItemValue('link');
@@ -29,7 +29,7 @@ export default {
       if (this.items && this.items.length) {
         return isObject(this.items[0]) ? this.items[0][type] : this.items[0];
       }
-      return this.config[type];
+      return this.config[type] ? this.config[type].join('\n') : null;
     },
     renderPlaceholder() {
       const icon = this.$createElement(
