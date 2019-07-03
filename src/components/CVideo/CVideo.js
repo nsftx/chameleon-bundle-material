@@ -128,6 +128,7 @@ export default {
       } else {
         this.play();
       }
+    },
     renderPlaceholder(createElement) {
       const data = {
         staticStyle: {
