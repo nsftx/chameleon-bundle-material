@@ -67,8 +67,9 @@ export default {
       if (this.streamValue) {
         this.player = new window[`${this.playerHandler}`].Player(this.streamValue, {
           canvas: this.$refs.canvas,
+          onPlay: this.onPlayVideoStream(),
+          onPause: this.onPauseVideoStream(),
         });
-
         this.player.play();
       }
     },
@@ -76,6 +77,25 @@ export default {
       if (this.player && isFunction(this.player.destroy)) {
         this.player.destroy();
         this.player = null;
+      }
+    },
+    onPlayVideoStream(player) {
+      this.sendToEventBus('Played', player);
+    },
+    onPauseVideoStream(player) {
+      this.sendToEventBus('Paused', player);
+    },
+    play() {
+      this.player.play();
+    },
+    pause() {
+      this.player.pause();
+    },
+    toggle() {
+      if (this.player.isPlaying) {
+        this.pause();
+      } else {
+        this.play();
       }
     },
     renderTypeImage() {

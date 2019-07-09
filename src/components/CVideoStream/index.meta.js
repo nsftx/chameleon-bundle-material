@@ -25,11 +25,31 @@ export default {
       name: 'setDataSource',
       help: 'Sets video strema data source from event data',
     },
+    {
+      name: 'play',
+      help: 'Start playing',
+    },
+    {
+      name: 'pause',
+      help: 'Pause video',
+    },
+    {
+      name: 'toggle',
+      help: 'Toggle of video states',
+    },
   ],
   events: [
     {
       name: 'DataSourceChanged',
       help: 'Fires when video stream data source is changed',
+    },
+    {
+      name: 'Played',
+      help: 'Video stream started playing',
+    },
+    {
+      name: 'Paused',
+      help: 'Video stream stopped playing',
     },
   ],
   options: {

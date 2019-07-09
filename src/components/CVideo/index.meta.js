@@ -33,6 +33,10 @@ export default {
       name: 'pause',
       help: 'Pause video',
     },
+    {
+      name: 'toggle',
+      help: 'Toggle of video states',
+    },
   ],
   events: [
     {

@@ -122,6 +122,13 @@ export default {
     pause() {
       this.$refs.video.pause();
     },
+    toggle() {
+      if (!this.$refs.video.paused) {
+        this.pause();
+      } else {
+        this.play();
+      }
+    },
     renderPlaceholder(createElement) {
       const data = {
         staticStyle: {
