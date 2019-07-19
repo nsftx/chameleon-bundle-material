@@ -13,6 +13,9 @@ export default {
       const handler = self.$options.methods.errorHandler;
       if (handler) {
         handler.call(self, error, info);
+      } else {
+        // eslint-disable-next-line
+        console.error(error);
       }
     };
     // eslint-disable-next-line
@@ -22,6 +25,9 @@ export default {
       const handler = self.$options.methods.warnHandler;
       if (handler) {
         handler.call(self, warning, trace);
+      } else {
+        // eslint-disable-next-line
+        console.error(`[Vue warn]: ${warning}${trace}`);
       }
     };
 
