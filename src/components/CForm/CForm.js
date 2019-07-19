@@ -1,4 +1,5 @@
 import {
+  // each,
   filter,
   kebabCase,
   isNil,
@@ -92,6 +93,17 @@ export default {
       const formName = this.config.name;
       return this.$refs[formName];
     },
+    model() {
+      const fields = this.getFields();
+      return map(fields, (item) => {
+        const field = {
+          name: item.name,
+          label: item.name,
+        };
+
+        return field;
+      });
+    },
   },
   methods: {
     getForm() {
@@ -101,9 +113,9 @@ export default {
       return filter(this.config.elements, n => isNil(n.actions));
     },
     validateForm() {
-      this.form.validate();
+      this.getForm().validate();
       let valid = true;
-      map(this.form.$children, (input) => {
+      map(this.getForm().$children, (input) => {
         // We need to remove submit & clear from validation
         if (!input.$attrs.action) {
           if (!input.validate()) {
@@ -120,6 +132,9 @@ export default {
     clear() {
       this.form.reset();
       this.sendToEventBus('Cleared', {});
+    },
+    saveData(data) {
+      this.saveConnectorData(data);
     },
     submit() {
       this.errors = [];
@@ -138,6 +153,7 @@ export default {
         color: context.config.color,
         dark: context.isThemeDark,
         light: context.isThemeLight,
+        model: context.model,
         flat: true,
       },
     };

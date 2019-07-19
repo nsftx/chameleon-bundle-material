@@ -22,6 +22,10 @@ export default {
       name: 'clear',
       help: 'Clear Form',
     },
+    {
+      name: 'saveData',
+      help: 'Save Submitted data',
+    },
   ],
   events: [
     {
@@ -33,6 +37,12 @@ export default {
     {
       name: 'Errored',
     },
+    {
+      name: 'DataSaveSucceded',
+    },
+    {
+      name: 'DataSaveErrored',
+    },
   ],
   options: {
     color: true,
@@ -43,6 +53,14 @@ export default {
       priority: 1,
     },
     theme: true,
+    dataSource: {
+      type: 'dataSource',
+      group: 'data',
+      name: 'Data Source',
+      value: null,
+      schema: '=$activePageElement.elements',
+      priority: 6,
+    },
     submit: {
       type: 'group',
       group: 'submit',

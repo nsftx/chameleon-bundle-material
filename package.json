@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@nsoft/chameleon-notation": "^1.0.16",
-    "@nsoft/chameleon-sdk": "^1.0.97",
+    "@nsoft/chameleon-sdk": "^1.0.102-beta.0",
     "axios": "^0.18.0",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
