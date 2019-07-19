@@ -21,10 +21,6 @@ export default {
       name: 'setRowsPerPage',
       help: 'Set rowsPerPage from event data',
     },
-    {
-      name: 'setDataSourceParams',
-      help: 'Set table data source params',
-    },
   ],
   events: [
     {
