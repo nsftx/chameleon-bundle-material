@@ -21,6 +21,10 @@ export default {
       name: 'setRowsPerPage',
       help: 'Set rowsPerPage from event data',
     },
+    {
+      name: 'setDataSourceParams',
+      help: 'Set table data source params',
+    },
   ],
   events: [
     {
@@ -71,19 +75,26 @@ export default {
       value: null,
       priority: 6,
     },
+    useAppPageParams: {
+      type: 'check',
+      group: 'data',
+      name: 'Use Application Page Params',
+      value: true,
+      priority: 7,
+    },
     rowsPerPageItems: {
       type: 'input',
       group: 'data',
       name: 'Rows Per Page Items',
       value: null,
-      priority: 7,
+      priority: 8,
     },
     rowsPerPage: {
       type: 'input',
       group: 'data',
       name: 'Rows Per Page',
       value: 5,
-      priority: 8,
+      priority: 9,
     },
     sortBy: {
       type: 'select',

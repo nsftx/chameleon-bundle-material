@@ -13,7 +13,7 @@ export default {
           type: 'select',
           valueType: 'string',
           items: '=$app.pages',
-          itemValue: 'path',
+          itemValue: 'name',
           itemText: 'name',
         },
       },

@@ -68,11 +68,11 @@ export default {
       }
 
       const route = {
-        path: data.page,
+        name: data.page,
         params: payload,
       };
 
-      if (!this.registry.isPreviewMode && route.path) {
+      if (!this.registry.isPreviewMode && route.name) {
         this.$router.push(route);
       } else {
         logger.info(
