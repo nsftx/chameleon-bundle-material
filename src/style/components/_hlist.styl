@@ -2,12 +2,9 @@
 
 .c-hlist
   clearfix()
-  &-items {
-    display: flex;
-    flex-direction: row;
-  }
   &-item
-    width: 100% !important;
+    box-sizing: border-box
+    float: left
     iframe,
     video
       display: block
