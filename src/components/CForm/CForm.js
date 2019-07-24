@@ -93,17 +93,6 @@ export default {
       const formName = this.config.name;
       return this.$refs[formName];
     },
-    model() {
-      const fields = this.getFields();
-      return map(fields, (item) => {
-        const field = {
-          name: item.name,
-          label: item.name,
-        };
-
-        return field;
-      });
-    },
   },
   methods: {
     getForm() {
