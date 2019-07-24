@@ -141,7 +141,6 @@ export default {
         color: context.config.color,
         dark: context.isThemeDark,
         light: context.isThemeLight,
-        model: context.model,
         flat: true,
       },
     };
