@@ -1,6 +1,6 @@
+import { isNil, isNaN } from 'lodash';
 import { fieldable, validatable } from '@/mixins';
 import { validator } from '@/validators';
-import { isNil, isNaN } from 'lodash';
 import Element from '../Element';
 
 const getAttrs = (context) => {

@@ -457,6 +457,35 @@
                 "color": "red",
                 "theme": "light"
               }
+            },
+            {
+              "type": "filter-form",
+              "name": "filterForm",
+              "color": "",
+              "theme": "",
+              "elements": [
+                {
+                  "type": "text-input",
+                  "name": "firstName",
+                  "label": "First Name",
+                  "clearable": true,
+                  "disabled": false,
+                  "readonly": false,
+                  "description": {
+                    "placeholder": "Please enter your first name",
+                    "tooltip": "text tooltip",
+                    "hint": "some hint!!"
+                  },
+                  "style": {
+                    "color": null,
+                    "theme": "light"
+                  },
+                  "validation": {
+                    "required": true
+                  },
+                  "value": "Test Text Input"
+                }
+              ]
             }
           ]
         }
