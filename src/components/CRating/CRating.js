@@ -1,6 +1,6 @@
+import { isNil, isObject } from 'lodash';
 import { fieldable, validatable } from '@/mixins';
 import { validator } from '@/validators';
-import { isNil, isObject } from 'lodash';
 import Element from '../Element';
 
 require('../../style/components/_rating.styl');

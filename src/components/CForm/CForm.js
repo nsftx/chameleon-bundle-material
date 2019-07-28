@@ -101,9 +101,9 @@ export default {
       return filter(this.config.elements, n => isNil(n.actions));
     },
     validateForm() {
-      this.form.validate();
+      this.getForm().validate();
       let valid = true;
-      map(this.form.$children, (input) => {
+      map(this.getForm().$children, (input) => {
         // We need to remove submit & clear from validation
         if (!input.$attrs.action) {
           if (!input.validate()) {
@@ -120,6 +120,9 @@ export default {
     clear() {
       this.form.reset();
       this.sendToEventBus('Cleared', {});
+    },
+    saveData(data) {
+      this.saveConnectorData(data);
     },
     submit() {
       this.errors = [];
