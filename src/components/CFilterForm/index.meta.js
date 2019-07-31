@@ -28,6 +28,11 @@ export default {
       value: 'filterForm',
       priority: 1,
     },
+    autoSubmit: {
+      type: 'check',
+      name: 'Auto Submit',
+      value: false,
+    },
     color: {
       group: 'style',
     },
@@ -62,20 +67,12 @@ export default {
       group: 'style',
       value: false,
     },
-    dataSource: {
-      type: 'dataSource',
-      group: 'data',
-      name: 'Data Source',
-      value: null,
-    },
-    autoSubmit: {
-      type: 'check',
-      group: 'data',
-      name: 'Auto Submit',
-      value: false,
-    },
   },
   children: [
-    'inputs',
+    'date',
+    'date-range',
+    'select',
+    'select-list',
+    'text-input',
   ],
 };
