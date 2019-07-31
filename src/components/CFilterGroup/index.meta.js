@@ -1,7 +1,7 @@
 export default {
   group: 'widgets',
-  type: 'filter-form',
-  name: 'Filter Form',
+  type: 'filter-group',
+  name: 'Filter Group',
   icon: 'filter_list',
   actions: [
     {
@@ -25,7 +25,7 @@ export default {
     name: {
       type: 'input',
       name: 'Name',
-      value: 'filterForm',
+      value: 'filterGroup',
       priority: 1,
     },
     autoSubmit: {

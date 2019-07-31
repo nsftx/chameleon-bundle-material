@@ -1,11 +1,11 @@
-import FilterForm from './CFilterForm';
+import FilterGroup from './CFilterGroup';
 
 export default {
   install(Vue, options) {
-    const name = `${options.namespace}filter-form`;
+    const name = `${options.namespace}filter-group`;
 
     Vue.component(name, {
-      extends: FilterForm,
+      extends: FilterGroup,
       namespace: options.namespace,
       name,
     });
