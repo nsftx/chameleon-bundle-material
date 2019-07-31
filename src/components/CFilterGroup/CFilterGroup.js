@@ -32,24 +32,39 @@ export default {
     getForm() {
       return this.$refs[this.config.name];
     },
+    getFormContent() {
+      if (this.config.direction === 'row') {
+        return this.$createElement('v-container', {}, [
+          this.$createElement('v-layout', {
+            attrs: {
+              wrap: true,
+            },
+            class: 'fill-height',
+          }, [
+            this.getFormInputs(),
+          ]),
+        ]);
+      }
+      return this.getFormInputs();
+    },
     getFormInputs() {
       const self = this;
-      return map(this.getFields(), field => self.$createElement(
-        self.getElementTag(field.type),
-        {
-          props: {
-            definition: field,
-          },
-          staticClass: `${self.$options.name}-items`,
-          on: {
-            input(value) {
-              self.value = value;
-              self.$emit('input', value);
-              if (self.config.autoSubmit) self.apply();
+      return map(this.getFields(), field => self.$createElement('v-flex', {}, [
+        self.$createElement(self.getElementTag(field.type),
+          {
+            props: {
+              definition: field,
             },
-          },
-        },
-      ));
+            staticClass: `${self.$options.name}-items`,
+            on: {
+              input(value) {
+                self.value = value;
+                self.$emit('input', value);
+                if (self.config.autoSubmit) self.apply();
+              },
+            },
+          }),
+      ]));
     },
     getFormComponent() {
       return this.$createElement('v-form',
@@ -58,7 +73,7 @@ export default {
           staticClass: `${this.$options.name} ${this.baseChildrenClass}`,
         },
         [
-          this.getFormInputs(),
+          this.getFormContent(),
         ]);
     },
   },
