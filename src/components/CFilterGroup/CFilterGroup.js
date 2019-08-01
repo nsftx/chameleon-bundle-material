@@ -1,6 +1,8 @@
 import { map } from 'lodash';
 import Element from '../Element';
 
+require('../../style/components/_filter-group.styl');
+
 export default {
   extends: Element,
   data() {
@@ -33,19 +35,24 @@ export default {
       return this.$refs[this.config.name];
     },
     getFormContent() {
-      if (this.config.direction === 'row') {
-        return this.$createElement('v-container', {}, [
-          this.$createElement('v-layout', {
-            attrs: {
-              wrap: true,
-            },
-            class: 'fill-height',
-          }, [
-            this.getFormInputs(),
-          ]),
-        ]);
-      }
-      return this.getFormInputs();
+      return this.$createElement('v-container', {
+        attrs: {
+          [`grid-list-${this.config.elementSpacing}`]: true,
+        },
+        class: this.config.spacing ? 'pa-0' : '',
+      },
+      [
+        this.$createElement('v-layout', {
+          attrs: {
+            [this.config.direction]: true,
+            wrap: this.config.direction !== 'column',
+          },
+          class: 'fill-height',
+        },
+        [
+          this.getFormInputs(),
+        ]),
+      ]);
     },
     getFormInputs() {
       const self = this;

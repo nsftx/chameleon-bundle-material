@@ -63,9 +63,41 @@ export default {
     },
     spacing: {
       type: 'check',
-      name: 'Spacing',
+      name: 'Group Spacing',
       group: 'style',
       value: false,
+    },
+    elementSpacing: {
+      type: 'select',
+      name: 'Element Spacing',
+      group: 'style',
+      items: [
+        {
+          name: 'None',
+          value: 'none',
+        },
+        {
+          name: 'Extra-Small',
+          value: 'xs',
+        },
+        {
+          name: 'Small',
+          value: 'sm',
+        },
+        {
+          name: 'Medium',
+          value: 'md',
+        },
+        {
+          name: 'Large',
+          value: 'lg',
+        },
+        {
+          name: 'Extra-Large',
+          value: 'xl',
+        },
+      ],
+      value: 'xs',
     },
   },
   children: [
