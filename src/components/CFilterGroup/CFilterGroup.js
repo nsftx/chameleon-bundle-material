@@ -11,30 +11,27 @@ export default {
     };
   },
   computed: {
-    form() {
-      const formName = this.config.name;
-      return this.$refs[formName];
+    filterGroup() {
+      const filterName = this.config.name;
+      return this.$refs[filterName];
     },
   },
   methods: {
     apply() {
       this.entity = {};
-      map(this.form.$children, (input) => {
+      map(this.filterGroup.$children, (input) => {
         this.entity[input.name] = input.value;
       });
       this.sendToEventBus('Applied', this.entity);
     },
     clear() {
-      this.form.reset();
+      this.filterGroup.reset();
       this.sendToEventBus('Cleared', this.entity);
     },
     getFields() {
       return this.config.elements;
     },
-    getForm() {
-      return this.$refs[this.config.name];
-    },
-    getFormContent() {
+    getFilterContent() {
       return this.$createElement('v-container', {
         attrs: {
           [`grid-list-${this.config.elementSpacing}`]: true,
@@ -50,11 +47,11 @@ export default {
           class: 'fill-height',
         },
         [
-          this.getFormInputs(),
+          this.getFilterInputs(),
         ]),
       ]);
     },
-    getFormInputs() {
+    getFilterInputs() {
       const self = this;
       return map(this.getFields(), field => self.$createElement('v-flex', {}, [
         self.$createElement(self.getElementTag(field.type),
@@ -73,14 +70,14 @@ export default {
           }),
       ]));
     },
-    getFormComponent() {
+    getFilterComponent() {
       return this.$createElement('v-form',
         {
           ref: this.config.name,
           staticClass: `${this.$options.name} ${this.baseChildrenClass}`,
         },
         [
-          this.getFormContent(),
+          this.getFilterContent(),
         ]);
     },
   },
@@ -94,6 +91,6 @@ export default {
       },
     };
 
-    return this.renderElement('v-card', data, this.getFormComponent(), true);
+    return this.renderElement('v-card', data, this.getFilterComponent(), true);
   },
 };

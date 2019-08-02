@@ -459,8 +459,8 @@
               }
             },
             {
-              "type": "filter-form",
-              "name": "filterForm",
+              "type": "filter-group",
+              "name": "filterGroup",
               "color": "",
               "theme": "",
               "elements": [
