@@ -1,4 +1,7 @@
 import {
+  cloneDeep, merge, isNil, isObject,
+} from 'lodash';
+import {
   bindable,
   dependable,
   elementable,
@@ -9,9 +12,6 @@ import {
   themable,
 } from '@/mixins';
 
-import {
-  cloneDeep, merge, isNil, isObject,
-} from 'lodash';
 /*
 This is a base element for all componets.
 This element applies elementable mixin from sdk, and
