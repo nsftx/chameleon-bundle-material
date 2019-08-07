@@ -40,7 +40,7 @@ export default {
       items: [
         {
           name: 'None',
-          value: '',
+          value: 'none',
         },
         {
           name: 'Extra-Small',
