@@ -59,7 +59,7 @@ export default {
       value: null,
       displayProp: 'name',
       clearable: true,
-      valueProp: 'name',
+      valueProp: 'uid',
       items: '=$app.pages',
       filterItemsOut: '=$activePage.name',
       priority: 3,

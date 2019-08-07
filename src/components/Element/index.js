@@ -13,7 +13,7 @@ import {
 } from '@/mixins';
 
 /*
-This is a base element for all componets.
+This is a base element for all components.
 This element applies elementable mixin from sdk, and
 appends baseClass, baseParentClass and baseChildrenClass
 */
