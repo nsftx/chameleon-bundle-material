@@ -5,6 +5,9 @@ export default {
   type: 'table',
   name: 'Table',
   icon: 'grid_on',
+  children: [
+    'filter-group',
+  ],
   actions: [
     {
       name: 'setDataSource',
@@ -96,6 +99,12 @@ export default {
       clearable: true,
       priority: 10,
     },
+    enableFilter: {
+      type: 'check',
+      group: 'data',
+      name: 'Enable Filter',
+      value: false,
+    },
     sort: {
       type: 'select',
       group: 'data',
@@ -147,6 +156,12 @@ export default {
       name: 'Header color',
       value: null,
       priority: 16,
+    },
+    itemsCount: {
+      type: 'childrenCountInput',
+      name: 'Item Count',
+      value: '1',
+      hidden: true,
     },
   },
 };

@@ -273,6 +273,23 @@ export default {
       scopedSlots: getScopedSlots(createElement, this),
     });
 
+    let filter = null;
+    if (this.config.enableFilter) {
+      filter = map(this.config.elements, element => createElement(
+        this.getElementTag('filter-group'),
+        {
+          props: {
+            definition: element,
+          },
+        },
+      ));
+    }
+
+    const children = [
+      filter,
+      table,
+    ];
+
     return this.renderElement(
       'v-card',
       {
@@ -281,7 +298,8 @@ export default {
           color: this.config.color,
         },
       },
-      table,
+      children,
+      true,
     );
   },
 };

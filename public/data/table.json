@@ -13,6 +13,13 @@
               "name": "temperaturesPerCity",
               "type": "table",
               "rowsPerPage": 10,
+              "enableFilter": true,
+              "elements": [
+                {
+                  "type": "filter-group",
+                  "direction": "row"
+                }
+              ],
               "dataSource": {
                 "name": "temperaturesPerCity",
                 "id": "temperaturesPerCity",
