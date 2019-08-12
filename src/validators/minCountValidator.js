@@ -1,8 +1,7 @@
 import { split } from 'lodash';
-import validator from 'validator';
+import { isEmpty } from 'validator/lib/isEmpty';
 
 export default (config, value, limit) => {
-  const isEmpty = validator.isEmpty(value);
-  const length = isEmpty ? 0 : split(value, ',').length;
+  const length = isEmpty(value) ? 0 : split(value, ',').length;
   return length >= limit ? true : config.message;
 };

@@ -1,6 +1,3 @@
-import validator from 'validator';
+import isNumeric from 'validator/lib/isNumeric';
 
-export default (config, value) => {
-  const isInteger = validator.isNumeric(value);
-  return isInteger ? true : config.message;
-};
+export default (config, value) => (isNumeric(value) ? true : config.message);
