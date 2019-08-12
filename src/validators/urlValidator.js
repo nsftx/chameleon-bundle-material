@@ -1,4 +1,4 @@
-import { isURL } from 'validator/lib/isURL';
+import isURL from 'validator/lib/isURL';
 
 export default (config, value) => {
   const settings = {
@@ -6,5 +6,6 @@ export default (config, value) => {
     require_protocol: true,
   };
 
-  return isURL(value, settings) ? true : config.message;
+  const isUrl = isURL(value, settings);
+  return isUrl ? true : config.message;
 };
