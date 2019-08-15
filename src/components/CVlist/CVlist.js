@@ -1,6 +1,6 @@
 import Element from '../Element';
 
-require('../../style/components/_vlist.styl');
+require('../../style/components/_vlist.scss');
 
 export default {
   extends: Element,

@@ -1,7 +1,7 @@
 import { map } from 'lodash';
 import Element from '../Element';
 
-require('../../style/components/_filter-group.styl');
+require('../../style/components/_filter-group.scss');
 
 export default {
   extends: Element,

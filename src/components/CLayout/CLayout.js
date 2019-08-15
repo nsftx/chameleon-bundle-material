@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
 import Element from '../Element';
 
-require('../../style/components/_layout.styl');
+require('../../style/components/_layout.scss');
 
 const getLayoutAttrs = () => {
   const attrs = {

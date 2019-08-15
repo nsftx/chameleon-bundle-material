@@ -1,0 +1,29 @@
+.c-treeview {
+  .v-treeview-node__root {
+    height: 100%;
+  }
+
+  &.c-right-toggle {
+    .v-treeview-node__root {
+      display: inline;
+    }
+    .v-treeview-node__toggle {
+      float: right !important;
+    }
+    .v-treeview-node__checkbox {
+      float: left;
+    }
+  }
+
+  &.c-right-check {
+    .v-treeview-node__root {
+      display: inline;
+    }
+    .v-treeview-node__checkbox {
+      float: right;
+    }
+    .v-treeview-node__toggle {
+      float: left;
+    }
+  }
+}

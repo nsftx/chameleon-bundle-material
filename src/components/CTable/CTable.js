@@ -2,7 +2,7 @@ import {
   defaults, each, isNil, isString, keys, map, merge, toLower,
 } from 'lodash';
 import Element from '../Element';
-import '../../style/components/_table.styl';
+import '../../style/components/_table.scss';
 
 const getPropRowsPerPageItems = (value) => {
   if (!value) {

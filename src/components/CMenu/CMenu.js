@@ -1,6 +1,6 @@
 import { each, filter, map } from 'lodash';
 import Element from '../Element';
-import '../../style/components/_menu.styl';
+import '../../style/components/_menu.scss';
 
 export default {
   extends: Element,

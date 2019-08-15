@@ -1,6 +1,6 @@
 import Element from '../Element';
 
-require('../../style/components/_hlist.styl');
+require('../../style/components/_hlist.scss');
 
 export default {
   extends: Element,

@@ -1,10 +1,7 @@
 import Vue from 'vue';
-import Vuetify from 'vuetify';
+import vuetify from './plugins/vuetify';
 import Chameleon from './index';
 import App from './App';
-import 'vuetify/src/stylus/main.styl';
-
-Vue.use(Vuetify);
 
 Vue.use(Chameleon, {
   isPreviewMode: true,
@@ -50,8 +47,9 @@ Vue.use(Chameleon, {
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  vuetify,
+  components: { App },
   render(h) {
     return h(App);
   },
-  components: { App },
 });

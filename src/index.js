@@ -2,7 +2,7 @@ import { assign, each } from 'lodash';
 import namespace from './index.namespace';
 import * as components from './components';
 
-require('./style/main.styl');
+require('./style/main.scss');
 
 export default {
   install(Vue, options) {

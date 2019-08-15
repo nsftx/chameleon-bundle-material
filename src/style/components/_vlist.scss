@@ -1,0 +1,13 @@
+.c-vlist {
+  &-item {
+    display: block;
+  }
+
+  .v-speed-dial {
+      width: auto;
+  }
+
+  &--spaced {
+    padding-top: 8px
+  }
+}

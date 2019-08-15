@@ -10,7 +10,7 @@ import {
   sortBy,
 } from 'lodash';
 import Element from '../Element';
-import '../../style/components/_treeview.styl';
+import '../../style/components/_treeview.scss';
 
 const getProps = (context) => {
   const { config } = context;

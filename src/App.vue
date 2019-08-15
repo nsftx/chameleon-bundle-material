@@ -1,74 +1,67 @@
 <template>
-  <main>
-    <v-app>
-      <v-toolbar app
-                 dark
-                 fixed
-                 clipped-left
-                 color="green darken-2">
-        <v-toolbar-side-icon @click.stop="toggleDrawer = !toggleDrawer"></v-toolbar-side-icon>
-        <v-toolbar-title>Chameleon Playground</v-toolbar-title>
-        <v-spacer></v-spacer>
-      </v-toolbar>
-      <v-content>
-        <v-navigation-drawer app
-                             clipped
-                             fixed
-                             class="green"
-                             v-if="navigation"
-                             v-model="toggleDrawer"
-                             dark>
-          <v-list>
-            <v-list-tile v-for="item in navigation.elements[0].dataSource.items"
-                         :key="item.title"
-                         @click="componentChanged(item.name)">
-              <v-list-tile-action>
-                <v-icon>{{ item.icon }}</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </v-list>
-        </v-navigation-drawer>
-        <v-container fluid>
-          <v-layout row
-                    wrap>
-            <v-flex xs12>
-              <v-card>
-                <v-jsoneditor :value="source"
-                              @input="sourceChanged">
-                </v-jsoneditor>
-              </v-card>
-            </v-flex>
-            <v-flex xs12
-                    v-if="definition">
-              <c-page :definition="definition"
-                      :key="getUniqueKey(definition.elements[0].type)">
-              </c-page>
-            </v-flex>
-          </v-layout>
-          <v-footer app
-                    height="80"
-                    class="scroll-y"
-                    id="scroll-target"
-                    inset>
-            <v-container style="max-height: 150px"
-                         class="scroll-y"
-                         id="scroll-target">
-              <v-layout column
-                        align-center
-                        justify-center
-                        v-scroll:#scroll-target>
-                <span v-html="validationMessage">
-                </span>
-              </v-layout>
-            </v-container>
-          </v-footer>
-        </v-container>
-      </v-content>
-    </v-app>
-  </main>
+  <v-app>
+    <v-navigation-drawer :clipped="$vuetify.breakpoint.lgAndUp"
+                         app
+                         class="green"
+                         v-model="toggleDrawer"
+                         dark>
+      <v-list>
+        <v-list-item v-for="item in navigation.elements[0].dataSource.items"
+                     :key="item.title"
+                     @click="componentChanged(item.name)">
+          <v-list-item-action>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-app-bar :clipped-left="$vuetify.breakpoint.lgAndUp"
+               app
+               dark
+               fixed
+               color="green darken-2">
+      <v-app-bar-nav-icon @click.stop="toggleDrawer = !toggleDrawer" />
+      <v-toolbar-title>Chameleon Playground</v-toolbar-title>
+      <v-spacer />
+    </v-app-bar>
+    <v-content>
+      <v-container fluid
+                   class="fill-height">
+        <v-row class="fill-height">
+          <v-col cols="12">
+            <v-card>
+              <v-jsoneditor :value="source"
+                            @input="sourceChanged" />
+            </v-card>
+          </v-col>
+          <v-col class="fill-height"
+                 cols="12"
+                 v-if="definition">
+            <c-page :definition="definition"
+                    :key="getUniqueKey(definition.elements[0].type)" />
+          </v-col>
+        </v-row>
+        <v-footer app
+                  height="80"
+                  class="overflow-y-auto"
+                  id="scroll-target"
+                  inset>
+          <v-container style="max-height: 150px"
+                       class="overflow-y-auto"
+                       id="scroll-target">
+            <v-row align="center"
+                   justify="center"
+                   v-scroll:#scroll-target>
+              <span v-html="validationMessage" />
+            </v-row>
+          </v-container>
+        </v-footer>
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
@@ -89,7 +82,7 @@ const http = axios.create({
 const uuid = () => v4();
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     VJsoneditor,
   },

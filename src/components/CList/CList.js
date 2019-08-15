@@ -8,7 +8,7 @@ import {
 } from 'lodash';
 import Element from '../Element';
 
-require('../../style/components/_list.styl');
+require('../../style/components/_list.scss');
 
 const getContainerClasses = (context) => {
   const { config } = context;
