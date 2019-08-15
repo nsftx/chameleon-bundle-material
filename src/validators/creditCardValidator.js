@@ -1,6 +1,3 @@
-import validator from 'validator';
+import isCreditCard from 'validator/lib/isCreditCard';
 
-export default (config, value) => {
-  const isCreditCard = validator.isCreditCard(value);
-  return isCreditCard ? true : config.message;
-};
+export default (config, value) => (isCreditCard(value) ? true : config.message);
