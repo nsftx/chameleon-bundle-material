@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}switch`;
 
     Vue.component(name, {
+      name,
       extends: Switch,
       namespace: options.namespace,
-      name,
     });
   },
 };

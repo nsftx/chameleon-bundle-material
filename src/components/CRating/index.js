@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}rating`;
 
     Vue.component(name, {
+      name,
       extends: Rating,
       namespace: options.namespace,
-      name,
     });
   },
 };

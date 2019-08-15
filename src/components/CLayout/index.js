@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}layout`;
 
     Vue.component(name, {
+      name,
       extends: Layout,
       namespace: options.namespace,
-      name,
     });
   },
 };

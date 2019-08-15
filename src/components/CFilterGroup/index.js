@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}filter-group`;
 
     Vue.component(name, {
+      name,
       extends: FilterGroup,
       namespace: options.namespace,
-      name,
     });
   },
 };

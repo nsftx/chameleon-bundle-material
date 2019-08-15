@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}slider`;
 
     Vue.component(name, {
+      name,
       extends: Slider,
       namespace: options.namespace,
-      name,
     });
   },
 };

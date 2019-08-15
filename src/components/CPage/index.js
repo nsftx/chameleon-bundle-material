@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}page`;
 
     Vue.component(name, {
+      name,
       extends: Page,
       namespace: options.namespace,
-      name,
     });
   },
 };

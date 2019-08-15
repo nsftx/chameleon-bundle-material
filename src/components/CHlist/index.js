@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}hlist`;
 
     Vue.component(name, {
+      name,
       extends: Hlist,
       namespace: options.namespace,
-      name,
     });
   },
 };

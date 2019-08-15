@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}form`;
 
     Vue.component(name, {
+      name,
       extends: Form,
       namespace: options.namespace,
-      name,
     });
   },
 };

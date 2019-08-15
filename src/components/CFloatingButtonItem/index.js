@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}floating-button-item`;
 
     Vue.component(name, {
+      name,
       extends: FloatingButtonItem,
       namespace: options.namespace,
-      name,
     });
   },
 };

@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}button`;
 
     Vue.component(name, {
+      name,
       extends: Button,
       namespace: options.namespace,
-      name,
     });
   },
 };

@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}repeater`;
 
     Vue.component(name, {
+      name,
       extends: Repeater,
       namespace: options.namespace,
-      name,
     });
   },
 };

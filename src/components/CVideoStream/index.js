@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}video-stream`;
 
     Vue.component(name, {
+      name,
       extends: VideoStream,
       namespace: options.namespace,
-      name,
     });
   },
 };

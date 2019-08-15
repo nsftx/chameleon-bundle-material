@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}flexgrid`;
 
     Vue.component(name, {
+      name,
       extends: Flexgrid,
       namespace: options.namespace,
-      name,
     });
   },
 };

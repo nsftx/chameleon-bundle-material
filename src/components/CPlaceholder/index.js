@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}placeholder`;
 
     Vue.component(name, {
+      name,
       extends: Placeholder,
       namespace: options.namespace,
-      name,
     });
   },
 };
