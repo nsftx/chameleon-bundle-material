@@ -55,7 +55,7 @@
             <v-row v-scroll:#scroll-target
                    align="center"
                    justify="center">
-              <span v-html="validationMessage" />
+              <c-text :definition="validationMessage" />
             </v-row>
           </v-container>
         </v-footer>
@@ -99,8 +99,11 @@ export default {
   },
   computed: {
     validationMessage() {
-      return this.validation && this.validation.message
-        ? this.validation.message.replace(/(?:\r\n|\r|\n)/g, '<br />') : '';
+      const definition = {
+        text: this.validation && this.validation.message
+          ? [this.validation.message.replace(/(?:\r\n|\r|\n)/g, '<br />')] : '',
+      };
+      return definition;
     },
   },
   mounted() {
