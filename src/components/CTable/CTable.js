@@ -137,6 +137,9 @@ const getScopedSlots = (createElement, context) => {
           const { item } = props;
           context.sendToEventBus('SelectedItemChanged', item);
         },
+        touchend: () => {
+          // evt.stopPropagation();
+        },
       },
     }, getColumns(props)),
   };
@@ -279,6 +282,11 @@ export default {
         props: {
           flat: this.config.flat,
           color: this.config.color,
+        },
+        on: {
+          touchend(evt) {
+            evt.stopPropagation();
+          },
         },
       },
       table,
