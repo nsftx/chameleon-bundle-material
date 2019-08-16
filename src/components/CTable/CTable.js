@@ -137,9 +137,6 @@ const getScopedSlots = (createElement, context) => {
           const { item } = props;
           context.sendToEventBus('SelectedItemChanged', item);
         },
-        touchend: () => {
-          // evt.stopPropagation();
-        },
       },
     }, getColumns(props)),
   };
