@@ -285,6 +285,8 @@ export default {
         },
         on: {
           touchend(evt) {
+            // Stopping this event, otherwise reaching table horizontal scroll end
+            // on mobile affects other components such as tabs
             evt.stopPropagation();
           },
         },
