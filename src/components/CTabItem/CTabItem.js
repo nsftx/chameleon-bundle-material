@@ -15,12 +15,38 @@ const getTabItemContent = (context, createElement) => createElement(
 
 export default {
   extends: Element,
+  inject: ['cActiveTab'],
+  props: {
+    ordinal: {
+      type: Number,
+    },
+  },
+  data() {
+    return {
+      loadedOnce: false,
+    };
+  },
+  computed: {
+    activeTab() {
+      return this.cActiveTab.value();
+    },
+    isActive() {
+      return this.activeTab === this.ordinal;
+    },
+  },
   render(createElement) {
     const data = {
       key: this.schema.uid,
     };
 
-    const children = getTabItemContent(this, createElement);
+    // Simulate tab content lazy loading - render tab item children
+    // only when tab is active or it was previously loaded
+    // TODO Vuetify 2 changed tab item behaviour, 'eager' prop is false by default
+    // check can this part of logic be removed after upgrading
+    if (this.isActive) this.loadedOnce = true;
+
+    const shouldRenderChildren = this.isActive || this.loadedOnce;
+    const children = shouldRenderChildren ? getTabItemContent(this, createElement) : [];
 
     return this.renderElement('v-tab-item', data, children, true);
   },

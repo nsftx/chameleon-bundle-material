@@ -1,3 +1,5 @@
+// eslint-disable-next-line
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const path = require('path');
 const os = require('os');
 const packageConfig = require('./package.json');
@@ -34,6 +36,11 @@ module.exports = {
 
     wConfig.module.rule('eslint').use('eslint-loader')
       .tap(opts => ({ ...opts, emitWarning: false }));
+
+    wConfig
+      .when(process.env.NODE_ENV !== 'production', (config) => {
+        config.plugin().use(new BundleAnalyzerPlugin());
+      });
   },
   parallel: process.env.CI ? false : defaultParallelism,
 };

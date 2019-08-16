@@ -5,21 +5,25 @@ import Element from '../Element';
 
 const createTabItems = (context, createElement) => {
   const { elements } = context.config;
-  return map(elements, element => createElement(
+  return map(elements, (element, i) => createElement(
     context.getElementTag('tab-item'),
     {
       props: {
         definition: merge({}, element, {
           contentColor: context.config.contentColor,
         }),
+        ordinal: i,
       },
     },
   ));
 };
 
 const getListeners = (context) => {
+  const instance = context;
   const listeners = {
     change(value) {
+      instance.activeTab = value;
+
       if (value) {
         const label = context.config.elements[value].title;
         context.sendToEventBus('SelectedItemChanged', {
@@ -77,6 +81,18 @@ const getTabs = (context, createElement) => {
 
 export default {
   extends: Element,
+  provide() {
+    return {
+      cActiveTab: {
+        value: () => this.activeTab,
+      },
+    };
+  },
+  data() {
+    return {
+      activeTab: 0,
+    };
+  },
   render(createElement) {
     const self = this;
     const data = {
