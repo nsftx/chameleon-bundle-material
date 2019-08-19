@@ -9,7 +9,7 @@
           "name": "list-1",
           "flat": false,
           "color": "transparent",
-          "gutter": false,
+          "spaced": false,
           "elements": [
             {
               "type": "youtube",

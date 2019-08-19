@@ -28,6 +28,12 @@ export default {
       value: null,
       priority: 4,
     },
+    spaced: {
+      type: 'check',
+      name: 'Spacing',
+      value: false,
+      priority: 5,
+    },
     theme: true,
   },
 };

@@ -10,7 +10,7 @@
           "color": "",
           "theme": "",
           "flat": true,
-          "gutter": true,
+          "spaced": true,
           "height": "",
           "elements": [
             {
