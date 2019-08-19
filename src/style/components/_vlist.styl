@@ -1,9 +1,17 @@
 .c-vlist
   &-item
-    display: block
+    display: block;
 
   .v-speed-dial
       width: auto;
 
   &--spaced
-    padding: 8px
+    padding: 8px;
+    .c-vlist-items
+      .c-vlist-item
+        padding: 8px 0;
+      :first-child
+        padding-top: 0;
+      :last-child
+        padding-bottom: 0;
+
