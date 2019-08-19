@@ -180,6 +180,7 @@ const getProps = (context) => {
     light: context.isThemeLight,
     items: context.items,
     hideHeaders: !columns,
+    hideActions: config.hideActions,
     headers: columns ? getHeadersProp(dataSource, config) : [],
     itemKey: columns ? keys(columns[0])[0] : 'id',
     loading: context.loadingDataSource,
