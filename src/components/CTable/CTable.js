@@ -32,15 +32,11 @@ const getCellInferredProps = (cell) => {
 
   switch (toLower(cell.type)) {
     case 'date':
-      align = 'center';
-      break;
+    case 'number':
     case 'icon':
     case 'image':
       align = 'center';
       sortable = false;
-      break;
-    case 'number':
-      align = 'right';
       break;
     default:
       align = 'left';
