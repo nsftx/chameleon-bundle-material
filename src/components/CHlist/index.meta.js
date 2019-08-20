@@ -16,7 +16,7 @@ export default {
       value: false,
       priority: 2,
     },
-    gutter: {
+    spaced: {
       type: 'check',
       name: 'Spacing',
       value: false,

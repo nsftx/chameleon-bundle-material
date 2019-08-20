@@ -180,6 +180,7 @@ const getProps = (context) => {
     light: context.isThemeLight,
     items: context.items,
     hideHeaders: !columns,
+    hideActions: config.hideActions,
     headers: columns ? getHeadersProp(dataSource, config) : [],
     itemKey: columns ? keys(columns[0])[0] : 'id',
     loading: context.loadingDataSource,
@@ -279,6 +280,13 @@ export default {
         props: {
           flat: this.config.flat,
           color: this.config.color,
+        },
+        on: {
+          touchend(evt) {
+            // Stopping this event, otherwise reaching table horizontal scroll end
+            // on mobile affects other components such as tabs
+            evt.stopPropagation();
+          },
         },
       },
       table,

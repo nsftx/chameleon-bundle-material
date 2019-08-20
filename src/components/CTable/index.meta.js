@@ -43,6 +43,12 @@ export default {
       value: false,
       priority: 1,
     },
+    hideActions: {
+      type: 'check',
+      name: 'Hide Actions',
+      value: false,
+      priority: 2,
+    },
     noDataText: {
       type: 'input',
       group: 'localization',
