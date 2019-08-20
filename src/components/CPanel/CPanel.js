@@ -1,11 +1,16 @@
 import Element from '../Element';
 
+require('../../style/components/_panel.styl');
+
 export default {
   extends: Element,
   render() {
     const { config } = this;
     const data = {
       key: this.schema.uid,
+      class: {
+        [`${this.$options.name}--spaced`]: this.config.spaced,
+      },
       props: {
         color: config.color,
         dark: this.isThemeDark,
