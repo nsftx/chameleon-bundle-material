@@ -8,7 +8,7 @@
           "type": "gallery",
           "name": "gallery-1",
           "color": "",
-          "theme": "",
+          "theme": "light",
           "carousel": {
             "enabled": false,
             "cycle": true,
