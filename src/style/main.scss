@@ -3,3 +3,8 @@ body {
   padding: 0;
   margin: 0;
 }
+
+// Override theme dependent colors
+.theme--dark {
+  background-color: #2d3038 !important;
+}

@@ -3,14 +3,15 @@
     <v-navigation-drawer v-model="toggleDrawer"
                          :clipped="$vuetify.breakpoint.lgAndUp"
                          app
-                         class="green"
-                         dark>
-      <v-list>
+                         class="primary">
+      <v-list dark
+              class="primary">
         <v-list-item v-for="item in navigation.elements[0].dataSource.items"
                      :key="item.title"
+                     class="primary"
                      @click="componentChanged(item.name)">
           <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon class="primary">{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -20,10 +21,11 @@
     </v-navigation-drawer>
     <v-app-bar :clipped-left="$vuetify.breakpoint.lgAndUp"
                app
-               dark
                fixed
-               color="green darken-2">
-      <v-app-bar-nav-icon @click.stop="toggleDrawer = !toggleDrawer" />
+               dark
+               color="primary">
+      <v-app-bar-nav-icon light
+                          @click.stop="toggleDrawer = !toggleDrawer" />
       <v-toolbar-title>Chameleon Playground</v-toolbar-title>
       <v-spacer />
     </v-app-bar>
@@ -71,6 +73,8 @@ import { assign } from 'lodash';
 import VJsoneditor from 'vue-jsoneditor';
 import chameleonNotation from '@nsoft/chameleon-notation';
 import connectorApi from '@nsoft/chameleon-sdk/src/api/connector';
+
+require('./style/main.scss');
 
 const navigation = require('../public/data/navigation.json');
 const defaultJson = require('../public/data/page.json');

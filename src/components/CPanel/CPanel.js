@@ -1,6 +1,6 @@
 import Element from '../Element';
 
-require('../../style/components/_panel.styl');
+require('../../style/components/_panel.scss');
 
 export default {
   extends: Element,
