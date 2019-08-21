@@ -98,17 +98,17 @@ export default {
           ];
         } else {
           listItemChildren = [
-            this.$createElement('v-list-tile-action', [
+            this.$createElement('v-list-item-action', [
               this.$createElement('v-icon', item.icon),
             ]),
-            this.$createElement('v-list-tile-content', [
-              this.$createElement('v-list-tile-title', item.label),
+            this.$createElement('v-list-item-content', [
+              this.$createElement('v-list-item-title', item.label),
             ]),
           ];
         }
 
         const listItem = this.$createElement(
-          'v-list-tile',
+          'v-list-item',
           {
             class: 'menu-item',
             on: {
@@ -171,7 +171,7 @@ export default {
           class: 'menu-title',
         },
         [
-          this.$createElement('v-list-tile', title),
+          this.$createElement('v-list-item', title),
           this.renderDivider(),
         ],
       );

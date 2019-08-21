@@ -47,14 +47,14 @@ const getCardSlot = (createElement, context) => {
     item: (data) => {
       setItemProps(context, data.item);
       return [
-        createElement('v-list-tile-avatar',
+        createElement('v-list-item-avatar',
           [
             getAvatar(createElement, data),
           ]),
-        createElement('v-list-tile-content', [
-          createElement('v-list-tile-title',
+        createElement('v-list-item-content', [
+          createElement('v-list-item-title',
             data.item[context.config.itemText]),
-          createElement('v-list-tile-sub-title',
+          createElement('v-list-item-subtitle',
             data.item.description),
         ]),
       ];

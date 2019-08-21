@@ -3,10 +3,10 @@
     color: #fff;
     font-size: 18px;
   }
-  .v-list__tile {
+  .v-list-item {
     min-height: 48px;
     height: auto;
-    .v-list__tile__content.overflow > div {
+    .v-list-item__content.overflow > div {
       white-space: normal;
     }
     .c-list-title {
