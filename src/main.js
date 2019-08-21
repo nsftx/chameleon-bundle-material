@@ -23,6 +23,7 @@ Vue.use(Chameleon, {
         name: 'Home',
         icon: 'dashboard',
         path: '/',
+        showInMenu: true,
         elements: [],
         theme: null,
         parent: null,
@@ -32,6 +33,7 @@ Vue.use(Chameleon, {
         type: 'page',
         name: 'Contact',
         path: '/contact',
+        showInMenu: true,
         parent: null,
         icon: 'perm_contact_calendar',
         meta: {

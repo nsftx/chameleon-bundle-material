@@ -22,10 +22,6 @@ module.exports = {
     '@nsoft/chameleon-sdk',
   ],
   chainWebpack: (wConfig) => {
-    ['vue-modules', 'vue', 'normal-modules', 'normal'].forEach((match) => {
-      wConfig.module.rule('sass').oneOf(match).use('sass-loader')
-        .tap(opt => Object.assign(opt, { data: '@import \'~@/style/_variables.scss\'' }));
-    });
     wConfig
       .when(process.env.NODE_ENV === 'production' && process.env.CHM_TARGET === 'lib', (config) => {
         config.output.library(`__CHAMELEON_${bundleName}${globalSuffix}__`);

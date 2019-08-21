@@ -11,7 +11,9 @@
                      class="primary"
                      @click="componentChanged(item.name)">
           <v-list-item-action>
-            <v-icon class="primary">{{ item.icon }}</v-icon>
+            <v-icon class="primary">
+              {{ item.icon }}
+            </v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
