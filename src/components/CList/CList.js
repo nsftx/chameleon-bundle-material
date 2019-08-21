@@ -76,7 +76,7 @@ const getListAvatar = (createElement, item, context) => {
     }
     return createElement('v-icon', item.icon);
   };
-  return createElement('v-list-tile-avatar', {
+  return createElement('v-list-item-avatar', {
     props: {
       tile: !context.config.imageRadius,
     },
@@ -91,7 +91,7 @@ const getChildrenItems = (createElement, context, props) => {
   const title = !mapProps.length ? item[itemProps[0]] : item.title;
   const description = !mapProps.length ? item[itemProps[1]] : item.description;
 
-  return createElement('v-list-tile', {
+  return createElement('v-list-item', {
     on: {
       click() {
         context.sendToEventBus('SelectedItemChanged', item);
@@ -100,20 +100,20 @@ const getChildrenItems = (createElement, context, props) => {
   },
   [
     getListAvatar(createElement, item, context),
-    createElement('v-list-tile-content', {
+    createElement('v-list-item-content', {
       class: { overflow: context.config.showOverflow },
     },
     [
-      createElement('v-list-tile-title', {
+      createElement('v-list-item-title', {
         class: `c-list-title ${context.config.titleColor}`,
         style: {
           height: item.label ? 'inherit' : 0,
           borderRadius: context.config.titleRadius ? '5px' : 0,
         },
       }, item.label),
-      createElement('v-list-tile-title', title),
-      createElement('v-list-tile-sub-title', item.subtitle),
-      createElement('v-list-tile-sub-title', {
+      createElement('v-list-item-title', title),
+      createElement('v-list-item-subtitle', item.subtitle),
+      createElement('v-list-item-subtitle', {
         class: 'c-list-description',
       }, description),
     ]),
