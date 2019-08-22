@@ -104,7 +104,7 @@ export default {
       priority: 7,
     },
     rows: {
-      type: 'input',
+      type: 'number',
       name: 'Number of Rows',
       value: 5,
       priority: 5,
