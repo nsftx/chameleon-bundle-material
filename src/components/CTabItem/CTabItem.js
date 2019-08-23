@@ -23,7 +23,7 @@ export default {
   render(createElement) {
     const self = this;
     const data = {
-      key: `${self.ordinal}-${self.schema.uid}`,
+      key: `tab-${self.ordinal}`,
       props: {
         value: `tab-${self.ordinal}`,
         id: `tab-${self.ordinal}`,

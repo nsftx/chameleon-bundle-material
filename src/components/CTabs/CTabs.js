@@ -1,5 +1,5 @@
 import {
-  concat, map, merge, some,
+  map, merge, some,
 } from 'lodash';
 import Element from '../Element';
 
@@ -69,7 +69,7 @@ const getTabs = (context, createElement) => {
     return createElement(
       'v-tab',
       {
-        key: `tab${i}`,
+        key: `tab-${i}`,
         props: {
           href: `#tab-${i}`,
         },
@@ -98,7 +98,8 @@ export default {
 
     const tabs = getTabs(self, createElement);
     const items = createTabItems(self, createElement);
-    const children = concat(createElement('v-tabs-slider'),
+    const children = [
+      createElement('v-tabs-slider'),
       tabs,
       createElement('v-tabs-items', {
         props: {
@@ -107,7 +108,8 @@ export default {
           value: self.activeTab,
         },
       },
-      items));
+      items),
+    ];
 
     return this.renderElement('v-tabs', data, children, true);
   },
