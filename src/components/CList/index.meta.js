@@ -221,7 +221,7 @@ export default {
       priority: 7,
     },
     rowsPerPage: {
-      type: 'input',
+      type: 'number',
       group: 'data',
       name: 'Rows Per Page',
       value: 5,

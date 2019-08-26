@@ -366,12 +366,12 @@ export default {
         value: false,
       },
       minLength: {
-        type: 'input',
+        type: 'number',
         name: 'Min Length',
         value: null,
       },
       maxLength: {
-        type: 'input',
+        type: 'number',
         name: 'Max Length',
         value: null,
       },

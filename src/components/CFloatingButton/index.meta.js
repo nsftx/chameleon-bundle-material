@@ -20,7 +20,7 @@ export default {
     itemsCount: {
       type: 'childrenCountInput',
       name: 'Number of Child Elements',
-      value: '0',
+      value: 0,
       validation: {
         required: true,
         min: 0,
