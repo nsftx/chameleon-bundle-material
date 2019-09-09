@@ -92,12 +92,12 @@ export default {
         value: false,
       },
       minCount: {
-        type: 'input',
+        type: 'number',
         name: 'Min Count',
         value: 1,
       },
       maxCount: {
-        type: 'input',
+        type: 'number',
         name: 'Max Count',
         value: 10,
       },
