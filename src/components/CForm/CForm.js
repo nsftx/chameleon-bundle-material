@@ -84,8 +84,8 @@ export default {
   computed: {
     formActions() {
       return {
-        submit: this.config.submit,
-        clear: this.config.clear,
+        submit: this.config.submit || {},
+        clear: this.config.clear || {},
       };
     },
     form() {

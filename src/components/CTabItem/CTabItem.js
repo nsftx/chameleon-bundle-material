@@ -29,7 +29,7 @@ export default {
         id: `tab-${self.ordinal}`,
       },
     };
-    const children = getTabItemContent(this, createElement) || [];
+    const children = getTabItemContent(this, createElement) || [this.renderChildElement('div')];
 
     return this.renderElement('v-tab-item', data, children, true);
   },
