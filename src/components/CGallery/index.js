@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}gallery`;
 
     Vue.component(name, {
+      name,
       extends: Gallery,
       namespace: options.namespace,
-      name,
     });
   },
 };

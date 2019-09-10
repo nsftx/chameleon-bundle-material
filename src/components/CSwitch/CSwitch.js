@@ -1,7 +1,7 @@
 import { fieldable, validatable } from '@/mixins';
 import Element from '../Element';
 
-require('../../style/components/_switch.styl');
+require('../../style/components/_switch.scss');
 
 const getAttrs = (context) => {
   const { config } = context;

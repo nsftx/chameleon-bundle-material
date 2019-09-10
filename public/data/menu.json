@@ -21,13 +21,7 @@
               "position": "left",
               "height": null,
               "width": null,
-              "autoGenerate": true,
-              "dataSource": {
-                "items": [
-                  { "id": 1, "label": "Home", "path": "/home", "icon": "home" },
-                  { "id": 2, "label": "Profile", "path": "/contact", "icon": "person" }
-                ]
-              }
+              "autoGenerate": true
             }
           ]
         }

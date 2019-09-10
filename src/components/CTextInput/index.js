@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}text-input`;
 
     Vue.component(name, {
+      name,
       extends: TextInput,
       namespace: options.namespace,
-      name,
     });
   },
 };

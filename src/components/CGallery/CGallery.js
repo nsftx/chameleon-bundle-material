@@ -40,7 +40,7 @@ const getCloseBtnOverlay = (createElement, context) => {
     return createElement('v-btn', {
       props: {
         flat: true,
-        dark: true,
+        color: 'transparent',
       },
       staticClass: 'pa-0 ma-0',
       style: {
@@ -75,6 +75,8 @@ const getGalleryElement = (createElement, context, imageSource) => {
         hideDelimiters: carousel.hideDelimiters,
         interval: carousel.interval,
         value: self.target,
+        dark: self.isThemeDark,
+        light: self.isThemeLight,
       },
     };
     return createElement('v-carousel',

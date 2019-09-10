@@ -28,7 +28,7 @@
               "alignment": "center",
               "headerColor": "red",
               "sliderColor": "blue",
-              "theme": "dark",
+              "theme": "",
               "grow": false,
               "contentColor": "transparent",
               "elements": [

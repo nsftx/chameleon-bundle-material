@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}accordion`;
 
     Vue.component(name, {
+      name,
       extends: Accordion,
       namespace: options.namespace,
-      name,
     });
   },
 };

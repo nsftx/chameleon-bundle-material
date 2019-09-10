@@ -1,7 +1,7 @@
-import { isObject } from 'lodash';
+import { isArray, isObject } from 'lodash';
 import Element from '../Element';
 
-require('../../style/components/_text.styl');
+require('../../style/components/_text.scss');
 
 export default {
   extends: Element,
@@ -29,7 +29,7 @@ export default {
       if (this.items && this.items.length) {
         return isObject(this.items[0]) ? this.items[0][type] : this.items[0];
       }
-      return this.config[type] ? this.config[type].join('\n') : null;
+      return this.config[type] && isArray(this.config[type]) ? this.config[type].join('\n') : this.config[type];
     },
     renderPlaceholder() {
       const icon = this.$createElement(

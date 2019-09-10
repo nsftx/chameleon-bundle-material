@@ -28,9 +28,9 @@ export default {
   render(createElement) {
     const { config } = this;
     const childrenProps = getItemProps(this);
-    const expand = [];
+    const multiple = [];
     const accordion = map(config.elements, (element, index) => {
-      expand.push(this.config.expandAll || element.openOnStart);
+      multiple.push(this.config.expandAll || element.openOnStart);
       return createElement(
         this.getElementTag('accordion-item'),
         {
@@ -47,14 +47,14 @@ export default {
     });
 
     return this.renderElement(
-      'v-expansion-panel',
+      'v-expansion-panels',
       {
         props: {
-          expand: this.config.leaveOpen,
+          multiple: this.config.leaveOpen,
           dark: this.isThemeDark,
           light: this.isThemeLight,
           [config.alternativeDesign]: true,
-          value: expand,
+          value: multiple,
         },
       },
       accordion,

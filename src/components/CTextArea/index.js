@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}text-area`;
 
     Vue.component(name, {
+      name,
       extends: TextArea,
       namespace: options.namespace,
-      name,
     });
   },
 };

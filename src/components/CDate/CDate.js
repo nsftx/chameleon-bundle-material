@@ -1,4 +1,4 @@
-import { clone, isNil } from 'lodash';
+import { clone, isNil, merge } from 'lodash';
 import { fieldable, validatable } from '@/mixins';
 import { validator } from '@/validators';
 import Element from '../Element';
@@ -114,21 +114,25 @@ const getPicker = (context, createElement) => {
 };
 
 const getTextField = (context, createElement) => {
-  const self = context;
-  return createElement(
-    'v-text-field',
-    {
-      slot: 'activator',
-      attrs: getTextAttrs(context),
-      props: getTextProps(context),
-      on: {
+  const slot = {
+    activator: (props) => {
+      const { on } = props;
+      merge(on, {
         input(value) {
-          self.value = value;
           context.sendToEventBus('Changed', { value });
         },
-      },
+      });
+      return createElement(
+        'v-text-field',
+        {
+          attrs: getTextAttrs(context),
+          props: getTextProps(context),
+          on,
+        },
+      );
     },
-  );
+  };
+  return slot;
 };
 
 export default {
@@ -152,10 +156,10 @@ export default {
           self.sendToEventBus('VisibilityChanged', { visible: value });
         },
       },
+      scopedSlots: getTextField(self, createElement),
     };
 
     const children = [
-      getTextField(self, createElement),
       getPicker(self, createElement),
     ];
 

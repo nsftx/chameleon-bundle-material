@@ -3,7 +3,7 @@ import { fieldable, validatable } from '@/mixins';
 import { validator } from '@/validators';
 import Element from '../Element';
 
-require('../../style/components/_rating.styl');
+require('../../style/components/_rating.scss');
 
 const getPropRequired = (config) => {
   if (config.validation) {

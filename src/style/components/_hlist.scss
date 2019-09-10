@@ -1,0 +1,19 @@
+@import '../mixins/clearfix.scss';
+
+.c-hlist {
+  @include clearfix;
+  &-item {
+    box-sizing: border-box;
+    float: left;
+
+    iframe,
+    video {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  &--spaced {
+    padding: 8px;
+  }
+}

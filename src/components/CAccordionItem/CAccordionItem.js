@@ -2,10 +2,7 @@ import Element from '../Element';
 
 const getItemHeader = (element, createElement) => {
   const el = createElement(
-    'div',
-    {
-      slot: 'header',
-    },
+    'v-expansion-panel-header',
     element.title,
   );
 
@@ -16,10 +13,9 @@ const getItemContent = (context, createElement) => {
   const element = context.config;
 
   const el = createElement(
-    'v-card',
+    'v-expansion-panel-content',
     {
       staticClass: element.contentColor,
-      flat: true,
     },
     [
       context.renderChildElement('v-card-text'),
@@ -63,7 +59,7 @@ export default {
     ];
 
     return this.renderElement(
-      'v-expansion-panel-content',
+      'v-expansion-panel',
       data,
       children,
       true,

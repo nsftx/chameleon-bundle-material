@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}panel`;
 
     Vue.component(name, {
+      name,
       extends: Panel,
       namespace: options.namespace,
-      name,
     });
   },
 };

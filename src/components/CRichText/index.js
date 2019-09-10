@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}rich-text`;
 
     Vue.component(name, {
+      name,
       extends: RichText,
       namespace: options.namespace,
-      name,
     });
   },
 };

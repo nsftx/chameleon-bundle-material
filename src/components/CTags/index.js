@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}tags`;
 
     Vue.component(name, {
+      name,
       extends: Tags,
       namespace: options.namespace,
-      name,
     });
   },
 };

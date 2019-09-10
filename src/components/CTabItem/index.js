@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}tab-item`;
 
     Vue.component(name, {
+      name,
       extends: TabItem,
       namespace: options.namespace,
-      name,
     });
   },
 };

@@ -11,7 +11,7 @@
           "contain": false,
           "src": "https://picsum.photos/500/200?image=10",
           "width": "200px",
-          "height": "100%",
+          "height": "150px",
           "alternativeText": "Alternative Text"
         }
       ]
