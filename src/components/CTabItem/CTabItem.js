@@ -28,7 +28,7 @@ export default {
   },
   computed: {
     activeTab() {
-      return this.cActiveTab ? this.cActiveTab.value() : 0;
+      return this.cActiveTab.value();
     },
     isActive() {
       return this.activeTab === this.ordinal;
@@ -46,7 +46,7 @@ export default {
     if (this.isActive) this.loadedOnce = true;
 
     const shouldRenderChildren = this.isActive || this.loadedOnce;
-    const children = shouldRenderChildren ? getTabItemContent(this, createElement) : [this.renderChildElement('div')];
+    const children = shouldRenderChildren ? getTabItemContent(this, createElement) : [];
 
     return this.renderElement('v-tab-item', data, children, true);
   },

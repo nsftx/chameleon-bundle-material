@@ -60,6 +60,7 @@ export default {
     },
   },
   'c-form': {
+    autoSubmit: true,
     _schema: {
       type: 'form',
       group: 'widgets',
@@ -167,12 +168,6 @@ export default {
       group: 'inputs',
     },
   },
-  'c-tabs': {
-    _schema: {
-      type: 'tabs',
-      group: 'containers',
-    },
-  },
   'c-tab-item': {
     _schema: {
       type: 'tab-item',
@@ -183,6 +178,12 @@ export default {
     _schema: {
       type: 'table',
       group: 'widgets',
+    },
+  },
+  'c-tabs': {
+    _schema: {
+      type: 'tabs',
+      group: 'containers',
     },
   },
   'c-tags': {

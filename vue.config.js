@@ -1,4 +1,4 @@
-/* eslint import/no-extraneous-dependencies: off */
+// eslint-disable-next-line
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const path = require('path');
 const os = require('os');
