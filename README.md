@@ -1,4 +1,4 @@
-# chameleon-bundle-material
+# Chameleon Bundle - Material
 
 > Material Bundle for Chameleon applications
 
