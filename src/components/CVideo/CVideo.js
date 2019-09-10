@@ -161,7 +161,7 @@ export default {
       staticStyle: getStaticStyle(this.config),
     };
     const source = this.items || this.config.value;
-    const children = source.length ? this.renderVideo(createElement, source)
+    const children = source && source.length ? this.renderVideo(createElement, source)
       : this.renderPlaceholder(createElement);
     return this.renderElement('div', data, children);
   },
