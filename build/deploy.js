@@ -5,7 +5,9 @@ const { assign } = require('lodash');
 const FormData = require('form-data');
 const manifest = require('./manifest.json');
 
-const deployEndpoint = 'https://api.staging-chameleon.nsoft.cloud/bundles';
+const deployEndpoint = process.env.NODE_ENV === 'production'
+  ? 'https://application-api.chameleon.nsoft.cloud/bundles'
+  : 'https://api.staging-chameleon.nsoft.cloud/bundles';
 const deployMethod = manifest.version > 1 ? 'put' : 'post';
 
 const resolveDist = filePath => path.join(__dirname, '../dist/', filePath);
