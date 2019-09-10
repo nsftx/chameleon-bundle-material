@@ -62,19 +62,21 @@
               "type": "html",
               "theme": "dark",
               "color": "red",
-              "value": "<div>Testing html value</div>"
+              "value": [
+                "<div>Testing html value</div>"
+              ]
             },
             {
               "name": "html",
               "type": "html",
-              "value": ""
+              "value": []
             },
             {
               "name": "html",
               "type": "html",
               "theme": "dark",
               "color": "red",
-              "value": null
+              "value": []
             },
             {
               "type": "panel",
