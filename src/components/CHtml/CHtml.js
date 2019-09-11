@@ -18,7 +18,7 @@ export default {
       if (this.items && this.items.length) {
         return isObject(this.items[0]) ? this.items[0].html : this.items[0];
       }
-      return this.config.value.join('');
+      return this.config.value ? this.config.value.join('') : null;
     },
   },
   render(createElement) {
