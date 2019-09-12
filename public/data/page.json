@@ -780,8 +780,6 @@
                       "alternativeDesign": "",
                       "color": "",
                       "contentColor": "yellow",
-                      "contentRipple": true,
-                      "hideItemActions": true,
                       "theme": "light",
                       "elements": [
                         {
