@@ -261,7 +261,7 @@ export default {
       // on: getListeners(this),
       scopedSlots: getScopedSlots(createElement, this),
       on: {
-        'click:row': (value, index) => {
+        'click:row': (value) => {
           this.sendToEventBus('SelectedItemChanged', value);
         },
         'update:page': (value) => {
