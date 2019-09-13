@@ -1,5 +1,5 @@
 import {
-  defaults, each, isNil, isString, keys, map, merge, toLower,
+  each, isNil, isString, keys, map, merge, toLower,
 } from 'lodash';
 import Element from '../Element';
 import '../../style/components/_table.scss';
@@ -16,14 +16,6 @@ const getPropRowsPerPageItems = (value) => {
   }
 
   return value;
-};
-
-const getAttrs = (context) => {
-  const attrs = {
-    name: context.config.name,
-  };
-
-  return attrs;
 };
 
 const getCellInferredProps = (cell) => {
@@ -54,7 +46,7 @@ const getCellInferredProps = (cell) => {
   };
 };
 
-const getAlternatingRowColor = (rowParity, context) => {
+/* const getAlternatingRowColor = (rowParity, context) => {
   const colorClass = context.config.color ? context.config.color.split(' ') : [];
   const colorName = colorClass.length ? colorClass[0] : 'grey';
   let alternatingRowColor = context.config.alternatingRowColor || `${colorName} darken-2`;
@@ -66,9 +58,9 @@ const getAlternatingRowColor = (rowParity, context) => {
   }
 
   return rowParity % 2 === 0 ? alternatingRowColor : `${context.config.color}`;
-};
+}; */
 
-const setRowColor = (rowIndex, context) => {
+/* const setRowColor = (rowIndex, context) => {
   const isAlternatingRowOption = context.config.alternatingRows;
 
   return isAlternatingRowOption ? getAlternatingRowColor(rowIndex, context) : null;
@@ -98,51 +90,8 @@ const getSlotContent = (createElement, column, content) => {
     ];
   }
   return result;
-};
+}; */
 
-const getScopedSlots = (createElement, context) => {
-  const { dataSource } = context;
-  const getColumns = (props) => {
-    const { item } = props;
-    const columns = [];
-
-    if (dataSource && dataSource.schema) {
-      each(dataSource.schema, (schemaItem) => {
-        const contentProp = isNil(schemaItem.mapName) ? 'name' : 'mapName';
-
-        let content = item[schemaItem[contentProp]];
-        const inferredProps = {};
-
-        const column = schemaItem;
-        if (column) {
-          merge(inferredProps, getCellInferredProps(column));
-          content = getSlotContent(createElement, column, content);
-        }
-
-        columns.push(createElement('td', {
-          staticClass: `text-xs-${inferredProps.align}`,
-        }, content));
-      });
-    }
-
-    return columns;
-  };
-
-
-  const slot = {
-    items: props => createElement('tr', {
-      staticClass: setRowColor(props.index, context),
-      on: {
-        click() {
-          const { item } = props;
-          context.sendToEventBus('SelectedItemChanged', item);
-        },
-      },
-    }, getColumns(props)),
-  };
-
-  return slot;
-};
 
 const getHeadersProp = (dataSource, config) => {
   const columns = dataSource.schema;
@@ -151,10 +100,11 @@ const getHeadersProp = (dataSource, config) => {
     value: column.mapName || column.name,
     class: config.headerColor || config.color,
     text: column.title || column.name,
+    type: column.mapType || column.type,
   }, getCellInferredProps(column))));
 };
 
-const getClientPagination = (config, setPagination) => {
+/* const getClientPagination = (config, setPagination) => {
   const sort = () => {
     if (config.sortBy) {
       return config.sortBy.mapName ? config.sortBy.mapName : config.sortBy.name;
@@ -164,10 +114,10 @@ const getClientPagination = (config, setPagination) => {
   return defaults(setPagination || {}, {
     rowsPerPage: config.rowsPerPage,
     sortBy: sort(),
-    descending: config.sort ? config.sort === 'desc' : false,
+    sortDesc: config.sort ? config.sort === 'desc' : false,
     page: 1,
   });
-};
+}; */
 
 const getProps = (context) => {
   const { config } = context;
@@ -178,30 +128,35 @@ const getProps = (context) => {
   const props = {
     dark: context.isThemeDark,
     light: context.isThemeLight,
+    footerProps: {
+      itemsPerPageOptions: getPropRowsPerPageItems(config.rowsPerPageItems),
+    },
     items: context.items,
-    hideHeaders: !columns,
-    hideActions: config.hideActions,
+    hideDefaultHeader: !columns || config.hideHeader,
+    hideDefaultFooter: config.hideActions,
     headers: columns ? getHeadersProp(dataSource, config) : [],
     itemKey: columns ? keys(columns[0])[0] : 'id',
-    loading: context.loadingDataSource,
-    mustSort: false,
-    rowsPerPageItems: getPropRowsPerPageItems(config.rowsPerPageItems),
+    itemsPerPage: config.rowsPerPage,
+    page: config.page || 1,
+    sortBy: config.sortBy ? config.sortBy.mapName || config.sortBy.name : [],
+    sortDesc: config.sort === 'desc',
   };
 
-  const rowsPerPageText = context.localize(config.rowsPerPageText);
-  const noResultsText = context.localize(config.noResultsText);
+  // const rowsPerPageText = context.localize(config.rowsPerPageText);
   const noDataText = context.localize(config.noDataText);
+  const itemsPerPageText = context.localize(config.rowsPerPageText);
 
-  if (rowsPerPageText) props.rowsPerPageText = rowsPerPageText;
-  if (noResultsText) props.noResultsText = noResultsText;
+
+  // if (rowsPerPageText) props.itemsPerPageText = rowsPerPageText;
   if (noDataText) props.noDataText = noDataText;
-  if (context.isDataSourceRemoteValid) props.totalItems = context.totalItems;
-  if (context.pagination) props.pagination = context.pagination;
+  if (itemsPerPageText) props.footerProps.itemsPerPageText = itemsPerPageText;
+  // if (context.isDataSourceRemoteValid) props.totalItems = context.totalItems;
+  // if (context.pagination) props.pagination = context.pagination;
 
   return props;
 };
 
-const setDataSourceParams = (context) => {
+/* const setDataSourceParams = (context) => {
   const self = context;
 
   // Remove params set in SDK
@@ -212,9 +167,9 @@ const setDataSourceParams = (context) => {
     sort: self.config.sort,
     sortBy: self.pagination.sortBy ? self.pagination.sortBy.name : self.pagination.sortBy,
   });
-};
+}; */
 
-const getListeners = (context) => {
+/* const getListeners = (context) => {
   const self = context;
 
   return {
@@ -226,6 +181,40 @@ const getListeners = (context) => {
       }
     },
   };
+}; */
+
+const getScopedSlots = (createElement, context) => {
+  const headers = getHeadersProp(context.dataSource, context.config);
+  let slot = null;
+  // Create dynamic slot based on item type (if neccessary add other types)
+  each(headers, (header) => {
+    switch (header.type) {
+      case 'icon':
+        slot = {
+          [`item.${header.value}`]: props => createElement('v-icon', props.value),
+        };
+        return slot;
+      case 'image':
+        slot = {
+          [`item.${header.value}`]: props => createElement('v-avatar', {
+            attrs: {
+              size: '32px',
+            },
+          },
+          [
+            createElement('v-img', {
+              attrs: {
+                src: props.value,
+              },
+            }),
+          ]),
+        };
+        return slot;
+      default:
+        return slot;
+    }
+  });
+  return slot;
 };
 
 export default {
@@ -235,24 +224,23 @@ export default {
       items: [],
       pagination: null,
       totalItems: null,
-      dataLoaded: false,
     };
   },
   methods: {
     loadData() {
-      setDataSourceParams(this);
+      // setDataSourceParams(this);
 
       this.loadConnectorData().then((result) => {
+        console.log('result ', result);
         this.items = result.items || [];
         this.totalItems = result.pagination ? result.pagination.totalResults : 0;
-        this.dataLoaded = true;
+        this.pagination = result.pagination;
+        // this.dataLoaded = true;
         this.sendToEventBus('DataSourceChanged', this.dataSource);
       });
     },
-    setRowsPerPage(context) {
-      if (context.rows && this.pagination) {
-        this.pagination.rowsPerPage = context.rows;
-      }
+    setRowsPerPage(value) {
+      this.config.rowsPerPage = value;
     },
   },
   watch: {
@@ -264,32 +252,27 @@ export default {
     },
   },
   mounted() {
-    this.pagination = getClientPagination(this.config);
+    // this.pagination = getClientPagination(this.config);
   },
   render(createElement) {
-    const table = createElement('v-data-table', {
-      attrs: getAttrs(this),
+    return this.renderElement('v-data-table', {
       props: getProps(this),
-      on: getListeners(this),
+      staticClass: this.config.color,
+      // on: getListeners(this),
       scopedSlots: getScopedSlots(createElement, this),
-    });
-
-    return this.renderElement(
-      'v-card',
-      {
-        props: {
-          flat: this.config.flat,
-          color: this.config.color,
+      on: {
+        'click:row': (value, index) => {
+          this.sendToEventBus('SelectedItemChanged', value);
         },
-        on: {
-          touchend(evt) {
-            // Stopping this event, otherwise reaching table horizontal scroll end
-            // on mobile affects other components such as tabs
-            evt.stopPropagation();
-          },
+        'update:page': (value) => {
+          this.sendToEventBus('PaginationChanged', value);
+        },
+        touchend(evt) {
+          // Stopping this event, otherwise reaching table horizontal scroll end
+          // on mobile affects other components such as tabs
+          evt.stopPropagation();
         },
       },
-      table,
-    );
+    });
   },
 };

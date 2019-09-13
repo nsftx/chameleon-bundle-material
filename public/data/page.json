@@ -775,7 +775,7 @@
                     {
                       "type": "accordion",
                       "name": "accordion",
-                      "expandAll": false,
+                      "expandAll": true,
                       "leaveOpen": true,
                       "alternativeDesign": "",
                       "color": "",

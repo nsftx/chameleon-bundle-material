@@ -75,7 +75,7 @@ export default {
     },
     leaveOpen: {
       type: 'check',
-      name: 'Always open on any click',
+      name: 'Always open',
       value: true,
       priority: 5,
     },

@@ -14,12 +14,8 @@ export default {
       ],
     },
     {
-      name: 'setPage',
-      help: 'Go to page (pagination) from event data',
-    },
-    {
       name: 'setRowsPerPage',
-      help: 'Set rowsPerPage from event data',
+      help: 'Set itemsPerPage from event data',
     },
   ],
   events: [
@@ -43,25 +39,24 @@ export default {
       value: false,
       priority: 1,
     },
+    hideHeader: {
+      type: 'check',
+      name: 'Hide Header',
+      value: false,
+      priority: 2,
+    },
     hideActions: {
       type: 'check',
       name: 'Hide Actions',
       value: false,
-      priority: 2,
+      priority: 3,
     },
     noDataText: {
       type: 'input',
       group: 'localization',
       name: 'No Data Text',
       value: null,
-      priority: 2,
-    },
-    noResultsText: {
-      type: 'input',
-      group: 'localization',
-      name: 'No Results Text',
-      value: null,
-      priority: 3,
+      priority: 1,
     },
     rowsPerPageText: {
       type: 'input',
@@ -75,6 +70,13 @@ export default {
       group: 'data',
       name: 'Data Source',
       value: null,
+      priority: 6,
+    },
+    page: {
+      type: 'number',
+      group: 'data',
+      name: 'Start with page',
+      value: 1,
       priority: 6,
     },
     rowsPerPageItems: {
