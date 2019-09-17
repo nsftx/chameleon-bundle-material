@@ -31,9 +31,10 @@ const getCellInferredProps = (cell) => {
       align = 'center';
       sortable = false;
       break;
-    case 'number':
-      align = 'right';
-      break;
+      // Vuetify v2 is using default left aligment for number
+    /*  case 'number':
+    align = 'right';
+    break; */
     default:
       align = 'left';
   }
@@ -45,53 +46,6 @@ const getCellInferredProps = (cell) => {
     sortable,
   };
 };
-
-/* const getAlternatingRowColor = (rowParity, context) => {
-  const colorClass = context.config.color ? context.config.color.split(' ') : [];
-  const colorName = colorClass.length ? colorClass[0] : 'grey';
-  let alternatingRowColor = context.config.alternatingRowColor || `${colorName} darken-2`;
-
-  // use darken and lighten classes if alternetingRowColor is not set
-  if (colorClass.length > 1 && !context.config.alternatingRowColor) {
-    const colorWeight = colorClass[1].split('-')[0] === 'darken' ? 'lighten-3' : 'darken-3';
-    alternatingRowColor = `${colorName} ${colorWeight}`;
-  }
-
-  return rowParity % 2 === 0 ? alternatingRowColor : `${context.config.color}`;
-}; */
-
-/* const setRowColor = (rowIndex, context) => {
-  const isAlternatingRowOption = context.config.alternatingRows;
-
-  return isAlternatingRowOption ? getAlternatingRowColor(rowIndex, context) : null;
-};
-
-const getSlotContent = (createElement, column, content) => {
-  let result = content;
-  // Set table column depeneding on mapped or default value type
-  const type = column.mapType || column.type;
-
-  if (type === 'icon') {
-    result = [createElement('v-icon', content)];
-  } else if (type === 'image') {
-    result = [
-      createElement('v-avatar', {
-        attrs: {
-          size: '32px',
-        },
-      },
-      [
-        createElement('img', {
-          attrs: {
-            src: content,
-          },
-        }),
-      ]),
-    ];
-  }
-  return result;
-}; */
-
 
 const getHeadersProp = (dataSource, config) => {
   const columns = dataSource.schema;
@@ -184,36 +138,60 @@ const getProps = (context) => {
 }; */
 
 const getScopedSlots = (createElement, context) => {
-  const headers = getHeadersProp(context.dataSource, context.config);
-  let slot = null;
-  // Create dynamic slot based on item type (if neccessary add other types)
-  each(headers, (header) => {
-    switch (header.type) {
-      case 'icon':
-        slot = {
-          [`item.${header.value}`]: props => createElement('v-icon', props.value),
-        };
-        return slot;
-      case 'image':
-        slot = {
-          [`item.${header.value}`]: props => createElement('v-avatar', {
-            attrs: {
-              size: '32px',
-            },
-          },
-          [
-            createElement('v-img', {
+  const { config } = context;
+  const getItemByType = (data) => {
+    const child = [];
+
+    each(data.headers, (header) => {
+      const item = data.item[header.value];
+      switch (header.type) {
+        case 'icon':
+          child.push(createElement('td', {
+            staticClass: `text-${header.align}`,
+          }, [
+            createElement('v-icon', item),
+          ]));
+          break;
+        case 'image':
+          child.push(createElement('td', {
+            staticClass: `text-${header.align}`,
+          }, [
+            createElement('v-avatar', {
               attrs: {
-                src: props.value,
+                size: '32px',
               },
-            }),
-          ]),
-        };
-        return slot;
-      default:
-        return slot;
-    }
-  });
+            },
+            [
+              createElement('v-img', {
+                attrs: {
+                  src: item,
+                },
+              }),
+            ]),
+          ]));
+          break;
+        default:
+          child.push(createElement('td', {
+            staticClass: `text-${header.align}`,
+          }, item));
+          break;
+      }
+    });
+    return child;
+  };
+
+  const slot = {
+    item: (data) => {
+      const colorName = !config.alternatingRows ? '' : config.alternatingRowColor || context.colorShade;
+      return createElement('tr', {
+        staticClass: data.index % 2 === 0 ? colorName : '',
+        item: data.item,
+      }, [
+        getItemByType(data),
+      ]);
+    },
+  };
+
   return slot;
 };
 
@@ -226,12 +204,16 @@ export default {
       totalItems: null,
     };
   },
+  computed: {
+    colorShade() {
+      return this.getColorShade(this.config.color);
+    },
+  },
   methods: {
     loadData() {
       // setDataSourceParams(this);
 
       this.loadConnectorData().then((result) => {
-        console.log('result ', result);
         this.items = result.items || [];
         this.totalItems = result.pagination ? result.pagination.totalResults : 0;
         this.pagination = result.pagination;
@@ -241,6 +223,14 @@ export default {
     },
     setRowsPerPage(value) {
       this.config.rowsPerPage = value;
+    },
+    getColorShade(color) {
+      const colorShades = color && color.split(' ');
+      if (colorShades.length > 1) {
+        const shade = colorShades[1].split('-')[0];
+        return shade === 'darken' ? `${colorShades[0]} lighten-3` : `${colorShades[0]} darken-3`;
+      }
+      return null;
     },
   },
   watch: {

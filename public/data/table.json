@@ -14,6 +14,7 @@
               "type": "table",
               "rowsPerPage": 10,
               "color": "pink darken-1",
+              "alternatingRows": true,
               "page": 1,
               "dataSource": {
                 "name": "temperaturesPerCity",
