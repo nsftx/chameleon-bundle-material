@@ -8,7 +8,13 @@ export default {
   install(Vue, options) {
     // eslint-disable-next-line
     Vue.config.errorHandler = (error, vm, info) => {
-      const self = vm && vm.error ? vm : vm.$parent;
+      if (!vm) {
+        // eslint-disable-next-line
+        console.error(error, info);
+        return;
+      }
+
+      const self = vm.error ? vm : vm.$parent;
 
       const handler = self.$options.methods.errorHandler;
       if (handler) {
@@ -20,7 +26,13 @@ export default {
     };
     // eslint-disable-next-line
     Vue.config.warnHandler = (warning, vm, trace) => {
-      const self = vm && vm.warning ? vm : vm.$parent;
+      if (!vm) {
+        // eslint-disable-next-line
+        console.error(warning);
+        return;
+      }
+
+      const self = vm.warning ? vm : vm.$parent;
 
       const handler = self.$options.methods.warnHandler;
       if (handler) {

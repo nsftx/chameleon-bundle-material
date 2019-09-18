@@ -17,5 +17,62 @@
       "global": "__CHAMELEON_MATERIAL_META__"
     }
   ],
-  "helpPath": "help"
+  "helpPath": "help",
+  "plugins": {
+    "vuetify": {
+      "components": [
+        "VCard",
+        "VBtn",
+        "VExpansionPanels",
+        "VExpansionPanel",
+        "VExpansionPanelHeader",
+        "VExpansionPanelContent",
+        "VCardText",
+        "VIcon",
+        "VInput",
+        "VCheckbox",
+        "VLabel",
+        "VTextField",
+        "VMenu",
+        "VContainer",
+        "VLayout",
+        "VFlex",
+        "VForm",
+        "VSpeedDial",
+        "VCardActions",
+        "VCarousel",
+        "VCarouselItem",
+        "VImg",
+        "VContent",
+        "VNavigationDrawer",
+        "VList",
+        "VListItem",
+        "VListItemTitle",
+        "VListItemSubtitle",
+        "VListItemContent",
+        "VListItemAvatar",
+        "VDataIterator",
+        "VDivider",
+        "VListItemAction",
+        "VSpacer",
+        "VTimePicker",
+        "VRadio",
+        "VRadioGroup",
+        "VRating",
+        "VSelect",
+        "VChip",
+        "VAvatar",
+        "VSlider",
+        "VSwitch",
+        "VTabs",
+        "VTabsItems",
+        "VTabsSlider",
+        "VTab",
+        "VTabItem",
+        "VDataTable",
+        "VTextarea",
+        "VTreeview"
+      ]
+    }
+  }
 }
