@@ -37,6 +37,8 @@
         "VContainer",
         "VLayout",
         "VFlex",
+        "VRow",
+        "VCol",
         "VForm",
         "VSpeedDial",
         "VCardActions",
