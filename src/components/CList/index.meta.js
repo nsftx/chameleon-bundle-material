@@ -155,19 +155,19 @@ export default {
         },
         {
           name: 'Small',
-          value: 1,
-        },
-        {
-          name: 'Medium',
           value: 2,
         },
         {
+          name: 'Medium',
+          value: 4,
+        },
+        {
           name: 'Large',
-          value: 3,
+          value: 6,
         },
         {
           name: 'Extra-Large',
-          value: 4,
+          value: 8,
         },
       ],
       value: 0,
@@ -184,12 +184,6 @@ export default {
       type: 'input',
       group: 'localization',
       name: 'No Data Text',
-      value: null,
-    },
-    noResultsText: {
-      type: 'input',
-      group: 'localization',
-      name: 'No Results Text',
       value: null,
     },
     rowsPerPageText: {
