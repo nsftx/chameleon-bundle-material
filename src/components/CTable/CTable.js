@@ -226,7 +226,7 @@ export default {
     },
     getColorShade(color) {
       const colorShades = color && color.split(' ');
-      if (colorShades.length > 1) {
+      if (colorShades && colorShades.length > 1) {
         const shade = colorShades[1].split('-')[0];
         return shade === 'darken' ? `${colorShades[0]} lighten-3` : `${colorShades[0]} darken-3`;
       }
