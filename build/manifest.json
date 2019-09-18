@@ -73,7 +73,8 @@
         "VTabItem",
         "VDataTable",
         "VTextarea",
-        "VTreeview"
+        "VTreeview",
+        "VDatePicker"
       ]
     }
   }
