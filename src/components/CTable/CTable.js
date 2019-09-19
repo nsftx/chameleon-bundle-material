@@ -58,21 +58,6 @@ const getHeadersProp = (dataSource, config) => {
   }, getCellInferredProps(column))));
 };
 
-/* const getClientPagination = (config, setPagination) => {
-  const sort = () => {
-    if (config.sortBy) {
-      return config.sortBy.mapName ? config.sortBy.mapName : config.sortBy.name;
-    }
-    return config.sortBy;
-  };
-  return defaults(setPagination || {}, {
-    rowsPerPage: config.rowsPerPage,
-    sortBy: sort(),
-    sortDesc: config.sort ? config.sort === 'desc' : false,
-    page: 1,
-  });
-}; */
-
 const getProps = (context) => {
   const { config } = context;
   const { dataSource } = context;
@@ -85,6 +70,7 @@ const getProps = (context) => {
     footerProps: {
       itemsPerPageOptions: getPropRowsPerPageItems(config.rowsPerPageItems),
     },
+    loading: context.totalItems > 0,
     items: context.items,
     hideDefaultHeader: !columns || config.hideHeader,
     hideDefaultFooter: config.hideActions,
@@ -94,48 +80,30 @@ const getProps = (context) => {
     page: config.page || 1,
     sortBy: config.sortBy ? config.sortBy.mapName || config.sortBy.name : [],
     sortDesc: config.sort === 'desc',
+    serverItemsLength: context.totalItems,
   };
 
-  // const rowsPerPageText = context.localize(config.rowsPerPageText);
   const noDataText = context.localize(config.noDataText);
   const itemsPerPageText = context.localize(config.rowsPerPageText);
-
-
-  // if (rowsPerPageText) props.itemsPerPageText = rowsPerPageText;
   if (noDataText) props.noDataText = noDataText;
   if (itemsPerPageText) props.footerProps.itemsPerPageText = itemsPerPageText;
-  // if (context.isDataSourceRemoteValid) props.totalItems = context.totalItems;
-  // if (context.pagination) props.pagination = context.pagination;
 
   return props;
 };
 
-/* const setDataSourceParams = (context) => {
+const setServerPagination = (context) => {
   const self = context;
 
   // Remove params set in SDK
   delete self.dataSourceParams.pagination;
 
   self.dataSourceParams = merge(self.dataSourceParams, {
-    pageSize: self.pagination.rowsPerPage,
+    pageSize: self.config.rowsPerPage,
     sort: self.config.sort,
-    sortBy: self.pagination.sortBy ? self.pagination.sortBy.name : self.pagination.sortBy,
+    sortBy: self.config.sortBy
+      ? self.config.sortBy.mapName || self.config.sortBy.name : [],
   });
-}; */
-
-/* const getListeners = (context) => {
-  const self = context;
-
-  return {
-    'update:pagination': (value) => {
-      if (self.pagination && self.dataLoaded) {
-        self.pagination = getClientPagination(self.config, value);
-        self.loadData();
-        self.sendToEventBus('PaginationChanged', value);
-      }
-    },
-  };
-}; */
+};
 
 const getScopedSlots = (createElement, context) => {
   const { config } = context;
@@ -201,7 +169,7 @@ export default {
     return {
       items: [],
       pagination: null,
-      totalItems: null,
+      totalItems: -1,
     };
   },
   computed: {
@@ -211,13 +179,16 @@ export default {
   },
   methods: {
     loadData() {
-      // setDataSourceParams(this);
+      console.log('load data');
+      setServerPagination(this);
 
       this.loadConnectorData().then((result) => {
         this.items = result.items || [];
-        this.totalItems = result.pagination ? result.pagination.totalResults : 0;
+        console.log('result ', result);
+        this.totalItems = result.pagination && result.pagination.total;
+        console.log('total items ', this.totalItems);
         this.pagination = result.pagination;
-        // this.dataLoaded = true;
+
         this.sendToEventBus('DataSourceChanged', this.dataSource);
       });
     },
@@ -242,25 +213,33 @@ export default {
     },
   },
   mounted() {
-    // this.pagination = getClientPagination(this.config);
+    // this.pagination = setServerPagination();
   },
   render(createElement) {
     return this.renderElement('v-data-table', {
       props: getProps(this),
       staticClass: this.config.color,
-      // on: getListeners(this),
       scopedSlots: getScopedSlots(createElement, this),
       on: {
         'click:row': (value) => {
           this.sendToEventBus('SelectedItemChanged', value);
         },
         'update:page': (value) => {
+          console.log('update page ', value);
           this.sendToEventBus('PaginationChanged', value);
         },
-        touchend(evt) {
+        /* touchend(evt) {
           // Stopping this event, otherwise reaching table horizontal scroll end
           // on mobile affects other components such as tabs
           evt.stopPropagation();
+        }, */
+        'update:options': (value) => {
+          console.log('value ', value);
+          /* if (self.pagination && self.dataLoaded) {
+            self.pagination = getClientPagination(self.config, value);
+            self.loadData();
+            self.sendToEventBus('PaginationChanged', value);
+          } */
         },
       },
     });
