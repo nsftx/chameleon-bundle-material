@@ -185,6 +185,7 @@ export default {
       this.loadConnectorData().then((result) => {
         this.items = result.items || [];
         console.log('result ', result);
+        console.log('dataSourceParams ', this.dataSourceParams);
         this.totalItems = result.pagination && result.pagination.total;
         console.log('total items ', this.totalItems);
         this.pagination = result.pagination;
