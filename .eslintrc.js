@@ -30,7 +30,7 @@ module.exports = {
         '_schema',
       ],
     }],
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-console': 'off', // process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     // Vue-specific rules
     'vue/html-closing-bracket-newline': ['error', {
