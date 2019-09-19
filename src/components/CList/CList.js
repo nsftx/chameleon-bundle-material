@@ -42,19 +42,22 @@ const getProps = (context) => {
   const hasDataSource = !isNil(dataSource);
 
   const props = {
-    rowsPerPageItems: getPropRowsPerPageItems(config.rowsPerPageItems),
-    hideActions: config.hideActions,
+    footerProps: {
+      itemsPerPageOptions: getPropRowsPerPageItems(config.rowsPerPageItems),
+    },
+    hideDefaultFooter: config.hideActions,
+    itemsPerPage: config.rowsPerPage,
     items: hasDataSource ? context.items : [],
+    sortBy: config.sortBy ? config.sortBy.mapName || config.sortBy.name : [],
+    sortDesc: config.sort === 'desc',
     contentTag: 'v-layout',
     contentClass: 'ma-0',
   };
 
   const rowsPerPageText = context.localize(config.rowsPerPageText);
-  const noResultsText = context.localize(config.noResultsText);
   const noDataText = context.localize(config.noDataText);
 
-  if (rowsPerPageText) props.rowsPerPageText = rowsPerPageText;
-  if (noResultsText) props.noResultsText = noResultsText;
+  if (rowsPerPageText) props.footerProps.itemsPerPageText = rowsPerPageText;
   if (noDataText) props.noDataText = noDataText;
   if (context.isDataSourceRemoteValid) props.totalItems = context.totalItems;
   if (context.pagination) props.pagination = context.pagination;
@@ -83,8 +86,7 @@ const getListAvatar = (createElement, item, context) => {
   }, [children()]);
 };
 
-const getChildrenItems = (createElement, context, props) => {
-  const { item } = props;
+const getChildrenItems = (createElement, context, item) => {
   const mapProps = context.dataSource.schema
     ? filter(context.dataSource.schema, i => !isNil(i.mapName)) : {};
   const itemProps = Object.keys(item);
@@ -121,32 +123,36 @@ const getChildrenItems = (createElement, context, props) => {
 };
 
 const getCardSlot = (createElement, context) => {
-  const getChildren = props => [
+  const getChildren = item => [
     createElement('v-list', {
       class: {
         [context.config.color]: true,
       },
     },
-    [getChildrenItems(createElement, context, props)]),
+    [getChildrenItems(createElement, context, item)]),
   ];
 
   const slot = {
-    item: props => createElement('v-flex', {
-      attrs: {
-        [`pa-${context.config.spacing}`]: true,
-        [`xs${context.config.noOfRows}`]: true,
-      },
-    },
-    [
-      createElement('v-card', {
-        style: {
-          borderRadius: context.config.itemRadius ? '5px' : 0,
-        },
-        props: {
-          flat: true,
-        },
-      }, getChildren(props)),
-    ]),
+    default: props => createElement('v-row', {},
+      [
+        map(props.items, item => createElement('v-col', {
+          props: {
+            key: item.name,
+            cols: '12',
+            sm: context.config.noOfRows,
+          },
+        }, [
+          createElement('v-card', {
+            style: {
+              borderRadius: context.config.itemRadius ? '5px' : 0,
+            },
+            staticClass: [`pa-${context.config.spacing}`],
+            props: {
+              flat: true,
+            },
+          }, getChildren(item)),
+        ])),
+      ]),
   };
 
   return slot;
@@ -160,14 +166,14 @@ const getClientPagination = (config, setPagination) => {
     return config.sortBy;
   };
   return defaults(setPagination || {}, {
-    rowsPerPage: config.rowsPerPage,
+    itemsPerPage: config.rowsPerPage,
     sortBy: sort(),
     descending: config.sort ? config.sort === 'desc' : null,
     page: 1,
   });
 };
 
-const getListeners = (context) => {
+/* const getListeners = (context) => {
   const self = context;
 
   const listeners = {
@@ -179,7 +185,7 @@ const getListeners = (context) => {
   };
 
   return listeners;
-};
+}; */
 
 const getListHeader = (createElement, context) => {
   let header = null;
@@ -196,7 +202,7 @@ const getListComponent = (createElement, context) => createElement('v-data-itera
     wrap: true,
   },
   props: getProps(context),
-  on: getListeners(context),
+  // on: getListeners(context),
   scopedSlots: getCardSlot(createElement, context),
 },
 [

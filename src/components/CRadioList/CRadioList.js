@@ -96,6 +96,10 @@ export default {
           }));
     }
 
-    return this.renderElement('v-radio-group', data, children);
+    return this.renderElement('div', {}, [
+      createElement('v-radio-group', data, [
+        children,
+      ]),
+    ]);
   },
 };

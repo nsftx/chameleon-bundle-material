@@ -524,9 +524,9 @@
                       "rowsPerPage": 5,
                       "header": "List title",
                       "dataSource": {
-                        "id": "activityCards",
-                        "name": "activityCards",
-                        "model": "ActivityCards",
+                        "id": "galleryImages",
+                        "name": "galleryImages",
+                        "model": "GalleryImage",
                         "connector": {
                           "id": "12gh67qa-904d-4a9a-89f2-0a5afd8f1464",
                           "name": "Sample Local Connector",
@@ -534,20 +534,12 @@
                         },
                         "schema": [
                           {
-                            "name": "title",
-                            "type": "String"
-                          },
-                          {
-                            "name": "description",
-                            "type": "String"
-                          },
-                          {
-                            "name": "thumb",
+                            "name": "image",
                             "type": "image"
                           },
                           {
-                            "name": "icon",
-                            "type": "icon"
+                            "name": "thumb",
+                            "type": "thumb"
                           }
                         ]
                       }
@@ -775,13 +767,11 @@
                     {
                       "type": "accordion",
                       "name": "accordion",
-                      "expandAll": false,
+                      "expandAll": true,
                       "leaveOpen": true,
                       "alternativeDesign": "",
                       "color": "",
                       "contentColor": "yellow",
-                      "contentRipple": true,
-                      "hideItemActions": true,
                       "theme": "light",
                       "elements": [
                         {

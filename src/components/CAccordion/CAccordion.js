@@ -7,8 +7,6 @@ const getItemProps = (context) => {
   const props = {
     headerColor: config.color,
     contentColor: config.contentColor,
-    ripple: config.contentRipple,
-    hideActions: config.hideItemActions,
   };
 
   return props;
@@ -30,7 +28,9 @@ export default {
     const childrenProps = getItemProps(this);
     const multiple = [];
     const accordion = map(config.elements, (element, index) => {
-      multiple.push(this.config.expandAll || element.openOnStart);
+      if (this.config.expandAll || element.openOnStart) {
+        multiple.push(index);
+      }
       return createElement(
         this.getElementTag('accordion-item'),
         {

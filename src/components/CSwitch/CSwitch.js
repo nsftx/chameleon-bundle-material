@@ -59,13 +59,15 @@ export default {
     fieldable,
     validatable,
   ],
-  render() {
+  render(createElement) {
     const data = {
       attrs: getAttrs(this),
       props: getProps(this),
       on: getListeners(this),
     };
 
-    return this.renderElement('v-switch', data);
+    return this.renderElement('div', {}, [
+      createElement('v-switch', data),
+    ]);
   },
 };

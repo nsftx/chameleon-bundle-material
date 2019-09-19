@@ -44,7 +44,6 @@ const getProperties = (context) => {
     backgroundColor: config.headerColor,
     iconsAndText: some(config.elements, element => !!element.icon),
     right: config.alignment === 'right',
-    sliderColor: config.sliderColor,
     grow: config.grow,
     value: context.activeTab,
   };
@@ -99,7 +98,11 @@ export default {
     const tabs = getTabs(self, createElement);
     const items = createTabItems(self, createElement);
     const children = [
-      createElement('v-tabs-slider'),
+      createElement('v-tabs-slider', {
+        props: {
+          color: self.config.sliderColor,
+        },
+      }),
       tabs,
       createElement('v-tabs-items', {
         props: {
@@ -111,6 +114,6 @@ export default {
       items),
     ];
 
-    return this.renderElement('v-tabs', data, children, true);
+    return self.renderElement('v-tabs', data, children, true);
   },
 };

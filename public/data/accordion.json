@@ -14,13 +14,12 @@
             {
               "type": "accordion",
               "name": "accordion",
-              "multipleExpand": false,
+              "leaveOpen": true,
               "alternativeDesign": "",
+              "expandAll": true,
               "color": "blue",
               "contentColor": "yellow",
               "theme": "light",
-              "contentRipple": true,
-              "hideItemActions": true,
               "elements": [
                 {
                   "type": "accordion-item",

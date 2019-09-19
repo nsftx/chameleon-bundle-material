@@ -171,10 +171,10 @@ export default {
         name: 'Should Cycle Through Images',
         value: true,
       },
-      hideControls: {
+      showControls: {
         type: 'check',
-        name: 'Hide The Navigation Controls',
-        value: false,
+        name: 'Show The Navigation Controls',
+        value: true,
       },
       hideDelimiters: {
         type: 'check',

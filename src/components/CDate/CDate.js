@@ -163,6 +163,8 @@ export default {
       getPicker(self, createElement),
     ];
 
-    return this.renderElement('v-menu', data, children);
+    return this.renderElement('div', {}, [
+      createElement('v-menu', data, children),
+    ]);
   },
 };
