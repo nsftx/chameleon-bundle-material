@@ -70,17 +70,18 @@ const getProps = (context) => {
     footerProps: {
       itemsPerPageOptions: getPropRowsPerPageItems(config.rowsPerPageItems),
     },
-    loading: context.totalItems > 0,
+    loading: context.loadingDataSource,
     items: context.items,
     hideDefaultHeader: !columns || config.hideHeader,
     hideDefaultFooter: config.hideActions,
     headers: columns ? getHeadersProp(dataSource, config) : [],
     itemKey: columns ? keys(columns[0])[0] : 'id',
     itemsPerPage: config.rowsPerPage,
-    page: config.page || 1,
+    page: config.page,
     sortBy: config.sortBy ? config.sortBy.mapName || config.sortBy.name : [],
-    sortDesc: config.sort === 'desc',
+    sortDesc: config.sort === '-',
     serverItemsLength: context.totalItems,
+    'options.sync': context.dataSourceParams.pagination,
   };
 
   const noDataText = context.localize(config.noDataText);
@@ -91,19 +92,25 @@ const getProps = (context) => {
   return props;
 };
 
-const setServerPagination = (context) => {
+const setServerPagination = (context, params) => {
   const self = context;
 
-  // Remove params set in SDK
-  delete self.dataSourceParams.pagination;
-
-  self.dataSourceParams = merge(self.dataSourceParams, {
-    pageSize: self.config.rowsPerPage,
-    sort: self.config.sort,
-    sortBy: self.config.sortBy
-      ? self.config.sortBy.mapName || self.config.sortBy.name : [],
+  self.dataSourceParams = merge({
+    pagination: params || {
+      page: self.config.page,
+      size: self.config.rowsPerPage,
+      sort: self.config.sort,
+      sortBy: self.config.sortBy,
+    },
   });
 };
+
+const mapClientParams = (params, context) => ({
+  page: params.page,
+  size: params.itemsPerPage,
+  sort: context.config.sort, // params.sortDesc[0], // todo
+  sortBy: context.config.sortBy, // params.sortBy, // todo
+});
 
 const getScopedSlots = (createElement, context) => {
   const { config } = context;
@@ -168,7 +175,6 @@ export default {
   data() {
     return {
       items: [],
-      pagination: null,
       totalItems: -1,
     };
   },
@@ -178,18 +184,12 @@ export default {
     },
   },
   methods: {
-    loadData() {
-      console.log('load data');
-      setServerPagination(this);
+    loadData(newParams) {
+      setServerPagination(this, newParams);
 
       this.loadConnectorData().then((result) => {
         this.items = result.items || [];
-        console.log('result ', result);
-        console.log('dataSourceParams ', this.dataSourceParams);
-        this.totalItems = result.pagination && result.pagination.total;
-        console.log('total items ', this.totalItems);
-        this.pagination = result.pagination;
-
+        this.totalItems = (result.pagination && result.pagination.total) || -1;
         this.sendToEventBus('DataSourceChanged', this.dataSource);
       });
     },
@@ -213,9 +213,6 @@ export default {
       deep: true,
     },
   },
-  mounted() {
-    // this.pagination = setServerPagination();
-  },
   render(createElement) {
     return this.renderElement('v-data-table', {
       props: getProps(this),
@@ -226,21 +223,13 @@ export default {
           this.sendToEventBus('SelectedItemChanged', value);
         },
         'update:page': (value) => {
-          console.log('update page ', value);
           this.sendToEventBus('PaginationChanged', value);
         },
-        /* touchend(evt) {
-          // Stopping this event, otherwise reaching table horizontal scroll end
-          // on mobile affects other components such as tabs
-          evt.stopPropagation();
-        }, */
         'update:options': (value) => {
-          console.log('value ', value);
-          /* if (self.pagination && self.dataLoaded) {
-            self.pagination = getClientPagination(self.config, value);
-            self.loadData();
-            self.sendToEventBus('PaginationChanged', value);
-          } */
+          if (this.totalItems > 0) {
+            const newParams = mapClientParams(value, this);
+            this.loadData(newParams);
+          }
         },
       },
     });
