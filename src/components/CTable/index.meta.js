@@ -111,11 +111,11 @@ export default {
       items: [
         {
           name: 'Ascending',
-          value: 'asc',
+          value: '+',
         },
         {
           name: 'Descending',
-          value: 'desc',
+          value: '-',
         },
       ],
       value: null,
