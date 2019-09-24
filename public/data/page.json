@@ -550,7 +550,7 @@
                       "hideActions": false,
                       "wrap": true,
                       "header": "List header",
-                      "color": "",
+                      "color": "red",
                       "theme": "light",
                       "rowsPerPage": 5,
                       "noOfRows": 6,
