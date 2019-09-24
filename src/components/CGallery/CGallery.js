@@ -40,11 +40,11 @@ const getCloseBtnOverlay = (createElement, context) => {
     return createElement('v-btn', {
       props: {
         flat: true,
-        color: 'transparent',
       },
       staticClass: 'pa-0 ma-0',
       style: {
         position: 'absolute',
+        backgroundColor: 'transparent',
         width: '100%',
         height: '100%',
         top: 0,
