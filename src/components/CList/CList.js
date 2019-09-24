@@ -9,11 +9,10 @@ import Element from '../Element';
 
 require('../../style/components/_list.scss');
 
-const getContainerClasses = (context) => {
-  const { config } = context;
+const getContainerClasses = () => {
   const attrs = {
     transparent: true,
-    fluid: config.fluid,
+    fluid: true,
     wrap: true,
     container: true,
   };
@@ -121,7 +120,6 @@ const getChildrenItems = (createElement, context, item) => {
 };
 
 const getCardSlot = (createElement, context) => {
-  console.log('context.config.spacing ', context.config.spacing);
   const getChildren = item => [
     createElement('v-list', {
       class: {
@@ -132,29 +130,28 @@ const getCardSlot = (createElement, context) => {
   ];
 
   const slot = {
-    default: props => createElement('v-row', {},
-      [
-        map(props.items, item => createElement('v-col', {
+    default: props => createElement('v-row', {
+      class: 'no-gutters',
+    },
+    [
+      map(props.items, item => createElement('v-col', {
+        props: {
+          key: item.name,
+          cols: '12',
+          sm: context.config.noOfRows,
+        },
+      }, [
+        createElement('v-card', {
+          style: {
+            borderRadius: context.config.itemRadius ? '5px' : 0,
+          },
+          staticClass: [`pa-${context.config.spacing}`],
           props: {
-            key: item.name,
-            cols: '12',
-            sm: context.config.noOfRows,
+            flat: true,
           },
-          class: {
-            'pa-0': true,
-          },
-        }, [
-          createElement('v-card', {
-            style: {
-              borderRadius: context.config.itemRadius ? '5px' : 0,
-            },
-            staticClass: [`pa-${context.config.spacing}`],
-            props: {
-              flat: true,
-            },
-          }, getChildren(item)),
-        ])),
-      ]),
+        }, getChildren(item)),
+      ])),
+    ]),
   };
 
   return slot;
@@ -241,7 +238,7 @@ export default {
   },
   render(createElement) {
     const data = {
-      class: getContainerClasses(this),
+      class: getContainerClasses(),
       props: {
         dark: this.isThemeDark,
         light: this.isThemeLight,

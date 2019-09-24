@@ -122,13 +122,6 @@ export default {
       value: true,
       priority: 6,
     },
-    fluid: {
-      type: 'check',
-      group: 'style',
-      name: 'Full Width',
-      value: true,
-      priority: 8,
-    },
     titleRadius: {
       type: 'check',
       group: 'style',
