@@ -40,10 +40,9 @@ export default {
     {
       name: 'setDataSource',
       help: 'Sets table data source from event data',
-    },
-    {
-      name: 'setPage',
-      help: 'Go to page (pagination) from event data',
+      ignoreOwnEvents: [
+        'DataSourceChanged',
+      ],
     },
     {
       name: 'setRowsPerPage',

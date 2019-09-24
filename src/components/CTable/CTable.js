@@ -51,8 +51,8 @@ const getHeadersProp = (dataSource, config) => {
   const columns = dataSource.schema;
 
   return map(columns, column => (merge({
+    class: config.headerColor || config.olor,
     value: column.mapName || column.name,
-    class: config.headerColor || config.color,
     text: column.title || column.name,
     type: column.mapType || column.type,
   }, getCellInferredProps(column))));
@@ -70,18 +70,18 @@ const getProps = (context) => {
     footerProps: {
       itemsPerPageOptions: getPropRowsPerPageItems(config.rowsPerPageItems),
     },
-    loading: context.loadingDataSource,
     items: context.items,
+    itemKey: columns ? keys(columns[0])[0] : 'id',
+    itemsPerPage: config.rowsPerPage,
+    loading: context.loadingDataSource,
     hideDefaultHeader: !columns || config.hideHeader,
     hideDefaultFooter: config.hideActions,
     headers: columns ? getHeadersProp(dataSource, config) : [],
-    itemKey: columns ? keys(columns[0])[0] : 'id',
-    itemsPerPage: config.rowsPerPage,
+    'options.sync': context.dataSourceParams.pagination,
     page: config.page,
     sortBy: config.sortBy ? config.sortBy.mapName || config.sortBy.name : [],
     sortDesc: config.sort === '-',
     serverItemsLength: context.totalItems,
-    'options.sync': context.dataSourceParams.pagination,
   };
 
   const noDataText = context.localize(config.noDataText);

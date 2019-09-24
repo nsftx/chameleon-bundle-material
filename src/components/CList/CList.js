@@ -1,5 +1,4 @@
 import {
-  defaults,
   isNil,
   isString,
   map,
@@ -42,25 +41,24 @@ const getProps = (context) => {
   const hasDataSource = !isNil(dataSource);
 
   const props = {
+    contentTag: 'v-layout',
+    contentClass: 'ma-0',
     footerProps: {
       itemsPerPageOptions: getPropRowsPerPageItems(config.rowsPerPageItems),
     },
-    hideDefaultFooter: config.hideActions,
     itemsPerPage: config.rowsPerPage,
     items: hasDataSource ? context.items : [],
+    hideDefaultFooter: config.hideActions,
+    'options.sync': context.dataSourceParams.pagination,
+    serverItemsLength: context.totalItems,
     sortBy: config.sortBy ? config.sortBy.mapName || config.sortBy.name : [],
     sortDesc: config.sort === 'desc',
-    contentTag: 'v-layout',
-    contentClass: 'ma-0',
   };
 
-  const rowsPerPageText = context.localize(config.rowsPerPageText);
   const noDataText = context.localize(config.noDataText);
-
-  if (rowsPerPageText) props.footerProps.itemsPerPageText = rowsPerPageText;
+  const rowsPerPageText = context.localize(config.rowsPerPageText);
   if (noDataText) props.noDataText = noDataText;
-  if (context.isDataSourceRemoteValid) props.totalItems = context.totalItems;
-  if (context.pagination) props.pagination = context.pagination;
+  if (rowsPerPageText) props.footerProps.itemsPerPageText = rowsPerPageText;
 
   return props;
 };
@@ -123,6 +121,7 @@ const getChildrenItems = (createElement, context, item) => {
 };
 
 const getCardSlot = (createElement, context) => {
+  console.log('context.config.spacing ', context.config.spacing);
   const getChildren = item => [
     createElement('v-list', {
       class: {
@@ -141,6 +140,9 @@ const getCardSlot = (createElement, context) => {
             cols: '12',
             sm: context.config.noOfRows,
           },
+          class: {
+            'pa-0': true,
+          },
         }, [
           createElement('v-card', {
             style: {
@@ -158,34 +160,18 @@ const getCardSlot = (createElement, context) => {
   return slot;
 };
 
-const getClientPagination = (config, setPagination) => {
-  const sort = () => {
-    if (config.sortBy) {
-      return config.sortBy.mapName ? config.sortBy.mapName : config.sortBy.name;
-    }
-    return config.sortBy;
-  };
-  return defaults(setPagination || {}, {
-    itemsPerPage: config.rowsPerPage,
-    sortBy: sort(),
-    descending: config.sort ? config.sort === 'desc' : null,
-    page: 1,
-  });
-};
-
-/* const getListeners = (context) => {
+const setServerPagination = (context, params) => {
   const self = context;
 
-  const listeners = {
-    'update:pagination': (value) => {
-      self.pagination = getClientPagination(self.config, value);
-      self.loadData();
-      self.sendToEventBus('PaginationChanged', value);
+  self.dataSourceParams = merge({
+    pagination: params || {
+      page: self.config.page,
+      size: self.config.rowsPerPage,
+      sort: self.config.sort,
+      sortBy: self.config.sortBy,
     },
-  };
-
-  return listeners;
-}; */
+  });
+};
 
 const getListHeader = (createElement, context) => {
   let header = null;
@@ -197,12 +183,29 @@ const getListHeader = (createElement, context) => {
   return header;
 };
 
+const mapClientParams = (params, context) => ({
+  page: params.page,
+  size: params.itemsPerPage,
+  sort: context.config.sort, // params.sortDesc[0], // todo
+  sortBy: context.config.sortBy, // params.sortBy, // todo
+});
+
 const getListComponent = (createElement, context) => createElement('v-data-iterator', {
   attrs: {
     wrap: true,
   },
   props: getProps(context),
-  // on: getListeners(context),
+  on: {
+    'update:page': (value) => {
+      context.sendToEventBus('PaginationChanged', value);
+    },
+    'update:options': (value) => {
+      if (context.totalItems > 0) {
+        const newParams = mapClientParams(value, context);
+        context.loadData(newParams);
+      }
+    },
+  },
   scopedSlots: getCardSlot(createElement, context),
 },
 [
@@ -214,30 +217,18 @@ export default {
   data() {
     return {
       items: [],
-      pagination: null,
-      totalItems: null,
+      totalItems: -1,
     };
   },
   methods: {
-    loadData() {
-      // Remove params set in SDK
-      delete this.dataSourceParams.pagination;
-      // Set server pagination
-      this.dataSourceParams = merge(this.dataSourceParams, {
-        pageSize: this.pagination.rowsPerPage,
-        sort: this.pagination.descending ? 'desc' : 'asc',
-        sortBy: this.pagination.sortBy ? this.pagination.sortBy.name : this.pagination.sortBy,
-      });
+    loadData(newParams) {
+      setServerPagination(this, newParams);
+
       this.loadConnectorData().then((result) => {
         this.items = result.items || [];
-        this.totalItems = result.pagination ? result.pagination.totalResults : 0;
+        this.totalItems = (result.pagination && result.pagination.total) || -1;
         this.sendToEventBus('DataSourceChanged', this.dataSource);
       });
-    },
-    setRowsPerPage(context) {
-      if (context.rows && this.pagination) {
-        this.pagination.rowsPerPage = context.rows;
-      }
     },
   },
   watch: {
@@ -247,9 +238,6 @@ export default {
       },
       deep: true,
     },
-  },
-  mounted() {
-    this.pagination = getClientPagination(this.config);
   },
   render(createElement) {
     const data = {

@@ -553,6 +553,8 @@
                       "color": "",
                       "theme": "light",
                       "rowsPerPage": 5,
+                      "noOfRows": 6,
+                      "spacing": 4,
                       "dataSource": {
                         "items": [
                           {
