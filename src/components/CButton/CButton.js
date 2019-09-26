@@ -18,7 +18,7 @@ const getProps = (context) => {
     dark: context.isThemeDark,
     light: context.isThemeLight,
     disabled: config.disabled,
-    icon: isUndefined(config.displayAsIcon) ? false : config.displayAsIcon,
+    fab: isUndefined(config.displayAsIcon) ? false : config.displayAsIcon,
     round: isUndefined(config.round) ? false : config.round,
     flat: isUndefined(config.flat) ? false : config.flat,
     block: isUndefined(config.block) ? false : config.block,
