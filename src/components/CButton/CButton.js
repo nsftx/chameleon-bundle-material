@@ -19,10 +19,11 @@ const getProps = (context) => {
     light: context.isThemeLight,
     disabled: config.disabled,
     fab: isUndefined(config.displayAsIcon) ? false : config.displayAsIcon,
-    round: isUndefined(config.round) ? false : config.round,
-    flat: isUndefined(config.flat) ? false : config.flat,
+    rounded: isUndefined(config.round) ? false : config.round,
+    text: isUndefined(config.text) ? false : config.text,
     block: isUndefined(config.block) ? false : config.block,
     depressed: isUndefined(config.depressed) ? false : config.depressed,
+    [config.btnSize]: true,
     loading: false,
   };
 
