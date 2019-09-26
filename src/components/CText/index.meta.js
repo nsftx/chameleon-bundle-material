@@ -225,15 +225,15 @@ export default {
       items: [
         {
           name: 'Left',
-          value: 'text-xs-left',
+          value: 'text-left',
         },
         {
           name: 'Right',
-          value: 'text-xs-right',
+          value: 'text-right',
         },
         {
           name: 'Center',
-          value: 'text-xs-center',
+          value: 'text-center',
         },
       ],
       value: null,
