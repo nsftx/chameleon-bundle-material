@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import vuetify from './plugins/vuetify';
+import vuetifyPlugin from './plugins/vuetify';
 import Chameleon from './index';
 import App from './App';
 
@@ -46,12 +46,14 @@ Vue.use(Chameleon, {
   },
 });
 
+vuetifyPlugin.init().then((vuetify) => {
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  vuetify,
-  components: { App },
-  render(h) {
-    return h(App);
-  },
+  new Vue({
+    el: '#app',
+    vuetify,
+    components: { App },
+    render(h) {
+      return h(App);
+    },
+  });
 });
