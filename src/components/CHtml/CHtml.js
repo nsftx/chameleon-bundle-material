@@ -1,6 +1,8 @@
 import { isNil, isObject } from 'lodash';
 import Element from '../Element';
 
+require('../../style/components/_html.styl');
+
 export default {
   extends: Element,
   watch: {
@@ -16,7 +18,7 @@ export default {
       if (this.items && this.items.length) {
         return isObject(this.items[0]) ? this.items[0].html : this.items[0];
       }
-      return this.config.value;
+      return this.config.value ? this.config.value.join('') : null;
     },
   },
   render(createElement) {
