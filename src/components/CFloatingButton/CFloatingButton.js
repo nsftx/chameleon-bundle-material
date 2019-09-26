@@ -1,5 +1,5 @@
 
-import { map, merge } from 'lodash';
+import { isUndefined, map, merge } from 'lodash';
 import Element from '../Element';
 
 const getProps = (context) => {
@@ -43,6 +43,7 @@ const getChildSlot = (createElement, context) => {
         definition: merge({
           displayAsIcon: true,
           color: config.color || 'primary',
+          text: isUndefined(config.text) ? false : config.text,
           theme: config.theme,
         }, config.activator),
       },

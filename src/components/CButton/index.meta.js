@@ -56,13 +56,33 @@ export default {
       value: false,
       priority: 5,
     },
+    btnSize: {
+      type: 'select',
+      name: 'Button size',
+      items: [
+        {
+          name: 'Small',
+          value: 'small',
+        },
+        {
+          name: 'Medium',
+          value: '',
+        },
+        {
+          name: 'Large',
+          value: 'large',
+        },
+      ],
+      value: '',
+      priority: 6,
+    },
     round: {
       type: 'check',
       name: 'Round Button',
       value: false,
       priority: 9,
     },
-    flat: {
+    text: {
       type: 'check',
       name: 'No Background',
       value: false,

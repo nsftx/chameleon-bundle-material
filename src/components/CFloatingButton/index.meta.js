@@ -112,7 +112,7 @@ export default {
         value: 'add_circle',
         priority: 1,
       },
-      flat: {
+      text: {
         type: 'check',
         name: 'No Background',
         value: false,
