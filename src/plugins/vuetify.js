@@ -1,10 +1,10 @@
 import Vue from 'vue';
-import Vuetify from 'vuetify';
+import Vuetify from 'vuetify/lib';
 import { each } from 'lodash';
 import 'vuetify/dist/vuetify.min.css';
 import manifest from '../../build/manifest.json';
 
-const { components } = manifest.plugins.vuetify;
+const { components, directives } = manifest.plugins.vuetify;
 components.push(
   'VApp',
   'VAppBar',
@@ -16,11 +16,19 @@ components.push(
 const importComponents = () => {
   const importPromise = import('vuetify/lib').then((vuetifyModule) => {
     const vuetifyComponents = {};
+    const vuetifyDirectives = {};
     each(components, (component) => {
       vuetifyComponents[component] = vuetifyModule[component];
     });
 
-    return vuetifyComponents;
+    each(directives, (directive) => {
+      vuetifyDirectives[directive] = vuetifyModule[directive];
+    });
+
+    return {
+      components: vuetifyComponents,
+      directives: vuetifyDirectives,
+    };
   });
 
   return importPromise;
@@ -28,8 +36,11 @@ const importComponents = () => {
 
 export default {
   init() {
-    return importComponents().then((importedComponents) => {
-      Vue.use(Vuetify, { components: importedComponents });
+    return importComponents().then((imported) => {
+      Vue.use(Vuetify, {
+        components: imported.components,
+        directives: imported.directives,
+      });
 
       return new Vuetify({
         icons: {
