@@ -1,7 +1,7 @@
 {
   "name": "material",
   "namespace": "c-",
-  "version": 137,
+  "version": 138,
   "styles": [
     "bundle.min.css"
   ],
@@ -21,6 +21,7 @@
   "plugins": {
     "vuetify": {
       "components": [
+        "VAlert",
         "VCard",
         "VBtn",
         "VExpansionPanels",
@@ -75,6 +76,9 @@
         "VTextarea",
         "VTreeview",
         "VDatePicker"
+      ],
+      "directives": [
+        "Scroll"
       ]
     }
   }
