@@ -44,7 +44,7 @@ const getCloseBtnOverlay = (createElement, context) => {
       staticClass: 'pa-0 ma-0',
       style: {
         position: 'absolute',
-        backgroundColor: 'transparent',
+        backgroundColor: 'transparent !important',
         width: '100%',
         height: '100%',
         top: 0,
