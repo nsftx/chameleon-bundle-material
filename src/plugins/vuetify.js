@@ -4,7 +4,7 @@ import { each } from 'lodash';
 import 'vuetify/dist/vuetify.min.css';
 import manifest from '../../build/manifest.json';
 
-const { components, directives } = manifest.plugins.vuetify;
+const { components } = manifest.plugins.vuetify;
 components.push(
   'VApp',
   'VAppBar',
@@ -16,13 +16,11 @@ components.push(
 const importComponents = () => {
   const importPromise = import('vuetify/lib').then((vuetifyModule) => {
     const vuetifyComponents = {};
-    const vuetifyDirectives = {};
+    const vuetifyDirectives = {
+      Scroll: vuetifyModule.Scroll,
+    };
     each(components, (component) => {
       vuetifyComponents[component] = vuetifyModule[component];
-    });
-
-    each(directives, (directive) => {
-      vuetifyDirectives[directive] = vuetifyModule[directive];
     });
 
     return {
