@@ -2,8 +2,6 @@ import { assign, each } from 'lodash';
 import namespace from './index.namespace';
 import * as components from './components';
 
-require('./style/main.scss');
-
 export default {
   install(Vue, options) {
     // eslint-disable-next-line

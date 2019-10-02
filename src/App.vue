@@ -76,8 +76,6 @@ import VJsoneditor from 'vue-jsoneditor';
 import chameleonNotation from '@nsoft/chameleon-notation';
 import connectorApi from '@nsoft/chameleon-sdk/src/api/connector';
 
-require('./style/main.scss');
-
 const navigation = require('../public/data/navigation.json');
 const defaultJson = require('../public/data/page.json');
 

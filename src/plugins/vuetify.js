@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib';
 import { each } from 'lodash';
-import 'vuetify/dist/vuetify.min.css';
 import manifest from '../../build/manifest.json';
 
 const { components } = manifest.plugins.vuetify;
 components.push(
   'VApp',
   'VAppBar',
+  'VAlert',
   'VAppBarNavIcon',
   'VToolbarTitle',
   'VFooter',
