@@ -773,8 +773,7 @@
                       "leaveOpen": true,
                       "alternativeDesign": "",
                       "color": "",
-                      "contentColor": "yellow",
-                      "theme": "light",
+                      "theme": "dark",
                       "elements": [
                         {
                           "type": "accordion-item",
@@ -786,7 +785,7 @@
                               "type": "form",
                               "name": "",
                               "color": "",
-                              "theme": "",
+                              "theme": "dark",
                               "autoSubmit": false,
                               "submit": {
                                 "name": "submit_button",
@@ -818,7 +817,7 @@
                                   "style": {
                                     "appendIcon": "visibility",
                                     "color": null,
-                                    "theme": "light"
+                                    "theme": "dark"
                                   },
                                   "validation": {
                                     "required": true,
@@ -870,7 +869,7 @@
                                   "value": "test.test@gmail.com",
                                   "style": {
                                     "color": null,
-                                    "theme": "light"
+                                    "theme": "dark"
                                   },
                                   "validation": {
                                     "required": true,

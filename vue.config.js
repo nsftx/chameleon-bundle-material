@@ -21,6 +21,13 @@ module.exports = {
   transpileDependencies: [
     '@nsoft/chameleon-sdk',
   ],
+  css: {
+    loaderOptions: {
+      sass: {
+        data: '@import "~@/style/main.scss"',
+      },
+    },
+  },
   chainWebpack: (wConfig) => {
     wConfig
       .when(process.env.NODE_ENV === 'production' && process.env.CHM_TARGET === 'lib', (config) => {
@@ -37,6 +44,11 @@ module.exports = {
       .when(process.env.NODE_ENV !== 'production', (config) => {
         config.plugin().use(new BundleAnalyzerPlugin());
       });
+
+    ['vue-modules', 'vue', 'normal-modules', 'normal'].forEach((match) => {
+      wConfig.module.rule('scss').oneOf(match).use('sass-loader')
+        .tap(opt => Object.assign(opt, { data: '@import \'~@/style/main.scss\';' }));
+    });
   },
   parallel: process.env.CI ? false : defaultParallelism,
 };
