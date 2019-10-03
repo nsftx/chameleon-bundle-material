@@ -42,6 +42,7 @@ const getProperties = (context) => {
     light: context.isThemeLight,
     centered: config.alignment === 'center',
     backgroundColor: config.headerColor,
+    color: config.activeHeaderColor,
     iconsAndText: some(config.elements, element => !!element.icon),
     right: config.alignment === 'right',
     grow: config.grow,

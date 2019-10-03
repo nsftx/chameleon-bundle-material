@@ -65,19 +65,25 @@ export default {
     },
     headerColor: {
       type: 'colorPicker',
-      name: 'Item header color',
+      name: 'Header Color',
+      value: null,
+      priority: 4,
+    },
+    activeHeaderColor: {
+      type: 'colorPicker',
+      name: 'Active Text Header Color',
       value: null,
       priority: 4,
     },
     sliderColor: {
       type: 'colorPicker',
-      name: 'Item slider color',
+      name: 'Slider Color',
       value: null,
       priority: 5,
     },
     contentColor: {
       type: 'colorPicker',
-      name: 'Item content color',
+      name: 'Content Color',
       value: null,
       priority: 6,
     },
