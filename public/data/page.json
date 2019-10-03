@@ -27,6 +27,7 @@
               "type": "tabs",
               "alignment": "center",
               "headerColor": "red",
+              "activeHeaderColor": "blue",
               "sliderColor": "blue",
               "theme": "",
               "grow": false,
