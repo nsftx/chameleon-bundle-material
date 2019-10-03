@@ -29,7 +29,7 @@ export default {
       if (this.items && this.items.length) {
         return isObject(this.items[0]) ? this.items[0][type] : this.items[0];
       }
-      return this.config[type] && isArray(this.config[type]) ? this.config[type].join('\n') : this.config[type];
+      return this.config[type] && isArray(this.config[type]) ? this.config[type].join('\n') : this.config[type] || null;
     },
     renderPlaceholder() {
       const icon = this.$createElement(
