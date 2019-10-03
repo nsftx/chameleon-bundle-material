@@ -18,7 +18,7 @@ const getRatingProps = (context) => {
 
   return {
     props: {
-      backgroundColor: config.backgroundColor || 'accent',
+      backgroundColor: config.backgroundColor || 'primary',
       color: config.color || 'primary',
       emptyIcon: config.emptyIcon || 'star_border',
       fullIcon: config.fullIcon || 'star',
