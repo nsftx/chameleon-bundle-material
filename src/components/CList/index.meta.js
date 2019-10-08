@@ -1,3 +1,12 @@
+import { isNil } from 'lodash';
+import { binding } from '@/utility';
+
+const expressionImport = {
+  imports: {
+    isNil,
+  },
+};
+
 const itemInterface = [
   {
     name: 'label',
@@ -28,6 +37,11 @@ const itemInterface = [
     name: 'icon',
     type: 'Icon',
     label: 'Icon',
+  },
+  {
+    name: 'header',
+    type: 'String',
+    label: 'Header',
   },
 ];
 
@@ -69,11 +83,12 @@ export default {
       type: 'check',
       name: 'Hide Actions',
       value: false,
-      priority: 3,
+      priority: 1,
     },
     noOfRows: {
       type: 'select',
       name: 'Grid Type',
+      group: 'style',
       items: [
         {
           name: '1',
@@ -89,17 +104,17 @@ export default {
         },
       ],
       value: '12',
-      priority: 2,
+      priority: 1,
     },
     color: {
       value: null,
       group: 'style',
-      priority: 2,
+      priority: 3,
     },
     theme: {
       value: null,
       group: 'style',
-      priority: 1,
+      priority: 2,
     },
     flat: {
       type: 'check',
@@ -113,28 +128,28 @@ export default {
       group: 'style',
       name: 'Image Radius',
       value: true,
-      priority: 7,
+      priority: 8,
     },
     itemRadius: {
       type: 'check',
       group: 'style',
       name: 'Item Radius',
       value: true,
-      priority: 6,
+      priority: 7,
     },
     titleRadius: {
       type: 'check',
       group: 'style',
       name: 'Title Background Radius',
       value: true,
-      priority: 5,
+      priority: 6,
     },
     titleColor: {
       type: 'colorPicker',
       group: 'style',
       name: 'Title Background Color',
       value: 'green accent-4',
-      priority: 3,
+      priority: 4,
     },
     spacing: {
       type: 'select',
@@ -163,7 +178,7 @@ export default {
         },
       ],
       value: 0,
-      priority: 4,
+      priority: 5,
     },
     showOverflow: {
       type: 'check',
@@ -184,13 +199,6 @@ export default {
       name: 'Rows Per Page Text',
       value: null,
     },
-    header: {
-      type: 'input',
-      group: 'data',
-      name: 'Header',
-      value: null,
-      priority: 2,
-    },
     dataSource: {
       type: 'dataSource',
       group: 'data',
@@ -199,31 +207,59 @@ export default {
       schema: itemInterface,
       priority: 1,
     },
+    header: {
+      type: 'input',
+      group: 'data',
+      name: 'Header',
+      value: null,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= !isNil(element.dataSource) && !isNil(find(element.dataSource.schema, { mapName: "header"})) %>', expressionImport),
+      },
+      priority: 2,
+    },
+    page: {
+      type: 'number',
+      group: 'data',
+      name: 'Start With Page',
+      value: 1,
+      priority: 3,
+    },
     rowsPerPageItems: {
       type: 'input',
       group: 'data',
       name: 'Rows Per Page Items',
       value: null,
-      priority: 7,
+      priority: 4,
     },
     rowsPerPage: {
       type: 'number',
       group: 'data',
       name: 'Rows Per Page',
       value: 5,
-      priority: 6,
+      priority: 5,
     },
     sortBy: {
       type: 'select',
       group: 'data',
-      name: 'Sort Items By',
+      name: 'Default Sorting By',
       items: '=$activePageElement.dataSource.schema',
       valueProp: ['mapName', 'name'],
       displayProp: ['title', 'name'],
       returnObject: true,
       clearable: true,
-      value: null,
-      priority: 3,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= isNil(element.dataSource) %>', expressionImport),
+      },
+      value: {
+        current: null,
+        default: null,
+        expression: binding.setExpression('<%= isNil(element.dataSource) %>', expressionImport),
+      },
+      priority: 6,
     },
     sort: {
       type: 'select',
@@ -241,7 +277,12 @@ export default {
       ],
       clearable: true,
       value: null,
-      priority: 4,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= isNil(element.dataSource) %>', expressionImport),
+      },
+      priority: 7,
     },
   },
 };
