@@ -34,7 +34,7 @@
     "validator": "^9.4.1",
     "vue": "^2.6.10",
     "vue-jsoneditor": "^1.0.13",
-    "vuetify": "^2.0.18"
+    "vuetify": "^2.1.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",
