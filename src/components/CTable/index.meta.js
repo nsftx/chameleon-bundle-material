@@ -1,4 +1,11 @@
+import { isNil } from 'lodash';
 import { binding } from '@/utility';
+
+const expressionImport = {
+  imports: {
+    isNil,
+  },
+};
 
 export default {
   group: 'widgets',
@@ -75,7 +82,7 @@ export default {
     page: {
       type: 'number',
       group: 'data',
-      name: 'Start with page',
+      name: 'Start With Page',
       value: 1,
       priority: 6,
     },
@@ -102,6 +109,16 @@ export default {
       displayProp: ['title', 'name'],
       returnObject: true,
       clearable: true,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= isNil(element.dataSource) %>', expressionImport),
+      },
+      value: {
+        current: null,
+        default: null,
+        expression: binding.setExpression('<%= isNil(element.dataSource) %>', expressionImport),
+      },
       priority: 10,
     },
     sort: {
@@ -120,6 +137,11 @@ export default {
       ],
       value: null,
       clearable: true,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= isNil(element.dataSource) %>', expressionImport),
+      },
       priority: 11,
     },
     theme: {
@@ -133,14 +155,14 @@ export default {
     alternatingRows: {
       group: 'style',
       type: 'check',
-      name: 'Enable alternating rows',
+      name: 'Enable Alternating Rows',
       value: false,
       priority: 14,
     },
     alternatingRowColor: {
       group: 'style',
       type: 'colorPicker',
-      name: 'Alternating row color',
+      name: 'Alternating Row Color',
       value: null,
       disabled: {
         current: false,
@@ -152,7 +174,7 @@ export default {
     headerColor: {
       group: 'style',
       type: 'colorPicker',
-      name: 'Header color',
+      name: 'Header Color',
       value: null,
       priority: 16,
     },

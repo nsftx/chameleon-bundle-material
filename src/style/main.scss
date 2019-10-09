@@ -9,20 +9,9 @@ body {
 @import '~vuetify/src/styles/settings/_light.scss';
 @import '~vuetify/src/styles/settings/_dark.scss';
 
-$material-light: map-merge(
-  $material-light, (
-    cards: #fff !important,
-    background: #fff !important,
-  ),
-);
-
 $material-dark: map-merge(
   $material-dark, (
     background: #2d3038 !important,
     cards: #2d3038 !important,
   ),
 );
-
-.theme--dark {
-  background: #2d3038 !important;
-}

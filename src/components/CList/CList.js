@@ -49,6 +49,7 @@ const getProps = (context) => {
     items: hasDataSource ? context.items : [],
     hideDefaultFooter: config.hideActions,
     'options.sync': context.dataSourceParams.pagination,
+    page: config.page,
     serverItemsLength: context.totalItems,
     sortBy: config.sortBy ? config.sortBy.mapName || config.sortBy.name : [],
     sortDesc: config.sort === 'desc',
@@ -124,6 +125,10 @@ const getCardSlot = (createElement, context) => {
     createElement('v-list', {
       class: {
         [context.config.color]: true,
+      },
+      props: {
+        dark: context.isThemeDark,
+        light: context.isThemeLight,
       },
     },
     [getChildrenItems(createElement, context, item)]),
@@ -240,8 +245,6 @@ export default {
     const data = {
       class: getContainerClasses(),
       props: {
-        dark: this.isThemeDark,
-        light: this.isThemeLight,
         flat: this.config.flat,
       },
     };

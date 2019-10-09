@@ -26,6 +26,9 @@ module.exports = {
       sass: {
         data: '@import "~@/style/main.scss"',
       },
+      scss: {
+        data: '@import "~@/style/main.scss";',
+      },
     },
   },
   chainWebpack: (wConfig) => {
@@ -44,11 +47,6 @@ module.exports = {
       .when(process.env.NODE_ENV !== 'production', (config) => {
         config.plugin().use(new BundleAnalyzerPlugin());
       });
-
-    ['vue-modules', 'vue', 'normal-modules', 'normal'].forEach((match) => {
-      wConfig.module.rule('scss').oneOf(match).use('sass-loader')
-        .tap(opt => Object.assign(opt, { data: '@import \'~@/style/main.scss\';' }));
-    });
   },
   parallel: process.env.CI ? false : defaultParallelism,
 };

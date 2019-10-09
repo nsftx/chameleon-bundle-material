@@ -11,7 +11,7 @@
           "width": "100%",
           "height": "100%",
           "color": "",
-          "theme": "dark",
+          "theme": "",
           "elements": [
             {
               "name": "shoppingList",
@@ -21,7 +21,7 @@
               "titleColor": "teal darken-3",
               "titleRadius": true,
               "noOfRows": "4",
-              "spacing": "md",
+              "spacing": "6",
               "fluid": true,
               "itemRadius": true,
               "header": "Header",
