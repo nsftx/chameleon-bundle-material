@@ -92,6 +92,13 @@ const getChildrenItems = (createElement, context, item) => {
   const description = !mapProps.length ? item[itemProps[1]] : item.description;
 
   return createElement('v-list-item', {
+    class: {
+      [context.config.color]: true,
+    },
+    props: {
+      dark: context.isThemeDark,
+      light: context.isThemeLight,
+    },
     on: {
       click() {
         context.sendToEventBus('SelectedItemChanged', item);
@@ -123,13 +130,10 @@ const getChildrenItems = (createElement, context, item) => {
 const getCardSlot = (createElement, context) => {
   const getChildren = item => [
     createElement('v-list', {
-      class: {
-        [context.config.color]: true,
+      style: {
+        borderRadius: context.config.itemRadius ? '5px' : 0,
       },
-      props: {
-        dark: context.isThemeDark,
-        light: context.isThemeLight,
-      },
+      staticClass: [`pa-${context.config.spacing}`],
     },
     [getChildrenItems(createElement, context, item)]),
   ];
@@ -146,15 +150,7 @@ const getCardSlot = (createElement, context) => {
           sm: context.config.noOfRows,
         },
       }, [
-        createElement('v-card', {
-          style: {
-            borderRadius: context.config.itemRadius ? '5px' : 0,
-          },
-          staticClass: [`pa-${context.config.spacing}`],
-          props: {
-            flat: true,
-          },
-        }, getChildren(item)),
+        getChildren(item),
       ])),
     ]),
   };
