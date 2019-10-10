@@ -10,6 +10,7 @@
           "flat": false,
           "color": "transparent",
           "spaced": false,
+          "theme": "dark",
           "elements": [
             {
               "type": "accordion",
@@ -17,8 +18,8 @@
               "leaveOpen": true,
               "alternativeDesign": "",
               "expandAll": true,
-              "color": "blue",
-              "contentColor": "yellow",
+              "color": "",
+              "contentColor": "",
               "theme": "light",
               "elements": [
                 {

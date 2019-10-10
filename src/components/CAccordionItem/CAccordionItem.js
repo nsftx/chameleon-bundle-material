@@ -46,11 +46,13 @@ const getListeners = (context) => {
 export default {
   extends: Element,
   render(createElement) {
+    const theme = this.$parent.isDark ? 'dark' : 'light';
     const data = {
       key: this.schema.uid,
       props: this.config,
       on: getListeners(this),
-      staticClass: this.config.headerColor,
+      // Child items should inherit theme class from parent
+      staticClass: `${this.config.headerColor} theme--${theme}`,
     };
 
     const children = [

@@ -1,5 +1,5 @@
 import {
-  map, merge, some,
+  map, merge, some, isEmpty,
 } from 'lodash';
 import Element from '../Element';
 
@@ -98,6 +98,7 @@ export default {
 
     const tabs = getTabs(self, createElement);
     const items = createTabItems(self, createElement);
+    const { theme } = self.config;
     const children = [
       createElement('v-tabs-slider', {
         props: {
@@ -107,8 +108,8 @@ export default {
       tabs,
       createElement('v-tabs-items', {
         props: {
-          dark: self.isThemeDark,
-          light: self.isThemeLight,
+          // Tabs (items) items should inherit theme from parent (tab)
+          dark: !isEmpty(theme) ? theme === 'dark' : self.$parent.isDark,
           value: self.activeTab,
         },
       },

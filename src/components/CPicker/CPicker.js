@@ -201,7 +201,7 @@ export default {
 
     return createElement('v-card',
       {
-        staticClass: 'd-inline-block',
+        staticClass: 'd-inline',
         props: {
           flat: true,
         },
