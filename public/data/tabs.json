@@ -7,15 +7,16 @@
         {
           "type": "panel",
           "name": "panel-1",
+          "theme": "dark",
           "flat": false,
           "elements": [
             {
               "type": "tabs",
               "alignment": "",
-              "headerColor": "red",
+              "headerColor": "",
               "sliderColor": "blue",
               "contentColor": "transparent",
-              "theme": "dark",
+              "theme": "",
               "elements": [
                 {
                   "type": "tab-item",

@@ -1,4 +1,4 @@
-import { isNil, filter } from 'lodash';
+import { isEmpty, isNil, filter } from 'lodash';
 import { validator } from '@/validators';
 import CSelect from '../CSelect/CSelect';
 
@@ -76,12 +76,14 @@ const getPropRequired = (config) => {
 
 const getProps = (context) => {
   const { config } = context;
+  const isDark = !isEmpty(config.theme) ? config.theme === 'dark' : context.$parent.$attrs.theme === 'dark';
 
   const props = {
     appendIcon: getPropAppendIcon(config),
     chips: context.chips,
     clearable: config.clearable && !config.readonly,
     deletableChips: context.chips && !config.readonly,
+    dark: isDark,
     hint: config.hint,
     items: context.items || [],
     label: config.label,
@@ -100,6 +102,8 @@ const getProps = (context) => {
     returnObject: true,
     value: config.value,
   };
+  // Menu should inherit theme from its parent (select or form), not app theme
+  if (isDark) props.menuProps = 'dark';
   return props;
 };
 

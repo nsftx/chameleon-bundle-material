@@ -1,4 +1,6 @@
-import { clone, isNil, merge } from 'lodash';
+import {
+  clone, isEmpty, isNil, merge,
+} from 'lodash';
 import { fieldable, validatable } from '@/mixins';
 import { validator } from '@/validators';
 import Element from '../Element';
@@ -19,6 +21,7 @@ const getMenuProps = (context) => {
   const props = {
     lazy: false,
     transition: isNil(config.transition) ? 'scale-transition' : config.transition,
+    dark: !isEmpty(config.theme) ? config.theme === 'dark' : context.$parent.$attrs.theme === 'dark',
     fullWidth: true,
     closeOnContentClick: false,
     minWidth: 'auto',
@@ -148,7 +151,6 @@ export default {
   },
   render(createElement) {
     const self = this;
-
     const data = {
       props: getMenuProps(this),
       on: {

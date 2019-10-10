@@ -11,7 +11,10 @@ body {
 
 $material-dark: map-merge(
   $material-dark, (
-    background: #2d3038 !important,
-    cards: #2d3038 !important,
+    background: #2d3038,
+    cards: #2d3038,
+    picker: (
+      body: #2d3038,
+    ),
   ),
 );
