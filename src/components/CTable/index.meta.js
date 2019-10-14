@@ -1,9 +1,10 @@
-import { isNil } from 'lodash';
+import { isNil, find } from 'lodash';
 import { binding } from '@/utility';
 
 const expressionImport = {
   imports: {
     isNil,
+    find,
   },
 };
 
@@ -117,7 +118,7 @@ export default {
       value: {
         current: null,
         default: null,
-        expression: binding.setExpression('<%= isNil(element.dataSource) %>', expressionImport),
+        expression: binding.setExpression('<%= isNil(find(element.dataSource.schema, { id: element.sortBy.id })) ? null : element.sortBy.id %>', expressionImport),
       },
       priority: 10,
     },
