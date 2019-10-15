@@ -1,8 +1,8 @@
 import Vue from 'vue';
-import Vuetify from 'vuetify/lib';
 import { each } from 'lodash';
 import manifest from '../../build/manifest.json';
 
+let Vuetify;
 const { components } = manifest.plugins.vuetify;
 components.push(
   'VApp',
@@ -15,6 +15,8 @@ components.push(
 
 const importComponents = () => {
   const importPromise = import('vuetify/lib').then((vuetifyModule) => {
+    Vuetify = vuetifyModule.default;
+
     const vuetifyComponents = {};
     const vuetifyDirectives = {
       Scroll: vuetifyModule.Scroll,
