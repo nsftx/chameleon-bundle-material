@@ -132,6 +132,7 @@ const getCardSlot = (createElement, context) => {
     createElement('v-list', {
       style: {
         borderRadius: context.config.itemRadius ? '5px' : 0,
+        background: 'transparent !important',
       },
       staticClass: [`pa-${context.config.spacing}`],
     },
