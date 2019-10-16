@@ -255,11 +255,6 @@ export default {
         default: false,
         expression: binding.setExpression('<%= isNil(element.dataSource) %>', expressionImport),
       },
-      value: {
-        current: null,
-        default: null,
-        expression: binding.setExpression('<%= isNil(find(element.dataSource.schema, { id: element.sortBy.id })) %>', expressionImport),
-      },
       priority: 6,
     },
     sort: {
