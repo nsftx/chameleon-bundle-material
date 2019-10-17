@@ -4,7 +4,7 @@ import {
 import { fieldable, validatable } from '@/mixins';
 import Element from '../Element';
 
-require('../../style/components/_rich-text.styl');
+require('../../style/components/_rich-text.scss');
 
 const getToolbar = (config) => {
   if (isArray(config.toolbar)) {

@@ -1,10 +1,7 @@
 import Vue from 'vue';
-import Vuetify from 'vuetify';
+import vuetifyPlugin from './plugins/vuetify';
 import Chameleon from './index';
 import App from './App';
-import 'vuetify/src/stylus/main.styl';
-
-Vue.use(Vuetify);
 
 Vue.use(Chameleon, {
   isPreviewMode: true,
@@ -26,6 +23,7 @@ Vue.use(Chameleon, {
         name: 'Home',
         icon: 'dashboard',
         path: '/',
+        showInMenu: true,
         elements: [],
         theme: null,
         parent: null,
@@ -35,6 +33,7 @@ Vue.use(Chameleon, {
         type: 'page',
         name: 'Contact',
         path: '/contact',
+        showInMenu: true,
         parent: null,
         icon: 'perm_contact_calendar',
         meta: {
@@ -47,11 +46,14 @@ Vue.use(Chameleon, {
   },
 });
 
+vuetifyPlugin.init().then((vuetify) => {
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  render(h) {
-    return h(App);
-  },
-  components: { App },
+  new Vue({
+    el: '#app',
+    vuetify,
+    components: { App },
+    render(h) {
+      return h(App);
+    },
+  });
 });

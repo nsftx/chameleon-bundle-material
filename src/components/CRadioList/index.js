@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}radio-list`;
 
     Vue.component(name, {
+      name,
       extends: RadioList,
       namespace: options.namespace,
-      name,
     });
   },
 };

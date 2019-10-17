@@ -4,12 +4,16 @@ module.exports = {
     browser: true,
   },
   extends: [
-    'plugin:vue/essential',
+    'plugin:vue/recommended',
     '@vue/airbnb',
   ],
   plugins: [
     'html',
+    'vuetify',
   ],
+  parserOptions: {
+    parser: 'babel-eslint',
+  },
   globals: {
     JSONEditor: true,
     moment: true,
@@ -20,14 +24,28 @@ module.exports = {
       js: 'never',
       vue: 'never',
     }],
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-underscore-dangle': ['error', {
       allow: [
         '_id',
         '_schema',
       ],
     }],
+    'no-console': 'off', // process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    // Vue-specific rules
+    'vue/html-closing-bracket-newline': ['error', {
+      singleline: 'never',
+      multiline: 'never',
+    }],
+    'vue/max-attributes-per-line': ['error', {
+      'multiline': {
+        allowFirstLine: true,
+      }
+    }],
+    // vuetify v2.0.0 rules
+    'vuetify/grid-unknown-attributes': 'error',
+    'vuetify/no-deprecated-classes': 'error',
+    'vuetify/no-legacy-grid': 'error',
   },
   settings: {
     'import/resolver': {
@@ -35,8 +53,5 @@ module.exports = {
         config: require.resolve('@vue/cli-service/webpack.config.js'),
       },
     },
-  },
-  parserOptions: {
-    parser: 'babel-eslint',
   },
 };

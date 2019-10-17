@@ -10,17 +10,17 @@
           "flat": false,
           "color": "transparent",
           "spaced": false,
+          "theme": "dark",
           "elements": [
             {
               "type": "accordion",
               "name": "accordion",
-              "multipleExpand": false,
+              "leaveOpen": true,
               "alternativeDesign": "",
-              "color": "blue",
-              "contentColor": "yellow",
+              "expandAll": true,
+              "color": "",
+              "contentColor": "",
               "theme": "light",
-              "contentRipple": true,
-              "hideItemActions": true,
               "elements": [
                 {
                   "type": "accordion-item",

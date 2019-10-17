@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}youtube`;
 
     Vue.component(name, {
+      name,
       extends: Youtube,
       namespace: options.namespace,
-      name,
     });
   },
 };

@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}map`;
 
     Vue.component(name, {
+      name,
       extends: Map,
       namespace: options.namespace,
-      name,
     });
   },
 };

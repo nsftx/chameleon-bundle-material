@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}treeview`;
 
     Vue.component(name, {
+      name,
       extends: Treeview,
       namespace: options.namespace,
-      name,
     });
   },
 };

@@ -1,0 +1,21 @@
+.c-list {
+  .theme--dark.v-label {
+    color: #fff;
+    font-size: 18px;
+  }
+  .v-list-item {
+    min-height: 48px;
+    height: auto;
+    .v-list-item__content.overflow > div {
+      white-space: normal;
+    }
+    .c-list-title {
+      max-width: max-content;
+      font-size: 12px;
+      padding: 0 5px;
+    }
+    .c-list-description {
+      font-size: 12px;
+    }
+  }
+}

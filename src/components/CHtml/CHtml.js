@@ -1,7 +1,7 @@
 import { isNil, isObject } from 'lodash';
 import Element from '../Element';
 
-require('../../style/components/_html.styl');
+require('../../style/components/_html.scss');
 
 export default {
   extends: Element,

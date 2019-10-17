@@ -27,8 +27,9 @@
               "type": "tabs",
               "alignment": "center",
               "headerColor": "red",
+              "activeHeaderColor": "blue",
               "sliderColor": "blue",
-              "theme": "dark",
+              "theme": "",
               "grow": false,
               "contentColor": "transparent",
               "elements": [
@@ -524,9 +525,9 @@
                       "rowsPerPage": 5,
                       "header": "List title",
                       "dataSource": {
-                        "id": "activityCards",
-                        "name": "activityCards",
-                        "model": "ActivityCards",
+                        "id": "galleryImages",
+                        "name": "galleryImages",
+                        "model": "GalleryImage",
                         "connector": {
                           "id": "12gh67qa-904d-4a9a-89f2-0a5afd8f1464",
                           "name": "Sample Local Connector",
@@ -534,20 +535,12 @@
                         },
                         "schema": [
                           {
-                            "name": "title",
-                            "type": "String"
-                          },
-                          {
-                            "name": "description",
-                            "type": "String"
-                          },
-                          {
-                            "name": "thumb",
+                            "name": "image",
                             "type": "image"
                           },
                           {
-                            "name": "icon",
-                            "type": "icon"
+                            "name": "thumb",
+                            "type": "thumb"
                           }
                         ]
                       }
@@ -558,9 +551,11 @@
                       "hideActions": false,
                       "wrap": true,
                       "header": "List header",
-                      "color": "",
+                      "color": "red",
                       "theme": "light",
                       "rowsPerPage": 5,
+                      "noOfRows": 6,
+                      "spacing": 4,
                       "dataSource": {
                         "items": [
                           {
@@ -775,14 +770,11 @@
                     {
                       "type": "accordion",
                       "name": "accordion",
-                      "expandAll": false,
+                      "expandAll": true,
                       "leaveOpen": true,
                       "alternativeDesign": "",
                       "color": "",
-                      "contentColor": "yellow",
-                      "contentRipple": true,
-                      "hideItemActions": true,
-                      "theme": "light",
+                      "theme": "dark",
                       "elements": [
                         {
                           "type": "accordion-item",
@@ -794,7 +786,7 @@
                               "type": "form",
                               "name": "",
                               "color": "",
-                              "theme": "",
+                              "theme": "dark",
                               "autoSubmit": false,
                               "submit": {
                                 "name": "submit_button",
@@ -826,7 +818,7 @@
                                   "style": {
                                     "appendIcon": "visibility",
                                     "color": null,
-                                    "theme": "light"
+                                    "theme": "dark"
                                   },
                                   "validation": {
                                     "required": true,
@@ -878,7 +870,7 @@
                                   "value": "test.test@gmail.com",
                                   "style": {
                                     "color": null,
-                                    "theme": "light"
+                                    "theme": "dark"
                                   },
                                   "validation": {
                                     "required": true,

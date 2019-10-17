@@ -9,12 +9,13 @@
           "type": "panel",
           "name": "panel-1",
           "flat": false,
+          "theme": "dark",
           "elements": [
             {
               "type": "form",
               "name": "person",
               "color": "",
-              "theme": "",
+              "theme": "dark",
               "elements": [
                 {
                   "type": "text-input",
@@ -30,7 +31,7 @@
                   },
                   "style": {
                     "color": null,
-                    "theme": "light"
+                    "theme": ""
                   },
                   "validation": {
                     "required": true
@@ -52,7 +53,7 @@
                   "value": "Test Text Input",
                   "style": {
                     "color": null,
-                    "theme": "light"
+                    "theme": ""
                   },
                   "validation": {
                     "required": true
@@ -71,7 +72,7 @@
                   "clearable": true,
                   "disabled": false,
                   "color": "red",
-                  "theme": "light",
+                  "theme": "",
                   "value": "Personal Data ..... ",
                   "validation": {
                     "required": true
@@ -94,7 +95,7 @@
                   },
                   "style": {
                     "color": null,
-                    "theme": "light"
+                    "theme": ""
                   },
                   "validation": {
                     "required": true
@@ -244,7 +245,6 @@
                   "name": "about",
                   "type": "rich-text",
                   "label": "About",
-                  "theme": "light",
                   "validation": {
                     "required": true
                   },
@@ -271,6 +271,7 @@
                   "label": "Date of Birth",
                   "prependIcon": null,
                   "appendIcon": null,
+                  "theme": "",
                   "placeholder": "Select your date of birth",
                   "hint": null,
                   "tooltip": null,
@@ -393,7 +394,7 @@
                   "color": "red",
                   "disabled": false,
                   "value": null,
-                  "theme": "light",
+                  "theme": "",
                   "validation": {
                     "required": true
                   },
@@ -419,7 +420,7 @@
                   "type": "check",
                   "label": "Remember me",
                   "color": "primary",
-                  "theme": "light",
+                  "theme": "",
                   "prependIcon": null,
                   "appendIcon": null,
                   "hint": null,
@@ -449,13 +450,13 @@
                 "name": "submit_button",
                 "label": "Submit",
                 "color": "primary",
-                "theme": "light"
+                "theme": ""
               },
               "clear": {
                 "name": "clear_button",
                 "label": "Clear",
                 "color": "red",
-                "theme": "light"
+                "theme": ""
               }
             },
             {

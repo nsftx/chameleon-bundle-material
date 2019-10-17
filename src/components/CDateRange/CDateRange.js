@@ -1,4 +1,6 @@
-import { clone, isNil } from 'lodash';
+import {
+  clone, isEmpty, isNil, merge,
+} from 'lodash';
 import { fieldable, validatable } from '@/mixins';
 import { validator } from '@/validators';
 import Element from '../Element';
@@ -18,6 +20,7 @@ const getMenuProps = (context) => {
 
   const props = {
     lazy: false,
+    dark: !isEmpty(config.theme) ? config.theme === 'dark' : context.$parent.$attrs.theme === 'dark',
     transition: isNil(config.transition) ? 'scale-transition' : config.transition,
     fullWidth: true,
     closeOnContentClick: false,
@@ -86,21 +89,27 @@ const getAllowedDates = (context, endRange) => {
 
 const getTextField = (context, createElement) => {
   const self = context;
-  return createElement(
-    'v-text-field',
-    {
-      slot: 'activator',
-      attrs: getTextAttrs(context),
-      props: getTextProps(context),
-      on: {
+  const slot = {
+    activator: (props) => {
+      const { on } = props;
+      merge(on, {
         input(value) {
           self.valueFrom = value;
           self.valueTo = value;
           context.sendToEventBus('Changed', { value });
         },
-      },
+      });
+      return createElement(
+        'v-text-field',
+        {
+          attrs: getTextAttrs(context),
+          props: getTextProps(context),
+          on,
+        },
+      );
     },
-  );
+  };
+  return slot;
 };
 
 const getPickerDefinition = (context, endRange) => {
@@ -119,7 +128,6 @@ const getPickerDefinition = (context, endRange) => {
 const getPicker = (context, createElement) => {
   const self = context;
   return [
-    getTextField(self, createElement),
     createElement(
       self.getElementTag('picker'),
       {
@@ -217,10 +225,13 @@ export default {
           self.sendToEventBus('VisibilityChanged', { visible: value });
         },
       },
+      scopedSlots: getTextField(self, createElement),
     };
 
     const children = getPicker(this, createElement);
 
-    return this.renderElement('v-menu', data, children);
+    return this.renderElement('div', {}, [
+      createElement('v-menu', data, children),
+    ]);
   },
 };

@@ -75,7 +75,7 @@ export default {
     },
     leaveOpen: {
       type: 'check',
-      name: 'Leave accordion open while selecting another',
+      name: 'Always open',
       value: true,
       priority: 5,
     },
@@ -89,18 +89,6 @@ export default {
         expression: binding.setExpression('<%= !element.leaveOpen %>'),
       },
       priority: 6,
-    },
-    contentRipple: {
-      type: 'check',
-      name: 'Ripple on item header',
-      value: false,
-      priority: 7,
-    },
-    hideItemActions: {
-      type: 'check',
-      name: 'Hide item actions',
-      value: false,
-      priority: 8,
     },
     theme: true,
   },

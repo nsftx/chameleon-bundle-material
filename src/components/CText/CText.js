@@ -1,7 +1,7 @@
 import { isArray, isObject } from 'lodash';
 import Element from '../Element';
 
-require('../../style/components/_text.styl');
+require('../../style/components/_text.scss');
 
 export default {
   extends: Element,

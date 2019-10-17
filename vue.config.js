@@ -21,6 +21,16 @@ module.exports = {
   transpileDependencies: [
     '@nsoft/chameleon-sdk',
   ],
+  css: {
+    loaderOptions: {
+      sass: {
+        data: '@import "~@/style/main.scss"',
+      },
+      scss: {
+        data: '@import "~@/style/main.scss";',
+      },
+    },
+  },
   chainWebpack: (wConfig) => {
     wConfig
       .when(process.env.NODE_ENV === 'production' && process.env.CHM_TARGET === 'lib', (config) => {

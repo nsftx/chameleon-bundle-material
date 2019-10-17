@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}select`;
 
     Vue.component(name, {
+      name,
       extends: Select,
       namespace: options.namespace,
-      name,
     });
   },
 };

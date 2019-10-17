@@ -1,5 +1,5 @@
 import {
-  concat, map, merge, some,
+  map, merge, some, isEmpty,
 } from 'lodash';
 import Element from '../Element';
 
@@ -23,9 +23,9 @@ const getListeners = (context) => {
   const listeners = {
     change(value) {
       instance.activeTab = value;
-
       if (value) {
-        const label = context.config.elements[value].title;
+        const index = value.split('-')[1];
+        const label = context.config.elements[index].title;
         context.sendToEventBus('SelectedItemChanged', {
           label,
         });
@@ -41,12 +41,12 @@ const getProperties = (context) => {
     dark: context.isThemeDark,
     light: context.isThemeLight,
     centered: config.alignment === 'center',
-    color: config.headerColor,
+    backgroundColor: config.headerColor,
+    color: config.activeHeaderColor,
     iconsAndText: some(config.elements, element => !!element.icon),
     right: config.alignment === 'right',
-    sliderColor: config.sliderColor,
     grow: config.grow,
-    value: 0,
+    value: context.activeTab,
   };
 
   return props;
@@ -63,14 +63,16 @@ const getTabs = (context, createElement) => {
         'v-icon',
         element.icon,
       );
-
       children.push(iconEl);
     }
 
     return createElement(
       'v-tab',
       {
-        key: `tab${i}_${context.schema.uid}`,
+        key: `tab-${i}`,
+        props: {
+          href: `#tab-${i}`,
+        },
       },
       children,
     );
@@ -81,16 +83,9 @@ const getTabs = (context, createElement) => {
 
 export default {
   extends: Element,
-  provide() {
-    return {
-      cActiveTab: {
-        value: () => this.activeTab,
-      },
-    };
-  },
   data() {
     return {
-      activeTab: 0,
+      activeTab: 'tab-0',
     };
   },
   render(createElement) {
@@ -103,18 +98,24 @@ export default {
 
     const tabs = getTabs(self, createElement);
     const items = createTabItems(self, createElement);
-    const children = concat(tabs,
-      createElement(
-        'v-tabs-items',
-        {
-          props: {
-            dark: this.isThemeDark,
-            light: this.isThemeLight,
-          },
+    const { theme } = self.config;
+    const children = [
+      createElement('v-tabs-slider', {
+        props: {
+          color: self.config.sliderColor,
         },
-        items,
-      ));
+      }),
+      tabs,
+      createElement('v-tabs-items', {
+        props: {
+          // Tabs (items) items should inherit theme from parent (tab)
+          dark: !isEmpty(theme) ? theme === 'dark' : self.$parent.isDark,
+          value: self.activeTab,
+        },
+      },
+      items),
+    ];
 
-    return this.renderElement('v-tabs', data, children, true);
+    return self.renderElement('v-tabs', data, children, true);
   },
 };

@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}calculation`;
 
     Vue.component(name, {
+      name,
       extends: Calculation,
       namespace: options.namespace,
-      name,
     });
   },
 };

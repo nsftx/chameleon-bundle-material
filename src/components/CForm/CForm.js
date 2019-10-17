@@ -56,14 +56,21 @@ const getFormInputs = (context, createElement) => map(context.getFields(),
     },
   ));
 
-const getFormComponent = (context, createElement) => createElement('v-form',
-  {
-    ref: context.config.name,
-    staticClass: `${context.$options.name} ${context.baseChildrenClass}`,
-  },
-  [
-    getFormInputs(context, createElement),
-  ]);
+const getFormComponent = (context, createElement) => {
+  const themeClass = context.isThemeDark ? 'dark' : 'light';
+  return createElement('v-form',
+    {
+      ref: context.config.name,
+      // Assign theme to form attrs so children can inherit it (vuetify v-form has no theme prop)
+      attrs: {
+        theme: themeClass,
+      },
+      staticClass: `${context.$options.name} ${context.baseChildrenClass} theme--${themeClass}`,
+    },
+    [
+      getFormInputs(context, createElement),
+    ]);
+};
 
 
 export default {

@@ -1,0 +1,20 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+// Required for modifying core defaults
+@import '~vuetify/src/styles/settings/_colors.scss';
+@import '~vuetify/src/styles/settings/_light.scss';
+@import '~vuetify/src/styles/settings/_dark.scss';
+
+$material-dark: map-merge(
+  $material-dark, (
+    background: #2d3038,
+    cards: #2d3038,
+    picker: (
+      body: #2d3038,
+    ),
+  ),
+);

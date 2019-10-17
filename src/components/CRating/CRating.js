@@ -3,7 +3,7 @@ import { fieldable, validatable } from '@/mixins';
 import { validator } from '@/validators';
 import Element from '../Element';
 
-require('../../style/components/_rating.styl');
+require('../../style/components/_rating.scss');
 
 const getPropRequired = (config) => {
   if (config.validation) {
@@ -18,7 +18,7 @@ const getRatingProps = (context) => {
 
   return {
     props: {
-      backgroundColor: config.backgroundColor || 'accent',
+      backgroundColor: config.backgroundColor || 'primary',
       color: config.color || 'primary',
       emptyIcon: config.emptyIcon || 'star_border',
       fullIcon: config.fullIcon || 'star',

@@ -1,0 +1,13 @@
+.c-rating {
+  position: relative;
+
+  .v-input__control {
+    .v-input__slot {
+      display: none;
+    }
+
+    .v-messages__message {
+      width: 100%;
+    }
+  }
+}

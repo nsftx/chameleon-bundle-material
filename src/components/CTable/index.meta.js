@@ -1,4 +1,12 @@
+import { isNil, find } from 'lodash';
 import { binding } from '@/utility';
+
+const expressionImport = {
+  imports: {
+    isNil,
+    find,
+  },
+};
 
 export default {
   group: 'widgets',
@@ -14,12 +22,8 @@ export default {
       ],
     },
     {
-      name: 'setPage',
-      help: 'Go to page (pagination) from event data',
-    },
-    {
       name: 'setRowsPerPage',
-      help: 'Set rowsPerPage from event data',
+      help: 'Set itemsPerPage from event data',
     },
   ],
   events: [
@@ -43,25 +47,24 @@ export default {
       value: false,
       priority: 1,
     },
+    hideHeader: {
+      type: 'check',
+      name: 'Hide Header',
+      value: false,
+      priority: 2,
+    },
     hideActions: {
       type: 'check',
       name: 'Hide Actions',
       value: false,
-      priority: 2,
+      priority: 3,
     },
     noDataText: {
       type: 'input',
       group: 'localization',
       name: 'No Data Text',
       value: null,
-      priority: 2,
-    },
-    noResultsText: {
-      type: 'input',
-      group: 'localization',
-      name: 'No Results Text',
-      value: null,
-      priority: 3,
+      priority: 1,
     },
     rowsPerPageText: {
       type: 'input',
@@ -75,6 +78,13 @@ export default {
       group: 'data',
       name: 'Data Source',
       value: null,
+      priority: 6,
+    },
+    page: {
+      type: 'number',
+      group: 'data',
+      name: 'Start With Page',
+      value: 1,
       priority: 6,
     },
     rowsPerPageItems: {
@@ -100,6 +110,11 @@ export default {
       displayProp: ['title', 'name'],
       returnObject: true,
       clearable: true,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= isNil(element.dataSource) %>', expressionImport),
+      },
       priority: 10,
     },
     sort: {
@@ -109,15 +124,20 @@ export default {
       items: [
         {
           name: 'Ascending',
-          value: 'asc',
+          value: '+',
         },
         {
           name: 'Descending',
-          value: 'desc',
+          value: '-',
         },
       ],
       value: null,
       clearable: true,
+      disabled: {
+        current: false,
+        default: false,
+        expression: binding.setExpression('<%= isNil(element.dataSource) %>', expressionImport),
+      },
       priority: 11,
     },
     theme: {
@@ -131,14 +151,14 @@ export default {
     alternatingRows: {
       group: 'style',
       type: 'check',
-      name: 'Enable alternating rows',
+      name: 'Enable Alternating Rows',
       value: false,
       priority: 14,
     },
     alternatingRowColor: {
       group: 'style',
       type: 'colorPicker',
-      name: 'Alternating row color',
+      name: 'Alternating Row Color',
       value: null,
       disabled: {
         current: false,
@@ -150,7 +170,7 @@ export default {
     headerColor: {
       group: 'style',
       type: 'colorPicker',
-      name: 'Header color',
+      name: 'Header Color',
       value: null,
       priority: 16,
     },

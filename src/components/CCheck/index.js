@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}check`;
 
     Vue.component(name, {
+      name,
       extends: Check,
       namespace: options.namespace,
-      name,
     });
   },
 };

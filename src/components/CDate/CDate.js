@@ -1,4 +1,6 @@
-import { clone, isNil } from 'lodash';
+import {
+  clone, isEmpty, isNil, merge,
+} from 'lodash';
 import { fieldable, validatable } from '@/mixins';
 import { validator } from '@/validators';
 import Element from '../Element';
@@ -19,6 +21,7 @@ const getMenuProps = (context) => {
   const props = {
     lazy: false,
     transition: isNil(config.transition) ? 'scale-transition' : config.transition,
+    dark: !isEmpty(config.theme) ? config.theme === 'dark' : context.$parent.$attrs.theme === 'dark',
     fullWidth: true,
     closeOnContentClick: false,
     minWidth: 'auto',
@@ -114,21 +117,25 @@ const getPicker = (context, createElement) => {
 };
 
 const getTextField = (context, createElement) => {
-  const self = context;
-  return createElement(
-    'v-text-field',
-    {
-      slot: 'activator',
-      attrs: getTextAttrs(context),
-      props: getTextProps(context),
-      on: {
+  const slot = {
+    activator: (props) => {
+      const { on } = props;
+      merge(on, {
         input(value) {
-          self.value = value;
           context.sendToEventBus('Changed', { value });
         },
-      },
+      });
+      return createElement(
+        'v-text-field',
+        {
+          attrs: getTextAttrs(context),
+          props: getTextProps(context),
+          on,
+        },
+      );
     },
-  );
+  };
+  return slot;
 };
 
 export default {
@@ -144,7 +151,6 @@ export default {
   },
   render(createElement) {
     const self = this;
-
     const data = {
       props: getMenuProps(this),
       on: {
@@ -152,13 +158,15 @@ export default {
           self.sendToEventBus('VisibilityChanged', { visible: value });
         },
       },
+      scopedSlots: getTextField(self, createElement),
     };
 
     const children = [
-      getTextField(self, createElement),
       getPicker(self, createElement),
     ];
 
-    return this.renderElement('v-menu', data, children);
+    return this.renderElement('div', {}, [
+      createElement('v-menu', data, children),
+    ]);
   },
 };

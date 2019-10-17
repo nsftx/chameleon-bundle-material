@@ -1,4 +1,4 @@
-import { isNil, filter } from 'lodash';
+import { isEmpty, isNil, filter } from 'lodash';
 import { fieldable, validatable } from '@/mixins';
 import { validator } from '@/validators';
 import Element from '../Element';
@@ -52,6 +52,7 @@ const getProps = (context) => {
     setItemProps(context);
   }
 
+  const isDark = !isEmpty(config.theme) ? config.theme === 'dark' : context.$parent.$attrs.theme === 'dark';
   const props = {
     appendIcon: getPropAppendIcon(config),
     clearable: config.clearable && !config.readonly,
@@ -64,8 +65,7 @@ const getProps = (context) => {
     itemValue: config.itemValue,
     itemText: config.itemText,
     color: config.color,
-    dark: context.isThemeDark,
-    light: context.isThemeLight,
+    dark: isDark,
     multiple: config.multiple,
     openOnClear: config.clearable,
     persistentHint: config.persistentHint,
@@ -78,6 +78,8 @@ const getProps = (context) => {
     rules: validator.getRules(config, context.validators),
     value: config.value,
   };
+  // Menu should inherit theme from its parent (select or form), not app theme
+  if (isDark) props.menuProps = 'dark';
   return props;
 };
 

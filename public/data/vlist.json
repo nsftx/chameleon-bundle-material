@@ -51,10 +51,13 @@
               "type": "button",
               "label": "Testing Button",
               "icon": "people",
-              "block": true,
+              "displayAsIcon": true,
               "iconPosition": "",
+              "btnSize": "small",
               "color": "primary",
+              "depressed": true,
               "round": true,
+              "text": true,
               "theme": "light"
             },
             {
@@ -62,19 +65,21 @@
               "type": "html",
               "theme": "dark",
               "color": "red",
-              "value": "<div>Testing html value</div>"
+              "value": [
+                "<div>Testing html value</div>"
+              ]
             },
             {
               "name": "html",
               "type": "html",
-              "value": ""
+              "value": []
             },
             {
               "name": "html",
               "type": "html",
               "theme": "dark",
               "color": "red",
-              "value": null
+              "value": []
             },
             {
               "type": "panel",

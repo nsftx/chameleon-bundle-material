@@ -1,7 +1,7 @@
 import { fieldable, validatable } from '@/mixins';
 import Element from '../Element';
 
-require('../../style/components/_switch.styl');
+require('../../style/components/_switch.scss');
 
 const getAttrs = (context) => {
   const { config } = context;
@@ -59,13 +59,15 @@ export default {
     fieldable,
     validatable,
   ],
-  render() {
+  render(createElement) {
     const data = {
       attrs: getAttrs(this),
       props: getProps(this),
       on: getListeners(this),
     };
 
-    return this.renderElement('v-switch', data);
+    return this.renderElement('div', {}, [
+      createElement('v-switch', data),
+    ]);
   },
 };

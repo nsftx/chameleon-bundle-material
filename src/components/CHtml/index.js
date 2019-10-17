@@ -5,9 +5,9 @@ export default {
     const name = `${options.namespace}html`;
 
     Vue.component(name, {
+      name,
       extends: Html,
       namespace: options.namespace,
-      name,
     });
   },
 };
