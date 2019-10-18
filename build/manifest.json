@@ -1,11 +1,7 @@
 {
   "name": "material",
   "namespace": "c-",
-<<<<<<< HEAD
-  "version": 146,
-=======
   "version": 147,
->>>>>>> bugFix/FlexGridWidth
   "styles": [
     "bundle.min.css"
   ],
