@@ -51,6 +51,8 @@ export default {
       priority: 2,
       validation: {
         required: true,
+        path: true,
+        uniquePath: true,
       },
     },
     parent: {
