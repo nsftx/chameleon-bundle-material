@@ -95,6 +95,9 @@ const getChildrenItems = (createElement, context, item) => {
     class: {
       [context.config.color]: true,
     },
+    style: {
+      borderRadius: context.config.itemRadius ? '5px' : 0,
+    },
     props: {
       dark: context.isThemeDark,
       light: context.isThemeLight,
@@ -131,7 +134,6 @@ const getCardSlot = (createElement, context) => {
   const getChildren = item => [
     createElement('v-list', {
       style: {
-        borderRadius: context.config.itemRadius ? '5px' : 0,
         background: 'transparent !important',
       },
       staticClass: [`pa-${context.config.spacing}`],
