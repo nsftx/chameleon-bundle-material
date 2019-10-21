@@ -28,6 +28,9 @@ const getFormActions = (context, createElement) => createElement(
       attrs: {
         action: true,
       },
+      style: {
+        'min-width': '0% !important',
+      },
       key: `${button.name}_${uuid()}`,
       on: {
         click() {
