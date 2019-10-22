@@ -5,7 +5,7 @@ const getContainerClass = (context) => {
   const { config } = context;
   const classes = {
     [config.color]: true,
-    fluid: config.fluid,
+    'container--fluid': config.fluid,
     [`grid-list-${config.spacing}`]: true,
     wrap: true,
     container: true,
