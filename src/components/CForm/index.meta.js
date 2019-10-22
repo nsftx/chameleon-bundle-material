@@ -85,7 +85,7 @@ export default {
         name: 'Round Button',
         value: false,
       },
-      flat: {
+      text: {
         type: 'check',
         name: 'No Background',
         value: false,
@@ -143,7 +143,7 @@ export default {
         name: 'Round Button',
         value: false,
       },
-      flat: {
+      text: {
         type: 'check',
         name: 'No Background',
         value: false,
