@@ -3,6 +3,8 @@ import { validatable } from '@/mixins';
 import { urlValidator } from '@/validators';
 import Element from '../Element';
 
+require('../../style/components/_image.scss');
+
 const parseImageSrc = (context, image) => {
   const srcConfig = context.registry.staticAppAssets;
   const srcParams = srcConfig.urlParams;
