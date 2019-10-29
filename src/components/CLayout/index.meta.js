@@ -10,6 +10,10 @@ export default {
       name: 'Custom Layout Name',
       value: null,
       priority: 1,
+      validation: {
+        required: true,
+        uniqueLayout: true,
+      },
     },
     layoutType: {
       type: 'input',
