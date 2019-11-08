@@ -1,3 +1,4 @@
+import { isValid } from 'date-fns';
 import {
   clone, isEmpty, isNil, merge,
 } from 'lodash';
@@ -74,8 +75,8 @@ const getAllowedDates = (context) => {
       };
     }
     return {
-      min: moment(min).isValid() ? min : null,
-      max: moment(max).isValid() ? max : null,
+      min: isValid(min) ? min : null,
+      max: isValid(max) ? max : null,
     };
   };
 

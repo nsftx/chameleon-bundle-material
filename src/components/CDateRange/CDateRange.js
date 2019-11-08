@@ -1,4 +1,10 @@
 import {
+  isValid,
+  isAfter,
+  subDays,
+  format,
+} from 'date-fns';
+import {
   clone, isEmpty, isNil, merge,
 } from 'lodash';
 import { fieldable, validatable } from '@/mixins';
@@ -75,12 +81,12 @@ const getAllowedDates = (context, endRange) => {
     }
 
     if (endRange && context.value) {
-      min = moment(context.value[0]).subtract(1, 'days').format();
+      min = format(subDays(context.value[0], 1));
     }
 
     return {
-      min: moment(min).isValid() ? min : null,
-      max: moment(max).isValid() ? max : null,
+      min: isValid(min) ? min : null,
+      max: isValid(max) ? max : null,
     };
   };
 
@@ -139,7 +145,7 @@ const getPicker = (context, createElement) => {
         on: {
           input(value) {
             self.valueFrom = value;
-            if (moment(self.valueFrom).isAfter(self.valueTo)) {
+            if (isAfter(self.valueFrom, self.valueTo)) {
               self.valueTo = self.valueFrom;
             }
             self.$emit('input', value);
