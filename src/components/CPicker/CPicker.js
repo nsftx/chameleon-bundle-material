@@ -1,3 +1,10 @@
+import {
+  format,
+  setHours,
+  setMinutes,
+  parseISO,
+} from 'date-fns';
+import { zonedTimeToUtc } from 'date-fns-tz';
 import { isNil } from 'lodash';
 import { fieldable } from '@/mixins';
 import Element from '../Element';
@@ -52,10 +59,10 @@ const getDatePickerActionSlot = (createElement, context) => {
 
 const getDatePickerListeners = (context) => {
   const self = context;
-
   const listeners = {
     input(value) {
-      self.value = !isNil(value) ? moment.utc(value).toISOString() : value;
+      self.value = !isNil(value) ? format(zonedTimeToUtc(new Date(value), Intl.DateTimeFormat()
+        .resolvedOptions().timeZone), "yyyy-MM-dd'T'HH:mm:ss.sss'Z'") : value;
       self.$emit('input', self.value);
       self.$emit('formattedInput', self.formattedValue);
     },
@@ -118,8 +125,9 @@ const getTimePickerListeners = (context) => {
       const splitTime = value.split(':');
       const hours = splitTime[0];
       const minutes = splitTime[1];
-      const formattedValue = moment.utc(self.value).hours(hours).minutes(minutes).toISOString();
-
+      const formattedValue = format(setMinutes(setHours(zonedTimeToUtc(self.value
+        ? parseISO(self.value) : new Date(), Intl.DateTimeFormat().resolvedOptions().timeZone),
+      parseInt(hours, 10)), parseInt(minutes, 10)), "yyyy-MM-dd'T'HH:mm:ss.sss'Z'");
       if (self.value !== formattedValue) {
         self.value = formattedValue;
       }
@@ -157,17 +165,18 @@ export default {
     },
     formattedValue() {
       if (this.value) {
-        const { format } = this.config;
-        const formattedValue = moment.utc(this.value).format(format);
-
+        const { format: formatVal } = this.config;
+        const formattedValue = format(zonedTimeToUtc(parseISO(this.value), Intl.DateTimeFormat()
+          .resolvedOptions().timeZone), formatVal);
         return formattedValue;
       }
 
       return null;
     },
     parsedTimeValue() {
-      const value = this.value ? moment.utc(this.value) : moment.utc();
-      const parsedValue = value.format('LT').replace(/\s/g, '').toLowerCase();
+      const value = this.value ? parseISO(this.value) : new Date();
+      const parsedValue = format(zonedTimeToUtc(value, Intl.DateTimeFormat()
+        .resolvedOptions().timeZone), 'p').replace(/\s/g, '').toLowerCase();
 
       return parsedValue;
     },

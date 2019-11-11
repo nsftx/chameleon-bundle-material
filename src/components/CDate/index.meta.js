@@ -66,38 +66,38 @@ export default {
       items: [
         {
           name: 'Day of week, Month, Day of month, Year, Time',
-          value: 'LLLL',
+          value: 'PPPPpppp',
         },
         {
           name: 'Month, Day of Month, Year, Time',
-          value: 'LLL',
+          value: 'PPpp',
         },
         {
           name: 'Month, Day of Month, Year',
-          value: 'LL',
+          value: 'PPP',
         },
         {
           name: 'MM/DD/YYYY',
-          value: 'L',
+          value: 'P',
         },
         {
           name: 'DD/MM/YYYY',
-          value: 'DD/MM/YYYY',
+          value: 'MM/dd/yyyy',
         },
         {
           name: 'MM-DD-YYYY',
-          value: 'MM-DD-YYYY',
+          value: 'MM-dd-yyyy',
         },
         {
           name: 'DD-MM-YYYY',
-          value: 'DD-MM-YYYY',
+          value: 'dd-MM-yyyy',
         },
         {
           name: 'YYYY-MM-DD',
-          value: 'YYYY-MM-DD',
+          value: 'yyyy-MM-dd',
         },
       ],
-      value: 'LLL',
+      value: 'PPpp',
       priority: 7,
     },
     time: {

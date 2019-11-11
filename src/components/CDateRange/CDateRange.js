@@ -3,6 +3,7 @@ import {
   isAfter,
   subDays,
   format,
+  parseISO,
 } from 'date-fns';
 import {
   clone, isEmpty, isNil, merge,
@@ -81,12 +82,12 @@ const getAllowedDates = (context, endRange) => {
     }
 
     if (endRange && context.value) {
-      min = format(subDays(context.value[0], 1));
+      min = format(subDays(new Date(context.value[0]), 1), "yyyy-MM-dd'T'HH:mm:ss.sss'Z'");
     }
 
     return {
-      min: isValid(min) ? min : null,
-      max: isValid(max) ? max : null,
+      min: isValid(parseISO(min)) ? min : null,
+      max: isValid(parseISO(min)) ? max : null,
     };
   };
 
@@ -145,7 +146,7 @@ const getPicker = (context, createElement) => {
         on: {
           input(value) {
             self.valueFrom = value;
-            if (isAfter(self.valueFrom, self.valueTo)) {
+            if (isAfter(parseISO(self.valueFrom), parseISO(self.valueTo))) {
               self.valueTo = self.valueFrom;
             }
             self.$emit('input', value);
