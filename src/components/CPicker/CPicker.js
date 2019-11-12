@@ -167,7 +167,7 @@ export default {
       if (this.value) {
         const { format: formatVal } = this.config;
         const formattedValue = format(zonedTimeToUtc(parseISO(this.value), Intl.DateTimeFormat()
-          .resolvedOptions().timeZone), formatVal);
+          .resolvedOptions().timeZone), formatVal || 'PPpp');
         return formattedValue;
       }
 
