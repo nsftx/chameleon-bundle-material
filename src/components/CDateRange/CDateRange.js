@@ -82,7 +82,7 @@ const getAllowedDates = (context, endRange) => {
     }
 
     if (endRange && context.value) {
-      min = format(subDays(new Date(context.value[0]), 1), "yyyy-MM-dd'T'HH:mm:ss.sss'Z'");
+      min = format(subDays(new Date(context.value[0]), 1), "yyyy-MM-dd'T'HH:mm:ssxxx");
     }
 
     return {
