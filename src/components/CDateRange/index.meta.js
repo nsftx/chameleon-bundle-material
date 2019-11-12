@@ -82,7 +82,7 @@ export default {
         },
         {
           name: 'DD/MM/YYYY',
-          value: 'MM/dd/yyyy',
+          value: 'dd/MM/yyyy',
         },
         {
           name: 'MM-DD-YYYY',
