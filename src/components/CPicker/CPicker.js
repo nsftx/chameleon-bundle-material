@@ -1,8 +1,7 @@
 import {
   format,
-  setHours,
-  setMinutes,
   parseISO,
+  set,
 } from 'date-fns';
 import { zonedTimeToUtc } from 'date-fns-tz';
 import { isNil } from 'lodash';
@@ -61,8 +60,7 @@ const getDatePickerListeners = (context) => {
   const self = context;
   const listeners = {
     input(value) {
-      self.value = !isNil(value) ? zonedTimeToUtc(new Date(value), Intl.DateTimeFormat()
-        .resolvedOptions().timeZone).toISOString() : value;
+      self.value = !isNil(value) ? zonedTimeToUtc(new Date(value)).toISOString() : value;
       self.$emit('input', self.value);
       self.$emit('formattedInput', self.formattedValue);
     },
@@ -125,9 +123,11 @@ const getTimePickerListeners = (context) => {
       const splitTime = value.split(':');
       const hours = splitTime[0];
       const minutes = splitTime[1];
-      const formattedValue = setMinutes(setHours(zonedTimeToUtc(self.value
-        ? parseISO(self.value) : new Date(), Intl.DateTimeFormat().resolvedOptions().timeZone),
-      parseInt(hours, 10)), parseInt(minutes, 10)).toISOString();
+      const dateValue = self.value ? self.value : new Date();
+      const formattedValue = set(zonedTimeToUtc(dateValue), {
+        hours: parseInt(hours, 10),
+        minutes: parseInt(minutes, 10),
+      }).toISOString();
       if (self.value !== formattedValue) {
         self.value = formattedValue;
       }
@@ -166,8 +166,7 @@ export default {
     formattedValue() {
       if (this.value) {
         const { format: formatVal } = this.config;
-        const formattedValue = format(zonedTimeToUtc(parseISO(this.value), Intl.DateTimeFormat()
-          .resolvedOptions().timeZone), formatVal || 'PPpp');
+        const formattedValue = format(zonedTimeToUtc(this.value), formatVal || 'PPpp');
         return formattedValue;
       }
 
@@ -175,8 +174,7 @@ export default {
     },
     parsedTimeValue() {
       const value = this.value ? parseISO(this.value) : new Date();
-      const parsedValue = format(zonedTimeToUtc(value, Intl.DateTimeFormat()
-        .resolvedOptions().timeZone), 'p').replace(/\s/g, '').toLowerCase();
+      const parsedValue = format(zonedTimeToUtc(value), 'p').replace(/\s/g, '').toLowerCase();
 
       return parsedValue;
     },
