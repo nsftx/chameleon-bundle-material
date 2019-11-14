@@ -1,8 +1,6 @@
 import {
   isValid,
   isAfter,
-  subDays,
-  format,
   parseISO,
 } from 'date-fns';
 import {
@@ -82,9 +80,8 @@ const getAllowedDates = (context, endRange) => {
     }
 
     if (endRange && context.value) {
-      min = format(subDays(new Date(context.value[0]), 1), "yyyy-MM-dd'T'HH:mm:ssxxx");
+      min = context.value[0].slice(0, 10);
     }
-
     return {
       min: isValid(parseISO(min)) ? min : null,
       max: isValid(parseISO(min)) ? max : null,
