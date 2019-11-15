@@ -173,7 +173,7 @@ export default {
       return null;
     },
     parsedTimeValue() {
-      const value = this.value ? parseISO(this.value) : new Date();
+      const value = this.config.value ? parseISO(this.config.value) : new Date();
       const parsedValue = format(zonedTimeToUtc(value), 'p').replace(/\s/g, '').toLowerCase();
 
       return parsedValue;
