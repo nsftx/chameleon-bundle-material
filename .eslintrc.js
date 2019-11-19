@@ -16,7 +16,6 @@ module.exports = {
   },
   globals: {
     JSONEditor: true,
-    moment: true,
     Quill: true,
   },
   rules: {

@@ -1,3 +1,7 @@
+import {
+  isValid,
+  parseISO,
+} from 'date-fns';
 import { clone, isNil } from 'lodash';
 import { fieldable, validatable } from '@/mixins';
 import { validator } from '@/validators';
@@ -16,8 +20,8 @@ const getAllowedDates = (context) => {
       };
     }
     return {
-      min: moment(min).isValid() ? min : null,
-      max: moment(max).isValid() ? max : null,
+      min: isValid(parseISO(min)) ? min : null,
+      max: isValid(parseISO(max)) ? max : null,
     };
   };
 
