@@ -1,3 +1,9 @@
+import {
+  format,
+  parseISO,
+  set,
+} from 'date-fns';
+import { zonedTimeToUtc } from 'date-fns-tz';
 import { isNil } from 'lodash';
 import { fieldable } from '@/mixins';
 import Element from '../Element';
@@ -52,10 +58,9 @@ const getDatePickerActionSlot = (createElement, context) => {
 
 const getDatePickerListeners = (context) => {
   const self = context;
-
   const listeners = {
     input(value) {
-      self.value = !isNil(value) ? moment.utc(value).toISOString() : value;
+      self.value = !isNil(value) ? zonedTimeToUtc(new Date(value)).toISOString() : value;
       self.$emit('input', self.value);
       self.$emit('formattedInput', self.formattedValue);
     },
@@ -118,8 +123,11 @@ const getTimePickerListeners = (context) => {
       const splitTime = value.split(':');
       const hours = splitTime[0];
       const minutes = splitTime[1];
-      const formattedValue = moment.utc(self.value).hours(hours).minutes(minutes).toISOString();
-
+      const dateValue = self.value ? self.value : new Date();
+      const formattedValue = set(zonedTimeToUtc(dateValue), {
+        hours: parseInt(hours, 10),
+        minutes: parseInt(minutes, 10),
+      }).toISOString();
       if (self.value !== formattedValue) {
         self.value = formattedValue;
       }
@@ -157,17 +165,16 @@ export default {
     },
     formattedValue() {
       if (this.value) {
-        const { format } = this.config;
-        const formattedValue = moment.utc(this.value).format(format);
-
+        const { format: formatVal } = this.config;
+        const formattedValue = format(zonedTimeToUtc(this.value), formatVal || 'PPpp');
         return formattedValue;
       }
 
       return null;
     },
     parsedTimeValue() {
-      const value = this.value ? moment.utc(this.value) : moment.utc();
-      const parsedValue = value.format('LT').replace(/\s/g, '').toLowerCase();
+      const value = this.config.value ? parseISO(this.config.value) : new Date();
+      const parsedValue = format(zonedTimeToUtc(value), 'p').replace(/\s/g, '').toLowerCase();
 
       return parsedValue;
     },

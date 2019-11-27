@@ -333,7 +333,7 @@
                             "enabled": true
                           },
                           "value": null,
-                          "format": "LLL"
+                          "format": "PPpp"
                         },
                         {
                           "name": "date-range",
@@ -356,7 +356,7 @@
                             "enabled": true
                           },
                           "value": null,
-                          "format": "LLL"
+                          "format": "PPpp"
                         },
                         {
                           "name": "calendar",
@@ -372,7 +372,7 @@
                             "enabled": true
                           },
                           "value": null,
-                          "format": "LLL"
+                          "format": "PPpp"
                         },
                         {
                           "name": "slider",
