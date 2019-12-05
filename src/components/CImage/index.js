@@ -1,6 +1,7 @@
+import { VIcon, VCard } from 'vuetify/lib';
 import Image from './CImage';
 
-export default {
+const install = {
   install(Vue, options) {
     const name = `${options.namespace}image`;
 
@@ -11,3 +12,13 @@ export default {
     });
   },
 };
+
+// Register vuetify components used inside CImage
+// (a la carte won't recognize them otherwise)
+Image.components = {
+  VIcon,
+  VCard,
+};
+
+export { install };
+export { Image };
