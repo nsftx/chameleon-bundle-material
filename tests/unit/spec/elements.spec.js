@@ -2,12 +2,9 @@ import { assign, each, omit } from 'lodash';
 import { mount, createLocalVue } from '@vue/test-utils';
 import { createRenderer } from 'vue-server-renderer';
 import sinon from 'sinon';
-
 import Vuetify from 'vuetify';
 import Vue from 'vue';
-import VueRouter from 'vue-router';
 import * as components from '@/components';
-import CPicker from '../../../src/components/CPicker';
 import connectorsMock from './__mocks__/connectors';
 import mockDefinition from './__mocks__/definition';
 
@@ -25,51 +22,14 @@ const childrenComponents = [
   'CVlist',
 ];
 
-// Vuetify tests
-const expansionPanelProvide = () => ({
-  data: {},
-  focusable: true,
-  panelClick: () => null,
-  register: () => null,
-});
+const localVue = createLocalVue();
 
 describe('AllComponents', () => {
-  // Set div with data-app attribute for components to use as wrapper
-  // Vuetify warning
-  const app = document.createElement('div');
-  app.setAttribute('data-app', true);
-  document.body.appendChild(app);
-
-  const localVue = createLocalVue();
-  localVue.use(Vuetify);
-  localVue.use(VueRouter);
-  // Unknown custom element: <c-picker>
-  localVue.use(CPicker, options);
-
-  const router = new VueRouter({
-    mode: 'history',
-    routes: [
-      {
-        path: '/',
-        component: {
-          template: '<div><h2>Home</h2></div>',
-        },
-      },
-    ],
-  });
 
   // Vuetify global options
   Vue.prototype.$vuetify = {
-    application: {},
-    breakpoint: {},
     dark: false,
-    icons: {},
-    lang: [],
-    options: [],
-    rtl: [],
     theme: [],
-    goTo: () => { },
-    t: () => null,
   };
 
   localVue.prototype.$chameleon = {};
@@ -93,7 +53,6 @@ describe('AllComponents', () => {
     const wrapper = mount(cmp, {
       localVue,
       Vuetify,
-      router,
       propsData: {
         definition,
       },
@@ -102,7 +61,6 @@ describe('AllComponents', () => {
           fields: () => [],
           register: () => null,
         },
-        expansionPanel: expansionPanelProvide(),
       },
       methods: {
         loadConnectorData() {

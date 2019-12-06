@@ -11,7 +11,7 @@ module.exports = {
     '^.+\\.jsx?$': 'babel-jest',
   },
   transformIgnorePatterns: [
-    '<rootDir>/node_modules/(?!@nsoft)',
+    '<rootDir>/node_modules/(?!@nsoft|vuetify)',
   ],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
