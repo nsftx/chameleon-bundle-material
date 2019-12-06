@@ -15,10 +15,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - uses: actions/npm@master
-        with:
-          args: ci
+      - run: npm ci
       - run: npm run lint
-      - run: npm run test
-      - run: npm run build-bundle
+      - run: npm run test:unit
+      - run: npm run build-bundle && npm run build:components
 
