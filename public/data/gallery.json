@@ -5,44 +5,86 @@
       "type": "page",
       "elements": [
         {
-          "type": "gallery",
-          "name": "gallery-1",
-          "color": "",
-          "theme": "light",
-          "carousel": {
-            "enabled": false,
-            "cycle": true,
-            "hideControls": false,
-            "hideDelimiters": false,
-            "interval": 20000
-          },
-          "gallery": {
-            "gridSize": 4,
-            "contain": false,
-            "itemHeight": ""
-          },
-          "gridMaxSize": false,
-          "contentSpacing": "xl",
-          "dataSource": {
-            "id": "galleryImages",
-            "name": "galleryImages",
-            "model": "GalleryImages",
-            "connector": {
-              "id": "12gh67qa-904d-4a9a-89f2-0a5afd8f1464",
-              "name": "Sample Local Connector",
-              "type": "local"
-            },
-            "schema": [
-              {
-                "name": "image",
-                "type": "Image"
+          "type": "panel",
+          "elements": [
+            {
+              "type": "gallery",
+              "name": "gallery-1",
+              "color": "",
+              "theme": "light",
+              "carousel": {
+                "enabled": false,
+                "cycle": true,
+                "hideControls": false,
+                "hideDelimiters": false,
+                "interval": 20000
               },
-              {
-                "name": "thumb",
-                "type": "Image"
+              "gallery": {
+                "gridSize": 4,
+                "contain": false,
+                "itemHeight": ""
+              },
+              "gridMaxSize": false,
+              "contentSpacing": "xl",
+              "dataSource": {
+                "id": "galleryImages",
+                "name": "galleryImages",
+                "model": "GalleryImages",
+                "connector": {
+                  "id": "12gh67qa-904d-4a9a-89f2-0a5afd8f1464",
+                  "name": "Sample Local Connector",
+                  "type": "local"
+                },
+                "schema": [
+                  {
+                    "name": "image",
+                    "type": "Image"
+                  },
+                  {
+                    "name": "thumb",
+                    "type": "Image"
+                  }
+                ]
               }
-            ]
-          }
+            },
+            {
+              "type": "c-card",
+              "flat": true,
+              "color": null,
+              "theme": "dark",
+              "title": "I am header",
+              "icon": "people",
+              "variation": "header",
+              "subtitle": "Neki Subtitle",
+              "statusIcon": "lock",
+              "imageWidth": "100%",
+              "imageHeight": "100px",
+              "statusText": "Neki status",
+              "indicatorColor": "blue",
+              "backgroundImage": null,
+              "elements": [],
+              "dataSource": {
+                "id": "galleryImages",
+                "name": "galleryImages",
+                "model": "GalleryImages",
+                "connector": {
+                  "id": "12gh67qa-904d-4a9a-89f2-0a5afd8f1464",
+                  "name": "Sample Local Connector",
+                  "type": "local"
+                },
+                "schema": [
+                  {
+                    "name": "image",
+                    "type": "Image"
+                  },
+                  {
+                    "name": "thumb",
+                    "type": "Image"
+                  }
+                ]
+              }
+            }
+          ]
         }
       ]
     }

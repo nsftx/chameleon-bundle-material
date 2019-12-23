@@ -3,6 +3,7 @@ export { default as CAccordionItem } from './CAccordionItem';
 export { default as CButton } from './CButton';
 export { default as CFloatingButton } from './CFloatingButton';
 export { default as CFloatingButtonItem } from './CFloatingButtonItem';
+export { install as CCard } from './CCard';
 export { default as CCalculation } from './CCalculation';
 export { default as CCalendar } from './CCalendar';
 export { default as CCheck } from './CCheck';

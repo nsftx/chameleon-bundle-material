@@ -28,6 +28,7 @@
         "VExpansionPanelHeader",
         "VExpansionPanelContent",
         "VCardText",
+        "VCardTitle",
         "VIcon",
         "VInput",
         "VCheckbox",

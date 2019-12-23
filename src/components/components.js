@@ -1,2 +1,2 @@
 export { Image as CImage } from './CImage';
-export { Date as CDate } from './CDate';
+export { Card as CCard } from './CCard';

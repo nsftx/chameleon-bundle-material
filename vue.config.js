@@ -30,15 +30,19 @@ module.exports = {
         data: '@import "~@/style/main.scss";',
       },
     },
+    // Separate css from bundle
+    extract: false,
   },
   chainWebpack: (wConfig) => {
     wConfig
       .when(process.env.NODE_ENV === 'production' && process.env.CHM_TARGET === 'lib', (config) => {
-        config.output.library(`__CHAMELEON_${bundleName}${globalSuffix}__`);
         config.output.libraryExport('default');
-
-        config.externals({ vuetify: 'Vuetify', vue: 'Vue' });
+        config.output.library(`__CHAMELEON_${bundleName}${globalSuffix}__`);
       });
+
+    wConfig.when(process.env.NODE_ENV === 'production', (config) => {
+      config.externals({ vuetify: 'Vuetify', vue: 'vue' });
+    });
 
     wConfig.module.rule('eslint').use('eslint-loader')
       .tap(opts => ({ ...opts, emitWarning: false }));
