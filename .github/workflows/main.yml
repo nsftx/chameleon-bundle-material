@@ -18,5 +18,5 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run test:unit
-      - run: npm run build-bundle && npm run build:components
+      - run: npm run build-bundle && npm run deploy && npm run build:components
 

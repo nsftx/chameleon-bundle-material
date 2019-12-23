@@ -48,14 +48,12 @@ module.exports = {
   },
   chainWebpack: (wConfig) => {
     wConfig
-      .when(process.env.NODE_ENV === 'production' && process.env.CHM_TARGET === 'lib', (config) => {
+      .when(process.env.NODE_ENV === 'production'
+        && (process.env.CHM_TARGET === 'lib' || process.env.CHM_TARGET === 'components'), (config) => {
+        config.externals({ vuetify: 'Vuetify', vue: 'vue' });
         config.output.libraryExport('default');
         config.output.library(`__CHAMELEON_${bundleName}${globalSuffix}__`);
       });
-
-    wConfig.when(process.env.NODE_ENV === 'production', (config) => {
-      config.externals({ vuetify: 'Vuetify', vue: 'vue' });
-    });
 
     wConfig.module.rule('eslint').use('eslint-loader')
       .tap(opts => ({ ...opts, emitWarning: false }));
