@@ -13,11 +13,24 @@ const defaultParallelism = os.cpus().length - 1;
 const globalSuffix = isMeta ? '_META' : '';
 
 const resolve = configPath => path.resolve(__dirname, configPath);
+let outputDir;
+switch (process.env.CHM_TARGET) {
+  case 'lib':
+    outputDir = resolve('./dist', process.env);
+    break;
+  case 'components':
+    outputDir = resolve('./deploy-components', process.env);
+    break;
+  case 'playground':
+    outputDir = resolve('./deploy-dist', process.env);
+    break;
+  default:
+    outputDir = resolve('./dist', process.env);
+}
 
 module.exports = {
   lintOnSave: true,
-  outputDir: process.env.CHM_TARGET === 'lib'
-    ? resolve('./dist', process.env) : resolve('./deploy-dist', process.env),
+  outputDir,
   transpileDependencies: [
     '@nsoft/chameleon-sdk',
   ],
