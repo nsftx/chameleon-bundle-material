@@ -21,11 +21,8 @@ switch (process.env.CHM_TARGET) {
   case 'components':
     outputDir = resolve('./deploy-components', process.env);
     break;
-  case 'playground':
-    outputDir = resolve('./deploy-dist', process.env);
-    break;
   default:
-    outputDir = resolve('./dist', process.env);
+    outputDir = resolve('./deploy-dist', process.env);
 }
 
 module.exports = {
@@ -34,6 +31,11 @@ module.exports = {
   transpileDependencies: [
     '@nsoft/chameleon-sdk',
   ],
+  configureWebpack: {
+    output: {
+      libraryExport: 'default',
+    },
+  },
   css: {
     loaderOptions: {
       sass: {
@@ -43,15 +45,13 @@ module.exports = {
         data: '@import "~@/style/main.scss";',
       },
     },
-    // Separate css from bundle
-    extract: false,
+    // Separate or not, css from bundle
+    extract: process.env.CHM_TARGET !== 'components',
   },
   chainWebpack: (wConfig) => {
     wConfig
-      .when(process.env.NODE_ENV === 'production'
-        && (process.env.CHM_TARGET === 'lib' || process.env.CHM_TARGET === 'components'), (config) => {
-        config.externals({ vuetify: 'Vuetify', vue: 'vue' });
-        config.output.libraryExport('default');
+      .when(process.env.NODE_ENV === 'production' && (process.env.CHM_TARGET === 'lib'), (config) => {
+        config.externals({ vuetify: 'Vuetify', vue: 'Vue' });
         config.output.library(`__CHAMELEON_${bundleName}${globalSuffix}__`);
       });
 

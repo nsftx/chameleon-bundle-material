@@ -1,7 +1,6 @@
-import { VCard, VDatePicker } from 'vuetify/lib';
 import Picker from './CPicker';
 
-const install = {
+export default {
   install(Vue, options) {
     const name = `${options.namespace}picker`;
 
@@ -12,13 +11,3 @@ const install = {
     });
   },
 };
-
-// Register vuetify components used inside CImage
-// (a la carte won't recognize them otherwise)
-Picker.components = {
-  VCard,
-  VDatePicker,
-};
-
-export { install };
-export { Picker };

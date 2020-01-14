@@ -4,31 +4,22 @@ const { each } = require('lodash');
 
 const files = fs.readdirSync(path.join(__dirname, '../dist'));
 each(files, (file) => {
-  if (file.indexOf('common') >= 0) {
-    fs.unlink(path.join(__dirname, '../dist', file), () => { });
-    return;
-  }
-
   const nameParts = file.split('.');
+  const metaIndex = nameParts.indexOf('meta');
   const umdIndex = nameParts.indexOf('umd');
+
   if (umdIndex >= 0) {
     nameParts.splice(umdIndex, 1);
   }
 
-  const minIndex = nameParts.indexOf('min');
   const cssIndex = nameParts.indexOf('css');
-  const isCss = cssIndex >= 0;
-  const isMeta = nameParts.indexOf('meta') >= 0;
-  if (minIndex < 0 && !isCss) {
-    fs.unlink(path.join(__dirname, '../dist', file), () => { });
-    return;
-  }
+  const minIndex = nameParts.indexOf('min');
 
-  if (isMeta) {
+  if (metaIndex >= 0) {
     nameParts.splice(minIndex, 1);
   }
 
-  if (isCss) {
+  if (cssIndex >= 0) {
     nameParts.splice(cssIndex, 0, 'min');
   }
 

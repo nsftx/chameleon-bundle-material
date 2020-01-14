@@ -3,6 +3,7 @@ export { default as accordionItem } from './CAccordionItem/index.meta';
 export { default as button } from './CButton/index.meta';
 export { default as calculation } from './CCalculation/index.meta';
 export { default as calendar } from './CCalendar/index.meta';
+export { default as card } from './CCard/index.meta';
 export { default as check } from './CCheck/index.meta';
 export { default as checkList } from './CCheckList/index.meta';
 export { default as date } from './CDate/index.meta';

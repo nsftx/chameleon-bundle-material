@@ -1,13 +1,13 @@
 export default {
+  group: 'widgets',
+  type: 'card',
+  name: 'Card',
+  icon: 'inbox',
   events: [
     {
       name: 'Selected',
     },
   ],
-  group: 'widgets',
-  type: 'ct-card',
-  name: 'Card',
-  icon: 'inbox',
   children: [
     '*',
     '!inputs',
