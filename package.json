@@ -2,7 +2,7 @@
   "name": "chameleon-bundle-material",
   "description": "Material Bundle for Chameleon applications",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "contributors": [
     "Team Chameleon (Tools) <chameleon@nsoft.com>"
   ],
