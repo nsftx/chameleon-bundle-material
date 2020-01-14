@@ -21,6 +21,7 @@
     "deploy-bundle:production": "NODE_ENV=production node ./build/deploy.js",
     "deploy-bundle:staging": "NODE_ENV=staging node ./build/deploy.js"
   },
+  "main": "deploy-components/chameleon-components.umd.min.js",
   "chameleon": {
     "bundle": "material"
   },
