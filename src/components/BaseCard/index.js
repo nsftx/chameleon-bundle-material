@@ -43,6 +43,7 @@ export default {
           light: this.isThemeLight,
           color: this.config.color,
           flat: this.config.flat,
+          outlined: this.config.outlined,
           // I'm setting bg image inside base card because v-card
           // (base card only element) has img prop
           img: this.backgroundImg,

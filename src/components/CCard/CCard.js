@@ -87,9 +87,9 @@ const createHeader = context => context.$createElement(
       ]),
     ]),
     context.$createElement('v-spacer'),
-    context.$createElement('v-icon', {
+    context.config.showMenu ? context.$createElement('v-icon', {
       class: 'c-card__menu text-xs-right',
-    }, 'more_vert'),
+    }, 'more_vert') : '',
   ],
 );
 

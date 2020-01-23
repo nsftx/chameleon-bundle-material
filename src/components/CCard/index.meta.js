@@ -102,6 +102,12 @@ export default merge({}, baseCardMeta, {
       returnObject: false,
       value: 'header',
     },
+    showMenu: {
+      type: 'check',
+      group: 'style',
+      name: 'Show Card Menu',
+      value: false,
+    },
     title: {
       type: 'input',
       name: 'Card Title',

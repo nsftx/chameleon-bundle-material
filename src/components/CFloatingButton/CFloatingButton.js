@@ -25,7 +25,7 @@ const getChildSlot = (createElement, context) => {
   const { config } = context;
   let children = [];
 
-  if (config.elements.length) {
+  if (config.elements && config.elements.length) {
     children = map(config.elements, data => createElement(context.getElementTag('floating-button-item'),
       {
         props: {
@@ -48,6 +48,11 @@ const getChildSlot = (createElement, context) => {
         }, config.activator),
       },
       slot: 'activator',
+      on: {
+        click(value) {
+          context.sendToEventBus('Clicked', { value });
+        },
+      },
     }));
 
   return children;
