@@ -35,7 +35,7 @@ const getListeners = (context) => {
     click(value) {
       const label = value.target.innerHTML;
       context.$emit('click', label);
-      context.sendToEventBus('Clicked', {
+      context.dispatchEvent('Clicked', {
         label,
       });
     },

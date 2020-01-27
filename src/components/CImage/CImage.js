@@ -44,7 +44,7 @@ const renderImage = (createElement, context) => {
       click() {
         const payload = context.imageSrc;
         context.$emit('click', payload);
-        context.sendToEventBus('Clicked', {
+        context.dispatchEvent('Clicked', {
           payload,
         });
       },

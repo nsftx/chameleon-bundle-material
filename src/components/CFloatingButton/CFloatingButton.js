@@ -4,7 +4,7 @@ import Element from '../Element';
 
 const getProps = (context) => {
   const { config } = context;
-  const position = config.align.split(' ');
+  const position = config.align && config.align.split(' ');
   const relative = !config.absolute && !config.fixed;
 
   const props = {
@@ -50,7 +50,7 @@ const getChildSlot = (createElement, context) => {
       slot: 'activator',
       on: {
         click(value) {
-          context.sendToEventBus('Clicked', { value });
+          context.dispatchEvent('Clicked', { value });
         },
       },
     }));

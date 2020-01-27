@@ -8,11 +8,6 @@ import Element from '../Element';
 
 export default {
   extends: Element,
-  data() {
-    return {
-      items: null,
-    };
-  },
   watch: {
     dataSource: {
       handler() {
@@ -50,19 +45,13 @@ export default {
         },
         on: {
           click() {
-            self.sendToEventBus('Selected', self.$el);
+            self.dispatchEvent('Selected', self.$el);
           },
         },
       };
     },
     createCard(components) {
       return this.renderElement('v-card', this.getCardDefinition(this), components, true);
-    },
-    loadData() {
-      this.loadConnectorData().then((result) => {
-        this.items = result.items || [];
-        this.sendToEventBus('DataSourceChanged', this.dataSource);
-      });
     },
     parseImageSrc(image) {
       const srcConfig = this.registry.staticAppAssets;
