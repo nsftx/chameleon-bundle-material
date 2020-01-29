@@ -87,9 +87,8 @@ const createHeader = context => context.$createElement(
       ]),
     ]),
     context.$createElement('v-spacer'),
-    context.config.showMenu ? context.$createElement('v-icon', {
-      class: 'c-card__menu text-xs-right',
-    }, 'more_vert') : '',
+    // Create deafult slot for menu "actions"
+    context.$createElement('v-card-actions', context.$slots.default),
   ],
 );
 
@@ -165,16 +164,11 @@ export default {
         )),
       );
     },
-    createFooter() {
-      return this.$createElement('v-card-actions');
-    },
   },
   render() {
     return this.createCard([
       createCardLayout(this),
       this.createBody(),
-      // TODO enble when we add someting to footer
-      // this.createFooter(),
     ]);
   },
 };

@@ -5,7 +5,6 @@ import {
   errorable,
   localizable,
   validatable,
-  themable,
 } from '@/mixins';
 
 /*
@@ -16,7 +15,6 @@ export default {
     errorable,
     localizable,
     validatable,
-    themable,
   ],
   props: {
     // New components prop - representing dataSource
@@ -27,6 +25,10 @@ export default {
     definition: {
       type: Object,
       default: () => { },
+    },
+    theme: {
+      type: String,
+      default: 'light',
     },
   },
   data() {
@@ -64,6 +66,14 @@ export default {
         props,
         this.renderChildren(this.$createElement),
       );
+    },
+  },
+  computed: {
+    isThemeDark() {
+      return this.theme === 'dark';
+    },
+    isThemeLight() {
+      return this.theme === 'light';
     },
   },
   created() {

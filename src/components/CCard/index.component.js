@@ -1,6 +1,7 @@
 import {
   VCard,
   VCardTitle,
+  VCardActions,
   VSpacer,
   VIcon,
 } from 'vuetify/lib';
@@ -21,6 +22,7 @@ export default {
       components: {
         VCard,
         VCardTitle,
+        VCardActions,
         VSpacer,
         VIcon,
         CImage,
@@ -42,15 +44,10 @@ export default {
           type: Boolean,
           default: false,
         },
-        showMenu: {
-          type: Boolean,
-          value: false,
-        },
         statusIcon: stringType,
         statusText: stringType,
         subtitle: stringType,
         title: stringType,
-        // theme: stringType,
         thumb: stringType,
         variation: stringType,
       },
