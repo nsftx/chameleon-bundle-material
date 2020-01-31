@@ -11,6 +11,18 @@ body {
 
 $material-dark: map-merge(
   $material-dark, (
+    'icon-color': #a6a6a6,
+    background: #2d3038,
+    cards: #2d3038,
+    picker: (
+      body: #2d3038,
+    ),
+  ),
+);
+
+$material-dark: map-merge(
+  $material-dark, (
+    'icon-color': #eaeaea,
     background: #2d3038,
     cards: #2d3038,
     picker: (

@@ -1,0 +1,12 @@
+.c-flyout {
+  position: absolute;
+  right: 0;
+  width: 60%;
+
+  @include theme('v-btn') using ($material) {
+    .c-flyout__header__more__icon,
+    .c-flyout__header__close__icon {
+      color: map-get($material, 'icon-color');
+    }
+  }
+}
