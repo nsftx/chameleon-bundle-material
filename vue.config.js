@@ -1,5 +1,6 @@
 /* eslint import/no-extraneous-dependencies: off */
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const webpack = require('webpack');
 const path = require('path');
 const os = require('os');
 const packageConfig = require('./package.json');
@@ -25,6 +26,9 @@ switch (process.env.CHM_TARGET) {
     outputDir = resolve('./deploy-dist', process.env);
 }
 
+const elementTarget = process.env.CHM_TARGET !== 'components'
+  ? '../Element/index.js' : '../Element/index.component.js';
+
 module.exports = {
   lintOnSave: true,
   outputDir,
@@ -35,6 +39,13 @@ module.exports = {
     output: {
       libraryExport: 'default',
     },
+    // Depending on build target use Element index file
+    plugins: [
+      new webpack.NormalModuleReplacementPlugin(
+        /..\/Element/,
+        elementTarget,
+      ),
+    ],
   },
   css: {
     loaderOptions: {

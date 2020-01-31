@@ -5,64 +5,64 @@ import BaseCard from '../BaseCard';
 require('../../style/components/_card.scss');
 
 const createIndicator = (context) => {
-  if (startsWith(context.indicatorColor, '#')) {
+  if (startsWith(context.cardIndicatorColor, '#')) {
     return context.$createElement('span', {
       class: ['c-card__indicator'],
       style: {
-        backgroundColor: context.indicatorColor,
+        backgroundColor: context.cardIndicatorColor,
       },
     });
   }
   return context.$createElement('span', {
-    class: ['c-card__indicator', [context.indicatorColor]],
+    class: ['c-card__indicator', [context.cardIndicatorColor]],
   });
 };
 
 const createTitle = context => context.$createElement('div', {
   class: 'subheading c-card__title',
 }, [
-  context.$createElement('span', context.title),
+  context.$createElement('span', context.cardTitle),
   createIndicator(context),
 ]);
 
 const createSubTitle = context => context.$createElement('p', {
   class: 'caption c-card__subtitle',
-}, context.subtitle);
+}, context.cardSubtitle);
 
 const createThumbnail = (context) => {
-  if (context.thumbnailImage) {
+  if (context.cardThumb) {
     return context.$createElement('c-image', {
       props: {
         unselectable: true,
         definition: {
-          src: context.thumbnailImage,
+          src: context.cardThumb,
           width: '60px',
           height: '60px',
         },
       },
       class: 'mr-3 c-card__image',
     });
-  } if (context.thumbnailIcon) {
+  } if (context.cardIcon) {
     return context.$createElement('v-icon', {
       props: {
         left: true,
         large: true,
       },
       class: 'mr-3 c-card__icon',
-    }, context.thumbnailIcon);
+    }, context.cardIcon);
   }
   return null;
 };
 
 const createStatus = (context) => {
-  const statusIcon = !context.statusIcon ? null
+  const statusIcon = !context.cardStatusIcon ? null
     : context.$createElement('v-icon', {
       props: {
         small: true,
       },
-    }, context.statusIcon);
+    }, context.cardStatusIcon);
 
-  const statusText = context.$createElement('span', context.statusText);
+  const statusText = context.$createElement('span', context.cardStatusText);
 
   return context.$createElement('div', {
     class: 'caption c-card__status',
@@ -87,19 +87,18 @@ const createHeader = context => context.$createElement(
       ]),
     ]),
     context.$createElement('v-spacer'),
-    context.$createElement('v-icon', {
-      class: 'c-card__menu text-xs-right',
-    }, 'more_vert'),
+    // Create deafult slot for menu "actions"
+    context.$createElement('v-card-actions', context.$slots.default),
   ],
 );
 
 const createImage = (context) => {
-  if (!context.image) return null;
+  if (!context.cardImage) return null;
   return context.$createElement('c-image', {
     props: {
       unselectable: true,
       definition: {
-        src: context.image,
+        src: context.cardImage,
         width: context.config.imageWidth || '100%',
         height: context.config.imageHeight || '100%',
       },
@@ -123,28 +122,28 @@ const createCardLayout = (context) => {
 export default {
   extends: BaseCard,
   computed: {
-    indicatorColor() {
+    cardIndicatorColor() {
       return this.getOptionDataSource('indicatorColor');
     },
-    image() {
+    cardImage() {
       return this.getOptionDataSource('image');
     },
-    title() {
+    cardTitle() {
       return this.getOptionDataSource('title');
     },
-    subtitle() {
+    cardSubtitle() {
       return this.getOptionDataSource('subtitle');
     },
-    thumbnailIcon() {
+    cardIcon() {
       return this.getOptionDataSource('icon');
     },
-    thumbnailImage() {
+    cardThumb() {
       return this.getOptionDataSource('thumb');
     },
-    statusIcon() {
+    cardStatusIcon() {
       return this.getOptionDataSource('statusIcon');
     },
-    statusText() {
+    cardStatusText() {
       return this.getOptionDataSource('statusText');
     },
   },
@@ -165,16 +164,11 @@ export default {
         )),
       );
     },
-    createFooter() {
-      return this.$createElement('v-card-actions');
-    },
   },
   render() {
     return this.createCard([
       createCardLayout(this),
       this.createBody(),
-      // TODO enble when we add someting to footer
-      // this.createFooter(),
     ]);
   },
 };

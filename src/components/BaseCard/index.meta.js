@@ -29,5 +29,12 @@ export default {
       value: true,
       priority: 3,
     },
+    outlined: {
+      type: 'check',
+      name: 'Enable Card Border',
+      group: 'style',
+      value: false,
+      priority: 4,
+    },
   },
 };

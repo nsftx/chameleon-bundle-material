@@ -8,11 +8,6 @@ import Element from '../Element';
 
 export default {
   extends: Element,
-  data() {
-    return {
-      items: null,
-    };
-  },
   watch: {
     dataSource: {
       handler() {
@@ -43,25 +38,20 @@ export default {
           light: this.isThemeLight,
           color: this.config.color,
           flat: this.config.flat,
+          outlined: this.config.outlined,
           // I'm setting bg image inside base card because v-card
           // (base card only element) has img prop
           img: this.backgroundImg,
         },
         on: {
           click() {
-            self.sendToEventBus('Selected', self.$el);
+            self.dispatchEvent('Selected', self.$el);
           },
         },
       };
     },
     createCard(components) {
       return this.renderElement('v-card', this.getCardDefinition(this), components, true);
-    },
-    loadData() {
-      this.loadConnectorData().then((result) => {
-        this.items = result.items || [];
-        this.sendToEventBus('DataSourceChanged', this.dataSource);
-      });
     },
     parseImageSrc(image) {
       const srcConfig = this.registry.staticAppAssets;

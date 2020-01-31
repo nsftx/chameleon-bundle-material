@@ -39,6 +39,9 @@ export default {
     return this.renderErrorTemplate();
   },
   methods: {
+    dispatchEvent(name, payload) {
+      this.sendToEventBus(name, payload);
+    },
     loadData() {
       return this.loadConnectorData().then((result) => {
         this.items = result.items || null;
