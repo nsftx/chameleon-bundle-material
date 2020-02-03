@@ -61,32 +61,32 @@ const createHeader = context => context.$createElement(
   ],
 );
 
-const createFooter = (context) => context.$slots.footer || context.$createElement(
-    'v-card-actions',
-    {
-      class: ['c-flyout__footer'],
-    },
-    [
-      context.$createElement(
-        'v-btn',
-        {
-          class: ['c-flyout__footer__close'],
-          props: {
-            text: true,
-          },
+const createFooter = context => context.$slots.footer || context.$createElement(
+  'v-card-actions',
+  {
+    class: ['c-flyout__footer'],
+  },
+  [
+    context.$createElement(
+      'v-btn',
+      {
+        class: ['c-flyout__footer__close'],
+        props: {
+          text: true,
         },
-        context.config.cancelLabel,
-      ),
-      context.$createElement(
-        'v-btn',
-        {
-          class: ['c-flyout__footer__submit'],
-        },
-        context.config.submitLabel,
-      ),
-    ],
-  );
-}
+      },
+      context.config.cancelLabel,
+    ),
+    context.$createElement(
+      'v-btn',
+      {
+        class: ['c-flyout__footer__submit'],
+      },
+      context.config.submitLabel,
+    ),
+  ],
+);
+
 const createBody = context => context.$createElement(
   'div',
   {
