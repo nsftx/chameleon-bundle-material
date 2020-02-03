@@ -2,46 +2,50 @@ import Element from '../Element';
 
 require('../../style/components/_flyout.scss');
 
-const createHeader = context => context.$createElement(
-  'div',
-  {
-    class: ['c-flyout__header'],
-  },
-  [
+const renderAvatar = (context) => {
+  if (context.config.showAvatar) {
     context.$createElement(
       'div',
       {
         class: ['c-flyout__header__avatar'],
       },
-    ),
+    );
+  }
+};
+
+const toggleDialog = context => {
+  context.data.value = false;
+  context.dispatchEvent('Closed');
+};
+
+const createHeader = context => context.$createElement(
+  'v-toolbar',
+  {
+    class: ['c-flyout__header'],
+  },
+  [
+    renderAvatar(context),
     context.$createElement(
-      'span',
+      'v-toolbar-title',
       {
         class: ['c-flyout__header__title'],
       },
-      context.title,
+      context.config.headerTitle,
     ),
+    context.$createElement('v-spacer'),
     context.$createElement(
       'v-btn',
       {
         class: ['c-flyout__header__more'],
       },
-      [
-        context.$createElement(
-          'v-icon',
-          {
-            class: ['c-flyout__header__more__icon'],
-          },
-          'more_vert',
-        ),
-      ],
+      context.$slots.menu,
     ),
     context.$createElement(
       'v-btn',
       {
         class: ['c-flyout__header__close'],
         on: {
-          click: this.closeFlyout(),
+          click: toggleDialog(context),
         },
       },
       [
@@ -57,32 +61,69 @@ const createHeader = context => context.$createElement(
   ],
 );
 
-const createFooter = context => context.$createElement(
+const createFooter = (context) => context.$slots.footer || context.$createElement(
+    'v-card-actions',
+    {
+      class: ['c-flyout__footer'],
+    },
+    [
+      context.$createElement(
+        'v-btn',
+        {
+          class: ['c-flyout__footer__close'],
+          props: {
+            text: true,
+          },
+        },
+        context.config.cancelLabel,
+      ),
+      context.$createElement(
+        'v-btn',
+        {
+          class: ['c-flyout__footer__submit'],
+        },
+        context.config.submitLabel,
+      ),
+    ],
+  );
+}
+const createBody = context => context.$createElement(
   'div',
   {
-    class: ['c-flyout__footer'],
+    class: ['c-flyout__body'],
   },
+  context.$slots.content,
+);
+
+const createCard = context => context.$createElement(
+  'v-card',
+  {
+    class: ['c-flyout__card'],
+    props: {
+      tile: true,
+    },
+  },
+  [createHeader(context), createBody(context), createFooter(context)],
 );
 
 export default {
   extends: Element,
   render() {
     const data = {
-      dialog: true,
-      // props: {
-      //   dark: this.isThemeDark,
-      //   light: this.isThemeLight,
-      //   contentClass: ['c-flyout'],
-      //   fullscreen:
-      //   maxWidth:
-      //   peristent:
-      //   scrollable:
-      //   hideOverlay:
-      //   title:
-      // },
+      props: {
+        value: false,
+        transition: false,
+        dark: this.isThemeDark,
+        light: this.isThemeLight,
+        contentClass: ['c-flyout'],
+        fullscreen: this.config.fullscreen,
+        width: this.config.width,
+        peristent: this.config.peristent,
+        scrollable: this.config.scrollable,
+        hideOverlay: this.config.hideOverlay,
+      },
     };
-    const elements = [createHeader(this), createFooter(this)];
-
+    const elements = createCard(this);
 
     return this.renderElement('v-dialog', data, elements);
   },
