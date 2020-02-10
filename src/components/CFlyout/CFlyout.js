@@ -13,11 +13,6 @@ const renderAvatar = (context) => {
   }
 };
 
-const toggleDialog = context => {
-  context.data.value = false;
-  context.dispatchEvent('Closed');
-};
-
 const createHeader = context => context.$createElement(
   'v-toolbar',
   {
@@ -37,6 +32,9 @@ const createHeader = context => context.$createElement(
       'v-btn',
       {
         class: ['c-flyout__header__more'],
+        props: {
+          icon: true,
+        },
       },
       context.$slots.menu,
     ),
@@ -44,8 +42,8 @@ const createHeader = context => context.$createElement(
       'v-btn',
       {
         class: ['c-flyout__header__close'],
-        on: {
-          click: toggleDialog(context),
+        nativeOn: {
+          click: context.$emit('toggleFlyout'),
         },
       },
       [
@@ -53,6 +51,9 @@ const createHeader = context => context.$createElement(
           'v-icon',
           {
             class: ['c-flyout__header__close__icon'],
+            props: {
+              icon: true,
+            },
           },
           'close',
         ),
@@ -111,11 +112,11 @@ export default {
   render() {
     const data = {
       props: {
-        value: false,
+        value: this.config.value,
         transition: false,
         dark: this.isThemeDark,
         light: this.isThemeLight,
-        contentClass: ['c-flyout'],
+        contentClass: 'c-flyout',
         fullscreen: this.config.fullscreen,
         width: this.config.width,
         peristent: this.config.peristent,

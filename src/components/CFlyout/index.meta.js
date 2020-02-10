@@ -60,6 +60,13 @@ export default {
       value: true,
       priority: 5,
     },
+    value: {
+      type: 'check',
+      group: 'style',
+      name: 'Show flyout',
+      value: false,
+      priority: 6,
+    },
     cancelLabel: {
       type: 'input',
       name: 'Cancel label',

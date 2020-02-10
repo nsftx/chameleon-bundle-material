@@ -1,18 +1,22 @@
 .c-flyout {
-  position: absolute;
-  right: 0;
-  width: 60%;
+  position: absolute !important;
+  right: 0 !important;
+  width: 60% !important;
+  left: unset !important;
 
-  @include theme('v-btn') using ($material) {
-    .c-flyout__header__more__icon,
-    .c-flyout__header__close__icon {
-      color: map-get($material, 'icon-color');
-    }
-  }
   .c-flyout__header__more__icon,
   .c-flyout__header__close__icon {
     height: 24px;
     font-size: 24px;
     min-width: 24px;
+  }
+  .v-toolbar__content {
+    padding: 0px !important;
+  }
+  .c-flyout__header {
+    padding: 40px 16px 16px 16px;
+    height: 120px !important;
+    margin: 0px 32px 0 32px;
+    box-shadow: none;
   }
 }

@@ -3,6 +3,10 @@ import {
   VCard,
   VBtn,
   VToolbar,
+  VSpacer,
+  VIcon,
+  VToolbarTitle,
+  VCardActions,
 } from 'vuetify/lib';
 import Flyout from './CFlyout';
 import Button from '../CButton';
@@ -13,6 +17,11 @@ const stringType = {
 };
 
 const booleanTrue = {
+  type: Boolean,
+  default: true,
+};
+
+const booleanFalse = {
   type: Boolean,
   default: true,
 };
@@ -28,16 +37,18 @@ export default {
         VCard,
         VBtn,
         VToolbar,
+        VSpacer,
+        VIcon,
+        VToolbarTitle,
+        VCardActions,
         Button,
       },
       extends: Flyout,
       props: {
+        value: booleanFalse,
         name: stringType,
         fullscreen: booleanTrue,
-        persistent: {
-          type: Boolean,
-          default: false,
-        },
+        persistent: booleanFalse,
         headerTitle: stringType,
         width: {
           type: String,
