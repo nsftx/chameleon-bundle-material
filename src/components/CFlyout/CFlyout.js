@@ -73,9 +73,14 @@ const createFooter = context => context.$slots.footer || context.$createElement(
     context.$createElement(
       'v-btn',
       {
-        class: ['c-flyout__footer__close'],
+        class: ['c-flyout__footer__cancel'],
         props: {
           text: true,
+        },
+        nativeOn: {
+          click() {
+            context.$emit('Canceled');
+          },
         },
       },
       context.config.cancelLabel,
@@ -86,6 +91,11 @@ const createFooter = context => context.$slots.footer || context.$createElement(
         class: ['c-flyout__footer__submit'],
         props: {
           depressed: true,
+        },
+        nativeOn: {
+          click() {
+            context.$emit('Submitted');
+          },
         },
       },
       context.config.submitLabel,
@@ -124,13 +134,14 @@ export default {
         contentClass: 'c-flyout',
         fullscreen: this.config.fullscreen,
         width: this.config.width,
-        peristent: this.config.peristent,
+        persistent: this.config.persistent,
+        noClickAnimation: true,
         scrollable: this.config.scrollable,
         hideOverlay: this.config.hideOverlay,
       },
       on: {
         'click:outside': () => {
-          this.$emit('toggleFlyout');
+          if (!this.config.persistent) this.$emit('toggleFlyout');
         },
       },
     };

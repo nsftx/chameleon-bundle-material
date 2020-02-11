@@ -4,6 +4,10 @@
   width: 60% !important;
   left: unset !important;
 
+  .c-flyout__header__title {
+    font-size: 24px !important;
+    font-weight: bold;
+  }
   .c-flyout__header__more__icon,
   .c-flyout__header__close__icon {
     height: 24px;
@@ -33,14 +37,14 @@
   }
 
   .c-flyout__footer__submit,
-  .c-flyout__footer__close {
+  .c-flyout__footer__cancel {
     padding: 0px 40px !important;
     height: 32px !important;
     text-transform: capitalize;
     font-weight: 500;
   }
 
-  .c-flyout__footer__close {
+  .c-flyout__footer__cancel {
     background-color: #e4e5e6;
     color: rgba(0, 0, 0, 0.85) !important;
   }

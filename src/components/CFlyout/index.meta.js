@@ -4,8 +4,16 @@ export default {
   icon: 'chrome_reader_mode',
   events: [
     {
-      name: 'Closed',
+      name: 'toggleFlyout',
       help: 'Toggle dialog visibility',
+    },
+    {
+      name: 'Canceled',
+      help: 'Cancel button pressed',
+    },
+    {
+      name: 'Submitted',
+      help: 'Submit button pressed',
     },
   ],
   options: {

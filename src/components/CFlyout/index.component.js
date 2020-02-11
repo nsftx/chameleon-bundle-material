@@ -9,7 +9,6 @@ import {
   VCardActions,
 } from 'vuetify/lib';
 import Flyout from './CFlyout';
-import Button from '../CButton';
 
 const stringType = {
   type: String,
@@ -41,7 +40,6 @@ export default {
         VIcon,
         VToolbarTitle,
         VCardActions,
-        Button,
       },
       extends: Flyout,
       props: {
