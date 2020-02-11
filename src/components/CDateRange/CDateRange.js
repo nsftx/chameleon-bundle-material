@@ -221,7 +221,6 @@ export default {
   },
   render(createElement) {
     const self = this;
-
     const data = {
       props: getMenuProps(this),
       on: {

@@ -35,7 +35,7 @@ export { default as CSelectList } from './CSelectList';
 export { default as CSlider } from './CSlider';
 export { default as CSwitch } from './CSwitch';
 export { default as CTabItem } from './CTabItem';
-export { default as CTable } from './CTable';
+export { default as CTable } from './CTableNew';
 export { default as CTabs } from './CTabs';
 export { default as CTags } from './CTags';
 export { default as CText } from './CText';

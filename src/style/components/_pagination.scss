@@ -1,0 +1,26 @@
+.c-data-table {
+  .v-data-table-header__icon {
+    float: right;
+  }
+}
+
+.c-pagination.theme--light {
+  .v-pagination__item,
+  .v-pagination__navigation {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #C1C1C1 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+  .v-pagination__item--active {
+    color: #000 !important
+  }
+  .v-pagination__item:focus,
+  .v-pagination__navigation:focus {
+    outline: none !important;
+  }
+  .v-pagination__item--active {
+    border-top: 1px solid;
+  }
+}

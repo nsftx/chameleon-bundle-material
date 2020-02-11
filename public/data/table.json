@@ -14,8 +14,76 @@
               "type": "table",
               "rowsPerPage": 10,
               "color": "pink darken-1",
-              "alternatingRows": true,
               "page": 1,
+              "itemsPerPage": 5,
+              "showIndex": false,
+              "showFilter": false,
+              "headers": [
+                {
+                  "text": "Calories",
+                  "value": "calories"
+                },
+                {
+                  "text": "Fat (g)",
+                  "value": "fat"
+                },
+                {
+                  "text": "Carbs (g)",
+                  "value": "carbs"
+                },
+                {
+                  "text": "Protein (g)",
+                  "value": "protein"
+                },
+                {
+                  "text": "Iron (%)",
+                  "value": "iron"
+                }
+              ],
+              "content": [
+                {
+                  "calories": 159,
+                  "fat": 6.0,
+                  "carbs": 24,
+                  "protein": 4.0,
+                  "iron": "1%"
+                },
+                {
+                  "calories": 237,
+                  "fat": 9.0,
+                  "carbs": 37,
+                  "protein": 4.3,
+                  "iron": "1%"
+                },
+                {
+                  "calories": 237,
+                  "fat": 9.0,
+                  "carbs": 37,
+                  "protein": 4.3,
+                  "iron": "1%"
+                },
+                {
+                  "calories": 237,
+                  "fat": 9.0,
+                  "carbs": 37,
+                  "protein": 4.3,
+                  "iron": "1%"
+                },
+                {
+                  "calories": 237,
+                  "fat": 9.0,
+                  "carbs": 37,
+                  "protein": 4.3,
+                  "iron": "1%"
+                },
+                {
+                  "calories": 237,
+                  "fat": 9.0,
+                  "carbs": 37,
+                  "protein": 4.3,
+                  "iron": "1%"
+                }
+              ],
               "dataSource": {
                 "name": "temperaturesPerCity",
                 "id": "temperaturesPerCity",

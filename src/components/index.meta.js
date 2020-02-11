@@ -34,7 +34,7 @@ export { default as selectList } from './CSelectList/index.meta';
 export { default as slider } from './CSlider/index.meta';
 export { default as switch } from './CSwitch/index.meta';
 export { default as tabItem } from './CTabItem/index.meta';
-export { default as table } from './CTable/index.meta';
+export { default as table } from './CTableNew/index.meta';
 export { default as tabs } from './CTabs/index.meta';
 export { default as tags } from './CTags/index.meta';
 export { default as text } from './CText/index.meta';

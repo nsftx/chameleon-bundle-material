@@ -51,6 +51,7 @@
         "VList",
         "VListItem",
         "VListItemTitle",
+        "VListItemGroup",
         "VListItemSubtitle",
         "VListItemContent",
         "VListItemAvatar",
@@ -75,7 +76,8 @@
         "VDataTable",
         "VTextarea",
         "VTreeview",
-        "VDatePicker"
+        "VDatePicker",
+        "VPagination"
       ]
     }
   }
