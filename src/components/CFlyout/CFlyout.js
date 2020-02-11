@@ -42,8 +42,13 @@ const createHeader = context => context.$createElement(
       'v-btn',
       {
         class: ['c-flyout__header__close'],
+        props: {
+          icon: true,
+        },
         nativeOn: {
-          click: context.$emit('toggleFlyout'),
+          click() {
+            context.$emit('toggleFlyout');
+          },
         },
       },
       [
@@ -51,9 +56,6 @@ const createHeader = context => context.$createElement(
           'v-icon',
           {
             class: ['c-flyout__header__close__icon'],
-            props: {
-              icon: true,
-            },
           },
           'close',
         ),
@@ -82,6 +84,9 @@ const createFooter = context => context.$slots.footer || context.$createElement(
       'v-btn',
       {
         class: ['c-flyout__footer__submit'],
+        props: {
+          depressed: true,
+        },
       },
       context.config.submitLabel,
     ),
@@ -122,6 +127,11 @@ export default {
         peristent: this.config.peristent,
         scrollable: this.config.scrollable,
         hideOverlay: this.config.hideOverlay,
+      },
+      on: {
+        'click:outside': () => {
+          this.$emit('toggleFlyout');
+        },
       },
     };
     const elements = createCard(this);

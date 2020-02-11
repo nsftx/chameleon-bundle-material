@@ -56,8 +56,14 @@ export default {
         },
         hideOverlay: booleanTrue,
         showAvatar: booleanTrue,
-        cancelLabel: stringType,
-        submitLabel: stringType,
+        cancelLabel: {
+          type: String,
+          default: 'Cancel',
+        },
+        submitLabel: {
+          type: String,
+          default: 'Submit',
+        },
       },
     });
   },
