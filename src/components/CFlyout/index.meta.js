@@ -5,7 +5,7 @@ export default {
   icon: 'chrome_reader_mode',
   events: [
     {
-      name: 'toggleFlyout',
+      name: 'Closed',
       help: 'Toggle dialog visibility',
     },
     {
@@ -67,14 +67,21 @@ export default {
       group: 'style',
       name: 'Show avatar',
       value: true,
-      priority: 5,
+      priority: 6,
+    },
+    showActions: {
+      type: 'check',
+      group: 'style',
+      name: 'Show actions footer',
+      value: true,
+      priority: 7,
     },
     value: {
       type: 'check',
       group: 'style',
       name: 'Show flyout',
       value: false,
-      priority: 6,
+      priority: 8,
     },
     cancelLabel: {
       type: 'input',

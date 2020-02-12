@@ -29,12 +29,9 @@ const createHeader = context => context.$createElement(
     ),
     context.$createElement('v-spacer'),
     context.$createElement(
-      'v-btn',
+      'div',
       {
-        class: ['c-flyout__header__more'],
-        props: {
-          icon: true,
-        },
+        class: ['c-flyout__header__menu'],
       },
       context.$slots.menu,
     ),
@@ -47,7 +44,7 @@ const createHeader = context => context.$createElement(
         },
         nativeOn: {
           click() {
-            context.$emit('toggleFlyout');
+            context.$emit('Closed');
           },
         },
       },
@@ -106,7 +103,11 @@ const createFooter = context => context.$slots.footer || context.$createElement(
 const createBody = context => context.$createElement(
   'div',
   {
-    class: ['c-flyout__body'],
+    class: {
+      'c-flyout__body': true,
+      'c-flyout__actionless': !context.config.showActions,
+    },
+    staticClass: context.baseChildrenClass,
   },
   context.$slots.content,
 );
@@ -119,7 +120,11 @@ const createCard = context => context.$createElement(
       tile: true,
     },
   },
-  [createHeader(context), createBody(context), createFooter(context)],
+  [
+    createHeader(context),
+    createBody(context),
+    context.config.showActions ? createFooter(context) : null,
+  ],
 );
 
 export default {
@@ -131,7 +136,7 @@ export default {
         transition: false,
         dark: this.isThemeDark,
         light: this.isThemeLight,
-        contentClass: this.config.fullscreen ? 'c-flyout' : 'c-flyout full-height',
+        contentClass: this.config.fullscreen ? 'c-flyout' : 'c-flyout c-flyout__full-height',
         fullscreen: this.config.fullscreen,
         width: this.config.width,
         persistent: this.config.persistent,
@@ -141,7 +146,7 @@ export default {
       },
       on: {
         'click:outside': () => {
-          if (!this.config.persistent) this.$emit('toggleFlyout');
+          if (!this.config.persistent) this.$emit('Closed');
         },
       },
     };

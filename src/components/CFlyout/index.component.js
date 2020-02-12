@@ -54,6 +54,7 @@ export default {
         },
         hideOverlay: booleanTrue,
         showAvatar: booleanTrue,
+        showActions: booleanTrue,
         cancelLabel: {
           type: String,
           default: 'Cancel',
