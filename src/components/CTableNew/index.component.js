@@ -1,4 +1,15 @@
-import { VDataTable, VPagination } from 'vuetify/lib';
+import {
+  VDataTable,
+  VCheckbox,
+  VList,
+  VListItem,
+  VListItemTitle,
+  VListItemAction,
+  VListItemGroup,
+  VIcon,
+  VMenu,
+  VPagination,
+} from 'vuetify/lib';
 import Table from './CTable';
 
 export default {
@@ -10,6 +21,14 @@ export default {
       name,
       components: {
         VDataTable,
+        VCheckbox,
+        VList,
+        VListItem,
+        VListItemTitle,
+        VListItemAction,
+        VListItemGroup,
+        VIcon,
+        VMenu,
         VPagination,
       },
       extends: Table,

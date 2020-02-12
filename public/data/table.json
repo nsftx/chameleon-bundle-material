@@ -16,8 +16,8 @@
               "color": "pink darken-1",
               "page": 1,
               "itemsPerPage": 5,
-              "showIndex": false,
-              "showFilter": false,
+              "showIndex": true,
+              "showFilter": true,
               "headers": [
                 {
                   "text": "Calories",

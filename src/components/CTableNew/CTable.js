@@ -9,19 +9,33 @@ require('../../style/components/_pagination.scss');
 
 // TODO create seperate component
 const createHeaderFilter = (context) => {
+  const self = context;
   const slot = {
-    activator: (props) => {
-      const { on } = props;
-      return context.$createElement('v-icon', {
-        on,
-      }, 'filter_list');
-    },
+    activator: () => context.$createElement('v-icon', {
+      on: {
+        click(e) {
+          e.preventDefault();
+          self.menuState = false;
+          self.menuX = e.clientX;
+          self.menuY = e.clientY;
+          // Using custom event so that I can keep menu opet on header change
+          self.$nextTick(() => {
+            self.menuState = true;
+          });
+        },
+      },
+    }, 'filter_list'),
   };
 
-  const listItem = map(context.config.headers, (header, index) => context.$createElement('v-list-item', {
+  const listItem = map(context.config.headers, header => context.$createElement('v-list-item', {
     props: {
-      key: index,
       value: header,
+      inactive: true,
+    },
+    on: {
+      click() {
+        self.menuState = true;
+      },
     },
     scopedSlots: {
       default: props => [
@@ -33,7 +47,7 @@ const createHeaderFilter = (context) => {
             },
             on: {
               click() {
-                props.toggle();
+                self.menuState = true;
               },
             },
           }),
@@ -44,20 +58,15 @@ const createHeaderFilter = (context) => {
   }));
 
   const listSlot = context.$createElement('v-list', {
-    props: {
-      value: context.activeHeaders,
-    },
   }, [
     context.$createElement('v-list-item-group', {
       props: {
         multiple: true,
         value: context.activeHeaders,
-        activeClass: '',
       },
       on: {
         change(value) {
-          const self = context;
-          self.activeHeaders = value;
+          self.active = value;
         },
       },
     },
@@ -68,12 +77,17 @@ const createHeaderFilter = (context) => {
 
   return context.$createElement('v-menu', {
     props: {
+      absolute: true,
       offsetY: true,
-      closeOnClick: false,
       closeOnContentClick: false,
+      value: context.menuState,
+      positionX: context.menuX,
+      positionY: context.menuY,
+      transition: false,
+      minWidth: '195px',
     },
     on: {
-      click(value) {
+      input(value) {
         context.dispatchEvent('menuClicked', { value });
       },
     },
@@ -103,9 +117,22 @@ export default {
   extends: Element,
   data() {
     return {
+      active: null,
       page: 1,
       pageCount: 10,
-      activeHeaders: [],
+      menuState: false,
+      filter: {
+        text: '',
+        value: 'filter',
+        width: '80px',
+        sortable: false,
+      },
+      index: {
+        text: '#',
+        value: 'index',
+        width: '80px',
+        sortable: true,
+      },
     };
   },
   methods: {
@@ -126,52 +153,43 @@ export default {
     },
   },
   computed: {
+    activeHeaders() {
+      return this.active || (this.config && this.config.headers);
+    },
     customHeader() {
       // Define index header
-      if (this.config.showIndex) {
-        return [
-          ...[{
-            text: '#',
-            value: 'index',
-          }],
-          ...this.activeHeaders,
-          ...[{
-            text: '',
-            value: 'filter',
-            sortable: false,
-          }],
-        ];
-      }
-      return [...this.activeHeaders,
-        ...[{
-          text: '',
-          value: 'filter',
-          sortable: false,
-        }],
+      return [
+        ...(this.config.showIndex ? [this.index] : []),
+        ...this.activeHeaders,
+        ...(this.config.showFilter ? [this.filter] : []),
       ];
     },
     customContent() {
       // Define index column
-      if (this.config.showIndex) {
-        return map(this.config.content, (item, index) => {
-          const newItem = item;
-          newItem.index = index + 1;
-          return newItem;
-        });
-      }
-      return this.config.content;
+      return map(this.config.content, (item, index) => {
+        const newItem = item;
+        newItem.index = index + 1;
+        newItem.filter = ' ';
+        return newItem;
+      });
     },
-  },
-  beforeMount() {
-    if (this.config && this.config.headers) {
-      this.activeHeaders = this.config.headers;
-    }
   },
   render() {
     return this.renderElement('v-data-table', {
       staticClass: 'c-data-table',
       scopedSlots: {
         'header.filter': () => createHeaderFilter(this),
+        /* header: ({ props }) => this.$createElement('thead', {}, [
+          this.$createElement('tr', {}, [
+            map(props.headers, header => this.$createElement('td', {
+            }, header.text)),
+            this.$createElement('td', {
+              staticStyle: {
+                width: '10px',
+              },
+            }, [createHeaderFilter(this)]),
+          ]),
+        ]), */
         footer: () => this.$createElement('v-pagination', {
           props: {
             value: this.page,
@@ -187,13 +205,10 @@ export default {
             },
           },
         }),
-        item: props => this.$createElement('tr', {}, [
-          map(this.customHeader, header => this.$createElement('td', {
-            staticStyle: {
-              width: header.value === 'filter' ? '10px' : '',
-            },
-          }, props.item[header.value])),
-        ]),
+        /* item: props => this.$createElement('tr', {}, [
+          map(this.customHeader, header => this.$createElement('td',
+            {}, props.item[header.value])), */
+        // ]),
       },
       props: setTableProps(this),
       on: {
