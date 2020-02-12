@@ -1,7 +1,6 @@
 .c-flyout {
   position: absolute !important;
   right: 0 !important;
-  width: 60% !important;
   left: unset !important;
 
   .c-flyout__header__title {
@@ -54,4 +53,11 @@
     background-color: #2b85d8 !important;
     color: rgba(255, 255, 255, 0.85) !important;
   }
+}
+
+.full-height,
+.c-flyout__card {
+  height: 100% !important;
+  max-height: 100% !important;
+  margin: 0px !important;
 }

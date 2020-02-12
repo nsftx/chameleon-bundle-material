@@ -1,6 +1,7 @@
 export default {
   type: 'flyout',
   name: 'Flyout',
+  group: 'containers',
   icon: 'chrome_reader_mode',
   events: [
     {

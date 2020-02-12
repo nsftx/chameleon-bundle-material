@@ -131,7 +131,7 @@ export default {
         transition: false,
         dark: this.isThemeDark,
         light: this.isThemeLight,
-        contentClass: 'c-flyout',
+        contentClass: this.config.fullscreen ? 'c-flyout' : 'c-flyout full-height',
         fullscreen: this.config.fullscreen,
         width: this.config.width,
         persistent: this.config.persistent,
