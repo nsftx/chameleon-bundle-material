@@ -48,6 +48,7 @@ export default {
         fullscreen: booleanTrue,
         persistent: booleanFalse,
         headerTitle: stringType,
+        headerSubtitle: stringType,
         width: {
           type: String,
           default: '60%',

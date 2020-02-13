@@ -12,6 +12,7 @@ export { default as CDate } from './CDate';
 export { default as CDateRange } from './CDateRange';
 export { default as CFlexgrid } from './CFlexgrid';
 export { default as CFlexgridItem } from './CFlexgridItem';
+export { default as CFlyout } from './CFlyout';
 export { default as CFilterGroup } from './CFilterGroup';
 export { default as CForm } from './CForm';
 export { default as CGallery } from './CGallery';

@@ -3,14 +3,24 @@ import Element from '../Element';
 require('../../style/components/_flyout.scss');
 
 const renderAvatar = (context) => {
-  if (context.config.showAvatar) {
-    context.$createElement(
-      'div',
-      {
-        class: ['c-flyout__header__avatar'],
-      },
-    );
-  }
+  if (!context.config.showAvatar) return null;
+  return context.$createElement(
+    'div',
+    {
+      class: ['c-flyout__header__avatar'],
+    },
+  );
+};
+
+const renderSubtitle = (context) => {
+  if (!context.config.headerSubtitle) return null;
+  return context.$createElement(
+    'p',
+    {
+      class: ['c-flyout__header__subtitle'],
+    },
+    context.config.headerSubtitle,
+  );
 };
 
 const createHeader = context => context.$createElement(
@@ -21,11 +31,20 @@ const createHeader = context => context.$createElement(
   [
     renderAvatar(context),
     context.$createElement(
-      'v-toolbar-title',
+      'div',
       {
         class: ['c-flyout__header__title'],
       },
-      context.config.headerTitle,
+      [
+        context.$createElement(
+          'v-toolbar-title',
+          {
+            class: ['c-flyout__header__main__title'],
+          },
+          context.config.headerTitle,
+        ),
+        renderSubtitle(context),
+      ],
     ),
     context.$createElement('v-spacer'),
     context.$createElement(

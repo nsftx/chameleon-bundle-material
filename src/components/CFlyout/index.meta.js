@@ -49,9 +49,16 @@ export default {
       value: null,
       priority: 3,
     },
+    headerSubtitle: {
+      type: 'input',
+      name: 'Header subtitle',
+      value: null,
+      priority: 4,
+    },
     width: {
       type: 'sizeInput',
       name: 'Width',
+      group: 'style',
       value: null,
       priority: 4,
     },
