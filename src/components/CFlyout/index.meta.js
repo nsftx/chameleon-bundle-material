@@ -3,6 +3,12 @@ export default {
   name: 'Flyout',
   group: 'containers',
   icon: 'chrome_reader_mode',
+  actions: [
+    {
+      name: 'toggleFlyout',
+      help: 'Toggle te visibility of the flyout',
+    },
+  ],
   events: [
     {
       name: 'Closed',
