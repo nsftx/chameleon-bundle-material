@@ -45,9 +45,33 @@ export default {
           type: Number,
           default: 10,
         },
+        loading: {
+          type: Boolean,
+          default: false,
+        },
+        page: {
+          type: Number,
+          default: 1,
+        },
         showIndex: {
           type: Boolean,
           default: true,
+        },
+        showFilter: {
+          type: Boolean,
+          default: true,
+        },
+        sort: {
+          type: String,
+          default: '+',
+        },
+        sortBy: {
+          type: String,
+          default: null,
+        },
+        total: {
+          type: Number,
+          default: -1,
         },
       },
     });

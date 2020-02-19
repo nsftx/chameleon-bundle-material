@@ -1,13 +1,22 @@
-import { map } from 'lodash';
+import { map, merge } from 'lodash';
 import Element from '../Element';
 
 require('../../style/components/_pagination.scss');
 
-// FOOTER NUMBER OF ITEMS
-// SLOT INSTED OF ITEM OR ITEM + SLOT FOR TAGS AND AVATARS
-// ------------------------------
+const filterHeader = {
+  text: '',
+  value: 'filter',
+  width: '80px',
+  sortable: false,
+};
 
-// TODO create seperate component
+const indexHeader = {
+  text: '#',
+  value: 'index',
+  width: '80px',
+  sortable: true,
+};
+
 const createHeaderFilter = (context) => {
   const self = context;
   const slot = {
@@ -98,48 +107,75 @@ const createHeaderFilter = (context) => {
   ]);
 };
 
-const setTableProps = (context) => {
-  const { config } = context;
-  return {
-    hideDefaultFooter: true,
-    hideDefaultHeader: false,
-    headers: context.customHeader,
-    headerProps: {
-      sortIcon: 'arrow_drop_down',
-    },
-    items: context.customContent,
-    itemsPerPage: config.itemsPerPage,
-    page: context.page,
-  };
+const getHeadersProps = (dataSource) => {
+  const columns = dataSource.schema;
+
+  return map(columns, column => (merge({
+    value: column.mapName || column.name,
+    text: column.title || column.name,
+    type: column.mapType || column.type,
+  })));
 };
+
+const setServerPagination = (context, params) => {
+  const self = context;
+
+  self.dataSourceParams = merge({
+    pagination: params || {
+      page: self.config.page,
+      size: self.config.itemsPerPage,
+      sort: self.config.sort,
+      sortBy: self.config.sortBy,
+    },
+  });
+};
+
+const mapClientParams = params => ({
+  page: params.page,
+  size: params.itemsPerPage,
+  sort: params.sortDesc,
+  sortBy: params.sortBy,
+});
+
+
+const setTableProps = context => ({
+  dark: context.isThemeDark,
+  light: context.isThemeLight,
+  hideDefaultFooter: true,
+  hideDefaultHeader: false,
+  headers: context.customHeader,
+  headerProps: {
+    sortIcon: 'arrow_drop_down',
+  },
+  items: context.customContent,
+  loading: context.config.loading,
+  multiSort: context.config.multiSort,
+  'options.sync': context.pagination,
+  serverItemsLength: context.total || context.serverTotalCount,
+  itemsPerPage: context.pagination.size,
+  page: context.pagination.page,
+});
 
 export default {
   extends: Element,
   data() {
     return {
       active: null,
-      page: 1,
-      pageCount: 10,
       menuState: false,
-      filter: {
-        text: '',
-        value: 'filter',
-        width: '80px',
-        sortable: false,
-      },
-      index: {
-        text: '#',
-        value: 'index',
-        width: '80px',
-        sortable: true,
+      totalCount: -1,
+      serverTotalCount: -1,
+      props: {
+        page: 1,
       },
     };
   },
   methods: {
-    // TODO do we need this since element has the same functionality?
-    loadData() {
+    loadData(params) {
+      setServerPagination(this, params);
+
       this.loadConnectorData().then((result) => {
         this.items = result.items || [];
+        this.serverTotalCount = (result.pagination && result.pagination.total) || -1;
         this.sendToEventBus('DataSourceChanged', this.dataSource);
       });
     },
@@ -154,61 +190,81 @@ export default {
   },
   computed: {
     activeHeaders() {
-      return this.active || (this.config && this.config.headers);
+      const headers = this.dataSource
+        ? getHeadersProps(this.dataSource) : (this.config && this.config.headers);
+      return this.active || headers;
     },
     customHeader() {
-      // Define index header
+      // Define index and filter header
       return [
-        ...(this.config.showIndex ? [this.index] : []),
+        ...(this.config.showIndex ? [indexHeader] : []),
         ...this.activeHeaders,
-        ...(this.config.showFilter ? [this.filter] : []),
+        ...(this.config.showFilter ? [filterHeader] : []),
       ];
     },
     customContent() {
-      // Define index column
-      return map(this.config.content, (item, index) => {
+      const content = this.items && this.items.length ? this.items : this.config.content;
+      // Define index and filter column
+      return map(content, (item, index) => {
         const newItem = item;
-        newItem.index = index + 1;
+        const pageSize = ((this.pagination.page - 1) * this.pagination.size);
+        newItem.index = (index + 1) + pageSize;
         newItem.filter = ' ';
         return newItem;
       });
     },
+    isServerRender() {
+      return this.total || this.serverItemsLength;
+    },
+    pagination() {
+      return {
+        page: this.props.page || this.config.page,
+        size: this.props.size || this.config.itemsPerPage,
+        sort: this.props.sort || this.config.sort,
+        sortBy: this.props.sortBy || this.config.sortBy,
+      };
+    },
   },
   render() {
+    const self = this;
     return this.renderElement('v-data-table', {
       staticClass: 'c-data-table',
       scopedSlots: {
         'header.filter': () => createHeaderFilter(this),
-        /* header: ({ props }) => this.$createElement('thead', {}, [
-          this.$createElement('tr', {}, [
-            map(props.headers, header => this.$createElement('td', {
-            }, header.text)),
-            this.$createElement('td', {
-              staticStyle: {
-                width: '10px',
+        footer: () => [ // TODO SELECT
+          this.$createElement('v-row', {}, [
+            this.$createElement('v-col', {
+              props: {
+                cols: 1,
               },
-            }, [createHeaderFilter(this)]),
+              staticClass: 'flex-grow-0 flex-shrink-0',
+            }, [
+              this.$createElement('v-select', {
+                props: {
+                  outlined: true,
+                  height: '32px',
+                },
+              }),
+            ]),
+            this.$createElement('v-col', {}, [
+              this.$createElement('v-pagination', {
+                props: {
+                  value: this.pagination.page,
+                  length: this.totalCount,
+                  totalVisible: 6,
+                  nextIcon: 'arrow_forward',
+                  prevIcon: 'arrow_back',
+                },
+                staticClass: 'c-pagination',
+                on: {
+                  input(value) {
+                    self.props.page = value;
+                  },
+                },
+              }),
+            ]),
           ]),
-        ]), */
-        footer: () => this.$createElement('v-pagination', {
-          props: {
-            value: this.page,
-            length: this.pageCount,
-            nextIcon: 'arrow_forward',
-            prevIcon: 'arrow_back',
-          },
-          staticClass: 'c-pagination',
-          on: {
-            input: (data) => {
-              // emits number of pages
-              this.page = data;
-            },
-          },
-        }),
-        /* item: props => this.$createElement('tr', {}, [
-          map(this.customHeader, header => this.$createElement('td',
-            {}, props.item[header.value])), */
-        // ]),
+        ],
       },
       props: setTableProps(this),
       on: {
@@ -216,8 +272,17 @@ export default {
           this.dispatchEvent('Selected', rowItem);
         },
         'page-count': (pages) => {
-          // Set dynimic page count
-          this.pageCount = pages;
+          this.totalCount = pages;
+          this.dispatchEvent('PaginationUpdated', this.totalCount);
+        },
+        'update:options': (value) => {
+          merge(this.props, mapClientParams(value));
+
+          if (this.total) {
+            this.dispatchEvent('LoadData', this.props);
+          } else {
+            this.loadData(this.props);
+          }
         },
       },
     });

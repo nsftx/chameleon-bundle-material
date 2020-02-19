@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     dispatchEvent(name, payload) {
-      this.$emit(`${name.toLowerCase()}`, cloneDeep(payload));
+      this.$emit(name, cloneDeep(payload));
     },
     renderElement(tag, options, items) {
       const props = isNil(options) ? {} : cloneDeep(options);
